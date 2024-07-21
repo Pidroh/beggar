@@ -5,6 +5,7 @@ namespace HeartUnity.View
 {
     public class ScrollManager : UIUnit {
         public ScrollRect scrollView;
+        public RectTransform Content => scrollView.content;
         public void Add(MonoBehaviour child) {
             child.transform.SetParent(scrollView.content);
         }
