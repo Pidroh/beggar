@@ -129,7 +129,7 @@ namespace HeartUnity.View
                 var mouseInsideScreen =  mousePosition.x >= 0 && mousePosition.x <= Screen.width &&
                        mousePosition.y >= 0 && mousePosition.y <= Screen.height;
                 Cursor.visible = !mouseInsideScreen;
-                mouseView.gameObject.SetActive(this.inputManager.latestInputDevice == InputManager.InputDevice.MOUSE);
+                mouseView.gameObject.SetActive(this.inputManager.LatestInputDevice == InputManager.InputDevice.MOUSE);
                 Vector3 pos = GetCanvasMousePosition();
                 mouseView.transform.position = pos;
             }
