@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2890986728850058171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4594335333691118053}
+  - component: {fileID: 4118438735607210649}
+  m_Layer: 0
+  m_Name: ReusablePrefabs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4594335333691118053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890986728850058171}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4118438735607210649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890986728850058171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708851e835929db4599cacacd29e6418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 1070109906780609815, guid: 85b2de22e3ff0514aae09513b8f046d7, type: 3}
+  button: {fileID: 5744377187421217315, guid: d5a9fe3ee6b703d428f127e65d6cc6c8, type: 3}
+  toggle: {fileID: 7224592270767405021, guid: 57ae7702efd657943864d1b716760d89, type: 3}
+  slider: {fileID: 1057422518881333418, guid: f8dca1f22d43c1f408c0469127424d98, type: 3}
+  text: {fileID: 5350594675238054348, guid: 5fb27abd0a05126449be547ee71594ac, type: 3}
+  textFullScreen: {fileID: 331843426824643520, guid: 7cf8e0e5d71a3054cb9fd561430ac62c, type: 3}
+  defaultSettingText: {fileID: 4900000, guid: 43c94ba5707144d469075b55ef4b6a8f, type: 3}
+  textAutoFitForSettings: {fileID: -323565137853038532, guid: fa7a03f5e5d7d8f4c991aff69d917f23, type: 3}

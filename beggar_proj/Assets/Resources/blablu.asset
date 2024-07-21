@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f6cb64a6d7fcf4fbdeb0c94f888dff, type: 3}
+  m_Name: CardGameConfig_nostalpix
+  m_EditorClassIdentifier: 
+  dataFiles:
+    storyToArea: {fileID: 0}
+    storyScenes: {fileID: 11400000, guid: a7be0d8e716776c42a09b0f5495469cf, type: 2}
+    areaInfoFile: {fileID: 4900000, guid: b3757963480c0b54ea44f724df9839f8, type: 3}
+    enemyInfoFile: {fileID: 4900000, guid: 82882d976d3fd4441921c4630a42e235, type: 3}
+    bossInfoFile: {fileID: 4900000, guid: c2808e4b14a7abb4684da90179c81582, type: 3}
+    boosterPackFile: {fileID: 4900000, guid: 3cd39faefab0f7449806f3282789cc09, type: 3}
+  vsScreenActive: 1
+  mainCharaConfig:
+    mainCharaSprite: {fileID: 21300000, guid: fc5202415275664448c13eb306873ce8, type: 3}
+    offset: {x: -20, y: -180, z: 0}
+    scale: 1
+  leaderSprites: {fileID: 11400000, guid: eea4d1f5a5a51994ca4a004d1dc047ea, type: 2}
+  mainCharacterBattleVoiceList: {fileID: 0}
+  elementSprites:
+  - {fileID: 1574409732, guid: ec0344b3ca6f68640adfed47ddc1ed3c, type: 3}
+  - {fileID: -1907235557, guid: ec0344b3ca6f68640adfed47ddc1ed3c, type: 3}
+  - {fileID: 2129195543, guid: ec0344b3ca6f68640adfed47ddc1ed3c, type: 3}

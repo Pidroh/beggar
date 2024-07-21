@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f6cb64a6d7fcf4fbdeb0c94f888dff, type: 3}
+  m_Name: CardGameConfig
+  m_EditorClassIdentifier: 
+  InitialGameCutscene: 
+  dataFiles:
+    storyToArea: {fileID: 0}
+    storyScenes: {fileID: 11400000, guid: a7be0d8e716776c42a09b0f5495469cf, type: 2}
+    difficultyInfoFile: {fileID: 4900000, guid: e8f62e48a6c94d9489bdaa019485f6e1, type: 3}
+    worldRelationshipsInfoFile: {fileID: 4900000, guid: f820d6dd5d0b4f845b0ece9be71adb29, type: 3}
+    worldInfoFile: {fileID: 4900000, guid: 71a2858e9cacfe54d9f411b6dadce23b, type: 3}
+    areaInfoFile: {fileID: 4900000, guid: b3757963480c0b54ea44f724df9839f8, type: 3}
+    enemyInfoFile: {fileID: 4900000, guid: 82882d976d3fd4441921c4630a42e235, type: 3}
+    bossInfoFile: {fileID: 4900000, guid: c2808e4b14a7abb4684da90179c81582, type: 3}
+    boosterPackFile: {fileID: 4900000, guid: 3cd39faefab0f7449806f3282789cc09, type: 3}
+    starterDeckFile: {fileID: 4900000, guid: ae9e42fe0dbcd3f4f84056be384983ad, type: 3}
+    achievementData: {fileID: 4900000, guid: adefad99226b3cd4a8ca0a2574f876a4, type: 3}
+  vsScreenActive: 1
+  mainCharaConfig:
+    mainCharaSprite: {fileID: 21300000, guid: fc5202415275664448c13eb306873ce8, type: 3}
+    offset: {x: -20, y: -180, z: 0}
+    scale: 1
+  leaderSprites: {fileID: 11400000, guid: eea4d1f5a5a51994ca4a004d1dc047ea, type: 2}
+  mainCharacterBattleVoiceList: {fileID: 0}
+  elementSprites:
+  - {fileID: 1574409732, guid: ec0344b3ca6f68640adfed47ddc1ed3c, type: 3}
+  - {fileID: -1907235557, guid: ec0344b3ca6f68640adfed47ddc1ed3c, type: 3}
+  - {fileID: 2129195543, guid: ec0344b3ca6f68640adfed47ddc1ed3c, type: 3}
+  externalUrlInfos:
+  - primaryTextKey: Perfect Hand of Nostalpix
+    secondaryTextKey: Wishlist now!
+    url: https://store.steampowered.com/app/2345540/Perfect_Hand_of_Nostalpix_REMASTER/?utm_source=in_game
+    steamAppId: 2345540
+  - primaryTextKey: Card Nova Hyper
+    secondaryTextKey: Wishlist now!
+    url: https://store.steampowered.com/app/2197330/CARD_NOVA_HYPER/?utm_source=in_game
+    steamAppId: 2197330
+  - primaryTextKey: Launch news
+    secondaryTextKey: Subscribe
+    url: https://www.perennialhearts.com/cardnova
+    steamAppId: 0
+  areaSprites:
+    spritesList:
+    - _key: 
+      sprite: {fileID: 21300000, guid: 0db47edde76634340bec49095958452f, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 98f7753a86bc90e4f916593347f9ea2a, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 965f8259dd92e514599203be36c3b296, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 7365d96fa603ae94497378af17ca68f1, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 3522f3ef0e9538141984ec8b0234604e, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 065910c3fdbe0b74e8ef977e7780b6a2, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: d44843ff539b52247b592b40c6ea433b, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 2f44d85e8ec5c0644af6a7412079e69d, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 94ac37b826aca8844ab0d6ebb0569097, type: 3}
+  monsterDatabaseFeeder: {fileID: 5365306545570544495, guid: 47cfe7fa14a03bb40a793b05eddf1268, type: 3}
+  objectDatabaseFeeder: {fileID: -293950251789422599, guid: 458ea4fc76040634ca002457e4699781, type: 3}
+  runeDatabaseHolder: {fileID: 4798637386770382822, guid: bcc09735b36fd054798ad8070f0b35ce, type: 3}
