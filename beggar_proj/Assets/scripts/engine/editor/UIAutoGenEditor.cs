@@ -22,7 +22,7 @@ namespace autogen.ui
                 return;
             }
 
-            string scriptPath = "Assets/Scripts/autogen-ui/";
+            string scriptPath = "Assets/Scripts/autogen/autogen-ui/";
             string scriptName = selectedObject.name + "UI.cs";
             string fullPath = scriptPath + scriptName;
 
@@ -195,7 +195,7 @@ namespace autogen.ui
             }
 
             string className = selectedObject.name + "UI";
-            string scriptPath = "Assets/Scripts/autogen-ui/";
+            string scriptPath = "Assets/Scripts/autogen/autogen-ui/";
             string scriptName = className + ".cs";
             string fullPath = scriptPath + scriptName;
 
@@ -256,7 +256,7 @@ namespace autogen.ui
 
         static void RegenerateCentralUI()
         {
-            string centralUIScriptPath = "Assets/Scripts/autogen-ui/";
+            string centralUIScriptPath = "Assets/Scripts/autogen/autogen-ui/";
             string centralUIScriptName = "UIAutoElements.cs";
             string centralUIFullPath = centralUIScriptPath + centralUIScriptName;
 
@@ -296,7 +296,7 @@ namespace autogen.ui
 
         static string[] GetGeneratedUIClassNames()
         {
-            string scriptPath = "Assets/Scripts/autogen-ui/";
+            string scriptPath = "Assets/Scripts/autogen/autogen-ui/";
             var scriptFiles = Directory.GetFiles(scriptPath, "*UI.cs");
 
             var classNames = new List<string>();
@@ -321,7 +321,7 @@ namespace autogen.ui
             }
 
             string className = selectedObject.name + "UI";
-            string scriptPath = "Assets/Scripts/autogen-ui/";
+            string scriptPath = "Assets/Scripts/autogen/autogen-ui/";
             string scriptName = className + ".cs";
             string fullPath = scriptPath + scriptName;
 
