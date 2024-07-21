@@ -1,0 +1,24 @@
+{
+    "name": "heart_engine_editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95",
+        "GUID:fdc36b4079d572f4c8074389bfa56fb4",
+        "GUID:23bfae8a45ff86e4293ea5540a453954",
+        "GUID:e389b4c1c1feb034eb8478eebdfbd065"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
