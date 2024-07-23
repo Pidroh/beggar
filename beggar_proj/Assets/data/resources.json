@@ -1,20 +1,45 @@
-{
-    "type": "resource",
-    "items":[
-        {
-            "id": "nutrition",
-            "max": 10,
-            "desc": "Higher values mean your character is well-fed, while lower values indicate hunger."
-        },
-        {
-            "id": "resilience",
-            "desc": "The inner strength your character consumes to perform actions.",
-            "max": 5
-        },
-        {
-            "id": "focus",
-            "desc": "Represents your character's mental clarity and concentration.",
-            "max": 5
-        }
-    ]
-}
+[
+    {
+        "type": "resource",
+        "items":[
+            {
+                "id": "nutrition",
+                "max": 10,
+                "desc": "Higher values mean your character is well-fed, while lower values indicate hunger."
+            },
+            {
+                "id": "resilience",
+                "desc": "The inner strength your character consumes to perform actions.",
+                "max": 5
+            },
+            {
+                "id": "focus",
+                "desc": "Represents your character's mental clarity and concentration.",
+                "max": 5
+            },
+            {
+                "id": "breadcrumbs",
+                "desc": "Small, dry pieces of bread",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "type": "task",
+        "items":[
+            {
+                "id": "beg_a",
+                "name": "Beg for crumbs",
+                "desc": "You take what you get.",
+                "locked": false,
+                "cost":{
+                    "resilience": 1
+                },
+                "result":{
+                    "breadcrumbs": 1
+                }
+            },
+            
+        ]
+    }
+]
