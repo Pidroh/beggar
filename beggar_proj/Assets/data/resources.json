@@ -1,0 +1,20 @@
+{
+    "type": "resource",
+    "items":[
+        {
+            "id": "nutrition",
+            "max": 10,
+            "desc": "Higher values mean your character is well-fed, while lower values indicate hunger."
+        },
+        {
+            "id": "resilience",
+            "desc": "The inner strength your character consumes to perform actions.",
+            "max": 5
+        },
+        {
+            "id": "focus",
+            "desc": "Represents your character's mental clarity and concentration.",
+            "max": 5
+        }
+    ]
+}
