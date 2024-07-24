@@ -22,6 +22,8 @@ public class JsonReader
         public List<ResourceChange> Cost = new();
         public List<ResourceChange> Result = new();
         public List<ResourceChange> Effect = new();
+
+        public bool Perpetual { get; internal set; }
     }
 
     public class RuntimeUnit 
@@ -113,6 +115,7 @@ public class JsonReader
             if (pair.Key == "cost") ReadChanges(ct.Cost, pair.Value, arcaniaUnits, -1);
             if (pair.Key == "result") ReadChanges(ct.Result, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
+            if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
         }
         return ct;
     }
