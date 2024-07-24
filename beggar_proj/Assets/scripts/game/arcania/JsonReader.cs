@@ -11,9 +11,38 @@ public class JsonReader
         public int Max;
         public string name;
     }
+
+    public enum UnitType 
+    { 
+        RESOURCE, ACTION, 
+    }
+
+    public class TaskUnit {
+        public BasicUnit basicUnit;
+    }
+
+    public class RuntimeUnit 
+    {
+        public BasicUnit BasicUnit;
+        public TaskUnit TaskUnit;
+    }
+
+    public class ResourceChange 
+    {
+        public IDPointer IdPointer;
+        public int valueChange;
+    }
+
+    public struct IDPointer 
+    {
+        public RuntimeUnit RuntimeUnit;
+        public string id;
+    }
+
     public class ArcaniaDatas
     {
-        public List<BasicUnit> resources = new();
+        public Dictionary<UnitType, List<BasicUnit>> datas = new();
+        //public List<BasicUnit> resources = new();
     }
     public static void ReadJson(string json, ArcaniaDatas arcaniaDatas)
     {
@@ -36,12 +65,13 @@ public class JsonReader
     private static void ReadArrayOwner(ArcaniaDatas arcaniaDatas, SimpleJSON.JSONNode parentNode)
     {
         var items = parentNode["items"];
-        string type = parentNode["type"];
-        var isResource = type == "resource";
+        string typeS = parentNode["type"];
+        if (!EnumHelper<UnitType>.TryGetEnumFromName(typeS, out var type)) Debug.LogError($"{typeS} not found in UnitType");
+        if (!arcaniaDatas.datas.ContainsKey(type)) arcaniaDatas.datas[type] = new();
         foreach (var item in items.AsArray.Children)
         {
             BasicUnit basicInfo = ReadBasicUnit(item);
-            if(isResource) arcaniaDatas.resources.Add(basicInfo);
+            arcaniaDatas.datas[type].Add(basicInfo);
             SimpleJSON.JSONNode id = item["id"];
             Debug.Log(id);
         }

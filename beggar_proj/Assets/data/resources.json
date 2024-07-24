@@ -1,6 +1,6 @@
 [
     {
-        "type": "resource",
+        "type": "RESOURCE",
         "items":[
             {
                 "id": "nutrition",
@@ -25,7 +25,7 @@
         ]
     },
     {
-        "type": "task",
+        "type": "TASK",
         "items":[
             {
                 "id": "beg_a",
