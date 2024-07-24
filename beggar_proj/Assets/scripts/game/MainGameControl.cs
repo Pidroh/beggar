@@ -10,7 +10,7 @@ public class MainGameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        JsonReader.ReadJson(ResourceJson.text, new JsonReader.ArcaniaDatas());
+        JsonReader.ReadJson(ResourceJson.text, new JsonReader.ArcaniaUnits());
     }
 
     // Update is called once per frame

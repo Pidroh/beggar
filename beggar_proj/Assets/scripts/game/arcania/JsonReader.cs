@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class JsonReader
 {
-    public class BasicUnit
+    public class ConfigBasic
     {
         public string Id;
         public string Desc;
@@ -14,17 +15,18 @@ public class JsonReader
 
     public enum UnitType 
     { 
-        RESOURCE, ACTION, 
+        RESOURCE, TASK, 
     }
 
-    public class TaskUnit {
-        public BasicUnit basicUnit;
+    public class ConfigTask {
+        public List<ResourceChange> Cost = new();
+        public List<ResourceChange> Result = new();
     }
 
     public class RuntimeUnit 
     {
-        public BasicUnit BasicUnit;
-        public TaskUnit TaskUnit;
+        public ConfigBasic ConfigBasic;
+        public ConfigTask ConfigTask;
     }
 
     public class ResourceChange 
@@ -39,12 +41,25 @@ public class JsonReader
         public string id;
     }
 
-    public class ArcaniaDatas
+    public class ArcaniaUnits
     {
-        public Dictionary<UnitType, List<BasicUnit>> datas = new();
+        public Dictionary<UnitType, List<RuntimeUnit>> datas = new();
+        public Dictionary<string, IDPointer> IdMapper = new();
+
+        internal IDPointer GetOrCreateIdPointer(string key)
+        {
+            if (!IdMapper.TryGetValue(key, out var value)) 
+            {
+                value = new IDPointer() { 
+                    id = key
+                };
+                IdMapper[key] = value;
+            }
+            return value;
+        }
         //public List<BasicUnit> resources = new();
     }
-    public static void ReadJson(string json, ArcaniaDatas arcaniaDatas)
+    public static void ReadJson(string json, ArcaniaUnits arcaniaDatas)
     {
         var parentNode = SimpleJSON.JSON.Parse(json);
         if (parentNode.IsArray)
@@ -62,27 +77,61 @@ public class JsonReader
 
     }
 
-    private static void ReadArrayOwner(ArcaniaDatas arcaniaDatas, SimpleJSON.JSONNode parentNode)
+    private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode)
     {
         var items = parentNode["items"];
         string typeS = parentNode["type"];
         if (!EnumHelper<UnitType>.TryGetEnumFromName(typeS, out var type)) Debug.LogError($"{typeS} not found in UnitType");
-        if (!arcaniaDatas.datas.ContainsKey(type)) arcaniaDatas.datas[type] = new();
+        if (!arcaniaUnits.datas.ContainsKey(type)) arcaniaUnits.datas[type] = new();
         foreach (var item in items.AsArray.Children)
         {
-            BasicUnit basicInfo = ReadBasicUnit(item);
-            arcaniaDatas.datas[type].Add(basicInfo);
+            var ru = new RuntimeUnit();
+            ru.ConfigBasic = ReadBasicUnit(item, arcaniaUnits);
+            if (!arcaniaUnits.IdMapper.TryGetValue(ru.ConfigBasic.Id, out var pointer)) 
+            {
+                pointer = new IDPointer();
+                arcaniaUnits.IdMapper[ru.ConfigBasic.Id] = pointer;
+            }
+            pointer.RuntimeUnit = ru;
+            if (type == UnitType.TASK) 
+            {
+                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+            }
+            
+            arcaniaUnits.datas[type].Add(ru);
             SimpleJSON.JSONNode id = item["id"];
             Debug.Log(id);
         }
     }
 
-    private static BasicUnit ReadBasicUnit(SimpleJSON.JSONNode item)
+    private static ConfigTask ReadTask(SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
+    {
+        var ct = new ConfigTask();
+        foreach (var pair in item)
+        {
+            if (pair.Key == "cost") ReadChanges(ct.Cost, pair.Value, arcaniaUnits, -1);
+            if (pair.Key == "result") ReadChanges(ct.Cost, pair.Value, arcaniaUnits, 1);
+        }
+        return ct;
+    }
+
+    private static void ReadChanges(List<ResourceChange> resourceChange, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits, int signalMultiplier)
+    {
+        foreach (var c in value)
+        {
+            var rc = new ResourceChange() { 
+                IdPointer = arcaniaUnits.GetOrCreateIdPointer(c.Key),
+                valueChange = c.Value.AsInt * signalMultiplier
+            };
+        }
+    }
+
+    private static ConfigBasic ReadBasicUnit(SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
     {
         string id = item["id"];
         string desc = item.GetValueOrDefault("desc", null);
         int max = item.GetValueOrDefault("max", -1);
-        var bu = new BasicUnit();
+        var bu = new ConfigBasic();
         bu.Id = id;
         bu.Desc = desc;
         bu.Max = max;
