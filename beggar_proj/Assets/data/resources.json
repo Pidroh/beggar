@@ -39,7 +39,18 @@
                     "breadcrumbs": 1
                 }
             },
-            
+            {
+                "id": "rest",
+                "name": "Rest",
+                "desc": "Sit down and close your eyes",
+                "perpetual": true,
+                "effect": {
+                    "resilience": 1,
+                    "focus": 1
+                }
+
+            }
+
         ]
     }
 ]
