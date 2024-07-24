@@ -11,25 +11,40 @@ public class JsonReader
         public int Max;
         public string name;
     }
-    public class ArcaniaDatas 
+    public class ArcaniaDatas
     {
         public List<BasicUnit> resources = new();
     }
-    public static void ReadJson(string json, ArcaniaDatas arcaniaDatas) 
+    public static void ReadJson(string json, ArcaniaDatas arcaniaDatas)
     {
         var parentNode = SimpleJSON.JSON.Parse(json);
+        if (parentNode.IsArray)
+        {
+            foreach (var c in parentNode.Children)
+            {
+                ReadArrayOwner(arcaniaDatas, c);
+            }
+        }
+        else
+        {
+            ReadArrayOwner(arcaniaDatas, parentNode);
+        }
+
+
+    }
+
+    private static void ReadArrayOwner(ArcaniaDatas arcaniaDatas, SimpleJSON.JSONNode parentNode)
+    {
         var items = parentNode["items"];
         string type = parentNode["type"];
         var isResource = type == "resource";
         foreach (var item in items.AsArray.Children)
         {
             BasicUnit basicInfo = ReadBasicUnit(item);
-            arcaniaDatas.resources.Add(basicInfo);
+            if(isResource) arcaniaDatas.resources.Add(basicInfo);
             SimpleJSON.JSONNode id = item["id"];
             Debug.Log(id);
-
         }
-
     }
 
     private static BasicUnit ReadBasicUnit(SimpleJSON.JSONNode item)
@@ -45,7 +60,7 @@ public class JsonReader
         {
             bu.name = item["name"];
         }
-        else 
+        else
         {
             bu.name = char.ToUpper(id[0]) + id.Substring(1);
         }
