@@ -21,6 +21,7 @@ public class JsonReader
     public class ConfigTask {
         public List<ResourceChange> Cost = new();
         public List<ResourceChange> Result = new();
+        public List<ResourceChange> Effect = new();
     }
 
     public class RuntimeUnit 
@@ -110,7 +111,8 @@ public class JsonReader
         foreach (var pair in item)
         {
             if (pair.Key == "cost") ReadChanges(ct.Cost, pair.Value, arcaniaUnits, -1);
-            if (pair.Key == "result") ReadChanges(ct.Cost, pair.Value, arcaniaUnits, 1);
+            if (pair.Key == "result") ReadChanges(ct.Result, pair.Value, arcaniaUnits, 1);
+            if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
         }
         return ct;
     }
