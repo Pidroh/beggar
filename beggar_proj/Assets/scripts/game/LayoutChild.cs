@@ -1,5 +1,19 @@
-﻿public class LayoutChild 
+﻿using HeartUnity.View;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ButtonWithExpandable 
 {
+    public UIUnit MainButton;
+    public UIUnit ExpandButton;
+    public LayoutChild LayoutChild;
+    public List<GameObject> ExpandTargets = new();
+    
+}
+
+public class LayoutChild 
+{
+    public RectTransform RectTransform;
     public Vector2Null FixedSize;
 }
 
