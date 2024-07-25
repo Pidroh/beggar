@@ -60,7 +60,7 @@ public class CanvasMaker {
         Canvas canvas = canvasGO.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
-        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
         scaler.referenceResolution = new Vector2(1920, 1080);
         canvasGO.AddComponent<GraphicRaycaster>();
 
@@ -131,7 +131,7 @@ public class CanvasMaker {
         // Optional: Add Content Placeholder
         Text contentText = contentGO.AddComponent<Text>();
         contentText.text = "Content " + index;
-        contentText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        contentText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         contentText.alignment = TextAnchor.UpperLeft;
         contentText.color = Color.black;
 

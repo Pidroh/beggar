@@ -12,7 +12,7 @@ public class MainGameControl : MonoBehaviour
     void Start()
     {
         JsonReader.ReadJson(ResourceJson.text, new JsonReader.ArcaniaUnits());
-        dynamicCanvas = CanvasMaker.CreateCanvas();
+        dynamicCanvas = CanvasMaker.CreateCanvas(2);
     }
 
     // Update is called once per frame
