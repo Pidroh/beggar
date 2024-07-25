@@ -29,7 +29,13 @@ public class DynamicCanvas
             float availableWidth = Screen.width;
             float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, 320, 640);
 
-            float xOffset = 0;
+            // Calculate total width of active children
+            float totalWidth = childWidth * activeChildrenCount;
+
+            // Calculate centered offset
+            float centeredXOffset = (availableWidth - totalWidth) / 2;
+
+            float xOffset = centeredXOffset;
             foreach (var child in children)
             {
                 if (child.activeSelf)
@@ -38,18 +44,23 @@ public class DynamicCanvas
                     if (rt != null)
                     {
                         rt.sizeDelta = new Vector2(childWidth, rt.sizeDelta.y);
-                        rt.anchoredPosition = new Vector2(xOffset, rt.anchoredPosition.y);
+                        // Adjust position based on pivot
+                        float pivotOffset = rt.pivot.x * childWidth;
+                        rt.anchoredPosition = new Vector2(xOffset + pivotOffset, rt.anchoredPosition.y);
                         xOffset += childWidth;
                     }
                 }
             }
         }
     }
+
+
 }
 
 
-public class CanvasMaker {
-    
+public class CanvasMaker
+{
+
 
     public static DynamicCanvas CreateCanvas(int N)
     {
