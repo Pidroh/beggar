@@ -7,7 +7,7 @@ public class DynamicCanvas
     public List<GameObject> children = new List<GameObject>();
     public GameObject canvasGO;
 
-    public void Update()
+    public void ManualUpdate()
     {
         // Show/Hide children based on Canvas width
         int activeChildrenCount = 0;
@@ -51,7 +51,7 @@ public class DynamicCanvas
 public class CanvasMaker {
     
 
-    public DynamicCanvas CreateCanvas(int N)
+    public static DynamicCanvas CreateCanvas(int N)
     {
         DynamicCanvas dc = new DynamicCanvas();
         // Create Canvas GameObject
@@ -83,7 +83,7 @@ public class CanvasMaker {
         return dc;
     }
 
-    GameObject CreateChild(GameObject parent, int index)
+    static GameObject CreateChild(GameObject parent, int index)
     {
         // Create Child GameObject
         GameObject childGO = new GameObject("Child" + index);
