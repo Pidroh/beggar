@@ -62,9 +62,9 @@ public class DynamicCanvas
 public class CanvasMaker
 {
 
-    private UIUnit CreateButton(string buttonText, TMP_FontAsset font)
+    private GameObject CreateButtonObject()
     {
-        // Create a GameObject
+        // Create a GameObject for the button
         GameObject buttonObject = new GameObject("Button");
 
         // Add RectTransform component
@@ -76,11 +76,44 @@ public class CanvasMaker
         buttonObject.AddComponent<CanvasRenderer>();
 
         // Add Button component
-        Button button = buttonObject.AddComponent<Button>();
+        buttonObject.AddComponent<Button>();
 
         // Add Image component for button background
-        Image image = buttonObject.AddComponent<Image>();
-        image.color = Color.white; // Set button background color
+        Image buttonImage = buttonObject.AddComponent<Image>();
+        buttonImage.color = Color.white; // Set button background color
+
+        return buttonObject;
+    }
+
+    private IconButton CreateButtonWithIcon(Sprite iconSprite)
+    {
+        GameObject buttonObject = CreateButtonObject();
+
+        // Create a GameObject for the icon
+        GameObject iconObject = new GameObject("Icon");
+        iconObject.transform.SetParent(buttonObject.transform);
+
+        // Add RectTransform component for the icon
+        RectTransform iconRectTransform = iconObject.AddComponent<RectTransform>();
+        iconRectTransform.sizeDelta = new Vector2(30, 30); // Adjust size as needed
+        iconRectTransform.localPosition = Vector2.zero;
+        iconRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        iconRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        iconRectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+        // Add Image component for the icon
+        Image iconImage = iconObject.AddComponent<Image>();
+        iconImage.sprite = iconSprite;
+        iconImage.color = Color.white; // Set icon color
+
+        var uiUnit = buttonObject.AddComponent<IconButton>();
+        uiUnit.icon = iconImage;
+        return uiUnit;
+    }
+
+    private UIUnit CreateButton(string buttonText, TMP_FontAsset font)
+    {
+        GameObject buttonObject = CreateButtonObject();
 
         // Create a Text GameObject for the button label
         GameObject textObject = new GameObject("Text");

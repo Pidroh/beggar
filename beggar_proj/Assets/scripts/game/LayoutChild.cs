@@ -5,7 +5,7 @@ using UnityEngine;
 public class ButtonWithExpandable 
 {
     public UIUnit MainButton;
-    public UIUnit ExpandButton;
+    public IconButton ExpandButton;
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets = new();
     
