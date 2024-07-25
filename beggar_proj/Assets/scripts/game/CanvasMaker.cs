@@ -58,7 +58,7 @@ public class CanvasMaker {
         dc.canvasGO = new GameObject("Canvas");
         var canvasGO = dc.canvasGO;
         Canvas canvas = canvasGO.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
         CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
         scaler.referenceResolution = new Vector2(1920, 1080);
