@@ -62,7 +62,7 @@ public class DynamicCanvas
 public class CanvasMaker
 {
 
-    private GameObject CreateButtonObject()
+    private static GameObject CreateButtonObject()
     {
         // Create a GameObject for the button
         GameObject buttonObject = new GameObject("Button");
@@ -85,7 +85,7 @@ public class CanvasMaker
         return buttonObject;
     }
 
-    private IconButton CreateButtonWithIcon(Sprite iconSprite)
+    public static IconButton CreateButtonWithIcon(Sprite iconSprite)
     {
         GameObject buttonObject = CreateButtonObject();
 
@@ -111,7 +111,7 @@ public class CanvasMaker
         return uiUnit;
     }
 
-    private UIUnit CreateButton(string buttonText, TMP_FontAsset font)
+    public static UIUnit CreateButton(string buttonText, TMP_FontAsset font)
     {
         GameObject buttonObject = CreateButtonObject();
 

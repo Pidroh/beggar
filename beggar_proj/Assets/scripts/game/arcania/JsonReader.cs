@@ -5,63 +5,7 @@ using UnityEngine;
 
 public class JsonReader
 {
-    public class ConfigBasic
-    {
-        public string Id;
-        public string Desc;
-        public int Max;
-        public string name;
-    }
 
-    public enum UnitType 
-    { 
-        RESOURCE, TASK, 
-    }
-
-    public class ConfigTask {
-        public List<ResourceChange> Cost = new();
-        public List<ResourceChange> Result = new();
-        public List<ResourceChange> Effect = new();
-
-        public bool Perpetual { get; internal set; }
-    }
-
-    public class RuntimeUnit 
-    {
-        public ConfigBasic ConfigBasic;
-        public ConfigTask ConfigTask;
-    }
-
-    public class ResourceChange 
-    {
-        public IDPointer IdPointer;
-        public int valueChange;
-    }
-
-    public struct IDPointer 
-    {
-        public RuntimeUnit RuntimeUnit;
-        public string id;
-    }
-
-    public class ArcaniaUnits
-    {
-        public Dictionary<UnitType, List<RuntimeUnit>> datas = new();
-        public Dictionary<string, IDPointer> IdMapper = new();
-
-        internal IDPointer GetOrCreateIdPointer(string key)
-        {
-            if (!IdMapper.TryGetValue(key, out var value)) 
-            {
-                value = new IDPointer() { 
-                    id = key
-                };
-                IdMapper[key] = value;
-            }
-            return value;
-        }
-        //public List<BasicUnit> resources = new();
-    }
     public static void ReadJson(string json, ArcaniaUnits arcaniaDatas)
     {
         var parentNode = SimpleJSON.JSON.Parse(json);
@@ -150,4 +94,64 @@ public class JsonReader
         }
         return bu;
     }
+}
+
+public class ConfigBasic
+{
+    public string Id;
+    public string Desc;
+    public int Max;
+    public string name;
+}
+
+public enum UnitType
+{
+    RESOURCE, TASK,
+}
+
+public class ConfigTask
+{
+    public List<ResourceChange> Cost = new();
+    public List<ResourceChange> Result = new();
+    public List<ResourceChange> Effect = new();
+
+    public bool Perpetual { get; internal set; }
+}
+
+public class RuntimeUnit
+{
+    public ConfigBasic ConfigBasic;
+    public ConfigTask ConfigTask;
+}
+
+public class ResourceChange
+{
+    public IDPointer IdPointer;
+    public int valueChange;
+}
+
+public struct IDPointer
+{
+    public RuntimeUnit RuntimeUnit;
+    public string id;
+}
+
+public class ArcaniaUnits
+{
+    public Dictionary<UnitType, List<RuntimeUnit>> datas = new();
+    public Dictionary<string, IDPointer> IdMapper = new();
+
+    internal IDPointer GetOrCreateIdPointer(string key)
+    {
+        if (!IdMapper.TryGetValue(key, out var value))
+        {
+            value = new IDPointer()
+            {
+                id = key
+            };
+            IdMapper[key] = value;
+        }
+        return value;
+    }
+    //public List<BasicUnit> resources = new();
 }
