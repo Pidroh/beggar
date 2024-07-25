@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using HeartUnity.View;
+using TMPro;
 
 public class DynamicCanvas
 {
@@ -58,9 +60,52 @@ public class DynamicCanvas
 }
 
 
+
 public class CanvasMaker
 {
 
+    private UIUnit CreateButton(string buttonText, TMP_FontAsset font)
+    {
+        // Create a GameObject
+        GameObject buttonObject = new GameObject("Button");
+
+        // Add RectTransform component
+        RectTransform rectTransform = buttonObject.AddComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(160, 30);
+        rectTransform.localPosition = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        // Add CanvasRenderer component
+        buttonObject.AddComponent<CanvasRenderer>();
+
+        // Add Button component
+        Button button = buttonObject.AddComponent<Button>();
+
+        // Add Image component for button background
+        Image image = buttonObject.AddComponent<Image>();
+        image.color = Color.white; // Set button background color
+
+        // Create a Text GameObject for the button label
+        GameObject textObject = new GameObject("Text");
+        textObject.transform.SetParent(buttonObject.transform);
+
+        // Add RectTransform component for text
+        RectTransform textRectTransform = textObject.AddComponent<RectTransform>();
+        textRectTransform.sizeDelta = new Vector2(160, 30);
+        textRectTransform.localPosition = Vector2.zero;
+
+        // Add Text component
+        TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
+        text.text = buttonText;
+        text.alignment = TextAlignmentOptions.Center;
+        text.color = Color.black; // Set text color
+
+        // Set the font (using a different built-in font)
+        text.font = font;
+
+        var uiUnit = buttonObject.AddComponent<UIUnit>();
+        uiUnit.text = text;
+        return uiUnit;
+    }
 
     public static DynamicCanvas CreateCanvas(int N)
     {
