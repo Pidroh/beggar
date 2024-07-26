@@ -10,7 +10,8 @@ public class MainGameControl : MonoBehaviour
     private DynamicCanvas dynamicCanvas;
     public List<ButtonWithExpandable> ButtonsWithExpandables = new();
     [SerializeField]
-    private readonly TMP_FontAsset font;
+    public TMP_FontAsset Font;
+    public Sprite ExpanderSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class MainGameControl : MonoBehaviour
         foreach (var item in arcaniaDatas.datas[UnitType.TASK])
         {
             
-            var button = CanvasMaker.CreateButton(item.ConfigBasic.name, font);
+            var button = CanvasMaker.CreateButton(item.ConfigBasic.name, Font);
             var bwe = new ButtonWithExpandable(button);
             dynamicCanvas.children[0].AddLayoutChildAndParentIt(bwe.LayoutChild);
             button.SetTextRaw(item.ConfigBasic.name);

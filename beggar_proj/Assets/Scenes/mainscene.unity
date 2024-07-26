@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceJson: {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
+  ExpanderSprite: {fileID: 21300000, guid: a685aa7ba5f7a074f8a84237bbab1032, type: 3}
 --- !u!4 &2118819688
 Transform:
   m_ObjectHideFlags: 0
