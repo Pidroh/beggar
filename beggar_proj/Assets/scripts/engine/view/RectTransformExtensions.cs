@@ -50,6 +50,9 @@ namespace HeartUnity.View
             return trans.rect.height;
         }
 
+        public static float GetWidthMilimeters(this RectTransform trans) => GetWidth(trans) * PixelToMilimeter;
+        public static float GetHeightMilimeters(this RectTransform trans) => GetHeight(trans) * PixelToMilimeter;
+
         public static void SetSize(this RectTransform trans, Vector2 newSize)
         {
             Vector2 oldSize = trans.rect.size;
@@ -58,7 +61,7 @@ namespace HeartUnity.View
             trans.offsetMax = trans.offsetMax + new Vector2(deltaSize.x * (1f - trans.pivot.x), deltaSize.y * (1f - trans.pivot.y));
         }
 
-        public static void SetWidthMilimeters(this RectTransform trans, float sizeMM, int minSize = int.MaxValue) => trans.SetWidth(sizeMM * MilimeterToPixel < minSize ? minSize : sizeMM * MilimeterToPixel);
+        public static void SetWidthMilimeters(this RectTransform trans, float sizeMM, int minSize = int.MaxValue) => trans.SetWidth(sizeMM * MilimeterToPixel > minSize ? minSize : sizeMM * MilimeterToPixel);
 
         public static void SetHeightMilimeters(this RectTransform trans, float sizeMM) => trans.SetHeight(sizeMM * MilimeterToPixel);
 

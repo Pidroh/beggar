@@ -27,6 +27,7 @@ public class MainGameControl : MonoBehaviour
             var bwe = new ButtonWithExpandable(button, iconButton);
             dynamicCanvas.children[0].AddLayoutChildAndParentIt(bwe.LayoutChild);
             button.SetTextRaw(item.ConfigBasic.name);
+            ButtonsWithExpandables.Add(bwe);
         }
     }
 
@@ -34,5 +35,9 @@ public class MainGameControl : MonoBehaviour
     void Update()
     {
         dynamicCanvas.ManualUpdate();
+        foreach (var bwe in ButtonsWithExpandables)
+        {
+            bwe.ManualUpdate();
+        }
     }
 }

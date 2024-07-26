@@ -96,14 +96,15 @@ public class ButtonWithExpandable
         MainButton = button;
         GameObject parentGo = new GameObject();
         RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
-        LayoutChild = new LayoutChild() { 
+        LayoutChild = new LayoutChild()
+        {
             RectTransform = parentRectTransform
         };
         button.transform.SetParent(parentRectTransform);
         iconButton.transform.SetParent(parentRectTransform);
         button.transform.localPosition = Vector3.zero;
         iconButton.transform.localPosition = Vector3.zero;
-        
+
     }
 
     public void ManualUpdate()
@@ -115,26 +116,36 @@ public class ButtonWithExpandable
         ExpandButton.rectTransform.SetHeightMilimeters(heightMM);
         ExpandButton.rectTransform.SetWidthMilimeters(heightMM);
 
-        // Get the parent RectTransform
         var rectTransformParent = LayoutChild.RectTransform;
-        var parentWidth = rectTransformParent.rect.width;
+        MainButton.rectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - heightMM);
 
         // Set the ExpandButton position on the right side
         var expandButtonWidth = ExpandButton.rectTransform.rect.width;
         var expandButtonHeight = ExpandButton.rectTransform.rect.height;
+        /*  ExpandButton.rectTransform.anchoredPosition = new Vector2(
+              rectTransformParent.GetWidth() * 0.5f - expandButtonWidth * (0.5f - ExpandButton.rectTransform.pivot.x),
+              expandButtonHeight * (0.5f - ExpandButton.rectTransform.pivot.y)
+          );*/
+
         ExpandButton.rectTransform.anchoredPosition = new Vector2(
-            parentWidth * 0.5f - expandButtonWidth * (0.5f - ExpandButton.rectTransform.pivot.x),
+            rectTransformParent.rect.width * 0.5f - expandButtonWidth * (1 - ExpandButton.rectTransform.pivot.x),
             expandButtonHeight * (0.5f - ExpandButton.rectTransform.pivot.y)
         );
 
-        // Adjust the width of MainButton to occupy remaining space
-        var mainButtonWidth = parentWidth - heightMM;
-        MainButton.rectTransform.SetWidthMilimeters(mainButtonWidth);
+        /**
+         * **/
 
-        // Set the MainButton position to align with the left side
+        // Adjust the width of MainButton to occupy remaining space
+
+
+
+        // Calculate the correct position for MainButton
+        var mainButtonWidth = MainButton.rectTransform.rect.width;
         var mainButtonHeight = MainButton.rectTransform.rect.height;
+
+        // Position the MainButton so its left edge aligns with the parent's left edge
         MainButton.rectTransform.anchoredPosition = new Vector2(
-            -(parentWidth * 0.5f - (mainButtonWidth * (0.5f - MainButton.rectTransform.pivot.x)) + heightMM * (0.5f - MainButton.rectTransform.pivot.x)),
+            -rectTransformParent.rect.width * 0.5f + mainButtonWidth * (MainButton.rectTransform.pivot.x),
             mainButtonHeight * (0.5f - MainButton.rectTransform.pivot.y)
         );
     }

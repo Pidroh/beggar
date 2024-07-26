@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using HeartUnity.View;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 public class DynamicCanvas
 {
@@ -65,7 +67,7 @@ public class DynamicCanvas
 public class CanvasMaker
 {
 
-    private static GameObject CreateButtonObject()
+    private static GameObject CreateButtonObject(Color c)
     {
         // Create a GameObject for the button
         GameObject buttonObject = new GameObject("Button");
@@ -79,18 +81,19 @@ public class CanvasMaker
         buttonObject.AddComponent<CanvasRenderer>();
 
         // Add Button component
-        buttonObject.AddComponent<Button>();
+        var button = buttonObject.AddComponent<Button>();
 
         // Add Image component for button background
         Image buttonImage = buttonObject.AddComponent<Image>();
-        buttonImage.color = Color.white; // Set button background color
+        buttonImage.color = c; // Set button background color
+        button.targetGraphic = buttonImage;
 
         return buttonObject;
     }
 
     public static IconButton CreateButtonWithIcon(Sprite iconSprite)
     {
-        GameObject buttonObject = CreateButtonObject();
+        GameObject buttonObject = CreateButtonObject(new Color(0, 0, 0, 0));
 
         // Create a GameObject for the icon
         GameObject iconObject = new GameObject("Icon");
@@ -116,7 +119,7 @@ public class CanvasMaker
 
     public static UIUnit CreateButton(string buttonText, TMP_FontAsset font)
     {
-        GameObject buttonObject = CreateButtonObject();
+        GameObject buttonObject = CreateButtonObject(ColorExtensions.FromHex(0x1bb479ff));
 
         // Create a Text GameObject for the button label
         GameObject textObject = new GameObject("Text");
@@ -124,14 +127,20 @@ public class CanvasMaker
 
         // Add RectTransform component for text
         RectTransform textRectTransform = textObject.AddComponent<RectTransform>();
-        textRectTransform.sizeDelta = new Vector2(160, 30);
-        textRectTransform.localPosition = Vector2.zero;
+        // Set anchors to stretch the textRectTransform to cover the entire parent
+        textRectTransform.anchorMin = new Vector2(0, 0);
+        textRectTransform.anchorMax = new Vector2(1, 1);
+
+        // Set the offset to zero to ensure it covers the entire area
+        textRectTransform.offsetMin = Vector2.zero;
+        textRectTransform.offsetMax = Vector2.zero;
 
         // Add Text component
         TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
         text.text = buttonText;
         text.alignment = TextAlignmentOptions.Center;
-        text.color = Color.black; // Set text color
+        text.color = ColorExtensions.FromHex(0xf9fcebff); // Set text color
+        text.fontSize = 16;
 
         // Set the font (using a different built-in font)
         text.font = font;
@@ -169,6 +178,14 @@ public class CanvasMaker
         {
             dc.children.Add(CreateChild(rootGO, i));
         }
+
+        // Create EventSystem GameObject
+        GameObject eventSystemGO = new GameObject("EventSystem");
+        eventSystemGO.AddComponent<EventSystem>();
+        eventSystemGO.AddComponent<InputSystemUIInputModule>();
+
+        // Set the EventSystem as a sibling of the Canvas
+        eventSystemGO.transform.SetParent(dc.canvasGO.transform, false);
 
         return dc;
     }
@@ -265,3 +282,18 @@ public class CanvasMaker
         return lp;
     }
 }
+
+public static class ColorExtensions
+{
+    public static Color FromHex(uint hex)
+    {
+        // Extract RGB and alpha values from the integer
+        byte r = (byte)((hex >> 24) & 0xFF); // Red
+        byte g = (byte)((hex >> 16) & 0xFF); // Green
+        byte b = (byte)((hex >> 8) & 0xFF);  // Blue
+        byte a = (byte)(hex & 0xFF);         // Alpha
+
+        return new Color32(r, g, b, a);
+    }
+}
+
