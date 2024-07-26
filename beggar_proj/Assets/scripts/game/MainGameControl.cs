@@ -12,17 +12,18 @@ public class MainGameControl : MonoBehaviour
     [SerializeField]
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
+    public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
 
     // Start is called before the first frame update
     void Start()
     {
         ArcaniaUnits arcaniaDatas = new ArcaniaUnits();
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
-        dynamicCanvas = CanvasMaker.CreateCanvas(2);
+        dynamicCanvas = CanvasMaker.CreateCanvas(1);
         foreach (var item in arcaniaDatas.datas[UnitType.TASK])
         {
             
-            var button = CanvasMaker.CreateButton(item.ConfigBasic.name, Font);
+            var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest);
             var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
             var bwe = new ButtonWithExpandable(button, iconButton);
             dynamicCanvas.children[0].AddLayoutChildAndParentIt(bwe.LayoutChild);

@@ -5,6 +5,7 @@ using HeartUnity.View;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using System;
 
 public class DynamicCanvas
 {
@@ -66,8 +67,17 @@ public class DynamicCanvas
 
 public class CanvasMaker
 {
+    [Serializable]
+    public struct CreateObjectRequest {
+        public Color MainColor;
+        public Color SecondaryColor;
+        public Sprite MainSprite;
+        public Sprite secondarySprite;
+        public TMPro.TMP_FontAsset font;
+        
+    }
 
-    private static GameObject CreateButtonObject(Color c)
+    private static GameObject CreateButtonObject(Color c, Sprite sprite = null)
     {
         // Create a GameObject for the button
         GameObject buttonObject = new GameObject("Button");
@@ -86,6 +96,7 @@ public class CanvasMaker
         // Add Image component for button background
         Image buttonImage = buttonObject.AddComponent<Image>();
         buttonImage.color = c; // Set button background color
+        buttonImage.sprite = sprite;
         button.targetGraphic = buttonImage;
 
         return buttonObject;
@@ -117,9 +128,9 @@ public class CanvasMaker
         return uiUnit;
     }
 
-    public static UIUnit CreateButton(string buttonText, TMP_FontAsset font)
+    public static UIUnit CreateButton(string buttonText, CreateObjectRequest request)
     {
-        GameObject buttonObject = CreateButtonObject(ColorExtensions.FromHex(0x1bb479ff));
+        GameObject buttonObject = CreateButtonObject(request.MainColor, request.MainSprite);
 
         // Create a Text GameObject for the button label
         GameObject textObject = new GameObject("Text");
@@ -139,11 +150,11 @@ public class CanvasMaker
         TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
         text.text = buttonText;
         text.alignment = TextAlignmentOptions.Center;
-        text.color = ColorExtensions.FromHex(0xf9fcebff); // Set text color
+        text.color = request.SecondaryColor; // Set text color
         text.fontSize = 16;
 
         // Set the font (using a different built-in font)
-        text.font = font;
+        text.font = request.font;
 
         var uiUnit = buttonObject.AddComponent<UIUnit>();
         uiUnit.text = text;
@@ -218,7 +229,7 @@ public class CanvasMaker
 
         CanvasRenderer viewportCR = viewportGO.AddComponent<CanvasRenderer>();
         Image viewportImage = viewportGO.AddComponent<Image>();
-        viewportImage.color = new Color(1, 1, 1, 0.2f);
+        viewportImage.color = new Color(0, 0, 0, 0f);
 
         scrollRect.viewport = viewportRT;
 
