@@ -11,7 +11,19 @@ namespace HeartUnity.View
     {
         public static EngineView EngineView;
         public InputData InputData = new InputData();
-        public RectTransform rectTransform;
+        private RectTransform _rectTransform;
+
+        public RectTransform RectTransform
+        {
+            get
+            {
+                if (_rectTransform == null)
+                {
+                    _rectTransform = GetComponent<RectTransform>();
+                }
+                return _rectTransform;
+            }
+        }
         public bool Clicked
         {
             get
@@ -70,7 +82,7 @@ namespace HeartUnity.View
             _inited = true;
             if (movement == null) movement = new Movement();
             movement.UiUnit = this;
-            rectTransform = GetComponent<RectTransform>();
+            _rectTransform = _rectTransform == null ? GetComponent<RectTransform>() : _rectTransform;
             originalPosition = transform.position;
             if (TryGetComponent<Button>(out var button))
             {
@@ -157,7 +169,7 @@ namespace HeartUnity.View
 
         public void Process()
         {
-            var position = rectTransform.transform.position;
+            var position = RectTransform.transform.position;
         }
 
         private void OnClicked()
@@ -224,8 +236,8 @@ namespace HeartUnity.View
 
         public bool CheckMouseInside()
         {
-            return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, Input.mousePosition, Camera.main);
-            var yourRect = rectTransform;
+            return RectTransformUtility.RectangleContainsScreenPoint(RectTransform, Input.mousePosition, Camera.main);
+            var yourRect = RectTransform;
             var position = yourRect.transform.position;
             var size = yourRect.sizeDelta;
             var diff = yourRect.pivot.x * size.x;
@@ -356,6 +368,18 @@ namespace HeartUnity.View
         private void OnDisable()
         {
             _clickedInternal = false;
+        }
+
+        public UIUnit SetTextAlignment(TextAlignmentOptions left)
+        {
+            text.alignment = left;
+            return this;
+        }
+
+        public UIUnit SetParent(Transform parentRectTransform)
+        {
+            transform.SetParent(parentRectTransform);
+            return this;
         }
     }
 

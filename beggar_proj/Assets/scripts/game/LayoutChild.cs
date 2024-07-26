@@ -7,9 +7,22 @@ using UnityEngine;
 public class LayoutParent
 {
     public LayoutChild SelfChild;
-    public List<LayoutChild> LayoutChilds = new();
+    public List<LayoutChild> Children = new();
+    public List<LayoutParent> ChildrenLayoutParents = new();
     public bool[] FitSelfSizeToChildren = new bool[] { false, false };
     public LayoutType TypeLayout = LayoutParent.LayoutType.VERTICAL;
+
+    public LayoutParent SetFitWidth(bool b) 
+    {
+        FitSelfSizeToChildren[0] = b;
+        return this;
+    }
+
+    public LayoutParent SetFitHeight(bool b)
+    {
+        FitSelfSizeToChildren[1] = b;
+        return this;
+    }
 
     public LayoutParent(RectTransform rT)
     {
@@ -27,9 +40,10 @@ public class LayoutParent
         Vector2 parentSize = parentRectTransform.rect.size;
         // Initialize offset to position the children
         float offset = 0;
+        
 
         // Loop through each child in the LayoutChilds list
-        foreach (var child in LayoutChilds)
+        foreach (var child in Children)
         {
             // Get the RectTransform of the child
             RectTransform childRectTransform = child.RectTransform;
@@ -55,11 +69,22 @@ public class LayoutParent
                 offset += childRectTransform.rect.width;
             }
         }
+
+        foreach (var lp in ChildrenLayoutParents)
+        {
+            lp.ManualUpdate();
+        }
+    }
+
+    internal void AddLayoutAndParentIt(LayoutParent layout)
+    {
+        AddLayoutChildAndParentIt(layout.SelfChild);
+        ChildrenLayoutParents.Add(layout);
     }
 
     internal void AddLayoutChildAndParentIt(LayoutChild layoutChild)
     {
-        LayoutChilds.Add(layoutChild);
+        Children.Add(layoutChild);
         layoutChild.RectTransform.SetParent(SelfChild.RectTransform);
     }
 
@@ -83,7 +108,7 @@ public struct Vector2Null
     public float? Y;
 }
 
-public class ResourceChangeView 
+public class TripleTextView 
 {
     public LayoutChild LayoutChild;
     public RectTransform Parent => LayoutChild.RectTransform;
@@ -135,9 +160,9 @@ public class ResourceChangeView
         }
 
         // Get RectTransforms
-        RectTransform rtMain = MainText.rectTransform;
-        RectTransform rtSecondary = SecondaryText.rectTransform;
-        RectTransform rtTertiary = TertiaryText.rectTransform;
+        RectTransform rtMain = MainText.RectTransform;
+        RectTransform rtSecondary = SecondaryText.RectTransform;
+        RectTransform rtTertiary = TertiaryText.RectTransform;
 
         // Align MainText with the left side of Parent
         rtMain.anchorMin = new Vector2(0, rtMain.anchorMin.y);
@@ -169,6 +194,8 @@ public class ButtonWithExpandable
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets = new();
 
+    public static implicit operator LayoutChild(ButtonWithExpandable a) => a.LayoutChild;
+
     public ButtonWithExpandable(UIUnit button, IconButton iconButton)
     {
         ExpandButton = iconButton;
@@ -191,24 +218,24 @@ public class ButtonWithExpandable
         var heightMM = 10; // Fixed height for both buttons
 
         // Set height for both buttons
-        MainButton.rectTransform.SetHeightMilimeters(heightMM);
-        ExpandButton.rectTransform.SetHeightMilimeters(heightMM);
-        ExpandButton.rectTransform.SetWidthMilimeters(heightMM);
+        MainButton.RectTransform.SetHeightMilimeters(heightMM);
+        ExpandButton.RectTransform.SetHeightMilimeters(heightMM);
+        ExpandButton.RectTransform.SetWidthMilimeters(heightMM);
 
         var rectTransformParent = LayoutChild.RectTransform;
-        MainButton.rectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - heightMM);
+        MainButton.RectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - heightMM);
 
         // Set the ExpandButton position on the right side
-        var expandButtonWidth = ExpandButton.rectTransform.rect.width;
-        var expandButtonHeight = ExpandButton.rectTransform.rect.height;
+        var expandButtonWidth = ExpandButton.RectTransform.rect.width;
+        var expandButtonHeight = ExpandButton.RectTransform.rect.height;
         /*  ExpandButton.rectTransform.anchoredPosition = new Vector2(
               rectTransformParent.GetWidth() * 0.5f - expandButtonWidth * (0.5f - ExpandButton.rectTransform.pivot.x),
               expandButtonHeight * (0.5f - ExpandButton.rectTransform.pivot.y)
           );*/
 
-        ExpandButton.rectTransform.anchoredPosition = new Vector2(
-            rectTransformParent.rect.width * 0.5f - expandButtonWidth * (1 - ExpandButton.rectTransform.pivot.x),
-            expandButtonHeight * (0.5f - ExpandButton.rectTransform.pivot.y)
+        ExpandButton.RectTransform.anchoredPosition = new Vector2(
+            rectTransformParent.rect.width * 0.5f - expandButtonWidth * (1 - ExpandButton.RectTransform.pivot.x),
+            expandButtonHeight * (0.5f - ExpandButton.RectTransform.pivot.y)
         );
 
         /**
@@ -219,13 +246,13 @@ public class ButtonWithExpandable
 
 
         // Calculate the correct position for MainButton
-        var mainButtonWidth = MainButton.rectTransform.rect.width;
-        var mainButtonHeight = MainButton.rectTransform.rect.height;
+        var mainButtonWidth = MainButton.RectTransform.rect.width;
+        var mainButtonHeight = MainButton.RectTransform.rect.height;
 
         // Position the MainButton so its left edge aligns with the parent's left edge
-        MainButton.rectTransform.anchoredPosition = new Vector2(
-            -rectTransformParent.rect.width * 0.5f + mainButtonWidth * (MainButton.rectTransform.pivot.x),
-            mainButtonHeight * (0.5f - MainButton.rectTransform.pivot.y)
+        MainButton.RectTransform.anchoredPosition = new Vector2(
+            -rectTransformParent.rect.width * 0.5f + mainButtonWidth * (MainButton.RectTransform.pivot.x),
+            mainButtonHeight * (0.5f - MainButton.RectTransform.pivot.y)
         );
     }
 

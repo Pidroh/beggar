@@ -131,34 +131,42 @@ public class CanvasMaker
     public static UIUnit CreateButton(string buttonText, CreateObjectRequest request)
     {
         GameObject buttonObject = CreateButtonObject(request.MainColor, request.MainSprite);
-
+        // Add Text component
+        Color textColor = request.SecondaryColor;
+        TMP_FontAsset font = request.font;
         // Create a Text GameObject for the button label
-        GameObject textObject = new GameObject("Text");
-        textObject.transform.SetParent(buttonObject.transform);
+        var textUiUnit = CreateTextUnit(textColor, font);
+        textUiUnit.text.text = buttonText;
+        textUiUnit.gameObject.transform.SetParent(buttonObject.transform);
+        {
+            var textRectTransform = textUiUnit.RectTransform;
+            // Set anchors to stretch the textRectTransform to cover the entire parent
+            textRectTransform.anchorMin = new Vector2(0, 0);
+            textRectTransform.anchorMax = new Vector2(1, 1);
 
+            // Set the offset to zero to ensure it covers the entire area
+            textRectTransform.offsetMin = Vector2.zero;
+            textRectTransform.offsetMax = Vector2.zero;
+        }
+        var uiUnit = buttonObject.AddComponent<UIUnit>();
+        uiUnit.text = textUiUnit.text;
+        return uiUnit;
+    }
+
+    private static UIUnit CreateTextUnit(Color textColor, TMP_FontAsset font)
+    {
+        GameObject textObject = new GameObject("Text");
+        TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
         // Add RectTransform component for text
         RectTransform textRectTransform = textObject.AddComponent<RectTransform>();
-        // Set anchors to stretch the textRectTransform to cover the entire parent
-        textRectTransform.anchorMin = new Vector2(0, 0);
-        textRectTransform.anchorMax = new Vector2(1, 1);
-
-        // Set the offset to zero to ensure it covers the entire area
-        textRectTransform.offsetMin = Vector2.zero;
-        textRectTransform.offsetMax = Vector2.zero;
-
-        // Add Text component
-        TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
-        text.text = buttonText;
+        
         text.alignment = TextAlignmentOptions.Center;
-        text.color = request.SecondaryColor; // Set text color
+        text.color = textColor; // Set text color
         text.fontSize = 16;
-
-        // Set the font (using a different built-in font)
-        text.font = request.font;
-
-        var uiUnit = buttonObject.AddComponent<UIUnit>();
-        uiUnit.text = text;
-        return uiUnit;
+        text.font = font;
+        UIUnit textUiUnit = textObject.AddComponent<UIUnit>();
+        textUiUnit.text = text;
+        return textUiUnit;
     }
 
     public static DynamicCanvas CreateCanvas(int N)
@@ -203,14 +211,16 @@ public class CanvasMaker
 
     static LayoutParent CreateChild(GameObject parent, int index)
     {
-        // Create Child GameObject
-        GameObject childGO = new GameObject("Child" + index);
-        childGO.transform.SetParent(parent.transform, false);
-
-        RectTransform childRT = childGO.AddComponent<RectTransform>();
+        LayoutParent lp = null;
+        lp = CreateLayout();
+        var childRT = lp.SelfChild.RectTransform;
+        var childGO = lp.SelfChild.RectTransform.gameObject;
         childRT.anchorMin = new Vector2(0, 0);
         childRT.anchorMax = new Vector2(0, 1);
         childRT.sizeDelta = new Vector2(320, 0);
+        childGO.transform.SetParent(parent.transform, false);
+
+
         childRT.anchoredPosition = new Vector2(320 * index, 0);
 
         // Add ScrollView
@@ -245,13 +255,6 @@ public class CanvasMaker
         contentRT.sizeDelta = new Vector2(0, 0);
 
         scrollRect.content = contentRT;
-
-        // Optional: Add Content Placeholder
-        Text contentText = contentGO.AddComponent<Text>();
-        contentText.text = "Content " + index;
-        contentText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        contentText.alignment = TextAnchor.UpperLeft;
-        contentText.color = Color.black;
 
         // Add Vertical ScrollBar
         GameObject scrollbarGO = new GameObject("ScrollbarVertical");
@@ -289,8 +292,39 @@ public class CanvasMaker
         {
             childGO.SetActive(false);
         }
-        var lp = new LayoutParent(childRT);
+
         return lp;
+    }
+
+    public static LayoutParent CreateLayout()
+    {
+        LayoutParent lp;
+        {
+            // Create Child GameObject
+            GameObject childGO2 = new GameObject();
+            RectTransform childRT2 = childGO2.AddComponent<RectTransform>();
+            lp = new LayoutParent(childRT2);
+        }
+
+        return lp;
+    }
+
+    internal static TripleTextView CreateTripleTextView(CreateObjectRequest buttonObjectRequest)
+    {
+        var font = buttonObjectRequest.font;
+        var ttv = new TripleTextView();
+        GameObject parentGo = new GameObject();
+        RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
+        ttv.LayoutChild = new LayoutChild()
+        {
+            RectTransform = parentRectTransform
+        };
+        
+        ttv.MainText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
+        ttv.SecondaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
+        ttv.TertiaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Right).SetParent(parentRectTransform);
+        
+        return ttv;
     }
 }
 

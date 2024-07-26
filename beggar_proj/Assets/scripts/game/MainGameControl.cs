@@ -22,14 +22,25 @@ public class MainGameControl : MonoBehaviour
         dynamicCanvas = CanvasMaker.CreateCanvas(1);
         foreach (var item in arcaniaDatas.datas[UnitType.TASK])
         {
-            
+            var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
             var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest);
             var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
             var bwe = new ButtonWithExpandable(button, iconButton);
-            dynamicCanvas.children[0].AddLayoutChildAndParentIt(bwe.LayoutChild);
+            dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
+            layout.AddLayoutChildAndParentIt(bwe);
             button.SetTextRaw(item.ConfigBasic.name);
             ButtonsWithExpandables.Add(bwe);
+            var arrayOfChanges = item.ConfigTask.Cost;
+            foreach (var cost in arrayOfChanges)
+            {
+                TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
+                layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
+            }
         }
+    }
+
+    public class TaskControlUnit { 
+
     }
 
     // Update is called once per frame
