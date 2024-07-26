@@ -90,8 +90,9 @@ public class ButtonWithExpandable
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets = new();
 
-    public ButtonWithExpandable(UIUnit button)
+    public ButtonWithExpandable(UIUnit button, IconButton iconButton)
     {
+        ExpandButton = iconButton;
         MainButton = button;
         GameObject parentGo = new GameObject();
         RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
@@ -99,7 +100,9 @@ public class ButtonWithExpandable
             RectTransform = parentRectTransform
         };
         button.transform.SetParent(parentRectTransform);
+        iconButton.transform.SetParent(parentRectTransform);
         button.transform.localPosition = Vector3.zero;
+        iconButton.transform.localPosition = Vector3.zero;
     }
 }
 

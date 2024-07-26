@@ -23,7 +23,8 @@ public class MainGameControl : MonoBehaviour
         {
             
             var button = CanvasMaker.CreateButton(item.ConfigBasic.name, Font);
-            var bwe = new ButtonWithExpandable(button);
+            var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
+            var bwe = new ButtonWithExpandable(button, iconButton);
             dynamicCanvas.children[0].AddLayoutChildAndParentIt(bwe.LayoutChild);
             button.SetTextRaw(item.ConfigBasic.name);
         }
