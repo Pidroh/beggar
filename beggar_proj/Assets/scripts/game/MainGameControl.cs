@@ -20,9 +20,10 @@ public class MainGameControl : MonoBehaviour
         dynamicCanvas = CanvasMaker.CreateCanvas(2);
         foreach (var item in arcaniaDatas.datas[UnitType.TASK])
         {
-            var bwe = new ButtonWithExpandable();
+            
             var button = CanvasMaker.CreateButton(item.ConfigBasic.name, font);
-            button.gameObject.transform.SetParent(dynamicCanvas.children[0].transform);
+            var bwe = new ButtonWithExpandable(button);
+            dynamicCanvas.children[0].AddLayoutChildAndParentIt(bwe.LayoutChild);
             button.SetTextRaw(item.ConfigBasic.name);
         }
     }

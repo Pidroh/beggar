@@ -6,15 +6,16 @@ using TMPro;
 
 public class DynamicCanvas
 {
-    public List<GameObject> children = new List<GameObject>();
+    public List<LayoutParent> children = new List<LayoutParent>();
     public GameObject canvasGO;
 
     public void ManualUpdate()
     {
         // Show/Hide children based on Canvas width
         int activeChildrenCount = 0;
-        foreach (var child in children)
+        foreach (var layoutP in children)
         {
+            var child = layoutP.SelfChild.RectTransform.gameObject;
             if (Screen.width >= 320 * (activeChildrenCount + 1))
             {
                 child.SetActive(true);
@@ -38,10 +39,12 @@ public class DynamicCanvas
             float centeredXOffset = (availableWidth - totalWidth) / 2;
 
             float xOffset = centeredXOffset;
-            foreach (var child in children)
+            foreach (var layoutP in children)
             {
+                var child = layoutP.SelfChild.RectTransform.gameObject;
                 if (child.activeSelf)
                 {
+                    layoutP.ManualUpdate();
                     RectTransform rt = child.GetComponent<RectTransform>();
                     if (rt != null)
                     {
@@ -170,7 +173,7 @@ public class CanvasMaker
         return dc;
     }
 
-    static GameObject CreateChild(GameObject parent, int index)
+    static LayoutParent CreateChild(GameObject parent, int index)
     {
         // Create Child GameObject
         GameObject childGO = new GameObject("Child" + index);
@@ -258,7 +261,7 @@ public class CanvasMaker
         {
             childGO.SetActive(false);
         }
-
-        return childGO;
+        var lp = new LayoutParent(childRT);
+        return lp;
     }
 }

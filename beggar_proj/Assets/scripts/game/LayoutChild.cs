@@ -1,4 +1,5 @@
 ﻿using HeartUnity.View;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,14 @@ public class LayoutParent
     public List<LayoutChild> LayoutChilds = new();
     public bool[] FitSelfSizeToChildren = new bool[] { false, false };
     public LayoutType TypeLayout = LayoutParent.LayoutType.VERTICAL;
+
+    public LayoutParent(RectTransform rT)
+    {
+        SelfChild = new LayoutChild()
+        {
+            RectTransform = rT
+        };
+    }
 
     public void ManualUpdate()
     {
@@ -47,6 +56,12 @@ public class LayoutParent
         }
     }
 
+    internal void AddLayoutChildAndParentIt(LayoutChild layoutChild)
+    {
+        LayoutChilds.Add(layoutChild);
+        layoutChild.RectTransform.SetParent(SelfChild.RectTransform);
+    }
+
     public enum LayoutType
     {
         INVALID,
@@ -68,13 +83,24 @@ public struct Vector2Null
 }
 
 
-public class ButtonWithExpandable 
+public class ButtonWithExpandable
 {
     public UIUnit MainButton;
     public IconButton ExpandButton;
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets = new();
-    
+
+    public ButtonWithExpandable(UIUnit button)
+    {
+        MainButton = button;
+        GameObject parentGo = new GameObject();
+        RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
+        LayoutChild = new LayoutChild() { 
+            RectTransform = parentRectTransform
+        };
+        button.transform.SetParent(parentRectTransform);
+        button.transform.localPosition = Vector3.zero;
+    }
 }
 
 
