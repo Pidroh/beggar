@@ -103,7 +103,43 @@ public class ButtonWithExpandable
         iconButton.transform.SetParent(parentRectTransform);
         button.transform.localPosition = Vector3.zero;
         iconButton.transform.localPosition = Vector3.zero;
+        
     }
+
+    public void ManualUpdate()
+    {
+        var heightMM = 10; // Fixed height for both buttons
+
+        // Set height for both buttons
+        MainButton.rectTransform.SetHeightMilimeters(heightMM);
+        ExpandButton.rectTransform.SetHeightMilimeters(heightMM);
+        ExpandButton.rectTransform.SetWidthMilimeters(heightMM);
+
+        // Get the parent RectTransform
+        var rectTransformParent = LayoutChild.RectTransform;
+        var parentWidth = rectTransformParent.rect.width;
+
+        // Set the ExpandButton position on the right side
+        var expandButtonWidth = ExpandButton.rectTransform.rect.width;
+        var expandButtonHeight = ExpandButton.rectTransform.rect.height;
+        ExpandButton.rectTransform.anchoredPosition = new Vector2(
+            parentWidth * 0.5f - expandButtonWidth * (0.5f - ExpandButton.rectTransform.pivot.x),
+            expandButtonHeight * (0.5f - ExpandButton.rectTransform.pivot.y)
+        );
+
+        // Adjust the width of MainButton to occupy remaining space
+        var mainButtonWidth = parentWidth - heightMM;
+        MainButton.rectTransform.SetWidthMilimeters(mainButtonWidth);
+
+        // Set the MainButton position to align with the left side
+        var mainButtonHeight = MainButton.rectTransform.rect.height;
+        MainButton.rectTransform.anchoredPosition = new Vector2(
+            -(parentWidth * 0.5f - (mainButtonWidth * (0.5f - MainButton.rectTransform.pivot.x)) + heightMM * (0.5f - MainButton.rectTransform.pivot.x)),
+            mainButtonHeight * (0.5f - MainButton.rectTransform.pivot.y)
+        );
+    }
+
+
 }
 
 

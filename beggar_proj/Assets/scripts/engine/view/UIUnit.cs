@@ -11,7 +11,7 @@ namespace HeartUnity.View
     {
         public static EngineView EngineView;
         public InputData InputData = new InputData();
-        private RectTransform rectTransform;
+        public RectTransform rectTransform;
         public bool Clicked
         {
             get
