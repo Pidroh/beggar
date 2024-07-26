@@ -1,4 +1,5 @@
-﻿using HeartUnity.View;
+﻿using HeartUnity;
+using HeartUnity.View;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,6 +83,84 @@ public struct Vector2Null
     public float? Y;
 }
 
+public class ResourceChangeView 
+{
+    public LayoutChild LayoutChild;
+    public RectTransform Parent => LayoutChild.RectTransform;
+    public AutoList<UIUnit> Texts = new AutoList<UIUnit>();
+    public UIUnit MainText
+    {
+        get => Texts[0];
+        set => Texts[0] = value;
+    }
+    public UIUnit SecondaryText
+    {
+        get => Texts[1];
+        set => Texts[1] = value;
+    }
+    public UIUnit TertiaryText
+    {
+        get => Texts[2];
+        set => Texts[2] = value;
+    }
+
+    public void ManualUpdate()
+    {
+        if (!tertiaryWidthCalculated)
+        {
+            var tmp = TertiaryText.text;
+            if (tmp != null)
+            {
+                // Save the current text
+                string originalText = tmp.text;
+
+                // Set the text to the target string
+                tmp.text = "(0000/0000)";
+
+                // Force update the canvas to ensure size calculation
+                Canvas.ForceUpdateCanvases();
+
+                // Calculate the preferred width
+                float preferredWidth = tmp.preferredWidth;
+
+                // Restore the original text
+                tmp.text = originalText;
+
+                // Update the width of the TertiaryText RectTransform
+                RectTransform rt = TertiaryText.GetComponent<RectTransform>();
+                rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, preferredWidth);
+
+                tertiaryWidthCalculated = true;
+            }
+        }
+
+        // Get RectTransforms
+        RectTransform rtMain = MainText.rectTransform;
+        RectTransform rtSecondary = SecondaryText.rectTransform;
+        RectTransform rtTertiary = TertiaryText.rectTransform;
+
+        // Align MainText with the left side of Parent
+        rtMain.anchorMin = new Vector2(0, rtMain.anchorMin.y);
+        rtMain.anchorMax = new Vector2(0, rtMain.anchorMax.y);
+        rtMain.pivot = new Vector2(0, rtMain.pivot.y);
+        rtMain.anchoredPosition = new Vector2(rtMain.sizeDelta.x * rtMain.pivot.x, rtMain.anchoredPosition.y);
+
+        // Align TertiaryText with the right side of Parent
+        rtTertiary.anchorMin = new Vector2(1, rtTertiary.anchorMin.y);
+        rtTertiary.anchorMax = new Vector2(1, rtTertiary.anchorMax.y);
+        rtTertiary.pivot = new Vector2(1, rtTertiary.pivot.y);
+        rtTertiary.anchoredPosition = new Vector2(-rtTertiary.sizeDelta.x * rtTertiary.pivot.x, rtTertiary.anchoredPosition.y);
+
+        // Align SecondaryText with the left side of TertiaryText
+        rtSecondary.anchorMin = new Vector2(1, rtSecondary.anchorMin.y);
+        rtSecondary.anchorMax = new Vector2(1, rtSecondary.anchorMax.y);
+        rtSecondary.pivot = new Vector2(1, rtSecondary.pivot.y);
+        rtSecondary.anchoredPosition = new Vector2(-rtTertiary.sizeDelta.x * rtTertiary.pivot.x, rtSecondary.anchoredPosition.y);
+
+    }
+
+    private bool tertiaryWidthCalculated = false;
+}
 
 public class ButtonWithExpandable
 {
