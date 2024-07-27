@@ -133,7 +133,7 @@ public class ButtonWithExpandable
 
 
         var rectTransformParent = LayoutChild.RectTransform;
-        rectTransformParent.SetWidthMilimeters(heightMM);
+        rectTransformParent.SetHeightMilimeters(heightMM);
         MainButton.RectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - heightMM);
 
         // Set the ExpandButton position on the right side
