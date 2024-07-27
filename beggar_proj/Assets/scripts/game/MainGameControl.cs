@@ -32,6 +32,7 @@ public class MainGameControl : MonoBehaviour
             button.SetTextRaw(item.ConfigBasic.name);
             var tcu = new TaskControlUnit();
             TaskControls.Add(tcu);
+            tcu.bwe = bwe;
             
             var arrayOfChanges = item.ConfigTask.Cost;
             var rcgIndex = 0;

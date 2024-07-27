@@ -72,6 +72,7 @@ public class JsonReader
                 IdPointer = arcaniaUnits.GetOrCreateIdPointer(c.Key),
                 valueChange = c.Value.AsInt * signalMultiplier
             };
+            resourceChange.Add(rc);
         }
     }
 
