@@ -1,4 +1,3 @@
-using HeartUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,11 +35,11 @@ public class JsonReader
             var ru = new RuntimeUnit();
             ru.ConfigBasic = ReadBasicUnit(item, arcaniaUnits);
             arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
-            if (type == UnitType.TASK) 
+            if (type == UnitType.TASK)
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
             }
-            
+
             arcaniaUnits.datas[type].Add(ru);
             SimpleJSON.JSONNode id = item["id"];
             Debug.Log(id);
@@ -57,6 +56,13 @@ public class JsonReader
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
         }
+        if (!ct.Duration.HasValue)
+        {
+            if (ct.Effect.Count != 0 || ct.Run.Count != 0 || ct.Perpetual)
+            {
+                ct.Duration = 1;
+            }
+        }
         return ct;
     }
 
@@ -64,7 +70,8 @@ public class JsonReader
     {
         foreach (var c in value)
         {
-            var rc = new ResourceChange() { 
+            var rc = new ResourceChange()
+            {
                 IdPointer = arcaniaUnits.GetOrCreateIdPointer(c.Key),
                 valueChange = c.Value.AsInt * signalMultiplier
             };
@@ -104,27 +111,6 @@ public class ConfigBasic
 public enum UnitType
 {
     RESOURCE, TASK,
-}
-
-public class ConfigTask
-{
-    public const int RESOURCE_CHANGE_LIST_COST = 0;
-    public const int RESOURCE_CHANGE_LIST_RESULT = 1;
-    public const int RESOURCE_CHANGE_LIST_RUN = 2;
-    public const int RESOURCE_CHANGE_LIST_EFFECT = 3;
-
-    public List<ResourceChange> Cost => ResourceChangeLists[RESOURCE_CHANGE_LIST_COST];
-    public List<ResourceChange> Result => ResourceChangeLists[RESOURCE_CHANGE_LIST_RESULT];
-    public List<ResourceChange> Run => ResourceChangeLists[RESOURCE_CHANGE_LIST_RUN];
-    public List<ResourceChange> Effect => ResourceChangeLists[RESOURCE_CHANGE_LIST_EFFECT];
-    public AutoNewList<List<ResourceChange>> ResourceChangeLists = new AutoNewList<List<ResourceChange>>();
-
-    public bool Perpetual { get; internal set; }
-
-    internal List<ResourceChange> GetResourceChangeList(int i)
-    {
-        return ResourceChangeLists[i];
-    }
 }
 
 public class RuntimeUnit
