@@ -324,7 +324,8 @@ public class CanvasMaker
         ttv.MainText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
         ttv.SecondaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
         ttv.TertiaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Right).SetParent(parentRectTransform);
-        parentRectTransform.SetWidth(ttv.MainText.RectTransform.GetWidth());
+        parentRectTransform.SetHeight(ttv.MainText.RectTransform.GetHeight());
+        
         return ttv;
     }
 }
