@@ -28,6 +28,7 @@ public class ArcaniaModel
     private void CompleteTask(RuntimeUnit data)
     {
         ApplyResourceChanges(data.ConfigTask.Result);
+        RunningTasks.Remove(data);
         if (data.ConfigTask.Perpetual)
         {
             data.TaskProgress = 0;

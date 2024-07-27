@@ -137,14 +137,14 @@ public class RuntimeUnit
 
     internal bool CanFullyAcceptChange(int valueChange)
     {
-        if (valueChange < 0) return Mathf.Abs(valueChange) < Value;
+        if (valueChange < 0) return Mathf.Abs(valueChange) <= Value;
         // no max
         if (Max < 0) return true;
         if (valueChange > 0)
         {
             if (Max == 0) return false;
             int ValueToReachMax = Max - Value;
-            return ValueToReachMax > valueChange;
+            return ValueToReachMax >= valueChange;
         }
         return true;
     }
@@ -153,7 +153,7 @@ public class RuntimeUnit
     public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
 
     public float TaskProgress { get; internal set; }
-    public bool IsMaxed => Value > Max;
+    public bool IsMaxed => Value >= Max;
 
     public bool IsZero => Value == 0;
 }
