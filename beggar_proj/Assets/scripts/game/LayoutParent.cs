@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using HeartUnity.View;
 
 public class LayoutParent
 {
@@ -38,10 +39,12 @@ public class LayoutParent
 
             if (TypeLayout == LayoutType.VERTICAL)
             {
+
+                childRectTransform.SetPivotAndAnchors(Vector3.one);
                 // Set the width of the child to fit the parent
                 childRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, childRectTransform.sizeDelta.y);
                 // Position the child vertically, taking the pivot into account
-                childRectTransform.anchoredPosition = new Vector2(0, -offset + (1 - childPivot.y) * childRectTransform.rect.height);
+                childRectTransform.anchoredPosition = new Vector2(0, -offset);
                 // Increment the offset by the height of the child
                 offset += childRectTransform.rect.height;
 
