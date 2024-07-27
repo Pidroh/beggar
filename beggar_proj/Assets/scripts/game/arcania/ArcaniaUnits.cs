@@ -20,7 +20,7 @@ public class ArcaniaModel
     private void CompleteTask(RuntimeUnit data)
     {
         ApplyResourceChanges(data.ConfigTask.Result);
-        if (data.ConfigTask.Perpetual) 
+        if (data.ConfigTask.Perpetual)
         {
             data.TaskProgress = 0;
             TryStartAction(data);
@@ -47,6 +47,15 @@ public class ArcaniaModel
         list.AddRange(RunningTasks);
         foreach (var run in list)
         {
+
+            var taskContinue = CanAfford(run.ConfigTask.Run);
+            taskContinue = taskContinue && (DoChangesMakeADifference(run.ConfigTask.Result) || DoChangesMakeADifference(run.ConfigTask.Effect));
+            if (!taskContinue)
+            {
+                RunningTasks.Remove(run);
+                continue;
+            }
+
             float beforeProg = run.TaskProgress;
             run.TaskProgress += dt;
             // reached a new second in progress
@@ -60,6 +69,30 @@ public class ArcaniaModel
                 CompleteTask(run);
             }
         }
+    }
+
+    private bool CanAfford(List<ResourceChange> changes)
+    {
+        foreach (var rc in changes)
+        {
+            if (rc.valueChange == 0) continue;
+            if (rc.IdPointer.RuntimeUnit.CanFullyAcceptChange(rc.valueChange)) continue;
+            return false;
+        }
+        return true;
+    }
+
+    private bool DoChangesMakeADifference(List<ResourceChange> changes)
+    {
+        foreach (var rc in changes)
+        {
+            if (rc.valueChange == 0) continue;
+            if (rc.valueChange > 0 && rc.IdPointer.RuntimeUnit.IsMaxed) continue;
+            if (rc.valueChange < 0 && rc.IdPointer.RuntimeUnit.IsZero) continue;
+            return true;
+        }
+        return false;
+
     }
 }
 
