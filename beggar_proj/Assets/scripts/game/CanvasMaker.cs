@@ -159,6 +159,7 @@ public class CanvasMaker
         TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
         // Add RectTransform component for text
         RectTransform textRectTransform = textObject.AddComponent<RectTransform>();
+        textRectTransform.SetWidth(40);
         
         text.alignment = TextAlignmentOptions.Center;
         text.color = textColor; // Set text color
@@ -323,7 +324,7 @@ public class CanvasMaker
         ttv.MainText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
         ttv.SecondaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
         ttv.TertiaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Right).SetParent(parentRectTransform);
-        
+        parentRectTransform.SetWidth(ttv.MainText.RectTransform.GetWidth());
         return ttv;
     }
 }
