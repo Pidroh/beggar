@@ -35,15 +35,20 @@ public class MainGameControl : MonoBehaviour
             tcu.bwe = bwe;
             tcu.Data = item;
             
-            var arrayOfChanges = item.ConfigTask.Cost;
-            var rcgIndex = 0;
-            if (arrayOfChanges != null) tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
-            foreach (var changeU in arrayOfChanges)
+            
+            for (int i = 0; i < 4; i++)
             {
-                TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
-                layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
-                tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+                var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
+                var rcgIndex = i;
+                if (arrayOfChanges != null) tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
+                foreach (var changeU in arrayOfChanges)
+                {
+                    TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
+                    layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
+                    tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+                }
             }
+            
         }
     }
 
