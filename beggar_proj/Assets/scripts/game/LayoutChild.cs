@@ -82,7 +82,7 @@ public class TripleTextView
         rtTertiary.anchorMin = new Vector2(1, rtTertiary.anchorMin.y);
         rtTertiary.anchorMax = new Vector2(1, rtTertiary.anchorMax.y);
         rtTertiary.pivot = new Vector2(1, rtTertiary.pivot.y);
-        rtTertiary.anchoredPosition = new Vector2(-rtTertiary.sizeDelta.x * rtTertiary.pivot.x, rtTertiary.anchoredPosition.y);
+        rtTertiary.anchoredPosition = new Vector2(0, rtTertiary.anchoredPosition.y);
 
         // Align SecondaryText with the left side of TertiaryText
         rtSecondary.anchorMin = new Vector2(1, rtSecondary.anchorMin.y);

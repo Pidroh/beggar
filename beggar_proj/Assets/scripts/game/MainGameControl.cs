@@ -33,6 +33,7 @@ public class MainGameControl : MonoBehaviour
             var tcu = new TaskControlUnit();
             TaskControls.Add(tcu);
             tcu.bwe = bwe;
+            tcu.Data = item;
             
             var arrayOfChanges = item.ConfigTask.Cost;
             var rcgIndex = 0;
@@ -49,6 +50,8 @@ public class MainGameControl : MonoBehaviour
     public class TaskControlUnit {
         public ButtonWithExpandable bwe;
         public AutoList<ResourceChangeGroup> ChangeGroups = new();
+        internal RuntimeUnit Data;
+
         public ResourceChangeGroup CostGroup { get => ChangeGroups[0]; set => ChangeGroups[0] = value; }
         public ResourceChangeGroup ResultGroup { get => ChangeGroups[1]; set => ChangeGroups[1] = value; }
         public ResourceChangeGroup RunGroup { get => ChangeGroups[2]; set => ChangeGroups[2] = value; }
@@ -60,11 +63,21 @@ public class MainGameControl : MonoBehaviour
         }
         public void ManualUpdate() {
             bwe.ManualUpdate();
-            foreach (var item in ChangeGroups)
+            for (int i = 0; i < ChangeGroups.Count; i++)
             {
+                ResourceChangeGroup item = ChangeGroups[i];
+                var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
                 if (item == null) continue;
-                foreach (var ttv in item.tripleTextViews)
+
+                for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
                 {
+                    TripleTextView ttv = item.tripleTextViews[ttvIndex];
+                    var rc = resourceChanges[ttvIndex];
+
+                    RuntimeUnit ru = rc.IdPointer.RuntimeUnit;
+                    ttv.MainText.SetTextRaw(ru.Name);
+                    ttv.SecondaryText.SetTextRaw($"{rc.valueChange}");
+                    ttv.TertiaryText.SetTextRaw($"({ru.Value} / {ru.Max})");
                     ttv.ManualUpdate();
                 }
             }
@@ -75,9 +88,9 @@ public class MainGameControl : MonoBehaviour
     void Update()
     {
         dynamicCanvas.ManualUpdate();
-        foreach (var bwe in TaskControls)
+        foreach (var tcu in TaskControls)
         {
-            bwe.ManualUpdate();
+            tcu.ManualUpdate();
         }
     }
 }

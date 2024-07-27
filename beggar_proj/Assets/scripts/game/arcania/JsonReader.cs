@@ -1,3 +1,4 @@
+using HeartUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,12 +35,7 @@ public class JsonReader
         {
             var ru = new RuntimeUnit();
             ru.ConfigBasic = ReadBasicUnit(item, arcaniaUnits);
-            if (!arcaniaUnits.IdMapper.TryGetValue(ru.ConfigBasic.Id, out var pointer)) 
-            {
-                pointer = new IDPointer();
-                arcaniaUnits.IdMapper[ru.ConfigBasic.Id] = pointer;
-            }
-            pointer.RuntimeUnit = ru;
+            arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
             if (type == UnitType.TASK) 
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
@@ -64,7 +60,7 @@ public class JsonReader
         return ct;
     }
 
-    private static void ReadChanges(List<ResourceChange> resourceChange, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits, int signalMultiplier)
+    private static void ReadChanges(List<ResourceChange> list, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits, int signalMultiplier)
     {
         foreach (var c in value)
         {
@@ -72,7 +68,7 @@ public class JsonReader
                 IdPointer = arcaniaUnits.GetOrCreateIdPointer(c.Key),
                 valueChange = c.Value.AsInt * signalMultiplier
             };
-            resourceChange.Add(rc);
+            list.Add(rc);
         }
     }
 
@@ -112,17 +108,40 @@ public enum UnitType
 
 public class ConfigTask
 {
-    public List<ResourceChange> Cost = new();
-    public List<ResourceChange> Result = new();
-    public List<ResourceChange> Effect = new();
+    public const int RESOURCE_CHANGE_LIST_COST = 0;
+    public const int RESOURCE_CHANGE_LIST_RESULT = 1;
+    public const int RESOURCE_CHANGE_LIST_RUN = 2;
+    public const int RESOURCE_CHANGE_LIST_EFFECT = 3;
+
+    public List<ResourceChange> Cost => ResourceChangeLists[RESOURCE_CHANGE_LIST_COST];
+    public List<ResourceChange> Result => ResourceChangeLists[RESOURCE_CHANGE_LIST_RESULT];
+    public List<ResourceChange> Run => ResourceChangeLists[RESOURCE_CHANGE_LIST_RUN];
+    public List<ResourceChange> Effect => ResourceChangeLists[RESOURCE_CHANGE_LIST_EFFECT];
+    public AutoNewList<List<ResourceChange>> ResourceChangeLists = new AutoNewList<List<ResourceChange>>();
 
     public bool Perpetual { get; internal set; }
+
+    internal List<ResourceChange> GetResourceChangeList(int i)
+    {
+        return ResourceChangeLists[i];
+    }
 }
 
 public class RuntimeUnit
 {
     public ConfigBasic ConfigBasic;
     public ConfigTask ConfigTask;
+
+    public string Name => ConfigBasic.name;
+
+    public int Max => CalculateMax();
+
+    private int CalculateMax()
+    {
+        return ConfigBasic.Max;
+    }
+
+    public object Value { get; internal set; } = 0;
 }
 
 public class ResourceChange
@@ -131,7 +150,7 @@ public class ResourceChange
     public int valueChange;
 }
 
-public struct IDPointer
+public class IDPointer
 {
     public RuntimeUnit RuntimeUnit;
     public string id;

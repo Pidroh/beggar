@@ -158,7 +158,7 @@ public class CanvasMaker
         GameObject textObject = new GameObject("Text");
         TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
         // Add RectTransform component for text
-        RectTransform textRectTransform = textObject.AddComponent<RectTransform>();
+        RectTransform textRectTransform = textObject.GetComponent<RectTransform>();
         textRectTransform.SetWidth(40);
         
         text.alignment = TextAlignmentOptions.Center;
