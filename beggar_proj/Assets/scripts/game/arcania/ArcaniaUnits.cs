@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ArcaniaModel {
+public class ArcaniaModel
+{
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
     public List<RuntimeUnit> RunningTasks = new();
 
     internal void TryStartAction(RuntimeUnit data)
     {
         ApplyResourceChanges(data.ConfigTask.Cost);
+        if (data.IsInstant()) CompleteTask(data);
+        if (data.IsInstant()) return;
+
+
+    }
+
+    private void CompleteTask(RuntimeUnit data)
+    {
         ApplyResourceChanges(data.ConfigTask.Result);
+        if (data.ConfigTask.Perpetual) 
+        {
+            data.TaskProgress = 0;
+            TryStartAction(data);
+        }
     }
 
     private void ApplyResourceChanges(List<ResourceChange> changes)
@@ -27,7 +41,7 @@ public class ArcaniaModel {
         runtimeUnit.Value = Mathf.Clamp(v + valueChange, 0, runtimeUnit.MaxForCeiling);
     }
 
-    public void ManualUpdate(float dt) 
+    public void ManualUpdate(float dt)
     {
         using var _1 = ListPool<RuntimeUnit>.Get(out var list);
         list.AddRange(RunningTasks);
@@ -40,6 +54,10 @@ public class ArcaniaModel {
             {
                 ApplyResourceChanges(run.ConfigTask.Run);
                 ApplyResourceChanges(run.ConfigTask.Effect);
+            }
+            if (run.IsTaskComplete())
+            {
+                CompleteTask(run);
             }
         }
     }

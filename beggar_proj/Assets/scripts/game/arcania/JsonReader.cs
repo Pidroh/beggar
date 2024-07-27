@@ -127,8 +127,18 @@ public class RuntimeUnit
         return ConfigBasic.Max;
     }
 
+    internal bool IsTaskComplete()
+    {
+        if (ConfigTask.Duration.HasValue) return TaskProgress > ConfigTask.Duration.Value;
+        return false;
+    }
+
+    internal bool IsInstant() => !ConfigTask.Duration.HasValue;
+
     public int Value { get; internal set; } = 0;
     public int MaxForCeiling => Max <= 0 ? int.MaxValue : Max;
+
+    public float TaskProgress { get; internal set; }
 }
 
 public class ResourceChange
