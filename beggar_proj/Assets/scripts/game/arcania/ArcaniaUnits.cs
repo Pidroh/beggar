@@ -8,11 +8,19 @@ public class ArcaniaModel
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
     public List<RuntimeUnit> RunningTasks = new();
 
-    internal void TryStartAction(RuntimeUnit data)
+    internal bool TryStartAction(RuntimeUnit data)
     {
+        if (!CanAfford(data.ConfigTask.Cost)) return false;
         ApplyResourceChanges(data.ConfigTask.Cost);
         if (data.IsInstant()) CompleteTask(data);
-        if (data.IsInstant()) return;
+        if (data.IsInstant()) return true;
+        bool alreadyRunning = RunningTasks.Contains(data);
+        RunningTasks.Clear();
+        if (alreadyRunning) return false;
+        // start running if not instant and not already started
+        RunningTasks.Add(data);
+
+        return true;
 
 
     }
