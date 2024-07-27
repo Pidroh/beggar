@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class ArcaniaModel {
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
+    public List<RuntimeUnit> RunningTasks = new();
 
     internal void TryStartAction(RuntimeUnit data)
     {
@@ -23,6 +25,23 @@ public class ArcaniaModel {
     {
         var v = runtimeUnit.Value;
         runtimeUnit.Value = Mathf.Clamp(v + valueChange, 0, runtimeUnit.MaxForCeiling);
+    }
+
+    public void ManualUpdate(float dt) 
+    {
+        using var _1 = ListPool<RuntimeUnit>.Get(out var list);
+        list.AddRange(RunningTasks);
+        foreach (var run in list)
+        {
+            float beforeProg = run.TaskProgress;
+            run.TaskProgress += dt;
+            // reached a new second in progress
+            if (Mathf.FloorToInt(run.TaskProgress) > Mathf.FloorToInt(beforeProg))
+            {
+                ApplyResourceChanges(run.ConfigTask.Run);
+                ApplyResourceChanges(run.ConfigTask.Effect);
+            }
+        }
     }
 }
 
