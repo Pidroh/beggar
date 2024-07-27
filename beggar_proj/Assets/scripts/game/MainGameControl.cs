@@ -14,11 +14,12 @@ public class MainGameControl : MonoBehaviour
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
+    public ArcaniaModel arcaniaModel = new();
 
     // Start is called before the first frame update
     void Start()
     {
-        ArcaniaUnits arcaniaDatas = new ArcaniaUnits();
+        var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
         dynamicCanvas = CanvasMaker.CreateCanvas(1);
         foreach (var item in arcaniaDatas.datas[UnitType.TASK])
@@ -56,6 +57,7 @@ public class MainGameControl : MonoBehaviour
         public ButtonWithExpandable bwe;
         public AutoList<ResourceChangeGroup> ChangeGroups = new();
         internal RuntimeUnit Data;
+        public bool TaskClicked => bwe.MainButton.Clicked;
 
         public ResourceChangeGroup CostGroup { get => ChangeGroups[0]; set => ChangeGroups[0] = value; }
         public ResourceChangeGroup ResultGroup { get => ChangeGroups[1]; set => ChangeGroups[1] = value; }
@@ -96,6 +98,10 @@ public class MainGameControl : MonoBehaviour
         foreach (var tcu in TaskControls)
         {
             tcu.ManualUpdate();
+            if (tcu.TaskClicked) 
+            {
+                arcaniaModel.TryStartAction(tcu.Data);
+            }
         }
     }
 }

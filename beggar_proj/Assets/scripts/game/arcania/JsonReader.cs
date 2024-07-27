@@ -141,7 +141,8 @@ public class RuntimeUnit
         return ConfigBasic.Max;
     }
 
-    public object Value { get; internal set; } = 0;
+    public int Value { get; internal set; } = 0;
+    public int MaxForCeiling => Max <= 0 ? int.MaxValue : Max;
 }
 
 public class ResourceChange
@@ -154,24 +155,4 @@ public class IDPointer
 {
     public RuntimeUnit RuntimeUnit;
     public string id;
-}
-
-public class ArcaniaUnits
-{
-    public Dictionary<UnitType, List<RuntimeUnit>> datas = new();
-    public Dictionary<string, IDPointer> IdMapper = new();
-
-    internal IDPointer GetOrCreateIdPointer(string key)
-    {
-        if (!IdMapper.TryGetValue(key, out var value))
-        {
-            value = new IDPointer()
-            {
-                id = key
-            };
-            IdMapper[key] = value;
-        }
-        return value;
-    }
-    //public List<BasicUnit> resources = new();
 }
