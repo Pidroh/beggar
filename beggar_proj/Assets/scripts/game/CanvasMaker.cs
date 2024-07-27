@@ -165,6 +165,7 @@ public class CanvasMaker
         text.color = textColor; // Set text color
         text.fontSize = 16;
         text.font = font;
+        text.raycastTarget = false;
         UIUnit textUiUnit = textObject.AddComponent<UIUnit>();
         textUiUnit.text = text;
         return textUiUnit;

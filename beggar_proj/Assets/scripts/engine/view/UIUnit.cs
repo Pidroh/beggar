@@ -28,11 +28,14 @@ namespace HeartUnity.View
         {
             get
             {
-                if (HoveredWhileVisible) 
+                var inputEnabled = true;
+                var inputManagerExist = EngineView != null && EngineView.inputManager != null;
+                if (inputManagerExist) inputEnabled = EngineView.inputManager.InputEnabled;
+                if (HoveredWhileVisible && inputManagerExist) 
                 {
-                    EngineView.inputManager.HoveredClickableThisFrame();
+                    EngineView?.inputManager?.HoveredClickableThisFrame();
                 }
-                return (_clickedInternal || _longPressClick) && EngineView.inputManager.InputEnabled;
+                return (_clickedInternal || _longPressClick) && inputEnabled;
             }
         }
 
