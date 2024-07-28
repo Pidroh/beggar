@@ -46,7 +46,7 @@
                 "desc": "A profound emotion that deepens one's empathy and understanding. It connects us to others through shared experiences of loss and reflection.",
                 "max": 5,
                 "mod": {
-                    "supplication.max": 1
+                    "supplication.max": 5
                 }
             }
         ]
@@ -145,7 +145,26 @@
                 "mod": {
                     "supplication.max": 10,
                     "thoughts.max": 10,
-                    "sorrow.max": 10
+                    "sadness.max": 10
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items":[
+            {
+                "id": "instrospection",
+                "require": "t_job",
+                "cost": {
+                    "thoughts": 5,
+                    "sadness": 5
+                },
+                "desc": "Reflecting inwardly means examining your own thoughts and feelings. ",
+                "mod": {
+                    "thoughts.max": 5,
+                    "sadness.max": 5,
+                    "supplication.max": 5
                 }
             }
         ]

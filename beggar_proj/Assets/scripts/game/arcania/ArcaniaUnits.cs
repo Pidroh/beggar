@@ -86,7 +86,7 @@ public class ArcaniaModel
         {
             if (rc.valueChange == 0) continue;
             if (rc.IdPointer.RuntimeUnit.CanFullyAcceptChange(rc.valueChange)) continue;
-            return false;
+            return false;   
         }
         return true;
     }
