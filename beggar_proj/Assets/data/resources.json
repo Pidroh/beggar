@@ -109,7 +109,7 @@
                 "duration": 3,
                 "max": 3,
                 "cost": {
-                    "thoughts": 3
+                    "thoughts": 2
                 },
                 "mod": {
                     "focus.max": 1,
@@ -124,7 +124,7 @@
                     "thoughts": 3
                 },
                 "result": {
-                    "sorrow": 1
+                    "sadness": 1
                 }
             }
         ]
@@ -140,7 +140,7 @@
                 "cost": {
                     "thoughts": 3,
                     "supplication": 8,
-                    "sorrow": 2
+                    "sadness": 2
                 },
                 "mod": {
                     "supplication.max": 10,
@@ -151,20 +151,17 @@
         ]
     },
     {
-        "type": "SKILL",
+        "type": "HOUSE",
         "items":[
             {
-                "id": "instrospection",
+                "id": "Back Alley",
                 "require": "t_job",
                 "cost": {
-                    "thoughts": 5,
-                    "sadness": 5
+                    "thoughts": 5
                 },
-                "desc": "Reflecting inwardly means examining your own thoughts and feelings. ",
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
                 "mod": {
-                    "thoughts.max": 5,
-                    "sadness.max": 5,
-                    "supplication.max": 5
+                    "space.max": 3
                 }
             }
         ]
