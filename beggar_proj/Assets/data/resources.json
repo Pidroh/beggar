@@ -8,8 +8,18 @@
                 "desc": "Higher values mean your character is well-fed, while lower values indicate hunger."
             },
             {
+                "id": "supplication",
+                "max": 5,
+                "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
+            },
+            {
                 "id": "resilience",
                 "desc": "The inner strength your character consumes to perform actions.",
+                "max": 5
+            },
+            {
+                "id": "thoughts",
+                "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
                 "max": 5
             },
             {
@@ -21,6 +31,14 @@
                 "id": "breadcrumbs",
                 "desc": "Small, dry pieces of bread",
                 "max": 10
+            },
+            {
+                "id": "sorrow",
+                "desc": "A profound emotion that deepens one's empathy and understanding. It connects us to others through shared experiences of loss and reflection.",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 1
+                }
             }
         ]
     },
@@ -33,7 +51,7 @@
                 "desc": "You take what you get.",
                 "locked": false,
                 "cost":{
-                    "resilience": 1
+                    "supplication": 1
                 },
                 "result":{
                     "breadcrumbs": 1
@@ -48,9 +66,79 @@
                     "resilience": 1,
                     "focus": 1
                 }
+            },
+            {
+                "id": "pleafocus",
+                "name": "Focus Plea",
+                "desc": "Centering thoughts and intentions to prepare for begging",
+                "perpetual": true,
+                "run": {
+                    "focus": 1
+                },
+                "effect": {
+                    "supplication": 1
+                }
+            },
+            {
+                "id": "thinking",
+                "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
+                "perpetual": true,
+                "cost": {
+                    "nutrition": 2
+                },
+                "run": {
+                    "focus": 1
+                },
+                "effect": {
+                    "thoughts": 1
+                }
+            },
 
+            {
+                "id": "reflection",
+                "desc": "",
+                "duration": 3,
+                "max": 3,
+                "cost": {
+                    "thoughts": 3
+                },
+                "mod": {
+                    "focus.max": 1,
+                    "thoughts.max": 1
+                }
+            },
+            {
+                "id": "Lament",
+                "desc": "To find solace in sorrow, one must first embrace the depths of their own despair.",
+                "duration": 4,
+                "cost": {
+                    "thoughts": 3
+                },
+                "result": {
+                    "sorrow": 1
+                }
             }
-
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items":[
+            {
+                "id": "gutterborn",
+                "tags": "t_job",
+                "lock": "t_job",
+                "require": "supplication>7",
+                "cost": {
+                    "thoughts": 3,
+                    "supplication": 8,
+                    "sorrow": 2
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "thoughts.max": 10,
+                    "sorrow.max": 10
+                }
+            }
         ]
     }
 ]
