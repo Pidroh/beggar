@@ -33,6 +33,15 @@
                 "max": 10
             },
             {
+                "id": "sadness",
+                "desc": "The weight of our emotions reflects the depth of our experiences",
+                "flavor": "Silent ache",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 1
+                }
+            },
+            {
                 "id": "sorrow",
                 "desc": "A profound emotion that deepens one's empathy and understanding. It connects us to others through shared experiences of loss and reflection.",
                 "max": 5,
