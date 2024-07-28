@@ -166,5 +166,73 @@
                 }
             }
         ]
+    },
+    {
+        "type": "CLASS",
+        "items":[
+            {
+                "id": "gutterborn",
+                "tags": "t_job",
+                "lock": "t_job",
+                "require": "supplication>7",
+                "cost": {
+                    "thoughts": 3,
+                    "supplication": 8,
+                    "sadness": 2
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "thoughts.max": 10,
+                    "sadness.max": 10
+                }
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+            {
+                "id": "brokenmirror",
+                "name": "Broken mirror",
+                "require": "t_job",
+                "cost": {
+                    "foraging": 3,
+                    "energy": 2
+                },
+                "mod": {
+                    "introspection.max": 1,
+                    "thoughts.max": 5,
+                    "thoughts.rate": 0.01,
+                    "space": 1
+                }
+            },
+            {
+                "id": "crackedvase",
+                "name": "Cracked vase",
+                "require": "t_job",
+                "cost": {
+                    "foraging": 2,
+                    "energy": 3
+                },
+                "mod": {
+                    "deadflower.max" : 8,
+                    "space": 1
+                }
+            },
+            {
+                "id": "crackedvase",
+                "name": "Cracked vase",
+                "require": "t_job",
+                "cost": {
+                    "foraging": 2,
+                    "energy": 3
+                },
+                "mod": {
+                    "deadflower.max" : 8,
+                    "space": 1
+                }
+            }
+
+        ]
     }
 ]
