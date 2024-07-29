@@ -126,6 +126,23 @@
                 "result": {
                     "sadness": 1
                 }
+            },
+            {
+                "id": "Shed tears",
+                "desc": "Let the sadness flow and transform",
+                "flavor": "Tears come from the heart and not from the brain",
+                "duration": 5,
+                "cost": {
+                    "thoughts": 3,
+                    "sadness": 10
+                },
+                "run": {
+                    "focus": 1,
+                    "energy": 1
+                },
+                "result": {
+                    "sorrow": 1
+                }
             }
         ]
     },
