@@ -200,6 +200,19 @@
                     "sadness.max": 5,
                     "supplication.max": 5
                 }
+            },
+            {
+                "id": "rodentology",
+                "require": "ratsource",
+                "cost": {
+                    "thoughts": 10
+                },
+                "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
+                "mod": {
+                    "rats.max": 5,
+                    "thoughts.max": 1,
+                    "supplication.max": 2
+                }
             }
         ]
     },
