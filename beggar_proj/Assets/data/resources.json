@@ -188,19 +188,17 @@
         "type": "SKILL",
         "items":[
             {
-                "id": "gutterborn",
-                "tags": "t_job",
-                "lock": "t_job",
-                "require": "supplication>7",
+                "id": "instrospection",
+                "require": "t_job",
                 "cost": {
-                    "thoughts": 3,
-                    "supplication": 8,
-                    "sadness": 2
+                    "thoughts": 5,
+                    "sadness": 5
                 },
+                "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
                 "mod": {
-                    "supplication.max": 10,
-                    "thoughts.max": 10,
-                    "sadness.max": 10
+                    "thoughts.max": 5,
+                    "sadness.max": 5,
+                    "supplication.max": 5
                 }
             }
         ]
@@ -278,6 +276,20 @@
                     "rest.mod.energy" : -0.1,
                     "energy.max": -2,
                     "rodentology.max": 2,
+                    "space": 1
+                }
+            },
+            {
+                "id": "destroyedpainting",
+                "name": "Destroyed painting",
+                "require": "t_job",
+                "cost": {
+                    "foraging": 3,
+                    "energy": 1
+                },
+                "mod": {
+                    "sadness.max" : 3,
+                    "sadness.rate" : 0.02,
                     "space": 1
                 }
             }
