@@ -147,6 +147,23 @@
         ]
     },
     {
+        "type": "HOUSE",
+        "items":[
+            {
+                "id": "Back Alley",
+                "require": "t_job",
+                "cost": {
+                    "resilience": 5,
+                    "thoughts": 3
+                },
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "mod": {
+                    "space.max": 3
+                }
+            }
+        ]
+    },
+    {
         "type": "CLASS",
         "items":[
             {
@@ -168,24 +185,7 @@
         ]
     },
     {
-        "type": "HOUSE",
-        "items":[
-            {
-                "id": "Back Alley",
-                "require": "t_job",
-                "cost": {
-                    "resilience": 5,
-                    "thoughts": 3
-                },
-                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
-                "mod": {
-                    "space.max": 3
-                }
-            }
-        ]
-    },
-    {
-        "type": "CLASS",
+        "type": "SKILL",
         "items":[
             {
                 "id": "gutterborn",
@@ -247,7 +247,37 @@
                 "mod": {
                     "sadness.max" : 8,
                     "sorrow.max": 1,
-                    "sadness.rate" : 0.01,
+                    "space": 1
+                }
+            },
+            {
+                "id": "mothblanket",
+                "name": "Moth-eaten blanket",
+                "require": "t_job",
+                "max": 1,
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "rest.mod.energy" : 0.25,
+                    "energy.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "spoiledgrains",
+                "name": "Spoiled Grains",
+                "tag": "ratsource",
+                "require": "t_job",
+                "max": 1,
+                "cost": {
+                    "foraging": 3,
+                    "energy": 1
+                },
+                "mod": {
+                    "rest.mod.energy" : -0.1,
+                    "energy.max": -2,
+                    "rodentology.max": 2,
                     "space": 1
                 }
             }
