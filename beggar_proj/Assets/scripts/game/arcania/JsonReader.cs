@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class JsonReader
 {
@@ -33,7 +34,7 @@ public class JsonReader
         foreach (var item in items.AsArray.Children)
         {
             var ru = new RuntimeUnit();
-            ru.ConfigBasic = ReadBasicUnit(item, arcaniaUnits);
+            ReadBasicUnit(ru, item, arcaniaUnits);
             arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
             if (type == UnitType.TASK)
             {
@@ -79,7 +80,26 @@ public class JsonReader
         }
     }
 
-    private static ConfigBasic ReadBasicUnit(SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
+    private static void ReadMods(RuntimeUnit owner, SimpleJSON.JSONNode dataJsonMod, ArcaniaUnits arcaniaUnits)
+    {
+        using var _1 = ListPool<string>.Get(out var strList);
+
+        foreach (var pair in dataJsonMod)
+        {
+            strList.Clear();
+            var key = pair.Key;
+            var value = pair.Value.AsFloat;
+            var splittedValues = key.Split('.');
+            continue doing splitted values here... focus just on max for now (splitted values size is 2?)
+            var md = new ModData();
+            md.Source = owner;
+            md.Value = value;
+            arcaniaUnits.Mods.Add(md);
+
+        }
+    }
+
+    private static ConfigBasic ReadBasicUnit(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
     {
         string id = item["id"];
         string desc = item.GetValueOrDefault("desc", null);
@@ -88,16 +108,17 @@ public class JsonReader
         bu.Id = id;
         bu.Desc = desc;
         bu.Max = max;
-        if (item.HasKey("name"))
+        foreach (var pair in item)
         {
-            bu.name = item["name"];
+            if (pair.Key == "name") bu.name = pair.Value;
+            if (pair.Key == "mod") ReadMods(owner:ru, dataJsonMod:pair.Value, arcaniaUnits);
         }
-        else
-        {
-            bu.name = char.ToUpper(id[0]) + id.Substring(1);
-        }
+        bu.name = bu.name == null ? char.ToUpper(id[0]) + id.Substring(1) : bu.name;
+        ru.ConfigBasic = bu;
         return bu;
     }
+
+    
 }
 
 public class ConfigBasic
@@ -111,6 +132,20 @@ public class ConfigBasic
 public enum UnitType
 {
     RESOURCE, TASK,
+}
+
+public enum ModType
+{
+    MaxChange, RateChange
+}
+
+public class ModData
+{
+    public ModType ModType;
+    public float Value;
+    public RuntimeUnit Source;
+    public IDPointer Intermediary;
+    public IDPointer Target;
 }
 
 public class RuntimeUnit
