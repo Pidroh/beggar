@@ -24,7 +24,7 @@ public class JsonReader
         }
         for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
         {
-            arcaniaDatas.Mods[i].Source.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
+            arcaniaDatas.Mods[i].Target.RuntimeUnit.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
         }
 
     }
@@ -167,7 +167,19 @@ public class RuntimeUnit
 
     private int CalculateMax()
     {
-        return ConfigBasic.Max;
+        var sum = Mathf.FloorToInt(GetModSum(modType: ModType.MaxChange));
+        return Mathf.Max(ConfigBasic.Max + sum, 0);
+    }
+
+    private float GetModSum(ModType modType)
+    {
+        var v = 0f;
+        foreach (var mod in ModsTargetingSelf)
+        {
+            if (mod.ModType != modType) continue;
+            v += mod.Source.Value * mod.Value;
+        }
+        return v;
     }
 
     internal bool IsTaskComplete()
