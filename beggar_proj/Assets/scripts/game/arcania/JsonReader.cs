@@ -167,6 +167,8 @@ public class RuntimeUnit
 
     private int CalculateMax()
     {
+        // has no max from the get go
+        if (ConfigBasic.Max < 0) return -1;
         var sum = Mathf.FloorToInt(GetModSum(modType: ModType.MaxChange));
         return Mathf.Max(ConfigBasic.Max + sum, 0);
     }
@@ -213,7 +215,7 @@ public class RuntimeUnit
     public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
 
     public float TaskProgress { get; internal set; }
-    public bool IsMaxed => Value >= Max;
+    public bool IsMaxed => Value >= MaxForCeiling;
 
     public bool IsZero => Value == 0;
 }
