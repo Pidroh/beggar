@@ -25,6 +25,12 @@ public class JsonReader
         }
         for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
         {
+            if (arcaniaDatas.Mods[i].Target.id == "space") 
+            {
+                arcaniaDatas.SpaceMods.Add(arcaniaDatas.Mods[i]);
+                continue;
+            }
+            if (arcaniaDatas.Mods[i].Target.RuntimeUnit == null) Debug.Log($"Target not found {arcaniaDatas.Mods[i].Target.id}");
             arcaniaDatas.Mods[i].Target.RuntimeUnit.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
         }
 
@@ -103,12 +109,13 @@ public class JsonReader
             {
                 md.ModType = ModType.SpaceConsumption;
             }
-            else {
+            else
+            {
                 var targetId = splittedValues[splittedValues.Length - 2];
                 md.Target = arcaniaUnits.GetOrCreateIdPointer(targetId);
                 md.ModType = last == "max" ? ModType.MaxChange : ModType.RateChange;
             }
-            
+
             arcaniaUnits.Mods.Add(md);
 
         }
@@ -126,7 +133,7 @@ public class JsonReader
         foreach (var pair in item)
         {
             if (pair.Key == "name") bu.name = pair.Value;
-            if (pair.Key == "mod") ReadMods(owner:ru, dataJsonMod:pair.Value, arcaniaUnits);
+            if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
         }
         bu.name = bu.name == null ? char.ToUpper(id[0]) + id.Substring(1) : bu.name;
@@ -134,7 +141,7 @@ public class JsonReader
         return bu;
     }
 
-    
+
 }
 
 public class ConfigBasic

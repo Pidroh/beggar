@@ -5,8 +5,10 @@ public class ArcaniaUnits
 {
     public Dictionary<UnitType, List<RuntimeUnit>> datas = new();
     public Dictionary<string, IDPointer> IdMapper = new();
+   
 
     public List<ModData> Mods { get; internal set; } = new();
+    public List<ModData> SpaceMods { get; internal set; } = new();
 
     internal IDPointer GetOrCreateIdPointer(string key)
     {
