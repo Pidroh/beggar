@@ -96,12 +96,19 @@ public class JsonReader
             var value = pair.Value.AsFloat;
             var splittedValues = key.Split('.');
             var last = splittedValues[splittedValues.Length - 1];
-            var targetId = splittedValues[splittedValues.Length - 2];
             var md = new ModData();
             md.Source = owner;
-            md.Target = arcaniaUnits.GetOrCreateIdPointer(targetId);
-            md.ModType = last == "max" ? ModType.MaxChange : ModType.RateChange;
             md.Value = value;
+            if (last == "space")
+            {
+                md.ModType = ModType.SpaceConsumption;
+            }
+            else {
+                var targetId = splittedValues[splittedValues.Length - 2];
+                md.Target = arcaniaUnits.GetOrCreateIdPointer(targetId);
+                md.ModType = last == "max" ? ModType.MaxChange : ModType.RateChange;
+            }
+            
             arcaniaUnits.Mods.Add(md);
 
         }
@@ -145,7 +152,8 @@ public enum UnitType
 
 public enum ModType
 {
-    MaxChange, RateChange
+    MaxChange, RateChange,
+    SpaceConsumption
 }
 
 public class ModData
