@@ -1,3 +1,4 @@
+using arcania;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -119,6 +120,7 @@ public class JsonReader
         {
             if (pair.Key == "name") bu.name = pair.Value;
             if (pair.Key == "mod") ReadMods(owner:ru, dataJsonMod:pair.Value, arcaniaUnits);
+            if (pair.Key == "require") ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
         }
         bu.name = bu.name == null ? char.ToUpper(id[0]) + id.Substring(1) : bu.name;
         ru.ConfigBasic = bu;
