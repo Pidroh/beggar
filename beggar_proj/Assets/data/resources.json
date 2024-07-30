@@ -276,7 +276,7 @@
                     "foraging": 3
                 },
                 "mod": {
-                    "rest.mod.energy" : 0.25,
+                    "rest.effect.energy" : 0.25,
                     "energy.max": 1,
                     "space": 1
                 }

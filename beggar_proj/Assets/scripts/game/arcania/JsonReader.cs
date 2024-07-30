@@ -10,6 +10,7 @@ public class JsonReader
     public static void ReadJson(string json, ArcaniaUnits arcaniaDatas)
     {
         var parentNode = SimpleJSON.JSON.Parse(json);
+        int currentModAmount = arcaniaDatas.Mods.Count;
         if (parentNode.IsArray)
         {
             foreach (var c in parentNode.Children)
@@ -21,7 +22,10 @@ public class JsonReader
         {
             ReadArrayOwner(arcaniaDatas, parentNode);
         }
-
+        for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
+        {
+            arcaniaDatas.Mods[i].Source.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
+        }
 
     }
 
@@ -90,9 +94,12 @@ public class JsonReader
             var key = pair.Key;
             var value = pair.Value.AsFloat;
             var splittedValues = key.Split('.');
-            continue doing splitted values here... focus just on max for now (splitted values size is 2?)
+            var last = splittedValues[splittedValues.Length - 1];
+            var targetId = splittedValues[splittedValues.Length - 2];
             var md = new ModData();
             md.Source = owner;
+            md.Target = arcaniaUnits.GetOrCreateIdPointer(targetId);
+            md.ModType = last == "max" ? ModType.MaxChange : ModType.RateChange;
             md.Value = value;
             arcaniaUnits.Mods.Add(md);
 
@@ -152,6 +159,7 @@ public class RuntimeUnit
 {
     public ConfigBasic ConfigBasic;
     public ConfigTask ConfigTask;
+    public List<ModData> ModsTargetingSelf = new();
 
     public string Name => ConfigBasic.name;
 
@@ -182,6 +190,11 @@ public class RuntimeUnit
             return ValueToReachMax >= valueChange;
         }
         return true;
+    }
+
+    internal void RegisterModTargetingSelf(ModData modData)
+    {
+        ModsTargetingSelf.Add(modData);
     }
 
     public int Value { get; internal set; } = 0;
