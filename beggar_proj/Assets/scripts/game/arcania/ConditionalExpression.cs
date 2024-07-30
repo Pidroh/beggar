@@ -119,8 +119,19 @@ namespace arcania
                 else if (Regex.IsMatch(token, @"\w+"))
                 {
                     var variable = token;
-                    var op = operatorMap[tokens[++i]];
-                    var value = int.Parse(tokens[++i]);
+                    ComparisonOperator op;
+                    int value;
+
+                    if (i + 1 < tokens.Count && operatorMap.ContainsKey(tokens[i + 1]))
+                    {
+                        op = operatorMap[tokens[++i]];
+                        value = int.Parse(tokens[++i]);
+                    }
+                    else
+                    {
+                        op = ComparisonOperator.GreaterThan;
+                        value = 0;
+                    }
 
                     stack.Push(new Condition { Pointer = arcaniaUnits.GetOrCreateIdPointer(variable), Operator = op, Value = value });
                 }

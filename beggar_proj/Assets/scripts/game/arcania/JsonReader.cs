@@ -140,7 +140,7 @@ public class ConfigBasic
 
 public enum UnitType
 {
-    RESOURCE, TASK,
+    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE
 }
 
 public enum ModType
