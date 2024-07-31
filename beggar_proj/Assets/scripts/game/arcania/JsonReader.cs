@@ -25,7 +25,7 @@ public class JsonReader
         }
         for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
         {
-            if (arcaniaDatas.Mods[i].Target.id == "space") 
+            if (arcaniaDatas.Mods[i].Target.id == "space")
             {
                 arcaniaDatas.SpaceMods.Add(arcaniaDatas.Mods[i]);
                 continue;
@@ -135,13 +135,30 @@ public class JsonReader
             if (pair.Key == "name") bu.name = pair.Value;
             if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
+            if (pair.Key == "tag") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), ArcaniaUnits);
+        }
+        foreach (var tag in ru.ConfigBasic.Tags)
+        {
+            tag.Tag.UnitsWithTag.Add(ru);
         }
         bu.name = bu.name == null ? char.ToUpper(id[0]) + id.Substring(1) : bu.name;
         ru.ConfigBasic = bu;
         return bu;
     }
 
-
+    private static void ReadTags(List<IDPointer> tags, string v, ArcaniaUnits data)
+    {
+        if (v.Contains(","))
+        {
+            var tagSs = v.Split(',');
+            foreach (var t in tagSs)
+            {
+                tags.Add(data.GetOrCreateIdPointerWithTag(t));
+            }
+            return;
+        }
+        tags.Add(data.GetOrCreateIdPointerWithTag(v));
+    }
 }
 
 public class ConfigBasic
@@ -152,6 +169,7 @@ public class ConfigBasic
     public string name;
 
     public ConditionalExpression Require { get; internal set; }
+    public List<IDPointer> Tags { get; } = new();
 }
 
 public enum UnitType
@@ -180,14 +198,27 @@ public class ResourceChange
     public int valueChange;
 }
 
+public class TagData 
+{
+    public string tagName;
+    public List<RuntimeUnit> UnitsWithTag = new();
+
+    public TagData(string tagName)
+    {
+        this.tagName = tagName;
+    }
+}
+
 public class IDPointer
 {
     public RuntimeUnit RuntimeUnit;
     public string id;
 
+    public TagData Tag { get; internal set; }
+
     internal float GetValue()
     {
-        if (RuntimeUnit != null) 
+        if (RuntimeUnit != null)
         {
             return RuntimeUnit.Value;
         }

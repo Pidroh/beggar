@@ -5,7 +5,7 @@ public class ArcaniaUnits
 {
     public Dictionary<UnitType, List<RuntimeUnit>> datas = new();
     public Dictionary<string, IDPointer> IdMapper = new();
-   
+
 
     public List<ModData> Mods { get; internal set; } = new();
     public List<ModData> SpaceMods { get; internal set; } = new();
@@ -22,5 +22,16 @@ public class ArcaniaUnits
         }
         return value;
     }
+
+    internal IDPointer GetOrCreateIdPointerWithTag(string id)
+    {
+        var pointer = GetOrCreateIdPointer(id);
+        if (pointer.Tag == null)
+        {
+            pointer.Tag = new TagData(id);
+        }
+        return pointer;
+    }
+
     //public List<BasicUnit> resources = new();
 }
