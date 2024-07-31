@@ -187,6 +187,13 @@ public class IDPointer
 
     internal float GetValue()
     {
-        
+        if (RuntimeUnit != null) 
+        {
+            return RuntimeUnit.Value;
+        }
+#if UNITY_EDITOR
+        Debug.Log($"ID Pointer {id} has no value!");
+#endif
+        return 0;
     }
 }
