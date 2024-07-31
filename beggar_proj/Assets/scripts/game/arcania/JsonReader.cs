@@ -30,6 +30,14 @@ public class JsonReader
                 arcaniaDatas.SpaceMods.Add(arcaniaDatas.Mods[i]);
                 continue;
             }
+            if (arcaniaDatas.Mods[i].Target.Tag != null)
+            {
+                foreach (var item in arcaniaDatas.Mods[i].Target.Tag.UnitsWithTag)
+                {
+                    item.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
+                }
+                return;
+            }
             if (arcaniaDatas.Mods[i].Target.RuntimeUnit == null) Debug.Log($"Target not found {arcaniaDatas.Mods[i].Target.id}");
             arcaniaDatas.Mods[i].Target.RuntimeUnit.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
         }
@@ -133,6 +141,7 @@ public class JsonReader
         string desc = item.GetValueOrDefault("desc", null);
         int max = item.GetValueOrDefault("max", -1);
         var bu = new ConfigBasic();
+        ru.ConfigBasic = bu;
         bu.Id = id;
         bu.Desc = desc;
         bu.Max = max;
@@ -152,7 +161,7 @@ public class JsonReader
             tag.Tag.UnitsWithTag.Add(ru);
         }
         bu.name = bu.name == null ? char.ToUpper(id[0]) + id.Substring(1) : bu.name;
-        ru.ConfigBasic = bu;
+        
         return bu;
     }
 
