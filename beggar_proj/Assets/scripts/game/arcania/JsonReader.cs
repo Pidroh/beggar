@@ -150,6 +150,8 @@ public class ConfigBasic
     public string Desc;
     public int Max;
     public string name;
+
+    public ConditionalExpression Require { get; internal set; }
 }
 
 public enum UnitType
@@ -182,4 +184,9 @@ public class IDPointer
 {
     public RuntimeUnit RuntimeUnit;
     public string id;
+
+    internal float GetValue()
+    {
+        
+    }
 }

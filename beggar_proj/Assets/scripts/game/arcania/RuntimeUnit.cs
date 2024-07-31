@@ -17,13 +17,26 @@ public class RuntimeUnit
 
     private bool CalculateVisible()
     {
-        RequireMet = RequireMet || MeetsCondition(ConfigBasic.Require);
+        RequireMet = RequireMet || MeetsCondition(ConfigBasic.Require.expression);
         return RequireMet;
     }
 
-    private bool MeetsCondition(ConditionalExpression expression)
+    private bool MeetsCondition(ConditionalExpressionData expression)
     {
-        
+        if (expression is Condition cond)
+        {
+            float value = cond.Pointer.GetValue();
+            return ConditionalExpression.Evaluate(value, cond.Value, cond.Operator);
+        }
+        else if(expression is LogicalExpression log) {
+            var left = MeetsCondition(log.Left);
+            if (left && log.Operator == ComparisonOperator.Or) return true;
+            if (!left && log.Operator == ComparisonOperator.And) return false;
+            return MeetsCondition(log.Right);
+        }
+        // force error
+        string s = null;
+        return s.Length == 0;
     }
 
     private int CalculateMax()

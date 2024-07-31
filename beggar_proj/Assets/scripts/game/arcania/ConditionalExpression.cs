@@ -17,9 +17,6 @@ namespace arcania
         Or
     }
 
-    public abstract class ConditionalExpressionData
-    {
-    }
 
     public class ConditionalExpression
     {
@@ -27,6 +24,31 @@ namespace arcania
         public string humanExpression;
         public ConditionalExpressionData expression;
 
+        internal static bool Evaluate(float value1, int value2, ComparisonOperator op)
+        {
+            switch (op)
+            {
+                case ComparisonOperator.GreaterThan:
+                    return value1 > value2;
+                case ComparisonOperator.GreaterThanOrEqual:
+                    return value1 >= value2;
+                case ComparisonOperator.LessThan:
+                    return value1 < value2;
+                case ComparisonOperator.LessThanOrEqual:
+                    return value1 <= value2;
+                case ComparisonOperator.Equal:
+                    return Math.Abs(value1 - value2) < float.Epsilon;
+                case ComparisonOperator.NotEqual:
+                    return Math.Abs(value1 - value2) >= float.Epsilon;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(op), op, null);
+            }
+        }
+    }
+
+
+    public abstract class ConditionalExpressionData
+    {
     }
 
     public class Condition : ConditionalExpressionData
