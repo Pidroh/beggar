@@ -102,23 +102,29 @@ public class JsonReader
             var value = pair.Value.AsFloat;
             var splittedValues = key.Split('.');
             var last = splittedValues[splittedValues.Length - 1];
-            var md = new ModData();
-            md.Source = owner;
-            md.Value = value;
+            ModType modType;
+            string targetId = null;
             if (last == "space")
             {
-                md.ModType = ModType.SpaceConsumption;
+                modType = ModType.SpaceConsumption;
             }
             else
             {
-                var targetId = splittedValues[splittedValues.Length - 2];
-                md.Target = arcaniaUnits.GetOrCreateIdPointer(targetId);
-                md.ModType = last == "max" ? ModType.MaxChange : ModType.RateChange;
+                targetId = splittedValues[splittedValues.Length - 2];
+                modType = last == "max" ? ModType.MaxChange : ModType.RateChange;
             }
-
-            arcaniaUnits.Mods.Add(md);
-
+            CreateMod(owner, arcaniaUnits, value, modType, targetId);
         }
+    }
+
+    private static void CreateMod(RuntimeUnit owner, ArcaniaUnits arcaniaUnits, float value, ModType modType, string targetId)
+    {
+        var md = new ModData();
+        md.Source = owner;
+        md.Value = value;
+        md.ModType = modType;
+        md.Target = targetId == null ? null : arcaniaUnits.GetOrCreateIdPointer(targetId);
+        arcaniaUnits.Mods.Add(md);
     }
 
     private static ConfigBasic ReadBasicUnit(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
@@ -136,6 +142,10 @@ public class JsonReader
             if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
             if (pair.Key == "tag") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), arcaniaUnits);
+            if (pair.Key == "lock") 
+            {
+                CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.ToString());
+            }
         }
         foreach (var tag in ru.ConfigBasic.Tags)
         {
@@ -179,8 +189,10 @@ public enum UnitType
 
 public enum ModType
 {
-    MaxChange, RateChange,
-    SpaceConsumption
+    MaxChange, 
+    RateChange,
+    SpaceConsumption,
+    Lock
 }
 
 public class ModData
