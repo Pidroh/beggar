@@ -60,6 +60,7 @@ public class MainGameControl : MonoBehaviour
         foreach (var tcu in TaskControls)
         {
             tcu.ManualUpdate();
+            tcu.bwe.SetActive(tcu.Data.Visible);
             if (tcu.TaskClicked) 
             {
                 arcaniaModel.TryStartAction(tcu.Data);

@@ -7,6 +7,7 @@ using UnityEngine;
 public class LayoutChild
 {
     public RectTransform RectTransform;
+    internal bool Visible { get => RectTransform.gameObject.activeSelf; set => RectTransform.gameObject.SetActive(value); }
 }
 
 
@@ -16,7 +17,7 @@ public struct Vector2Null
     public float? Y;
 }
 
-public class TripleTextView 
+public class TripleTextView
 {
     public LayoutChild LayoutChild;
     public RectTransform Parent => LayoutChild.RectTransform;
@@ -169,7 +170,10 @@ public class ButtonWithExpandable
         );
     }
 
-
+    internal void SetActive(bool visible)
+    {
+        this.LayoutChild.Visible = visible;
+    }
 }
 
 
