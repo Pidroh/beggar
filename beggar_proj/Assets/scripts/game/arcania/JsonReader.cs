@@ -135,7 +135,7 @@ public class JsonReader
             if (pair.Key == "name") bu.name = pair.Value;
             if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
-            if (pair.Key == "tag") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), ArcaniaUnits);
+            if (pair.Key == "tag") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), arcaniaUnits);
         }
         foreach (var tag in ru.ConfigBasic.Tags)
         {
@@ -198,7 +198,7 @@ public class ResourceChange
     public int valueChange;
 }
 
-public class TagData 
+public class TagData
 {
     public string tagName;
     public List<RuntimeUnit> UnitsWithTag = new();
@@ -221,6 +221,15 @@ public class IDPointer
         if (RuntimeUnit != null)
         {
             return RuntimeUnit.Value;
+        }
+        if (Tag != null)
+        {
+            // tags are either 1 (has tag) or 0 (no tag)
+            foreach (var child in Tag.UnitsWithTag)
+            {
+                if (child.Value > 0) return 1;
+            }
+            return 0;
         }
 #if UNITY_EDITOR
         Debug.Log($"ID Pointer {id} has no value!");
