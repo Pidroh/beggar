@@ -63,7 +63,7 @@ public class MainGameControl : MonoBehaviour
             tcu.bwe.SetActive(tcu.Data.Visible);
             if (tcu.TaskClicked) 
             {
-                arcaniaModel.TryStartAction(tcu.Data);
+                arcaniaModel.Runner.TryStartAction(tcu.Data);
             }
         }
     }

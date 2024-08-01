@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class ConfigSkill
 {
     public int LearningDifficultyLevel;
 }
 
-public class SkillRuntime 
+public class SkillRuntime
 {
     public int xp;
     public ConfigSkill skillData;
     public RuntimeUnit RuntimeUnit;
+    private bool _acquired;
 
     public SkillRuntime(RuntimeUnit ru)
     {
@@ -19,43 +19,36 @@ public class SkillRuntime
         this.RuntimeUnit.Skill = this;
         skillData = new ConfigSkill();
     }
+
+    public bool Acquired => _acquired;
+
+    internal void Acquire()
+    {
+        _acquired = true;
+    }
 }
 
 public class ArcaniaModel
 {
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
-    public List<RuntimeUnit> RunningTasks = new();
+    public ArcaniaModelActionRunner Runner;
 
-    internal bool TryStartAction(RuntimeUnit data)
+    public ArcaniaModel()
     {
-        if (!CanAfford(data.ConfigTask.Cost)) return false;
-        if (data.IsMaxed) return false;
-        ApplyResourceChanges(data.ConfigTask.Cost);
-        if (data.IsInstant()) CompleteTask(data);
-        if (data.IsInstant()) return true;
-        bool alreadyRunning = RunningTasks.Contains(data);
-        RunningTasks.Clear();
-        if (alreadyRunning) return false;
-        // start running if not instant and not already started
-        RunningTasks.Add(data);
-
-        return true;
-
-
+        Runner = new(this);
     }
 
-    private void CompleteTask(RuntimeUnit data)
+    public bool CanAcquireSkill(RuntimeUnit ru)
     {
-        ApplyResourceChanges(data.ConfigTask.Result);
-        RunningTasks.Remove(data);
-        if (data.ConfigTask.Perpetual)
-        {
-            data.TaskProgress = 0;
-            TryStartAction(data);
-        }
+        return CanAfford(ru.ConfigTask.Cost) && !ru.Skill.Acquired;
     }
 
-    private void ApplyResourceChanges(List<ResourceChange> changes)
+    public void AcquireSkill(RuntimeUnit ru) {
+        ApplyResourceChanges(ru.ConfigTask.Cost);
+        ru.Skill.Acquire();
+    }
+
+    public void ApplyResourceChanges(List<ResourceChange> changes)
     {
         foreach (var c in changes)
         {
@@ -71,35 +64,21 @@ public class ArcaniaModel
 
     public void ManualUpdate(float dt)
     {
-        using var _1 = ListPool<RuntimeUnit>.Get(out var list);
-        list.AddRange(RunningTasks);
-        foreach (var run in list)
+        Runner.ManualUpdate(dt);
+    }
+
+    public class ArcaniaModelSubmodule
+    {
+        internal ArcaniaModel _model;
+
+        public ArcaniaModelSubmodule(ArcaniaModel arcaniaModel)
         {
-
-            var taskContinue = CanAfford(run.ConfigTask.Run);
-            taskContinue = taskContinue && (DoChangesMakeADifference(run.ConfigTask.Result) || DoChangesMakeADifference(run.ConfigTask.Effect));
-            if (!taskContinue)
-            {
-                RunningTasks.Remove(run);
-                continue;
-            }
-
-            float beforeProg = run.TaskProgress;
-            run.TaskProgress += dt;
-            // reached a new second in progress
-            if (Mathf.FloorToInt(run.TaskProgress) > Mathf.FloorToInt(beforeProg))
-            {
-                ApplyResourceChanges(run.ConfigTask.Run);
-                ApplyResourceChanges(run.ConfigTask.Effect);
-            }
-            if (run.IsTaskComplete())
-            {
-                CompleteTask(run);
-            }
+            _model = arcaniaModel;
         }
     }
 
-    private bool CanAfford(List<ResourceChange> changes)
+
+    public bool CanAfford(List<ResourceChange> changes)
     {
         foreach (var rc in changes)
         {
@@ -110,7 +89,7 @@ public class ArcaniaModel
         return true;
     }
 
-    private bool DoChangesMakeADifference(List<ResourceChange> changes)
+    public bool DoChangesMakeADifference(List<ResourceChange> changes)
     {
         foreach (var rc in changes)
         {
