@@ -6,6 +6,7 @@ public class RuntimeUnit
 {
     public ConfigBasic ConfigBasic;
     public ConfigTask ConfigTask;
+    public SkillRuntime Skill;
     public List<ModRuntime> ModsTargetingSelf = new();
     public bool RequireMet = false;
 

@@ -59,6 +59,11 @@ public class JsonReader
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
             }
+            if (type == UnitType.SKILL)
+            {
+                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.Skill = new SkillRuntime(ru);
+            }
 
             arcaniaUnits.datas[type].Add(ru);
             SimpleJSON.JSONNode id = item["id"];

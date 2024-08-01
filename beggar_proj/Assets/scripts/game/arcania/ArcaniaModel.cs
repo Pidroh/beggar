@@ -2,14 +2,23 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class SkillData
+public class ConfigSkill
 {
-    public ConfigBasic ConfigBasic;
+    public int LearningDifficultyLevel;
 }
 
 public class SkillRuntime 
 {
-    public SkillData skillData;
+    public int xp;
+    public ConfigSkill skillData;
+    public RuntimeUnit RuntimeUnit;
+
+    public SkillRuntime(RuntimeUnit ru)
+    {
+        this.RuntimeUnit = ru;
+        this.RuntimeUnit.Skill = this;
+        skillData = new ConfigSkill();
+    }
 }
 
 public class ArcaniaModel
