@@ -53,7 +53,7 @@ public class JsonReader
         foreach (var item in items.AsArray.Children)
         {
             var ru = new RuntimeUnit();
-            ReadBasicUnit(ru, item, arcaniaUnits);
+            ReadBasicUnit(ru, item, arcaniaUnits, type);
             arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
             if (type == UnitType.TASK)
             {
@@ -140,7 +140,7 @@ public class JsonReader
         arcaniaUnits.Mods.Add(md);
     }
 
-    private static ConfigBasic ReadBasicUnit(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
+    private static ConfigBasic ReadBasicUnit(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits, UnitType type)
     {
         string id = item["id"];
         string desc = item.GetValueOrDefault("desc", null);
@@ -150,6 +150,7 @@ public class JsonReader
         bu.Id = id;
         bu.Desc = desc;
         bu.Max = max;
+        bu.UnitType = type;
         foreach (var pair in item)
         {
             if (pair.Key == "name") bu.name = pair.Value;
@@ -194,6 +195,7 @@ public class ConfigBasic
 
     public ConditionalExpression Require { get; internal set; }
     public List<IDPointer> Tags { get; } = new();
+    public UnitType UnitType { get; internal set; }
 }
 
 public enum UnitType

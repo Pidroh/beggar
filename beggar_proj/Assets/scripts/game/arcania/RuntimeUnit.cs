@@ -33,7 +33,8 @@ public class RuntimeUnit
             float value = cond.Pointer.GetValue();
             return ConditionalExpression.Evaluate(value, cond.Value, cond.Operator);
         }
-        else if(expression is LogicalExpression log) {
+        else if (expression is LogicalExpression log)
+        {
             var left = MeetsCondition(log.Left);
             if (left && log.Operator == ComparisonOperator.Or) return true;
             if (!left && log.Operator == ComparisonOperator.And) return false;
@@ -65,6 +66,10 @@ public class RuntimeUnit
 
     internal bool IsTaskComplete()
     {
+        if (Skill != null)
+        {
+            return Skill.HasEnoughXPToLevelUp();
+        }
         if (ConfigTask.Duration.HasValue) return TaskProgress > ConfigTask.Duration.Value;
         return false;
     }

@@ -26,6 +26,21 @@ public class SkillRuntime
     {
         _acquired = true;
     }
+
+    internal bool HasEnoughXPToLevelUp()
+    {
+        return xp >= GetMaxXP();
+    }
+
+    private int GetMaxXP()
+    {
+        return Mathf.FloorToInt(50 * Mathf.Pow(1.35f, RuntimeUnit.Value + skillData.LearningDifficultyLevel));
+    }
+
+    internal void StudySkillTick()
+    {
+        xp += 1;
+    }
 }
 
 public class ArcaniaModel
