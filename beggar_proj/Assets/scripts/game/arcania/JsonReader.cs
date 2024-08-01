@@ -115,28 +115,47 @@ public class JsonReader
             var value = pair.Value.AsFloat;
             var splittedValues = key.Split('.');
             var last = splittedValues[splittedValues.Length - 1];
-            ModType modType;
-            string targetId = null;
+            ModType modType = ModType.Invalid;
+            string target = null;
+            string secondary = null;
             if (last == "space")
             {
                 modType = ModType.SpaceConsumption;
             }
             else
             {
-                targetId = splittedValues[splittedValues.Length - 2];
-                modType = last == "max" ? ModType.MaxChange : ModType.RateChange;
+                var oneBeforeLast = splittedValues[splittedValues.Length - 2];
+                
+                if (last == "max") modType = ModType.MaxChange;
+                if (last == "rate") modType = ModType.RateChange;
+                // if still undecided
+                if (modType == ModType.Invalid)
+                {
+                    if (oneBeforeLast == "effect") {
+                        target = last;
+                        modType = ModType.Effect;
+                        secondary = splittedValues[splittedValues.Length - 3];
+                    }
+                }
+                else 
+                {
+                    target = oneBeforeLast;
+                }
             }
-            CreateMod(owner, arcaniaUnits, value, modType, targetId);
+            CreateMod(owner, arcaniaUnits, value, modType, target, secondaryId: secondary);
         }
     }
 
-    private static void CreateMod(RuntimeUnit owner, ArcaniaUnits arcaniaUnits, float value, ModType modType, string targetId)
+    private static void CreateMod(RuntimeUnit owner, ArcaniaUnits arcaniaUnits, float value, ModType modType, string targetId, string secondaryId)
     {
-        var md = new ModRuntime();
-        md.Source = owner;
-        md.Value = value;
-        md.ModType = modType;
-        md.Target = targetId == null ? null : arcaniaUnits.GetOrCreateIdPointer(targetId);
+        var md = new ModRuntime
+        {
+            Source = owner,
+            Value = value,
+            ModType = modType,
+            Target = targetId == null ? null : arcaniaUnits.GetOrCreateIdPointer(targetId),
+            Intermediary = secondaryId == null ? null : arcaniaUnits.GetOrCreateIdPointer(secondaryId)
+        };
         arcaniaUnits.Mods.Add(md);
     }
 
@@ -159,7 +178,7 @@ public class JsonReader
             if (pair.Key == "tag") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), arcaniaUnits);
             if (pair.Key == "lock") 
             {
-                CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.ToString());
+                CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.ToString(), null);
             }
         }
         foreach (var tag in ru.ConfigBasic.Tags)
@@ -205,10 +224,12 @@ public enum UnitType
 
 public enum ModType
 {
+    Invalid,
     MaxChange, 
     RateChange,
     SpaceConsumption,
-    Lock
+    Lock,
+    Effect
 }
 
 public class ModRuntime
