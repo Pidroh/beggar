@@ -53,6 +53,11 @@ public class RuntimeUnit
         return Mathf.Max(ConfigBasic.Max + sum, 0);
     }
 
+    internal void ChangeValue(float valueChange)
+    {
+        _value = Mathf.Clamp(Value + valueChange, 0, MaxForCeiling);
+    }
+
     private float GetModSum(ModType modType)
     {
         var v = 0f;
@@ -72,6 +77,12 @@ public class RuntimeUnit
         }
         if (ConfigTask.Duration.HasValue) return TaskProgress > ConfigTask.Duration.Value;
         return false;
+    }
+
+    internal void ApplyRate()
+    {
+        var rate = this.GetModSum(ModType.RateChange);
+        ChangeValue(rate);
     }
 
     internal bool IsInstant() => !ConfigTask.Duration.HasValue;
@@ -95,8 +106,9 @@ public class RuntimeUnit
         ModsTargetingSelf.Add(modData);
     }
 
-    public int Value { get; internal set; } = 0;
+    public int Value => Mathf.FloorToInt(_value);
     public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
+    public float _value;
 
     public float TaskProgress { get; internal set; }
     public bool IsMaxed => Value >= MaxForCeiling;

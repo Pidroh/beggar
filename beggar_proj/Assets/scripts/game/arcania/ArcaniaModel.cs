@@ -47,6 +47,7 @@ public class ArcaniaModel
 {
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
     public ArcaniaModelActionRunner Runner;
+    float _oneSecondCounter;
 
     public ArcaniaModel()
     {
@@ -73,13 +74,24 @@ public class ArcaniaModel
 
     private void ChangeValue(RuntimeUnit runtimeUnit, int valueChange)
     {
-        var v = runtimeUnit.Value;
-        runtimeUnit.Value = Mathf.Clamp(v + valueChange, 0, runtimeUnit.MaxForCeiling);
+        runtimeUnit.ChangeValue(valueChange);
     }
 
     public void ManualUpdate(float dt)
     {
         Runner.ManualUpdate(dt);
+        _oneSecondCounter += dt;
+        while (_oneSecondCounter > 1f) 
+        {
+            _oneSecondCounter -= 1f;
+            foreach (var pair in arcaniaUnits.datas)
+            {
+                foreach (var item in pair.Value)
+                {
+                    item.ApplyRate();
+                }
+            }
+        }
     }
 
     public class ArcaniaModelSubmodule
