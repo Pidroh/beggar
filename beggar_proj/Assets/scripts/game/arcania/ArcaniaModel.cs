@@ -2,6 +2,16 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
+public class SkillData
+{
+    public ConfigBasic ConfigBasic;
+}
+
+public class SkillRuntime 
+{
+    public SkillData skillData;
+}
+
 public class ArcaniaModel
 {
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();

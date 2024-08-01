@@ -6,7 +6,7 @@ public class RuntimeUnit
 {
     public ConfigBasic ConfigBasic;
     public ConfigTask ConfigTask;
-    public List<ModData> ModsTargetingSelf = new();
+    public List<ModRuntime> ModsTargetingSelf = new();
     public bool RequireMet = false;
 
     public string Name => ConfigBasic.name;
@@ -84,7 +84,7 @@ public class RuntimeUnit
         return true;
     }
 
-    internal void RegisterModTargetingSelf(ModData modData)
+    internal void RegisterModTargetingSelf(ModRuntime modData)
     {
         ModsTargetingSelf.Add(modData);
     }
