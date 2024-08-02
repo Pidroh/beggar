@@ -102,6 +102,7 @@
                 "id": "thinking",
                 "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
                 "perpetual": true,
+                "require": "nutrition>=2",
                 "cost": {
                     "nutrition": 2
                 },
@@ -118,6 +119,7 @@
                 "desc": "",
                 "duration": 3,
                 "max": 3,
+                "require": "thoughts>=1",
                 "cost": {
                     "thoughts": 2
                 },
@@ -129,6 +131,7 @@
             {
                 "id": "Lament",
                 "desc": "To find solace in sorrow, one must first embrace the depths of their own despair.",
+                "require": "thoughts>=3",
                 "duration": 4,
                 "cost": {
                     "thoughts": 3
@@ -141,6 +144,7 @@
                 "id": "Shed tears",
                 "desc": "Let the sadness flow and transform",
                 "flavor": "Tears come from the heart and not from the brain",
+                "require": "introspection>0",
                 "duration": 5,
                 "cost": {
                     "thoughts": 3,

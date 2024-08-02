@@ -211,6 +211,7 @@ public class JsonReader
         bu.UnitType = type;
         foreach (var pair in item)
         {
+            if (pair.Key == "initial") ru.SetValue(pair.Value.AsInt);
             if (pair.Key == "name") bu.name = pair.Value;
             if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
