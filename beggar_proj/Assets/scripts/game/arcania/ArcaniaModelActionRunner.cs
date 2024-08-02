@@ -38,7 +38,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     internal void StartAction(RuntimeUnit data)
     {
-        _model.ApplyResourceChanges(data.ConfigTask.Cost);
+        _model.ApplyResourceChanges(data, ResourceChangeType.COST);
         if (data.IsInstant()) CompleteTask(data);
         if (data.IsInstant()) return;
         RunContinuously(data);
@@ -57,7 +57,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     private void CompleteTask(RuntimeUnit data)
     {
-        _model.ApplyResourceChanges(data.ConfigTask.Result);
+        _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
         RunningTasks.Remove(data);
         if (data.ConfigTask.Perpetual)
         {
@@ -92,8 +92,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             // reached a new second in progress
             if (Mathf.FloorToInt(run.TaskProgress) > Mathf.FloorToInt(beforeProg))
             {
-                _model.ApplyResourceChanges(run.ConfigTask.Run);
-                _model.ApplyResourceChanges(run.ConfigTask.Effect);
+                _model.ApplyResourceChanges(run, ResourceChangeType.RUN);
+                _model.ApplyResourceChanges(run, ResourceChangeType.EFFECT);
                 if (run.ConfigBasic.UnitType == UnitType.SKILL) 
                 {
                     run.Skill.StudySkillTick();

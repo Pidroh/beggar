@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ConfigSkill
@@ -60,15 +61,16 @@ public class ArcaniaModel
     }
 
     public void AcquireSkill(RuntimeUnit ru) {
-        ApplyResourceChanges(ru.ConfigTask.Cost);
+        ApplyResourceChanges(ru, ResourceChangeType.COST);
         ru.Skill.Acquire();
     }
 
-    public void ApplyResourceChanges(List<ResourceChange> changes)
+    internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
     {
+        var changes = parent.ConfigTask.GetResourceChangeList(changeType);
         foreach (var c in changes)
         {
-            ChangeValue(c.IdPointer.RuntimeUnit, c.valueChange);
+            c.IdPointer.RuntimeUnit.ChangeValueByResourceChange(parent, c.valueChange, changeType);
         }
     }
 
@@ -128,4 +130,6 @@ public class ArcaniaModel
         return false;
 
     }
+
+
 }

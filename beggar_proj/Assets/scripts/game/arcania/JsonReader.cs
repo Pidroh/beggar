@@ -118,6 +118,8 @@ public class JsonReader
             ModType modType = ModType.Invalid;
             string target = null;
             string secondary = null;
+            ResourceChangeType? changeType = null;
+            
             if (last == "space")
             {
                 modType = ModType.SpaceConsumption;
@@ -131,9 +133,11 @@ public class JsonReader
                 // if still undecided
                 if (modType == ModType.Invalid)
                 {
+                    // TODO make this be an dictionary between string and ResourceChangeType, so you can handle every case without hard coding
                     if (oneBeforeLast == "effect") {
                         target = last;
-                        modType = ModType.Effect;
+                        modType = ModType.ResourceChangeChanger;
+                        changeType = ResourceChangeType.EFFECT;
                         secondary = splittedValues[splittedValues.Length - 3];
                     }
                 }
@@ -142,11 +146,13 @@ public class JsonReader
                     target = oneBeforeLast;
                 }
             }
-            CreateMod(owner, arcaniaUnits, value, modType, target, secondaryId: secondary);
+            var mod = CreateMod(owner, arcaniaUnits, value, modType, target, secondaryId: secondary);
+            mod.ResourceChangeType = changeType;
+            
         }
     }
 
-    private static void CreateMod(RuntimeUnit owner, ArcaniaUnits arcaniaUnits, float value, ModType modType, string targetId, string secondaryId)
+    private static ModRuntime CreateMod(RuntimeUnit owner, ArcaniaUnits arcaniaUnits, float value, ModType modType, string targetId, string secondaryId)
     {
         var md = new ModRuntime
         {
@@ -157,6 +163,7 @@ public class JsonReader
             Intermediary = secondaryId == null ? null : arcaniaUnits.GetOrCreateIdPointer(secondaryId)
         };
         arcaniaUnits.Mods.Add(md);
+        return md;
     }
 
     private static ConfigBasic ReadBasicUnit(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits, UnitType type)
@@ -229,7 +236,7 @@ public enum ModType
     RateChange,
     SpaceConsumption,
     Lock,
-    Effect
+    ResourceChangeChanger
 }
 
 public class ModRuntime
@@ -239,6 +246,8 @@ public class ModRuntime
     public RuntimeUnit Source;
     public IDPointer Intermediary;
     public IDPointer Target;
+
+    public ResourceChangeType? ResourceChangeType { get; internal set; }
 }
 
 public class ResourceChange

@@ -58,6 +58,25 @@ public class RuntimeUnit
         _value = Mathf.Clamp(Value + valueChange, 0, MaxForCeiling);
     }
 
+    internal void ChangeValueByResourceChange(RuntimeUnit parent, int valueChange, ResourceChangeType changeType)
+    {
+        GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
+    }
+
+    public float GetModSumWithIntermediaryCheck(RuntimeUnit intermediary, ModType modType, ResourceChangeType changeType)
+    {
+        var v = 0f;
+        foreach (var mod in ModsTargetingSelf)
+        {
+            if (mod.ModType != modType) continue;
+            if (mod.ResourceChangeType != changeType) continue;
+            if (mod.Intermediary == null) Debug.LogError("There should never be a resource change type mod without intermediary");
+            if (mod.Intermediary.RuntimeUnit != intermediary) continue;
+            v += mod.Source.Value * mod.Value;
+        }
+        return v;
+    }
+
     private float GetModSum(ModType modType)
     {
         var v = 0f;
