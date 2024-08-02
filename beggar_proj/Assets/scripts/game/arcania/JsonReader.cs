@@ -66,6 +66,10 @@ public class JsonReader
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
             }
+            if (type == UnitType.CLASS)
+            {
+                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+            }
             if (type == UnitType.SKILL)
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
@@ -89,7 +93,7 @@ public class JsonReader
                 else 
                 {
                     // any furniture which is NOT repeat and does not have an explicit max has a default value of 1
-                    // this is different from tasks, which have a default value of 
+                    // this is different from tasks, which have a default value of -1 (no max)
                     if (!ru.HasMax) ru.ConfigBasic.Max = 1;
                 }
             }

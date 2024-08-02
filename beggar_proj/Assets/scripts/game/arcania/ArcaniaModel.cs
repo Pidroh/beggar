@@ -65,7 +65,7 @@ public class ArcaniaModel
         Runner = new(this);
     }
 
-
+    
 
     public bool CanAcquireSkill(RuntimeUnit ru)
     {
@@ -86,7 +86,7 @@ public class ArcaniaModel
         }
     }
 
-    private void ChangeValue(RuntimeUnit runtimeUnit, int valueChange)
+    public void ChangeValue(RuntimeUnit runtimeUnit, int valueChange)
     {
         runtimeUnit.ChangeValue(valueChange);
     }
