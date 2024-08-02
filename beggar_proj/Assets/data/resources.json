@@ -10,11 +10,13 @@
             {
                 "id": "supplication",
                 "max": 5,
+                "initial": 5,
                 "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
             },
             {
                 "id": "energy",
                 "desc": "The inner strength your character consumes to perform actions.",
+                "initial": 5,
                 "max": 5
             },
             {
@@ -65,7 +67,8 @@
                 "desc": "You take what you get.",
                 "locked": false,
                 "cost":{
-                    "supplication": 1
+                    "supplication": 1,
+                    "energy": 1
                 },
                 "result":{
                     "breadcrumbs": 1
@@ -75,6 +78,7 @@
                 "id": "rest",
                 "name": "Rest",
                 "desc": "Sit down and close your eyes",
+                "require": "energy<=1",
                 "perpetual": true,
                 "effect": {
                     "energy": 1,
@@ -85,6 +89,7 @@
                 "id": "pleafocus",
                 "name": "Focus Plea",
                 "desc": "Centering thoughts and intentions to prepare for begging",
+                "require": "supplication<1",
                 "perpetual": true,
                 "run": {
                     "focus": 1
