@@ -68,7 +68,8 @@ public class RuntimeUnit
 
     internal void ChangeValueByResourceChange(RuntimeUnit parent, int valueChange, ResourceChangeType changeType)
     {
-        GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
+        var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
+        ChangeValue(valueChange + modV);
     }
 
     public float GetModSumWithIntermediaryCheck(RuntimeUnit intermediary, ModType modType, ResourceChangeType changeType)
