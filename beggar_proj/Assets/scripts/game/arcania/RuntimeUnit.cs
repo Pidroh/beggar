@@ -19,7 +19,7 @@ public class RuntimeUnit
     private bool CalculateVisible()
     {
         // only gets checked when require has never been met before
-        RequireMet = RequireMet || MeetsCondition(ConfigBasic.Require.expression);
+        RequireMet = RequireMet || MeetsCondition(ConfigBasic.Require?.expression);
         if (!RequireMet) return false;
         // if there is a lock mod active, it's invisible
         if (this.GetModSum(ModType.Lock) > 0) return false;
@@ -30,6 +30,7 @@ public class RuntimeUnit
 
     private bool MeetsCondition(ConditionalExpressionData expression)
     {
+        if (expression == null) return true;
         if (expression is Condition cond)
         {
             float value = cond.Pointer.GetValue();

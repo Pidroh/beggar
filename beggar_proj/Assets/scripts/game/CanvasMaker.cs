@@ -256,6 +256,8 @@ public class CanvasMaker
         contentRT.anchoredPosition = new Vector2(0, 0);
         contentRT.sizeDelta = new Vector2(0, 0);
 
+        lp.ContentTransformOverridingSelfChildTransform = contentRT;
+
         scrollRect.content = contentRT;
 
         // Add Vertical ScrollBar

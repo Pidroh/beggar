@@ -9,6 +9,8 @@ public class LayoutParent
     public List<LayoutParent> ChildrenLayoutParents = new();
     public bool[] FitSelfSizeToChildren = new bool[] { false, false };
     public LayoutType TypeLayout = LayoutParent.LayoutType.VERTICAL;
+    public RectTransform ContentTransformOverridingSelfChildTransform;
+    public RectTransform TransformParentOfChildren => ContentTransformOverridingSelfChildTransform == null ? SelfChild.RectTransform : ContentTransformOverridingSelfChildTransform;
 
     public LayoutParent(RectTransform rT)
     {
@@ -21,7 +23,7 @@ public class LayoutParent
     public void ManualUpdate()
     {
         // Get the RectTransform of the parent
-        RectTransform parentRectTransform = SelfChild.RectTransform;
+        RectTransform parentRectTransform = TransformParentOfChildren;
         // Initialize offset to position the children
         float offset = 0;
 
@@ -105,7 +107,7 @@ public class LayoutParent
     internal void AddLayoutChildAndParentIt(LayoutChild layoutChild)
     {
         Children.Add(layoutChild);
-        layoutChild.RectTransform.SetParent(SelfChild.RectTransform);
+        layoutChild.RectTransform.SetParent(this.TransformParentOfChildren);
     }
 
     public enum LayoutType

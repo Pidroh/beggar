@@ -99,8 +99,6 @@ public class JsonReader
             }
 
             arcaniaUnits.datas[type].Add(ru);
-            SimpleJSON.JSONNode id = item["id"];
-            Debug.Log(id);
         }
     }
 
@@ -216,6 +214,7 @@ public class JsonReader
             if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
             if (pair.Key == "tag") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), arcaniaUnits);
+            if (pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), arcaniaUnits);
             if (pair.Key == "lock") 
             {
                 CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.ToString(), null);
@@ -232,6 +231,7 @@ public class JsonReader
 
     private static void ReadTags(List<IDPointer> tags, string v, ArcaniaUnits data)
     {
+        // handler for multiple tags in the string
         if (v.Contains(","))
         {
             var tagSs = v.Split(',');
@@ -239,9 +239,12 @@ public class JsonReader
             {
                 tags.Add(data.GetOrCreateIdPointerWithTag(t));
             }
-            return;
         }
-        tags.Add(data.GetOrCreateIdPointerWithTag(v));
+        else {
+            // if no commas, that means it's a single tag that can be added directly
+            tags.Add(data.GetOrCreateIdPointerWithTag(v));
+        }
+        
     }
 }
 
