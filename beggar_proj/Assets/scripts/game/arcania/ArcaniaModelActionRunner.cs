@@ -19,6 +19,17 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
         return true;
     }
 
+    public void ChangeHouse(RuntimeUnit ru) 
+    {
+        var houses = _model.arcaniaUnits.datas[UnitType.HOUSE];
+        // unequip all houses first
+        foreach (var f in houses)
+        {
+            f.SetValue(0);
+        }
+        ru.SetValue(1);
+    }
+
     private int CalculateConsumedSpace()
     {
         var space = 0;

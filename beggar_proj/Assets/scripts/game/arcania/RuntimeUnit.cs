@@ -26,6 +26,8 @@ public class RuntimeUnit
         return true;
     }
 
+    
+
     private bool MeetsCondition(ConditionalExpressionData expression)
     {
         if (expression is Condition cond)
@@ -55,7 +57,12 @@ public class RuntimeUnit
 
     internal void ChangeValue(float valueChange)
     {
-        _value = Mathf.Clamp(Value + valueChange, 0, MaxForCeiling);
+        _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
+    }
+
+    internal void SetValue(int v)
+    {
+        ChangeValue(-_value);
     }
 
     internal void ChangeValueByResourceChange(RuntimeUnit parent, int valueChange, ResourceChangeType changeType)
