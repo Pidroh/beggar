@@ -238,7 +238,7 @@ namespace SimpleJSON
             return false;
         }
 
-        public virtual JSONNode GetValueOrDefault(string aKey, JSONNode aDefault)
+        public virtual JSONNode GetValueOrDefault(string aKey)
         {
             return aDefault;
         }

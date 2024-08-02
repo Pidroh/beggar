@@ -12,6 +12,11 @@ public class ConfigHouse
     public int AvailableSpace;
 }
 
+public class ConfigFurniture
+{
+    public int SpaceConsumed;
+}
+
 public class SkillRuntime
 {
     public int xp;

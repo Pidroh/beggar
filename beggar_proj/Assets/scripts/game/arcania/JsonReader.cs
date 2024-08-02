@@ -32,6 +32,10 @@ public class JsonReader
                 mod.Source.ConfigHouse.AvailableSpace = Mathf.FloorToInt(mod.Value);
                 continue;
             }
+            if (mod.ModType == ModType.SpaceConsumption) 
+            {
+                mod.Source.FurnitureData.SpaceConsumption = Mathf.FloorToInt(mod.Value);
+            }
             if (mod.Target.Tag != null)
             {
                 foreach (var item in mod.Target.Tag.UnitsWithTag)
@@ -70,6 +74,23 @@ public class JsonReader
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
                 ru.ConfigHouse = new ConfigHouse();
+            }
+            if (type == UnitType.FURNITURE)
+            {
+                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.ConfigFurniture = new ConfigFurniture();
+                var repeat = item.GetValueOrDefault("repeat", null);
+                // if has repeat, then having no max is fine
+                if (repeat != null && repeat.AsBool)
+                {
+                    ru.ConfigBasic.Max = -1;
+                }
+                else 
+                {
+                    // any furniture which is NOT repeat and does not have an explicit max has a default value of 1
+                    // this is different from tasks, which have a default value of 
+                    if (!ru.HasMax) ru.ConfigBasic.Max = 1;
+                }
             }
 
             arcaniaUnits.datas[type].Add(ru);

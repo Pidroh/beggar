@@ -133,4 +133,8 @@ public class RuntimeUnit
     public bool IsMaxed => Value >= MaxForCeiling;
 
     public bool IsZero => Value == 0;
+
+    public ConfigHouse ConfigHouse { get; internal set; }
+    public ConfigFurniture ConfigFurniture { get; internal set; }
+    public bool HasMax => CalculateMax() < 0;
 }
