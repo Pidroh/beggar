@@ -34,7 +34,8 @@ public class JsonReader
             }
             if (mod.ModType == ModType.SpaceConsumption) 
             {
-                mod.Source.FurnitureData.SpaceConsumption = Mathf.FloorToInt(mod.Value);
+                mod.Source.ConfigFurniture.SpaceConsumed = Mathf.FloorToInt(mod.Value);
+                continue;
             }
             if (mod.Target.Tag != null)
             {

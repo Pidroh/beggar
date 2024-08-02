@@ -65,6 +65,8 @@ public class ArcaniaModel
         Runner = new(this);
     }
 
+
+
     public bool CanAcquireSkill(RuntimeUnit ru)
     {
         return CanAfford(ru.ConfigTask.Cost) && !ru.Skill.Acquired;

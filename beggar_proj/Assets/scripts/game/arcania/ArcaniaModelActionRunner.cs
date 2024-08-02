@@ -3,6 +3,35 @@ using UnityEngine;
 using UnityEngine.Pool;
 using static ArcaniaModel;
 
+public class ArcaniaModelHousing : ArcaniaModelSubmodule
+{
+
+    public ArcaniaModelHousing(ArcaniaModel arcaniaModel) : base(arcaniaModel)
+    {
+    }
+
+    public bool CanChangeHouse(RuntimeUnit ru)
+    {
+        // already in the house, so cannot change to it
+        if (ru.Value != 0) return false;
+        if (ru.ConfigHouse.AvailableSpace < CalculateConsumedSpace()) return false;
+        if (!_model.CanAfford(ru.ConfigTask.Cost)) return false;
+        return true;
+    }
+
+    private int CalculateConsumedSpace()
+    {
+        var space = 0;
+        var furnitures = _model.arcaniaUnits.datas[UnitType.FURNITURE];
+        foreach (var f in furnitures)
+        {
+            space += f.ConfigFurniture.SpaceConsumed * f.Value;
+        }
+        return space;
+    }
+}
+
+
 public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 {
 
