@@ -10,7 +10,7 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
     {
     }
 
-    public bool CanAcquireFurniture(RuntimeUnit ru) 
+    public bool CanAcquireFurniture(RuntimeUnit ru)
     {
         if (ru.IsMaxed) return false;
         if (!_model.CanAfford(ru.ConfigTask.Cost)) return false;
@@ -43,7 +43,7 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
         return true;
     }
 
-    public void ChangeHouse(RuntimeUnit ru) 
+    public void ChangeHouse(RuntimeUnit ru)
     {
         var houses = _model.arcaniaUnits.datas[UnitType.HOUSE];
         // unequip all houses first
@@ -76,17 +76,18 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     {
     }
 
-    public bool CanStudySkill(RuntimeUnit data) 
+    public bool CanStudySkill(RuntimeUnit data)
     {
         // skill only needs to pay the cost when acquiring it
         return !data.IsMaxed && _model.CanAfford(data.ConfigTask.Run);
     }
 
-    public bool CanStartAction(RuntimeUnit data) 
+    public bool CanStartAction(RuntimeUnit data)
     {
         // once you refactor this so that you don't need to pay the cost every time (only when starting for 'the first time')
         // make CanStudySkill also use this
-        if (!_model.CanAfford(data.ConfigTask.Cost)) return false;
+        if (!data.IsTaskHalfWay) if (!_model.CanAfford(data.ConfigTask.Cost)) return false;
+
         if (data.IsMaxed) return false;
         if (data.IsInstant()) return true;
         return _model.CanAfford(data.ConfigTask.Run);
@@ -102,7 +103,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     internal void StartAction(RuntimeUnit data)
     {
-        _model.ApplyResourceChanges(data, ResourceChangeType.COST);
+        // only DONE or FRESH tasks need to pay the cost
+        if(!data.IsTaskHalfWay) _model.ApplyResourceChanges(data, ResourceChangeType.COST);
         if (data.IsInstant()) CompleteTask(data);
         if (data.IsInstant()) return;
         RunContinuously(data);
@@ -130,7 +132,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         }
     }
 
-    public void ManualUpdate(float dt) {
+    public void ManualUpdate(float dt)
+    {
         using var _1 = ListPool<RuntimeUnit>.Get(out var list);
         list.AddRange(RunningTasks);
         foreach (var run in list)
@@ -140,11 +143,11 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             {
                 // even if result and effect are redudant, skills still run to get XP, so nothing to do here
             }
-            else 
+            else
             {
                 taskContinue = taskContinue && (_model.DoChangesMakeADifference(run.ConfigTask.Result) || _model.DoChangesMakeADifference(run.ConfigTask.Effect));
             }
-            
+
             if (!taskContinue)
             {
                 RunningTasks.Remove(run);
@@ -158,7 +161,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             {
                 _model.ApplyResourceChanges(run, ResourceChangeType.RUN);
                 _model.ApplyResourceChanges(run, ResourceChangeType.EFFECT);
-                if (run.ConfigBasic.UnitType == UnitType.SKILL) 
+                if (run.ConfigBasic.UnitType == UnitType.SKILL)
                 {
                     run.Skill.StudySkillTick();
                 }
