@@ -18,6 +18,12 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
         return true;
     }
 
+    public void AcquireFurniture(RuntimeUnit ru)
+    {
+        _model.ApplyResourceChanges(ru, ResourceChangeType.COST);
+        ru.ChangeValue(1);
+    }
+
     private int CalculateMaxSpace()
     {
         var space = 0f;
