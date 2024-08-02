@@ -59,11 +59,16 @@ public class MainGameControl : MonoBehaviour
         dynamicCanvas.ManualUpdate();
         foreach (var tcu in TaskControls)
         {
+            var data = tcu.Data;
             tcu.ManualUpdate();
-            tcu.bwe.SetActive(tcu.Data.Visible);
+            bool visible = data.Visible;
+            tcu.bwe.SetActive(visible);
+            if (!visible) continue;
+            tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+            
             if (tcu.TaskClicked) 
             {
-                arcaniaModel.Runner.StartAction(tcu.Data);
+                arcaniaModel.Runner.StartAction(data);
             }
         }
     }
