@@ -7,6 +7,11 @@ public class ConfigSkill
     public int LearningDifficultyLevel;
 }
 
+public class ConfigHouse 
+{
+    public int AvailableSpace;
+}
+
 public class SkillRuntime
 {
     public int xp;

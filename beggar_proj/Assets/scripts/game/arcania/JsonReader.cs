@@ -25,21 +25,23 @@ public class JsonReader
         }
         for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
         {
-            if (arcaniaDatas.Mods[i].Target.id == "space")
+            ModRuntime mod = arcaniaDatas.Mods[i];
+            if (mod.Target.id == "space")
             {
-                arcaniaDatas.SpaceMods.Add(arcaniaDatas.Mods[i]);
+                arcaniaDatas.SpaceMods.Add(mod);
+                mod.Source.ConfigHouse.AvailableSpace = Mathf.FloorToInt(mod.Value);
                 continue;
             }
-            if (arcaniaDatas.Mods[i].Target.Tag != null)
+            if (mod.Target.Tag != null)
             {
-                foreach (var item in arcaniaDatas.Mods[i].Target.Tag.UnitsWithTag)
+                foreach (var item in mod.Target.Tag.UnitsWithTag)
                 {
-                    item.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
+                    item.RegisterModTargetingSelf(mod);
                 }
                 return;
             }
-            if (arcaniaDatas.Mods[i].Target.RuntimeUnit == null) Debug.Log($"Target not found {arcaniaDatas.Mods[i].Target.id}");
-            arcaniaDatas.Mods[i].Target.RuntimeUnit.RegisterModTargetingSelf(arcaniaDatas.Mods[i]);
+            if (mod.Target.RuntimeUnit == null) Debug.Log($"Target not found {mod.Target.id}");
+            mod.Target.RuntimeUnit.RegisterModTargetingSelf(mod);
         }
 
     }
@@ -63,6 +65,11 @@ public class JsonReader
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
                 new SkillRuntime(ru);
+            }
+            if (type == UnitType.HOUSE)
+            {
+                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.ConfigHouse = new ConfigHouse();
             }
 
             arcaniaUnits.datas[type].Add(ru);
