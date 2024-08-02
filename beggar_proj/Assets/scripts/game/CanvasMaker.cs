@@ -215,6 +215,7 @@ public class CanvasMaker
     {
         LayoutParent lp = null;
         lp = CreateLayout();
+        lp.FitSelfSizeToChildren[1] = true;
         var childRT = lp.SelfChild.RectTransform;
         var childGO = lp.SelfChild.RectTransform.gameObject;
         childRT.anchorMin = new Vector2(0, 0);
