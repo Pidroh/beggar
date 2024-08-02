@@ -10,6 +10,24 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
     {
     }
 
+    public bool CanAcquireFurniture(RuntimeUnit ru) 
+    {
+        if (ru.IsMaxed) return false;
+        if (!_model.CanAfford(ru.ConfigTask.Cost)) return false;
+        if (CalculateMaxSpace() < ru.ConfigFurniture.SpaceConsumed + CalculateConsumedSpace()) return false;
+        return true;
+    }
+
+    private int CalculateMaxSpace()
+    {
+        var space = 0f;
+        foreach (var mod in _model.arcaniaUnits.SpaceMods)
+        {
+            space += mod.Source.Value * mod.Value;
+        }
+        return Mathf.CeilToInt(space);
+    }
+
     public bool CanChangeHouse(RuntimeUnit ru)
     {
         // already in the house, so cannot change to it
