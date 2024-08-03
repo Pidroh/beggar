@@ -413,8 +413,14 @@ MonoBehaviour:
   ButtonObjectRequest:
     MainColor: {r: 0.30980393, g: 0.45490196, b: 0.8392157, a: 1}
     SecondaryColor: {r: 0.99215686, g: 0.9764706, b: 0.8901961, a: 1}
+    MainSprite: {fileID: 0}
     secondarySprite: {fileID: 0}
     font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  CanvasRequest:
+    ScrollStyle:
+      ScrollBarBG: {r: 0.53900003, g: 0.53900003, b: 0.53900003, a: 0.43137255}
+      ScrollHandleColor: {r: 0.18310279, g: 0.2688598, b: 0.496, a: 1}
+      ScrollHandleColorFocused: {r: 0.24059528, g: 0.3532143, b: 0.645, a: 1}
 --- !u!4 &2118819688
 Transform:
   m_ObjectHideFlags: 0

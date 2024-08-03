@@ -13,14 +13,16 @@ public class MainGameControl : MonoBehaviour
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
+    public CanvasMaker.CreateCanvasRequest CanvasRequest;
     public ArcaniaModel arcaniaModel = new();
+    
 
     // Start is called before the first frame update
     void Start()
     {
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
-        dynamicCanvas = CanvasMaker.CreateCanvas(1);
+        dynamicCanvas = CanvasMaker.CreateCanvas(1, CanvasRequest);
         foreach (var item in arcaniaDatas.datas[UnitType.TASK])
         {
             var layout = CanvasMaker.CreateLayout().SetFitHeight(true);

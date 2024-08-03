@@ -74,7 +74,19 @@ public class CanvasMaker
         public Sprite MainSprite;
         public Sprite secondarySprite;
         public TMPro.TMP_FontAsset font;
-        
+    }
+
+    [Serializable]
+    public struct CreateCanvasRequest
+    {
+        public ScrollStyle ScrollStyle;
+    }
+
+    [Serializable]
+    public struct ScrollStyle {
+        public Color ScrollBarBG;
+        public Color ScrollHandleColor;
+        public Color ScrollHandleColorFocused;
     }
 
     private static GameObject CreateButtonObject(Color c, Sprite sprite = null)
@@ -189,7 +201,7 @@ public class CanvasMaker
         return textUiUnit;
     }
 
-    public static DynamicCanvas CreateCanvas(int N)
+    public static DynamicCanvas CreateCanvas(int N, CreateCanvasRequest canvasReq)
     {
         DynamicCanvas dc = new DynamicCanvas();
         // Create Canvas GameObject
@@ -215,7 +227,7 @@ public class CanvasMaker
         // Create N children
         for (int i = 0; i < N; i++)
         {
-            dc.children.Add(CreateChild(rootGO, i));
+            dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
         }
 
         // Create EventSystem GameObject
@@ -229,7 +241,7 @@ public class CanvasMaker
         return dc;
     }
 
-    static LayoutParent CreateChild(GameObject parent, int index)
+    static LayoutParent CreateChild(GameObject parent, int index, ScrollStyle scrollStyle)
     {
         LayoutParent lp = null;
         lp = CreateLayout();
@@ -287,11 +299,11 @@ public class CanvasMaker
         scrollbarRT.anchorMin = new Vector2(1, 0);
         scrollbarRT.anchorMax = new Vector2(1, 1);
         scrollbarRT.pivot = new Vector2(1, 0.5f);
-        scrollbarRT.sizeDelta = new Vector2(20, 0);
+        scrollbarRT.sizeDelta = new Vector2(10, 0);
 
         Scrollbar scrollbar = scrollbarGO.AddComponent<Scrollbar>();
         Image scrollbarImage = scrollbarGO.AddComponent<Image>();
-        scrollbarImage.color = new Color(0, 0, 0, 0.5f);
+        scrollbarImage.color = scrollStyle.ScrollBarBG;
 
         scrollbar.direction = Scrollbar.Direction.BottomToTop;
         scrollRect.verticalScrollbar = scrollbar;
@@ -303,10 +315,10 @@ public class CanvasMaker
         handleGO.transform.SetParent(scrollbarGO.transform, false);
 
         RectTransform handleRT = handleGO.AddComponent<RectTransform>();
-        handleRT.sizeDelta = new Vector2(20, 0);
+        handleRT.sizeDelta = new Vector2(0, 0);
 
         Image handleImage = handleGO.AddComponent<Image>();
-        handleImage.color = new Color(1, 1, 1, 0.7f);
+        handleImage.color = scrollStyle.ScrollHandleColor;
         scrollbar.targetGraphic = handleImage;
         scrollbar.handleRect = handleRT;
 
@@ -349,6 +361,11 @@ public class CanvasMaker
         parentRectTransform.SetHeight(ttv.MainText.RectTransform.GetHeight());
         
         return ttv;
+    }
+
+    internal static DynamicCanvas CreateCanvas(int v, object canvasRequest)
+    {
+        throw new NotImplementedException();
     }
 }
 
