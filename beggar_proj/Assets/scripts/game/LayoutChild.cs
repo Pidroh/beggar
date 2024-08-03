@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class LayoutChild
 {
     public RectTransform RectTransform;
+
+    public GameObject GameObject => RectTransform.gameObject;
     internal bool Visible { get => RectTransform.gameObject.activeSelf; set => RectTransform.gameObject.SetActive(value); }
 }
 
@@ -119,19 +121,20 @@ public class SeparatorWithLabel
         };
         Text.transform.SetParent(parentRectTransform);
         Image.transform.SetParent(parentRectTransform);
-        Text.RectTransform.SetHeight(12);
-        Text.text.fontSize = 12;
+        Text.RectTransform.SetHeight(14);
+        Text.text.fontSize = 14;
         Text.text.fontStyle = TMPro.FontStyles.Italic;
+        Text.text.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Left;
     }
 
-    public void ManualUpdate() 
+    public void ManualUpdate()
     {
         Image.RectTransform.SetWidthMilimeters(LayoutChild.RectTransform.GetWidthMilimeters());
         Image.RectTransform.SetHeight(1);
-        LayoutChild.RectTransform.SetHeight(18);
-        Image.RectTransform.SetTopYToParent(0);
+        LayoutChild.RectTransform.SetHeight(22);
+        Image.RectTransform.SetTopYToParent(3);
         Image.RectTransform.SetLeftXToParent(0);
-        Text.RectTransform.SetBottomYToParent(0);
+        Text.RectTransform.SetBottomYToParent(3);
         Text.RectTransform.SetLeftXToParent(15);
     }
 
@@ -143,6 +146,9 @@ public class ButtonWithExpandable
     public IconButton ExpandButton;
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets = new();
+    private bool _expanded = false;
+
+    public bool Expanded => _expanded;
 
     public static implicit operator LayoutChild(ButtonWithExpandable a) => a.LayoutChild;
 
@@ -166,6 +172,17 @@ public class ButtonWithExpandable
 
     public void ManualUpdate()
     {
+        ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, _expanded ? 180 : 0);
+        if (ExpandButton.Clicked)
+        {
+            _expanded = !_expanded;
+        }
+        foreach (var item in ExpandTargets)
+        {
+            item.SetActive(_expanded);
+        }
+
+
         var heightMM = 10; // Fixed height for both buttons
 
         // Set height for both buttons

@@ -29,9 +29,18 @@ public class TaskControlUnit
         }
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
+            var sep = ChangeGroupSeparators[i];
+            
             ResourceChangeGroup item = ChangeGroups[i];
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
-            if (item == null) continue;
+            if (item == null) 
+            {
+                if (sep != null) sep.LayoutChild.Visible = false;
+                continue;
+            }
+            if (!bwe.Expanded) continue;
+            if (sep != null) sep.ManualUpdate();
+            sep.LayoutChild.Visible = resourceChanges.Count > 0;
 
             for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
             {

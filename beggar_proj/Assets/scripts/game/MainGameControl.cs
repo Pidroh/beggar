@@ -51,32 +51,23 @@ public class MainGameControl : MonoBehaviour
                     var swl = new SeparatorWithLabel(text, image);
                     layout.AddLayoutChildAndParentIt(swl.LayoutChild);
                     tcu.ChangeGroupSeparators[rcgIndex] = swl;
-                    string textKey;
-                    switch ((ResourceChangeType)rcgIndex)
+                    string textKey = (ResourceChangeType)rcgIndex switch
                     {
-                        case ResourceChangeType.COST:
-                            textKey = "cost";
-                            break;
-                        case ResourceChangeType.RESULT:
-                            textKey = "result";
-                            break;
-                        case ResourceChangeType.RUN:
-                            textKey = "run";
-                            break;
-                        case ResourceChangeType.EFFECT:
-                            textKey = "effect";
-                            break;
-                        default:
-                            textKey = null;
-                            break;
-                    }
-                    swl.Text.SetTextKey(textKey);
+                        ResourceChangeType.COST => "cost",
+                        ResourceChangeType.RESULT => "result",
+                        ResourceChangeType.RUN => "run",
+                        ResourceChangeType.EFFECT => "effect",
+                        _ => null,
+                    };
+                    swl.Text.SetTextRaw(textKey);
+                    bwe.ExpandTargets.Add(swl.LayoutChild.GameObject);
                 }
                 foreach (var changeU in arrayOfChanges)
                 {
                     TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
                     layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
                     tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+                    bwe.ExpandTargets.Add(ttv.LayoutChild.RectTransform.gameObject);
                 }
             }
 
@@ -88,6 +79,7 @@ public class MainGameControl : MonoBehaviour
     {
         arcaniaModel.ManualUpdate(Time.deltaTime);
         dynamicCanvas.ManualUpdate();
+
         foreach (var tcu in TaskControls)
         {
             var data = tcu.Data;
