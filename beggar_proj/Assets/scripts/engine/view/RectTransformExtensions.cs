@@ -166,5 +166,12 @@ namespace HeartUnity.View
         {
             trans.localPosition = new Vector3(newPos.x - ((1f - trans.pivot.x) * trans.rect.width), newPos.y - ((1f - trans.pivot.y) * trans.rect.height), trans.localPosition.z);
         }
+
+        public static void SetOffsetMaxByIndex(this RectTransform trans, int index, int offMax)
+        {
+            var offsets =  trans.offsetMax;
+            offsets[index] = offMax;
+            trans.offsetMax = offsets;
+        }
     }
 }

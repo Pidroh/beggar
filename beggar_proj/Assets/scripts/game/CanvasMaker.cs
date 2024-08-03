@@ -286,6 +286,11 @@ public class CanvasMaker
         contentRT.pivot = new Vector2(0.5f, 1);
         contentRT.anchoredPosition = new Vector2(0, 0);
         contentRT.sizeDelta = new Vector2(0, 0);
+        
+        const int scrollBarWidth = 10;
+
+        contentRT.SetOffsetMaxByIndex(0, -scrollBarWidth);
+
 
         lp.ContentTransformOverridingSelfChildTransform = contentRT;
 
@@ -299,7 +304,8 @@ public class CanvasMaker
         scrollbarRT.anchorMin = new Vector2(1, 0);
         scrollbarRT.anchorMax = new Vector2(1, 1);
         scrollbarRT.pivot = new Vector2(1, 0.5f);
-        scrollbarRT.sizeDelta = new Vector2(10, 0);
+        
+        scrollbarRT.sizeDelta = new Vector2(scrollBarWidth, 0);
 
         Scrollbar scrollbar = scrollbarGO.AddComponent<Scrollbar>();
         Image scrollbarImage = scrollbarGO.AddComponent<Image>();
