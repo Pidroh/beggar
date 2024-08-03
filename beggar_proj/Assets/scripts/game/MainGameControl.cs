@@ -45,7 +45,7 @@ public class MainGameControl : MonoBehaviour
                     var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font);
                     var image = CanvasMaker.CreateSimpleImage(ButtonObjectRequest.SecondaryColor);
                     var swl = new SeparatorWithLabel(text, image);
-                    // layout.AddLayoutChildAndParentIt(swl.LayoutChild);
+                    layout.AddLayoutChildAndParentIt(swl.LayoutChild);
                     tcu.Add(swl);
                     swl.Text.SetTextRaw("Cost");
                 }
