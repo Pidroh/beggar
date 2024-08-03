@@ -34,6 +34,7 @@ public class LayoutParent
         // Loop through each child in the LayoutChilds list
         foreach (var child in Children)
         {
+            if (!child.Visible) return;
             // Get the RectTransform of the child
             RectTransform childRectTransform = child.RectTransform;
             // Get the pivot of the child
