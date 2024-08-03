@@ -1,5 +1,6 @@
 ﻿using HeartUnity;
-
+using System;
+using System.Collections.Generic;
 
 public class TaskControlUnit
 {
@@ -12,6 +13,7 @@ public class TaskControlUnit
     public ResourceChangeGroup ResultGroup { get => ChangeGroups[1]; set => ChangeGroups[1] = value; }
     public ResourceChangeGroup RunGroup { get => ChangeGroups[2]; set => ChangeGroups[2] = value; }
     public ResourceChangeGroup EffectGroup { get => ChangeGroups[3]; set => ChangeGroups[3] = value; }
+    public List<SeparatorWithLabel> Separators = new();
 
     public class ResourceChangeGroup
     {
@@ -20,6 +22,10 @@ public class TaskControlUnit
     public void ManualUpdate()
     {
         bwe.ManualUpdate();
+        foreach (var sep in Separators)
+        {
+            sep.ManualUpdate();
+        }
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
             ResourceChangeGroup item = ChangeGroups[i];
@@ -38,6 +44,11 @@ public class TaskControlUnit
                 ttv.ManualUpdate();
             }
         }
+    }
+
+    internal void Add(SeparatorWithLabel swl)
+    {
+        Separators.Add(swl);
     }
 }
 

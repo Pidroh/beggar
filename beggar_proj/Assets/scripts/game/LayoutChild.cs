@@ -3,6 +3,7 @@ using HeartUnity.View;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LayoutChild
 {
@@ -98,6 +99,44 @@ public class TripleTextView
     private bool tertiaryWidthCalculated = false;
 }
 
+public class SeparatorWithLabel
+{
+    public UIUnit Image;
+    public UIUnit Text;
+    public LayoutChild LayoutChild;
+
+    public SeparatorWithLabel(UIUnit text, UIUnit image)
+    {
+        Text = text;
+        Image = image;
+
+        GameObject parentGo = new GameObject();
+        RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
+
+        LayoutChild = new LayoutChild()
+        {
+            RectTransform = parentRectTransform
+        };
+        Text.transform.SetParent(parentRectTransform);
+        Image.transform.SetParent(parentRectTransform);
+        Text.RectTransform.SetHeight(12);
+        Text.text.fontSize = 12;
+        Text.text.fontStyle = TMPro.FontStyles.Italic;
+    }
+
+    public void ManualUpdate() 
+    {
+        Image.RectTransform.SetWidthMilimeters(LayoutChild.RectTransform.GetWidthMilimeters());
+        Image.RectTransform.SetHeight(1);
+        LayoutChild.RectTransform.SetHeight(18);
+        Image.RectTransform.SetTopYToParent(0);
+        Image.RectTransform.SetLeftXToParent(0);
+        Text.RectTransform.SetBottomYToParent(0);
+        Text.RectTransform.SetLeftXToParent(15);
+    }
+
+}
+
 public class ButtonWithExpandable
 {
     public UIUnit MainButton;
@@ -156,8 +195,6 @@ public class ButtonWithExpandable
          * **/
 
         // Adjust the width of MainButton to occupy remaining space
-
-
 
         // Calculate the correct position for MainButton
         var mainButtonWidth = MainButton.RectTransform.rect.width;

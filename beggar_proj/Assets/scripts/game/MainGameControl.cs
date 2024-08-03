@@ -40,6 +40,15 @@ public class MainGameControl : MonoBehaviour
             {
                 var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
                 var rcgIndex = i;
+                if (i == 0) 
+                {
+                    var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font);
+                    var image = CanvasMaker.CreateSimpleImage(ButtonObjectRequest.SecondaryColor);
+                    var swl = new SeparatorWithLabel(text, image);
+                    // layout.AddLayoutChildAndParentIt(swl.LayoutChild);
+                    tcu.Add(swl);
+                    swl.Text.SetTextRaw("Cost");
+                }
                 if (arrayOfChanges != null) tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
                 foreach (var changeU in arrayOfChanges)
                 {

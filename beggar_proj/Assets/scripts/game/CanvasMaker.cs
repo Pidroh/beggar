@@ -102,6 +102,24 @@ public class CanvasMaker
         return buttonObject;
     }
 
+    public static UIUnit CreateSimpleImage(Color c) 
+    {
+        GameObject iconObject = new GameObject("Icon");
+
+        // Add RectTransform component for the icon
+        RectTransform iconRectTransform = iconObject.AddComponent<RectTransform>();
+        iconRectTransform.sizeDelta = new Vector2(30, 30); // Adjust size as needed
+        iconRectTransform.localPosition = Vector2.zero;
+        iconRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        iconRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        iconRectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+        // Add Image component for the icon
+        Image iconImage = iconObject.AddComponent<Image>();
+        iconImage.color = c; // Set icon color
+        return iconObject.AddComponent<UIUnit>();
+    }
+
     public static IconButton CreateButtonWithIcon(Sprite iconSprite)
     {
         GameObject buttonObject = CreateButtonObject(new Color(0, 0, 0, 0));
@@ -153,7 +171,7 @@ public class CanvasMaker
         return uiUnit;
     }
 
-    private static UIUnit CreateTextUnit(Color textColor, TMP_FontAsset font)
+    public static UIUnit CreateTextUnit(Color textColor, TMP_FontAsset font)
     {
         GameObject textObject = new GameObject("Text");
         TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
