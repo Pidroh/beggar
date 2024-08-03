@@ -6,6 +6,7 @@ public class TaskControlUnit
 {
     public ButtonWithExpandable bwe;
     public AutoList<ResourceChangeGroup> ChangeGroups = new();
+    public AutoList<SeparatorWithLabel> ChangeGroupSeparators = new();
     internal RuntimeUnit Data;
     public bool TaskClicked => bwe.MainButton.Clicked;
 
@@ -44,11 +45,6 @@ public class TaskControlUnit
                 ttv.ManualUpdate();
             }
         }
-    }
-
-    internal void Add(SeparatorWithLabel swl)
-    {
-        Separators.Add(swl);
     }
 }
 

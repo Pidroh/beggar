@@ -42,14 +42,36 @@ public class MainGameControl : MonoBehaviour
                 var rcgIndex = i;
                 if (i == 0) 
                 {
+                    
+                }
+                if (arrayOfChanges != null) {
+                    tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
                     var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font);
                     var image = CanvasMaker.CreateSimpleImage(ButtonObjectRequest.SecondaryColor);
                     var swl = new SeparatorWithLabel(text, image);
                     layout.AddLayoutChildAndParentIt(swl.LayoutChild);
-                    tcu.Add(swl);
-                    swl.Text.SetTextRaw("Cost");
+                    tcu.ChangeGroupSeparators[rcgIndex] = swl;
+                    string textKey;
+                    switch ((ResourceChangeType)rcgIndex)
+                    {
+                        case ResourceChangeType.COST:
+                            textKey = "cost";
+                            break;
+                        case ResourceChangeType.RESULT:
+                            textKey = "result";
+                            break;
+                        case ResourceChangeType.RUN:
+                            textKey = "run";
+                            break;
+                        case ResourceChangeType.EFFECT:
+                            textKey = "effect";
+                            break;
+                        default:
+                            textKey = null;
+                            break;
+                    }
+                    swl.Text.SetTextKey(textKey);
                 }
-                if (arrayOfChanges != null) tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
                 foreach (var changeU in arrayOfChanges)
                 {
                     TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
@@ -57,7 +79,7 @@ public class MainGameControl : MonoBehaviour
                     tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
                 }
             }
-            
+
         }
     }
 
