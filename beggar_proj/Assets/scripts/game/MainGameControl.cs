@@ -62,7 +62,7 @@ public class MainGameControl : MonoBehaviour
             var data = tcu.Data;
             tcu.ManualUpdate();
             bool visible = data.Visible;
-            tcu.bwe.SetActive(visible);
+            tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
             if (!visible) continue;
             tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
             

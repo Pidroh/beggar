@@ -63,7 +63,7 @@ public class RuntimeUnit
 
     internal void SetValue(int v)
     {
-        ChangeValue(-_value);
+        ChangeValue(v - _value);
     }
 
     internal void ChangeValueByResourceChange(RuntimeUnit parent, int valueChange, ResourceChangeType changeType)
