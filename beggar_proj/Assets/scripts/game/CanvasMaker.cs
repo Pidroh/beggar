@@ -373,6 +373,11 @@ public class CanvasMaker
     {
         throw new NotImplementedException();
     }
+
+    internal static void CreateTextUnit(object mainTextColor, TMP_FontAsset font)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public static class ColorExtensions

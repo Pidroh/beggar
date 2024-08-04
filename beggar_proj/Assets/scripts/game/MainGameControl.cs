@@ -1,3 +1,4 @@
+using HeartUnity.View;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,7 +16,9 @@ public class MainGameControl : MonoBehaviour
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
     public CanvasMaker.CreateCanvasRequest CanvasRequest;
     public ArcaniaModel arcaniaModel = new();
-    
+
+    public Color MainTextColor;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,13 @@ public class MainGameControl : MonoBehaviour
             TaskControls.Add(tcu);
             tcu.bwe = bwe;
             tcu.Data = item;
+            {
+                var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font);
+                // bwe.ExpandTargets
+                tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+                AddToExpands(tcu.Description.LayoutChild);
+
+            }
             
             
             for (int i = 0; i < 4; i++)
@@ -73,6 +83,11 @@ public class MainGameControl : MonoBehaviour
                 }
             }
 
+            void AddToExpands(LayoutChild c) 
+            {
+                tcu.bwe.ExpandTargets.Add(c.GameObject);
+                layout.AddLayoutChildAndParentIt(c);
+            }
         }
     }
 

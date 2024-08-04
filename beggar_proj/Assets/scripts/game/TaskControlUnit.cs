@@ -1,4 +1,5 @@
 ﻿using HeartUnity;
+using HeartUnity.View;
 using System;
 using System.Collections.Generic;
 
@@ -14,6 +15,8 @@ public class TaskControlUnit
     public ResourceChangeGroup ResultGroup { get => ChangeGroups[1]; set => ChangeGroups[1] = value; }
     public ResourceChangeGroup RunGroup { get => ChangeGroups[2]; set => ChangeGroups[2] = value; }
     public ResourceChangeGroup EffectGroup { get => ChangeGroups[3]; set => ChangeGroups[3] = value; }
+    public SimpleChild<UIUnit> Description { get; internal set; }
+
     public List<SeparatorWithLabel> Separators = new();
 
     public class ResourceChangeGroup
@@ -23,12 +26,19 @@ public class TaskControlUnit
     public void ManualUpdate()
     {
         bwe.ManualUpdate();
+        if (!bwe.Expanded) return;
+        Description.LayoutChild.Visible = !string.IsNullOrWhiteSpace(Data.ConfigBasic.Desc);
+        Description.LayoutChild.RectTransform.SetHeight(Description.Element.text.preferredHeight);
+        Description.Element.SetTextRaw(Data.ConfigBasic.Desc);
+        Description.ManualUpdate();
         foreach (var sep in Separators)
         {
             sep.ManualUpdate();
         }
+
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
+            
             var sep = ChangeGroupSeparators[i];
             
             ResourceChangeGroup item = ChangeGroups[i];
@@ -38,7 +48,8 @@ public class TaskControlUnit
                 if (sep != null) sep.LayoutChild.Visible = false;
                 continue;
             }
-            if (!bwe.Expanded) continue;
+            
+
             if (sep != null) sep.ManualUpdate();
             sep.LayoutChild.Visible = resourceChanges.Count > 0;
 

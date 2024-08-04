@@ -173,5 +173,14 @@ namespace HeartUnity.View
             offsets[index] = offMax;
             trans.offsetMax = offsets;
         }
+
+        public static void FillParent(this RectTransform trans)
+        {
+            trans.anchorMin = new Vector2(0, 0);
+            trans.anchorMax = new Vector2(1, 1);
+            trans.offsetMin = Vector2.zero;
+            trans.offsetMax = Vector2.zero;
+            
+        }
     }
 }

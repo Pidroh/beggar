@@ -11,6 +11,20 @@ public class LayoutChild
 
     public GameObject GameObject => RectTransform.gameObject;
     internal bool Visible { get => RectTransform.gameObject.activeSelf; set => RectTransform.gameObject.SetActive(value); }
+
+    public static LayoutChild Create(Transform transform1 = null, Transform transform2 = null)
+    {
+        GameObject parentGo = new GameObject();
+        RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
+
+        var lc = new LayoutChild()
+        {
+            RectTransform = parentRectTransform
+        };
+        transform1?.SetParent(parentRectTransform);
+        transform2?.transform.SetParent(parentRectTransform);
+        return lc;
+    }
 }
 
 
@@ -18,6 +32,25 @@ public struct Vector2Null
 {
     public float? X;
     public float? Y;
+}
+
+public class SimpleChild<T> where T : MonoBehaviour
+{
+    public LayoutChild LayoutChild;
+    public SimpleChild(T element, RectTransform elementRectTransform) 
+    {
+        LayoutChild = LayoutChild.Create(element.transform);
+        Element = element;
+        ElementRectTransform = elementRectTransform;
+    }
+
+    public void ManualUpdate() 
+    {
+        ElementRectTransform.FillParent();
+    }
+
+    public T Element { get; }
+    public RectTransform ElementRectTransform { get; }
 }
 
 public class TripleTextView
@@ -156,15 +189,8 @@ public class ButtonWithExpandable
     {
         ExpandButton = iconButton;
         MainButton = button;
-        GameObject parentGo = new GameObject();
-        RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
-
-        LayoutChild = new LayoutChild()
-        {
-            RectTransform = parentRectTransform
-        };
-        button.transform.SetParent(parentRectTransform);
-        iconButton.transform.SetParent(parentRectTransform);
+        
+        this.LayoutChild = LayoutChild.Create(button.transform, iconButton.transform);
         button.transform.localPosition = Vector3.zero;
         iconButton.transform.localPosition = Vector3.zero;
 
