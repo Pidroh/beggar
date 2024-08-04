@@ -124,6 +124,15 @@ public class MainGameControl : MonoBehaviour
             tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
             if (!visible) continue;
             tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+            for (int i = 0; i < data.ModsOwned.Count; i++)
+            {
+                ModRuntime md = data.ModsOwned[i];
+                var ttv = tcu.ModTTVs[i];
+                ttv.MainText.rawText = md.SourceJsonKey;
+                ttv.SecondaryText.rawText = $"{md.Value}";
+                ttv.TertiaryText.rawText = string.Empty;
+                ttv.ManualUpdate();
+            }
 
             if (tcu.TaskClicked)
             {
