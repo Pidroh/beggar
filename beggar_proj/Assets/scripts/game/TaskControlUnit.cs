@@ -16,6 +16,7 @@ public class TaskControlUnit
     public ResourceChangeGroup RunGroup { get => ChangeGroups[2]; set => ChangeGroups[2] = value; }
     public ResourceChangeGroup EffectGroup { get => ChangeGroups[3]; set => ChangeGroups[3] = value; }
     public SimpleChild<UIUnit> Description { get; internal set; }
+    public object ModTTVs { get; internal set; } change to list of ttv for mods
 
     public List<SeparatorWithLabel> Separators = new();
 

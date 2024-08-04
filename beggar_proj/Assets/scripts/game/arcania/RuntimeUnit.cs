@@ -8,6 +8,7 @@ public class RuntimeUnit
     public ConfigTask ConfigTask;
     public SkillRuntime Skill;
     public List<ModRuntime> ModsTargetingSelf = new();
+    public List<ModRuntime> ModsOwned = new();
     public bool RequireMet = false;
 
     public string Name => ConfigBasic.name;

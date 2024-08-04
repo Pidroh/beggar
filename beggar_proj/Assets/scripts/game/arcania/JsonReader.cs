@@ -26,6 +26,7 @@ public class JsonReader
         for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
+            mod.Source.ModsOwned.Add(mod);
             if (mod.Target.id == "space")
             {
                 arcaniaDatas.SpaceMods.Add(mod);
@@ -179,6 +180,7 @@ public class JsonReader
                 }
             }
             var mod = CreateMod(owner, arcaniaUnits, value, modType, target, secondaryId: secondary);
+            mod.SourceJsonKey = pair.Key;
             mod.ResourceChangeType = changeType;
             
         }
@@ -286,6 +288,7 @@ public class ModRuntime
     public IDPointer Target;
 
     public ResourceChangeType? ResourceChangeType { get; internal set; }
+    public string SourceJsonKey { get; internal set; }
 }
 
 public class ResourceChange

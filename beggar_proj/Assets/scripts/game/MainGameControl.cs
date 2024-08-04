@@ -46,23 +46,15 @@ public class MainGameControl : MonoBehaviour
                 AddToExpands(tcu.Description.LayoutChild);
 
             }
-            
-            
+
             for (int i = 0; i < 4; i++)
             {
                 var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
                 var rcgIndex = i;
-                if (i == 0) 
+
+                if (arrayOfChanges != null)
                 {
-                    
-                }
-                if (arrayOfChanges != null) {
                     tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
-                    var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font);
-                    var image = CanvasMaker.CreateSimpleImage(ButtonObjectRequest.SecondaryColor);
-                    var swl = new SeparatorWithLabel(text, image);
-                    layout.AddLayoutChildAndParentIt(swl.LayoutChild);
-                    tcu.ChangeGroupSeparators[rcgIndex] = swl;
                     string textKey = (ResourceChangeType)rcgIndex switch
                     {
                         ResourceChangeType.COST => "cost",
@@ -71,23 +63,50 @@ public class MainGameControl : MonoBehaviour
                         ResourceChangeType.EFFECT => "effect",
                         _ => null,
                     };
-                    swl.Text.SetTextRaw(textKey);
-                    bwe.ExpandTargets.Add(swl.LayoutChild.GameObject);
+                    SeparatorWithLabel swl = CreateSeparator(layout, tcu, textKey);
+
+                    tcu.ChangeGroupSeparators[rcgIndex] = swl;
                 }
                 foreach (var changeU in arrayOfChanges)
                 {
-                    TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
-                    layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
+                    TripleTextView ttv = CreateTripleTextView(layout, bwe);
                     tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
-                    bwe.ExpandTargets.Add(ttv.LayoutChild.RectTransform.gameObject);
                 }
             }
 
-            void AddToExpands(LayoutChild c) 
+            var sep = CreateSeparator(layout, tcu, "Mods:");
+            tcu.Separators.Add(sep);
+            foreach (var md in item.ModsOwned)
+            {
+                var ttv = CreateTripleTextView(layout, bwe);
+                tcu.ModTTVs.Add(ttv);
+            }
+
+            void AddToExpands(LayoutChild c)
             {
                 tcu.bwe.ExpandTargets.Add(c.GameObject);
                 layout.AddLayoutChildAndParentIt(c);
             }
+        }
+
+        SeparatorWithLabel CreateSeparator(LayoutParent layout, TaskControlUnit tcu, string textKey)
+        {
+            // Separator instancing
+            var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font);
+            var image = CanvasMaker.CreateSimpleImage(ButtonObjectRequest.SecondaryColor);
+            var swl = new SeparatorWithLabel(text, image);
+            layout.AddLayoutChildAndParentIt(swl.LayoutChild);
+            swl.Text.SetTextRaw(textKey);
+            tcu.bwe.ExpandTargets.Add(swl.LayoutChild.GameObject);
+            return swl;
+        }
+
+        TripleTextView CreateTripleTextView(LayoutParent layout, ButtonWithExpandable bwe)
+        {
+            TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
+            layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
+            bwe.ExpandTargets.Add(ttv.LayoutChild.RectTransform.gameObject);
+            return ttv;
         }
     }
 
@@ -105,8 +124,8 @@ public class MainGameControl : MonoBehaviour
             tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
             if (!visible) continue;
             tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-            
-            if (tcu.TaskClicked) 
+
+            if (tcu.TaskClicked)
             {
                 arcaniaModel.Runner.StartAction(data);
             }
