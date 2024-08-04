@@ -67,8 +67,7 @@
                 "desc": "You take what you get.",
                 "locked": false,
                 "cost":{
-                    "supplication": 1,
-                    "energy": 1
+                    "supplication": 1
                 },
                 "result":{
                     "breadcrumbs": 1
@@ -89,11 +88,8 @@
                 "id": "pleafocus",
                 "name": "Focus Plea",
                 "desc": "Centering thoughts and intentions to prepare for begging",
-                "require": "supplication<1",
+                "require": "supplication<3",
                 "perpetual": true,
-                "run": {
-                    "focus": 1
-                },
                 "effect": {
                     "supplication": 1
                 }
@@ -156,6 +152,18 @@
                 },
                 "result": {
                     "sorrow": 1
+                }
+            },
+            {
+                "id": "eatcrumbs",
+                "name": "Eat old crumbs",
+                "desc": "It tastes really bad, unless you're really, really hungry",
+                "require": "breadcrumbs",
+                "cost":{
+                    "breadcrumbs": 1
+                },
+                "result": {
+                    "nutrition": 1
                 }
             }
         ]
