@@ -68,6 +68,22 @@ public class DynamicCanvas
 public class CanvasMaker
 {
     [Serializable]
+    public struct CreateButtonRequest 
+    {
+        public ColorDefinitions MainBody;
+        public ColorDefinitions Outline;
+        public ColorDefinitions GaugeFill;
+    }
+
+    public struct ColorDefinitions 
+    {
+        public Color NormalColor;
+        public Color DisabledColor;
+        public Color ClickColor;
+        public Color HoverColor;
+    }
+
+    [Serializable]
     public struct CreateObjectRequest {
         public Color MainColor;
         public Color SecondaryColor;
