@@ -9,7 +9,11 @@ public class MainGameControl : MonoBehaviour
 
     public TextAsset ResourceJson;
     private DynamicCanvas dynamicCanvas;
-    public List<TaskControlUnit> TaskControls = new();
+    public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new() 
+    {
+        { UnitType.TASK, new List<TaskControlUnit>() },
+        { UnitType.CLASS, new List<TaskControlUnit>() }
+    };
     [SerializeField]
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
@@ -27,68 +31,72 @@ public class MainGameControl : MonoBehaviour
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
         dynamicCanvas = CanvasMaker.CreateCanvas(1, CanvasRequest);
-        foreach (var item in arcaniaDatas.datas[UnitType.TASK])
+        foreach (var pair in UnitGroupControls)
         {
-            var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
-            var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest, ButtonRequest);
-            var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
-            var bwe = new ButtonWithExpandable(button, iconButton);
-            dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
-            layout.AddLayoutChildAndParentIt(bwe);
-            button.Button.SetTextRaw(item.ConfigBasic.name);
-            var tcu = new TaskControlUnit();
-            TaskControls.Add(tcu);
-            tcu.bwe = bwe;
-            tcu.Data = item;
+            foreach (var item in arcaniaDatas.datas[pair.Key])
             {
-                var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font);
-                // bwe.ExpandTargets
-                tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
-                AddToExpands(tcu.Description.LayoutChild);
-
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
-                var rcgIndex = i;
-
-                if (arrayOfChanges != null)
+                var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
+                var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest, ButtonRequest);
+                var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
+                var bwe = new ButtonWithExpandable(button, iconButton);
+                dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
+                layout.AddLayoutChildAndParentIt(bwe);
+                button.Button.SetTextRaw(item.ConfigBasic.name);
+                var tcu = new TaskControlUnit();
+                pair.Value.Add(tcu);
+                tcu.bwe = bwe;
+                tcu.Data = item;
                 {
-                    tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
-                    string textKey = (ResourceChangeType)rcgIndex switch
+                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font);
+                    // bwe.ExpandTargets
+                    tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+                    AddToExpands(tcu.Description.LayoutChild);
+
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
+                    var rcgIndex = i;
+
+                    if (arrayOfChanges != null)
                     {
-                        ResourceChangeType.COST => "cost",
-                        ResourceChangeType.RESULT => "result",
-                        ResourceChangeType.RUN => "run",
-                        ResourceChangeType.EFFECT => "effect",
-                        _ => null,
-                    };
-                    SeparatorWithLabel swl = CreateSeparator(layout, tcu, textKey);
+                        tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
+                        string textKey = (ResourceChangeType)rcgIndex switch
+                        {
+                            ResourceChangeType.COST => "cost",
+                            ResourceChangeType.RESULT => "result",
+                            ResourceChangeType.RUN => "run",
+                            ResourceChangeType.EFFECT => "effect",
+                            _ => null,
+                        };
+                        SeparatorWithLabel swl = CreateSeparator(layout, tcu, textKey);
 
-                    tcu.ChangeGroupSeparators[rcgIndex] = swl;
+                        tcu.ChangeGroupSeparators[rcgIndex] = swl;
+                    }
+                    foreach (var changeU in arrayOfChanges)
+                    {
+                        TripleTextView ttv = CreateTripleTextView(layout, bwe);
+                        tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+                    }
                 }
-                foreach (var changeU in arrayOfChanges)
+
+                var sep = CreateSeparator(layout, tcu, "Mods:");
+                tcu.Separators.Add(sep);
+                foreach (var md in item.ModsOwned)
                 {
-                    TripleTextView ttv = CreateTripleTextView(layout, bwe);
-                    tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+                    var ttv = CreateTripleTextView(layout, bwe);
+                    tcu.ModTTVs.Add(ttv);
                 }
-            }
 
-            var sep = CreateSeparator(layout, tcu, "Mods:");
-            tcu.Separators.Add(sep);
-            foreach (var md in item.ModsOwned)
-            {
-                var ttv = CreateTripleTextView(layout, bwe);
-                tcu.ModTTVs.Add(ttv);
-            }
-
-            void AddToExpands(LayoutChild c)
-            {
-                tcu.bwe.ExpandTargets.Add(c.GameObject);
-                layout.AddLayoutChildAndParentIt(c);
+                void AddToExpands(LayoutChild c)
+                {
+                    tcu.bwe.ExpandTargets.Add(c.GameObject);
+                    layout.AddLayoutChildAndParentIt(c);
+                }
             }
         }
+        
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, TaskControlUnit tcu, string textKey)
         {
@@ -117,28 +125,32 @@ public class MainGameControl : MonoBehaviour
         arcaniaModel.ManualUpdate(Time.deltaTime);
         dynamicCanvas.ManualUpdate();
 
-        foreach (var tcu in TaskControls)
+        foreach (var pair in UnitGroupControls)
         {
-            var data = tcu.Data;
-            tcu.ManualUpdate();
-            bool visible = data.Visible;
-            tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
-            if (!visible) continue;
-            tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-            for (int i = 0; i < data.ModsOwned.Count; i++)
+            foreach (var tcu in pair.Value)
             {
-                ModRuntime md = data.ModsOwned[i];
-                var ttv = tcu.ModTTVs[i];
-                ttv.MainText.rawText = md.SourceJsonKey;
-                ttv.SecondaryText.rawText = $"{md.Value}";
-                ttv.TertiaryText.rawText = string.Empty;
-                ttv.ManualUpdate();
-            }
+                var data = tcu.Data;
+                tcu.ManualUpdate();
+                bool visible = data.Visible;
+                tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
+                if (!visible) continue;
+                tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                for (int i = 0; i < data.ModsOwned.Count; i++)
+                {
+                    ModRuntime md = data.ModsOwned[i];
+                    var ttv = tcu.ModTTVs[i];
+                    ttv.MainText.rawText = md.SourceJsonKey;
+                    ttv.SecondaryText.rawText = $"{md.Value}";
+                    ttv.TertiaryText.rawText = string.Empty;
+                    ttv.ManualUpdate();
+                }
 
-            if (tcu.TaskClicked)
-            {
-                arcaniaModel.Runner.StartAction(data);
+                if (tcu.TaskClicked)
+                {
+                    arcaniaModel.Runner.StartAction(data);
+                }
             }
         }
+        
     }
 }
