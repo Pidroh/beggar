@@ -113,6 +113,7 @@ public class JsonReader
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "run") ReadChanges(ct.Run, pair.Value, arcaniaUnits, -1);
             if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
+            if (pair.Key == "duration") ct.Duration = pair.Value.AsInt;
         }
         if (!ct.Duration.HasValue)
         {

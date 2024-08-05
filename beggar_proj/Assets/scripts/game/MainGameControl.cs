@@ -14,6 +14,7 @@ public class MainGameControl : MonoBehaviour
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
+    public CanvasMaker.CreateButtonRequest ButtonRequest;
     public CanvasMaker.CreateCanvasRequest CanvasRequest;
     public ArcaniaModel arcaniaModel = new();
 
@@ -29,12 +30,12 @@ public class MainGameControl : MonoBehaviour
         foreach (var item in arcaniaDatas.datas[UnitType.TASK])
         {
             var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
-            var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest);
+            var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest, ButtonRequest);
             var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
             var bwe = new ButtonWithExpandable(button, iconButton);
             dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
             layout.AddLayoutChildAndParentIt(bwe);
-            button.SetTextRaw(item.ConfigBasic.name);
+            button.Button.SetTextRaw(item.ConfigBasic.name);
             var tcu = new TaskControlUnit();
             TaskControls.Add(tcu);
             tcu.bwe = bwe;

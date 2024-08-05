@@ -416,6 +416,27 @@ MonoBehaviour:
     MainSprite: {fileID: 0}
     secondarySprite: {fileID: 0}
     font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ButtonRequest:
+    MainBody:
+      NormalColor: {r: 0.30980393, g: 0.454902, b: 0.83921576, a: 1}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+    Outline:
+      NormalColor: {r: 0, g: 0, b: 0, a: 0}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+    GaugeFill:
+      NormalColor: {r: 0.2734941, g: 0.53546333, b: 0.73800004, a: 1}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor:
+      NormalColor: {r: 0.9921569, g: 0.97647065, b: 0.89019614, a: 1}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
   CanvasRequest:
     ScrollStyle:
       ScrollBarBG: {r: 0.53900003, g: 0.53900003, b: 0.53900003, a: 0.43137255}

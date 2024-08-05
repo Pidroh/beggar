@@ -132,6 +132,13 @@ namespace HeartUnity.View
             trans.anchorMax = amM;
         }
 
+        public static void SetAnchorMaxByIndex(this RectTransform trans, int index, float value)
+        {
+            var amM = trans.anchorMax;
+            amM[index] = value;
+            trans.anchorMax = amM;
+        }
+
         public static void SetBottomLocalY(this RectTransform trans, float bottomY)
         {
             trans.localPosition = new Vector3(trans.localPosition.x, bottomY + (trans.pivot.y * trans.rect.height), trans.localPosition.z);

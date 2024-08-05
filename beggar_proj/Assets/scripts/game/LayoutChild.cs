@@ -53,6 +53,18 @@ public class SimpleChild<T> where T : MonoBehaviour
     public RectTransform ElementRectTransform { get; }
 }
 
+public class ButtonWithProgressBar 
+{
+    public UIUnit Button;
+    public UIUnit ProgressImage;
+
+    internal void SetProgress(float v)
+    {
+        ProgressImage.RectTransform.SetAnchorMaxByIndex(0, v);
+        ProgressImage.RectTransform.SetOffsetMaxByIndex(0, 0);
+    }
+}
+
 public class TripleTextView
 {
     public LayoutChild LayoutChild;
@@ -176,6 +188,7 @@ public class SeparatorWithLabel
 public class ButtonWithExpandable
 {
     public UIUnit MainButton;
+    public ButtonWithProgressBar ButtonProgressBar;
     public IconButton ExpandButton;
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets = new();
@@ -185,13 +198,14 @@ public class ButtonWithExpandable
 
     public static implicit operator LayoutChild(ButtonWithExpandable a) => a.LayoutChild;
 
-    public ButtonWithExpandable(UIUnit button, IconButton iconButton)
+    public ButtonWithExpandable(ButtonWithProgressBar button, IconButton iconButton)
     {
         ExpandButton = iconButton;
-        MainButton = button;
+        MainButton = button.Button;
+        ButtonProgressBar = button;
         
-        this.LayoutChild = LayoutChild.Create(button.transform, iconButton.transform);
-        button.transform.localPosition = Vector3.zero;
+        this.LayoutChild = LayoutChild.Create(MainButton.transform, iconButton.transform);
+        MainButton.transform.localPosition = Vector3.zero;
         iconButton.transform.localPosition = Vector3.zero;
 
     }

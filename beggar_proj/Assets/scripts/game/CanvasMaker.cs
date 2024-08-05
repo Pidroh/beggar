@@ -73,8 +73,10 @@ public class CanvasMaker
         public ColorDefinitions MainBody;
         public ColorDefinitions Outline;
         public ColorDefinitions GaugeFill;
+        public ColorDefinitions TextColor;
     }
 
+    [Serializable]
     public struct ColorDefinitions 
     {
         public Color NormalColor;
@@ -145,6 +147,7 @@ public class CanvasMaker
         // Add Image component for the icon
         Image iconImage = iconObject.AddComponent<Image>();
         iconImage.color = c; // Set icon color
+        iconImage.raycastTarget = false;
         return iconObject.AddComponent<UIUnit>();
     }
 
@@ -174,9 +177,15 @@ public class CanvasMaker
         return uiUnit;
     }
 
-    public static UIUnit CreateButton(string buttonText, CreateObjectRequest request)
+
+
+    public static ButtonWithProgressBar CreateButton(string buttonText, CreateObjectRequest request, CreateButtonRequest buttonRequest)
     {
-        GameObject buttonObject = CreateButtonObject(request.MainColor, request.MainSprite);
+        GameObject buttonObject = CreateButtonObject(buttonRequest.MainBody.NormalColor, request.MainSprite);
+        var image = CreateSimpleImage(buttonRequest.GaugeFill.NormalColor);
+        
+        image.gameObject.transform.SetParent(buttonObject.transform);
+        image.RectTransform.FillParent();
         // Add Text component
         Color textColor = request.SecondaryColor;
         TMP_FontAsset font = request.font;
@@ -196,7 +205,13 @@ public class CanvasMaker
         }
         var uiUnit = buttonObject.AddComponent<UIUnit>();
         uiUnit.text = textUiUnit.text;
-        return uiUnit;
+        var bbb = new ButtonWithProgressBar()
+        {
+            Button = uiUnit,
+            ProgressImage = image
+        };
+        bbb.SetProgress(0f);
+        return bbb;
     }
 
     public static UIUnit CreateTextUnit(Color textColor, TMP_FontAsset font)
