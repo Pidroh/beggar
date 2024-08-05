@@ -27,7 +27,7 @@ public class TaskControlUnit
     public void ManualUpdate()
     {
         bwe.ManualUpdate();
-        bwe.ButtonProgressBar.SetProgress(Data.TaskProgress);
+        bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
         if (!bwe.Expanded) return;
         Description.LayoutChild.Visible = !string.IsNullOrWhiteSpace(Data.ConfigBasic.Desc);
         Description.LayoutChild.RectTransform.SetHeight(Description.Element.text.preferredHeight);
