@@ -28,6 +28,12 @@ namespace HeartUnity.View
             transform.offsetMin = transform.offsetMax = new Vector2(0, 0);
         }
 
+        public static void SetOffsets(this RectTransform trans, RectOffset offsets)
+        {
+            trans.offsetMin = new Vector2(offsets.left, offsets.bottom);
+            trans.offsetMax = new Vector2(-offsets.right, -offsets.top);
+        }
+
         public static void SetPivotAndAnchors(this RectTransform trans, Vector2 aVec)
         {
             trans.pivot = aVec;

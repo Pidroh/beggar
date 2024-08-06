@@ -77,6 +77,17 @@ public class CanvasMaker
     }
 
     [Serializable]
+    public struct CreateGaugeRequest
+    {
+        public Color MainBody;
+        public Color Outline;
+        public Color GaugeFill;
+        public Color TextColor;
+
+        public RectOffset Padding;
+    }
+
+    [Serializable]
     public struct ColorDefinitions 
     {
         public Color NormalColor;

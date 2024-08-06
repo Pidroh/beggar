@@ -4,6 +4,31 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static CanvasMaker;
+
+public class Gauge 
+{
+    public LayoutChild layoutChild;
+    public UIUnit GaugeBackground;
+    public UIUnit GaugeFill;
+
+    public Gauge(CreateGaugeRequest gaugeRequest) 
+    {
+        GaugeBackground = CanvasMaker.CreateSimpleImage(gaugeRequest.MainBody);
+        GaugeFill = CanvasMaker.CreateSimpleImage(gaugeRequest.GaugeFill);
+        RectTransform bgRT = GaugeBackground.RectTransform;
+        GaugeFill.SetParent(bgRT);
+        GaugeFill.RectTransform.FillParent();
+        bgRT.FillParent();
+        RectTransformExtensions.SetOffsets(bgRT, gaugeRequest.Padding);
+        layoutChild = LayoutChild.Create(bgRT);
+    }
+
+    public void SetRatio(float ratio) 
+    {
+        GaugeFill.RectTransform.SetAnchorMaxByIndex(0, ratio);
+    }
+}
 
 public class LayoutChild
 {

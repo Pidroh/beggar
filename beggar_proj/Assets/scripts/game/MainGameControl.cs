@@ -21,6 +21,7 @@ public class MainGameControl : MonoBehaviour
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
     public CanvasMaker.CreateButtonRequest ButtonRequest;
     public CanvasMaker.CreateCanvasRequest CanvasRequest;
+    public CanvasMaker.CreateGaugeRequest SkillXPGaugeRequest;
     public ArcaniaModel arcaniaModel = new();
 
     public Color MainTextColor;
@@ -40,10 +41,16 @@ public class MainGameControl : MonoBehaviour
                 var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest, ButtonRequest);
                 var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
                 var bwe = new ButtonWithExpandable(button, iconButton);
+                var tcu = new TaskControlUnit();
+                if (pair.Key == UnitType.SKILL) 
+                {
+                    tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
+                    layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
+                }
                 dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
                 layout.AddLayoutChildAndParentIt(bwe);
                 button.Button.SetTextRaw(item.ConfigBasic.name);
-                var tcu = new TaskControlUnit();
+                
                 pair.Value.Add(tcu);
                 tcu.bwe = bwe;
                 tcu.Data = item;
