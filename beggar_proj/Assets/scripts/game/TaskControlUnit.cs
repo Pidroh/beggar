@@ -56,7 +56,7 @@ public class TaskControlUnit
             
             ResourceChangeGroup item = ChangeGroups[i];
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
-            if (item == null) 
+            if (item == null || (Data.Skill != null && Data.Skill.Acquired && i == (int) ResourceChangeType.COST)) 
             {
                 if (sep != null) sep.LayoutChild.Visible = false;
                 continue;
