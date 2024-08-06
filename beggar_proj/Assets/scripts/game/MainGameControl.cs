@@ -9,10 +9,11 @@ public class MainGameControl : MonoBehaviour
 
     public TextAsset ResourceJson;
     private DynamicCanvas dynamicCanvas;
-    public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new() 
+    public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new()
     {
         { UnitType.TASK, new List<TaskControlUnit>() },
-        { UnitType.CLASS, new List<TaskControlUnit>() }
+        { UnitType.CLASS, new List<TaskControlUnit>() },
+        { UnitType.SKILL, new List<TaskControlUnit>() }
     };
     [SerializeField]
     public TMP_FontAsset Font;
@@ -96,7 +97,7 @@ public class MainGameControl : MonoBehaviour
                 }
             }
         }
-        
+
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, TaskControlUnit tcu, string textKey)
         {
@@ -134,7 +135,6 @@ public class MainGameControl : MonoBehaviour
                 bool visible = data.Visible;
                 tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                 if (!visible) continue;
-                tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
                 for (int i = 0; i < data.ModsOwned.Count; i++)
                 {
                     ModRuntime md = data.ModsOwned[i];
@@ -145,12 +145,39 @@ public class MainGameControl : MonoBehaviour
                     ttv.ManualUpdate();
                 }
 
-                if (tcu.TaskClicked)
+                switch (pair.Key)
                 {
-                    arcaniaModel.Runner.StartAction(data);
+
+                    case UnitType.SKILL:
+                        {
+                            tcu.bwe.MainButton.ButtonEnabled = data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data);
+                            if (tcu.TaskClicked)
+                            {
+                                if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);
+                                else arcaniaModel.Runner.AcquireSkill(data);
+
+                            }
+                            
+                        }
+                        break;
+                    case UnitType.RESOURCE:
+                    case UnitType.TASK:
+                    case UnitType.HOUSE:
+                    case UnitType.CLASS:
+                    case UnitType.FURNITURE:
+                        {
+                            tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                            if (tcu.TaskClicked)
+                            {
+                                arcaniaModel.Runner.StartAction(data);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         }
-        
+
     }
 }

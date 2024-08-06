@@ -123,7 +123,7 @@
             {
                 "id": "Lament",
                 "desc": "To find solace in sorrow, one must first embrace the depths of their own despair.",
-                "require": "thoughts>=3",
+                "require": "thoughts>=2",
                 "duration": 4,
                 "cost": {
                     "thoughts": 3
@@ -207,11 +207,14 @@
         "type": "SKILL",
         "items":[
             {
-                "id": "instrospection",
-                "require": "t_job",
-                "cost": {
+                "id": "introspection",
+                "requireZ": "t_job",
+                "costZ": {
                     "thoughts": 5,
                     "sadness": 5
+                },
+                "cost": {
+                    "supplication": 5
                 },
                 "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
                 "mod": {

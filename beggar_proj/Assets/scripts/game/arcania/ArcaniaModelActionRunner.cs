@@ -81,7 +81,6 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         // skill only needs to pay the cost when acquiring it
         return !data.IsMaxed && _model.CanAfford(data.ConfigTask.Run);
     }
-
     public bool CanStartAction(RuntimeUnit data)
     {
         // once you refactor this so that you don't need to pay the cost every time (only when starting for 'the first time')
@@ -178,5 +177,17 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     private bool CheckIfRunAndEffectMatter(RuntimeUnit run)
     {
         return (_model.DoChangesMakeADifference(run.ConfigTask.Result) || _model.DoChangesMakeADifference(run.ConfigTask.Effect));
+    }
+
+
+    public bool CanAcquireSkill(RuntimeUnit ru)
+    {
+        return _model.CanAfford(ru.ConfigTask.Cost) && !ru.Skill.Acquired;
+    }
+
+    public void AcquireSkill(RuntimeUnit ru)
+    {
+        _model.ApplyResourceChanges(ru, ResourceChangeType.COST);
+        ru.Skill.Acquire();
     }
 }

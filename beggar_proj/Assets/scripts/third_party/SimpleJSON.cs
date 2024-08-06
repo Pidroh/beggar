@@ -173,7 +173,7 @@ namespace SimpleJSON
 
         public virtual JSONNode this[string aKey] { get { return null; } set { } }
 
-        public virtual string Value { get { return ""; } set { } }
+        public virtual string AsString { get { return ""; } set { } }
 
         public virtual int Count { get { return 0; } }
 
@@ -273,13 +273,13 @@ namespace SimpleJSON
             get
             {
                 double v = 0.0;
-                if (double.TryParse(Value, NumberStyles.Float, CultureInfo.InvariantCulture, out v))
+                if (double.TryParse(AsString, NumberStyles.Float, CultureInfo.InvariantCulture, out v))
                     return v;
                 return 0.0;
             }
             set
             {
-                Value = value.ToString(CultureInfo.InvariantCulture);
+                AsString = value.ToString(CultureInfo.InvariantCulture);
             }
         }
 
@@ -300,13 +300,13 @@ namespace SimpleJSON
             get
             {
                 bool v = false;
-                if (bool.TryParse(Value, out v))
+                if (bool.TryParse(AsString, out v))
                     return v;
-                return !string.IsNullOrEmpty(Value);
+                return !string.IsNullOrEmpty(AsString);
             }
             set
             {
-                Value = (value) ? "true" : "false";
+                AsString = (value) ? "true" : "false";
             }
         }
 
@@ -315,13 +315,13 @@ namespace SimpleJSON
             get
             {
                 long val = 0;
-                if (long.TryParse(Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out val))
+                if (long.TryParse(AsString, NumberStyles.Integer, CultureInfo.InvariantCulture, out val))
                     return val;
                 return 0L;
             }
             set
             {
-                Value = value.ToString(CultureInfo.InvariantCulture);
+                AsString = value.ToString(CultureInfo.InvariantCulture);
             }
         }
 
@@ -330,13 +330,13 @@ namespace SimpleJSON
             get
             {
                 ulong val = 0;
-                if (ulong.TryParse(Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out val))
+                if (ulong.TryParse(AsString, NumberStyles.Integer, CultureInfo.InvariantCulture, out val))
                     return val;
                 return 0;
             }
             set
             {
-                Value = value.ToString(CultureInfo.InvariantCulture);
+                AsString = value.ToString(CultureInfo.InvariantCulture);
             }
         }
 
@@ -367,7 +367,7 @@ namespace SimpleJSON
         }
         public static implicit operator string(JSONNode d)
         {
-            return (d == null) ? null : d.Value;
+            return (d == null) ? null : d.AsString;
         }
 
         public static implicit operator JSONNode(double n)
@@ -1027,7 +1027,7 @@ namespace SimpleJSON
         public override Enumerator GetEnumerator() { return new Enumerator(); }
 
 
-        public override string Value
+        public override string AsString
         {
             get { return m_Data; }
             set
@@ -1080,7 +1080,7 @@ namespace SimpleJSON
         public override bool IsNumber { get { return true; } }
         public override Enumerator GetEnumerator() { return new Enumerator(); }
 
-        public override string Value
+        public override string AsString
         {
             get { return m_Data.ToString(CultureInfo.InvariantCulture); }
             set
@@ -1114,7 +1114,7 @@ namespace SimpleJSON
 
         public JSONNumber(string aData)
         {
-            Value = aData;
+            AsString = aData;
         }
 
         public override JSONNode Clone()
@@ -1124,7 +1124,7 @@ namespace SimpleJSON
 
         internal override void WriteToStringBuilder(StringBuilder aSB, int aIndent, int aIndentInc, JSONTextMode aMode)
         {
-            aSB.Append(Value.ToString(CultureInfo.InvariantCulture));
+            aSB.Append(AsString.ToString(CultureInfo.InvariantCulture));
         }
         private static bool IsNumeric(object value)
         {
@@ -1167,7 +1167,7 @@ namespace SimpleJSON
         public override bool IsBoolean { get { return true; } }
         public override Enumerator GetEnumerator() { return new Enumerator(); }
 
-        public override string Value
+        public override string AsString
         {
             get { return m_Data.ToString(); }
             set
@@ -1190,7 +1190,7 @@ namespace SimpleJSON
 
         public JSONBool(string aData)
         {
-            Value = aData;
+            AsString = aData;
         }
 
         public override JSONNode Clone()
@@ -1237,7 +1237,7 @@ namespace SimpleJSON
         public override bool IsNull { get { return true; } }
         public override Enumerator GetEnumerator() { return new Enumerator(); }
 
-        public override string Value
+        public override string AsString
         {
             get { return "null"; }
             set { }

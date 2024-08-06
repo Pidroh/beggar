@@ -46,7 +46,11 @@ public class JsonReader
                 }
                 return;
             }
-            if (mod.Target.RuntimeUnit == null) Debug.Log($"Target not found {mod.Target.id}");
+            if (mod.Target.RuntimeUnit == null) 
+            {
+                Debug.Log($"Target not found {mod.Target.id}");
+            }
+                
             mod.Target.RuntimeUnit.RegisterModTargetingSelf(mod);
         }
 
@@ -145,7 +149,7 @@ public class JsonReader
         foreach (var pair in dataJsonMod)
         {
             strList.Clear();
-            var key = pair.Key;
+            var key = pair.Key.Replace("\"", "");
             var value = pair.Value.AsFloat;
             var splittedValues = key.Split('.');
             var last = splittedValues[splittedValues.Length - 1];
@@ -217,12 +221,11 @@ public class JsonReader
             if (pair.Key == "initial") ru.SetValue(pair.Value.AsInt);
             if (pair.Key == "name") bu.name = pair.Value;
             if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
-            if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.ToString(), arcaniaUnits);
-            if (pair.Key == "tag") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), arcaniaUnits);
-            if (pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.ToString(), arcaniaUnits);
+            if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
+            if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "lock") 
             {
-                CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.ToString(), null);
+                CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.AsString, null);
             }
         }
         foreach (var tag in ru.ConfigBasic.Tags)

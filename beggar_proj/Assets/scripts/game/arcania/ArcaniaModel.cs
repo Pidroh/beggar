@@ -65,18 +65,6 @@ public class ArcaniaModel
         Runner = new(this);
     }
 
-    
-
-    public bool CanAcquireSkill(RuntimeUnit ru)
-    {
-        return CanAfford(ru.ConfigTask.Cost) && !ru.Skill.Acquired;
-    }
-
-    public void AcquireSkill(RuntimeUnit ru) {
-        ApplyResourceChanges(ru, ResourceChangeType.COST);
-        ru.Skill.Acquire();
-    }
-
     internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
     {
         var changes = parent.ConfigTask.GetResourceChangeList(changeType);
