@@ -157,6 +157,7 @@ public class MainGameControl : MonoBehaviour
 
                     case UnitType.SKILL:
                         {
+                            tcu.XPGauge.SetRatio(data.Skill.XPRatio);
                             tcu.bwe.MainButton.ButtonEnabled = data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data);
                             if (tcu.TaskClicked)
                             {

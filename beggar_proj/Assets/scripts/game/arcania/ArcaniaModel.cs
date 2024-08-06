@@ -33,6 +33,8 @@ public class SkillRuntime
 
     public bool Acquired => _acquired;
 
+    public float XPRatio => xp / GetMaxXP();
+
     internal void Acquire()
     {
         _acquired = true;
