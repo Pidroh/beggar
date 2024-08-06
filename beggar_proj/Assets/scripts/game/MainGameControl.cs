@@ -48,7 +48,7 @@ public class MainGameControl : MonoBehaviour
                     t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                     // bwe.ExpandTargets
                     tcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
-                    tcu.MainTitle.RectOffset = new RectOffset(20, 20, 0, 0);
+                    tcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
                     layout.AddLayoutChildAndParentIt(tcu.MainTitle.LayoutChild);
                     tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
                     layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);

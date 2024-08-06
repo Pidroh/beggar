@@ -33,10 +33,11 @@ public class TaskControlUnit
 
         if (Data.ConfigBasic.UnitType == UnitType.SKILL) {
             MainTitle.Element.SetTextRaw(Data.Name);
-            MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 10);
+            MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 20);
             MainTitle.ManualUpdate();
             XPGauge.SetRatio(Data.Skill.XPRatio);
             XPGauge.layoutChild.Visible = Data.Skill.Acquired;
+            bwe.ButtonProgressBar.Button.rawText = Data.Skill.Acquired ? "Practice skill" : "Acquire Skill";
         }
         if (!bwe.Expanded) return;
         Description.LayoutChild.Visible = !string.IsNullOrWhiteSpace(Data.ConfigBasic.Desc);
