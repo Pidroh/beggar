@@ -201,7 +201,7 @@ public class CanvasMaker
         Color textColor = request.SecondaryColor;
         TMP_FontAsset font = request.font;
         // Create a Text GameObject for the button label
-        var textUiUnit = CreateTextUnit(textColor, font);
+        var textUiUnit = CreateTextUnit(textColor, font, 16);
         textUiUnit.text.text = buttonText;
         textUiUnit.gameObject.transform.SetParent(buttonObject.transform);
         {
@@ -225,7 +225,7 @@ public class CanvasMaker
         return bbb;
     }
 
-    public static UIUnit CreateTextUnit(Color textColor, TMP_FontAsset font)
+    public static UIUnit CreateTextUnit(Color textColor, TMP_FontAsset font, int fontSize)
     {
         GameObject textObject = new GameObject("Text");
         TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
@@ -235,7 +235,7 @@ public class CanvasMaker
         
         text.alignment = TextAlignmentOptions.Center;
         text.color = textColor; // Set text color
-        text.fontSize = 16;
+        text.fontSize = fontSize;
         text.font = font;
         text.raycastTarget = false;
         UIUnit textUiUnit = textObject.AddComponent<UIUnit>();
@@ -403,23 +403,15 @@ public class CanvasMaker
             RectTransform = parentRectTransform
         };
         
-        ttv.MainText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
-        ttv.SecondaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
-        ttv.TertiaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font).SetTextAlignment(TextAlignmentOptions.Right).SetParent(parentRectTransform);
+        ttv.MainText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
+        ttv.SecondaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
+        ttv.TertiaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Right).SetParent(parentRectTransform);
         parentRectTransform.SetHeight(ttv.MainText.RectTransform.GetHeight());
         
         return ttv;
     }
 
-    internal static DynamicCanvas CreateCanvas(int v, object canvasRequest)
-    {
-        throw new NotImplementedException();
-    }
 
-    internal static void CreateTextUnit(object mainTextColor, TMP_FontAsset font)
-    {
-        throw new NotImplementedException();
-    }
 }
 
 public static class ColorExtensions

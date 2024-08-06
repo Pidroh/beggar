@@ -17,6 +17,8 @@ public class TaskControlUnit
     public ResourceChangeGroup EffectGroup { get => ChangeGroups[3]; set => ChangeGroups[3] = value; }
     public SimpleChild<UIUnit> Description { get; internal set; }
     public List<TripleTextView> ModTTVs { get; internal set; } = new();
+    public Gauge XPGauge { get; internal set; }
+    public SimpleChild<UIUnit> MainTitle { get; internal set; }
 
     public List<SeparatorWithLabel> Separators = new();
 
@@ -28,9 +30,17 @@ public class TaskControlUnit
     {
         bwe.ManualUpdate();
         bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
+
+        if (Data.ConfigBasic.UnitType == UnitType.SKILL) {
+            MainTitle.Element.SetTextRaw(Data.Name);
+            MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 10);
+            MainTitle.ManualUpdate();
+            XPGauge.SetRatio(Data.Skill.XPRatio);
+            XPGauge.layoutChild.Visible = Data.Skill.Acquired;
+        }
         if (!bwe.Expanded) return;
         Description.LayoutChild.Visible = !string.IsNullOrWhiteSpace(Data.ConfigBasic.Desc);
-        Description.LayoutChild.RectTransform.SetHeight(Description.Element.text.preferredHeight);
+        Description.LayoutChild.RectTransform.SetHeight(Description.Element.text.preferredHeight + 10);
         Description.Element.SetTextRaw(Data.ConfigBasic.Desc);
         Description.ManualUpdate();
         foreach (var sep in Separators)

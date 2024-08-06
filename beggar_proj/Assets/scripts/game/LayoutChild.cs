@@ -62,6 +62,7 @@ public struct Vector2Null
 public class SimpleChild<T> where T : MonoBehaviour
 {
     public LayoutChild LayoutChild;
+    public RectOffset RectOffset;
     public SimpleChild(T element, RectTransform elementRectTransform) 
     {
         LayoutChild = LayoutChild.Create(element.transform);
@@ -72,6 +73,7 @@ public class SimpleChild<T> where T : MonoBehaviour
     public void ManualUpdate() 
     {
         ElementRectTransform.FillParent();
+        if(RectOffset != null) ElementRectTransform.SetOffsets(RectOffset);
     }
 
     public T Element { get; }

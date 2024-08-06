@@ -44,6 +44,12 @@ public class MainGameControl : MonoBehaviour
                 var tcu = new TaskControlUnit();
                 if (pair.Key == UnitType.SKILL) 
                 {
+                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
+                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                    // bwe.ExpandTargets
+                    tcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
+                    tcu.MainTitle.RectOffset = new RectOffset(20, 20, 0, 0);
+                    layout.AddLayoutChildAndParentIt(tcu.MainTitle.LayoutChild);
                     tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
                     layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
                 }
@@ -55,9 +61,11 @@ public class MainGameControl : MonoBehaviour
                 tcu.bwe = bwe;
                 tcu.Data = item;
                 {
-                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font);
+                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
+                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                     // bwe.ExpandTargets
                     tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+                    tcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
                     AddToExpands(tcu.Description.LayoutChild);
 
                 }
@@ -109,7 +117,7 @@ public class MainGameControl : MonoBehaviour
         SeparatorWithLabel CreateSeparator(LayoutParent layout, TaskControlUnit tcu, string textKey)
         {
             // Separator instancing
-            var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font);
+            var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font, 16);
             var image = CanvasMaker.CreateSimpleImage(ButtonObjectRequest.SecondaryColor);
             var swl = new SeparatorWithLabel(text, image);
             layout.AddLayoutChildAndParentIt(swl.LayoutChild);
@@ -157,8 +165,7 @@ public class MainGameControl : MonoBehaviour
 
                     case UnitType.SKILL:
                         {
-                            tcu.XPGauge.SetRatio(data.Skill.XPRatio);
-                            tcu.XPGauge.layoutChild.Visible = data.Skill.Acquired;
+
                             tcu.bwe.MainButton.ButtonEnabled = data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data);
                             if (tcu.TaskClicked)
                             {
