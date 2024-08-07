@@ -6,26 +6,38 @@ using UnityEngine;
 using UnityEngine.UI;
 using static CanvasMaker;
 
-public class Gauge 
+public class Gauge
 {
+    private readonly CreateGaugeRequest gaugeRequest;
     public LayoutChild layoutChild;
     public UIUnit GaugeBackground;
     public UIUnit GaugeFill;
 
-    public Gauge(CreateGaugeRequest gaugeRequest) 
+
+    public Gauge(CreateGaugeRequest gaugeRequest)
     {
         GaugeBackground = CanvasMaker.CreateSimpleImage(gaugeRequest.MainBody);
         GaugeFill = CanvasMaker.CreateSimpleImage(gaugeRequest.GaugeFill);
         RectTransform bgRT = GaugeBackground.RectTransform;
         GaugeFill.SetParent(bgRT);
         GaugeFill.RectTransform.FillParent();
+        
+        layoutChild = LayoutChild.Create(bgRT);
+        layoutChild.RectTransform.SetSize(gaugeRequest.InitialSize);
+        this.gaugeRequest = gaugeRequest;
+
         bgRT.FillParent();
         RectTransformExtensions.SetOffsets(bgRT, gaugeRequest.Padding);
-        layoutChild = LayoutChild.Create(bgRT);
     }
 
-    public void SetRatio(float ratio) 
+    public void ManualUpdate()
     {
+        //GaugeBackground.RectTransform.SetOffsets(gaugeRequest.);
+    }
+
+    public void SetRatio(float ratio)
+    {
+
         GaugeFill.RectTransform.SetAnchorMaxByIndex(0, ratio);
     }
 }
@@ -63,24 +75,24 @@ public class SimpleChild<T> where T : MonoBehaviour
 {
     public LayoutChild LayoutChild;
     public RectOffset RectOffset;
-    public SimpleChild(T element, RectTransform elementRectTransform) 
+    public SimpleChild(T element, RectTransform elementRectTransform)
     {
         LayoutChild = LayoutChild.Create(element.transform);
         Element = element;
         ElementRectTransform = elementRectTransform;
     }
 
-    public void ManualUpdate() 
+    public void ManualUpdate()
     {
         ElementRectTransform.FillParent();
-        if(RectOffset != null) ElementRectTransform.SetOffsets(RectOffset);
+        if (RectOffset != null) ElementRectTransform.SetOffsets(RectOffset);
     }
 
     public T Element { get; }
     public RectTransform ElementRectTransform { get; }
 }
 
-public class ButtonWithProgressBar 
+public class ButtonWithProgressBar
 {
     public UIUnit Button;
     public UIUnit ProgressImage;
@@ -230,7 +242,7 @@ public class ButtonWithExpandable
         ExpandButton = iconButton;
         MainButton = button.Button;
         ButtonProgressBar = button;
-        
+
         this.LayoutChild = LayoutChild.Create(MainButton.transform, iconButton.transform);
         MainButton.transform.localPosition = Vector3.zero;
         iconButton.transform.localPosition = Vector3.zero;

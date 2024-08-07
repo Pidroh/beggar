@@ -83,7 +83,7 @@ public class CanvasMaker
         public Color Outline;
         public Color GaugeFill;
         public Color TextColor;
-
+        public Vector2 InitialSize;
         public RectOffset Padding;
     }
 

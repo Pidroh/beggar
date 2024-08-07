@@ -442,6 +442,17 @@ MonoBehaviour:
       ScrollBarBG: {r: 0.53900003, g: 0.53900003, b: 0.53900003, a: 0.43137255}
       ScrollHandleColor: {r: 0.18310279, g: 0.2688598, b: 0.496, a: 1}
       ScrollHandleColorFocused: {r: 0.24059528, g: 0.3532143, b: 0.645, a: 1}
+  SkillXPGaugeRequest:
+    MainBody: {r: 0.148255, g: 0.199, b: 0.19807737, a: 1}
+    Outline: {r: 0.07822801, g: 0.6720229, b: 0.73800004, a: 1}
+    GaugeFill: {r: 0.078431375, g: 0.67058825, b: 0.7372549, a: 1}
+    TextColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
+    InitialSize: {x: 0, y: 30}
+    Padding:
+      m_Left: 20
+      m_Right: 20
+      m_Top: 10
+      m_Bottom: 10
   MainTextColor: {r: 0.6603774, g: 0.65318894, b: 0.6136526, a: 1}
 --- !u!4 &2118819688
 Transform:

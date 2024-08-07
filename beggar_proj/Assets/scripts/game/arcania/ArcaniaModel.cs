@@ -33,7 +33,7 @@ public class SkillRuntime
 
     public bool Acquired => _acquired;
 
-    public float XPRatio => xp / GetMaxXP();
+    public float XPRatio => xp / (float) GetMaxXP();
 
     internal void Acquire()
     {
@@ -47,7 +47,8 @@ public class SkillRuntime
 
     private int GetMaxXP()
     {
-        return Mathf.FloorToInt(50 * Mathf.Pow(1.35f, RuntimeUnit.Value + skillData.LearningDifficultyLevel));
+        float MaxXPForLevel = 50 * Mathf.Pow(1.35f, RuntimeUnit.Value + skillData.LearningDifficultyLevel);
+        return Mathf.FloorToInt(MaxXPForLevel);
     }
 
     internal void StudySkillTick()
