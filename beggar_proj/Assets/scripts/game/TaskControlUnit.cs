@@ -19,6 +19,7 @@ public class TaskControlUnit
     public List<TripleTextView> ModTTVs { get; internal set; } = new();
     public Gauge XPGauge { get; internal set; }
     public SimpleChild<UIUnit> MainTitle { get; internal set; }
+    public UIUnit SkillLevelText { get; internal set; }
 
     public List<SeparatorWithLabel> Separators = new();
 
@@ -37,6 +38,8 @@ public class TaskControlUnit
             MainTitle.ManualUpdate();
             XPGauge.SetRatio(Data.Skill.XPRatio);
             XPGauge.layoutChild.Visible = Data.Skill.Acquired;
+            SkillLevelText.Active = Data.Skill.Acquired;
+            SkillLevelText.rawText = $"Lvl: {Data.Value} / {Data.Max}";
             bwe.ButtonProgressBar.Button.rawText = Data.Skill.Acquired ? "Practice skill" : "Acquire Skill";
         }
         if (!bwe.Expanded) return;

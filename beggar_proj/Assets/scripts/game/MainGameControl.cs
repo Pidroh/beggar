@@ -44,12 +44,24 @@ public class MainGameControl : MonoBehaviour
                 var tcu = new TaskControlUnit();
                 if (pair.Key == UnitType.SKILL) 
                 {
-                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
-                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
-                    // bwe.ExpandTargets
-                    tcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
-                    tcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
-                    layout.AddLayoutChildAndParentIt(tcu.MainTitle.LayoutChild);
+                    {
+                        var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
+                        t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                        // bwe.ExpandTargets
+                        tcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
+                        tcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
+                        layout.AddLayoutChildAndParentIt(tcu.MainTitle.LayoutChild);
+                    }
+                    {
+                        var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
+                        t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                        // bwe.ExpandTargets
+                        tcu.SkillLevelText = t;
+                        t.SetParent(tcu.MainTitle.ElementRectTransform);
+                        t.RectTransform.FillParent();
+                        t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
+                        
+                    }
                     tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
                     layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
                 }

@@ -78,6 +78,7 @@ public class JsonReader
             if (type == UnitType.SKILL)
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                if (ru.ConfigBasic.Max < 0) ru.ConfigBasic.Max = 3;
                 new SkillRuntime(ru);
             }
             if (type == UnitType.HOUSE)
