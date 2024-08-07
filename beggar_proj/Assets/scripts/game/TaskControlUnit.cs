@@ -8,6 +8,8 @@ public class ResourceControlUnit
     public LabelWithExpandable lwe;
     public SimpleChild<UIUnit> Description { get; internal set; }
     public RuntimeUnit Data { get; internal set; }
+    public UIUnit ValueText { get; internal set; }
+
     public List<SeparatorWithLabel> Separators = new();
     public ModsControlUnit ModsUnit = new();
 
@@ -15,7 +17,9 @@ public class ResourceControlUnit
     {
         lwe.ManualUpdate();
         TaskControlUnit.FeedDescription(Description, Data.ConfigBasic.Desc);
+        ValueText.rawText = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
         if (!lwe.ExpandManager.Expanded) return;
+        
 
         foreach (var sep in Separators)
         {

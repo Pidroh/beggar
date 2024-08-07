@@ -147,7 +147,7 @@ public class RuntimeUnit
 
     public ConfigHouse ConfigHouse { get; internal set; }
     public ConfigFurniture ConfigFurniture { get; internal set; }
-    public bool HasMax => CalculateMax() < 0;
+    public bool HasMax => CalculateMax() >= 0;
 
     public bool IsTaskHalfWay => !IsTaskComplete() && TaskProgress != 0;
 }

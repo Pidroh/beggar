@@ -59,6 +59,15 @@ public class MainGameControl : MonoBehaviour
                     rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
                     rcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
                     layout.AddLayoutChildAndParentIt(rcu.Description.LayoutChild);
+                }
+                {
+                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
+                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                    // bwe.ExpandTargets
+                    rcu.ValueText = t;
+                    t.SetParent(rcu.lwe.MainText.RectTransform);
+                    t.RectTransform.FillParent();
+                    t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
 
                 }
                 CreateModViews(item, layout, rcu.Separators, rcu.ModsUnit, lwe.ExpandManager);
