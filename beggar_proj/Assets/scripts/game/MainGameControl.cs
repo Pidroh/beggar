@@ -15,6 +15,10 @@ public class MainGameControl : MonoBehaviour
         { UnitType.CLASS, new List<TaskControlUnit>() },
         { UnitType.SKILL, new List<TaskControlUnit>() }
     };
+    public Dictionary<UnitType, List<ResourceControlUnit>> UnitGroupResourceControls = new()
+    {
+        { UnitType.RESOURCE, new List<ResourceControlUnit>() },
+    };
     [SerializeField]
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
@@ -33,6 +37,34 @@ public class MainGameControl : MonoBehaviour
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
         dynamicCanvas = CanvasMaker.CreateCanvas(1, CanvasRequest);
+        foreach (var pair in UnitGroupResourceControls)
+        {
+            foreach (var item in arcaniaDatas.datas[pair.Key])
+            {
+                var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
+                var titleText = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font, 16);
+                var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
+                var lwe = new LabelWithExpandable(iconButton, titleText);
+                var rcu = new ResourceControlUnit();
+                dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
+                layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
+                titleText.SetTextRaw(item.ConfigBasic.name);
+
+                pair.Value.Add(rcu);
+                rcu.lwe = lwe;
+                rcu.Data = item;
+                {
+                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
+                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                    // bwe.ExpandTargets
+                    rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+                    rcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
+                    layout.AddLayoutChildAndParentIt(rcu.Description.LayoutChild);
+
+                }
+                CreateModViews(item, layout, rcu.Separators, rcu.ModsUnit, lwe.ExpandManager);
+            }
+        }
         foreach (var pair in UnitGroupControls)
         {
             foreach (var item in arcaniaDatas.datas[pair.Key])
@@ -42,7 +74,7 @@ public class MainGameControl : MonoBehaviour
                 var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
                 var bwe = new ButtonWithExpandable(button, iconButton);
                 var tcu = new TaskControlUnit();
-                if (pair.Key == UnitType.SKILL) 
+                if (pair.Key == UnitType.SKILL)
                 {
                     {
                         var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
@@ -60,7 +92,7 @@ public class MainGameControl : MonoBehaviour
                         t.SetParent(tcu.MainTitle.ElementRectTransform);
                         t.RectTransform.FillParent();
                         t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
-                        
+
                     }
                     tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
                     layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
@@ -68,7 +100,7 @@ public class MainGameControl : MonoBehaviour
                 dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
                 layout.AddLayoutChildAndParentIt(bwe);
                 button.Button.SetTextRaw(item.ConfigBasic.name);
-                
+
                 pair.Value.Add(tcu);
                 tcu.bwe = bwe;
                 tcu.Data = item;
@@ -98,24 +130,22 @@ public class MainGameControl : MonoBehaviour
                             ResourceChangeType.EFFECT => "effect",
                             _ => null,
                         };
-                        SeparatorWithLabel swl = CreateSeparator(layout, tcu, textKey);
+                        SeparatorWithLabel swl = CreateSeparator(layout, tcu.bwe.ExpandManager, textKey);
 
                         tcu.ChangeGroupSeparators[rcgIndex] = swl;
                     }
                     foreach (var changeU in arrayOfChanges)
                     {
-                        TripleTextView ttv = CreateTripleTextView(layout, bwe);
+                        TripleTextView ttv = CreateTripleTextView(layout, bwe.ExpandManager);
                         tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
                     }
                 }
 
-                var sep = CreateSeparator(layout, tcu, "Mods:");
-                tcu.Separators.Add(sep);
-                foreach (var md in item.ModsOwned)
-                {
-                    var ttv = CreateTripleTextView(layout, bwe);
-                    tcu.ModTTVs.Add(ttv);
-                }
+
+                List<SeparatorWithLabel> separators = tcu.Separators;
+                var ModUnit = tcu.ModsUnit;
+                ExpandableManager expandManager = bwe.ExpandManager;
+                CreateModViews(item, layout, separators, ModUnit, expandManager);
 
                 void AddToExpands(LayoutChild c)
                 {
@@ -126,7 +156,7 @@ public class MainGameControl : MonoBehaviour
         }
 
 
-        SeparatorWithLabel CreateSeparator(LayoutParent layout, TaskControlUnit tcu, string textKey)
+        SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
         {
             // Separator instancing
             var text = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font, 16);
@@ -134,16 +164,28 @@ public class MainGameControl : MonoBehaviour
             var swl = new SeparatorWithLabel(text, image);
             layout.AddLayoutChildAndParentIt(swl.LayoutChild);
             swl.Text.SetTextRaw(textKey);
-            tcu.bwe.ExpandTargets.Add(swl.LayoutChild.GameObject);
+            expand.ExpandTargets.Add(swl.LayoutChild.GameObject);
             return swl;
         }
 
-        TripleTextView CreateTripleTextView(LayoutParent layout, ButtonWithExpandable bwe)
+        TripleTextView CreateTripleTextView(LayoutParent layout, ExpandableManager expand)
         {
             TripleTextView ttv = CanvasMaker.CreateTripleTextView(ButtonObjectRequest);
             layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
-            bwe.ExpandTargets.Add(ttv.LayoutChild.RectTransform.gameObject);
+            expand.ExpandTargets.Add(ttv.LayoutChild.RectTransform.gameObject);
             return ttv;
+        }
+
+        void CreateModViews(RuntimeUnit item, LayoutParent layout, List<SeparatorWithLabel> separators, ModsControlUnit ModUnit, ExpandableManager expandManager)
+        {
+            var sep = CreateSeparator(layout, expandManager, "Mods:");
+            separators.Add(sep);
+            foreach (var md in item.ModsOwned)
+            {
+
+                var ttv = CreateTripleTextView(layout, expandManager);
+                ModUnit.ModTTVs.Add(ttv);
+            }
         }
     }
 
@@ -152,6 +194,21 @@ public class MainGameControl : MonoBehaviour
     {
         arcaniaModel.ManualUpdate(Time.deltaTime);
         dynamicCanvas.ManualUpdate();
+
+        foreach (var pair in UnitGroupResourceControls)
+        {
+            foreach (var rcu in pair.Value)
+            {
+                var data = rcu.Data;
+                rcu.ManualUpdate();
+                bool visible = data.Visible;
+                rcu.lwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
+                if (!visible) continue;
+                var modUnit = rcu.ModsUnit;
+                FeedMods(data, modUnit);
+
+            }
+        }
 
         foreach (var pair in UnitGroupControls)
         {
@@ -162,15 +219,8 @@ public class MainGameControl : MonoBehaviour
                 bool visible = data.Visible;
                 tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                 if (!visible) continue;
-                for (int i = 0; i < data.ModsOwned.Count; i++)
-                {
-                    ModRuntime md = data.ModsOwned[i];
-                    var ttv = tcu.ModTTVs[i];
-                    ttv.MainText.rawText = md.SourceJsonKey;
-                    ttv.SecondaryText.rawText = $"{md.Value}";
-                    ttv.TertiaryText.rawText = string.Empty;
-                    ttv.ManualUpdate();
-                }
+                var modUnit = tcu.ModsUnit;
+                FeedMods(data, modUnit);
 
                 switch (pair.Key)
                 {
@@ -185,7 +235,7 @@ public class MainGameControl : MonoBehaviour
                                 else arcaniaModel.Runner.AcquireSkill(data);
 
                             }
-                            
+
                         }
                         break;
                     case UnitType.RESOURCE:
@@ -207,5 +257,17 @@ public class MainGameControl : MonoBehaviour
             }
         }
 
+        static void FeedMods(RuntimeUnit data, ModsControlUnit modUnit)
+        {
+            for (int i = 0; i < data.ModsOwned.Count; i++)
+            {
+                ModRuntime md = data.ModsOwned[i];
+                var ttv = modUnit.ModTTVs[i];
+                ttv.MainText.rawText = md.SourceJsonKey;
+                ttv.SecondaryText.rawText = $"{md.Value}";
+                ttv.TertiaryText.rawText = string.Empty;
+                ttv.ManualUpdate();
+            }
+        }
     }
 }

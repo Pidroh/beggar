@@ -3,6 +3,31 @@ using HeartUnity.View;
 using System;
 using System.Collections.Generic;
 
+public class ResourceControlUnit 
+{
+    public LabelWithExpandable lwe;
+    public SimpleChild<UIUnit> Description { get; internal set; }
+    public RuntimeUnit Data { get; internal set; }
+    public List<SeparatorWithLabel> Separators = new();
+    public ModsControlUnit ModsUnit = new();
+
+    internal void ManualUpdate()
+    {
+        lwe.ManualUpdate();
+        TaskControlUnit.FeedDescription(Description, Data.ConfigBasic.Desc);
+        if (!lwe.ExpandManager.Expanded) return;
+
+        foreach (var sep in Separators)
+        {
+            sep.ManualUpdate();
+        }
+    }
+}
+
+public class ModsControlUnit {
+    public List<TripleTextView> ModTTVs { get; internal set; } = new();
+}
+
 public class TaskControlUnit
 {
     public ButtonWithExpandable bwe;
@@ -16,12 +41,14 @@ public class TaskControlUnit
     public ResourceChangeGroup RunGroup { get => ChangeGroups[2]; set => ChangeGroups[2] = value; }
     public ResourceChangeGroup EffectGroup { get => ChangeGroups[3]; set => ChangeGroups[3] = value; }
     public SimpleChild<UIUnit> Description { get; internal set; }
-    public List<TripleTextView> ModTTVs { get; internal set; } = new();
+    
     public Gauge XPGauge { get; internal set; }
     public SimpleChild<UIUnit> MainTitle { get; internal set; }
     public UIUnit SkillLevelText { get; internal set; }
 
     public List<SeparatorWithLabel> Separators = new();
+
+    public ModsControlUnit ModsUnit = new();
 
     public class ResourceChangeGroup
     {
@@ -32,7 +59,8 @@ public class TaskControlUnit
         bwe.ManualUpdate();
         bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
         bwe.MainButton.LongPressMulticlickEnabled = Data.IsInstant();
-        if (Data.ConfigBasic.UnitType == UnitType.SKILL) {
+        if (Data.ConfigBasic.UnitType == UnitType.SKILL)
+        {
             MainTitle.Element.SetTextRaw(Data.Name);
             MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 20);
             MainTitle.ManualUpdate();
@@ -43,10 +71,9 @@ public class TaskControlUnit
             bwe.ButtonProgressBar.Button.rawText = Data.Skill.Acquired ? "Practice skill" : "Acquire Skill";
         }
         if (!bwe.Expanded) return;
-        Description.LayoutChild.Visible = !string.IsNullOrWhiteSpace(Data.ConfigBasic.Desc);
-        Description.LayoutChild.RectTransform.SetHeight(Description.Element.text.preferredHeight + 10);
-        Description.Element.SetTextRaw(Data.ConfigBasic.Desc);
-        Description.ManualUpdate();
+        SimpleChild<UIUnit> description = Description;
+        string desc = Data.ConfigBasic.Desc;
+        FeedDescription(description, desc);
         foreach (var sep in Separators)
         {
             sep.ManualUpdate();
@@ -54,17 +81,17 @@ public class TaskControlUnit
 
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
-            
+
             var sep = ChangeGroupSeparators[i];
-            
+
             ResourceChangeGroup item = ChangeGroups[i];
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
-            if (item == null || (Data.Skill != null && Data.Skill.Acquired && i == (int) ResourceChangeType.COST)) 
+            if (item == null || (Data.Skill != null && Data.Skill.Acquired && i == (int)ResourceChangeType.COST))
             {
                 if (sep != null) sep.LayoutChild.Visible = false;
                 continue;
             }
-            
+
 
             if (sep != null) sep.ManualUpdate();
             sep.LayoutChild.Visible = resourceChanges.Count > 0;
@@ -81,6 +108,14 @@ public class TaskControlUnit
                 ttv.ManualUpdate();
             }
         }
+    }
+
+    public static void FeedDescription(SimpleChild<UIUnit> description, string desc)
+    {
+        description.LayoutChild.Visible = !string.IsNullOrWhiteSpace(desc);
+        description.LayoutChild.RectTransform.SetHeight(description.Element.text.preferredHeight + 10);
+        description.Element.SetTextRaw(desc);
+        description.ManualUpdate();
     }
 }
 
