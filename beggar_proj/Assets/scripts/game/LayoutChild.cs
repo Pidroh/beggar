@@ -245,6 +245,7 @@ public class LabelWithExpandable
     }
 
     public void ManualUpdate() {
+        ExpandManager.ManualUpdate();
         var heightMM = 10; // Fixed height for both buttons
 
         // Set height for both buttons
