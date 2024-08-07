@@ -21,7 +21,7 @@ public class Gauge
         RectTransform bgRT = GaugeBackground.RectTransform;
         GaugeFill.SetParent(bgRT);
         GaugeFill.RectTransform.FillParent();
-        
+
         layoutChild = LayoutChild.Create(bgRT);
         layoutChild.RectTransform.SetSize(gaugeRequest.InitialSize);
         this.gaugeRequest = gaugeRequest;
@@ -224,22 +224,101 @@ public class SeparatorWithLabel
 
 }
 
+public class LabelWithExpandable
+{
+    
+    public ExpandableManager ExpandManager;
+    public UIUnit MainText;
+
+    public LayoutChild LayoutChild { get; }
+
+    public IconButton ExpandButton => ExpandManager.ExpandButton;
+    public List<GameObject> ExpandTargets = new();
+
+    public LabelWithExpandable(IconButton expand, UIUnit mainText)
+    {
+        ExpandManager = new(expand);
+        MainText = mainText;
+        this.LayoutChild = LayoutChild.Create(expand.transform, mainText.transform);
+        expand.transform.localPosition = Vector3.zero;
+        mainText.transform.localPosition = Vector3.zero;
+    }
+
+    public void ManualUpdate() {
+        var heightMM = 10; // Fixed height for both buttons
+
+        // Set height for both buttons
+        MainText.RectTransform.SetHeightMilimeters(heightMM);
+        ExpandButton.RectTransform.SetHeightMilimeters(heightMM);
+        ExpandButton.RectTransform.SetWidthMilimeters(heightMM);
+
+
+        var rectTransformParent = LayoutChild.RectTransform;
+        rectTransformParent.SetHeightMilimeters(heightMM);
+        MainText.RectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - heightMM);
+
+        var expandButtonWidth = ExpandButton.RectTransform.rect.width;
+        var expandButtonHeight = ExpandButton.RectTransform.rect.height;
+
+        ExpandButton.RectTransform.anchoredPosition = new Vector2(
+            rectTransformParent.rect.width * 0.5f - expandButtonWidth * (1 - ExpandButton.RectTransform.pivot.x),
+            expandButtonHeight * (0.5f - ExpandButton.RectTransform.pivot.y)
+        );
+
+        /**
+         * **/
+
+        // Adjust the width of MainButton to occupy remaining space
+
+        MainText.RectTransform.SetLeftXToParent(0);
+        MainText.RectTransform.SetBottomYToParent(0);
+
+    }
+    
+}
+
+public class ExpandableManager 
+{
+    public IconButton ExpandButton;
+    public bool Expanded = false;
+    public List<GameObject> ExpandTargets = new();
+
+    public ExpandableManager(IconButton expandButton)
+    {
+        ExpandButton = expandButton;
+    }
+
+    public void ManualUpdate()
+    {
+        ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, Expanded ? 180 : 0);
+        if (ExpandButton.Clicked)
+        {
+            Expanded = !Expanded;
+        }
+        foreach (var item in ExpandTargets)
+        {
+            item.SetActive(Expanded);
+        }
+    }
+}
+
 public class ButtonWithExpandable
 {
     public UIUnit MainButton;
     public ButtonWithProgressBar ButtonProgressBar;
-    public IconButton ExpandButton;
+    public IconButton ExpandButton => ExpandManager.ExpandButton;
     public LayoutChild LayoutChild;
-    public List<GameObject> ExpandTargets = new();
-    private bool _expanded = false;
+    public List<GameObject> ExpandTargets => ExpandManager.ExpandTargets;
+    
+    public ExpandableManager ExpandManager;
 
-    public bool Expanded => _expanded;
+    public bool Expanded => ExpandManager.Expanded;
 
     public static implicit operator LayoutChild(ButtonWithExpandable a) => a.LayoutChild;
 
     public ButtonWithExpandable(ButtonWithProgressBar button, IconButton iconButton)
     {
-        ExpandButton = iconButton;
+        ExpandManager = new(iconButton);
         MainButton = button.Button;
         ButtonProgressBar = button;
 
@@ -251,16 +330,8 @@ public class ButtonWithExpandable
 
     public void ManualUpdate()
     {
-        ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, _expanded ? 180 : 0);
-        if (ExpandButton.Clicked)
-        {
-            _expanded = !_expanded;
-        }
-        foreach (var item in ExpandTargets)
-        {
-            item.SetActive(_expanded);
-        }
 
+        ExpandManager.ManualUpdate();
 
         var heightMM = 10; // Fixed height for both buttons
 
