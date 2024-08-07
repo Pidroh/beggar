@@ -49,7 +49,6 @@ public class MainGameControl : MonoBehaviour
                 dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
                 layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                 titleText.SetTextRaw(item.ConfigBasic.name);
-
                 pair.Value.Add(rcu);
                 rcu.lwe = lwe;
                 rcu.Data = item;

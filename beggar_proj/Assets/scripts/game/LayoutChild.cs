@@ -233,6 +233,9 @@ public class LabelWithExpandable
     public LayoutChild LayoutChild { get; }
 
     public IconButton ExpandButton => ExpandManager.ExpandButton;
+
+    
+
     public List<GameObject> ExpandTargets = new();
 
     public LabelWithExpandable(IconButton expand, UIUnit mainText)
@@ -291,6 +294,8 @@ public class ExpandableManager
 
     public void ManualUpdate()
     {
+        ExpandButton.Active = ExpandTargets.Count > 0;
+        Expanded = Expanded && ExpandButton.Active;
         ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, Expanded ? 180 : 0);
         if (ExpandButton.Clicked)
         {
