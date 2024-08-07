@@ -140,7 +140,7 @@ public class RuntimeUnit
     public float _value;
 
     public float TaskProgress { get; internal set; }
-    public float TaskProgressRatio => !ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value;
+    public float TaskProgressRatio => Skill != null ? TaskProgress : (!ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value);
     public bool IsMaxed => Value >= MaxForCeiling;
 
     public bool IsZero => Value == 0;

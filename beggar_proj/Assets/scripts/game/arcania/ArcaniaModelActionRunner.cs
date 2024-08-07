@@ -102,6 +102,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
                 if (run.ConfigBasic.UnitType == UnitType.SKILL)
                 {
                     run.Skill.StudySkillTick();
+                    run.TaskProgress = 0;
                 }
             }
             if (run.IsTaskComplete())
