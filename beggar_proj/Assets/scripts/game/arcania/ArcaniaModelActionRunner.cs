@@ -76,7 +76,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         list.AddRange(RunningTasks);
         foreach (var run in list)
         {
-            var taskContinue = _model.CanAfford(run.ConfigTask.Run);
+            var taskContinue = _model.CanAfford(run.ConfigTask.Run) && !run.IsMaxed;
             if (run.ConfigBasic.UnitType == UnitType.SKILL)
             {
                 // even if result and effect are redudant, skills still run to get XP, so nothing to do here
@@ -102,6 +102,12 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
                 if (run.ConfigBasic.UnitType == UnitType.SKILL)
                 {
                     run.Skill.StudySkillTick();
+                    if (run.Skill.HasEnoughXPToLevelUp()) 
+                    {
+                        run.ChangeValue(1);
+                        run.Skill.xp = 0;
+                    }
+
                     run.TaskProgress = 0;
                 }
             }
