@@ -178,6 +178,7 @@ public class MainGameControl : MonoBehaviour
 
         void CreateModViews(RuntimeUnit item, LayoutParent layout, List<SeparatorWithLabel> separators, ModsControlUnit ModUnit, ExpandableManager expandManager)
         {
+            if (item.ModsOwned.Count == 0) return;
             var sep = CreateSeparator(layout, expandManager, "Mods:");
             separators.Add(sep);
             foreach (var md in item.ModsOwned)
