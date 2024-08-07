@@ -284,7 +284,7 @@ namespace HeartUnity.View
             {
                 MouseDownTime += Time.deltaTime;
 
-                if (LongPressMulticlickEnabled)
+                if (LongPressMulticlickEnabled && _button.interactable)
                 {
                     for (int i = 0; i < MouseDownTimeThresholds.Length; i++)
                     {

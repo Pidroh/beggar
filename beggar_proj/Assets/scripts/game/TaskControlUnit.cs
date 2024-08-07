@@ -31,7 +31,7 @@ public class TaskControlUnit
     {
         bwe.ManualUpdate();
         bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
-
+        bwe.MainButton.LongPressMulticlickEnabled = Data.IsInstant();
         if (Data.ConfigBasic.UnitType == UnitType.SKILL) {
             MainTitle.Element.SetTextRaw(Data.Name);
             MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 20);
