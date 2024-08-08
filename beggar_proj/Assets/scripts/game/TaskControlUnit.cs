@@ -3,6 +3,12 @@ using HeartUnity.View;
 using System;
 using System.Collections.Generic;
 
+public class TabControlUnit
+{
+    public LayoutChild SelectionButton { get; internal set; }
+    public RuntimeUnit TabData { get; internal set; }
+}
+
 public class ResourceControlUnit 
 {
     public LabelWithExpandable lwe;

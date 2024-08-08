@@ -9,6 +9,7 @@ public class MainGameControl : MonoBehaviour
 
     public TextAsset ResourceJson;
     private DynamicCanvas dynamicCanvas;
+    public List<TabControlUnit> TabControlUnits = new();
     public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new()
     {
         { UnitType.TASK, new List<TaskControlUnit>() },
@@ -43,8 +44,16 @@ public class MainGameControl : MonoBehaviour
         foreach (var item in arcaniaDatas.datas[UnitType.TAB])
         {
             var button = CanvasMaker.CreateButton("sss", ButtonObjectRequest, ButtonRequest);
-            make button into a layout child?
-            add layout child to lower menu layout
+            var lc = new LayoutChild() {
+                RectTransform = button.Button.RectTransform
+            };
+            lowerMenuLayout.AddLayoutChildAndParentIt(lc);
+            var tcu = new TabControlUnit() {
+                SelectionButton = lc,
+                TabData = item
+            };
+            TabControlUnits.Add(tcu);
+            
         }
         
         foreach (var pair in UnitGroupResourceControls)
