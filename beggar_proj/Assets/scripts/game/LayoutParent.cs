@@ -112,6 +112,17 @@ public class LayoutParent
         }
     }
 
+    internal LayoutParent SetLayoutType(LayoutType type)
+    {
+        TypeLayout = type;
+        return this;
+    }
+
+    internal LayoutParent SetStretchWidth(bool b)
+    {
+        StretchChildren[0] = b;
+        return this;
+    }
 
     public LayoutParent SetFitWidth(bool b)
     {

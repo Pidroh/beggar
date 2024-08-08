@@ -10,20 +10,22 @@ using System;
 public class DynamicCanvas
 {
     public List<LayoutParent> children = new List<LayoutParent>();
-    public List<LayoutChild> LowerMenus = new();
+    public List<LayoutParent> LowerMenus = new();
     public GameObject canvasGO;
 
     public RectTransform RootRT { get; internal set; }
 
-    public LayoutChild CreateLowerMenu(int height) 
+
+    public LayoutParent CreateLowerMenuLayout(int height)
     {
         var lc = LayoutChild.Create();
         lc.RectTransform.SetParent(canvasGO.transform);
         lc.RectTransform.SetHeight(height);
         lc.RectTransform.FillParentWidth();
         lc.RectTransform.SetBottomYToParent(0);
-        LowerMenus.Add(lc);
-        return lc;
+        LayoutParent layoutParent = CanvasMaker.CreateLayout(lc);
+        LowerMenus.Add(layoutParent);
+        return layoutParent;
     }
 
     public void ManualUpdate()
@@ -59,14 +61,15 @@ public class DynamicCanvas
             var LowerMenuTotalHeight = 0f;
             foreach (var item in LowerMenus)
             {
-                LowerMenuTotalHeight += item.RectTransform.GetHeight();
+                LowerMenuTotalHeight += item.SelfChild.RectTransform.GetHeight();
             }
-            foreach (var layoutP in children)
+
+            List<LayoutParent> layouts = children;
+            foreach (var layoutP in layouts)
             {
                 var child = layoutP.SelfChild.RectTransform.gameObject;
                 if (child.activeSelf)
                 {
-                    layoutP.ManualUpdate();
                     RectTransform rt = child.GetComponent<RectTransform>();
                     if (rt != null)
                     {
@@ -77,7 +80,12 @@ public class DynamicCanvas
                         rt.SetOffsetMinByIndex(1, LowerMenuTotalHeight);
                         xOffset += childWidth;
                     }
+                    layoutP.ManualUpdate();
                 }
+            }
+            foreach (var lowerMenuP in LowerMenus)
+            {
+                lowerMenuP.ManualUpdate();
             }
         }
     }
