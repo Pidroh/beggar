@@ -8,6 +8,7 @@ public class LayoutParent
     public List<LayoutChild> Children = new();
     public List<LayoutParent> ChildrenLayoutParents = new();
     public bool[] FitSelfSizeToChildren = new bool[] { false, false };
+    public bool[] StretchChildren = new bool[] { false, false };
     public LayoutType TypeLayout = LayoutParent.LayoutType.VERTICAL;
     public RectTransform ContentTransformOverridingSelfChildTransform;
     public RectTransform TransformParentOfChildren => ContentTransformOverridingSelfChildTransform == null ? SelfChild.RectTransform : ContentTransformOverridingSelfChildTransform;
@@ -31,6 +32,23 @@ public class LayoutParent
         float totalWidth = 0;
         float totalHeight = 0;
 
+        Vector2Int ForceSize = new Vector2Int(-1, -1);
+        if (StretchChildren[0] || StretchChildren[1]) 
+        {
+            var totalChildren = 0;
+            foreach (var child in Children) {
+                if (!child.Visible) continue;
+                totalChildren++;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                if (StretchChildren[i]) 
+                {
+                    ForceSize[i] = Mathf.FloorToInt(parentRectTransform.GetSize()[i] / totalChildren);
+                }
+            }
+        }
+
         // Loop through each child in the LayoutChilds list
         foreach (var child in Children)
         {
@@ -45,7 +63,8 @@ public class LayoutParent
 
                 childRectTransform.SetPivotAndAnchors(Vector3.one);
                 // Set the width of the child to fit the parent
-                childRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, childRectTransform.sizeDelta.y);
+                float height = ForceSize.y > 0 ? ForceSize.y : childRectTransform.sizeDelta.y;
+                childRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, height);
                 // Position the child vertically, taking the pivot into account
                 childRectTransform.anchoredPosition = new Vector2(0, -offset);
                 // Increment the offset by the height of the child
@@ -58,7 +77,8 @@ public class LayoutParent
             else if (TypeLayout == LayoutType.HORIZONTAL)
             {
                 // Set the height of the child to fit the parent
-                childRectTransform.sizeDelta = new Vector2(childRectTransform.sizeDelta.x, parentRectTransform.rect.height);
+                float width = ForceSize.x > 0 ? ForceSize.x : childRectTransform.sizeDelta.x;
+                childRectTransform.sizeDelta = new Vector2(width, parentRectTransform.rect.height);
                 // Position the child horizontally, taking the pivot into account
                 childRectTransform.anchoredPosition = new Vector2(offset - childPivot.x * childRectTransform.rect.width, 0);
                 // Increment the offset by the width of the child
