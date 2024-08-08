@@ -145,6 +145,13 @@ namespace HeartUnity.View
             trans.anchorMax = amM;
         }
 
+        public static void SetAnchorMinByIndex(this RectTransform trans, int index, float value)
+        {
+            var amM = trans.anchorMin;
+            amM[index] = value;
+            trans.anchorMin = amM;
+        }
+
         public static void SetBottomLocalY(this RectTransform trans, float bottomY)
         {
             trans.localPosition = new Vector3(trans.localPosition.x, bottomY + (trans.pivot.y * trans.rect.height), trans.localPosition.z);
@@ -180,12 +187,20 @@ namespace HeartUnity.View
             trans.localPosition = new Vector3(newPos.x - ((1f - trans.pivot.x) * trans.rect.width), newPos.y - ((1f - trans.pivot.y) * trans.rect.height), trans.localPosition.z);
         }
 
-        public static void SetOffsetMaxByIndex(this RectTransform trans, int index, int offMax)
+        public static void SetOffsetMaxByIndex(this RectTransform trans, int index, float v)
         {
             var offsets =  trans.offsetMax;
-            offsets[index] = offMax;
+            offsets[index] = v;
             trans.offsetMax = offsets;
         }
+
+        public static void SetOffsetMinByIndex(this RectTransform trans, int index, float value)
+        {
+            var offsets = trans.offsetMin;
+            offsets[index] = value;
+            trans.offsetMin = offsets;
+        }
+
 
         public static void FillParent(this RectTransform trans)
         {
@@ -194,6 +209,18 @@ namespace HeartUnity.View
             trans.offsetMin = Vector2.zero;
             trans.offsetMax = Vector2.zero;
             
+        }
+
+        public static void FillParentWidth(this RectTransform trans) => FillParentByAxisIndex(trans, 0);
+        public static void FillParentHeight(this RectTransform trans) => FillParentByAxisIndex(trans, 1);
+
+        public static void FillParentByAxisIndex(this RectTransform trans, int axisIndex)
+        {
+            trans.SetAnchorMinByIndex(axisIndex, 0f);
+            trans.SetAnchorMaxByIndex(axisIndex, 1f);
+            trans.SetOffsetMinByIndex(axisIndex, 0f);
+            trans.SetOffsetMaxByIndex(axisIndex, 0f);
+
         }
     }
 }

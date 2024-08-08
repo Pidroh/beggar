@@ -10,7 +10,21 @@ using System;
 public class DynamicCanvas
 {
     public List<LayoutParent> children = new List<LayoutParent>();
+    public List<LayoutChild> LowerMenus = new();
     public GameObject canvasGO;
+
+    public RectTransform RootRT { get; internal set; }
+
+    public LayoutChild CreateLowerMenu(int height) 
+    {
+        var lc = LayoutChild.Create();
+        lc.RectTransform.SetParent(canvasGO.transform);
+        lc.RectTransform.SetHeight(height);
+        lc.RectTransform.FillParentWidth();
+        lc.RectTransform.SetBottomYToParent(0);
+        LowerMenus.Add(lc);
+        return lc;
+    }
 
     public void ManualUpdate()
     {
@@ -42,6 +56,11 @@ public class DynamicCanvas
             float centeredXOffset = (availableWidth - totalWidth) / 2;
 
             float xOffset = centeredXOffset;
+            var LowerMenuTotalHeight = 0f;
+            foreach (var item in LowerMenus)
+            {
+                LowerMenuTotalHeight += item.RectTransform.GetHeight();
+            }
             foreach (var layoutP in children)
             {
                 var child = layoutP.SelfChild.RectTransform.gameObject;
@@ -55,6 +74,7 @@ public class DynamicCanvas
                         // Adjust position based on pivot
                         float pivotOffset = rt.pivot.x * childWidth;
                         rt.anchoredPosition = new Vector2(xOffset + pivotOffset, rt.anchoredPosition.y);
+                        rt.SetOffsetMinByIndex(1, LowerMenuTotalHeight);
                         xOffset += childWidth;
                     }
                 }
@@ -271,7 +291,7 @@ public class CanvasMaker
         {
             dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
         }
-
+        dc.RootRT = rootRT;
         // Create EventSystem GameObject
         GameObject eventSystemGO = new GameObject("EventSystem");
         eventSystemGO.AddComponent<EventSystem>();

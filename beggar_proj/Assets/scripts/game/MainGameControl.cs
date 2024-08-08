@@ -37,6 +37,7 @@ public class MainGameControl : MonoBehaviour
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
         dynamicCanvas = CanvasMaker.CreateCanvas(1, CanvasRequest);
+        var LowerMenu = dynamicCanvas.CreateLowerMenu(60);
         foreach (var pair in UnitGroupResourceControls)
         {
             foreach (var item in arcaniaDatas.datas[pair.Key])
