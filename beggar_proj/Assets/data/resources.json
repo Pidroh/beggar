@@ -332,5 +332,24 @@
             }
 
         ]
+    },
+    {
+        "type": "TAB",
+        "items":[
+            {
+                "id": "resource",
+                "unit_types": [
+                    "RESOURCE"
+                ]
+            },
+            {
+                "id": "task",
+                "unit_types": [
+                    "TASK",
+                    "CLASS",
+                    "SKILL"
+                ]
+            }
+        ]
     }
 ]
