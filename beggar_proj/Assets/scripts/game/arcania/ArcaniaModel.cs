@@ -17,6 +17,20 @@ public class ConfigFurniture
     public int SpaceConsumed;
 }
 
+public class TabRuntime
+{
+
+    public List<UnitType> AcceptedUnitTypes = new();
+
+    public TabRuntime(RuntimeUnit ru)
+    {
+        this.RuntimeUnit = ru;
+        this.RuntimeUnit.Tab = this;
+    }
+
+    public RuntimeUnit RuntimeUnit { get; }
+}
+
 public class SkillRuntime
 {
     public int xp;

@@ -67,6 +67,16 @@ public class JsonReader
             var ru = new RuntimeUnit();
             ReadBasicUnit(ru, item, arcaniaUnits, type);
             arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
+            if(type == UnitType.TAB)
+            {
+                new TabRuntime(ru);
+                var unitTypeLabels = item.GetValueOrDefault("unit_types", null).AsArray.Children;
+                foreach (var labels in unitTypeLabels)
+                {
+                    if (!EnumHelper<UnitType>.TryGetEnumFromName(labels, out var typeFilter)) Debug.LogError($"{typeS} not found in UnitType");
+                    ru.Tab.AcceptedUnitTypes.Add(typeFilter);
+                }
+            }
             if (type == UnitType.TASK)
             {
                 ru.ConfigTask = ReadTask(item, arcaniaUnits);
@@ -271,7 +281,7 @@ public class ConfigBasic
 
 public enum UnitType
 {
-    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE
+    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB
 }
 
 public enum ModType

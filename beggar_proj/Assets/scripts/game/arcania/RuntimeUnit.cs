@@ -27,7 +27,7 @@ public class RuntimeUnit
         return true;
     }
 
-    
+    public TabRuntime Tab { get; internal set; }
 
     private bool MeetsCondition(ConditionalExpressionData expression)
     {
