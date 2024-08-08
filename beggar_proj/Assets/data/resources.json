@@ -340,7 +340,8 @@
                 "id": "resource",
                 "unit_types": [
                     "RESOURCE"
-                ]
+                ],
+                "icon" : "resource"
             },
             {
                 "id": "task",
@@ -348,7 +349,8 @@
                     "TASK",
                     "CLASS",
                     "SKILL"
-                ]
+                ],
+                "icon" : "task"
             }
         ]
     }

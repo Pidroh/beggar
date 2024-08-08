@@ -37,7 +37,16 @@ public class MainGameControl : MonoBehaviour
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
         dynamicCanvas = CanvasMaker.CreateCanvas(1, CanvasRequest);
-        var LowerMenu = dynamicCanvas.CreateLowerMenu(60);
+        var lowerMenu = dynamicCanvas.CreateLowerMenu(60);
+        var lowerMenuLayout = CanvasMaker.CreateLayout(lowerMenu);
+
+        foreach (var item in arcaniaDatas.datas[UnitType.TAB])
+        {
+            var button = CanvasMaker.CreateButton("sss", ButtonObjectRequest, ButtonRequest);
+            make button into a layout child?
+            add layout child to lower menu layout
+        }
+        
         foreach (var pair in UnitGroupResourceControls)
         {
             foreach (var item in arcaniaDatas.datas[pair.Key])

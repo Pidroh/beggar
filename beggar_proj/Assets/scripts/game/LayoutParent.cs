@@ -21,6 +21,12 @@ public class LayoutParent
         };
     }
 
+    public LayoutParent(LayoutChild lC)
+    {
+        SelfChild = lC;
+    }
+
+
     public void ManualUpdate()
     {
         // Get the RectTransform of the parent

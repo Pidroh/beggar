@@ -399,6 +399,15 @@ public class CanvasMaker
         return lp;
     }
 
+    public static LayoutParent CreateLayout(LayoutChild lc)
+    {
+        LayoutParent lp;
+        {
+            lp = new LayoutParent(lc);
+        }
+        return lp;
+    }
+
     public static LayoutParent CreateLayout()
     {
         LayoutParent lp;
