@@ -66,133 +66,138 @@ public class MainGameControl : MonoBehaviour
                 }
             }
         }
-        
 
-        foreach (var pair in UnitGroupResourceControls)
+        foreach (var tcu in TabControlUnits)
         {
-            foreach (var item in arcaniaDatas.datas[pair.Key])
+            var UnitGroupResourceControls = tcu.UnitGroupResourceControls;
+            var UnitGroupControls = tcu.UnitGroupControls;
+            foreach (var pair in UnitGroupResourceControls)
             {
-                var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
-                var titleText = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font, 16);
-                var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
-                var lwe = new LabelWithExpandable(iconButton, titleText);
-                var rcu = new ResourceControlUnit();
-                dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
-                layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
-                titleText.SetTextRaw(item.ConfigBasic.name);
-                pair.Value.Add(rcu);
-                rcu.lwe = lwe;
-                rcu.Data = item;
+                foreach (var item in arcaniaDatas.datas[pair.Key])
                 {
-                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
-                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
-                    // bwe.ExpandTargets
-                    rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
-                    rcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
-                    layout.AddLayoutChildAndParentIt(rcu.Description.LayoutChild);
-                }
-                {
-                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
-                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
-                    // bwe.ExpandTargets
-                    rcu.ValueText = t;
-                    t.SetParent(rcu.lwe.MainText.RectTransform);
-                    t.RectTransform.FillParent();
-                    t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
-
-                }
-                CreateModViews(item, layout, rcu.Separators, rcu.ModsUnit, lwe.ExpandManager);
-            }
-        }
-        foreach (var pair in UnitGroupControls)
-        {
-            foreach (var item in arcaniaDatas.datas[pair.Key])
-            {
-                var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
-                var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest, ButtonRequest);
-                var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
-                var bwe = new ButtonWithExpandable(button, iconButton);
-                var tcu = new TaskControlUnit();
-                if (pair.Key == UnitType.SKILL)
-                {
+                    var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
+                    var titleText = CanvasMaker.CreateTextUnit(ButtonObjectRequest.SecondaryColor, ButtonObjectRequest.font, 16);
+                    var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
+                    var lwe = new LabelWithExpandable(iconButton, titleText);
+                    var rcu = new ResourceControlUnit();
+                    dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
+                    layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
+                    titleText.SetTextRaw(item.ConfigBasic.name);
+                    pair.Value.Add(rcu);
+                    rcu.lwe = lwe;
+                    rcu.Data = item;
                     {
-                        var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
+                        var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
                         t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                         // bwe.ExpandTargets
-                        tcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
-                        tcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
-                        layout.AddLayoutChildAndParentIt(tcu.MainTitle.LayoutChild);
+                        rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+                        rcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
+                        layout.AddLayoutChildAndParentIt(rcu.Description.LayoutChild);
                     }
                     {
-                        var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
+                        var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
                         t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
                         // bwe.ExpandTargets
-                        tcu.SkillLevelText = t;
-                        t.SetParent(tcu.MainTitle.ElementRectTransform);
+                        rcu.ValueText = t;
+                        t.SetParent(rcu.lwe.MainText.RectTransform);
                         t.RectTransform.FillParent();
                         t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
 
                     }
-                    tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
-                    layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
+                    CreateModViews(item, layout, rcu.Separators, rcu.ModsUnit, lwe.ExpandManager);
                 }
-                dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
-                layout.AddLayoutChildAndParentIt(bwe);
-                button.Button.SetTextRaw(item.ConfigBasic.name);
-
-                pair.Value.Add(tcu);
-                tcu.bwe = bwe;
-                tcu.Data = item;
+            }
+            foreach (var pair in UnitGroupControls)
+            {
+                foreach (var item in arcaniaDatas.datas[pair.Key])
                 {
-                    var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
-                    t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
-                    // bwe.ExpandTargets
-                    tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
-                    tcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
-                    AddToExpands(tcu.Description.LayoutChild);
-
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
-                    var rcgIndex = i;
-
-                    if (arrayOfChanges != null)
+                    var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
+                    var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest, ButtonRequest);
+                    var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
+                    var bwe = new ButtonWithExpandable(button, iconButton);
+                    var tcu = new TaskControlUnit();
+                    if (pair.Key == UnitType.SKILL)
                     {
-                        tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
-                        string textKey = (ResourceChangeType)rcgIndex switch
                         {
-                            ResourceChangeType.COST => "cost",
-                            ResourceChangeType.RESULT => "result",
-                            ResourceChangeType.RUN => "run",
-                            ResourceChangeType.EFFECT => "effect",
-                            _ => null,
-                        };
-                        SeparatorWithLabel swl = CreateSeparator(layout, tcu.bwe.ExpandManager, textKey);
+                            var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
+                            t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                            // bwe.ExpandTargets
+                            tcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
+                            tcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
+                            layout.AddLayoutChildAndParentIt(tcu.MainTitle.LayoutChild);
+                        }
+                        {
+                            var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 30);
+                            t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                            // bwe.ExpandTargets
+                            tcu.SkillLevelText = t;
+                            t.SetParent(tcu.MainTitle.ElementRectTransform);
+                            t.RectTransform.FillParent();
+                            t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
 
-                        tcu.ChangeGroupSeparators[rcgIndex] = swl;
+                        }
+                        tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
+                        layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
                     }
-                    foreach (var changeU in arrayOfChanges)
+                    dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
+                    layout.AddLayoutChildAndParentIt(bwe);
+                    button.Button.SetTextRaw(item.ConfigBasic.name);
+
+                    pair.Value.Add(tcu);
+                    tcu.bwe = bwe;
+                    tcu.Data = item;
                     {
-                        TripleTextView ttv = CreateTripleTextView(layout, bwe.ExpandManager);
-                        tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+                        var t = CanvasMaker.CreateTextUnit(MainTextColor, ButtonObjectRequest.font, 16);
+                        t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                        // bwe.ExpandTargets
+                        tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+                        tcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
+                        AddToExpands(tcu.Description.LayoutChild);
+
                     }
-                }
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
+                        var rcgIndex = i;
+
+                        if (arrayOfChanges != null)
+                        {
+                            tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
+                            string textKey = (ResourceChangeType)rcgIndex switch
+                            {
+                                ResourceChangeType.COST => "cost",
+                                ResourceChangeType.RESULT => "result",
+                                ResourceChangeType.RUN => "run",
+                                ResourceChangeType.EFFECT => "effect",
+                                _ => null,
+                            };
+                            SeparatorWithLabel swl = CreateSeparator(layout, tcu.bwe.ExpandManager, textKey);
+
+                            tcu.ChangeGroupSeparators[rcgIndex] = swl;
+                        }
+                        foreach (var changeU in arrayOfChanges)
+                        {
+                            TripleTextView ttv = CreateTripleTextView(layout, bwe.ExpandManager);
+                            tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+                        }
+                    }
 
 
-                List<SeparatorWithLabel> separators = tcu.Separators;
-                var ModUnit = tcu.ModsUnit;
-                ExpandableManager expandManager = bwe.ExpandManager;
-                CreateModViews(item, layout, separators, ModUnit, expandManager);
+                    List<SeparatorWithLabel> separators = tcu.Separators;
+                    var ModUnit = tcu.ModsUnit;
+                    ExpandableManager expandManager = bwe.ExpandManager;
+                    CreateModViews(item, layout, separators, ModUnit, expandManager);
 
-                void AddToExpands(LayoutChild c)
-                {
-                    tcu.bwe.ExpandTargets.Add(c.GameObject);
-                    layout.AddLayoutChildAndParentIt(c);
+                    void AddToExpands(LayoutChild c)
+                    {
+                        tcu.bwe.ExpandTargets.Add(c.GameObject);
+                        layout.AddLayoutChildAndParentIt(c);
+                    }
                 }
             }
         }
+        
 
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
