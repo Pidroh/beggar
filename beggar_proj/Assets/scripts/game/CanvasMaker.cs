@@ -95,6 +95,7 @@ public class DynamicCanvas
 
     internal void ShowChild(LayoutParent layoutParent)
     {
+        if (ActiveChildren.Contains(layoutParent)) return;
         ActiveChildren.Push(layoutParent);
         
     }
