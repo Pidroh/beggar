@@ -242,6 +242,9 @@ public class MainGameControl : MonoBehaviour
     {
         arcaniaModel.ManualUpdate(Time.deltaTime);
         dynamicCanvas.ManualUpdate();
+        // hide lower menu if all the tabs are visible
+        dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
+
 
         foreach (var tabControl in TabControlUnits)
         {

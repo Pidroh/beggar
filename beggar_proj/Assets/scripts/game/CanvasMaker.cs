@@ -11,9 +11,11 @@ public class DynamicCanvas
 {
     public List<LayoutParent> children = new List<LayoutParent>();
     public List<LayoutParent> LowerMenus = new();
+    public Stack<LayoutParent> ActiveChildren = new();
     public GameObject canvasGO;
 
     public RectTransform RootRT { get; internal set; }
+
 
 
     public LayoutParent CreateLowerMenuLayout(int height)
@@ -28,24 +30,16 @@ public class DynamicCanvas
         return layoutParent;
     }
 
+    public int CalculateNumberOfVisibleHorizontalChildren() 
+    {
+        return Mathf.FloorToInt(Screen.width / 320f);
+    }
+
     public void ManualUpdate()
     {
         // Show/Hide children based on Canvas width
-        int activeChildrenCount = 0;
-        foreach (var layoutP in children)
-        {
-            var child = layoutP.SelfChild.RectTransform.gameObject;
-            if (Screen.width >= 320 * (activeChildrenCount + 1))
-            {
-                child.SetActive(true);
-                activeChildrenCount++;
-            }
-            else
-            {
-                child.SetActive(false);
-            }
-        }
-
+        int activeChildrenCount = CalculateNumberOfVisibleHorizontalChildren();
+        
         if (activeChildrenCount > 0)
         {
             float availableWidth = Screen.width;
@@ -68,6 +62,7 @@ public class DynamicCanvas
             foreach (var layoutP in layouts)
             {
                 var child = layoutP.SelfChild.RectTransform.gameObject;
+                layoutP.SelfChild.Visible = ActiveChildren.Contains(layoutP);
                 if (child.activeSelf)
                 {
                     RectTransform rt = child.GetComponent<RectTransform>();
@@ -88,6 +83,12 @@ public class DynamicCanvas
                 lowerMenuP.ManualUpdate();
             }
         }
+    }
+
+    internal void ShowChildren(LayoutParent layoutParent)
+    {
+        ActiveChildren.Push(layoutParent);
+        
     }
 }
 
@@ -307,6 +308,11 @@ public class CanvasMaker
 
         // Set the EventSystem as a sibling of the Canvas
         eventSystemGO.transform.SetParent(dc.canvasGO.transform, false);
+
+        for (int i = N - 1; i >= 0; i--)
+        {
+            dc.ShowChildren(dc.children[i]);
+        }
 
         return dc;
     }
