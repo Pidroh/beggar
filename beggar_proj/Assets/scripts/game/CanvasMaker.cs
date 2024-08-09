@@ -35,6 +35,11 @@ public class DynamicCanvas
         return Mathf.FloorToInt(Screen.width / 320f);
     }
 
+    public void ShowChild(int childIndex) 
+    {
+        ShowChild(children[childIndex]);
+    }
+
     public void ManualUpdate()
     {
         // Show/Hide children based on Canvas width
@@ -88,7 +93,7 @@ public class DynamicCanvas
         }
     }
 
-    internal void ShowChildren(LayoutParent layoutParent)
+    internal void ShowChild(LayoutParent layoutParent)
     {
         ActiveChildren.Push(layoutParent);
         
@@ -314,7 +319,7 @@ public class CanvasMaker
 
         for (int i = N - 1; i >= 0; i--)
         {
-            dc.ShowChildren(dc.children[i]);
+            dc.ShowChild(dc.children[i]);
         }
 
         return dc;
