@@ -38,15 +38,18 @@ public class DynamicCanvas
     public void ManualUpdate()
     {
         // Show/Hide children based on Canvas width
-        int activeChildrenCount = CalculateNumberOfVisibleHorizontalChildren();
+        int maxActiveChildrenCount = CalculateNumberOfVisibleHorizontalChildren();
+        while (maxActiveChildrenCount < ActiveChildren.Count) {
+            ActiveChildren.Pop();
+        }
         
-        if (activeChildrenCount > 0)
+        if (maxActiveChildrenCount > 0)
         {
             float availableWidth = Screen.width;
-            float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, 320, 640);
+            float childWidth = Mathf.Clamp(availableWidth / maxActiveChildrenCount, 320, 640);
 
             // Calculate total width of active children
-            float totalWidth = childWidth * activeChildrenCount;
+            float totalWidth = childWidth * maxActiveChildrenCount;
 
             // Calculate centered offset
             float centeredXOffset = (availableWidth - totalWidth) / 2;
