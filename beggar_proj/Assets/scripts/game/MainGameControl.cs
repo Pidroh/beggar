@@ -10,16 +10,7 @@ public class MainGameControl : MonoBehaviour
     public TextAsset ResourceJson;
     private DynamicCanvas dynamicCanvas;
     public List<TabControlUnit> TabControlUnits = new();
-    public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new()
-    {
-        { UnitType.TASK, new List<TaskControlUnit>() },
-        { UnitType.CLASS, new List<TaskControlUnit>() },
-        { UnitType.SKILL, new List<TaskControlUnit>() }
-    };
-    public Dictionary<UnitType, List<ResourceControlUnit>> UnitGroupResourceControls = new()
-    {
-        { UnitType.RESOURCE, new List<ResourceControlUnit>() },
-    };
+    
     [SerializeField]
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
@@ -56,6 +47,7 @@ public class MainGameControl : MonoBehaviour
             
         }
         
+
         foreach (var pair in UnitGroupResourceControls)
         {
             foreach (var item in arcaniaDatas.datas[pair.Key])
