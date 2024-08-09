@@ -8,16 +8,9 @@ public class TabControlUnit
     public LayoutChild SelectionButtonLayoutChild { get; internal set; }
     public RuntimeUnit TabData { get; internal set; }
 
-    public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new()
-    {
-        { UnitType.TASK, new List<TaskControlUnit>() },
-        { UnitType.CLASS, new List<TaskControlUnit>() },
-        { UnitType.SKILL, new List<TaskControlUnit>() }
-    };
-    public Dictionary<UnitType, List<ResourceControlUnit>> UnitGroupResourceControls = new()
-    {
-        { UnitType.RESOURCE, new List<ResourceControlUnit>() },
-    };
+    public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new();
+    public Dictionary<UnitType, List<ResourceControlUnit>> UnitGroupResourceControls = new();
+    internal ButtonWithProgressBar SelectionButton;
 }
 
 public class ResourceControlUnit 

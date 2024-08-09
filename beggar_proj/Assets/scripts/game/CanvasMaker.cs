@@ -50,11 +50,12 @@ public class DynamicCanvas
         
         if (maxActiveChildrenCount > 0)
         {
+            int activeChildrenCount = ActiveChildren.Count;
             float availableWidth = Screen.width;
-            float childWidth = Mathf.Clamp(availableWidth / maxActiveChildrenCount, 320, 640);
+            float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, 320, 640);
 
             // Calculate total width of active children
-            float totalWidth = childWidth * maxActiveChildrenCount;
+            float totalWidth = childWidth * activeChildrenCount;
 
             // Calculate centered offset
             float centeredXOffset = (availableWidth - totalWidth) / 2;
