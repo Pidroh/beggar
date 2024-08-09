@@ -337,13 +337,6 @@
         "type": "TAB",
         "items":[
             {
-                "id": "resource",
-                "unit_types": [
-                    "RESOURCE"
-                ],
-                "icon" : "resource"
-            },
-            {
                 "id": "task",
                 "unit_types": [
                     "TASK",
@@ -351,6 +344,13 @@
                     "SKILL"
                 ],
                 "icon" : "task"
+            },
+            {
+                "id": "resource",
+                "unit_types": [
+                    "RESOURCE"
+                ],
+                "icon" : "resource"
             }
         ]
     }
