@@ -11,7 +11,7 @@ public class DynamicCanvas
 {
     public List<LayoutParent> children = new List<LayoutParent>();
     public List<LayoutParent> LowerMenus = new();
-    public Stack<LayoutParent> ActiveChildren = new();
+    public Queue<LayoutParent> ActiveChildren = new();
     public GameObject canvasGO;
 
     public RectTransform RootRT { get; internal set; }
@@ -45,7 +45,7 @@ public class DynamicCanvas
         // Show/Hide children based on Canvas width
         int maxActiveChildrenCount = CalculateNumberOfVisibleHorizontalChildren();
         while (maxActiveChildrenCount < ActiveChildren.Count) {
-            ActiveChildren.Pop();
+            ActiveChildren.Dequeue();
         }
         
         if (maxActiveChildrenCount > 0)
@@ -97,7 +97,7 @@ public class DynamicCanvas
     internal void ShowChild(LayoutParent layoutParent)
     {
         if (ActiveChildren.Contains(layoutParent)) return;
-        ActiveChildren.Push(layoutParent);
+        ActiveChildren.Enqueue(layoutParent);
         
     }
 }
