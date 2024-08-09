@@ -44,7 +44,27 @@ public class MainGameControl : MonoBehaviour
                 TabData = item
             };
             TabControlUnits.Add(tcu);
-            
+            foreach (var t in item.Tab.AcceptedUnitTypes)
+            {
+                switch (t)
+                {
+                    case UnitType.RESOURCE:
+                        tcu.UnitGroupResourceControls[t] = new();
+                        break;
+                    case UnitType.TASK:
+                    case UnitType.CLASS:
+                    case UnitType.SKILL:
+                        tcu.UnitGroupControls[t] = new();
+                        break;
+                    case UnitType.HOUSE:
+                    case UnitType.FURNITURE:
+                        break;
+                    case UnitType.TAB:
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         
 
