@@ -28,7 +28,7 @@ public class MainGameControl : MonoBehaviour
     {
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
-        dynamicCanvas = CanvasMaker.CreateCanvas(1, CanvasRequest);
+        dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), CanvasRequest);
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
 
 
@@ -69,8 +69,9 @@ public class MainGameControl : MonoBehaviour
             }
         }
 
-        foreach (var tabControl in TabControlUnits)
+        for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
+            TabControlUnit tabControl = TabControlUnits[tabIndex];
             var UnitGroupResourceControls = tabControl.UnitGroupResourceControls;
             var UnitGroupControls = tabControl.UnitGroupControls;
             foreach (var pair in UnitGroupResourceControls)
@@ -82,7 +83,7 @@ public class MainGameControl : MonoBehaviour
                     var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
                     var lwe = new LabelWithExpandable(iconButton, titleText);
                     var rcu = new ResourceControlUnit();
-                    dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
+                    dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
                     layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                     titleText.SetTextRaw(item.ConfigBasic.name);
                     pair.Value.Add(rcu);
@@ -141,7 +142,7 @@ public class MainGameControl : MonoBehaviour
                         tcu.XPGauge = new Gauge(SkillXPGaugeRequest);
                         layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
                     }
-                    dynamicCanvas.children[0].AddLayoutAndParentIt(layout);
+                    dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
                     layout.AddLayoutChildAndParentIt(bwe);
                     button.Button.SetTextRaw(item.ConfigBasic.name);
 
