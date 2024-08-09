@@ -42,7 +42,8 @@ public class MainGameControl : MonoBehaviour
             lowerMenuLayout.AddLayoutChildAndParentIt(lc);
             var tcu = new TabControlUnit()
             {
-                SelectionButton = lc,
+                SelectionButtonLayoutChild = lc,
+                SelectionButton = button,
                 TabData = item
             };
             TabControlUnits.Add(tcu);
@@ -246,8 +247,10 @@ public class MainGameControl : MonoBehaviour
         dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
 
 
-        foreach (var tabControl in TabControlUnits)
+        for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
+            TabControlUnit tabControl = TabControlUnits[tabIndex];
+            if (tabControl.SelectionButton.Button.Clicked) dynamicCanvas.ShowChild(tabIndex);
             var UnitGroupResourceControls = tabControl.UnitGroupResourceControls;
             var UnitGroupControls = tabControl.UnitGroupControls;
             foreach (var pair in UnitGroupResourceControls)

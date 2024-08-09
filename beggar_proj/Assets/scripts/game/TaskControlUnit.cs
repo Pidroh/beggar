@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class TabControlUnit
 {
-    public LayoutChild SelectionButton { get; internal set; }
+    public LayoutChild SelectionButtonLayoutChild { get; internal set; }
     public RuntimeUnit TabData { get; internal set; }
 
     public Dictionary<UnitType, List<TaskControlUnit>> UnitGroupControls = new()
