@@ -10,7 +10,7 @@ public class MainGameControl : MonoBehaviour
     public TextAsset ResourceJson;
     private DynamicCanvas dynamicCanvas;
     public List<TabControlUnit> TabControlUnits = new();
-    
+
     [SerializeField]
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
@@ -30,16 +30,18 @@ public class MainGameControl : MonoBehaviour
         JsonReader.ReadJson(ResourceJson.text, arcaniaDatas);
         dynamicCanvas = CanvasMaker.CreateCanvas(1, CanvasRequest);
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
-        
+
 
         foreach (var item in arcaniaDatas.datas[UnitType.TAB])
         {
             var button = CanvasMaker.CreateButton("sss", ButtonObjectRequest, ButtonRequest);
-            var lc = new LayoutChild() {
+            var lc = new LayoutChild()
+            {
                 RectTransform = button.Button.RectTransform
             };
             lowerMenuLayout.AddLayoutChildAndParentIt(lc);
-            var tcu = new TabControlUnit() {
+            var tcu = new TabControlUnit()
+            {
                 SelectionButton = lc,
                 TabData = item
             };
@@ -67,10 +69,10 @@ public class MainGameControl : MonoBehaviour
             }
         }
 
-        foreach (var tcu in TabControlUnits)
+        foreach (var tabControl in TabControlUnits)
         {
-            var UnitGroupResourceControls = tcu.UnitGroupResourceControls;
-            var UnitGroupControls = tcu.UnitGroupControls;
+            var UnitGroupResourceControls = tabControl.UnitGroupResourceControls;
+            var UnitGroupControls = tabControl.UnitGroupControls;
             foreach (var pair in UnitGroupResourceControls)
             {
                 foreach (var item in arcaniaDatas.datas[pair.Key])
@@ -197,7 +199,7 @@ public class MainGameControl : MonoBehaviour
                 }
             }
         }
-        
+
 
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
@@ -240,66 +242,72 @@ public class MainGameControl : MonoBehaviour
         arcaniaModel.ManualUpdate(Time.deltaTime);
         dynamicCanvas.ManualUpdate();
 
-        foreach (var pair in UnitGroupResourceControls)
+        foreach (var tabControl in TabControlUnits)
         {
-            foreach (var rcu in pair.Value)
+            var UnitGroupResourceControls = tabControl.UnitGroupResourceControls;
+            var UnitGroupControls = tabControl.UnitGroupControls;
+            foreach (var pair in UnitGroupResourceControls)
             {
-                var data = rcu.Data;
-                rcu.ManualUpdate();
-                bool visible = data.Visible;
-                rcu.lwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
-                if (!visible) continue;
-                var modUnit = rcu.ModsUnit;
-                FeedMods(data, modUnit);
-
-            }
-        }
-
-        foreach (var pair in UnitGroupControls)
-        {
-            foreach (var tcu in pair.Value)
-            {
-                var data = tcu.Data;
-                tcu.ManualUpdate();
-                bool visible = data.Visible;
-                tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
-                if (!visible) continue;
-                var modUnit = tcu.ModsUnit;
-                FeedMods(data, modUnit);
-
-                switch (pair.Key)
+                foreach (var rcu in pair.Value)
                 {
+                    var data = rcu.Data;
+                    rcu.ManualUpdate();
+                    bool visible = data.Visible;
+                    rcu.lwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
+                    if (!visible) continue;
+                    var modUnit = rcu.ModsUnit;
+                    FeedMods(data, modUnit);
 
-                    case UnitType.SKILL:
-                        {
-
-                            tcu.bwe.MainButton.ButtonEnabled = data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data);
-                            if (tcu.TaskClicked)
-                            {
-                                if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);
-                                else arcaniaModel.Runner.AcquireSkill(data);
-
-                            }
-
-                        }
-                        break;
-                    case UnitType.RESOURCE:
-                    case UnitType.TASK:
-                    case UnitType.HOUSE:
-                    case UnitType.CLASS:
-                    case UnitType.FURNITURE:
-                        {
-                            tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                            if (tcu.TaskClicked)
-                            {
-                                arcaniaModel.Runner.StartAction(data);
-                            }
-                        }
-                        break;
-                    default:
-                        break;
                 }
             }
+
+            foreach (var pair in UnitGroupControls)
+            {
+                foreach (var tcu in pair.Value)
+                {
+                    var data = tcu.Data;
+                    tcu.ManualUpdate();
+                    bool visible = data.Visible;
+                    tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
+                    if (!visible) continue;
+                    var modUnit = tcu.ModsUnit;
+                    FeedMods(data, modUnit);
+
+                    switch (pair.Key)
+                    {
+
+                        case UnitType.SKILL:
+                            {
+
+                                tcu.bwe.MainButton.ButtonEnabled = data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data);
+                                if (tcu.TaskClicked)
+                                {
+                                    if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);
+                                    else arcaniaModel.Runner.AcquireSkill(data);
+
+                                }
+
+                            }
+                            break;
+                        case UnitType.RESOURCE:
+                        case UnitType.TASK:
+                        case UnitType.HOUSE:
+                        case UnitType.CLASS:
+                        case UnitType.FURNITURE:
+                            {
+                                tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                                if (tcu.TaskClicked)
+                                {
+                                    arcaniaModel.Runner.StartAction(data);
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
         }
 
         static void FeedMods(RuntimeUnit data, ModsControlUnit modUnit)
