@@ -103,6 +103,11 @@ public class TaskControlUnit
             if (item == null || (Data.Skill != null && Data.Skill.Acquired && i == (int)ResourceChangeType.COST))
             {
                 if (sep != null) sep.LayoutChild.Visible = false;
+                for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
+                {
+                    TripleTextView ttv = item.tripleTextViews[ttvIndex];
+                    ttv.LayoutChild.Visible = false;
+                }
                 continue;
             }
 
