@@ -250,6 +250,7 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
+            if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
             if (tabControl.SelectionButton.Button.Clicked)
             {
                 dynamicCanvas.ShowChild(tabIndex);
@@ -281,7 +282,7 @@ public class MainGameControl : MonoBehaviour
                     tcu.bwe.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     if (!visible) continue;
                     var modUnit = tcu.ModsUnit;
-                    FeedMods(data, modUnit);
+                    FeedMods(data, modUnit);    
 
                     switch (pair.Key)
                     {

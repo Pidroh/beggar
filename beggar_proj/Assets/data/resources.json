@@ -35,6 +35,12 @@
                 "max": 10
             },
             {
+                "id": "deadflower",
+                "desc": "A withered bloom that once symbolized hope, now a reminder of loss and decay.",
+                "initial": 0,
+                "max": 0
+            },
+            {
                 "id": "sadness",
                 "desc": "The weight of our emotions reflects the depth of our experiences",
                 "flavor": "Silent ache",
@@ -112,7 +118,7 @@
                 "desc": "",
                 "duration": 3,
                 "max": 3,
-                "require": "thoughts>=1",
+                "requirez": "thoughts>=1",
                 "cost": {
                     "thoughts": 2
                 },
@@ -309,7 +315,7 @@
                     "energy": 1
                 },
                 "mod": {
-                    "rest.mod.energy" : -0.5,
+                    "rest.effect.energy" : -0.5,
                     "energy.max": -2,
                     "rodentology.max": 2,
                     "rats.rate": 0.1,

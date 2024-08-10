@@ -27,24 +27,29 @@ public class JsonReader
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
             mod.Source.ModsOwned.Add(mod);
+            if (mod.ModType == ModType.SpaceConsumption)
+            {
+                mod.Source.ConfigFurniture.SpaceConsumed = Mathf.FloorToInt(mod.Value);
+                continue;
+            }
+            if (mod.Target == null) {
+                Debug.Log($"No target for mod from {mod.Source.ConfigBasic.Id} {mod.ModType} {EnumHelper<ModType>.GetName(mod.ModType)}");
+                continue;
+            }
             if (mod.Target.id == "space")
             {
                 arcaniaDatas.SpaceMods.Add(mod);
                 mod.Source.ConfigHouse.AvailableSpace = Mathf.FloorToInt(mod.Value);
                 continue;
             }
-            if (mod.ModType == ModType.SpaceConsumption) 
-            {
-                mod.Source.ConfigFurniture.SpaceConsumed = Mathf.FloorToInt(mod.Value);
-                continue;
-            }
+            
             if (mod.Target.Tag != null)
             {
                 foreach (var item in mod.Target.Tag.UnitsWithTag)
                 {
                     item.RegisterModTargetingSelf(mod);
                 }
-                return;
+                continue;
             }
             if (mod.Target.RuntimeUnit == null) 
             {
