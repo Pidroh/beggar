@@ -22,6 +22,15 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
         ru.ChangeValue(1);
     }
 
+    public void CanRemoveFurniture(RuntimeUnit ru) 
+    { 
+    }
+
+    public void RemoveFurniture(RuntimeUnit ru) 
+    { 
+
+    }
+
     private int CalculateMaxSpace()
     {
         var space = 0f;

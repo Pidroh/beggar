@@ -57,9 +57,9 @@ public class MainGameControl : MonoBehaviour
                     case UnitType.TASK:
                     case UnitType.CLASS:
                     case UnitType.SKILL:
+                    case UnitType.HOUSE:
                         tcu.UnitGroupControls[t] = new();
                         break;
-                    case UnitType.HOUSE:
                     case UnitType.FURNITURE:
                         break;
                     case UnitType.TAB:
@@ -120,6 +120,7 @@ public class MainGameControl : MonoBehaviour
                     var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
                     var bwe = new ButtonWithExpandable(button, iconButton);
                     var tcu = new TaskControlUnit();
+                    
                     if (pair.Key == UnitType.SKILL)
                     {
                         {

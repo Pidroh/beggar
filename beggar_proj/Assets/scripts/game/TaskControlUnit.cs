@@ -3,6 +3,11 @@ using HeartUnity.View;
 using System;
 using System.Collections.Generic;
 
+public class FurnitureControlUnit 
+{
+    public TaskControlUnit TaskControl;
+}
+
 public class TabControlUnit
 {
     public LayoutChild SelectionButtonLayoutChild { get; internal set; }

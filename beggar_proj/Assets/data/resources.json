@@ -176,9 +176,8 @@
         "items":[
             {
                 "id": "Back Alley",
-                "require": "t_job",
+                "requirez": "t_job",
                 "cost": {
-                    "resilience": 5,
                     "thoughts": 3
                 },
                 "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
@@ -347,7 +346,8 @@
                 "unit_types": [
                     "TASK",
                     "CLASS",
-                    "SKILL"
+                    "SKILL",
+                    "HOUSE"
                 ],
                 "icon" : "task"
             },
