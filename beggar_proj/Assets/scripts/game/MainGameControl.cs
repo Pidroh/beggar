@@ -302,7 +302,12 @@ public class MainGameControl : MonoBehaviour
                             }
                             break;
                         case UnitType.HOUSE:
-                            arcaniaModel.Housing.ChangeHouse(data);
+                            tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Housing.CanChangeHouse(data);
+                            if (tcu.TaskClicked)
+                            {
+                                arcaniaModel.Housing.ChangeHouse(data);
+                            }
+                            
                             break;
                         case UnitType.RESOURCE:
                         case UnitType.TASK:
