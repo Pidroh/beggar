@@ -75,11 +75,13 @@ public class ArcaniaModel
 {
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
     public ArcaniaModelActionRunner Runner;
+    public ArcaniaModelHousing Housing;
     float _oneSecondCounter;
 
     public ArcaniaModel()
     {
         Runner = new(this);
+        Housing = new(this);
     }
 
     internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)

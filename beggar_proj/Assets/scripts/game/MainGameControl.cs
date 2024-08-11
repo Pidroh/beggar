@@ -301,9 +301,12 @@ public class MainGameControl : MonoBehaviour
 
                             }
                             break;
+                        case UnitType.HOUSE:
+                            arcaniaModel.Housing.ChangeHouse(data);
+                            break;
                         case UnitType.RESOURCE:
                         case UnitType.TASK:
-                        case UnitType.HOUSE:
+                        
                         case UnitType.CLASS:
                         case UnitType.FURNITURE:
                             {
