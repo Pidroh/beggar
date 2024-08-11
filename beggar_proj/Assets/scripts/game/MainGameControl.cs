@@ -251,11 +251,12 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
-            if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
+            
             if (tabControl.SelectionButton.Button.Clicked)
             {
                 dynamicCanvas.ShowChild(tabIndex);
             }
+            if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
             var UnitGroupResourceControls = tabControl.UnitGroupResourceControls;
             var UnitGroupControls = tabControl.UnitGroupControls;
             foreach (var pair in UnitGroupResourceControls)
