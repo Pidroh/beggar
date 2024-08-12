@@ -119,7 +119,7 @@ public class MainGameControl : MonoBehaviour
                     var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
                     var bwe = new ButtonWithExpandable(button, iconButton);
                     SimpleChild<UIUnit> secondaryButton = null;
-                    var tcu = new TaskControlUnit();
+                    var tcu = new RTControlUnit();
 
                     if (pair.Key == UnitType.FURNITURE) 
                     {
@@ -180,7 +180,7 @@ public class MainGameControl : MonoBehaviour
 
                         if (arrayOfChanges != null)
                         {
-                            tcu.ChangeGroups[rcgIndex] = new TaskControlUnit.ResourceChangeGroup();
+                            tcu.ChangeGroups[rcgIndex] = new ResourceChangeGroup();
                             string textKey = (ResourceChangeType)rcgIndex switch
                             {
                                 ResourceChangeType.COST => "cost",
