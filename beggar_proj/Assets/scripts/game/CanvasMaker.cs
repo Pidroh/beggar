@@ -133,6 +133,7 @@ public class CanvasMaker
         public Color DisabledColor;
         public Color ClickColor;
         public Color HoverColor;
+        public Color SelectedColor;
     }
 
     [Serializable]

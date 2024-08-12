@@ -237,6 +237,8 @@ namespace HeartUnity.View
 
         public bool HoveredWhileVisible => _hoveredWhileVisible && gameObject.activeSelf;
 
+        public Image Image { get => _image; set => _image = value; }
+
         public bool CheckMouseInside()
         {
             return RectTransformUtility.RectangleContainsScreenPoint(RectTransform, Input.mousePosition, Camera.main);

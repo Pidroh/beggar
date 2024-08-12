@@ -303,10 +303,12 @@ public class MainGameControl : MonoBehaviour
                             }
                             break;
                         case UnitType.HOUSE:
+                            tcu.bwe.MainButton.Image.color = arcaniaModel.Housing.IsLivingInHouse(data) ? ButtonRequest.MainBody.NormalColor : ButtonRequest.MainBody.SelectedColor;
                             tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Housing.CanChangeHouse(data);
+                            
                             if (tcu.TaskClicked)
                             {
-                                arcaniaModel.Housing.ChangeHouse(data);
+                                if(!arcaniaModel.Housing.IsLivingInHouse(data)) arcaniaModel.Housing.ChangeHouse(data);
                             }
                             
                             break;

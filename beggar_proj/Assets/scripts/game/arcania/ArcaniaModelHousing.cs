@@ -72,4 +72,9 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
         }
         return space;
     }
+
+    internal bool IsLivingInHouse(RuntimeUnit data)
+    {
+        return data.Value > 0;
+    }
 }
