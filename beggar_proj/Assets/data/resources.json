@@ -3,26 +3,10 @@
         "type": "RESOURCE",
         "items":[
             {
-                "id": "nutrition",
-                "max": 10,
-                "desc": "Higher values mean your character is well-fed, while lower values indicate hunger."
-            },
-            {
                 "id": "supplication",
                 "max": 50,
                 "initial": 40,
                 "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
-            },
-            {
-                "id": "energy",
-                "desc": "The inner strength your character consumes to perform actions.",
-                "initial": 5,
-                "max": 5
-            },
-            {
-                "id": "thoughts",
-                "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
-                "max": 5
             },
             {
                 "id": "focus",
@@ -34,6 +18,25 @@
                 "desc": "Small, dry pieces of bread",
                 "max": 10
             },
+            {
+                "id": "nutrition",
+                "max": 10,
+                "desc": "Higher values mean your character is well-fed, while lower values indicate hunger."
+            },
+            
+            {
+                "id": "energy",
+                "desc": "The inner strength your character consumes to perform actions.",
+                "initial": 0,
+                "max": 5
+            },
+            {
+                "id": "thoughts",
+                "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
+                "max": 5
+            },
+            
+            
             {
                 "id": "deadflower",
                 "desc": "A withered bloom that once symbolized hope, now a reminder of loss and decay.",
@@ -88,7 +91,7 @@
                 "id": "rest",
                 "name": "Rest",
                 "desc": "Sit down and close your eyes",
-                "require": "energy<=1",
+                "require": "energy>=10",
                 "perpetual": true,
                 "effect": {
                     "energy": 1,
@@ -123,7 +126,7 @@
                 "desc": "",
                 "duration": 3,
                 "max": 3,
-                "requirez": "thoughts>=1",
+                "require": "thoughts>=1",
                 "cost": {
                     "thoughts": 2
                 },
@@ -181,7 +184,7 @@
         "items":[
             {
                 "id": "Back Alley",
-                "requirez": "t_job",
+                "require": "t_job",
                 "cost": {
                     "thoughts": 3
                 },
@@ -199,7 +202,7 @@
                 "id": "gutterborn",
                 "tags": "t_job",
                 "lock": "t_job",
-                "require": "supplication>5",
+                "require": "sadness>2",
                 "cost": {
                     "thoughts": 3,
                     "supplication": 8,
@@ -218,13 +221,10 @@
         "items":[
             {
                 "id": "introspection",
-                "requireZ": "t_job",
-                "costZ": {
+                "require": "t_job",
+                "cost": {
                     "thoughts": 5,
                     "sadness": 5
-                },
-                "cost": {
-                    "supplication": 5
                 },
                 "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
                 "mod": {
@@ -255,7 +255,7 @@
             {
                 "id": "brokenmirror",
                 "name": "Broken mirror",
-                "requirex": "t_job",
+                "require": "t_job",
                 "cost": {
                     "foraging": 3,
                     "energy": 2
