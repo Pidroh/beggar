@@ -244,6 +244,11 @@ public class JsonReader
                 CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.AsString, null);
             }
         }
+        // default require for RESOURCE
+        if(ru.ConfigBasic.UnitType == UnitType.RESOURCE && ru.ConfigBasic.Require == null) 
+        {
+            ru.ConfigBasic.Require = ConditionalExpressionParser.Parse($"{ru.ConfigBasic.Id}>0", arcaniaUnits);
+        }
         foreach (var tag in ru.ConfigBasic.Tags)
         {
             tag.Tag.UnitsWithTag.Add(ru);
