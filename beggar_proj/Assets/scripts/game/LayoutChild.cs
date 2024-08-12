@@ -284,8 +284,10 @@ public class LabelWithExpandable
 public class ExpandableManager 
 {
     public IconButton ExpandButton;
-    public bool Expanded = false;
+    private bool _expanded = false;
     public List<GameObject> ExpandTargets = new();
+
+    public bool Expanded { get => _expanded && ExpandButton.Active; set => _expanded = value; }
 
     public ExpandableManager(IconButton expandButton)
     {
@@ -295,11 +297,10 @@ public class ExpandableManager
     public void ManualUpdate()
     {
         ExpandButton.Active = ExpandTargets.Count > 0;
-        Expanded = Expanded && ExpandButton.Active;
         ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, Expanded ? 180 : 0);
         if (ExpandButton.Clicked)
         {
-            Expanded = !Expanded;
+            _expanded = !_expanded;
         }
         foreach (var item in ExpandTargets)
         {
@@ -331,6 +332,7 @@ public class ButtonWithExpandable
         this.LayoutChild = LayoutChild.Create(MainButton.transform, iconButton.transform);
         MainButton.transform.localPosition = Vector3.zero;
         iconButton.transform.localPosition = Vector3.zero;
+        ExpandManager.Expanded = true;
 
     }
 
