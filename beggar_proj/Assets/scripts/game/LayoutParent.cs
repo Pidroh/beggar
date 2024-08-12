@@ -124,6 +124,13 @@ public class LayoutParent
         return this;
     }
 
+    internal LayoutParent SetStretchHeight(bool b)
+    {
+        StretchChildren[1] = b;
+        return this;
+    }
+
+
     public LayoutParent SetFitWidth(bool b)
     {
         FitSelfSizeToChildren[0] = b;
@@ -146,6 +153,14 @@ public class LayoutParent
     {
         Children.Add(layoutChild);
         layoutChild.RectTransform.SetParent(this.TransformParentOfChildren);
+    }
+
+    internal void AddLayoutChildAndParentIt(UIUnit unit)
+    {   
+        AddLayoutChildAndParentIt(new LayoutChild()
+        {
+            RectTransform = unit.RectTransform
+        });
     }
 
     public enum LayoutType

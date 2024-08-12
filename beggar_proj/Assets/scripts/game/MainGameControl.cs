@@ -105,8 +105,17 @@ public class MainGameControl : MonoBehaviour
 
                     if (pair.Key == UnitType.FURNITURE) 
                     {
+                        var buttonAdd = CanvasMaker.CreateButton("+", ButtonObjectRequest, ButtonRequest);
                         var buttonRemove = CanvasMaker.CreateButton("-", ButtonObjectRequest, ButtonRequest);
-                        secondaryButton = new SimpleChild<UIUnit>(buttonRemove.Button, buttonRemove.Button.RectTransform);
+                        var layoutAddRemove = CanvasMaker.CreateLayout();
+                        layoutAddRemove.SetStretchHeight(true);
+                        layoutAddRemove.SelfChild.RectTransform.SetHeightMilimeters(10);
+                        layoutAddRemove.TypeLayout = LayoutParent.LayoutType.HORIZONTAL;
+                        layoutAddRemove.AddLayoutChildAndParentIt(buttonAdd.Button);
+                        layoutAddRemove.AddLayoutChildAndParentIt(buttonRemove.Button);
+                        layout.AddLayoutAndParentIt(layoutAddRemove);
+                        tcu.ButtonRemove = buttonRemove;
+                        tcu.ButtonAdd = buttonAdd;
                     }
                     if (pair.Key == UnitType.SKILL)
                     {

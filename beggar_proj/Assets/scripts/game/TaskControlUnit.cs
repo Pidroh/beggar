@@ -47,6 +47,9 @@ public class RTControlUnit
 
     public ExpandableManager ExpandManager => bwe?.ExpandManager == null ? lwe?.ExpandManager : bwe.ExpandManager;
 
+    public ButtonWithProgressBar ButtonRemove { get; internal set; }
+    public ButtonWithProgressBar ButtonAdd { get; internal set; }
+
     public void ManualUpdate()
     {
         if (bwe != null)
