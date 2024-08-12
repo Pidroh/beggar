@@ -80,6 +80,17 @@ public class MainGameControlSetup
                         layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                         titleText.SetTextRaw(item.ConfigBasic.name);
                         tcu.lwe = lwe;
+
+                        // value text instantiation
+                        {
+                            var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
+                            t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                            // bwe.ExpandTargets
+                            tcu.ValueText = t;
+                            t.SetParent(tcu.lwe.MainText.RectTransform);
+                            t.RectTransform.FillParent();
+                            t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
+                        }
                     }
 
                     if (pair.Key == UnitType.FURNITURE)
