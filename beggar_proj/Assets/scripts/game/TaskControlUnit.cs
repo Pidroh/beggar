@@ -13,7 +13,6 @@ public class TabControlUnit
     public RuntimeUnit TabData { get; internal set; }
 
     public Dictionary<UnitType, List<RTControlUnit>> UnitGroupControls = new();
-    public Dictionary<UnitType, List<ResourceControlUnit>> UnitGroupResourceControls = new();
     internal ButtonWithProgressBar SelectionButton;
 }
 
@@ -74,6 +73,8 @@ public class RTControlUnit
 
     public bool IsExpanded => (bwe != null && bwe.Expanded) || (lwe != null && lwe.ExpandButton);
 
+    public ExpandableManager ExpandManager => bwe?.ExpandManager == null ? lwe?.ExpandManager : bwe.ExpandManager;
+
     public void ManualUpdate()
     {
         if (bwe != null)
@@ -82,9 +83,14 @@ public class RTControlUnit
             bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
             bwe.MainButton.LongPressMulticlickEnabled = Data.IsInstant();
         }
-
-        if (SecondaryButton != null)
+        if (lwe != null) 
         {
+            lwe.ManualUpdate();
+        }
+
+        if (SecondaryButton != null && bwe != null)
+        {
+            
             SecondaryButton.LayoutChild.RectTransform.SetHeight(bwe.MainButton.RectTransform.GetHeight());
             SecondaryButton.ManualUpdate();
         }
