@@ -147,7 +147,10 @@ public class MainGameControlSetup
                         // bwe.ExpandTargets
                         tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
                         tcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
-                        AddToExpands(tcu.Description.LayoutChild);
+                        if(hasBWE)
+                            AddToExpands(tcu.Description.LayoutChild);
+                        else
+                            layout.AddLayoutChildAndParentIt(tcu.Description.LayoutChild);
 
                     }
 
