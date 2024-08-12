@@ -40,14 +40,14 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
-            
+
             if (tabControl.SelectionButton.Button.Clicked)
             {
                 dynamicCanvas.ShowChild(tabIndex);
             }
             if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
             var UnitGroupControls = tabControl.UnitGroupControls;
-           
+
 
             foreach (var pair in UnitGroupControls)
             {
@@ -60,7 +60,7 @@ public class MainGameControl : MonoBehaviour
                     tcu.lwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     if (!visible) continue;
                     var modUnit = tcu.ModsUnit;
-                    FeedMods(data, modUnit);    
+                    FeedMods(data, modUnit);
 
                     switch (pair.Key)
                     {
@@ -81,12 +81,12 @@ public class MainGameControl : MonoBehaviour
                         case UnitType.HOUSE:
                             tcu.bwe.MainButton.Image.color = !arcaniaModel.Housing.IsLivingInHouse(data) ? ButtonRequest.MainBody.NormalColor : ButtonRequest.MainBody.SelectedColor;
                             tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Housing.CanChangeHouse(data);
-                            
+
                             if (tcu.TaskClicked)
                             {
-                                if(!arcaniaModel.Housing.IsLivingInHouse(data)) arcaniaModel.Housing.ChangeHouse(data);
+                                if (!arcaniaModel.Housing.IsLivingInHouse(data)) arcaniaModel.Housing.ChangeHouse(data);
                             }
-                            
+
                             break;
                         case UnitType.FURNITURE:
                             {
@@ -107,16 +107,16 @@ public class MainGameControl : MonoBehaviour
                         case UnitType.RESOURCE:
                             break;
                         case UnitType.TASK:
-                        
+
                         case UnitType.CLASS:
                             {
                                 tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                                
+
                                 if (tcu.TaskClicked)
                                 {
                                     arcaniaModel.Runner.StartAction(data);
                                 }
-                                
+
                             }
                             break;
                         default:
@@ -132,7 +132,10 @@ public class MainGameControl : MonoBehaviour
             for (int i = 0; i < data.ModsOwned.Count; i++)
             {
                 ModRuntime md = data.ModsOwned[i];
+
                 var ttv = modUnit.ModTTVs[i];
+                ttv.LayoutChild.Visible = md.ModType != ModType.Lock && ttv.LayoutChild.Visible;
+
                 ttv.MainText.rawText = md.SourceJsonKey;
                 ttv.SecondaryText.rawText = $"{md.Value}";
                 ttv.TertiaryText.rawText = string.Empty;
