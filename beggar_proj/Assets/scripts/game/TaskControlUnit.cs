@@ -37,7 +37,6 @@ public class RTControlUnit
     public Gauge XPGauge { get; internal set; }
     public SimpleChild<UIUnit> MainTitle { get; internal set; }
     public UIUnit SkillLevelText { get; internal set; }
-    public SimpleChild<UIUnit> SecondaryButton { get; internal set; }
 
     public List<SeparatorWithLabel> Separators = new();
 
@@ -63,12 +62,6 @@ public class RTControlUnit
             lwe.ManualUpdate();
         }
 
-        if (SecondaryButton != null && bwe != null)
-        {
-            
-            SecondaryButton.LayoutChild.RectTransform.SetHeight(bwe.MainButton.RectTransform.GetHeight());
-            SecondaryButton.ManualUpdate();
-        }
         if (Data.ConfigBasic.UnitType == UnitType.SKILL)
         {
             MainTitle.Element.SetTextRaw(Data.Name);

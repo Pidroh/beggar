@@ -79,9 +79,6 @@ public class MainGameControl : MonoBehaviour
                     var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
                     var hasBWE = pair.Key != UnitType.RESOURCE && pair.Key != UnitType.FURNITURE;
 
-                    
-                    
-                    SimpleChild<UIUnit> secondaryButton = null;
                     var tcu = new RTControlUnit();
 
                     if (hasBWE)
@@ -147,12 +144,6 @@ public class MainGameControl : MonoBehaviour
                         tcu.bwe.MainButton.SetTextRaw(item.ConfigBasic.name);
                     }
                     
-
-                    if (secondaryButton != null)
-                    {
-                        layout.AddLayoutChildAndParentIt(secondaryButton.LayoutChild);
-                        tcu.SecondaryButton = secondaryButton;
-                    }
 
                     pair.Value.Add(tcu);
                     tcu.Data = item;
