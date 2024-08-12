@@ -88,19 +88,35 @@ public class MainGameControl : MonoBehaviour
                             }
                             
                             break;
+                        case UnitType.FURNITURE:
+                            {
+                                tcu.ButtonAdd.Button.ButtonEnabled = arcaniaModel.Housing.CanAcquireFurniture(data);
+                                tcu.ButtonRemove.Button.ButtonEnabled = arcaniaModel.Housing.CanRemoveFurniture(data);
+
+                                if (tcu.ButtonAdd.Button.Clicked)
+                                {
+                                    arcaniaModel.Housing.AcquireFurniture(data);
+                                }
+                                if (tcu.ButtonRemove.Button.Clicked)
+                                {
+                                    arcaniaModel.Housing.RemoveFurniture(data);
+                                }
+
+                            }
+                            break;
                         case UnitType.RESOURCE:
+                            break;
                         case UnitType.TASK:
                         
                         case UnitType.CLASS:
-                        case UnitType.FURNITURE:
                             {
-                                // tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                                /*
+                                tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                                
                                 if (tcu.TaskClicked)
                                 {
                                     arcaniaModel.Runner.StartAction(data);
                                 }
-                                */
+                                
                             }
                             break;
                         default:
