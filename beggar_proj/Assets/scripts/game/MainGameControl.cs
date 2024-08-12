@@ -58,9 +58,8 @@ public class MainGameControl : MonoBehaviour
                     case UnitType.CLASS:
                     case UnitType.SKILL:
                     case UnitType.HOUSE:
-                        tcu.UnitGroupControls[t] = new();
-                        break;
                     case UnitType.FURNITURE:
+                        tcu.UnitGroupControls[t] = new();
                         break;
                     case UnitType.TAB:
                         break;
@@ -119,8 +118,14 @@ public class MainGameControl : MonoBehaviour
                     var button = CanvasMaker.CreateButton(item.ConfigBasic.name, ButtonObjectRequest, ButtonRequest);
                     var iconButton = CanvasMaker.CreateButtonWithIcon(ExpanderSprite);
                     var bwe = new ButtonWithExpandable(button, iconButton);
+                    SimpleChild<UIUnit> secondaryButton = null;
                     var tcu = new TaskControlUnit();
-                    
+
+                    if (pair.Key == UnitType.FURNITURE) 
+                    {
+                        var buttonRemove = CanvasMaker.CreateButton("-", ButtonObjectRequest, ButtonRequest);
+                        secondaryButton = new SimpleChild<UIUnit>(buttonRemove.Button, buttonRemove.Button.RectTransform);
+                    }
                     if (pair.Key == UnitType.SKILL)
                     {
                         {
@@ -145,8 +150,15 @@ public class MainGameControl : MonoBehaviour
                         layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
                     }
                     dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
+                    
                     layout.AddLayoutChildAndParentIt(bwe);
                     button.Button.SetTextRaw(item.ConfigBasic.name);
+
+                    if (secondaryButton != null)
+                    {
+                        layout.AddLayoutChildAndParentIt(secondaryButton.LayoutChild);
+                        tcu.SecondaryButton = secondaryButton;
+                    }
 
                     pair.Value.Add(tcu);
                     tcu.bwe = bwe;
@@ -303,7 +315,7 @@ public class MainGameControl : MonoBehaviour
                             }
                             break;
                         case UnitType.HOUSE:
-                            tcu.bwe.MainButton.Image.color = arcaniaModel.Housing.IsLivingInHouse(data) ? ButtonRequest.MainBody.NormalColor : ButtonRequest.MainBody.SelectedColor;
+                            tcu.bwe.MainButton.Image.color = !arcaniaModel.Housing.IsLivingInHouse(data) ? ButtonRequest.MainBody.NormalColor : ButtonRequest.MainBody.SelectedColor;
                             tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Housing.CanChangeHouse(data);
                             
                             if (tcu.TaskClicked)

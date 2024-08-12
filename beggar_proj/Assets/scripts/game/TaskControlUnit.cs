@@ -64,6 +64,7 @@ public class TaskControlUnit
     public Gauge XPGauge { get; internal set; }
     public SimpleChild<UIUnit> MainTitle { get; internal set; }
     public UIUnit SkillLevelText { get; internal set; }
+    public SimpleChild<UIUnit> SecondaryButton { get; internal set; }
 
     public List<SeparatorWithLabel> Separators = new();
 
@@ -78,6 +79,11 @@ public class TaskControlUnit
         bwe.ManualUpdate();
         bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
         bwe.MainButton.LongPressMulticlickEnabled = Data.IsInstant();
+        if (SecondaryButton != null) 
+        {
+            SecondaryButton.LayoutChild.RectTransform.SetHeight(bwe.MainButton.RectTransform.GetHeight());
+            SecondaryButton.ManualUpdate();
+        } 
         if (Data.ConfigBasic.UnitType == UnitType.SKILL)
         {
             MainTitle.Element.SetTextRaw(Data.Name);

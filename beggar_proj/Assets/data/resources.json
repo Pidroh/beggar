@@ -61,6 +61,11 @@
                 "id": "rats",
                 "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
                 "max": 3
+            },
+            {
+                "id": "foraging",
+                "desc": "Scavenge the environment for useful items and hidden treasures.",
+                "max": 3
             }
         ]
     },
@@ -250,7 +255,7 @@
             {
                 "id": "brokenmirror",
                 "name": "Broken mirror",
-                "require": "t_job",
+                "requirex": "t_job",
                 "cost": {
                     "foraging": 3,
                     "energy": 2
@@ -347,7 +352,8 @@
                     "TASK",
                     "CLASS",
                     "SKILL",
-                    "HOUSE"
+                    "HOUSE",
+                    "FURNITURE"
                 ],
                 "icon" : "task"
             },
