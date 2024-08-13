@@ -15,8 +15,8 @@
             },
             {
                 "id": "breadcrumbs",
-                "desc": "Small, dry pieces of bread",
-                "max": 10
+                "desc": "Small, dry pieces of old bread",
+                "max": 15
             },
             {
                 "id": "nutrition",
@@ -116,7 +116,8 @@
                 "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
                 "require": "nutrition>0",
                 "perpetual": true,
-                "effect": {
+                "duration": 3,
+                "result": {
                     "thoughts": 1
                 }
             },
@@ -126,7 +127,7 @@
                 "desc": "",
                 "duration": 3,
                 "max": 2,
-                "require": "thoughts>=1",
+                "require": "thoughts>=5",
                 "cost": {
                     "thoughts": 2
                 },
@@ -135,14 +136,40 @@
                 }
             },
             {
+                "id": "breadbasket",
+                "name": "Tattered Pouch",
+                "desc": "More space for breadcrumbs",
+                "duration": 3,
+                "max": 2,
+                "require": "unlockbreadbasket",
+                "cost": {
+                    "supplication": 50,
+                    "breadcrumbs": 15
+                },
+                "mod": {
+                    "breadcrumbs.max": 15
+                }
+            },
+            {
                 "id": "unlocksadness",
                 "name": "Touch the Wound",
                 "desc": "Acknowledge the pain you've buried.",
                 "duration": 3,
                 "max": 1,
-                "require": "thoughts>2",
+                "require": "thoughts>3",
                 "cost": {
                     "thoughts": 4
+                }
+            },
+            {
+                "id": "unlockbreadbasket",
+                "name": "Ponder Crumbs",
+                "desc": "I have so many...",
+                "duration": 5,
+                "max": 1,
+                "require": "thoughts>1",
+                "cost": {
+                    "thoughts": 2
                 }
             },
             {
