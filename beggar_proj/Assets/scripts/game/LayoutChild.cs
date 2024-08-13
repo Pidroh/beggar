@@ -254,12 +254,12 @@ public class LabelWithExpandable
         // Set height for both buttons
         MainText.RectTransform.SetHeightMilimeters(heightMM);
         ExpandButton.RectTransform.SetHeightMilimeters(heightMM);
-        ExpandButton.RectTransform.SetWidthMilimeters(heightMM);
+        ExpandButton.RectTransform.SetWidthMilimeters(heightMM * 1.5f);
 
 
         var rectTransformParent = LayoutChild.RectTransform;
         rectTransformParent.SetHeightMilimeters(heightMM);
-        MainText.RectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - heightMM);
+        MainText.RectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - ExpandButton.RectTransform.GetWidthMilimeters());
 
         var expandButtonWidth = ExpandButton.RectTransform.rect.width;
         var expandButtonHeight = ExpandButton.RectTransform.rect.height;
@@ -346,12 +346,12 @@ public class ButtonWithExpandable
         // Set height for both buttons
         MainButton.RectTransform.SetHeightMilimeters(heightMM);
         ExpandButton.RectTransform.SetHeightMilimeters(heightMM);
-        ExpandButton.RectTransform.SetWidthMilimeters(heightMM);
+        ExpandButton.RectTransform.SetWidthMilimeters(heightMM * 1.5f);
 
 
         var rectTransformParent = LayoutChild.RectTransform;
         rectTransformParent.SetHeightMilimeters(heightMM);
-        MainButton.RectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - heightMM);
+        MainButton.RectTransform.SetWidthMilimeters(rectTransformParent.GetWidthMilimeters() - ExpandButton.RectTransform.GetWidthMilimeters());
 
         // Set the ExpandButton position on the right side
         var expandButtonWidth = ExpandButton.RectTransform.rect.width;
