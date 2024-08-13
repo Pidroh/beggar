@@ -21,7 +21,10 @@
             {
                 "id": "nutrition",
                 "max": 10,
-                "desc": "Higher values mean your character is well-fed, while lower values indicate hunger."
+                "desc": "Higher values mean your character is well-fed, while lower values indicate hunger.",
+                "mod":{
+                    "thoughts.max": 1
+                }
             },
             
             {
@@ -111,12 +114,9 @@
             {
                 "id": "think",
                 "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
-                "require": "nutrition>=2",
-                "duration": 4,
-                "cost": {
-                    "nutrition": 3
-                },
-                "result": {
+                "require": "nutrition>0",
+                "perpetual": true,
+                "effect": {
                     "thoughts": 1
                 }
             },
