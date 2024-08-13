@@ -20,7 +20,7 @@
             },
             {
                 "id": "nutrition",
-                "max": 10,
+                "max": 5,
                 "desc": "Higher values mean your character is well-fed, while lower values indicate hunger.",
                 "mod":{
                     "thoughts.max": 1
@@ -170,6 +170,21 @@
                 "require": "thoughts>1",
                 "cost": {
                     "thoughts": 2
+                }
+            },
+            {
+                "id": "healthier",
+                "name": "A bit healthier",
+                "desc": "Minor signs of improvement are visible, but not even close to healthy.",
+                "duration": 5,
+                "max": 1,
+                "require": "nutrition>1",
+                "cost": {
+                    "nutrition": 3
+                },
+                "mod": {
+                    "supplication.max":20,
+                    "nutrition.max": 5
                 }
             },
             {
