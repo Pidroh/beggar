@@ -332,7 +332,6 @@ public class ButtonWithExpandable
         this.LayoutChild = LayoutChild.Create(MainButton.transform, iconButton.transform);
         MainButton.transform.localPosition = Vector3.zero;
         iconButton.transform.localPosition = Vector3.zero;
-        ExpandManager.Expanded = true;
 
     }
 
