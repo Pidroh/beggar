@@ -62,6 +62,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     private void CompleteTask(RuntimeUnit data)
     {
         data.TaskProgress = 0;
+        data.ChangeValue(1);
         _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
         RunningTasks.Remove(data);
         if (data.ConfigTask.Perpetual)

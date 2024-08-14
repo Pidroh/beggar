@@ -24,6 +24,7 @@ public class RuntimeUnit
         if (!RequireMet) return false;
         // if there is a lock mod active, it's invisible
         if (this.GetModSum(ModType.Lock) > 0) return false;
+        if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
         return true;
     }
 
@@ -61,6 +62,8 @@ public class RuntimeUnit
     {
         _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
     }
+
+    public void ModifyValue(float valueChange) => ChangeValue(valueChange);
 
     internal void SetValue(int v)
     {
