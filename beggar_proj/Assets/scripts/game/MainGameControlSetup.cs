@@ -60,6 +60,9 @@ public class MainGameControlSetup
                 {
                     var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
                     var hasBWE = pair.Key != UnitType.RESOURCE && pair.Key != UnitType.FURNITURE;
+                    bool taskWithMax = pair.Key == UnitType.TASK && item.HasMax;
+                    var hasValueText = !hasBWE || taskWithMax;
+                    var valueTextIsOnLWE = !hasBWE;
 
                     var tcu = new RTControlUnit();
 
@@ -80,18 +83,8 @@ public class MainGameControlSetup
                         layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                         titleText.SetTextRaw(item.ConfigBasic.name);
                         tcu.lwe = lwe;
-
-                        // value text instantiation
-                        {
-                            var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
-                            t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
-                            // bwe.ExpandTargets
-                            tcu.ValueText = t;
-                            t.SetParent(tcu.lwe.MainText.RectTransform);
-                            t.RectTransform.FillParent();
-                            t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
-                        }
                     }
+                    
 
                     if (pair.Key == UnitType.FURNITURE)
                     {
@@ -138,6 +131,27 @@ public class MainGameControlSetup
                         tcu.bwe.MainButton.SetTextRaw(item.ConfigBasic.name);
                     }
 
+                    // value text instantiation
+                    {
+                        var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
+                        t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
+                        // bwe.ExpandTargets
+                        tcu.ValueText = t;
+                        if (valueTextIsOnLWE)
+                        {
+                            t.SetParent(tcu.lwe.MainText.RectTransform);
+                            t.RectTransform.FillParent();
+                            t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
+                        }
+                        else
+                        {
+                            var lc = LayoutChild.Create(t.transform);
+                            AddToExpands(lc);
+                            t.RectTransform.FillParent();
+                            lc.RectTransform.SetHeight(t.text.preferredHeight);
+                        }
+
+                    }
 
                     pair.Value.Add(tcu);
                     tcu.Data = item;
