@@ -148,7 +148,7 @@ public class MainGameControlSetup
                             var lc = LayoutChild.Create(t.transform);
                             AddToExpands(lc);
                             t.RectTransform.FillParent();
-                            lc.RectTransform.SetHeight(t.text.preferredHeight);
+                            lc.RectTransform.SetHeight(20);
                         }
 
                     }
