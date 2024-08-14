@@ -24,7 +24,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         // make CanStudySkill also use this
         if (!data.IsTaskHalfWay) if (!_model.CanAfford(data.ConfigTask.Cost)) return false;
 
-        if (!CheckIfRunAndEffectMatter(data)) return false;
+        if (!CheckIfActionIsMeaningful(data)) return false;
 
         if (data.IsMaxed) return false;
         if (data.IsInstant()) return true;
@@ -83,7 +83,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             }
             else
             {
-                taskContinue = taskContinue && CheckIfRunAndEffectMatter(run);
+                taskContinue = taskContinue && CheckIfActionIsMeaningful(run);
             }
 
             if (!taskContinue)
@@ -118,8 +118,10 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         }
     }
 
-    private bool CheckIfRunAndEffectMatter(RuntimeUnit run)
+    private bool CheckIfActionIsMeaningful(RuntimeUnit run)
     {
+        if (run.HasMax) return true;
+
         return (_model.DoChangesMakeADifference(run.ConfigTask.Result) || _model.DoChangesMakeADifference(run.ConfigTask.Effect));
     }
 
