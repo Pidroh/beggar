@@ -4,8 +4,8 @@
         "items":[
             {
                 "id": "supplication",
-                "max": 50,
-                "initial": 40,
+                "max": 30,
+                "initial": 30,
                 "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
             },
             {
@@ -52,7 +52,7 @@
                 "flavor": "Silent ache",
                 "max": 5,
                 "mod": {
-                    "supplication.max": 1
+                    "supplication.max": 5
                 }
             },
             {
@@ -60,7 +60,7 @@
                 "desc": "A profound emotion that deepens one's empathy and understanding. It connects us to others through shared experiences of loss and reflection.",
                 "max": 5,
                 "mod": {
-                    "supplication.max": 5
+                    "supplication.max": 15
                 }
             },
             {
@@ -255,10 +255,10 @@
                 "id": "gutterborn",
                 "tags": "t_job",
                 "lock": "t_job",
-                "require": "sadness>2",
+                "require": "sadness>0",
                 "cost": {
-                    "thoughts": 3,
-                    "supplication": 8,
+                    "thoughts": 8,
+                    "supplication": 65,
                     "sadness": 2
                 },
                 "mod": {
