@@ -420,7 +420,7 @@
                     },
                     {
                         "id": "power_up",
-                        "name": "Power Up",
+                        "name": "Power Ups",
                         "unit_types": [
                             "TASK"
                         ],
@@ -430,9 +430,24 @@
                     },
                     {
                         "id": "class",
-                        "name": "Class",
+                        "name": "Classes",
                         "unit_types": [
                             "CLASS"
+                        ]
+                    },
+                    {
+                        "id": "skill",
+                        "name": "Skills",
+                        "unit_types": [
+                            "SKILL"
+                        ]
+                    },
+                    {
+                        "id": "housing",
+                        "name": "Housing",
+                        "unit_types": [
+                            "HOUSE",
+                            "FURNITURE"
                         ]
                     }
                 ]
@@ -441,13 +456,16 @@
                 "id": "resource",
                 "unit_types": [
                     "RESOURCE"
+                ],
+                "icon" : "resource",
+                "separator": [
+                    {
+                        "id": "resource",
+                        "name": "Resources",
+                        "default": true
+                    }
                 ]
-                "icon" : "resource"
             }
         ]
-    },
-    {
-        "type": "SEPARATOR",
-        "items":
     }
 ]
