@@ -408,15 +408,46 @@
                     "HOUSE",
                     "FURNITURE"
                 ],
-                "icon" : "task"
+                "icon" : "task",
+                "separator": [
+                    {
+                        "id": "task",
+                        "name": "Tasks",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "default": true
+                    },
+                    {
+                        "id": "power_up",
+                        "name": "Power Up",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "require_tag": [
+                            "t_power_up"
+                        ]
+                    },
+                    {
+                        "id": "class",
+                        "name": "Class",
+                        "unit_types": [
+                            "CLASS"
+                        ]
+                    }
+                ]
             },
             {
                 "id": "resource",
                 "unit_types": [
                     "RESOURCE"
-                ],
+                ]
                 "icon" : "resource"
             }
         ]
+    },
+    {
+        "type": "SEPARATOR",
+        "items":
     }
 ]
