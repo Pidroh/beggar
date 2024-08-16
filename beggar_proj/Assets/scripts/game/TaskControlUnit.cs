@@ -14,6 +14,13 @@ public class TabControlUnit
 
     public class SeparatorInTab {
         public List<RTControlUnit> RelatedUnits = new();
+
+        public SeparatorInTab(TabRuntime.Separator sepD)
+        {
+            SepD = sepD;
+        }
+
+        public TabRuntime.Separator SepD { get; }
     }
 }
 

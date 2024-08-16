@@ -29,6 +29,10 @@ public class MainGameControlSetup
                 TabData = item
             };
             mgc.TabControlUnits.Add(tcu);
+            foreach (var sepD in item.Tab.Separators)
+            {
+                tcu.Seperators.Add(new TabControlUnit.SeparatorInTab(sepD));
+            }
             foreach (var t in item.Tab.AcceptedUnitTypes)
             {
                 switch (t)
@@ -47,6 +51,7 @@ public class MainGameControlSetup
                         break;
                 }
             }
+            
         }
 
         for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
