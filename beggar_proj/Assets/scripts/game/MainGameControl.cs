@@ -1,3 +1,4 @@
+using HeartUnity.View;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,6 +22,8 @@ public class MainGameControl : MonoBehaviour
 
     public Color MainTextColor;
 
+    public EngineView EngineView { get; internal set; }
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class MainGameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        EngineView.ManualUpdate();
         arcaniaModel.ManualUpdate(Time.deltaTime);
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible

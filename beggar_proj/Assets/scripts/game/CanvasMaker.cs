@@ -15,8 +15,7 @@ public class DynamicCanvas
     public GameObject canvasGO;
 
     public RectTransform RootRT { get; internal set; }
-
-
+    public Canvas Canvas { get; internal set; }
 
     public LayoutParent CreateLowerMenuLayout(int height)
     {
@@ -290,6 +289,7 @@ public class CanvasMaker
         dc.canvasGO = new GameObject("Canvas");
         var canvasGO = dc.canvasGO;
         Canvas canvas = canvasGO.AddComponent<Canvas>();
+        dc.Canvas = canvas;
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;

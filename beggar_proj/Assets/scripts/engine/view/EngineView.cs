@@ -7,6 +7,20 @@ namespace HeartUnity.View
     public class EngineView : MonoBehaviour
     {
         public Canvas canvas;
+        public struct EngineViewInitializationParameter
+        {
+            public Canvas canvas;
+        }
+
+        public static EngineView CreateEngineViewThroughCode(EngineViewInitializationParameter param)
+        {
+            var go = new GameObject();
+            var ev = go.AddComponent<EngineView>();
+            ev.canvas = param.canvas;
+            ev.canvasScaler = ev.canvas.GetComponent<CanvasScaler>();
+            return ev;
+        }
+
         public CanvasScaler canvasScaler;
         public PixelPerfectCamera pixelCamera;
         public UIUnitManager unitManager;

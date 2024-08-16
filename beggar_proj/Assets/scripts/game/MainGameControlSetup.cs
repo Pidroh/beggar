@@ -13,6 +13,10 @@ public class MainGameControlSetup
         mgc.dynamicCanvas = dynamicCanvas;
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
 
+        mgc.EngineView = EngineView.CreateEngineViewThroughCode(new EngineView.EngineViewInitializationParameter() { 
+            canvas = dynamicCanvas.Canvas
+        });
+        mgc.EngineView.Init(2);
 
         foreach (var item in arcaniaDatas.datas[UnitType.TAB])
         {
