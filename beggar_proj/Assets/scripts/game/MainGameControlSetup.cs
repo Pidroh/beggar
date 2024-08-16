@@ -59,6 +59,20 @@ public class MainGameControlSetup
             foreach (var sep in tabControl.Separators)
             {
                 var UnitGroupControls = tabControl.UnitGroupControls;
+                {
+                    var image = CanvasMaker.CreateSimpleImage(new Color(0.2f, 0.2f, 0.2f));
+                    var text = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 12);
+                    text.SetParent(image.gameObject.transform);
+                    text.RectTransform.FillParent();
+                    text.RectTransform.SetOffsetMinByIndex(0, 20);
+                    text.rawText = sep.Data.Name;
+                    dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(new LayoutChild() { 
+                        RectTransform = image.RectTransform
+                    });
+                }
+                
+
+
 
                 foreach (var pair in UnitGroupControls)
                 {
