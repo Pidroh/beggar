@@ -10,6 +10,11 @@ public class TabControlUnit
 
     public Dictionary<UnitType, List<RTControlUnit>> UnitGroupControls = new();
     internal ButtonWithProgressBar SelectionButton;
+    public List<SeparatorInTab> Seperators = new();
+
+    public class SeparatorInTab {
+        public List<RTControlUnit> RelatedUnits = new();
+    }
 }
 
 
