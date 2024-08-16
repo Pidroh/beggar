@@ -10,17 +10,17 @@ public class TabControlUnit
 
     public Dictionary<UnitType, List<RTControlUnit>> UnitGroupControls = new();
     internal ButtonWithProgressBar SelectionButton;
-    public List<SeparatorInTab> Seperators = new();
+    public List<SeparatorInTab> Separators = new();
 
     public class SeparatorInTab {
         public List<RTControlUnit> RelatedUnits = new();
 
         public SeparatorInTab(TabRuntime.Separator sepD)
         {
-            SepD = sepD;
+            Data = sepD;
         }
 
-        public TabRuntime.Separator SepD { get; }
+        public TabRuntime.Separator Data { get; }
     }
 }
 
