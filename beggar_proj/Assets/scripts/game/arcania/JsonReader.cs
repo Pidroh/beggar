@@ -75,11 +75,21 @@ public class JsonReader
             if(type == UnitType.TAB)
             {
                 new TabRuntime(ru);
-                var unitTypeLabels = item.GetValueOrDefault("unit_types", null).AsArray.Children;
-                foreach (var labels in unitTypeLabels)
+                List<UnitType> acceptedUnitTypes = ru.Tab.AcceptedUnitTypes;
+                var key = "unit_types";
+                ReadUnitTypesToArray(item, acceptedUnitTypes, key);
+                var children = item.GetValueOrDefault("separator", null).AsArray.Children;
+                foreach (var c in children)
                 {
-                    if (!EnumHelper<UnitType>.TryGetEnumFromName(labels, out var typeFilter)) Debug.LogError($"{typeS} not found in UnitType");
-                    ru.Tab.AcceptedUnitTypes.Add(typeFilter);
+                    var sep = new TabRuntime.Separator();
+                    ru.Tab.Separators.Add(sep);
+                    ReadUnitTypesToArray(c, sep.AcceptedUnitTypes, key);
+                    foreach (var pair in c)
+                    {
+                        if (pair.Key == "name") sep.Name = pair.Value.AsString;
+                        if (pair.Key == "default") sep.Default = pair.Value.AsBool;
+                        if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
+                    }
                 }
             }
             if (type == UnitType.TASK)
@@ -121,6 +131,19 @@ public class JsonReader
             }
 
             arcaniaUnits.datas[type].Add(ru);
+        }
+
+        static void ReadUnitTypesToArray(SimpleJSON.JSONNode item, List<UnitType> acceptedUnitTypes, string key)
+        {
+            SimpleJSON.JSONNode jSONNode = item.GetValueOrDefault(key, null);
+            if (jSONNode == null) return;
+            var unitTypeLabels = jSONNode.AsArray.Children;
+
+            foreach (var labels in unitTypeLabels)
+            {
+                if (!EnumHelper<UnitType>.TryGetEnumFromName(labels, out var typeFilter)) Debug.LogError($"{labels} not found in UnitType");
+                acceptedUnitTypes.Add(typeFilter);
+            }
         }
     }
 

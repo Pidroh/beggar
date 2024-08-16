@@ -424,9 +424,7 @@
                         "unit_types": [
                             "TASK"
                         ],
-                        "require_tag": [
-                            "t_power_up"
-                        ]
+                        "require_max": true
                     },
                     {
                         "id": "class",

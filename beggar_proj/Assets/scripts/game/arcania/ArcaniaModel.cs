@@ -21,6 +21,7 @@ public class TabRuntime
 {
 
     public List<UnitType> AcceptedUnitTypes = new();
+    public List<Separator> Separators = new();
 
     public TabRuntime(RuntimeUnit ru)
     {
@@ -29,6 +30,14 @@ public class TabRuntime
     }
 
     public RuntimeUnit RuntimeUnit { get; }
+
+    public class Separator {
+        public List<UnitType> AcceptedUnitTypes = new();
+        public bool RequireMax;
+        public bool Default;
+
+        public string Name { get; internal set; }
+    }
 }
 
 public class SkillRuntime
