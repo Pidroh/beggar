@@ -63,7 +63,7 @@ public class MainGameControl : MonoBehaviour
                     tcu.bwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     tcu.lwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     if (!visible) continue;
-                    tcu.ParentTabSeparator?.Visible = true;
+                    if(tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
                     var modUnit = tcu.ModsUnit;
                     FeedMods(data, modUnit);
 

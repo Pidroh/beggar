@@ -56,6 +56,7 @@ public class MainGameControlSetup
         for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = mgc.TabControlUnits[tabIndex];
+            // Tab separator instancing
             foreach (var sep in tabControl.Separators)
             {
                 var UnitGroupControls = tabControl.UnitGroupControls;
@@ -64,15 +65,15 @@ public class MainGameControlSetup
                     var text = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 12);
                     text.SetParent(image.gameObject.transform);
                     text.RectTransform.FillParent();
-                    text.RectTransform.SetOffsetMinByIndex(0, 20);
+                    text.RectTransform.SetOffsetMinByIndex(0, 0);
                     text.rawText = sep.Data.Name;
-                    dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(new LayoutChild() { 
+                    LayoutChild layoutChild = new LayoutChild()
+                    {
                         RectTransform = image.RectTransform
-                    });
+                    };
+                    dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(layoutChild);
+                    sep.SeparatorLC = layoutChild;
                 }
-                
-
-
 
                 foreach (var pair in UnitGroupControls)
                 {

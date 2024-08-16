@@ -12,7 +12,8 @@ public class TabControlUnit
     internal ButtonWithProgressBar SelectionButton;
     public List<SeparatorInTab> Separators = new();
 
-    public class SeparatorInTab {
+    public class SeparatorInTab
+    {
         public List<RTControlUnit> RelatedUnits = new();
 
         public SeparatorInTab(TabRuntime.Separator sepD)
@@ -21,7 +22,8 @@ public class TabControlUnit
         }
 
         public TabRuntime.Separator Data { get; }
-        public bool Visible => IMPLEMENT THIS
+        public LayoutChild SeparatorLC { get; internal set; }
+        public bool Visible { get => SeparatorLC != null ? SeparatorLC.Visible : false; set { if (SeparatorLC == null) return; SeparatorLC.Visible = value; } }
     }
 }
 
@@ -71,7 +73,7 @@ public class RTControlUnit
             bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
             bwe.MainButton.LongPressMulticlickEnabled = Data.IsInstant();
         }
-        if (lwe != null) 
+        if (lwe != null)
         {
             lwe.ManualUpdate();
         }
