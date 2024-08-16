@@ -21,6 +21,7 @@ public class TabControlUnit
         }
 
         public TabRuntime.Separator Data { get; }
+        public bool Visible => IMPLEMENT THIS
     }
 }
 
@@ -60,6 +61,7 @@ public class RTControlUnit
 
     public ButtonWithProgressBar ButtonRemove { get; internal set; }
     public ButtonWithProgressBar ButtonAdd { get; internal set; }
+    public TabControlUnit.SeparatorInTab ParentTabSeparator { get; internal set; }
 
     public void ManualUpdate()
     {

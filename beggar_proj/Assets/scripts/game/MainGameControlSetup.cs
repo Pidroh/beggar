@@ -103,6 +103,7 @@ public class MainGameControlSetup
                         var valueTextIsOnLWE = !hasBWE;
 
                         var tcu = new RTControlUnit();
+                        tcu.ParentTabSeparator = unitSeparator;
 
                         if (hasBWE)
                         {

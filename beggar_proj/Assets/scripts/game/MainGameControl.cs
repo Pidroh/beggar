@@ -40,6 +40,10 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
+            foreach (var sep in tabControl.Separators)
+            {
+                sep.Visible = false;
+            }
 
             if (tabControl.SelectionButton.Button.Clicked)
             {
@@ -59,6 +63,7 @@ public class MainGameControl : MonoBehaviour
                     tcu.bwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     tcu.lwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     if (!visible) continue;
+                    tcu.ParentTabSeparator?.Visible = true;
                     var modUnit = tcu.ModsUnit;
                     FeedMods(data, modUnit);
 
