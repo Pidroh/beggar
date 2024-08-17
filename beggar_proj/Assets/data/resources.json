@@ -321,7 +321,7 @@
             {
                 "id": "brokenmirror",
                 "name": "Broken mirror",
-                "require": "t_job",
+                "require": "scavenging>0",
                 "cost": {
                     "foraging": 3
                 },
@@ -335,7 +335,7 @@
             {
                 "id": "crackedvase",
                 "name": "Cracked vase",
-                "require": "t_job",
+                "require": "scavenging>0",
                 "cost": {
                     "foraging": 2
                 },
@@ -347,7 +347,7 @@
             {
                 "id": "doll",
                 "name": "Discarded Doll",
-                "require": "t_job",
+                "require": "scavenging>0",
                 "cost": {
                     "foraging": 4
                 },
@@ -360,7 +360,7 @@
             {
                 "id": "mothblanket",
                 "name": "Moth-eaten blanket",
-                "require": "t_job",
+                "require": "scavenging>0",
                 "max": 1,
                 "cost": {
                     "foraging": 3
@@ -375,7 +375,7 @@
                 "id": "spoiledgrains",
                 "name": "Spoiled Grains",
                 "tag": "ratsource",
-                "require": "t_job",
+                "require": "scavenging>0",
                 "max": 1,
                 "cost": {
                     "foraging": 3
@@ -391,7 +391,7 @@
             {
                 "id": "destroyedpainting",
                 "name": "Destroyed painting",
-                "require": "t_job",
+                "require": "scavenging>0",
                 "cost": {
                     "foraging": 3
                 },
