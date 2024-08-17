@@ -70,6 +70,7 @@
             },
             {
                 "id": "foraging",
+                "require": "scavenging>0",
                 "desc": "Scavenge the environment for useful items and hidden treasures.",
                 "max": 3
             }
@@ -103,12 +104,13 @@
             },
             {
                 "id": "pleafocus",
-                "name": "Focus Plea",
-                "desc": "Centering thoughts and intentions to prepare for begging",
+                "name": "Rest",
+                "desc": "Take a break to recuperate and regain vitality",
                 "require": "supplication<3",
                 "perpetual": true,
                 "effect": {
-                    "supplication": 1
+                    "supplication": 1,
+                    "foraging": 1
                 }
             },
             {
@@ -297,6 +299,18 @@
                     "rats.max": 1,
                     "thoughts.max": 1,
                     "supplication.max": 2
+                }
+            },
+            {
+                "id": "scavenging",
+                "name": "Scavenging",
+                "desc": "Seek out and collect natural resources and useful items from the environment.",
+                "require": "introspection>0",
+                "cost": {
+                    "thoughts": 15
+                },
+                "mod": {
+                    "foraging.max": 1
                 }
             }
         ]
