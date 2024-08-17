@@ -23,6 +23,7 @@ public class MainGameControl : MonoBehaviour
     public Color MainTextColor;
 
     public EngineView EngineView { get; internal set; }
+    public float TimeMultiplier { get; private set; }
 
 
     // Start is called before the first frame update
@@ -35,7 +36,16 @@ public class MainGameControl : MonoBehaviour
     void Update()
     {
         EngineView.ManualUpdate();
-        arcaniaModel.ManualUpdate(Time.deltaTime);
+        if (DebugMenuManager.CheckCommand("speed", out int v)) 
+        {
+            TimeMultiplier = v;
+        }
+        if (DebugMenuManager.CheckCommand("speed")) 
+        {
+            TimeMultiplier = 1;
+        }
+
+        arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;

@@ -52,7 +52,7 @@ namespace HeartUnity.View
             if (Instance == null) return false;
             if (Instance.debugMenu == null) return false;
             if (Instance.debugMenu.currentDebugMessage == null) return false;
-            if (Instance.debugMenu.currentDebugMessage.Contains(v)) {
+            if (Instance.debugMenu.currentDebugMessage.Contains(v) && Instance.debugMenu.currentDebugMessage.Length > v.Length) {
                 number = int.Parse(Instance.debugMenu.currentDebugMessage.Replace(v, "").Trim());
                 return true;
             }
