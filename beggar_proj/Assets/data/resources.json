@@ -210,8 +210,7 @@
                     "sadness": 10
                 },
                 "run": {
-                    "focus": 1,
-                    "energy": 1
+                    "focus": 1
                 },
                 "result": {
                     "sorrow": 1
@@ -310,8 +309,7 @@
                 "name": "Broken mirror",
                 "require": "t_job",
                 "cost": {
-                    "foraging": 3,
-                    "energy": 2
+                    "foraging": 3
                 },
                 "mod": {
                     "introspection.max": 1,
@@ -325,8 +323,7 @@
                 "name": "Cracked vase",
                 "require": "t_job",
                 "cost": {
-                    "foraging": 2,
-                    "energy": 3
+                    "foraging": 2
                 },
                 "mod": {
                     "deadflower.max" : 8,
@@ -338,8 +335,7 @@
                 "name": "Discarded Doll",
                 "require": "t_job",
                 "cost": {
-                    "foraging": 4,
-                    "energy": 1
+                    "foraging": 4
                 },
                 "mod": {
                     "sadness.max" : 8,
@@ -368,8 +364,7 @@
                 "require": "t_job",
                 "max": 1,
                 "cost": {
-                    "foraging": 3,
-                    "energy": 1
+                    "foraging": 3
                 },
                 "mod": {
                     "rest.effect.energy" : -0.5,
@@ -384,8 +379,7 @@
                 "name": "Destroyed painting",
                 "require": "t_job",
                 "cost": {
-                    "foraging": 3,
-                    "energy": 1
+                    "foraging": 3
                 },
                 "mod": {
                     "sadness.max" : 3,

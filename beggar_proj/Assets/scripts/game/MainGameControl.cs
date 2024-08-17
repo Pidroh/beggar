@@ -23,7 +23,7 @@ public class MainGameControl : MonoBehaviour
     public Color MainTextColor;
 
     public EngineView EngineView { get; internal set; }
-    public float TimeMultiplier { get; private set; }
+    public float TimeMultiplier { get; private set; } = 1;
 
 
     // Start is called before the first frame update
@@ -44,6 +44,7 @@ public class MainGameControl : MonoBehaviour
         {
             TimeMultiplier = 1;
         }
+
 
         arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
         dynamicCanvas.ManualUpdate();
