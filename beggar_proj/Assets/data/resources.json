@@ -253,14 +253,15 @@
         "type": "CLASS",
         "items":[
             {
-                "id": "gutterborn",
+                "id" : "gutterborn",
+                "desc" : "Acknowledge your origins from the streets, embracing the harsh reality of your upbringing.",
                 "tags": "t_job",
                 "lock": "t_job",
-                "require": "sadness>0",
+                "require": "thoughts>0",
                 "cost": {
-                    "thoughts": 8,
-                    "supplication": 65,
-                    "sadness": 2
+                    "thoughts": 5,
+                    "supplication": 40,
+                    "nutrition": 2
                 },
                 "mod": {
                     "supplication.max": 10,
