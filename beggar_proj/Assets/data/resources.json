@@ -477,7 +477,7 @@
                 "id": "log",
                 "unit_types": [
                 ],
-                "contain_logs": true,
+                "contains_logs": true,
                 "icon" : "logs",
                 "separator": [
                     {

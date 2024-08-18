@@ -74,10 +74,14 @@ public class JsonReader
             arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
             if(type == UnitType.TAB)
             {
-                new TabRuntime(ru);
+                var tr = new TabRuntime(ru);
                 List<UnitType> acceptedUnitTypes = ru.Tab.AcceptedUnitTypes;
                 var key = "unit_types";
                 ReadUnitTypesToArray(item, acceptedUnitTypes, key);
+                foreach (var pair in item)
+                {
+                    if (pair.Key == "contains_logs") tr.ContainsLogs = pair.Value.AsBool;
+                }
                 var children = item.GetValueOrDefault("separator", null).AsArray.Children;
                 foreach (var c in children)
                 {
