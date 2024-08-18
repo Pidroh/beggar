@@ -292,4 +292,18 @@ public class MainGameControlSetup
             }
         }
     }
+
+    internal static void CreateLogControlUnit(MainGameControl mgc, TabControlUnit tabControl, LayoutParent lp, LogUnit logUnit)
+    {
+        var text = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
+        // var image = CanvasMaker.CreateSimpleImage(mgc.ButtonObjectRequest.SecondaryColor);
+        var lc = LayoutChild.Create(text.transform);
+        if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED) {
+            text.rawText = $"Unlocked {logUnit.Unit.ConfigBasic.name}";
+        }
+        lp.AddLayoutChildAndParentIt(lc);
+        text.RectTransform.FillParent();
+        lc.RectTransform.SetHeight(30);
+        tabControl.LogControlUnits.Add(new LogControlUnit());
+    }
 }

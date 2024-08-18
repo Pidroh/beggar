@@ -11,6 +11,7 @@ public class TabControlUnit
     public Dictionary<UnitType, List<RTControlUnit>> UnitGroupControls = new();
     internal ButtonWithProgressBar SelectionButton;
     public List<SeparatorInTab> Separators = new();
+    public List<LogControlUnit> LogControlUnits = new();
 
     public class SeparatorInTab
     {
@@ -31,6 +32,11 @@ public class TabControlUnit
 public class ModsControlUnit
 {
     public List<TripleTextView> ModTTVs { get; internal set; } = new();
+}
+
+public class LogControlUnit 
+{ 
+
 }
 
 public class RTControlUnit

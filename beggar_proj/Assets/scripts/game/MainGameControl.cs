@@ -55,6 +55,8 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
+            
+
             foreach (var sep in tabControl.Separators)
             {
                 sep.Visible = false;
@@ -65,6 +67,13 @@ public class MainGameControl : MonoBehaviour
                 dynamicCanvas.ShowChild(tabIndex);
             }
             if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
+            if (tabControl.TabData.Tab.ContainsLogs)
+            {
+                while (tabControl.LogControlUnits.Count < arcaniaModel.LogUnits.Count)
+                {
+                    MainGameControlSetup.CreateLogControlUnit(mgc:this, tabControl:tabControl, lp:dynamicCanvas.children[tabIndex], logUnit:arcaniaModel.LogUnits[tabControl.LogControlUnits.Count]);
+                }
+            }
             var UnitGroupControls = tabControl.UnitGroupControls;
 
 

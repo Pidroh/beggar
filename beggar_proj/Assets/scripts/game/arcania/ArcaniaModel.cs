@@ -30,6 +30,7 @@ public class TabRuntime
     }
 
     public RuntimeUnit RuntimeUnit { get; }
+    public bool ContainsLogs { get; internal set; }
 
     public class Separator {
         public List<UnitType> AcceptedUnitTypes = new();
