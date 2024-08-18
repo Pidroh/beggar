@@ -6,7 +6,6 @@ public class ArcaniaUnits
     public Dictionary<UnitType, List<RuntimeUnit>> datas = new();
     public Dictionary<string, IDPointer> IdMapper = new();
 
-
     public List<ModRuntime> Mods { get; internal set; } = new();
     public List<ModRuntime> SpaceMods { get; internal set; } = new();
 

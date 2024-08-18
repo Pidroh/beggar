@@ -15,18 +15,26 @@ public class RuntimeUnit
 
     public int Max => CalculateMax();
 
-    public bool Visible => CalculateVisible();
+    public bool Visible => IsPossiblyVisibleRegardlessOfRequire() && RequireMet;
 
-    private bool CalculateVisible()
+    public bool IsPossiblyVisibleRegardlessOfRequire() 
     {
-        // only gets checked when require has never been met before
-        RequireMet = RequireMet || MeetsCondition(ConfigBasic.Require?.expression);
-        if (!RequireMet) return false;
-        // if there is a lock mod active, it's invisible
         if (this.GetModSum(ModType.Lock) > 0) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
         return true;
     }
+
+    internal bool UpdateRequireStatus()
+    {
+        if (!IsPossiblyVisibleRegardlessOfRequire()) return false;
+        var requireMetBefore = RequireMet;
+        // only gets checked when require has never been met before
+        RequireMet = RequireMet || MeetsCondition(ConfigBasic.Require?.expression);
+        if (!RequireMet) return false;
+        if (requireMetBefore == false) return true;
+        return false;
+    }
+
 
     public TabRuntime Tab { get; internal set; }
 

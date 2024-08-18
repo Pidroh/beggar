@@ -80,8 +80,22 @@ public class SkillRuntime
     }
 }
 
+public class LogUnit 
+{
+    public LogType logType;
+
+    public enum LogType 
+    { 
+        UNIT_UNLOCKED, // When the unit's require is met
+        SKILL_IMPROVED,
+        CLASS_CHANGE, 
+
+    }
+}
+
 public class ArcaniaModel
 {
+    public List<LogUnit> LogUnits = new();
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
     public ArcaniaModelActionRunner Runner;
     public ArcaniaModelHousing Housing;
@@ -111,12 +125,21 @@ public class ArcaniaModel
     {
         Runner.ManualUpdate(dt);
         _oneSecondCounter += dt;
-        while (_oneSecondCounter > 1f) 
+        var applyRateNumber = 0;
+        while (_oneSecondCounter > 1f)
         {
             _oneSecondCounter -= 1f;
-            foreach (var pair in arcaniaUnits.datas)
+            applyRateNumber++;
+        }
+        foreach (var pair in arcaniaUnits.datas)
+        {
+            foreach (var item in pair.Value)
             {
-                foreach (var item in pair.Value)
+                if (item.UpdateRequireStatus()) 
+                { 
+
+                }
+                for (int i = 0; i < applyRateNumber; i++)
                 {
                     item.ApplyRate();
                 }
