@@ -472,6 +472,20 @@
                         "default": true
                     }
                 ]
+            },
+            {
+                "id": "log",
+                "unit_types": [
+                ],
+                "contain_logs": true,
+                "icon" : "logs",
+                "separator": [
+                    {
+                        "id": "log",
+                        "name": "Log",
+                        "default": true
+                    }
+                ]
             }
         ]
     }
