@@ -84,6 +84,8 @@ public class LogUnit
 {
     public LogType logType;
 
+    public RuntimeUnit Unit { get; internal set; }
+
     public enum LogType 
     { 
         UNIT_UNLOCKED, // When the unit's require is met
@@ -136,8 +138,11 @@ public class ArcaniaModel
             foreach (var item in pair.Value)
             {
                 if (item.UpdateRequireStatus()) 
-                { 
-
+                {
+                    LogUnits.Add(new LogUnit() { 
+                        logType = LogUnit.LogType.UNIT_UNLOCKED,
+                        Unit = item
+                    });
                 }
                 for (int i = 0; i < applyRateNumber; i++)
                 {
