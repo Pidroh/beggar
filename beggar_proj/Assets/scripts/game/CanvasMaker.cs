@@ -46,6 +46,16 @@ public class DynamicCanvas
         while (maxActiveChildrenCount < ActiveChildren.Count) {
             ActiveChildren.Dequeue();
         }
+
+        // Show EVERY children IF it can show every children AND not every children is shown
+        // Once the need to unlock tabs appears (like a tab that only appears in the middle game),
+        // this code will likely break (since even locked tabs will show)
+        if (maxActiveChildrenCount >= children.Count && ActiveChildren.Count < children.Count) {
+            foreach (var item in children)
+            {
+                ShowChild(item);
+            }
+        }
         
         if (maxActiveChildrenCount > 0)
         {
