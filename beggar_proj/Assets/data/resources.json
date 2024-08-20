@@ -230,6 +230,27 @@
                 "result": {
                     "nutrition": 1
                 }
+            },
+            {
+                "id": "ponderexistence",
+                "name": "What is reality?",
+                "desc": "Ask a rat about the nature of your reality",
+                "require": "sadness > 4 && ratology > 2",
+                "max": 1,
+                "duration": 90,
+                "cost":{
+                    "thoughts": 10,
+                    "sadness": 10,
+                    "supplication": 10,
+                    "rat": 1
+                },
+                "run":{
+                    "thoughts": 1,
+                    "supplication": 1
+                },
+                "result": {
+                    "nutrition": 1
+                }
             }
         ]
     },
