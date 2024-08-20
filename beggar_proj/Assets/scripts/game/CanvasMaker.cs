@@ -321,7 +321,10 @@ public class CanvasMaker
         }
         dc.RootRT = rootRT;
         dc.OverlayRoot = rootRT.CreateFullSizeChild("overlay_root");
-        
+        {
+            var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
+            oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.9f);
+        }
 
 
         // Create EventSystem GameObject
