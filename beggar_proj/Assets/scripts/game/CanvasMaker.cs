@@ -16,6 +16,7 @@ public class DynamicCanvas
 
     public RectTransform RootRT { get; internal set; }
     public Canvas Canvas { get; internal set; }
+    public RectTransform OverlayRoot { get; internal set; }
 
     public LayoutParent CreateLowerMenuLayout(int height)
     {
@@ -311,10 +312,7 @@ public class CanvasMaker
         rootGO.transform.SetParent(canvasGO.transform, false);
 
         RectTransform rootRT = rootGO.AddComponent<RectTransform>();
-        rootRT.anchorMin = Vector2.zero;
-        rootRT.anchorMax = Vector2.one;
-        rootRT.offsetMin = Vector2.zero;
-        rootRT.offsetMax = Vector2.zero;
+        rootRT.FillParent();
 
         // Create N children
         for (int i = 0; i < N; i++)
@@ -322,6 +320,10 @@ public class CanvasMaker
             dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
         }
         dc.RootRT = rootRT;
+        dc.OverlayRoot = rootRT.CreateFullSizeChild("overlay_root");
+        
+
+
         // Create EventSystem GameObject
         GameObject eventSystemGO = new GameObject("EventSystem");
         eventSystemGO.AddComponent<EventSystem>();

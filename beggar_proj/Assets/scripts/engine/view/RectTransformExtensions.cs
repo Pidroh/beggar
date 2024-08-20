@@ -220,7 +220,15 @@ namespace HeartUnity.View
             trans.SetAnchorMaxByIndex(axisIndex, 1f);
             trans.SetOffsetMinByIndex(axisIndex, 0f);
             trans.SetOffsetMaxByIndex(axisIndex, 0f);
+        }
 
+        public static RectTransform CreateFullSizeChild(this RectTransform trans, string name) 
+        {
+            GameObject childGO = new GameObject(name);
+            childGO.transform.SetParent(trans, false);
+            RectTransform rectTransform = childGO.GetComponent<RectTransform>();
+            rectTransform.FillParent();
+            return rectTransform;
         }
     }
 }
