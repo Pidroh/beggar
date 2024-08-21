@@ -24,6 +24,7 @@ public class MainGameControl : MonoBehaviour
 
     public EngineView EngineView { get; internal set; }
     public float TimeMultiplier { get; private set; } = 1;
+    public RuntimeUnit EndGameRuntimeUnit { get; internal set; }
 
 
     // Start is called before the first frame update
@@ -44,7 +45,9 @@ public class MainGameControl : MonoBehaviour
         {
             TimeMultiplier = 1;
         }
-
+        // Show end game
+        if (EndGameRuntimeUnit.Value > 0) { 
+        }
 
         arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
         dynamicCanvas.ManualUpdate();

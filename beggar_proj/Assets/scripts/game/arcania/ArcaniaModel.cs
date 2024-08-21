@@ -188,5 +188,13 @@ public class ArcaniaModel
 
     }
 
-
+    internal RuntimeUnit FindRuntimeUnit(UnitType type, string v)
+    {
+        foreach (var item in arcaniaUnits.datas[type])
+        {
+            if (item.ConfigBasic.Id == v) return item;
+        }
+        Debug.Log($"Runtime unit of type |{type}| and ID |{v}| NOT FOUND");
+        return null;
+    }
 }

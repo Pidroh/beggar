@@ -257,7 +257,7 @@ public class MainGameControlSetup
             
         }
 
-
+        mgc.EndGameRuntimeUnit = arcaniaModel.FindRuntimeUnit(UnitType.TASK, "ponderexistence");
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
         {
