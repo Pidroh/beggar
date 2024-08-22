@@ -13,6 +13,9 @@ public class LayoutParent
     public RectTransform ContentTransformOverridingSelfChildTransform;
     public RectTransform TransformParentOfChildren => ContentTransformOverridingSelfChildTransform == null ? SelfChild.RectTransform : ContentTransformOverridingSelfChildTransform;
 
+    public LayoutChildAlignment Alignment { get; private set; }
+    public bool InvertChildrenPositionIndex = false;
+
     public LayoutParent(RectTransform rT)
     {
         
@@ -152,6 +155,12 @@ public class LayoutParent
         return this;
     }
 
+    internal LayoutParent SetLayoutChildAlignment(LayoutChildAlignment alignment)
+    {
+        Alignment = alignment;
+        return this;
+    }
+
     internal LayoutParent SetStretchWidth(bool b)
     {
         StretchChildren[0] = b;
@@ -202,6 +211,14 @@ public class LayoutParent
         INVALID,
         VERTICAL,
         HORIZONTAL,
+    }
+
+    public enum LayoutChildAlignment
+    {
+        INVALID,
+        LOWER,
+        MIDDLE,
+        UPPER
     }
 }
 
