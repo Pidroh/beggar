@@ -226,7 +226,7 @@ namespace HeartUnity.View
         {
             GameObject childGO = new GameObject(name);
             childGO.transform.SetParent(trans, false);
-            RectTransform rectTransform = childGO.GetComponent<RectTransform>();
+            RectTransform rectTransform = childGO.AddComponent<RectTransform>();
             rectTransform.FillParent();
             return rectTransform;
         }

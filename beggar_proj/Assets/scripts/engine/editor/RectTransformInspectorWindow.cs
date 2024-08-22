@@ -62,6 +62,11 @@ public class RectTransformInspectorWindow : EditorWindow
 
                 EditorGUILayout.Space();
 
+                EditorGUILayout.LabelField("Anchored position:");
+                rectTransform.anchoredPosition = EditorGUILayout.Vector2Field("", rectTransform.anchoredPosition);
+
+                EditorGUILayout.Space();
+
                 // Display RectTransform rect information
                 EditorGUILayout.LabelField("RectTransform Rect Information:");
                 EditorGUILayout.LabelField("Position: " + rectTransform.rect.position);

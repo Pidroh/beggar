@@ -15,6 +15,7 @@ public class LayoutParent
 
     public LayoutParent(RectTransform rT)
     {
+        
         SelfChild = new LayoutChild()
         {
             RectTransform = rT
@@ -52,6 +53,39 @@ public class LayoutParent
                 {
                     ForceSize[i] = Mathf.FloorToInt(parentRectTransform.GetSize()[i] / totalChildren);
                 }
+            }
+        }
+
+        // total children size calculation
+        Vector2 totalChildrenOccupiedSize = Vector2.zero;
+        foreach (var child in Children)
+        {
+            if (!child.Visible) continue;
+            // Get the RectTransform of the child
+            RectTransform childRectTransform = child.RectTransform;
+            // Get the pivot of the child
+            Vector2 childPivot = childRectTransform.pivot;
+
+            if (TypeLayout == LayoutType.VERTICAL)
+            {
+
+                // Set the width of the child to fit the parent
+                float height = ForceSize.y > 0 ? ForceSize.y : childRectTransform.sizeDelta.y;
+                childRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, height);
+
+                // Update the total height needed
+                totalChildrenOccupiedSize.y += childRectTransform.rect.height;
+                totalChildrenOccupiedSize.x = Mathf.Max(totalWidth, childRectTransform.rect.width);
+            }
+            else if (TypeLayout == LayoutType.HORIZONTAL)
+            {
+                // Set the height of the child to fit the parent
+                float width = ForceSize.x > 0 ? ForceSize.x : childRectTransform.sizeDelta.x;
+                childRectTransform.sizeDelta = new Vector2(width, parentRectTransform.rect.height);
+
+                // Update the total width needed
+                totalChildrenOccupiedSize.x += childRectTransform.rect.width;
+                totalChildrenOccupiedSize.y = Mathf.Max(totalHeight, childRectTransform.rect.height);
             }
         }
 
