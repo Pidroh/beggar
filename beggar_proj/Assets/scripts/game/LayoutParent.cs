@@ -38,10 +38,6 @@ public class LayoutParent
         // Initialize offset to position the children
         float offset = 0;
 
-        // Initialize variables to keep track of total width and height needed
-        float totalWidth = 0;
-        float totalHeight = 0;
-
         Vector2Int ForceSize = new Vector2Int(-1, -1);
         if (StretchChildren[0] || StretchChildren[1]) 
         {
@@ -78,7 +74,7 @@ public class LayoutParent
 
                 // Update the total height needed
                 totalChildrenOccupiedSize.y += childRectTransform.rect.height;
-                totalChildrenOccupiedSize.x = Mathf.Max(totalWidth, childRectTransform.rect.width);
+                totalChildrenOccupiedSize.x = Mathf.Max(totalChildrenOccupiedSize.x, childRectTransform.rect.width);
             }
             else if (TypeLayout == LayoutType.HORIZONTAL)
             {
@@ -88,7 +84,7 @@ public class LayoutParent
 
                 // Update the total width needed
                 totalChildrenOccupiedSize.x += childRectTransform.rect.width;
-                totalChildrenOccupiedSize.y = Mathf.Max(totalHeight, childRectTransform.rect.height);
+                totalChildrenOccupiedSize.y = Mathf.Max(totalChildrenOccupiedSize.y, childRectTransform.rect.height);
             }
         }
 
@@ -105,42 +101,28 @@ public class LayoutParent
             {
 
                 childRectTransform.SetPivotAndAnchors(Vector3.one);
-                // Set the width of the child to fit the parent
-                float height = ForceSize.y > 0 ? ForceSize.y : childRectTransform.sizeDelta.y;
-                childRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, height);
                 // Position the child vertically, taking the pivot into account
                 childRectTransform.anchoredPosition = new Vector2(0, -offset);
                 // Increment the offset by the height of the child
                 offset += childRectTransform.rect.height;
-
-                // Update the total height needed
-                totalHeight += childRectTransform.rect.height;
-                totalWidth = Mathf.Max(totalWidth, childRectTransform.rect.width);
             }
             else if (TypeLayout == LayoutType.HORIZONTAL)
             {
-                // Set the height of the child to fit the parent
-                float width = ForceSize.x > 0 ? ForceSize.x : childRectTransform.sizeDelta.x;
-                childRectTransform.sizeDelta = new Vector2(width, parentRectTransform.rect.height);
                 // Position the child horizontally, taking the pivot into account
-                childRectTransform.anchoredPosition = new Vector2(offset - childPivot.x * childRectTransform.rect.width, 0);
+                childRectTransform.anchoredPosition = new Vector2(offset - totalChildrenOccupiedSize.x / 2 + childPivot.x * childRectTransform.GetWidth(), 0);
                 // Increment the offset by the width of the child
                 offset += childRectTransform.rect.width;
-
-                // Update the total width needed
-                totalWidth += childRectTransform.rect.width;
-                totalHeight = Mathf.Max(totalHeight, childRectTransform.rect.height);
             }
         }
 
         // Update the parent's size if FitSelfSizeToChildren is true
         if (FitSelfSizeToChildren[0]) // Horizontal fit
         {
-            parentRectTransform.sizeDelta = new Vector2(totalWidth, parentRectTransform.sizeDelta.y);
+            parentRectTransform.sizeDelta = new Vector2(totalChildrenOccupiedSize.x, parentRectTransform.sizeDelta.y);
         }
         if (FitSelfSizeToChildren[1]) // Vertical fit
         {
-            parentRectTransform.sizeDelta = new Vector2(parentRectTransform.sizeDelta.x, totalHeight);
+            parentRectTransform.sizeDelta = new Vector2(parentRectTransform.sizeDelta.x, totalChildrenOccupiedSize.y);
         }
 
         foreach (var lp in ChildrenLayoutParents)
