@@ -18,7 +18,7 @@ public class LayoutParent
 
     public LayoutParent(RectTransform rT)
     {
-        
+
         SelfChild = new LayoutChild()
         {
             RectTransform = rT
@@ -35,20 +35,20 @@ public class LayoutParent
     {
         // Get the RectTransform of the parent
         RectTransform parentRectTransform = TransformParentOfChildren;
-        // Initialize offset to position the children
-        float offset = 0;
+
 
         Vector2Int ForceSize = new Vector2Int(-1, -1);
-        if (StretchChildren[0] || StretchChildren[1]) 
+        if (StretchChildren[0] || StretchChildren[1])
         {
             var totalChildren = 0;
-            foreach (var child in Children) {
+            foreach (var child in Children)
+            {
                 if (!child.Visible) continue;
                 totalChildren++;
             }
             for (int i = 0; i < 2; i++)
             {
-                if (StretchChildren[i]) 
+                if (StretchChildren[i])
                 {
                     ForceSize[i] = Mathf.FloorToInt(parentRectTransform.GetSize()[i] / totalChildren);
                 }
@@ -87,8 +87,14 @@ public class LayoutParent
                 totalChildrenOccupiedSize.y = Mathf.Max(totalChildrenOccupiedSize.y, childRectTransform.rect.height);
             }
         }
-
-        // Loop through each child in the LayoutChilds list
+        // Initialize offset to position the children
+        float offset = 0;
+        int layoutDimensionIndex = this.TypeLayout == LayoutType.HORIZONTAL ? 0 : 1;
+        // if (this.Alignment == LayoutChildAlignment.MIDDLE) offset += totalChildrenOccupiedSize[layoutDimensionIndex] * 0.5f;
+        // --------------------------------------------------------------
+        // POSITIONING LOOP
+        // --------------------------------------------------------------
+        // Loop through each child in the LayoutChilds list for positioning
         foreach (var child in Children)
         {
             if (!child.Visible) continue;
@@ -99,10 +105,23 @@ public class LayoutParent
 
             if (TypeLayout == LayoutType.VERTICAL)
             {
+                var offsetY = 0f;
 
-                childRectTransform.SetPivotAndAnchors(Vector3.one);
+                if (Alignment == LayoutChildAlignment.LOWER)
+                {
+                    childRectTransform.SetPivotAndAnchors(Vector3.one);
+                    offsetY = totalChildrenOccupiedSize.y * 0.5f;
+                }
+                if (Alignment == LayoutChildAlignment.MIDDLE)
+                {
+                    childRectTransform.SetPivotAndAnchors(new Vector2(1, 0.5f));
+                    offsetY = totalChildrenOccupiedSize.y * 0.5f;
+                }
+                // no support for UPPER yet
+
+                
                 // Position the child vertically, taking the pivot into account
-                childRectTransform.anchoredPosition = new Vector2(0, -offset);
+                childRectTransform.anchoredPosition = new Vector2(0, -offset + offsetY);
                 // Increment the offset by the height of the child
                 offset += childRectTransform.rect.height;
             }
@@ -181,7 +200,7 @@ public class LayoutParent
     }
 
     internal void AddLayoutChildAndParentIt(UIUnit unit)
-    {   
+    {
         AddLayoutChildAndParentIt(new LayoutChild()
         {
             RectTransform = unit.RectTransform
