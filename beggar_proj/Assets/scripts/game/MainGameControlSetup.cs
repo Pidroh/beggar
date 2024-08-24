@@ -258,6 +258,9 @@ public class MainGameControlSetup
         }
 
         mgc.EndGameRuntimeUnit = arcaniaModel.FindRuntimeUnit(UnitType.TASK, "ponderexistence");
+        var endMessage = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 18);
+        var lc = LayoutChild.Create(endMessage.transform);
+        dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(lc);
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
         {
