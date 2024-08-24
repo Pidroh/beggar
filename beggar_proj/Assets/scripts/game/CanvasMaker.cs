@@ -221,7 +221,7 @@ public class CanvasMaker
             dc.OverlayMainLayout = CreateLayout().SetLayoutChildAlignment(LayoutParent.LayoutChildAlignment.MIDDLE);
             dc.OverlayMainLayout.SelfChild.RectTransform.SetParent(dc.OverlayRoot);
             dc.OverlayMainLayout.SelfChild.RectTransform.FillParent();
-
+            dc.OverlayRoot.gameObject.SetActive(false);
         }
 
 
