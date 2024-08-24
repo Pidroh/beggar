@@ -219,6 +219,8 @@ public class CanvasMaker
             var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
             oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.9f);
             dc.OverlayMainLayout = CreateLayout();
+            dc.OverlayMainLayout.SelfChild.RectTransform.SetParent(dc.OverlayRoot);
+            dc.OverlayMainLayout.SelfChild.RectTransform.FillParent();
 
         }
 
@@ -350,6 +352,7 @@ public class CanvasMaker
         {
             // Create Child GameObject
             GameObject childGO2 = new GameObject();
+            childGO2.name = "Layout";
             RectTransform childRT2 = childGO2.AddComponent<RectTransform>();
             lp = new LayoutParent(childRT2);
         }

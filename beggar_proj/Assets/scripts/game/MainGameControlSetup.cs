@@ -13,7 +13,7 @@ public class MainGameControlSetup
         mgc.dynamicCanvas = dynamicCanvas;
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
 
-        mgc.EngineView = EngineView.CreateEngineViewThroughCode(new EngineView.EngineViewInitializationParameter() { 
+        mgc.EngineView = EngineView.CreateEngineViewThroughCode(new EngineView.EngineViewInitializationParameter() {
             canvas = dynamicCanvas.Canvas
         });
         mgc.EngineView.Init(2);
@@ -21,6 +21,7 @@ public class MainGameControlSetup
         foreach (var item in arcaniaDatas.datas[UnitType.TAB])
         {
             var button = CanvasMaker.CreateButton("sss", mgc.ButtonObjectRequest, mgc.ButtonRequest);
+
             var lc = new LayoutChild()
             {
                 RectTransform = button.Button.RectTransform
@@ -54,7 +55,7 @@ public class MainGameControlSetup
                     default:
                         break;
                 }
-            }   
+            }
         }
 
         for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
@@ -254,13 +255,20 @@ public class MainGameControlSetup
                     }
                 }
             }
-            
+
         }
 
-        mgc.EndGameRuntimeUnit = arcaniaModel.FindRuntimeUnit(UnitType.TASK, "ponderexistence");
-        var endMessage = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 18);
-        var lc = LayoutChild.Create(endMessage.transform);
-        dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(lc);
+        // end game message related
+        {
+            mgc.EndGameRuntimeUnit = arcaniaModel.FindRuntimeUnit(UnitType.TASK, "ponderexistence");
+            var endMessage = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 18);
+            endMessage.rawText = $"GAME CLEARED \nYou have become one with existence. \n At least until more content is added. \n\n Comment on the reddit post: \"I'm the beggar's journey\"";
+
+            var lc = LayoutChild.Create(endMessage.transform);
+            dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(lc);
+        }
+
+        
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
         {

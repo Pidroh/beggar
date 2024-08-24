@@ -52,6 +52,7 @@ public class LayoutChild
     public static LayoutChild Create(Transform transform1 = null, Transform transform2 = null)
     {
         GameObject parentGo = new GameObject();
+        parentGo.name = "layout-child";
         RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
 
         var lc = new LayoutChild()
