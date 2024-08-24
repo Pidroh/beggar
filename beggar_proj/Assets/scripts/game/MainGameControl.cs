@@ -37,16 +37,18 @@ public class MainGameControl : MonoBehaviour
     void Update()
     {
         EngineView.ManualUpdate();
-        if (DebugMenuManager.CheckCommand("speed", out int v)) 
+        if (DebugMenuManager.CheckCommand("speed", out int v))
         {
             TimeMultiplier = v;
         }
-        if (DebugMenuManager.CheckCommand("speed")) 
+        if (DebugMenuManager.CheckCommand("speed"))
         {
             TimeMultiplier = 1;
         }
         // Show end game
-        if (EndGameRuntimeUnit.Value > 0) { 
+        if (EndGameRuntimeUnit.Value > 0)
+        {
+
         }
 
         arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
@@ -58,7 +60,7 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
-            
+
 
             foreach (var sep in tabControl.Separators)
             {
@@ -74,7 +76,7 @@ public class MainGameControl : MonoBehaviour
             {
                 while (tabControl.LogControlUnits.Count < arcaniaModel.LogUnits.Count)
                 {
-                    MainGameControlSetup.CreateLogControlUnit(mgc:this, tabControl:tabControl, lp:dynamicCanvas.children[tabIndex], logUnit:arcaniaModel.LogUnits[tabControl.LogControlUnits.Count]);
+                    MainGameControlSetup.CreateLogControlUnit(mgc: this, tabControl: tabControl, lp: dynamicCanvas.children[tabIndex], logUnit: arcaniaModel.LogUnits[tabControl.LogControlUnits.Count]);
                 }
             }
             var UnitGroupControls = tabControl.UnitGroupControls;
@@ -90,7 +92,7 @@ public class MainGameControl : MonoBehaviour
                     tcu.bwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     tcu.lwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
                     if (!visible) continue;
-                    if(tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
+                    if (tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
                     var modUnit = tcu.ModsUnit;
                     FeedMods(data, modUnit);
 
