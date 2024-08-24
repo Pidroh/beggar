@@ -98,6 +98,8 @@ public class DynamicCanvas
                 lowerMenuP.ManualUpdate();
             }
         }
+
+        OverlayMainLayout.ManualUpdate();
     }
 
     internal void ShowChild(LayoutParent layoutParent)
