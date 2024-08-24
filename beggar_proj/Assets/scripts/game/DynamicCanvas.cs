@@ -17,7 +17,7 @@ public class DynamicCanvas
     public LayoutParent CreateLowerMenuLayout(int height)
     {
         var lc = LayoutChild.Create();
-        lc.RectTransform.SetParent(canvasGO.transform);
+        lc.RectTransform.SetParent(RootRT);
         lc.RectTransform.SetHeight(height);
         lc.RectTransform.FillParentWidth();
         lc.RectTransform.SetBottomYToParent(0);

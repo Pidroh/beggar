@@ -214,7 +214,7 @@ public class CanvasMaker
             dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
         }
         dc.RootRT = rootRT;
-        dc.OverlayRoot = rootRT.CreateFullSizeChild("overlay_root");
+        dc.OverlayRoot = canvasGO.GetComponent<RectTransform>().CreateFullSizeChild("overlay_root");
         {
             var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
             oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.9f);
