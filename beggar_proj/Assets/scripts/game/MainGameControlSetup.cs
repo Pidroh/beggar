@@ -265,6 +265,7 @@ public class MainGameControlSetup
             endMessage.rawText = $"GAME CLEARED \nYou have become one with existence. \n At least until more content is added. \n\n Comment on the reddit post: \"I'm the beggar's journey\"";
 
             var lc = LayoutChild.Create(endMessage.transform);
+            endMessage.RectTransform.FillParent();
             dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(lc);
         }
 
