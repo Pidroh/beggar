@@ -13,7 +13,7 @@ public class LayoutParent
     public RectTransform ContentTransformOverridingSelfChildTransform;
     public RectTransform TransformParentOfChildren => ContentTransformOverridingSelfChildTransform == null ? SelfChild.RectTransform : ContentTransformOverridingSelfChildTransform;
 
-    public LayoutChildAlignment Alignment { get; private set; }
+    public LayoutChildAlignment Alignment { get; private set; } = LayoutChildAlignment.LOWER;
     public bool InvertChildrenPositionIndex = false;
 
     public LayoutParent(RectTransform rT)
@@ -110,7 +110,7 @@ public class LayoutParent
                 if (Alignment == LayoutChildAlignment.LOWER)
                 {
                     childRectTransform.SetPivotAndAnchors(Vector3.one);
-                    offsetY = totalChildrenOccupiedSize.y * 0.5f;
+                    offsetY = 0;
                 }
                 if (Alignment == LayoutChildAlignment.MIDDLE)
                 {
