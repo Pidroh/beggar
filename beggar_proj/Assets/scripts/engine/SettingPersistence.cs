@@ -3,48 +3,10 @@
 using HeartUnity.View;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using static HeartUnity.SettingModel;
 
 namespace HeartUnity
 {
-    [Serializable]
-    public class CommonPlayerSaveData 
-    {
-        public int TotalPlayTimeSeconds;
-    }
-
-    public class PlayTimeControl
-    {
-        public static DateTime? dateTimePreviousScene;
-        public int PlayTimeToShow => Mathf.CeilToInt(playTime);
-        public float playTime;
-        public void Update()
-        {
-            playTime += Time.unscaledDeltaTime;
-        }
-
-        internal void Init(MiscPlayerStats playerMisc)
-        {
-            playTime = playerMisc.totalPlayTimeSeconds;
-            // get time between scene transitions
-            if (dateTimePreviousScene.HasValue)
-            {
-                if (dateTimePreviousScene < DateTime.Now)
-                {
-                    var secs = Mathf.Min((float)(DateTime.Now - dateTimePreviousScene.Value).TotalSeconds, 60f);
-                    playTime += Mathf.CeilToInt(secs);
-                }
-                dateTimePreviousScene = null;
-            }
-
-        }
-
-        internal void BeforeChangeScene()
-        {
-            dateTimePreviousScene = DateTime.Now;
-        }
-    }
 
 
     public class SettingPersistence
