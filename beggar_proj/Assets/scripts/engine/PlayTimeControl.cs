@@ -10,6 +10,7 @@ namespace HeartUnity
         public static DateTime? dateTimePreviousScene;
         public int PlayTimeToShow => Mathf.CeilToInt(playTime);
         public float playTime;
+        public string PlayTimeToShowAsString => ConvertSecondsToTimeFormat(PlayTimeToShow);
         public void Update()
         {
             playTime += Time.unscaledDeltaTime;
@@ -35,6 +36,8 @@ namespace HeartUnity
         {
             dateTimePreviousScene = DateTime.Now;
         }
+
+        
 
         static string ConvertSecondsToTimeFormat(int totalSeconds)
         {

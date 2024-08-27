@@ -28,6 +28,7 @@ public class MainGameControl : MonoBehaviour
     public EngineView EngineView { get; internal set; }
     public float TimeMultiplier { get; private set; } = 1;
     public RuntimeUnit EndGameRuntimeUnit { get; internal set; }
+    public UIUnit EndGameMessage { get; internal set; }
 
 
     // Start is called before the first frame update
@@ -51,9 +52,10 @@ public class MainGameControl : MonoBehaviour
             TimeMultiplier = 1;
         }
         // Show end game
-        if (EndGameRuntimeUnit.Value > 0)
+        if (EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
         {
-
+            dynamicCanvas.ShowOverlay();
+            this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {PlayTimeControl.PlayTimeToShowAsString}";
         }
 
         arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);

@@ -267,6 +267,7 @@ public class MainGameControlSetup
             var lc = LayoutChild.Create(endMessage.transform);
             endMessage.RectTransform.FillParent();
             dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(lc);
+            mgc.EndGameMessage = endMessage;
         }
 
         

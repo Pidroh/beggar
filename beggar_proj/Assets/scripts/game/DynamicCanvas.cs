@@ -13,6 +13,7 @@ public class DynamicCanvas
     public Canvas Canvas { get; internal set; }
     public RectTransform OverlayRoot { get; internal set; }
     public LayoutParent OverlayMainLayout { get; set; }
+    public bool OverlayVisible => OverlayRoot.gameObject.activeSelf;
 
     public LayoutParent CreateLowerMenuLayout(int height)
     {
@@ -102,11 +103,17 @@ public class DynamicCanvas
         OverlayMainLayout.ManualUpdate();
     }
 
+    internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
+
+    internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);
+
     internal void ShowChild(LayoutParent layoutParent)
     {
         if (ActiveChildren.Contains(layoutParent)) return;
         ActiveChildren.Enqueue(layoutParent);
         
     }
+
+    
 }
 
