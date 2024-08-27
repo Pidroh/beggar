@@ -1,3 +1,4 @@
+using HeartUnity;
 using HeartUnity.View;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ public class MainGameControl : MonoBehaviour
     public CanvasMaker.CreateGaugeRequest SkillXPGaugeRequest;
     public ArcaniaModel arcaniaModel = new();
 
+    public PlayTimeControl PlayTimeControl = new();
+
     public Color MainTextColor;
 
     public EngineView EngineView { get; internal set; }
@@ -31,12 +34,14 @@ public class MainGameControl : MonoBehaviour
     void Start()
     {
         MainGameControlSetup.Setup(this);
+        PlayTimeControl.dateTimePreviousScene
     }
 
     // Update is called once per frame
     void Update()
     {
         EngineView.ManualUpdate();
+        PlayTimeControl.Update();
         if (DebugMenuManager.CheckCommand("speed", out int v))
         {
             TimeMultiplier = v;

@@ -15,7 +15,7 @@ namespace HeartUnity
             playTime += Time.unscaledDeltaTime;
         }
 
-        internal void Init(CommonPlayerSaveData commonSaveData)
+        public void Init(CommonPlayerSaveData commonSaveData)
         {
             playTime = commonSaveData.TotalPlayTimeSeconds;
             // get time between scene transitions
