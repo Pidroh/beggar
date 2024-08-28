@@ -35,7 +35,6 @@ public class MainGameControl : MonoBehaviour
     void Start()
     {
         MainGameControlSetup.Setup(this);
-        PlayTimeControl.dateTimePreviousScene
     }
 
     // Update is called once per frame

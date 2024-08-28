@@ -95,8 +95,10 @@ public class LayoutParent
         // POSITIONING LOOP
         // --------------------------------------------------------------
         // Loop through each child in the LayoutChilds list for positioning
-        foreach (var child in Children)
+        for (int i = 0; i < Children.Count; i++)
         {
+            var index = InvertChildrenPositionIndex ? Children.Count - 1 - i : i;
+            LayoutChild child = Children[index];
             if (!child.Visible) continue;
             // Get the RectTransform of the child
             RectTransform childRectTransform = child.RectTransform;
