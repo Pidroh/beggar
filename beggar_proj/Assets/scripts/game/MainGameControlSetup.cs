@@ -77,6 +77,7 @@ public class MainGameControlSetup
                         RectTransform = image.RectTransform
                     };
                     dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(layoutChild);
+                    dynamicCanvas.children[tabIndex].InvertChildrenPositionIndex = true;
                     sep.SeparatorLC = layoutChild;
                 }
 
