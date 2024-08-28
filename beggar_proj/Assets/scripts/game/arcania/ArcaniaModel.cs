@@ -188,12 +188,34 @@ public class ArcaniaModel
 
     }
 
-    internal RuntimeUnit FindRuntimeUnit(UnitType type, string v)
+    private RuntimeUnit FindRuntimeUnitInternal(UnitType type, string v)
     {
         foreach (var item in arcaniaUnits.datas[type])
         {
             if (item.ConfigBasic.Id == v) return item;
         }
+        return null;
+    }
+
+    public RuntimeUnit FindRuntimeUnit(string id) 
+    {
+        var types = EnumHelper<UnitType>.GetAllValues();
+        foreach (var t in types)
+        {
+            if (!arcaniaUnits.datas.ContainsKey(t)) continue;
+            var ru = FindRuntimeUnit(t, id);
+            if (ru == null) continue;
+            return ru;
+        }
+        Debug.Log($"Runtime unit of ID |{id}| NOT FOUND");
+        return null;
+        
+    }
+
+    internal RuntimeUnit FindRuntimeUnit(UnitType type, string v)
+    {
+        var ru = FindRuntimeUnitInternal(type, v);
+        if (ru != null) return ru;
         Debug.Log($"Runtime unit of type |{type}| and ID |{v}| NOT FOUND");
         return null;
     }

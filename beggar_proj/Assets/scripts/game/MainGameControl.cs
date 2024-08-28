@@ -55,7 +55,7 @@ public class MainGameControl : MonoBehaviour
         {
             if (DebugMenuManager.CheckCommand("value", out string label, out int v))
             {
-                arcaniaModel.FindRuntimeUnit(UnitType.RESOURCE, label).SetValue(v);
+                arcaniaModel.FindRuntimeUnit(label).SetValue(v);
             }
         }
         
