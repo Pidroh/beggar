@@ -39,9 +39,7 @@ namespace HeartUnity.View
 
         public static bool CheckCommand(string v)
         {
-            if (Instance == null) return false;
-            if (Instance.debugMenu == null) return false;
-            if (Instance.debugMenu.currentDebugMessage == null) return false;
+            if (!CheckValid()) return false;
             return Instance.debugMenu.currentDebugMessage.Trim() == v;
             //return Instance.debugMenu.currentDebugMessage.IndexOf(v.Trim()) == 0;
         }
@@ -49,14 +47,40 @@ namespace HeartUnity.View
         public static bool CheckCommand(string v, out int number)
         {
             number = -1;
-            if (Instance == null) return false;
-            if (Instance.debugMenu == null) return false;
-            if (Instance.debugMenu.currentDebugMessage == null) return false;
+            if (!CheckValid()) return false;
             if (Instance.debugMenu.currentDebugMessage.Contains(v) && Instance.debugMenu.currentDebugMessage.Length > v.Length) {
                 number = int.Parse(Instance.debugMenu.currentDebugMessage.Replace(v, "").Trim());
                 return true;
             }
             return false;
+        }
+
+        public static bool CheckCommand(string command, out string label, out int number)
+        {
+            label = string.Empty;
+            number = -1;
+            if (!CheckValid()) return false;
+            if (Instance.debugMenu.currentDebugMessage.Contains(command))
+            {
+                string[] parts = Instance.debugMenu.currentDebugMessage.Split(',');
+                if (parts.Length == 3)
+                {
+                    label = parts[1].Trim();
+                    number = int.Parse(parts[2].Trim());
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
+        private static bool CheckValid()
+        {
+            if (Instance == null) return false;
+            if (Instance.debugMenu == null) return false;
+            if (Instance.debugMenu.currentDebugMessage == null) return false;
+            return true;
         }
     }
 }

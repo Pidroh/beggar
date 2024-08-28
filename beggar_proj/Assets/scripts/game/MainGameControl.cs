@@ -42,14 +42,23 @@ public class MainGameControl : MonoBehaviour
     {
         EngineView.ManualUpdate();
         PlayTimeControl.Update();
-        if (DebugMenuManager.CheckCommand("speed", out int v))
         {
-            TimeMultiplier = v;
+            if (DebugMenuManager.CheckCommand("speed", out int v))
+            {
+                TimeMultiplier = v;
+            }
+            if (DebugMenuManager.CheckCommand("speed"))
+            {
+                TimeMultiplier = 1;
+            }
         }
-        if (DebugMenuManager.CheckCommand("speed"))
         {
-            TimeMultiplier = 1;
+            if (DebugMenuManager.CheckCommand("value", out string label, out int v))
+            {
+                arcaniaModel.FindRuntimeUnit(UnitType.RESOURCE, label).SetValue(v);
+            }
         }
+        
         // Show end game
         if (EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
         {
