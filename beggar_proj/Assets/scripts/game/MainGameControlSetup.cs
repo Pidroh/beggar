@@ -20,7 +20,8 @@ public class MainGameControlSetup
 
         foreach (var item in arcaniaDatas.datas[UnitType.TAB])
         {
-            var button = CanvasMaker.CreateButton("sss", mgc.ButtonObjectRequest, mgc.ButtonRequest);
+            
+            var button = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
 
             var lc = new LayoutChild()
             {

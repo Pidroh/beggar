@@ -507,34 +507,6 @@
                         "default": true
                     }
                 ]
-            },
-            {
-                "id": "log",
-                "unit_types": [
-                ],
-                "contains_logs": true,
-                "icon" : "logs",
-                "separator": [
-                    {
-                        "id": "log",
-                        "name": "Log",
-                        "default": true
-                    }
-                ]
-            },
-            {
-                "id": "log",
-                "unit_types": [
-                ],
-                "contains_logs": true,
-                "icon" : "logs",
-                "separator": [
-                    {
-                        "id": "log",
-                        "name": "Log",
-                        "default": true
-                    }
-                ]
             }
         ]
     }

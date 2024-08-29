@@ -203,7 +203,7 @@ public class ArcaniaModel
         foreach (var t in types)
         {
             if (!arcaniaUnits.datas.ContainsKey(t)) continue;
-            var ru = FindRuntimeUnit(t, id);
+            var ru = FindRuntimeUnitInternal(t, id);
             if (ru == null) continue;
             return ru;
         }
