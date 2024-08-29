@@ -217,7 +217,7 @@ public class CanvasMaker
         dc.OverlayRoot = canvasGO.GetComponent<RectTransform>().CreateFullSizeChild("overlay_root");
         {
             var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
-            oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.9f);
+            oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.99f);
             dc.OverlayMainLayout = CreateLayout().SetLayoutChildAlignment(LayoutParent.LayoutChildAlignment.MIDDLE);
             dc.OverlayMainLayout.SelfChild.RectTransform.SetParent(dc.OverlayRoot);
             dc.OverlayMainLayout.SelfChild.RectTransform.FillParent();
