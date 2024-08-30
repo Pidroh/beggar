@@ -473,6 +473,7 @@
                     {
                         "id": "housing",
                         "name": "Housing",
+                        "show_space": true,
                         "unit_types": [
                             "HOUSE",
                             "FURNITURE"

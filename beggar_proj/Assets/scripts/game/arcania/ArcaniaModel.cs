@@ -38,6 +38,7 @@ public class TabRuntime
         public bool Default;
 
         public string Name { get; internal set; }
+        public bool ShowSpace { get; internal set; }
     }
 }
 
