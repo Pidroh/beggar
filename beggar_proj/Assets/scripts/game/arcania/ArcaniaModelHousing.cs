@@ -3,6 +3,9 @@ using static ArcaniaModel;
 
 public class ArcaniaModelHousing : ArcaniaModelSubmodule
 {
+    public object SpaceConsumed => CalculateConsumedSpace();
+
+    public object TotalSpace => CalculateMaxSpace();
 
     public ArcaniaModelHousing(ArcaniaModel arcaniaModel) : base(arcaniaModel)
     {

@@ -80,6 +80,8 @@ public class MainGameControl : MonoBehaviour
             foreach (var sep in tabControl.Separators)
             {
                 sep.Visible = false;
+                if (sep.SpaceAmountText == null) continue;
+                sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
             }
 
             if (tabControl.SelectionButton.Button.Clicked)
