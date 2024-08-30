@@ -25,6 +25,8 @@ public class TabControlUnit
         public TabRuntime.Separator Data { get; }
         public LayoutChild SeparatorLC { get; internal set; }
         public bool Visible { get => SeparatorLC != null ? SeparatorLC.Visible : false; set { if (SeparatorLC == null) return; SeparatorLC.Visible = value; } }
+
+        public UIUnit SpaceAmountText { get; internal set; }
     }
 }
 

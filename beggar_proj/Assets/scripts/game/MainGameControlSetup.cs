@@ -18,6 +18,9 @@ public class MainGameControlSetup
         });
         mgc.EngineView.Init(2);
 
+        // -------------------------------------------------
+        // TAB BUTTON INSTANTIATING AND OTHER SMALL SETUP
+        // -------------------------------------------------
         foreach (var item in arcaniaDatas.datas[UnitType.TAB])
         {
             
@@ -59,6 +62,9 @@ public class MainGameControlSetup
             }
         }
 
+        // -------------------------------------------------
+        // MAIN GRAPHIC ELEMENT INSTANTIATING
+        // -------------------------------------------------
         for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = mgc.TabControlUnits[tabIndex];
@@ -66,6 +72,11 @@ public class MainGameControlSetup
             foreach (var sep in tabControl.Separators)
             {
                 var UnitGroupControls = tabControl.UnitGroupControls;
+
+                // -------------------------------------------------
+                // SEPARATOR GRAPHIC INSTANCING
+                // ALSO INSTANTIATES SPACE AMOUNT LABEL
+                // -------------------------------------------------
                 {
                     var image = CanvasMaker.CreateSimpleImage(new Color(0.2f, 0.2f, 0.2f));
                     var text = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 12);
@@ -80,8 +91,14 @@ public class MainGameControlSetup
                     dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(layoutChild);
                     dynamicCanvas.children[tabIndex].InvertChildrenPositionIndex = tabControl.TabData.Tab.ContainsLogs;
                     sep.SeparatorLC = layoutChild;
-                }
 
+                    if (!sep.Data.ShowSpace) goto END_OF_SEPARATOR_INSTANCE;
+                    var spaceT = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 18);
+                    dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(spaceT);
+                    sep.SpaceAmountText = spaceT;
+                }
+                // -------------------------------------------------
+                END_OF_SEPARATOR_INSTANCE:
                 foreach (var pair in UnitGroupControls)
                 {
                     foreach (var item in arcaniaDatas.datas[pair.Key])
