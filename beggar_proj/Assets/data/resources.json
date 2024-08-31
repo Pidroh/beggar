@@ -1,0 +1,517 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+            {
+                "id": "supplication",
+                "max": 30,
+                "initial": 30,
+                "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
+            },
+            {
+                "id": "focus",
+                "desc": "Represents your character's mental clarity and concentration.",
+                "max": 5
+            },
+            {
+                "id": "breadcrumbs",
+                "desc": "Small, dry pieces of old bread",
+                "max": 15
+            },
+            {
+                "id": "nutrition",
+                "max": 5,
+                "desc": "Higher values mean your character is well-fed, while lower values indicate hunger.",
+                "mod":{
+                    "thoughts.max": 1
+                }
+            },
+            
+            {
+                "id": "energy",
+                "desc": "The inner strength your character consumes to perform actions.",
+                "initial": 0,
+                "max": 5
+            },
+            {
+                "id": "thoughts",
+                "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
+                "max": 5
+            },
+            
+            
+            {
+                "id": "deadflower",
+                "desc": "A withered bloom that once symbolized hope, now a reminder of loss and decay.",
+                "initial": 0,
+                "max": 0
+            },
+            {
+                "id": "sadness",
+                "desc": "The weight of our emotions reflects the depth of our experiences",
+                "flavor": "Silent ache",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 5
+                }
+            },
+            {
+                "id": "sorrow",
+                "desc": "A profound emotion that deepens one's empathy and understanding. It connects us to others through shared experiences of loss and reflection.",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 15
+                }
+            },
+            {
+                "id": "rats",
+                "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
+                "max": 3
+            },
+            {
+                "id": "foraging",
+                "require": "scavenging>0",
+                "desc": "Scavenge the environment for useful items and hidden treasures.",
+                "max": 3
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items":[
+            {
+                "id": "beg_a",
+                "name": "Beg for crumbs",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "locked": false,
+                "cost":{
+                    "supplication": 1
+                },
+                "result":{
+                    "breadcrumbs": 1
+                }
+            },
+            {
+                "id": "rest",
+                "name": "Rest",
+                "desc": "Sit down and close your eyes",
+                "require": "energy>=10",
+                "perpetual": true,
+                "effect": {
+                    "energy": 1,
+                    "focus": 1
+                }
+            },
+            {
+                "id": "pleafocus",
+                "name": "Rest",
+                "desc": "Take a break to recuperate and regain vitality",
+                "require": "supplication<3",
+                "perpetual": true,
+                "effect": {
+                    "supplication": 1,
+                    "foraging": 1
+                }
+            },
+            {
+                "id": "think",
+                "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
+                "require": "nutrition>0",
+                "perpetual": true,
+                "duration": 3,
+                "result": {
+                    "thoughts": 1
+                },
+                "run": {
+                    "supplication": 1
+                }
+            },
+
+            {
+                "id": "reflection",
+                "desc": "",
+                "duration": 3,
+                "max": 2,
+                "require": "thoughts>=5",
+                "cost": {
+                    "thoughts": 2
+                },
+                "mod": {
+                    "thoughts.max": 2
+                }
+            },
+            {
+                "id": "breadbasket",
+                "name": "Tattered Pouch",
+                "desc": "More space for breadcrumbs",
+                "duration": 3,
+                "max": 2,
+                "require": "unlockbreadbasket",
+                "cost": {
+                    "supplication": 50,
+                    "breadcrumbs": 15
+                },
+                "mod": {
+                    "breadcrumbs.max": 15
+                }
+            },
+            {
+                "id": "unlocksadness",
+                "name": "Touch the Wound",
+                "desc": "Acknowledge the pain you've buried.",
+                "duration": 3,
+                "max": 1,
+                "require": "thoughts>3",
+                "cost": {
+                    "thoughts": 4
+                }
+            },
+            {
+                "id": "unlockbreadbasket",
+                "name": "Ponder Crumbs",
+                "desc": "I have so many...",
+                "duration": 5,
+                "max": 1,
+                "require": "thoughts>1",
+                "cost": {
+                    "thoughts": 2
+                }
+            },
+            {
+                "id": "healthier",
+                "name": "A bit healthier",
+                "desc": "Minor signs of improvement are visible, but not even close to healthy.",
+                "duration": 5,
+                "max": 1,
+                "require": "nutrition>1",
+                "cost": {
+                    "nutrition": 3
+                },
+                "mod": {
+                    "supplication.max":20,
+                    "nutrition.max": 5
+                }
+            },
+            {
+                "id": "Lament",
+                "desc": "To find solace in sorrow, one must first embrace the depths of their own despair.",
+                "require": "thoughts>=2&&unlocksadness>0",
+                "duration": 4,
+                "cost": {
+                    "thoughts": 3
+                },
+                "result": {
+                    "sadness": 1
+                }
+            },
+            {
+                "id": "Shed tears",
+                "desc": "Let the sadness flow and transform",
+                "flavor": "Tears come from the heart and not from the brain",
+                "require": "introspection>0",
+                "duration": 5,
+                "cost": {
+                    "thoughts": 3,
+                    "sadness": 10
+                },
+                "run": {
+                    "focus": 1
+                },
+                "result": {
+                    "sorrow": 1
+                }
+            },
+            {
+                "id": "eatcrumbs",
+                "name": "Eat old crumbs",
+                "desc": "It tastes really bad, unless you're really, really hungry",
+                "require": "breadcrumbs > 6",
+                "duration": 5,
+                "cost":{
+                    "breadcrumbs": 10
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            },
+            {
+                "id": "ponderexistence",
+                "name": "What is reality?",
+                "desc": "Ask a rat about the nature of your reality",
+                "require": "sadness > 4 && ratology > 2",
+                "max": 1,
+                "duration": 90,
+                "cost":{
+                    "thoughts": 10,
+                    "sadness": 10,
+                    "supplication": 10,
+                    "rat": 1
+                },
+                "run":{
+                    "thoughts": 1,
+                    "supplication": 1
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items":[
+            {
+                "id": "Back Alley",
+                "require": "t_job",
+                "cost": {
+                    "thoughts": 3
+                },
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "mod": {
+                    "space.max": 3
+                }
+            }
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items":[
+            {
+                "id" : "gutterborn",
+                "desc" : "Acknowledge your origins from the streets, embracing the harsh reality of your upbringing.",
+                "tags": "t_job",
+                "lock": "t_job",
+                "require": "thoughts>0",
+                "cost": {
+                    "thoughts": 5,
+                    "supplication": 40,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "thoughts.max": 10,
+                    "sadness.max": 10
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items":[
+            {
+                "id": "introspection",
+                "require": "t_job",
+                "cost": {
+                    "thoughts": 5,
+                    "sadness": 5
+                },
+                "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
+                "mod": {
+                    "thoughts.max": 5,
+                    "sadness.max": 5,
+                    "supplication.max": 5
+                }
+            },
+            {
+                "id": "rodentology",
+                "name": "Ratkinship",
+                "desc": "If you want to understand men, study mice",
+                "require": "rats",
+                "cost": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "rats.max": 1,
+                    "thoughts.max": 1,
+                    "supplication.max": 2
+                }
+            },
+            {
+                "id": "scavenging",
+                "name": "Scavenging",
+                "desc": "Seek out and collect natural resources and useful items from the environment.",
+                "require": "introspection>0",
+                "cost": {
+                    "thoughts": 15
+                },
+                "mod": {
+                    "foraging.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+            {
+                "id": "brokenmirror",
+                "name": "Broken mirror",
+                "require": "scavenging>0",
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "introspection.max": 1,
+                    "thoughts.max": 5,
+                    "thoughts.rate": 0.01,
+                    "space": 1
+                }
+            },
+            {
+                "id": "crackedvase",
+                "name": "Cracked vase",
+                "require": "scavenging>0",
+                "cost": {
+                    "foraging": 2
+                },
+                "mod": {
+                    "deadflower.max" : 8,
+                    "space": 1
+                }
+            },
+            {
+                "id": "doll",
+                "name": "Discarded Doll",
+                "require": "scavenging>0",
+                "cost": {
+                    "foraging": 4
+                },
+                "mod": {
+                    "sadness.max" : 8,
+                    "sorrow.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "mothblanket",
+                "name": "Moth-eaten blanket",
+                "require": "scavenging>0",
+                "max": 1,
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "rest.effect.energy" : 0.25,
+                    "energy.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "spoiledgrains",
+                "name": "Spoiled Grains",
+                "tag": "ratsource",
+                "require": "scavenging>0",
+                "max": 1,
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "rest.effect.energy" : -0.5,
+                    "energy.max": -2,
+                    "rodentology.max": 2,
+                    "rats.rate": 0.1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "destroyedpainting",
+                "name": "Destroyed painting",
+                "require": "scavenging>0",
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "sadness.max" : 3,
+                    "sadness.rate" : 0.02,
+                    "space": 1
+                }
+            }
+
+        ]
+    },
+    {
+        "type": "TAB",
+        "items":[
+            {
+                "id": "task",
+                "unit_types": [
+                    "TASK",
+                    "CLASS",
+                    "SKILL",
+                    "HOUSE",
+                    "FURNITURE"
+                ],
+                "icon" : "task",
+                "separator": [
+                    {
+                        "id": "task",
+                        "name": "Tasks",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "default": true
+                    },
+                    {
+                        "id": "power_up",
+                        "name": "Power Ups",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "require_max": true
+                    },
+                    {
+                        "id": "class",
+                        "name": "Classes",
+                        "unit_types": [
+                            "CLASS"
+                        ]
+                    },
+                    {
+                        "id": "skill",
+                        "name": "Skills",
+                        "unit_types": [
+                            "SKILL"
+                        ]
+                    },
+                    {
+                        "id": "housing",
+                        "name": "Housing",
+                        "show_space": true,
+                        "unit_types": [
+                            "HOUSE",
+                            "FURNITURE"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "resource",
+                "unit_types": [
+                    "RESOURCE"
+                ],
+                "icon" : "resource",
+                "separator": [
+                    {
+                        "id": "resource",
+                        "name": "Resources",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "id": "log",
+                "unit_types": [
+                ],
+                "contains_logs": true,
+                "icon" : "logs",
+                "separator": [
+                    {
+                        "id": "log",
+                        "name": "Log",
+                        "default": true
+                    }
+                ]
+            }
+        ]
+    }
+]
