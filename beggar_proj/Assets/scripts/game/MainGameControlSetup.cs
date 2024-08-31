@@ -297,6 +297,7 @@ public class MainGameControlSetup
             var text = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
             var image = CanvasMaker.CreateSimpleImage(mgc.ButtonObjectRequest.SecondaryColor);
             var swl = new SeparatorWithLabel(text, image);
+            swl.LayoutChild.RectTransform.gameObject.name = $"SEP_{textKey}";
             layout.AddLayoutChildAndParentIt(swl.LayoutChild);
             swl.Text.SetTextRaw(textKey);
             expand.ExpandTargets.Add(swl.LayoutChild.GameObject);

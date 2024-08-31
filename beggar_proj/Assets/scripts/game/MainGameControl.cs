@@ -60,7 +60,7 @@ public class MainGameControl : MonoBehaviour
         }
         
         // Show end game
-        if (EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
+        if (EndGameRuntimeUnit != null && EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
         {
             dynamicCanvas.ShowOverlay();
             this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {PlayTimeControl.PlayTimeToShowAsString}";

@@ -65,7 +65,7 @@ public class RTControlUnit
 
     public ModsControlUnit ModsUnit = new();
 
-    public bool IsExpanded => (bwe != null && bwe.Expanded) || (lwe != null && lwe.ExpandButton);
+    public bool IsExpanded => (bwe != null && bwe.Expanded) || (lwe != null && lwe.Expanded);
 
     public ExpandableManager ExpandManager => bwe?.ExpandManager == null ? lwe?.ExpandManager : bwe.ExpandManager;
 

@@ -236,7 +236,7 @@ public class LabelWithExpandable
 
     public IconButton ExpandButton => ExpandManager.ExpandButton;
 
-    
+    public bool Expanded => ExpandManager.Expanded;
 
     public List<GameObject> ExpandTargets = new();
 

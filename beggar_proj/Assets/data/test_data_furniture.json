@@ -1,0 +1,94 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+            {
+                "id": "supplication",
+                "max": 30,
+                "initial": 30,
+                "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items":[
+            {
+                "id": "Back Alley",
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "mod": {
+                    "space.max": 3
+                }
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+            {
+                "id": "brokenmirror",
+                "name": "Broken mirror",
+                "cost": {
+                    "supplication": 3
+                },
+                "result": {
+                    "supplication": 3
+                }
+            }
+            
+
+        ]
+    },
+    {
+        "type": "TAB",
+        "items":[
+            {
+                "id": "task",
+                "unit_types": [
+                    "HOUSE",
+                    "FURNITURE"
+                ],
+                "icon" : "task",
+                "separator": [
+                    {
+                        "id": "housing",
+                        "name": "Housing",
+                        "show_space": true,
+                        "unit_types": [
+                            "HOUSE",
+                            "FURNITURE"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "resource",
+                "unit_types": [
+                    "RESOURCE"
+                ],
+                "icon" : "resource",
+                "separator": [
+                    {
+                        "id": "resource",
+                        "name": "Resources",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "id": "log",
+                "unit_types": [
+                ],
+                "contains_logs": true,
+                "icon" : "logs",
+                "separator": [
+                    {
+                        "id": "log",
+                        "name": "Log",
+                        "default": true
+                    }
+                ]
+            }
+        ]
+    }
+]

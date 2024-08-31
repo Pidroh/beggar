@@ -191,7 +191,8 @@ public class ArcaniaModel
 
     private RuntimeUnit FindRuntimeUnitInternal(UnitType type, string v)
     {
-        foreach (var item in arcaniaUnits.datas[type])
+        if (!arcaniaUnits.datas.TryGetValue(type, out var units)) return null;
+        foreach (var item in units)
         {
             if (item.ConfigBasic.Id == v) return item;
         }
