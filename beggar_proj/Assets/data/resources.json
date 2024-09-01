@@ -66,7 +66,16 @@
             {
                 "id": "rats",
                 "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
-                "max": 3
+                "max": 3,
+                "mod": {
+                    "ratbond.max": 10,
+                    "ratbond.rate": 0.01
+                }
+            },
+            {
+                "id": "ratbond",
+                "desc": "A faint connection forms with your rats, creating a slight sense of understanding and trust.",
+                "max": 5
             },
             {
                 "id": "foraging",
@@ -200,6 +209,39 @@
                 }
             },
             {
+                "id": "rat_insight",
+                "name": "Rat's Insight",
+                "desc": "By observing rats, you gain a sharper, more cunning perspective on your thoughts.",
+                "duration": 10,
+                "max": 2,
+                "require": "ratology>=1",
+                "cost": {
+                    "ratbond": 10,
+                    "thoughts": 10
+                },
+                "mod":{
+                    "thoughts.max": 10,
+                    "thoughts.rate": 0.01
+                }
+            },
+            {
+                "id": "vermin_sorrow",
+                "name": "Vermin Sorrow",
+                "desc": "The presence of rats amplifies the depth of your sadness, bringing it into sharper focus.",
+                "duration": 10,
+                "max": 1,
+                "require": "ratology>=3",
+                "cost": {
+                    "ratbond": 30,
+                    "sadness": 10
+                },
+                "mod":{
+                    "sadness.max": 10,
+                    "ratbond.max": 10
+                    
+                }
+            },
+            {
                 "id": "unlockbreadbasket",
                 "name": "Ponder Crumbs",
                 "desc": "I have so many...",
@@ -310,7 +352,7 @@
                     "thoughts": 10,
                     "sadness": 10,
                     "supplication": 10,
-                    "rat": 1
+                    "rats": 1
                 },
                 "run":{
                     "thoughts": 1,
@@ -473,7 +515,6 @@
                 "mod": {
                     "rest.effect.energy" : -0.5,
                     "energy.max": -2,
-                    "rodentology.max": 2,
                     "rats.rate": 0.1,
                     "space": 1
                 }
@@ -488,6 +529,21 @@
                 "mod": {
                     "sadness.max" : 3,
                     "sadness.rate" : 0.02,
+                    "space": 1
+                }
+            },
+            {
+                "id": "ratpond",
+                "name": "Rat puddle",
+                "desc": "A puddle of water for the rats to drink",
+                "require": "ratology>=2",
+                "max": 3,
+                "cost": {
+                    "thoughts": 50,
+                    "foraging": 30
+                },
+                "mod": {
+                    "rats.max": 1,
                     "space": 1
                 }
             }
