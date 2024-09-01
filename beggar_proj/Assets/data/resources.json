@@ -178,6 +178,50 @@
                 }
             },
             {
+                "id": "thoughtfulgatherer",
+                "name": "Thoughtful Gatherer",
+                "desc": "You approach foraging with a calm and reflective mindset. Each step is taken with care and intention.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=1",
+                "mod":{
+                    "foraging.rate": 0.03
+                },
+                "cost": {
+                    "thoughts": 15
+                }
+            },
+            {
+                "id": "vigorousgather",
+                "name": "Vigorous Forager",
+                "desc": "Your foraging is driven by your body energy. Every movement is infused with vitality.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=2",
+                "mod":{
+                    "foraging.max": 10
+                },
+                "cost": {
+                    "nutrition": 5
+                }
+            },
+            {
+                "id": "sadsearch",
+                "name": "Sad Search",
+                "desc": "Your foraging is marked by a deep, quiet melancholy. The emotions guide your path through the earth.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=3",
+                "mod":{
+                    "foraging.max": 20,
+                    "sadness.max": 3
+                },
+                "cost": {
+                    "thoughts": 2,
+                    "sadness": 3
+                }
+            },
+            {
                 "id": "healthier",
                 "name": "A bit healthier",
                 "desc": "Minor signs of improvement are visible, but not even close to healthy.",
