@@ -114,6 +114,39 @@
                 }
             },
             {
+                "id": "eatcrumbs",
+                "name": "Eat old crumbs",
+                "desc": "It tastes really bad, unless you're really, really hungry",
+                "require": "breadcrumbs > 6",
+                "duration": 5,
+                "cost":{
+                    "breadcrumbs": 10
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            },
+            {
+                "id": "somber_insight",
+                "name": "Somber Insight",
+                "desc": "A quiet, reflective sadness colors your thoughts, bringing a deep, introspective clarity",
+                "require": "introspection>2",
+                "duration": 50,
+                "max": 1,
+                "cost":{
+                    "sadness": 10
+                },
+                "run":{
+                    "thoughts": 1
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "supplication.rate": 0.05,
+                    "sadness.max": 5,
+                    "thoughts.max": 10
+                }
+            },
+            {
                 "id": "think",
                 "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
                 "require": "nutrition>0",
@@ -265,19 +298,7 @@
                     "sorrow": 1
                 }
             },
-            {
-                "id": "eatcrumbs",
-                "name": "Eat old crumbs",
-                "desc": "It tastes really bad, unless you're really, really hungry",
-                "require": "breadcrumbs > 6",
-                "duration": 5,
-                "cost":{
-                    "breadcrumbs": 10
-                },
-                "result": {
-                    "nutrition": 1
-                }
-            },
+            
             {
                 "id": "ponderexistence",
                 "name": "What is reality?",
@@ -374,7 +395,7 @@
                 "id": "scavenging",
                 "name": "Scavenging",
                 "desc": "Seek out and collect natural resources and useful items from the environment.",
-                "require": "introspection>0",
+                "require": "introspection>1",
                 "cost": {
                     "thoughts": 15
                 },
