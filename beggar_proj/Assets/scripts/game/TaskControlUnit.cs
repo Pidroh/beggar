@@ -142,7 +142,7 @@ public class RTControlUnit
                 var rc = resourceChanges[ttvIndex];
 
                 RuntimeUnit ru = rc.IdPointer.RuntimeUnit;
-                ttv.MainText.SetTextRaw(ru.Name);
+                ttv.MainText.SetTextRaw(ru.Visible ? ru.Name : "???");
                 ttv.SecondaryText.SetTextRaw($"{rc.valueChange}");
                 ttv.TertiaryText.SetTextRaw($"({ru.Value} / {ru.Max})");
                 ttv.ManualUpdate();
