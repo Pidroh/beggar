@@ -283,7 +283,7 @@ public class LabelWithExpandable
     
 }
 
-public class ExpandableManager 
+public class ExpandableManager
 {
     public IconButton ExpandButton;
     private bool _expanded = false;
@@ -299,6 +299,7 @@ public class ExpandableManager
     public void ManualUpdate()
     {
         ExpandButton.Active = ExpandTargets.Count > 0;
+        _expanded = !ExpandButton.Active || _expanded;
         ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, Expanded ? 180 : -90);
         if (ExpandButton.Clicked)
         {

@@ -203,9 +203,9 @@
                 "desc": "Acknowledge the pain you've buried.",
                 "duration": 3,
                 "max": 1,
-                "require": "thoughts>3",
+                "require": "thoughts>7",
                 "cost": {
-                    "thoughts": 4
+                    "thoughts": 10
                 }
             },
             {
@@ -247,9 +247,9 @@
                 "desc": "I have so many...",
                 "duration": 5,
                 "max": 1,
-                "require": "thoughts>1",
+                "require": "thoughts>2",
                 "cost": {
-                    "thoughts": 2
+                    "thoughts": 7
                 }
             },
             {
