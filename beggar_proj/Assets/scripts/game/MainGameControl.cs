@@ -36,6 +36,7 @@ public class MainGameControl : MonoBehaviour
     void Start()
     {
         MainGameControlSetup.Setup(this);
+        RobustDeltaTime = new();
     }
 
     // Update is called once per frame
@@ -67,7 +68,10 @@ public class MainGameControl : MonoBehaviour
             this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {PlayTimeControl.PlayTimeToShowAsString}";
         }
 
-        arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
+        RobustDeltaTime.ManualUpdate();
+        while (RobustDeltaTime.TryGetProcessedDeltaTime(out float dt)) {
+            arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
+        }
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;

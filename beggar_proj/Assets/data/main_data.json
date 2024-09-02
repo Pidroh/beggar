@@ -66,7 +66,16 @@
             {
                 "id": "rats",
                 "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
-                "max": 3
+                "max": 3,
+                "mod": {
+                    "ratbond.max": 10,
+                    "ratbond.rate": 0.01
+                }
+            },
+            {
+                "id": "ratbond",
+                "desc": "A faint connection forms with your rats, creating a slight sense of understanding and trust.",
+                "max": 5
             },
             {
                 "id": "foraging",
@@ -114,6 +123,39 @@
                 }
             },
             {
+                "id": "eatcrumbs",
+                "name": "Eat old crumbs",
+                "desc": "It tastes really bad, unless you're really, really hungry",
+                "require": "breadcrumbs > 6",
+                "duration": 5,
+                "cost":{
+                    "breadcrumbs": 10
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            },
+            {
+                "id": "somber_insight",
+                "name": "Somber Insight",
+                "desc": "A quiet, reflective sadness colors your thoughts, bringing a deep, introspective clarity",
+                "require": "introspection>2",
+                "duration": 50,
+                "max": 1,
+                "cost":{
+                    "sadness": 10
+                },
+                "run":{
+                    "thoughts": 1
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "supplication.rate": 0.05,
+                    "sadness.max": 5,
+                    "thoughts.max": 10
+                }
+            },
+            {
                 "id": "think",
                 "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
                 "require": "nutrition>0",
@@ -121,6 +163,9 @@
                 "duration": 3,
                 "result": {
                     "thoughts": 1
+                },
+                "run": {
+                    "supplication": 1
                 }
             },
 
@@ -158,9 +203,42 @@
                 "desc": "Acknowledge the pain you've buried.",
                 "duration": 3,
                 "max": 1,
-                "require": "thoughts>3",
+                "require": "thoughts>7",
                 "cost": {
-                    "thoughts": 4
+                    "thoughts": 10
+                }
+            },
+            {
+                "id": "rat_insight",
+                "name": "Rat's Insight",
+                "desc": "By observing rats, you gain a sharper, more cunning perspective on your thoughts.",
+                "duration": 10,
+                "max": 2,
+                "require": "ratology>=1",
+                "cost": {
+                    "ratbond": 10,
+                    "thoughts": 10
+                },
+                "mod":{
+                    "thoughts.max": 10,
+                    "thoughts.rate": 0.01
+                }
+            },
+            {
+                "id": "vermin_sorrow",
+                "name": "Vermin Sorrow",
+                "desc": "The presence of rats amplifies the depth of your sadness, bringing it into sharper focus.",
+                "duration": 10,
+                "max": 1,
+                "require": "ratology>=3",
+                "cost": {
+                    "ratbond": 30,
+                    "sadness": 10
+                },
+                "mod":{
+                    "sadness.max": 10,
+                    "ratbond.max": 10
+                    
                 }
             },
             {
@@ -169,9 +247,53 @@
                 "desc": "I have so many...",
                 "duration": 5,
                 "max": 1,
-                "require": "thoughts>1",
+                "require": "thoughts>2",
                 "cost": {
-                    "thoughts": 2
+                    "thoughts": 7
+                }
+            },
+            {
+                "id": "thoughtfulgatherer",
+                "name": "Thoughtful Gatherer",
+                "desc": "You approach foraging with a calm and reflective mindset. Each step is taken with care and intention.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=1",
+                "mod":{
+                    "foraging.rate": 0.03
+                },
+                "cost": {
+                    "thoughts": 15
+                }
+            },
+            {
+                "id": "vigorousgather",
+                "name": "Vigorous Forager",
+                "desc": "Your foraging is driven by your body energy. Every movement is infused with vitality.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=2",
+                "mod":{
+                    "foraging.max": 10
+                },
+                "cost": {
+                    "nutrition": 5
+                }
+            },
+            {
+                "id": "sadsearch",
+                "name": "Sad Search",
+                "desc": "Your foraging is marked by a deep, quiet melancholy. The emotions guide your path through the earth.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=3",
+                "mod":{
+                    "foraging.max": 20,
+                    "sadness.max": 3
+                },
+                "cost": {
+                    "thoughts": 2,
+                    "sadness": 3
                 }
             },
             {
@@ -218,19 +340,7 @@
                     "sorrow": 1
                 }
             },
-            {
-                "id": "eatcrumbs",
-                "name": "Eat old crumbs",
-                "desc": "It tastes really bad, unless you're really, really hungry",
-                "require": "breadcrumbs > 6",
-                "duration": 5,
-                "cost":{
-                    "breadcrumbs": 10
-                },
-                "result": {
-                    "nutrition": 1
-                }
-            },
+            
             {
                 "id": "ponderexistence",
                 "name": "What is reality?",
@@ -242,7 +352,7 @@
                     "thoughts": 10,
                     "sadness": 10,
                     "supplication": 10,
-                    "rat": 1
+                    "rats": 1
                 },
                 "run":{
                     "thoughts": 1,
@@ -327,7 +437,7 @@
                 "id": "scavenging",
                 "name": "Scavenging",
                 "desc": "Seek out and collect natural resources and useful items from the environment.",
-                "require": "introspection>0",
+                "require": "introspection>1",
                 "cost": {
                     "thoughts": 15
                 },
@@ -405,7 +515,6 @@
                 "mod": {
                     "rest.effect.energy" : -0.5,
                     "energy.max": -2,
-                    "rodentology.max": 2,
                     "rats.rate": 0.1,
                     "space": 1
                 }
@@ -420,6 +529,21 @@
                 "mod": {
                     "sadness.max" : 3,
                     "sadness.rate" : 0.02,
+                    "space": 1
+                }
+            },
+            {
+                "id": "ratpond",
+                "name": "Rat puddle",
+                "desc": "A puddle of water for the rats to drink",
+                "require": "ratology>=2",
+                "max": 3,
+                "cost": {
+                    "thoughts": 50,
+                    "foraging": 30
+                },
+                "mod": {
+                    "rats.max": 1,
                     "space": 1
                 }
             }
