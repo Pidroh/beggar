@@ -215,6 +215,7 @@ namespace HeartUnity.View
         }
 
         public bool Active { get => gameObject.activeInHierarchy; set => this.gameObject.SetActive(value); }
+        public bool ActiveSelf { get => gameObject.activeSelf; set => this.gameObject.SetActive(value); }
         public Vector3 OffsetFromOriginal
         {
             get

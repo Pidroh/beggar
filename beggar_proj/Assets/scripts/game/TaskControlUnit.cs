@@ -75,6 +75,9 @@ public class RTControlUnit
 
     public void ManualUpdate()
     {
+        SimpleChild<UIUnit> description = Description;
+        string desc = Data.ConfigBasic.Desc;
+        FeedDescription(description, desc);
         if (bwe != null)
         {
             bwe.ManualUpdate();
@@ -101,10 +104,11 @@ public class RTControlUnit
         {
             ValueText.rawText = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
         }
+       
         if (!IsExpanded) return;
-        SimpleChild<UIUnit> description = Description;
-        string desc = Data.ConfigBasic.Desc;
-        FeedDescription(description, desc);
+        
+        
+        
         foreach (var sep in Separators)
         {
             sep.ManualUpdate();

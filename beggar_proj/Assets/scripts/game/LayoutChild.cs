@@ -299,7 +299,7 @@ public class ExpandableManager
     public void ManualUpdate()
     {
         ExpandButton.Active = ExpandTargets.Count > 0;
-        _expanded = !ExpandButton.Active || _expanded;
+        if (!ExpandButton.ActiveSelf) _expanded = true;
         ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, Expanded ? 180 : -90);
         if (ExpandButton.Clicked)
         {
