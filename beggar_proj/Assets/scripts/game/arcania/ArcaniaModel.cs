@@ -139,7 +139,7 @@ public class ArcaniaModel
         {
             foreach (var item in pair.Value)
             {
-                if (item.UpdateRequireStatus()) 
+                if (item.UpdateRequireStatus() && item.ConfigBasic.UnitType != UnitType.TAB) 
                 {
                     LogUnits.Add(new LogUnit() { 
                         logType = LogUnit.LogType.UNIT_UNLOCKED,
