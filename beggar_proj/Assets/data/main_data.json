@@ -214,7 +214,7 @@
                 "desc": "By observing rats, you gain a sharper, more cunning perspective on your thoughts.",
                 "duration": 10,
                 "max": 2,
-                "require": "ratology>=1",
+                "require": "rodentology>=1",
                 "cost": {
                     "ratbond": 10,
                     "thoughts": 10
@@ -230,7 +230,7 @@
                 "desc": "The presence of rats amplifies the depth of your sadness, bringing it into sharper focus.",
                 "duration": 10,
                 "max": 1,
-                "require": "ratology>=3",
+                "require": "rodentology>=3",
                 "cost": {
                     "ratbond": 30,
                     "sadness": 10
@@ -345,7 +345,7 @@
                 "id": "ponderexistence",
                 "name": "What is reality?",
                 "desc": "Ask a rat about the nature of your reality",
-                "require": "sadness > 4 && ratology > 2",
+                "require": "sadness > 4 && rodentology > 2",
                 "max": 1,
                 "duration": 90,
                 "cost":{
@@ -536,7 +536,7 @@
                 "id": "ratpond",
                 "name": "Rat puddle",
                 "desc": "A puddle of water for the rats to drink",
-                "require": "ratology>=2",
+                "require": "rodentology>=2",
                 "max": 3,
                 "cost": {
                     "thoughts": 50,

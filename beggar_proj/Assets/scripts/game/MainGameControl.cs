@@ -166,7 +166,7 @@ public class MainGameControl : MonoBehaviour
 
                         case UnitType.CLASS:
                             {
-                                tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                                tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
 
                                 if (tcu.TaskClicked)
                                 {

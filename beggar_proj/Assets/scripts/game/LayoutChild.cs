@@ -316,6 +316,9 @@ public class ButtonWithExpandable
 {
     public UIUnit MainButton;
     public ButtonWithProgressBar ButtonProgressBar;
+    private Color _originalColorProgress;
+    private readonly Color _disabledColorProgress;
+
     public IconButton ExpandButton => ExpandManager.ExpandButton;
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets => ExpandManager.ExpandTargets;
@@ -324,6 +327,14 @@ public class ButtonWithExpandable
 
     public bool Expanded => ExpandManager.Expanded;
 
+    public bool MainButtonEnabled { get => MainButton.enabled; internal set => SetMainButtonEnabled(value); }
+
+    private void SetMainButtonEnabled(bool value)
+    {
+        MainButton.enabled = value;
+        ButtonProgressBar.ProgressImage.Image.color = value ? _originalColorProgress : _disabledColorProgress;
+    }
+
     public static implicit operator LayoutChild(ButtonWithExpandable a) => a.LayoutChild;
 
     public ButtonWithExpandable(ButtonWithProgressBar button, IconButton iconButton)
@@ -331,6 +342,8 @@ public class ButtonWithExpandable
         ExpandManager = new(iconButton);
         MainButton = button.Button;
         ButtonProgressBar = button;
+        _originalColorProgress = ButtonProgressBar.ProgressImage.Image.color;
+        _disabledColorProgress = new Color(_originalColorProgress.r * 0.7f, _originalColorProgress.g * 0.7f, _originalColorProgress.b * 0.7f, _originalColorProgress.a);
 
         this.LayoutChild = LayoutChild.Create(MainButton.transform, iconButton.transform);
         MainButton.transform.localPosition = Vector3.zero;

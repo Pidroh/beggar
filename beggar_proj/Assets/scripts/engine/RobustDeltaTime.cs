@@ -17,6 +17,7 @@ namespace HeartUnity
 		public void ManualUpdate() 
 		{
 			_dt = Time.realtimeSinceStartup - lastTimeSinceUpdate;
+			lastTimeSinceUpdate = Time.realtimeSinceStartup;
 		}
 
 		public bool TryGetProcessedDeltaTime(out float dt) 
