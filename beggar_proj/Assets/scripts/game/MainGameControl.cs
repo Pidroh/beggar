@@ -29,6 +29,7 @@ public class MainGameControl : MonoBehaviour
     public float TimeMultiplier { get; private set; } = 1;
     public RuntimeUnit EndGameRuntimeUnit { get; internal set; }
     public UIUnit EndGameMessage { get; internal set; }
+    public RobustDeltaTime RobustDeltaTime = new();
 
 
     // Start is called before the first frame update
