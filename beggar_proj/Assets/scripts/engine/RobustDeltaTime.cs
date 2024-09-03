@@ -9,11 +9,6 @@ namespace HeartUnity
 		private float _dtUnit = 0.2f;
 		private float _dtFixThreeshold = 1f;
 
-        public RobustDeltaTime()
-        {
-			lastTimeSinceUpdate = Time.realtimeSinceStartup;
-		}
-
 		public void ManualUpdate() 
 		{
 			_dt = Time.realtimeSinceStartup - lastTimeSinceUpdate;

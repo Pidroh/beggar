@@ -327,11 +327,11 @@ public class ButtonWithExpandable
 
     public bool Expanded => ExpandManager.Expanded;
 
-    public bool MainButtonEnabled { get => MainButton.enabled; internal set => SetMainButtonEnabled(value); }
+    public bool MainButtonEnabled { get => MainButton.ButtonEnabled; internal set => SetMainButtonEnabled(value); }
 
     private void SetMainButtonEnabled(bool value)
     {
-        MainButton.enabled = value;
+        MainButton.ButtonEnabled = value;
         ButtonProgressBar.ProgressImage.Image.color = value ? _originalColorProgress : _disabledColorProgress;
     }
 
