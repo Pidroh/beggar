@@ -55,6 +55,16 @@ public class MainGameControl : MonoBehaviour
             }
         }
         {
+            if (DebugMenuManager.CheckCommand("dpi", out int v))
+            {
+                EngineView.OverwriteDPI(v);
+            }
+            if (DebugMenuManager.CheckCommand("dpi"))
+            {
+                EngineView.ClearOverwriteDPI();
+            }
+        }
+        {
             if (DebugMenuManager.CheckCommand("value", out string label, out int v))
             {
                 arcaniaModel.FindRuntimeUnit(label).SetValue(v);

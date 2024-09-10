@@ -5,8 +5,8 @@ namespace HeartUnity.View
 {
     public static class RectTransformExtensions
     {
-        public static float MilimeterToPixel => Screen.dpi <= 0 ? 96f / 25.4f : Screen.dpi / 25.4f;
-        public static float PixelToMilimeter => Screen.dpi <= 0 ? 25.4f / 96f : 25.4f / Screen.dpi;
+        public static float MilimeterToPixel => EngineView.dpi <= 0 ? 96f / 25.4f : EngineView.dpi / 25.4f;
+        public static float PixelToMilimeter => EngineView.dpi <= 0 ? 25.4f / 96f : 25.4f / EngineView.dpi;
         public static void AnchorToCorners(this RectTransform transform)
         {
             if (transform == null)

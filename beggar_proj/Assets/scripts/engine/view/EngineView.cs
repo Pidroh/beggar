@@ -35,6 +35,9 @@ namespace HeartUnity.View
         private MouseAsSpriteInfo mouseView;
         public ReusableMenuPrefabs reusableMenuPrefabs;
 
+        public static float dpi => overwrittenDpi.HasValue ? overwrittenDpi.Value : Screen.dpi;
+        private static float? overwrittenDpi;
+
         public void Init(int initialLayer)
         {
             UIUnit.EngineView = this;
@@ -283,6 +286,16 @@ namespace HeartUnity.View
             uIUnit.transform.parent = creationHelper.manager.layerParents[layer].transform;
 
 
+        }
+
+        public static void OverwriteDPI(float f) 
+        {
+            overwrittenDpi = f;
+        }
+
+        public static void ClearOverwriteDPI() 
+        {
+            overwrittenDpi = null;
         }
     }
 }

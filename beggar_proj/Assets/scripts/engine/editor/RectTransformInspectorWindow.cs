@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
+
 public class RectTransformInspectorWindow : EditorWindow
 {
     [MenuItem("Window/RectTransform Inspector")]
