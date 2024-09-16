@@ -12,8 +12,8 @@ namespace HeartUnity.View
     }
     public static class RectTransformExtensions
     {
-        private const float MilimiterToPixelFallback = 96f / 25.4f;
-        private const float PixelToMilimiterFallback = 25.4f / 96f;
+        public const float MilimiterToPixelFallback = 96f / 25.4f;
+        public const float PixelToMilimiterFallback = 25.4f / 96f;
         public static float DpiScaleFromDefault => EngineView.dpi / 96f;
 
         public static float MilimeterToPixel => EngineView.dpi <= 0 ? MilimiterToPixelFallback : EngineView.dpi / 25.4f;

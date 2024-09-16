@@ -116,16 +116,15 @@ public class CanvasMaker
 
         // Add RectTransform component for the icon
         RectTransform iconRectTransform = iconObject.AddComponent<RectTransform>();
-        iconRectTransform.sizeDelta = new Vector2(30, 30); // Adjust size as needed
         iconRectTransform.localPosition = Vector2.zero;
-        iconRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-        iconRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
         iconRectTransform.pivot = new Vector2(0.5f, 0.5f);
+        iconRectTransform.FillParent();
 
         // Add Image component for the icon
         Image iconImage = iconObject.AddComponent<Image>();
         iconImage.sprite = iconSprite;
         iconImage.color = Color.white; // Set icon color
+        iconImage.preserveAspect = true;
 
         var uiUnit = buttonObject.AddComponent<IconButton>();
         uiUnit.icon = iconImage;

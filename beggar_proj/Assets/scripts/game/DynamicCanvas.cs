@@ -4,6 +4,7 @@ using HeartUnity.View;
 
 public class DynamicCanvas
 {
+    
     public List<LayoutParent> children = new List<LayoutParent>();
     public List<LayoutParent> LowerMenus = new();
     public Queue<LayoutParent> ActiveChildren = new();
@@ -14,6 +15,8 @@ public class DynamicCanvas
     public RectTransform OverlayRoot { get; internal set; }
     public LayoutParent OverlayMainLayout { get; set; }
     public bool OverlayVisible => OverlayRoot.gameObject.activeSelf;
+    private const int minimumDefaultTabPixelWidth = 320;
+    public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
 
     public LayoutParent CreateLowerMenuLayout(int height)
     {
@@ -29,7 +32,8 @@ public class DynamicCanvas
 
     public int CalculateNumberOfVisibleHorizontalChildren() 
     {
-        return Mathf.FloorToInt(Screen.width / 320f);
+        var physicalTabPixelSize = Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
+        return Mathf.Max(Mathf.FloorToInt(Screen.width / physicalTabPixelSize), 1);
     }
 
     public void ShowChild(int childIndex) 
@@ -59,7 +63,8 @@ public class DynamicCanvas
         {
             int activeChildrenCount = ActiveChildren.Count;
             float availableWidth = Screen.width;
-            float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, 320, 640);
+            float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth * 2 * DefaultPixelSizeToPhysicalPixelSize);
+            childWidth = Mathf.Max(childWidth, minimumDefaultTabPixelWidth);
 
             // Calculate total width of active children
             float totalWidth = childWidth * activeChildrenCount;
