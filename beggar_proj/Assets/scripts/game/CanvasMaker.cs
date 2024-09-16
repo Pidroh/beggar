@@ -166,6 +166,8 @@ public class CanvasMaker
             ProgressImage = image
         };
         bbb.SetProgress(0f);
+        bbb.HeightMms = 10;
+        bbb.DefaultFontSize = 16;
         return bbb;
     }
 

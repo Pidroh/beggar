@@ -12,6 +12,7 @@ public class MainGameControlSetup
         var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest);
         mgc.dynamicCanvas = dynamicCanvas;
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
+        mgc.TabButtonLayout = lowerMenuLayout;
 
         mgc.EngineView = EngineView.CreateEngineViewThroughCode(new EngineView.EngineViewInitializationParameter() {
             canvas = dynamicCanvas.Canvas

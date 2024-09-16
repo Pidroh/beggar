@@ -99,10 +99,19 @@ public class ButtonWithProgressBar
     public UIUnit Button;
     public UIUnit ProgressImage;
 
+    public int HeightMms { get; internal set; }
+    public int DefaultFontSize { get; internal set; }
+
     internal void SetProgress(float v)
     {
         ProgressImage.RectTransform.SetAnchorMaxByIndex(0, v);
         ProgressImage.RectTransform.SetOffsetMaxByIndex(0, 0);
+    }
+
+    internal void ManualUpdate()
+    {
+        Button.RectTransform.SetHeightMilimeters(HeightMms);
+        Button.text.SetFontSizePhysical(DefaultFontSize);
     }
 }
 

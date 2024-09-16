@@ -99,9 +99,12 @@ public class DynamicCanvas
                     layoutP.ManualUpdate();
                 }
             }
+            var offsetYLowerMenu = 0f;
             foreach (var lowerMenuP in LowerMenus)
             {
                 lowerMenuP.ManualUpdate();
+                lowerMenuP.SelfChild.RectTransform.SetBottomYToParent(offsetYLowerMenu);
+                offsetYLowerMenu += lowerMenuP.SelfChild.RectTransform.GetHeight();
             }
         }
 

@@ -29,6 +29,8 @@ public class MainGameControl : MonoBehaviour
     public float TimeMultiplier { get; private set; } = 1;
     public RuntimeUnit EndGameRuntimeUnit { get; internal set; }
     public UIUnit EndGameMessage { get; internal set; }
+    public LayoutParent TabButtonLayout { get; internal set; }
+
     public RobustDeltaTime RobustDeltaTime = new();
 
 
@@ -87,10 +89,11 @@ public class MainGameControl : MonoBehaviour
         dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
 
 
+        TabButtonLayout.SelfChild.RectTransform.SetHeightMilimeters(10);
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
-
+            tabControl.SelectionButton.ManualUpdate();
 
             foreach (var sep in tabControl.Separators)
             {
