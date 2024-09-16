@@ -362,6 +362,7 @@ public class ButtonWithExpandable
         MainButton.RectTransform.SetHeightMilimeters(heightMM);
         ExpandButton.RectTransform.SetHeightMilimeters(heightMM);
         ExpandButton.RectTransform.SetWidthMilimeters(heightMM * 1.5f);
+        MainButton.text.SetFontSizePhysical(16);
 
 
         var rectTransformParent = LayoutChild.RectTransform;

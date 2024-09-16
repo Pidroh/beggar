@@ -144,8 +144,9 @@ public class CanvasMaker
         // Add Text component
         Color textColor = request.SecondaryColor;
         TMP_FontAsset font = request.font;
+        int fontSize = 16;
         // Create a Text GameObject for the button label
-        var textUiUnit = CreateTextUnit(textColor, font, 16);
+        var textUiUnit = CreateTextUnit(textColor, font, fontSize);
         textUiUnit.text.text = buttonText;
         textUiUnit.gameObject.transform.SetParent(buttonObject.transform);
         {

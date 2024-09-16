@@ -1,12 +1,23 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace HeartUnity.View
 {
+    public static class TextMeshProExtensions 
+    {
+        public static void SetFontSizePhysical(this TextMeshProUGUI text, int referenceFontSize) {
+            text.fontSize = referenceFontSize * RectTransformExtensions.DpiScaleFromDefault;
+        }
+    }
     public static class RectTransformExtensions
     {
-        public static float MilimeterToPixel => EngineView.dpi <= 0 ? 96f / 25.4f : EngineView.dpi / 25.4f;
-        public static float PixelToMilimeter => EngineView.dpi <= 0 ? 25.4f / 96f : 25.4f / EngineView.dpi;
+        private const float MilimiterToPixelFallback = 96f / 25.4f;
+        private const float PixelToMilimiterFallback = 25.4f / 96f;
+        public static float DpiScaleFromDefault => EngineView.dpi / 96f;
+
+        public static float MilimeterToPixel => EngineView.dpi <= 0 ? MilimiterToPixelFallback : EngineView.dpi / 25.4f;
+        public static float PixelToMilimeter => EngineView.dpi <= 0 ? PixelToMilimiterFallback : 25.4f / EngineView.dpi;
         public static void AnchorToCorners(this RectTransform transform)
         {
             if (transform == null)
