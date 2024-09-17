@@ -92,6 +92,7 @@ public class MainGameControlSetup
                     dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(layoutChild);
                     dynamicCanvas.children[tabIndex].InvertChildrenPositionIndex = tabControl.TabData.Tab.ContainsLogs;
                     sep.SeparatorLC = layoutChild;
+                    sep.Text = text;
 
                     if (!sep.Data.ShowSpace) goto END_OF_SEPARATOR_INSTANCE;
                     var spaceT = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 18);

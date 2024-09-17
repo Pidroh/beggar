@@ -98,6 +98,8 @@ public class MainGameControl : MonoBehaviour
             foreach (var sep in tabControl.Separators)
             {
                 sep.Visible = false;
+                sep.SeparatorLC.RectTransform.SetHeightMilimeters(9);
+                sep.Text.text.SetFontSizePhysical(14);
                 if (sep.SpaceAmountText == null) continue;
                 sep.SpaceAmountText.RectTransform.SetHeightMilimeters(11);
                 sep.SpaceAmountText.text.SetFontSizePhysical(18);
