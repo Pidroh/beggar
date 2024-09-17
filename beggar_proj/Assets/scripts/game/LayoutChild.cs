@@ -138,6 +138,10 @@ public class TripleTextView
 
     public void ManualUpdate()
     {
+        foreach (var t in Texts)
+        {
+            t.text.SetFontSizePhysical(15);
+        }
         if (!tertiaryWidthCalculated)
         {
             var tmp = TertiaryText.text;
