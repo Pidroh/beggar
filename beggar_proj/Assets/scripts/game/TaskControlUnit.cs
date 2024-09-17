@@ -37,9 +37,16 @@ public class ModsControlUnit
     public List<TripleTextView> ModTTVs { get; internal set; } = new();
 }
 
-public class LogControlUnit 
-{ 
+public class LogControlUnit
+{
+    public LogControlUnit(LayoutChild lc, UIUnit text)
+    {
+        Lc = lc;
+        Text = text;
+    }
 
+    public LayoutChild Lc { get; }
+    public UIUnit Text { get; }
 }
 
 public class RTControlUnit

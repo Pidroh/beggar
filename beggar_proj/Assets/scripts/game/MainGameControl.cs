@@ -117,6 +117,11 @@ public class MainGameControl : MonoBehaviour
                 {
                     MainGameControlSetup.CreateLogControlUnit(mgc: this, tabControl: tabControl, lp: dynamicCanvas.children[tabIndex], logUnit: arcaniaModel.LogUnits[tabControl.LogControlUnits.Count]);
                 }
+                foreach (var item in tabControl.LogControlUnits)
+                {
+                    item.Text.text.SetFontSizePhysical(15);
+                    item.Lc.RectTransform.SetHeightMilimeters(9);
+                }
             }
             var UnitGroupControls = tabControl.UnitGroupControls;
 

@@ -339,6 +339,6 @@ public class MainGameControlSetup
         lp.AddLayoutChildAndParentIt(lc);
         text.RectTransform.FillParent();
         lc.RectTransform.SetHeight(30);
-        tabControl.LogControlUnits.Add(new LogControlUnit());
+        tabControl.LogControlUnits.Add(new LogControlUnit(lc, text));
     }
 }
