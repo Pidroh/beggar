@@ -99,6 +99,8 @@ public class MainGameControl : MonoBehaviour
             {
                 sep.Visible = false;
                 if (sep.SpaceAmountText == null) continue;
+                sep.SpaceAmountText.RectTransform.SetHeightMilimeters(11);
+                sep.SpaceAmountText.text.SetFontSizePhysical(18);
                 sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
             }
 
