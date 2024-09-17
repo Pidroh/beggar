@@ -105,6 +105,7 @@ public class RTControlUnit
         if (ValueText != null)
         {
             ValueText.rawText = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
+            ValueText.text.SetFontSizePhysical(16);
         }
        
         if (!IsExpanded) return;
