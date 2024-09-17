@@ -77,6 +77,7 @@ public class RTControlUnit
     public void ManualUpdate()
     {
         SimpleChild<UIUnit> description = Description;
+        description.Element.text.SetFontSizePhysical(15);
         string desc = Data.ConfigBasic.Desc;
         FeedDescription(description, desc);
         if (bwe != null)
