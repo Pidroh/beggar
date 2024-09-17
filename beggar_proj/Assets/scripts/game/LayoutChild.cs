@@ -176,6 +176,8 @@ public class TripleTextView
         RectTransform rtTertiary = TertiaryText.RectTransform;
 
         rtMain.SetWidth(Parent.GetWidth());
+        rtSecondary.SetWidth(Parent.GetWidth() * 0.33f);
+        rtTertiary.SetWidth(Parent.GetWidth() * 0.33f);
 
         // Align MainText with the left side of Parent
         rtMain.anchorMin = new Vector2(0, rtMain.anchorMin.y);
