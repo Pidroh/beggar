@@ -266,6 +266,7 @@ public class LabelWithExpandable
         MainText.RectTransform.SetHeightMilimeters(heightMM);
         ExpandButton.RectTransform.SetHeightMilimeters(heightMM);
         ExpandButton.RectTransform.SetWidthMilimeters(heightMM * 1.5f);
+        MainText.text.SetFontSizePhysical(16);
 
 
         var rectTransformParent = LayoutChild.RectTransform;
