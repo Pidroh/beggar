@@ -224,17 +224,20 @@ public class SeparatorWithLabel
         Text.text.fontSize = 14;
         Text.text.fontStyle = TMPro.FontStyles.Italic;
         Text.text.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Left;
+        Text.text.verticalAlignment = TMPro.VerticalAlignmentOptions.Bottom;
     }
 
     public void ManualUpdate()
     {
         Image.RectTransform.SetWidthMilimeters(LayoutChild.RectTransform.GetWidthMilimeters());
         Image.RectTransform.SetHeight(1);
-        LayoutChild.RectTransform.SetHeight(22);
+        LayoutChild.RectTransform.SetHeightMilimeters(6f);
         Image.RectTransform.SetTopYToParent(3);
         Image.RectTransform.SetLeftXToParent(0);
         Text.RectTransform.SetBottomYToParent(3);
         Text.RectTransform.SetLeftXToParent(15);
+        Text.RectTransform.SetWidth(LayoutChild.RectTransform.GetWidth() - 15);
+        Text.text.SetFontSizePhysical(10);
     }
 
 }
