@@ -138,6 +138,7 @@ public class TripleTextView
 
     public void ManualUpdate()
     {
+        LayoutChild.RectTransform.SetHeightMilimeters(12);
         foreach (var t in Texts)
         {
             t.text.SetFontSizePhysical(15);
