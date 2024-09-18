@@ -40,13 +40,52 @@
         ]
     },
     {
+        "type": "SKILL",
+        "items":[
+            {
+                "id": "introspection",
+                "cost": {
+
+                },
+                "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
+                "mod": {
+
+                    "supplication.max": 5
+                }
+            },
+            {
+                "id": "rodentology",
+                "name": "Ratkinship",
+                "desc": "If you want to understand men, study mice",
+                "cost": {
+                },
+                "mod": {
+
+                    "supplication.max": 2
+                }
+            },
+            {
+                "id": "scavenging",
+                "name": "Scavenging",
+                "desc": "Seek out and collect natural resources and useful items from the environment.",
+                "require": "introspection>1",
+                "cost": {
+                },
+                "mod": {
+                    "supplication.max": 1
+                }
+            }
+        ]
+    },
+    {
         "type": "TAB",
         "items":[
             {
                 "id": "task",
                 "unit_types": [
                     "HOUSE",
-                    "FURNITURE"
+                    "FURNITURE",
+                    "SKILL"
                 ],
                 "icon" : "task",
                 "separator": [
@@ -56,7 +95,8 @@
                         "show_space": true,
                         "unit_types": [
                             "HOUSE",
-                            "FURNITURE"
+                            "FURNITURE",
+                            "SKILL"
                         ]
                     }
                 ]
