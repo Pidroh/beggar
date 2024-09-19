@@ -110,6 +110,7 @@ public class RTControlUnit
             MainTitle.Element.SetTextRaw(Data.Name);
             MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 20);
             MainTitle.ManualUpdate();
+            MainTitle.Element.text.SetFontSizePhysical(16);
             XPGauge.SetRatio(Data.Skill.XPRatio);
             XPGauge.ManualUpdate();
             XPGauge.layoutChild.Visible = Data.Skill.Acquired;
