@@ -100,27 +100,27 @@ public class JsonReader
             }
             if (type == UnitType.TASK)
             {
-                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
             }
             if (type == UnitType.CLASS)
             {
-                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
                 ru.ConfigBasic.Max = 1;
             }
             if (type == UnitType.SKILL)
             {
-                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
                 if (ru.ConfigBasic.Max < 0) ru.ConfigBasic.Max = 3;
                 new SkillRuntime(ru);
             }
             if (type == UnitType.HOUSE)
             {
-                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
                 ru.ConfigHouse = new ConfigHouse();
             }
             if (type == UnitType.FURNITURE)
             {
-                ru.ConfigTask = ReadTask(item, arcaniaUnits);
+                ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
                 ru.ConfigFurniture = new ConfigFurniture();
                 var repeat = item.GetValueOrDefault("repeat", null);
                 // if has repeat, then having no max is fine
@@ -153,9 +153,10 @@ public class JsonReader
         }
     }
 
-    private static ConfigTask ReadTask(SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
+    private static ConfigTask ReadTask(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits)
     {
         var ct = new ConfigTask();
+        var explicitPerpetualDefinition = false;
         foreach (var pair in item)
         {
             if (pair.Key == "cost") ReadChanges(ct.Cost, pair.Value, arcaniaUnits, -1);
@@ -163,6 +164,7 @@ public class JsonReader
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "run") ReadChanges(ct.Run, pair.Value, arcaniaUnits, -1);
             if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
+            if (pair.Key == "perpetual") explicitPerpetualDefinition = true;
             if (pair.Key == "duration") ct.Duration = pair.Value.AsInt;
         }
         if (!ct.Duration.HasValue)
@@ -171,6 +173,10 @@ public class JsonReader
             {
                 ct.Duration = 1;
             }
+        }
+        if (ct.Duration.HasValue && !ct.Perpetual && !explicitPerpetualDefinition && !ru.HasMax)
+        {
+            ct.Perpetual = true;
         }
         return ct;
     }
