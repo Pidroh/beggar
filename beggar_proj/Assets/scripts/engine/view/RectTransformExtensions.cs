@@ -82,6 +82,12 @@ namespace HeartUnity.View
 
         public static void SetHeightMilimeters(this RectTransform trans, float sizeMM) => trans.SetHeight(sizeMM * MilimeterToPixel);
 
+        public static void SetSizeMilimeters(this RectTransform trans, int index, float sizeMM) 
+        {
+            if (index == 0) trans.SetWidthMilimeters(sizeMM);
+            if (index == 1) trans.SetHeightMilimeters(sizeMM);
+        }
+
         public static void SetWidth(this RectTransform trans, float newSize)
         {
             SetSize(trans, new Vector2(newSize, trans.rect.size.y));

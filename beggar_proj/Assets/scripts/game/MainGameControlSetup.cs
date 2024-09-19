@@ -162,6 +162,7 @@ public class MainGameControlSetup
                             layoutAddRemove.TypeLayout = LayoutParent.LayoutType.HORIZONTAL;
                             layoutAddRemove.AddLayoutChildAndParentIt(buttonAdd.Button);
                             layoutAddRemove.AddLayoutChildAndParentIt(buttonRemove.Button);
+                            layoutAddRemove.SelfChild.SetPreferredHeightMM(10);
                             layout.AddLayoutAndParentIt(layoutAddRemove);
                             tcu.ButtonRemove = buttonRemove;
                             tcu.ButtonAdd = buttonAdd;

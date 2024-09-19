@@ -64,6 +64,13 @@ public class LayoutParent
             RectTransform childRectTransform = child.RectTransform;
             // Get the pivot of the child
             Vector2 childPivot = childRectTransform.pivot;
+            for (int i = 0; i < 2; i++)
+            {
+                if (child.PreferredSize[i].HasValue) 
+                {
+                    child.RectTransform.SetSizeMilimeters(i, child.PreferredSize[i].Value);
+                }
+            }
 
             if (TypeLayout == LayoutType.VERTICAL)
             {

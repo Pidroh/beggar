@@ -48,6 +48,7 @@ public class LayoutChild
 
     public GameObject GameObject => RectTransform.gameObject;
     internal bool Visible { get => RectTransform.gameObject.activeSelf; set => RectTransform.gameObject.SetActive(value); }
+    public float?[] PreferredSize = new float?[2];
 
     public static LayoutChild Create(Transform transform1 = null, Transform transform2 = null)
     {
@@ -64,6 +65,10 @@ public class LayoutChild
         return lc;
     }
 
+    internal void SetPreferredHeightMM(int v)
+    {
+        PreferredSize[1] = v;
+    }
 }
 
 
