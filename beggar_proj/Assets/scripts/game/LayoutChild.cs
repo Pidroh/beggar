@@ -9,12 +9,12 @@ using static CanvasMaker;
 public class Gauge
 {
     private readonly CreateGaugeRequest gaugeRequest;
+    private readonly float heightMM;
     public LayoutChild layoutChild;
     public UIUnit GaugeBackground;
     public UIUnit GaugeFill;
 
-
-    public Gauge(CreateGaugeRequest gaugeRequest)
+    public Gauge(CreateGaugeRequest gaugeRequest, float heightMM)
     {
         GaugeBackground = CanvasMaker.CreateSimpleImage(gaugeRequest.MainBody);
         GaugeFill = CanvasMaker.CreateSimpleImage(gaugeRequest.GaugeFill);
@@ -25,14 +25,14 @@ public class Gauge
         layoutChild = LayoutChild.Create(bgRT);
         layoutChild.RectTransform.SetSize(gaugeRequest.InitialSize);
         this.gaugeRequest = gaugeRequest;
-
+        this.heightMM = heightMM;
         bgRT.FillParent();
         RectTransformExtensions.SetOffsets(bgRT, gaugeRequest.Padding);
     }
 
     public void ManualUpdate()
     {
-        //GaugeBackground.RectTransform.SetOffsets(gaugeRequest.);
+        layoutChild.RectTransform.SetHeightMilimeters(heightMM);
     }
 
     public void SetRatio(float ratio)
@@ -112,6 +112,11 @@ public class ButtonWithProgressBar
     {
         Button.RectTransform.SetHeightMilimeters(HeightMms);
         Button.text.SetFontSizePhysical(DefaultFontSize);
+    }
+
+    internal void SetWidthMM(int mmWidth)
+    {
+        Button.RectTransform.SetWidthMilimeters(mmWidth);
     }
 }
 

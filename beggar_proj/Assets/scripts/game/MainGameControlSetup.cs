@@ -186,7 +186,7 @@ public class MainGameControlSetup
                                 t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
 
                             }
-                            tcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest);
+                            tcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
                             layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
                         }
                         dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);

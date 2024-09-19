@@ -83,6 +83,13 @@ public class RTControlUnit
 
     public void ManualUpdate()
     {
+        if (ButtonAdd != null) {
+            ButtonAdd.ManualUpdate();
+            ButtonRemove.ManualUpdate();
+            ButtonAdd.SetWidthMM(15);
+            ButtonRemove.SetWidthMM(15);
+        }
+        
         SimpleChild<UIUnit> description = Description;
         description.Element.text.SetFontSizePhysical(15);
         string desc = Data.ConfigBasic.Desc;
@@ -104,6 +111,7 @@ public class RTControlUnit
             MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 20);
             MainTitle.ManualUpdate();
             XPGauge.SetRatio(Data.Skill.XPRatio);
+            XPGauge.ManualUpdate();
             XPGauge.layoutChild.Visible = Data.Skill.Acquired;
             SkillLevelText.Active = Data.Skill.Acquired;
             SkillLevelText.rawText = $"Lvl: {Data.Value} / {Data.Max}";
