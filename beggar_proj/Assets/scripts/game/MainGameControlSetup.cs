@@ -113,6 +113,7 @@ public class MainGameControlSetup
                         {
                             if (candidate.Data.AcceptedUnitTypes.Count > 0 && !candidate.Data.AcceptedUnitTypes.Contains(item.ConfigBasic.UnitType)) continue;
                             if (candidate.Data.RequireMax && !item.HasMax) continue;
+                            if (candidate.Data.RequireInstant && item.ConfigTask.Duration > 0) continue;
                             unitSeparator = candidate;
                             // if not default, just use it like that
                             if (!unitSeparator.Data.Default) break;

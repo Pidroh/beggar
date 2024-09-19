@@ -599,6 +599,14 @@
                 "icon" : "task",
                 "separator": [
                     {
+                        "id": "action",
+                        "name": "Instant Tasks",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "require_instant": true
+                    },
+                    {
                         "id": "task",
                         "name": "Tasks",
                         "unit_types": [

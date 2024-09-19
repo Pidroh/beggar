@@ -94,6 +94,7 @@ public class JsonReader
                         if (pair.Key == "default") sep.Default = pair.Value.AsBool;
                         if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
                         if (pair.Key == "show_space") sep.ShowSpace = pair.Value.AsBool;
+                        if (pair.Key == "require_instant") sep.RequireInstant = pair.Value.AsBool;
                     }
                 }
             }

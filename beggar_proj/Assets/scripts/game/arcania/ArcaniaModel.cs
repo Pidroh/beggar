@@ -35,6 +35,7 @@ public class TabRuntime
     public class Separator {
         public List<UnitType> AcceptedUnitTypes = new();
         public bool RequireMax;
+        public bool RequireInstant;
         public bool Default;
 
         public string Name { get; internal set; }
