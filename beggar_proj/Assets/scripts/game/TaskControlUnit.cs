@@ -116,6 +116,7 @@ public class RTControlUnit
             XPGauge.layoutChild.Visible = Data.Skill.Acquired;
             SkillLevelText.Active = Data.Skill.Acquired;
             SkillLevelText.rawText = $"Lvl: {Data.Value} / {Data.Max}";
+            SkillLevelText.text.SetFontSizePhysical(16);
             bwe.ButtonProgressBar.Button.rawText = Data.Skill.Acquired ? "Practice skill" : "Acquire Skill";
         }
         if (ValueText != null)
