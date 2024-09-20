@@ -77,7 +77,11 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             StartAction(data);
         }
         else {
-            TaskInterruptedTrySwap(data);
+            // instant tasks don't cause swapping
+            if (data.ConfigTask.Duration > 0) {
+                TaskInterruptedTrySwap(data);
+            }
+            
         }
     }
 
