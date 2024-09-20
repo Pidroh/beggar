@@ -9,6 +9,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     public List<RuntimeUnit> RunningTasks = new();
 
+    public RuntimeUnit InterruptedAction { get; private set; }
+
     public ArcaniaModelActionRunner(ArcaniaModel arcaniaModel) : base(arcaniaModel)
     {
     }
@@ -138,6 +140,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         {
             if (CanStartAction(_model.arcaniaUnits.RestActionActive))
             {
+                InterruptedAction = run;
                 StartAction(_model.arcaniaUnits.RestActionActive);
             }
         }
