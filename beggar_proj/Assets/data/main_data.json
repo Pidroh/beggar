@@ -646,6 +646,30 @@
                 ]
             },
             {
+                "id": "housing",
+                "unit_types": [
+                    "HOUSE", "FURNITURE"
+                ],
+                "icon" : "housing",
+                "separator": [
+                    {
+                        "id": "housing",
+                        "name": "Housing",
+                        "show_space": true,
+                        "unit_types": [
+                            "HOUSE"
+                        ]
+                    },
+                    {
+                        "id": "furniture",
+                        "name": "Furniture",
+                        "unit_types": [
+                            "FURNITURE"
+                        ]
+                    }
+                ]
+            },
+            {
                 "id": "resource",
                 "unit_types": [
                     "RESOURCE"
