@@ -159,6 +159,7 @@ public class RTControlUnit
 
             if (sep != null) sep.ManualUpdate();
             sep.LayoutChild.Visible = resourceChanges.Count > 0;
+            var bySecond = i == (int)ResourceChangeType.EFFECT || i == (int)ResourceChangeType.RUN;
 
             for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
             {
@@ -167,7 +168,7 @@ public class RTControlUnit
 
                 RuntimeUnit ru = rc.IdPointer.RuntimeUnit;
                 ttv.MainText.SetTextRaw(ru.Visible ? ru.Name : "???");
-                ttv.SecondaryText.SetTextRaw($"{rc.valueChange}");
+                ttv.SecondaryText.SetTextRaw(bySecond ? $"{rc.valueChange}/s" : $"{rc.valueChange}");
                 ttv.TertiaryText.SetTextRaw($"({ru.Value} / {ru.Max})");
                 ttv.ManualUpdate();
             }
