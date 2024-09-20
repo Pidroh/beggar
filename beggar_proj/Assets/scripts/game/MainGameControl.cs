@@ -192,7 +192,7 @@ public class MainGameControl : MonoBehaviour
 
                                 if (tcu.TaskClicked)
                                 {
-                                    arcaniaModel.Runner.StartAction(data);
+                                    arcaniaModel.Runner.StartActionExternally(data);
                                 }
 
                             }

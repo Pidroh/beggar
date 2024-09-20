@@ -40,8 +40,13 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         RunContinuously(data);
     }
 
+    public void StartActionExternally(RuntimeUnit data) 
+    {
+        InterruptedAction = null;
+        StartAction(data);
+    }
 
-    internal void StartAction(RuntimeUnit data)
+    private void StartAction(RuntimeUnit data)
     {
         // only DONE or FRESH tasks need to pay the cost
         if(!data.IsTaskHalfWay) _model.ApplyResourceChanges(data, ResourceChangeType.COST);
@@ -132,17 +137,24 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     private void TaskInterruptedTrySwap(RuntimeUnit run)
     {
-        if (run == _model.arcaniaUnits.RestActionActive)
+        if (run == _model.arcaniaUnits.RestActionActive && InterruptedAction != null)
         {
-
+            if (!CanStartAction(InterruptedAction)) {
+                InterruptedAction = null;
+                return;
+            }
+            
+            StartAction(InterruptedAction);
         }
         else
         {
-            if (CanStartAction(_model.arcaniaUnits.RestActionActive))
+            if (_model.arcaniaUnits.RestActionActive == null) return;
+            if (!CanStartAction(_model.arcaniaUnits.RestActionActive))
             {
-                InterruptedAction = run;
-                StartAction(_model.arcaniaUnits.RestActionActive);
+                return;
             }
+            InterruptedAction = run;
+            StartAction(_model.arcaniaUnits.RestActionActive);
         }
     }
 
