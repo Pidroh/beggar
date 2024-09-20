@@ -106,6 +106,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
             float beforeProg = run.TaskProgress;
             run.TaskProgress += dt;
+            
             // reached a new second in progress
             if (Mathf.FloorToInt(run.TaskProgress) > Mathf.FloorToInt(beforeProg))
             {
@@ -122,11 +123,25 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
                     run.TaskProgress = 0;
                 }
+
+                // if duration is 1, make sure to only complete the task after run / effect is applied
+                if (run.ConfigTask.Duration == 1)
+                {
+                    if (run.IsTaskComplete())
+                    {
+                        CompleteTask(run);
+                    }
+                }
             }
-            if (run.IsTaskComplete())
+            // if duration is 1, it will get completed on the code above
+            if (run.ConfigTask.Duration != 1)
             {
-                CompleteTask(run);
+                if (run.IsTaskComplete())
+                {
+                    CompleteTask(run);
+                }
             }
+            
         }
     }
 
