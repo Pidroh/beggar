@@ -64,7 +64,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         data.TaskProgress = 0;
         data.ChangeValue(1);
         _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
-        RunningTasks.Remove(data);
+        StopTask(data);
         if (data.ConfigTask.Perpetual)
         {
             StartAction(data);
@@ -89,7 +89,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
             if (!taskContinue)
             {
-                RunningTasks.Remove(run);
+                StopTask(run);
                 continue;
             }
 
@@ -115,6 +115,22 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             if (run.IsTaskComplete())
             {
                 CompleteTask(run);
+            }
+        }
+    }
+
+    private void StopTask(RuntimeUnit run)
+    {
+        RunningTasks.Remove(run);
+        if(run == _model.arcaniaUnits.RestActionActive)
+        { 
+            
+        }
+        else
+        {
+            if (CanStartAction(_model.arcaniaUnits.RestActionActive))
+            {
+                StartAction(_model.arcaniaUnits.RestActionActive);
             }
         }
     }
