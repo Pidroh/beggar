@@ -80,6 +80,7 @@ public class RTControlUnit
     public ButtonWithProgressBar ButtonRemove { get; internal set; }
     public ButtonWithProgressBar ButtonAdd { get; internal set; }
     public TabControlUnit.SeparatorInTab ParentTabSeparator { get; internal set; }
+    public SimpleChild<UIUnit> DurationText { get; internal set; }
 
     public void ManualUpdate()
     {
@@ -94,6 +95,9 @@ public class RTControlUnit
         description.Element.text.SetFontSizePhysical(15);
         string desc = Data.ConfigBasic.Desc;
         FeedDescription(description, desc);
+        var duration = Data.ConfigTask != null && Data.ConfigTask.Duration.HasValue ? Data.ConfigTask.Duration.Value : -1;
+        DurationText.Visible = duration > 0;
+        DurationText.Element.rawText = $"{duration}s";
         if (bwe != null)
         {
             bwe.ManualUpdate();

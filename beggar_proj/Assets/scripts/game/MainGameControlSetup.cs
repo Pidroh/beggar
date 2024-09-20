@@ -270,6 +270,19 @@ public class MainGameControlSetup
                         ExpandableManager expandManager = tcu.ExpandManager;
                         CreateModViews(item, layout, separators, ModUnit, expandManager);
 
+                        {
+                            var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
+                            t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                            // bwe.ExpandTargets
+                            tcu.DurationText = new SimpleChild<UIUnit>(t, t.RectTransform);
+                            tcu.DurationText.RectOffset = new RectOffset(20, 20, 0, 0);
+                            tcu.DurationText.LayoutChild.PreferredSizeMM[1] = 10;
+                            tcu.DurationText.ManualUpdate();
+                            t.FontSizePhysical = 16;
+                            AddToExpands(tcu.DurationText.LayoutChild);
+
+                        }
+
                         void AddToExpands(LayoutChild c)
                         {
                             tcu.ExpandManager.ExpandTargets.Add(c.GameObject);

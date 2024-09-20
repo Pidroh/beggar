@@ -239,6 +239,7 @@ namespace HeartUnity.View
         public bool HoveredWhileVisible => _hoveredWhileVisible && gameObject.activeSelf;
 
         public Image Image { get => _image; set => _image = value; }
+        public int? FontSizePhysical;
 
         public bool CheckMouseInside()
         {
@@ -324,6 +325,9 @@ namespace HeartUnity.View
                         text.fontSize = (int)fh.targetSize * fontSizeScale;
                     text.font = fh.fontAsset;
                 }
+            }
+            if (FontSizePhysical.HasValue) {
+                text.SetFontSizePhysical(FontSizePhysical.Value);
             }
         }
 

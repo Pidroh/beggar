@@ -66,9 +66,9 @@ public class LayoutParent
             Vector2 childPivot = childRectTransform.pivot;
             for (int i = 0; i < 2; i++)
             {
-                if (child.PreferredSize[i].HasValue) 
+                if (child.PreferredSizeMM[i].HasValue) 
                 {
-                    child.RectTransform.SetSizeMilimeters(i, child.PreferredSize[i].Value);
+                    child.RectTransform.SetSizeMilimeters(i, child.PreferredSizeMM[i].Value);
                 }
             }
 

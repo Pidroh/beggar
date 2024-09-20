@@ -48,7 +48,7 @@ public class LayoutChild
 
     public GameObject GameObject => RectTransform.gameObject;
     internal bool Visible { get => RectTransform.gameObject.activeSelf; set => RectTransform.gameObject.SetActive(value); }
-    public float?[] PreferredSize = new float?[2];
+    public float?[] PreferredSizeMM = new float?[2];
 
     public static LayoutChild Create(Transform transform1 = null, Transform transform2 = null)
     {
@@ -67,7 +67,7 @@ public class LayoutChild
 
     internal void SetPreferredHeightMM(int v)
     {
-        PreferredSize[1] = v;
+        PreferredSizeMM[1] = v;
     }
 }
 
@@ -97,6 +97,7 @@ public class SimpleChild<T> where T : MonoBehaviour
 
     public T Element { get; }
     public RectTransform ElementRectTransform { get; }
+    public bool Visible { get => LayoutChild.Visible; set { LayoutChild.Visible = value; } }
 }
 
 public class ButtonWithProgressBar
