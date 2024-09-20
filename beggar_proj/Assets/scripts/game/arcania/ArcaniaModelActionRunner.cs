@@ -168,7 +168,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         else
         {
             if (_model.arcaniaUnits.RestActionActive == null) return;
-            if (!CanStartAction(_model.arcaniaUnits.RestActionActive))
+            RuntimeUnit restAct = _model.arcaniaUnits.RestActionActive;
+            if (!CanStartAction(restAct) || !restAct.Visible)
             {
                 return;
             }
