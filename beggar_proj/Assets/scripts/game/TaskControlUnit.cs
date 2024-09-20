@@ -97,7 +97,7 @@ public class RTControlUnit
         FeedDescription(description, desc);
         var duration = Data.ConfigTask != null && Data.ConfigTask.Duration.HasValue ? Data.ConfigTask.Duration.Value : -1;
         DurationText.Visible = duration > 0;
-        DurationText.Element.rawText = $"{duration}s";
+        DurationText.Element.rawText = $"Duration: {duration}s";
         if (bwe != null)
         {
             bwe.ManualUpdate();
