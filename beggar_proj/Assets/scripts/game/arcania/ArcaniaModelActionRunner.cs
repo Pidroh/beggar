@@ -69,6 +69,9 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         {
             StartAction(data);
         }
+        else {
+            TaskInterruptedTrySwap(data);
+        }
     }
 
     public void ManualUpdate(float dt)
@@ -90,6 +93,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             if (!taskContinue)
             {
                 StopTask(run);
+                TaskInterruptedTrySwap(run);
                 continue;
             }
 
@@ -122,9 +126,13 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     private void StopTask(RuntimeUnit run)
     {
         RunningTasks.Remove(run);
-        if(run == _model.arcaniaUnits.RestActionActive)
-        { 
-            
+    }
+
+    private void TaskInterruptedTrySwap(RuntimeUnit run)
+    {
+        if (run == _model.arcaniaUnits.RestActionActive)
+        {
+
         }
         else
         {
