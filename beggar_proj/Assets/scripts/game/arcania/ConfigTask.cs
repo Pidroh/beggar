@@ -12,6 +12,7 @@ public class ConfigTask
 
     public bool Perpetual { get; internal set; }
     public int? Duration { get; internal set; } = null;
+    public string SlotKey { get; internal set; }
 
     internal List<ResourceChange> GetResourceChangeList(int i)
     {

@@ -8,6 +8,7 @@ public class ArcaniaUnits
 
     public List<ModRuntime> Mods { get; internal set; } = new();
     public List<ModRuntime> SpaceMods { get; internal set; } = new();
+    public RuntimeUnit RestActionActive { get; internal set; }
 
     internal IDPointer GetOrCreateIdPointer(string key)
     {

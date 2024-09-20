@@ -105,6 +105,7 @@
                 "name": "Rest",
                 "desc": "Take a break to recuperate and regain vitality",
                 "require": "supplication<3",
+                "slot": "rest",
                 "effect": {
                     "supplication": 1,
                     "foraging": 1

@@ -101,6 +101,10 @@ public class JsonReader
             if (type == UnitType.TASK)
             {
                 ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
+                if (ru.ConfigTask.SlotKey == "rest") 
+                {
+                    arcaniaUnits.RestActionActive = ru;
+                }
             }
             if (type == UnitType.CLASS)
             {
@@ -166,6 +170,7 @@ public class JsonReader
             if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
             if (pair.Key == "perpetual") explicitPerpetualDefinition = true;
             if (pair.Key == "duration") ct.Duration = pair.Value.AsInt;
+            if (pair.Key == "slot") ct.SlotKey = pair.Value.AsString;
         }
         if (!ct.Duration.HasValue)
         {
