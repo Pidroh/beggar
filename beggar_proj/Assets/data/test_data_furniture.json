@@ -11,6 +11,22 @@
         ]
     },
     {
+        "type": "TASK",
+        "items":[
+            {
+                "id": "beg_a",
+                "name": "Beg for crumbs",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "duration": 5,
+                "max": 3,
+                "locked": false,
+                "result":{
+                    "supplication": 100
+                }
+            }
+        ]
+    },
+    {
         "type": "HOUSE",
         "items":[
             {
@@ -83,6 +99,7 @@
             {
                 "id": "task",
                 "unit_types": [
+                    "TASK",
                     "HOUSE",
                     "FURNITURE",
                     "SKILL"
@@ -94,6 +111,7 @@
                         "name": "Housing",
                         "show_space": true,
                         "unit_types": [
+                            "TASK",
                             "HOUSE",
                             "FURNITURE",
                             "SKILL"
