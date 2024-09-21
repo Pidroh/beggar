@@ -347,6 +347,8 @@ public class ButtonWithExpandable
 {
     public UIUnit MainButton;
     public ButtonWithProgressBar ButtonProgressBar;
+    private Color _originalColorButton;
+    private Color _selectedColorButton;
     private Color _originalColorProgress;
     private readonly Color _disabledColorProgress;
 
@@ -359,6 +361,14 @@ public class ButtonWithExpandable
     public bool Expanded => ExpandManager.Expanded;
 
     public bool MainButtonEnabled { get => MainButton.ButtonEnabled; internal set => SetMainButtonEnabled(value); }
+
+
+    internal void MainButtonSelected(bool selected)
+    {
+        MainButton.Image.color = selected ? _selectedColorButton : _originalColorButton;
+        if (!selected) return;
+
+    }
 
     private void SetMainButtonEnabled(bool value)
     {
@@ -373,6 +383,12 @@ public class ButtonWithExpandable
         ExpandManager = new(iconButton);
         MainButton = button.Button;
         ButtonProgressBar = button;
+        _originalColorButton = MainButton.Image.color;
+        var c = MainButton.Image.color;
+        c.r = Mathf.Min(1f, c.r * 1.3f);
+        c.g = Mathf.Min(1f, c.g * 1.3f);
+        c.b *= 0.9f;
+        _selectedColorButton = c;
         _originalColorProgress = ButtonProgressBar.ProgressImage.Image.color;
         _disabledColorProgress = new Color(_originalColorProgress.r * 0.7f, _originalColorProgress.g * 0.7f, _originalColorProgress.b * 0.7f, _originalColorProgress.a);
 
@@ -433,6 +449,7 @@ public class ButtonWithExpandable
     {
         this.LayoutChild.Visible = visible;
     }
+
 }
 
 

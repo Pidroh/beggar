@@ -185,16 +185,22 @@ public class MainGameControl : MonoBehaviour
                         case UnitType.RESOURCE:
                             break;
                         case UnitType.TASK:
-
-                        case UnitType.CLASS:
                             {
                                 tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-
+                                tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
                                 if (tcu.TaskClicked)
                                 {
                                     arcaniaModel.Runner.StartActionExternally(data);
                                 }
-
+                            }
+                            break;
+                        case UnitType.CLASS:
+                            {
+                                tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                                if (tcu.TaskClicked)
+                                {
+                                    arcaniaModel.Runner.StartActionExternally(data);
+                                }
                             }
                             break;
                         default:
