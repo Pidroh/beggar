@@ -72,7 +72,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         data.ChangeValue(1);
         _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
         StopTask(data);
-        if (data.ConfigTask.Perpetual)
+        if (data.ConfigTask.Perpetual && this.CanStartAction(data))
         {
             StartAction(data);
         }
