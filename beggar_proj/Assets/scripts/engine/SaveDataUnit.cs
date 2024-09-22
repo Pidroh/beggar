@@ -54,6 +54,7 @@ namespace HeartUnity
             System.IO.File.WriteAllText(mainSaveLocation, json);
         }
 
+
         public bool TryLoad(out T obj)
         {
             var location = mainSaveLocation;
