@@ -14,6 +14,23 @@ namespace HeartUnity
 
         public SaveDataUnit(string key, bool forcePlayerPrefs = false)
         {
+            var config = HeartGame.GetConfig();
+            if (config.PersistenceKeys != null && config.PersistenceKeys.Length > 0) 
+            {
+                var hasKey = false;
+                foreach (var item in config.PersistenceKeys)
+                {
+                    if (item == key) 
+                    {
+                        hasKey = true;
+                        break;
+                    }
+                }
+                if (!hasKey) 
+                {
+                    Debug.LogError($"Engine Error: Persistence key not found {key}");
+                }
+            }
 #if UNITY_WEBGL
             isWebGL = true;
 #endif

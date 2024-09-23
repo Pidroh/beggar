@@ -93,7 +93,7 @@ namespace HeartUnity
         public List<string> blacklistedLanguages;
         public View viewConfig;
         public InputPromptVisuals inputPromptVisuals;
-
+        public string[] PersistenceKeys;
 
         [Serializable]
         public class View
