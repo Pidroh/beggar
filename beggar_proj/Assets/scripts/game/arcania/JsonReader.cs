@@ -32,7 +32,8 @@ public class JsonReader
                 mod.Source.ConfigFurniture.SpaceConsumed = Mathf.FloorToInt(mod.Value);
                 continue;
             }
-            if (mod.Target == null) {
+            if (mod.Target == null)
+            {
                 Debug.Log($"No target for mod from {mod.Source.ConfigBasic.Id} {mod.ModType} {EnumHelper<ModType>.GetName(mod.ModType)}");
                 continue;
             }
@@ -42,7 +43,7 @@ public class JsonReader
                 mod.Source.ConfigHouse.AvailableSpace = Mathf.FloorToInt(mod.Value);
                 continue;
             }
-            
+
             if (mod.Target.Tag != null)
             {
                 foreach (var item in mod.Target.Tag.UnitsWithTag)
@@ -51,11 +52,11 @@ public class JsonReader
                 }
                 continue;
             }
-            if (mod.Target.RuntimeUnit == null) 
+            if (mod.Target.RuntimeUnit == null)
             {
                 Debug.Log($"Target not found {mod.Target.id}");
             }
-                
+
             mod.Target.RuntimeUnit.RegisterModTargetingSelf(mod);
         }
 
@@ -72,7 +73,7 @@ public class JsonReader
             var ru = new RuntimeUnit();
             ReadBasicUnit(ru, item, arcaniaUnits, type);
             arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
-            if(type == UnitType.TAB)
+            if (type == UnitType.TAB)
             {
                 var tr = new TabRuntime(ru);
                 List<UnitType> acceptedUnitTypes = ru.Tab.AcceptedUnitTypes;
@@ -81,27 +82,34 @@ public class JsonReader
                 foreach (var pair in item)
                 {
                     if (pair.Key == "contains_logs") tr.ContainsLogs = pair.Value.AsBool;
+                    if (pair.Key == "open_settings") tr.OpenSettings = pair.Value.AsBool;
                 }
-                var children = item.GetValueOrDefault("separator", null).AsArray.Children;
-                foreach (var c in children)
+
+                SimpleJSON.JSONNode separatorNode = item.GetValueOrDefault("separator", null);
+                if (separatorNode != null)
                 {
-                    var sep = new TabRuntime.Separator();
-                    ru.Tab.Separators.Add(sep);
-                    ReadUnitTypesToArray(c, sep.AcceptedUnitTypes, key);
-                    foreach (var pair in c)
+                    var children = separatorNode.AsArray.Children;
+                    foreach (var c in children)
                     {
-                        if (pair.Key == "name") sep.Name = pair.Value.AsString;
-                        if (pair.Key == "default") sep.Default = pair.Value.AsBool;
-                        if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
-                        if (pair.Key == "show_space") sep.ShowSpace = pair.Value.AsBool;
-                        if (pair.Key == "require_instant") sep.RequireInstant = pair.Value.AsBool;
+                        var sep = new TabRuntime.Separator();
+                        ru.Tab.Separators.Add(sep);
+                        ReadUnitTypesToArray(c, sep.AcceptedUnitTypes, key);
+                        foreach (var pair in c)
+                        {
+                            if (pair.Key == "name") sep.Name = pair.Value.AsString;
+                            if (pair.Key == "default") sep.Default = pair.Value.AsBool;
+                            if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
+                            if (pair.Key == "show_space") sep.ShowSpace = pair.Value.AsBool;
+                            if (pair.Key == "require_instant") sep.RequireInstant = pair.Value.AsBool;
+                        }
                     }
                 }
+
             }
             if (type == UnitType.TASK)
             {
                 ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
-                if (ru.ConfigTask.SlotKey == "rest") 
+                if (ru.ConfigTask.SlotKey == "rest")
                 {
                     arcaniaUnits.RestActionActive = ru;
                 }
@@ -132,7 +140,7 @@ public class JsonReader
                 {
                     ru.ConfigBasic.Max = -1;
                 }
-                else 
+                else
                 {
                     // any furniture which is NOT repeat and does not have an explicit max has a default value of 1
                     // this is different from tasks, which have a default value of -1 (no max)
@@ -214,7 +222,7 @@ public class JsonReader
             string target = null;
             string secondary = null;
             ResourceChangeType? changeType = null;
-            
+
             if (last == "space")
             {
                 modType = ModType.SpaceConsumption;
@@ -222,21 +230,22 @@ public class JsonReader
             else
             {
                 var oneBeforeLast = splittedValues[splittedValues.Length - 2];
-                
+
                 if (last == "max") modType = ModType.MaxChange;
                 if (last == "rate") modType = ModType.RateChange;
                 // if still undecided
                 if (modType == ModType.Invalid)
                 {
                     // TODO make this be an dictionary between string and ResourceChangeType, so you can handle every case without hard coding
-                    if (oneBeforeLast == "effect") {
+                    if (oneBeforeLast == "effect")
+                    {
                         target = last;
                         modType = ModType.ResourceChangeChanger;
                         changeType = ResourceChangeType.EFFECT;
                         secondary = splittedValues[splittedValues.Length - 3];
                     }
                 }
-                else 
+                else
                 {
                     target = oneBeforeLast;
                 }
@@ -244,7 +253,7 @@ public class JsonReader
             var mod = CreateMod(owner, arcaniaUnits, value, modType, target, secondaryId: secondary);
             mod.SourceJsonKey = pair.Key;
             mod.ResourceChangeType = changeType;
-            
+
         }
     }
 
@@ -280,13 +289,13 @@ public class JsonReader
             if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
-            if (pair.Key == "lock") 
+            if (pair.Key == "lock")
             {
                 CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.AsString, null);
             }
         }
         // default require for RESOURCE
-        if(ru.ConfigBasic.UnitType == UnitType.RESOURCE && ru.ConfigBasic.Require == null) 
+        if (ru.ConfigBasic.UnitType == UnitType.RESOURCE && ru.ConfigBasic.Require == null)
         {
             ru.ConfigBasic.Require = ConditionalExpressionParser.Parse($"{ru.ConfigBasic.Id}>0", arcaniaUnits);
         }
@@ -295,7 +304,7 @@ public class JsonReader
             tag.Tag.UnitsWithTag.Add(ru);
         }
         bu.name = bu.name == null ? char.ToUpper(id[0]) + id.Substring(1) : bu.name;
-        
+
         return bu;
     }
 
@@ -310,11 +319,12 @@ public class JsonReader
                 tags.Add(data.GetOrCreateIdPointerWithTag(t));
             }
         }
-        else {
+        else
+        {
             // if no commas, that means it's a single tag that can be added directly
             tags.Add(data.GetOrCreateIdPointerWithTag(v));
         }
-        
+
     }
 }
 
@@ -338,7 +348,7 @@ public enum UnitType
 public enum ModType
 {
     Invalid,
-    MaxChange, 
+    MaxChange,
     RateChange,
     SpaceConsumption,
     Lock,

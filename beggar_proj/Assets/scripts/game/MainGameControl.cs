@@ -108,7 +108,14 @@ public class MainGameControl : MonoBehaviour
 
             if (tabControl.SelectionButton.Button.Clicked)
             {
-                dynamicCanvas.ShowChild(tabIndex);
+                if (tabControl.TabData.Tab.OpenSettings)
+                {
+                    ReusableSettingMenu.GoToSettings();
+                }
+                else {
+                    dynamicCanvas.ShowChild(tabIndex);
+                }
+                
             }
             if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
             if (tabControl.TabData.Tab.ContainsLogs)

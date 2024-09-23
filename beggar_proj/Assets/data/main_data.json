@@ -591,9 +591,7 @@
                 "unit_types": [
                     "TASK",
                     "CLASS",
-                    "SKILL",
-                    "HOUSE",
-                    "FURNITURE"
+                    "SKILL"
                 ],
                 "icon" : "task",
                 "separator": [
@@ -634,15 +632,21 @@
                         "unit_types": [
                             "SKILL"
                         ]
-                    },
+                    }
+                ]
+            },
+            
+            {
+                "id": "resource",
+                "unit_types": [
+                    "RESOURCE"
+                ],
+                "icon" : "resource",
+                "separator": [
                     {
-                        "id": "housing",
-                        "name": "Housing",
-                        "show_space": true,
-                        "unit_types": [
-                            "HOUSE",
-                            "FURNITURE"
-                        ]
+                        "id": "resource",
+                        "name": "Resources",
+                        "default": true
                     }
                 ]
             },
@@ -671,20 +675,6 @@
                 ]
             },
             {
-                "id": "resource",
-                "unit_types": [
-                    "RESOURCE"
-                ],
-                "icon" : "resource",
-                "separator": [
-                    {
-                        "id": "resource",
-                        "name": "Resources",
-                        "default": true
-                    }
-                ]
-            },
-            {
                 "id": "log",
                 "unit_types": [
                 ],
@@ -697,6 +687,13 @@
                         "default": true
                     }
                 ]
+            },
+            {
+                "id": "settings",
+                "unit_types": [
+                ],
+                "icon" : "settings",
+                "open_settings": true
             }
         ]
     }
