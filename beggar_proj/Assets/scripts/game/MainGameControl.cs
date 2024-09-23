@@ -32,6 +32,7 @@ public class MainGameControl : MonoBehaviour
     public LayoutParent TabButtonLayout { get; internal set; }
 
     public RobustDeltaTime RobustDeltaTime = new();
+    public ArcaniaPersistence ArcaniaPersistence;
 
 
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class MainGameControl : MonoBehaviour
     {
         MainGameControlSetup.Setup(this);
         RobustDeltaTime = new();
+        ArcaniaPersistence = new();
     }
 
     // Update is called once per frame
@@ -110,6 +112,7 @@ public class MainGameControl : MonoBehaviour
             {
                 if (tabControl.TabData.Tab.OpenSettings)
                 {
+                    ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
                     ReusableSettingMenu.GoToSettings();
                 }
                 else {
