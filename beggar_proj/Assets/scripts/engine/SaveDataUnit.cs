@@ -6,6 +6,13 @@ using static HeartUnity.MainGameConfig;
 
 namespace HeartUnity
 {
+    public class SaveDataCenter 
+    {
+        public byte[] GenerateExportSave() 
+        { 
+
+        }
+    }
     public class SaveDataUnit<T>
     {
         private string mainSaveLocation;
