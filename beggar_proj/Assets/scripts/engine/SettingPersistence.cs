@@ -11,7 +11,8 @@ namespace HeartUnity
 
     public class SettingPersistence
     {
-        public SaveDataUnit<SettingPersistenceData> saveDataUnit = new("settings", true);
+        public const string Key = "settings";
+        public SaveDataUnit<SettingPersistenceData> saveDataUnit = new(Key);
 
         internal void LoadMethod(List<SettingUnitRealTime> unitControls)
         {

@@ -93,7 +93,7 @@ namespace HeartUnity
         public List<string> blacklistedLanguages;
         public View viewConfig;
         public InputPromptVisuals inputPromptVisuals;
-        public string[] PersistenceKeys;
+        public List<PersistenceUnit> PersistenceUnits;
 
         [Serializable]
         public class View
@@ -101,6 +101,13 @@ namespace HeartUnity
             public CursorView cursorView;
             public MouseAsSpriteInfo mouseAsSprite;
             public PostProcessingScale bloomConfig;
+        }
+
+        [Serializable]
+        public class PersistenceUnit 
+        {
+            public bool ForcePrefs;
+            public string Key;
         }
     }
 }

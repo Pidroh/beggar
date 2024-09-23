@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using static HeartUnity.MainGameConfig;
 //using UnityEngine.U2D;
 
 namespace HeartUnity
@@ -11,30 +13,45 @@ namespace HeartUnity
         public bool forcePlayerPrefs = false;
         public bool isWebGL = false;
         public bool IsPlayerPrefs => forcePlayerPrefs && isWebGL;
+        public static readonly List<PersistenceUnit> DefaultSaveDataUnits = new List<PersistenceUnit>() {
+            new PersistenceUnit()
+            {
+                Key = SettingPersistence.Key,
+                ForcePrefs = true
+            }
+        };
 
-        public SaveDataUnit(string key, bool forcePlayerPrefs = false)
+        public SaveDataUnit(string key)
         {
             var config = HeartGame.GetConfig();
-            if (config.PersistenceKeys != null && config.PersistenceKeys.Length > 0) 
+            PersistenceUnit FindUnit(List<PersistenceUnit> persistenceUnits)
             {
-                var hasKey = false;
-                foreach (var item in config.PersistenceKeys)
+                if (persistenceUnits != null && persistenceUnits.Count > 0)
                 {
-                    if (item == key) 
+                    foreach (var item in persistenceUnits)
                     {
-                        hasKey = true;
-                        break;
+                        if (item.Key == key)
+                        {
+                            return item;
+                        }
                     }
                 }
-                if (!hasKey) 
-                {
-                    Debug.LogError($"Engine Error: Persistence key not found {key}");
-                }
+                return null;
+            }
+            var unit = FindUnit(config.PersistenceUnits);
+            if (unit == null) unit = FindUnit(DefaultSaveDataUnits);
+            if (unit == null)
+            {
+                Debug.LogError($"Engine Error: Persistence key not found {key}");
+            }
+            else 
+            {
+                forcePlayerPrefs = unit.ForcePrefs;
             }
 #if UNITY_WEBGL
             isWebGL = true;
 #endif
-            this.forcePlayerPrefs = forcePlayerPrefs;
+
             var backupKey = key + "_backup";
             if (IsPlayerPrefs)
             {
@@ -44,6 +61,8 @@ namespace HeartUnity
             }
             mainSaveLocation = Application.persistentDataPath + "/" + key;
             backupSaveLocation = Application.persistentDataPath + "/" + backupKey;
+
+
         }
 
         public void Save(T obj)
