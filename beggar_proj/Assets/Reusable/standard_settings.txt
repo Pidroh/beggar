@@ -14,5 +14,7 @@ pp_vignette, Vignette, SWITCH, PP_VIGNETTE, true
 pp_bloom, Bloom, SLIDER, PP_BLOOM, 0.5
 show_credits, Show Credits, BUTTON, SHOW_CREDITS
 exitgame, Exit_game, BUTTON, EXIT_GAME
+exportsave, Export_save, BUTTON, EXPORT_SAVE
+importsave, Import_save, BUTTON, IMPORT_SAVE
 deletedata, Delete_data, BUTTON, DELETE_DATA
 closemenu, Close_menu, BUTTON, EXIT_MENU
