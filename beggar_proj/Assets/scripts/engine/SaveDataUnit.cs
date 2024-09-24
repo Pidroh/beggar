@@ -32,7 +32,18 @@ namespace HeartUnity
 
         internal static void ImportSave(List<string> names, List<string> content)
         {
-            
+            ProcessPersistenceUnitList(HeartGame.GetConfig().PersistenceUnits);
+            ProcessPersistenceUnitList(PersistentTextUnit.DefaultSaveDataUnits);
+            void ProcessPersistenceUnitList(List<PersistenceUnit> units)
+            {
+                foreach (var u in units)
+                {
+                    if (!names.Contains(u.Key)) continue;
+                    var index = names.IndexOf(u.Key);
+                    var ptu = new PersistentTextUnit(u.Key);
+                    ptu.Save(content[index]);
+                }
+            }
         }
     }
     public class SaveDataUnit<T>
