@@ -15,9 +15,9 @@ namespace HeartUnity
             var gameObjectForMessaging = new GameObject("FileUtilityMB");
             _monoBehaviour = gameObjectForMessaging.AddComponent<FileUtilitiesMonoBehavior>();
         }
-        public void ExportBytes(byte[] bytes, string suggestedFileName)
+        public void ExportBytes(byte[] bytes, string suggestedFileName, string extension)
         {
-            ExportBytesInternal(bytes, suggestedFileName);
+            ExportBytesInternal(bytes, suggestedFileName, extension);
         }
 #if UNITY_WEBGL && !UNITY_EDITOR
         //
@@ -27,13 +27,13 @@ namespace HeartUnity
         private static extern void DownloadFile(string gameObjectName, string methodName, string filename, byte[] byteArray, int byteArraySize);
 
         // Broser plugin should be called in OnPointerDown.
-        void ExportBytesInternal(byte[] bytes, string suggestedFile)
+        void ExportBytesInternal(byte[] bytes, string suggestedFile, string extension)
         {
-            DownloadFile(_monoBehaviour.gameObject.name, "OnFileDownload", suggestedFile, bytes, bytes.Length);
+            DownloadFile(_monoBehaviour.gameObject.name, "OnFileDownload", $"{suggestedFile}.{extension}", bytes, bytes.Length);
         }
 #else
 
-        void ExportBytesInternal(byte[] bytes, string suggestedFile)
+        void ExportBytesInternal(byte[] bytes, string suggestedFile, string extension)
         {
             var path = StandaloneFileBrowser.SaveFilePanel("Exporting file", "", suggestedFile, "hg");
             if (!string.IsNullOrEmpty(path))
