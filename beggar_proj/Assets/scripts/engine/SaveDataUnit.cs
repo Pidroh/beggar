@@ -8,7 +8,7 @@ namespace HeartUnity
 {
     public class SaveDataCenter
     {
-        public byte[] GenerateExportSave()
+        public static byte[] GenerateExportSave()
         {
             using var _1 = ListPool<string>.Get(out var listName);
             using var _2 = ListPool<string>.Get(out var listContent);

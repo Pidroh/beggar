@@ -98,7 +98,7 @@ namespace HeartUnity.View
             engineView.inputManager.RecordSceneLatestDevice();
             crossSceneData.settingSceneMode = SettingSceneMode.DIALOG;
             ReusableSettingMenu.crossSceneData.settingDialog = settingDialog;
-            
+
             SceneManager.LoadScene(SettingSceneName);
         }
 
@@ -189,7 +189,7 @@ namespace HeartUnity.View
 
         }
 
-        private void ShowCreditsMode() 
+        private void ShowCreditsMode()
         {
             var config = HeartGame.GetConfig();
             {
@@ -211,7 +211,7 @@ namespace HeartUnity.View
                     RequestReturn();
                 });
             }
-            
+
         }
 
         private void LanguageSelecMode()
@@ -398,10 +398,13 @@ namespace HeartUnity.View
                     RequestReturn();
                     break;
                 case SettingUnitData.StandardSettingType.EXPORT_SAVE:
+                    {
+                        var bytes = SaveDataCenter.GenerateExportSave();
 
+                    }
                     break;
                 case SettingUnitData.StandardSettingType.DELETE_DATA:
-                    
+
                     GoToDialog(new SettingDialog()
                     {
                         id = DIALOG_ID_DELETE_DATA,
