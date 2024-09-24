@@ -1,4 +1,5 @@
 ﻿using SFB;
+using System.Collections;
 using System.IO;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace HeartUnity
     public class FileUtilities
     {
         private FileUtilitiesMonoBehavior _monoBehaviour;
+        public byte[] UploadedBytes => _monoBehaviour.UploadedBytes;
 
         public FileUtilities()
         {
@@ -19,6 +21,12 @@ namespace HeartUnity
         {
             ExportBytesInternal(bytes, suggestedFileName, extension);
         }
+
+        public void ImportFileRequest(string extension)
+        {
+            StartImportInternal("hg");
+        }
+
 #if UNITY_WEBGL && !UNITY_EDITOR
         //
         // WebGL
@@ -42,5 +50,29 @@ namespace HeartUnity
             }
         }
 #endif
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        //
+        // WebGL
+        //
+        [DllImport("__Internal")]
+        private static extern void UploadFile(string gameObjectName, string methodName, string filter, bool multiple);
+
+        private void StartImportInternal(string extension)
+        {
+            UploadFile(_monoBehaviour.gameObject.name, "OnFileUpload", extension, false);
+        }
+#else
+        private void StartImportInternal(string extension)
+        {
+            var paths = StandaloneFileBrowser.OpenFilePanel("Select file to import", "", extension, false);
+            if (paths.Length > 0)
+            {
+                _monoBehaviour.OnFileUpload(new System.Uri(paths[0]).AbsoluteUri);
+            }
+        }
+#endif
+
+
     }
 }

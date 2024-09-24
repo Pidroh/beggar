@@ -61,6 +61,7 @@ namespace HeartUnity.View
 
         };
         private List<ButtonBinding> bindings;
+        private bool _importingSave;
         private const string DIALOG_ID_DELETE_DATA = "dialog_id_delete_data";
         public const string SettingSceneName = "SettingsMenu";
 
@@ -340,6 +341,10 @@ namespace HeartUnity.View
             engineView.ManualUpdate();
             engineView.inputManager.UpdateWithButtonBindings(bindings);
             input.ManualUpdate();
+            if (_importingSave && _fileUtilities.UploadedBytes != null) 
+            {
+                ZipUtilities.ExtractZipBytesToVirtualFiles();
+            }
 
             foreach (var uu in unitUIs)
             {
@@ -403,6 +408,12 @@ namespace HeartUnity.View
                     {
                         var bytes = SaveDataCenter.GenerateExportSave();
                         _fileUtilities.ExportBytes(bytes, "savedata", "hg");
+                    }
+                    break;
+                case SettingUnitData.StandardSettingType.IMPORT_SAVE:
+                    {
+                        _fileUtilities.ImportFileRequest("hg");
+                        _importingSave = true;
                     }
                     break;
                 case SettingUnitData.StandardSettingType.DELETE_DATA:
