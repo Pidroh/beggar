@@ -5,6 +5,10 @@ namespace HeartUnity
 {
     public class FileUtilitiesMonoBehavior : MonoBehaviour 
     {
+        // Called from browser
+        public void OnFileDownload()
+        {
 
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace HeartUnity.View
         public ReusableMenuPrefabs reusablePrefabs;
         public SettingPersistence persistence;
         public static CrossSceneData crossSceneData;
+        private FileUtilities _fileUtilities;
         public SettingDialog settingDialog;
 
         internal void RequestReturn()
@@ -115,6 +116,7 @@ namespace HeartUnity.View
             settingDialog = crossSceneData.settingDialog;
             settingSceneMode = crossSceneData.settingSceneMode;
             crossSceneData = default;
+            _fileUtilities = new FileUtilities();
             switch (settingSceneMode)
             {
                 case SettingSceneMode.SETTINGS:
@@ -400,7 +402,7 @@ namespace HeartUnity.View
                 case SettingUnitData.StandardSettingType.EXPORT_SAVE:
                     {
                         var bytes = SaveDataCenter.GenerateExportSave();
-
+                        _fileUtilities.ExportBytes(bytes, "savedata.hg");
                     }
                     break;
                 case SettingUnitData.StandardSettingType.DELETE_DATA:
