@@ -283,12 +283,13 @@ namespace HeartUnity.View
                         button.UpdateUI();
                         var unitControl = uc;
                         settingUnitUI.button = buttonH;
-                        button.onClick.AddListener(() =>
+                        // has to be on cursor down for better compatibility
+                        // with WebGL Javascript functions
+                        // like save exporting
+                        buttonH.OnCursorDown.AddListener(() =>
                         {
                             ButtonPressed(unitControl);
-
                         });
-
                         break;
                     case SettingUnitData.SettingType.SLIDER:
                         var slider = Instantiate(reusablePrefabs.slider, reusableMenuCanvas.menuContent.transform);
@@ -395,6 +396,9 @@ namespace HeartUnity.View
                     break;
                 case SettingUnitData.StandardSettingType.EXIT_MENU:
                     RequestReturn();
+                    break;
+                case SettingUnitData.StandardSettingType.EXPORT_SAVE:
+
                     break;
                 case SettingUnitData.StandardSettingType.DELETE_DATA:
                     

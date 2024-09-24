@@ -27,3 +27,6 @@ MonoBehaviour:
       halfValue: 1.4
       maxValue: 8
   inputPromptVisuals: {fileID: 11400000, guid: 0575a08959876ee49a07d46e75b85a75, type: 2}
+  PersistenceUnits:
+  - ForcePrefs: 0
+    Key: maindata

@@ -210,6 +210,7 @@ namespace HeartUnity
 
         static public void PlaySFX(string v)
         {
+            if (audioList == null) return;
             var volume = AudioConfig.masterVolume * AudioConfig.sfxVolume;
             foreach (var ad in audioList.audioDatas)
             {

@@ -151,7 +151,8 @@ namespace HeartUnity
         {
             foreach (var uc in this.unitControls)
             {
-                if(uc.settingData.standardSettingType == setting){
+                if (uc.settingData.standardSettingType == setting)
+                {
                     uc.rtInt = data;
                     Enforce(uc);
                 }
@@ -174,10 +175,11 @@ namespace HeartUnity
 
         public void ManualUpdate(float dt)
         {
-            if (fullScreenChangeHot > 0) {
+            if (fullScreenChangeHot > 0)
+            {
                 fullScreenChangeHot -= dt;
             }
-            
+
         }
 
         internal bool CheckForDiscrepancies()
@@ -221,7 +223,9 @@ namespace HeartUnity
             public enum StandardSettingType
             {
                 FULLSCREEN, EXIT_GAME, EXIT_MENU, MASTER_VOLUME, MUSIC_VOLUME, SFX_VOLUME, VOICE_VOLUME,
-                LANGUAGE_SELECTION, DELETE_DATA, PP_COLOR_CORRECTION, PP_BLOOM, PP_TONE, PP_SCANLINE, PP_VIGNETTE, SHOW_CREDITS
+                LANGUAGE_SELECTION, DELETE_DATA, 
+                PP_COLOR_CORRECTION, PP_BLOOM, PP_TONE, PP_SCANLINE, PP_VIGNETTE,
+                SHOW_CREDITS, EXPORT_SAVE, IMPORT_SAVE
             }
 
             public enum SettingType
