@@ -349,6 +349,7 @@ namespace HeartUnity.View
                 using var _2 = ListPool<string>.Get(out var content);
                 ZipUtilities.ExtractZipFromBytes(_fileUtilities.UploadedBytes, names, content);
                 SaveDataCenter.ImportSave(names, content);
+                RequestReturn();
             }
 
             foreach (var uu in unitUIs)
