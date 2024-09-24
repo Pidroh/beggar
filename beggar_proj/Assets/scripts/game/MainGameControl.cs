@@ -41,6 +41,7 @@ public class MainGameControl : MonoBehaviour
         MainGameControlSetup.Setup(this);
         RobustDeltaTime = new();
         ArcaniaPersistence = new();
+        ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits);
     }
 
     // Update is called once per frame

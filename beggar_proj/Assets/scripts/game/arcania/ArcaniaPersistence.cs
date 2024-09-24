@@ -36,6 +36,30 @@ public class ArcaniaPersistence
         }
         saveUnit.Save(apd);
     }
+
+    internal void Load(ArcaniaUnits arcaniaUnits)
+    {
+        if (!saveUnit.TryLoad(out var persistence)) return;
+        foreach (var basic in persistence.Basics)
+        {
+            if (!arcaniaUnits.IdMapper.TryGetValue(basic.id, out var v)) continue;
+            v.RuntimeUnit._value = basic.value;
+            v.RuntimeUnit.RequireMet = basic.requireMet;
+        }
+        foreach (var task in persistence.Tasks)
+        {
+            if (!arcaniaUnits.IdMapper.TryGetValue(task.id, out var v)) continue;
+            if (v.RuntimeUnit.ConfigTask == null) continue;
+            v.RuntimeUnit.TaskProgress = task.TaskProgress;
+        }
+        foreach (var skill in persistence.Skills)
+        {
+            if (!arcaniaUnits.IdMapper.TryGetValue(skill.id, out var v)) continue;
+            if (v.RuntimeUnit.Skill == null) continue;
+            v.RuntimeUnit.Skill.xp = skill.xp;
+        }
+
+    }
 }
 
 [Serializable]

@@ -402,7 +402,7 @@ namespace HeartUnity.View
                 case SettingUnitData.StandardSettingType.EXPORT_SAVE:
                     {
                         var bytes = SaveDataCenter.GenerateExportSave();
-                        _fileUtilities.ExportBytes(bytes, "savedata");
+                        _fileUtilities.ExportBytes(bytes, "savedata", "hg");
                     }
                     break;
                 case SettingUnitData.StandardSettingType.DELETE_DATA:
