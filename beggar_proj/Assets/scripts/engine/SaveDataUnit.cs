@@ -29,6 +29,11 @@ namespace HeartUnity
             }
             return ZipUtilities.CreateZipBytesFromVirtualFiles(listName, listContent);
         }
+
+        internal static void ImportSave(List<string> names, List<string> content)
+        {
+            
+        }
     }
     public class SaveDataUnit<T>
     {

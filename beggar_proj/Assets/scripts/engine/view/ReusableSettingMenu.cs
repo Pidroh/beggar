@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using static HeartUnity.SettingModel;
 
@@ -343,7 +344,11 @@ namespace HeartUnity.View
             input.ManualUpdate();
             if (_importingSave && _fileUtilities.UploadedBytes != null) 
             {
-                ZipUtilities.ExtractZipBytesToVirtualFiles();
+                _importingSave = false;
+                using var _1 = ListPool<string>.Get(out var names);
+                using var _2 = ListPool<string>.Get(out var content);
+                ZipUtilities.ExtractZipFromBytes(_fileUtilities.UploadedBytes, names, content);
+                SaveDataCenter.ImportSave(names, content);
             }
 
             foreach (var uu in unitUIs)
