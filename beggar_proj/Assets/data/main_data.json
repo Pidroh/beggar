@@ -387,6 +387,60 @@
                     "thoughts.max": 10,
                     "sadness.max": 10
                 }
+            },
+            {
+                "id" : "churchbeggar",
+                "name": "Alms Collector",
+                "desc" : "Thrives on the mercy of the church, turning hardship into resilience and blending into the sacred for refuge.",
+                "tags": "t_tier0",
+                "lock": "t_tier0",
+                "require": "",
+                "cost": {
+                    "thoughts": 5,
+                    "supplication": 40,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "thoughts.max": 10,
+                    "sadness.max": 10
+                }
+            },
+            {
+                "id" : "ratbeggar",
+                "name": "Rat Whisperer",
+                "desc" : "Each rat is a loyal companion, bringing warmth in the cold streets.",
+                "tags": "t_tier0",
+                "lock": "t_tier0",
+                "require": "",
+                "cost": {
+                    "thoughts": 5,
+                    "supplication": 40,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "thoughts.max": 10,
+                    "sadness.max": 10
+                }
+            },
+            {
+                "id" : "breadsnatcher",
+                "name": "Bread Snatcher",
+                "desc" : "BREAD SNATCHER DESCRIPTION",
+                "tags": "t_tier0",
+                "lock": "t_tier0",
+                "require": "",
+                "cost": {
+                    "thoughts": 5,
+                    "supplication": 40,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "thoughts.max": 10,
+                    "sadness.max": 10
+                }
             }
         ]
     },
