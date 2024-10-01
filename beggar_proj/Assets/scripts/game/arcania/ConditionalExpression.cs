@@ -81,6 +81,7 @@ namespace arcania
 
         public static ConditionalExpression Parse(string input, ArcaniaUnits arcaniaUnits)
         {
+            if (string.IsNullOrWhiteSpace(input)) return null;
             var tokens = Tokenize(input);
             ConditionalExpressionData conditionalExpressionData = ParseExpression(tokens, arcaniaUnits);
             return new ConditionalExpression() {
