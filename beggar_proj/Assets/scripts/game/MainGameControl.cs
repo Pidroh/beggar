@@ -116,7 +116,7 @@ public class MainGameControl : MonoBehaviour
                 sep.SpaceAmountText.text.SetFontSizePhysical(18);
                 sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
             }
-
+            tabControl.SelectionButton.Visible = tabControl.TabData.Visible;
             if (tabControl.SelectionButton.Button.Clicked)
             {
                 if (tabControl.TabData.Tab.OpenSettings)

@@ -709,6 +709,7 @@
                 "unit_types": [
                     "HOUSE", "FURNITURE"
                 ],
+                "require": "t_job",
                 "icon" : "housing",
                 "separator": [
                     {

@@ -107,6 +107,7 @@ public class ButtonWithProgressBar
 
     public int HeightMms { get; internal set; }
     public int DefaultFontSize { get; internal set; }
+    public bool Visible { get => Button.Active; set => Button.Active = value; }
 
     internal void SetProgress(float v)
     {
