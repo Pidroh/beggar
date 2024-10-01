@@ -33,11 +33,13 @@ public class MainGameControl : MonoBehaviour
 
     public RobustDeltaTime RobustDeltaTime = new();
     public ArcaniaPersistence ArcaniaPersistence;
+    public float lastSaveTime;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        lastSaveTime = Time.unscaledTime;
         MainGameControlSetup.Setup(this);
         RobustDeltaTime = new();
         ArcaniaPersistence = new();
@@ -49,6 +51,12 @@ public class MainGameControl : MonoBehaviour
     {
         EngineView.ManualUpdate();
         PlayTimeControl.Update();
+        const int SAVE_COOLDOWN = 30;
+        if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN) 
+        {
+            lastSaveTime = Time.unscaledTime;
+            ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
+        }
         {
             if (DebugMenuManager.CheckCommand("speed", out int v))
             {
