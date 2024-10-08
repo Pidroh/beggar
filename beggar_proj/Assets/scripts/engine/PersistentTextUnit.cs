@@ -70,7 +70,7 @@ namespace HeartUnity
                 backupSaveLocation = backupKey;
                 return;
             }
-#if UNITY_STANDALONE_WINDOWS
+#if !UNITY_SWITCH
             mainSaveLocation = Application.persistentDataPath + "/" + key;
             backupSaveLocation = Application.persistentDataPath + "/" + backupKey;
 #endif
