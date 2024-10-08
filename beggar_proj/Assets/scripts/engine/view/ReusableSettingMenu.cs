@@ -276,10 +276,12 @@ namespace HeartUnity.View
 
         private void SettingMode()
         {
-            var credits = HeartGame.GetConfig().Credits;
+            MainGameConfig mainGameConfig = HeartGame.GetConfig();
+            var credits = mainGameConfig.Credits;
             foreach (var uc in model.unitControls)
             {
                 var disableExitButton = Application.platform == RuntimePlatform.Switch || Application.platform == RuntimePlatform.WebGLPlayer;
+                if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.LANGUAGE_SELECTION && Local.Instance.languages.Count <= 1) continue;
                 if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.SHOW_CREDITS && credits == null) continue;
                 if (disableExitButton && uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.EXIT_GAME) continue;
                 var settingUnitUI = new SettingUnitUI();
