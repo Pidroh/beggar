@@ -12,6 +12,8 @@ namespace HeartUnity
         private static CrossSceneData crossSceneDataStatic;
         public CrossSceneData crossSceneData;
 
+        public static bool MousePlatform => !Application.isConsolePlatform && Application.isMobilePlatform;
+
         public static HeartGame Init()
         {
             var config = GetConfig();

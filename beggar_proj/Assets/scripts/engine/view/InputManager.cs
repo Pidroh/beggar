@@ -110,6 +110,9 @@ namespace HeartUnity.View
 
         private GamepadType GetGamepadType()
         {
+#if UNITY_SWITCH
+            return GamepadType.SWITCH;
+#endif
             if (Gamepad.current == null)
             {
                 return GamepadType.XBOX;
@@ -274,8 +277,14 @@ namespace HeartUnity.View
             buttonBindings.Add(new ButtonBinding(HeartKeys.KEY_ENTER, DefaultButtons.CONFIRM));
             buttonBindings.Add(new ButtonBinding(HeartKeys.KEY_SPACE, DefaultButtons.CONFIRM));
             buttonBindings.Add(new ButtonBinding(HeartKeys.JOY_BUTTON_START, DefaultButtons.START));
+#if PLATFORM_SWITCH
+            buttonBindings.Add(new ButtonBinding(HeartKeys.JOY_BUTTON_EAST, DefaultButtons.CONFIRM));
+            buttonBindings.Add(new ButtonBinding(HeartKeys.JOY_BUTTON_SOUTH, DefaultButtons.CANCEL));
+#else
             buttonBindings.Add(new ButtonBinding(HeartKeys.JOY_BUTTON_SOUTH, DefaultButtons.CONFIRM));
             buttonBindings.Add(new ButtonBinding(HeartKeys.JOY_BUTTON_EAST, DefaultButtons.CANCEL));
+#endif
+
             buttonBindings.Add(new ButtonBinding(HeartKeys.KEY_ESCAPE, DefaultButtons.CANCEL));
             buttonBindings.Add(new ButtonBinding(HeartKeys.JOY_BUTTON_L2, DefaultButtons.LEFT_TRIGGER_2));
             buttonBindings.Add(new ButtonBinding(HeartKeys.JOY_BUTTON_L, DefaultButtons.LEFT_TRIGGER));

@@ -1,4 +1,6 @@
-﻿using SFB;
+﻿
+#if !UNITY_SWITCH
+using SFB;
 using System.Collections;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -76,3 +78,4 @@ namespace HeartUnity
 
     }
 }
+#endif

@@ -10,14 +10,15 @@ namespace HeartUnity
     {
         internal string mainSaveLocation;
         internal string backupSaveLocation;
+        private bool _isSwitch;
         public bool forcePlayerPrefs = false;
         public bool isWebGL = false;
-        public bool IsPlayerPrefs => forcePlayerPrefs && isWebGL;
+        public bool IsPlayerPrefs => forcePlayerPrefs || _isSwitch;
         public static readonly List<PersistenceUnit> DefaultSaveDataUnits = new List<PersistenceUnit>() {
             new PersistenceUnit()
             {
                 Key = SettingPersistence.Key,
-                ForcePrefs = true
+                ForcePrefs = false
             }
         };
 
@@ -56,7 +57,11 @@ namespace HeartUnity
 #if UNITY_WEBGL
             isWebGL = true;
 #endif
+#if UNITY_SWITCH
+            _isSwitch = true;
+#endif
             forcePlayerPrefs = unit.ForcePrefs;
+
             var key = unit.Key;
             var backupKey = key + "_backup";
             if (IsPlayerPrefs)
@@ -65,8 +70,10 @@ namespace HeartUnity
                 backupSaveLocation = backupKey;
                 return;
             }
+#if UNITY_STANDALONE_WINDOWS
             mainSaveLocation = Application.persistentDataPath + "/" + key;
             backupSaveLocation = Application.persistentDataPath + "/" + backupKey;
+#endif
         }
         internal bool TryLoad(string location, out string jsonData)
         {

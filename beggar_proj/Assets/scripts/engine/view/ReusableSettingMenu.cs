@@ -1,9 +1,7 @@
 ﻿//using UnityEngine.U2D;
 
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using static HeartUnity.SettingModel;
 
@@ -18,7 +16,9 @@ namespace HeartUnity.View
         public ReusableMenuPrefabs reusablePrefabs;
         public SettingPersistence persistence;
         public static CrossSceneData crossSceneData;
+#if !PLATFORM_SWITCH
         private FileUtilities _fileUtilities;
+#endif
         public SettingDialog settingDialog;
 
         internal void RequestReturn()
@@ -118,7 +118,9 @@ namespace HeartUnity.View
             settingDialog = crossSceneData.settingDialog;
             settingSceneMode = crossSceneData.settingSceneMode;
             crossSceneData = default;
+#if !UNITY_SWITCH
             _fileUtilities = new FileUtilities();
+#endif
             switch (settingSceneMode)
             {
                 case SettingSceneMode.SETTINGS:
@@ -172,6 +174,7 @@ namespace HeartUnity.View
                 case ReusableSettingMenu.DIALOG_ID_DELETE_DATA:
 #if UNITY_WEBGL
 #else
+#if !UNITY_SWITCH
                     string dataPath = Application.persistentDataPath;
                     string[] files = Directory.GetFiles(dataPath);
                     foreach (string file in files)
@@ -182,9 +185,10 @@ namespace HeartUnity.View
                         }
                         catch (System.Exception){}
                     }
+                    
+#endif
 #endif
                     PlayerPrefs.DeleteAll();
-
                     break;
                 default:
                     break;
@@ -274,7 +278,9 @@ namespace HeartUnity.View
             var credits = HeartGame.GetConfig().Credits;
             foreach (var uc in model.unitControls)
             {
+                var disableExitButton = Application.platform == RuntimePlatform.Switch || Application.platform == RuntimePlatform.WebGLPlayer;
                 if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.SHOW_CREDITS && credits == null) continue;
+                if (disableExitButton && uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.EXIT_GAME) continue;
                 var settingUnitUI = new SettingUnitUI();
                 unitUIs.Add(settingUnitUI);
                 settingUnitUI.settingRT = uc;
@@ -342,7 +348,8 @@ namespace HeartUnity.View
             engineView.ManualUpdate();
             engineView.inputManager.UpdateWithButtonBindings(bindings);
             input.ManualUpdate();
-            if (_importingSave && _fileUtilities.UploadedBytes != null) 
+#if !PLATFORM_SWITCH
+            if (_importingSave && _fileUtilities.UploadedBytes != null)
             {
                 _importingSave = false;
                 using var _1 = ListPool<string>.Get(out var names);
@@ -351,6 +358,7 @@ namespace HeartUnity.View
                 SaveDataCenter.ImportSave(names, content);
                 RequestReturn();
             }
+#endif
 
             foreach (var uu in unitUIs)
             {
@@ -405,11 +413,17 @@ namespace HeartUnity.View
             {
 
                 case SettingUnitData.StandardSettingType.EXIT_GAME:
+#if PLATFORM_SWITCH
+                    // SWITCH should have no EXIT_GAME
+                    // new NintendoSwitchSaveLoad().Init().Save();
+#else
                     Application.Quit();
+#endif
                     break;
                 case SettingUnitData.StandardSettingType.EXIT_MENU:
                     RequestReturn();
                     break;
+#if !PLATFORM_SWITCH
                 case SettingUnitData.StandardSettingType.EXPORT_SAVE:
                     {
                         var bytes = SaveDataCenter.GenerateExportSave();
@@ -422,6 +436,7 @@ namespace HeartUnity.View
                         _importingSave = true;
                     }
                     break;
+#endif
                 case SettingUnitData.StandardSettingType.DELETE_DATA:
 
                     GoToDialog(new SettingDialog()

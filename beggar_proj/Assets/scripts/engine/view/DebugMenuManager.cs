@@ -1,14 +1,21 @@
 ﻿//using UnityEngine.U2D;
 
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace HeartUnity.View
 {
     public class DebugMenuManager
     {
         private DebugMenu debugMenu;
+        public List<DebugCommandGamepad> gamepadCommands = new();
+        public enum DebugCommandGamepad 
+        {
+            NORTH, SOUTH, WEST
+        }
 
         public void InitDebugMenu()
         {
@@ -21,16 +28,73 @@ namespace HeartUnity.View
         }
         public void ManualUpdate()
         {
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+            if (debugMenu != null && debugMenu.IsShowing && Gamepad.current != null)
+            {
+                var lengthPrevious = gamepadCommands.Count;
+                if (Gamepad.current.buttonSouth.wasPressedThisFrame) 
+                {
+                    gamepadCommands.Add(DebugCommandGamepad.SOUTH);
+                    debugMenu.mainDebugField.text += "s";
+                }
+                if (Gamepad.current.buttonWest.wasPressedThisFrame)
+                {
+                    gamepadCommands.Add(DebugCommandGamepad.WEST);
+                    debugMenu.mainDebugField.text += "w";
+                }
+                if (Gamepad.current.buttonNorth.wasPressedThisFrame)
+                {
+                    gamepadCommands.Add(DebugCommandGamepad.NORTH);
+                    debugMenu.mainDebugField.text += "n";
+                }
+                if (lengthPrevious != gamepadCommands.Count && gamepadCommands.Count >= 3) 
+                {
+                    debugMenu.currentDebugMessage = "";
+                    for (int i = 0; i < 3; i++)
+                    {
+                        switch (gamepadCommands[i])
+                        {
+                            case DebugCommandGamepad.NORTH:
+                                debugMenu.currentDebugMessage += "n";
+                                break;
+                            case DebugCommandGamepad.SOUTH:
+                                debugMenu.currentDebugMessage += "s";
+                                break;
+                            case DebugCommandGamepad.WEST:
+                                debugMenu.currentDebugMessage += "w";
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    gamepadCommands.Clear();
+                    debugMenu.mainDebugField.text = "";
+
+
+                }
+            }
+            
+            if (Gamepad.current != null && Gamepad.current.leftTrigger.IsPressed() && Gamepad.current.rightTrigger.IsPressed() && Gamepad.current.buttonSouth.wasPressedThisFrame) 
+            {
+                InitDebugMenu();
+                debugMenu.Show(true);
+                gamepadCommands.Clear();
+            }
+            
+#endif
             if (Input.GetKey(KeyCode.P) && Input.GetKey(KeyCode.O) && Input.GetKeyDown(KeyCode.J))
             {
                 InitDebugMenu();
                 debugMenu.Show(true);
+                gamepadCommands.Clear();
             }
             if (debugMenu != null && debugMenu.IsShowing)
             {
-                if (Input.GetKey(KeyCode.Escape))
+                var leavingGamepad = Gamepad.current == null ? false : Gamepad.current.buttonEast.wasPressedThisFrame;
+                if (Input.GetKey(KeyCode.Escape) || leavingGamepad)
                 {
                     debugMenu.Show(false);
+                    gamepadCommands.Clear();
                 }
             }
         }
@@ -40,7 +104,9 @@ namespace HeartUnity.View
         public static bool CheckCommand(string v)
         {
             if (!CheckValid()) return false;
-            return Instance.debugMenu.currentDebugMessage.Trim() == v;
+            bool result = Instance.debugMenu.currentDebugMessage.Trim() == v;
+            if (result) Instance.debugMenu.currentDebugMessage = null;
+            return result;
             //return Instance.debugMenu.currentDebugMessage.IndexOf(v.Trim()) == 0;
         }
 
@@ -50,6 +116,7 @@ namespace HeartUnity.View
             if (!CheckValid()) return false;
             if (Instance.debugMenu.currentDebugMessage.Contains(v) && Instance.debugMenu.currentDebugMessage.Length > v.Length) {
                 number = int.Parse(Instance.debugMenu.currentDebugMessage.Replace(v, "").Trim());
+                Instance.debugMenu.currentDebugMessage = null;
                 return true;
             }
             return false;
@@ -67,6 +134,7 @@ namespace HeartUnity.View
                 {
                     label = parts[1].Trim();
                     number = int.Parse(parts[2].Trim());
+                    Instance.debugMenu.currentDebugMessage = null;
                     return true;
                 }
             }
