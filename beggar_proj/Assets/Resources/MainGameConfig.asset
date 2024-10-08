@@ -15,7 +15,7 @@ MonoBehaviour:
   musicList: {fileID: -1364661469213232964, guid: 9f9856be5965df645a15af0a23e0dc85, type: 3}
   audioList: {fileID: -3544310644606591711, guid: 9f9856be5965df645a15af0a23e0dc85, type: 3}
   voiceLists: []
-  SettingData: {fileID: 4900000, guid: 43c94ba5707144d469075b55ef4b6a8f, type: 3}
+  SettingData: {fileID: 4900000, guid: 9cb5aa34b39063045a960350fb3cb469, type: 3}
   Credits: {fileID: 4900000, guid: ba89728bcdd97b042bda9ae5473d0516, type: 3}
   localizationData: {fileID: 4900000, guid: 48b59a9302249344b935fa641e348e1b, type: 3}
   blacklistedLanguages: []
