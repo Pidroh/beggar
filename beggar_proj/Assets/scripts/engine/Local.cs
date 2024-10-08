@@ -41,10 +41,12 @@ namespace HeartUnity
             int count = -1;
             foreach (var lang in languages)
             {
-                if (count == -1) {
+                if (count == -1)
+                {
                     count = lang.textSet.Count;
                 }
-                if (count != lang.textSet.Count) {
+                if (count != lang.textSet.Count)
+                {
                     Debug.LogError("ERROR: localization data missing entries");
                 }
             }
@@ -102,12 +104,14 @@ namespace HeartUnity
 
             void ProcessLineElements(string[] lineEles, int key, int desc)
             {
-                if (key < 0 || lineEles[key] == null) {
+                if (key < 0 || lineEles[key] == null)
+                {
                     Debug.LogError("something is wrong");
                 }
                 var keyEle = lineEles[key].Trim();
                 if (replaceSpaceWithUnderscoreInKey) keyEle = keyEle.Replace(' ', '_');
-                if (firstLanguageAddition) {
+                if (firstLanguageAddition)
+                {
                     keys.Add(keyEle);
                     if (desc >= 0)
                         descriptions.Add(lineEles[desc]);
@@ -118,7 +122,8 @@ namespace HeartUnity
                     var le = lineEles[i].Trim();
                     foreach (var lang in languages)
                     {
-                        if (lang.languageName == headers[i]) {
+                        if (lang.languageName == headers[i])
+                        {
                             lang.textSet[keyEle] = le;
                         }
                     }
@@ -132,7 +137,8 @@ namespace HeartUnity
             for (int i = 0; i < Instance.languages.Count; i++)
             {
                 LanguageSet lang = Instance.languages[i];
-                if (lang.languageName == languageName) {
+                if (lang.languageName == languageName)
+                {
                     ChangeLanguage(i);
                     return;
                 }
@@ -152,26 +158,26 @@ namespace HeartUnity
 
         public string GetTextInstance(string key)
         {
-            var lang = Lang;
-            if(key.Contains(' ')){
+
+            if (key.Contains(' '))
+            {
                 key = key.Replace(" ", "_");
             }
-            if (lang.textSet.TryGetValue(key, out string value))
-            {
-                if (value == "") {
-                    return "err_"+key;
-                }
-                return value;
-            }
-            else
+            if (languages.Count == 0 || !Lang.textSet.TryGetValue(key, out string value))
             {
                 return FallBack(key);
             }
+            if (value == "")
+            {
+                return "err_" + key;
+            }
+            return value;
         }
 
         private string FallBack(string key)
         {
             var value = key.Replace('_', ' '); //.Replace("\n", "<br>");
+            if (languages.Count == 0) return value;
             FirstLang.textSet[key] = value;
             foreach (var lang in languages)
             {

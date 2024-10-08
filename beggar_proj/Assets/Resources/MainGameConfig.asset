@@ -17,7 +17,7 @@ MonoBehaviour:
   voiceLists: []
   SettingData: {fileID: 4900000, guid: 9cb5aa34b39063045a960350fb3cb469, type: 3}
   Credits: {fileID: 4900000, guid: ba89728bcdd97b042bda9ae5473d0516, type: 3}
-  localizationData: {fileID: 4900000, guid: 48b59a9302249344b935fa641e348e1b, type: 3}
+  localizationData: {fileID: 0}
   blacklistedLanguages: []
   viewConfig:
     cursorView: {fileID: 5385982237560384326, guid: 57de3a742334c8040b74205a87dc2e1c, type: 3}
