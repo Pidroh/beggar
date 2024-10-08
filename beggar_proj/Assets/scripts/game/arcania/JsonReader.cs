@@ -72,7 +72,13 @@ public class JsonReader
         {
             var ru = new RuntimeUnit();
             ReadBasicUnit(ru, item, arcaniaUnits, type);
-            arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id).RuntimeUnit = ru;
+
+            IDPointer iDPointer = arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id);
+            if (iDPointer.RuntimeUnit != null) 
+            {
+                Debug.LogError($"Potential ID duplication: {iDPointer.id}");
+            }
+            iDPointer.RuntimeUnit = ru;
             if (type == UnitType.TAB)
             {
                 var tr = new TabRuntime(ru);

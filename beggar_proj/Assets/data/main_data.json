@@ -490,51 +490,6 @@
         ]
     },
     {
-        "type": "SKILL",
-        "items":[
-            {
-                "id": "introspection",
-                "require": "t_job",
-                "cost": {
-                    "thoughts": 5,
-                    "sadness": 5
-                },
-                "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
-                "mod": {
-                    "thoughts.max": 5,
-                    "sadness.max": 5,
-                    "supplication.max": 5
-                }
-            },
-            {
-                "id": "rodentology",
-                "name": "Ratkinship",
-                "desc": "If you want to understand men, study mice",
-                "require": "rats",
-                "cost": {
-                    "thoughts": 10
-                },
-                "mod": {
-                    "rats.max": 1,
-                    "thoughts.max": 1,
-                    "supplication.max": 2
-                }
-            },
-            {
-                "id": "scavenging",
-                "name": "Scavenging",
-                "desc": "Seek out and collect natural resources and useful items from the environment.",
-                "require": "introspection>1",
-                "cost": {
-                    "thoughts": 15
-                },
-                "mod": {
-                    "foraging.max": 1
-                }
-            }
-        ]
-    },
-    {
         "type": "FURNITURE",
         "items":[
             {
