@@ -189,6 +189,16 @@ namespace HeartUnity.View
             trans.localPosition = new Vector3(newPos + (trans.pivot.x * trans.rect.width), trans.localPosition.y, trans.localPosition.z);
         }
 
+        public static void SetLocalX(this RectTransform trans, float newPos)
+        {
+            trans.localPosition = new Vector3(newPos, trans.localPosition.y, trans.localPosition.z);
+        }
+
+        public static void SetLocalXY(this RectTransform trans, float newPosX, float newPosY)
+        {
+            trans.localPosition = new Vector3(newPosX, newPosY, trans.localPosition.z);
+        }
+
         public static void SetTopLeftLocalPosition(this RectTransform trans, Vector2 newPos)
         {
             trans.localPosition = new Vector3(newPos.x + (trans.pivot.x * trans.rect.width), newPos.y - ((1f - trans.pivot.y) * trans.rect.height), trans.localPosition.z);

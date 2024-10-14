@@ -13,7 +13,9 @@ namespace HeartUnity.View
 
         public static readonly string CST_DELETE_DATA_CONFIRMATION = "Permanently_delete_all_saved_data?";
         public static readonly string CST_CLOSE = "Close";
+        public static readonly string CST_START_GAME = "Start Game";
         public static readonly string CST_GO_WISHLIST = "Go wishlist";
+        public static readonly string CST_DISCORD_SERVER = "Discord Server";
 
         public static List<string> GetAllCSTs<T>()
         {
