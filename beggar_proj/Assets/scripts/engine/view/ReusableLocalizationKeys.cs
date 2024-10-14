@@ -11,11 +11,9 @@ namespace HeartUnity.View
         public static readonly string CST_YES = "Yes";
         public static readonly string CST_NO = "No";
 
-        public static readonly string[] allKeys = new string[] {
-            CST_YES, CST_NO
-        };
         public static readonly string CST_DELETE_DATA_CONFIRMATION = "Permanently_delete_all_saved_data?";
         public static readonly string CST_CLOSE = "Close";
+        public static readonly string CST_GO_WISHLIST = "Go wishlist";
 
         public static List<string> GetAllCSTs<T>()
         {
