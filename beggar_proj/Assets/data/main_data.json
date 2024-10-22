@@ -486,6 +486,19 @@
                 "mod": {
                     "foraging.max": 1
                 }
+            },
+            {
+                "id": "beggarhood",
+                "name": "Beggarhood",
+                "desc": "How good you are at mingling with fellow beggars",
+                "require": "tjob",
+                "cost": {
+                    "thoughts": 100
+                },
+                "mod": {
+                    "thoughts.max": 5,
+                    "supplication.max": 15
+                }
             }
         ]
     },
