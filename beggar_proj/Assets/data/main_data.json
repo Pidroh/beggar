@@ -64,6 +64,15 @@
                 }
             },
             {
+                "id": "gratitude",
+                "desc": "WIP",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 1,
+                    "thoughts.max": 1
+                }
+            },
+            {
                 "id": "rats",
                 "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
                 "max": 3,
@@ -109,6 +118,17 @@
                 "effect": {
                     "supplication": 1,
                     "foraging": 1
+                }
+            },
+            {
+                "id": "get_alms",
+                "name": "Wait for alms",
+                "desc": "Receive food from the church",
+                "require": "free_food_lead",
+                "duration": 5,
+                "result": {
+                    "breadcrumbs": 10,
+                    "gratitude": 1
                 }
             },
             {
@@ -326,6 +346,17 @@
                 },
                 "result": {
                     "sorrow": 1
+                }
+            },
+            {
+                "id": "free_food_lead",
+                "name": "Rumours about food",
+                "desc": "Your hear a group talking about a place to get food",
+                "locked": false,
+                "max": 1,
+                "cost":{
+                    "supplication": 10,
+                    "thoughts": 10
                 }
             },
             
