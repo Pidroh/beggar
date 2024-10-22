@@ -328,7 +328,7 @@
                 }
             },
             {
-                "id": "Lament",
+                "id": "lament",
                 "desc": "To find solace in sorrow, one must first embrace the depths of their own despair.",
                 "require": "thoughts>=2&&unlocksadness>0",
                 "duration": 4,
@@ -340,7 +340,8 @@
                 }
             },
             {
-                "id": "Shed tears",
+                "id": "shed_tears",
+                "name": "Shed tears",
                 "desc": "Let the sadness flow and transform",
                 "flavor": "Tears come from the heart and not from the brain",
                 "require": "introspection>0",
@@ -354,6 +355,37 @@
                 },
                 "result": {
                     "sorrow": 1
+                }
+            },
+            {
+                "id": "firstfaith",
+                "name": "Listen to the words",
+                "desc": "Open your ears for the people of the church",
+                "require": "gratitude>3",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "gratitude": 10,
+                    "thoughts": 10,
+                    "sadness": 5
+                },
+                "result": {
+                    "faith": 1
+                }
+            },
+            {
+                "id": "chargefaith",
+                "name": "Thank the alms",
+                "desc": "Show your gratitude about the help you receive",
+                "require": "firstfaith",
+                "duration": 5,
+                "cost": {
+                    "gratitude": 1,
+                    "thoughts": 1,
+                    "supplication": 10
+                },
+                "result": {
+                    "faith": 1
                 }
             },
             {
