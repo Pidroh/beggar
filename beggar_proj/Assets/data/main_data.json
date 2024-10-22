@@ -363,6 +363,7 @@
                 "name": "Listen to the words",
                 "desc": "Open your ears for the people of the church",
                 "require": "gratitude>3",
+                "need": "pray_tool",
                 "duration": 30,
                 "max": 1,
                 "cost": {
@@ -379,6 +380,7 @@
                 "name": "Thank the alms",
                 "desc": "Show your gratitude about the help you receive",
                 "require": "firstfaith",
+                "need": "pray_tool",
                 "duration": 5,
                 "cost": {
                     "gratitude": 1,
@@ -703,6 +705,25 @@
                     "thoughts": 30,
                     "gratitude": 3,
                     "foraging": 30
+                },
+                "mod": {
+                    "gratitude.max": 5,
+                    "faith.max": 5,
+                    "sadness.max": -3,
+                    "sorrow.max": -1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "oldrosario",
+                "name": "Old Rosario",
+                "desc": "An old rosario that is no longer needed",
+                "require": "faith>10&&churchbeggar",
+                "tag": "pray_tool",
+                "max": 1,
+                "cost": {
+                    "faith": 15,
+                    "gratitude": 10
                 },
                 "mod": {
                     "gratitude.max": 10,
