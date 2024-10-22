@@ -77,7 +77,8 @@
                 "desc": "WIP",
                 "max": 5,
                 "mod": {
-                    "supplication.max": 1
+                    "supplication.max": 1,
+                    "gratitude.max": 5
                 }
             },
             {
@@ -386,6 +387,23 @@
                 },
                 "result": {
                     "faith": 1
+                }
+            },
+            {
+                "id": "almsregular",
+                "name": "Alms regular",
+                "desc": "Create connections within the person who gives the alms",
+                "require": "churchbeggar",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "faith": 5,
+                    "supplication": 10
+                },
+                "mod": {
+                    "faith.max":5,
+                    "gratitude.max": 5,
+                    "breadcrumbs.rate": 0.1
                 }
             },
             {
