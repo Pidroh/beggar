@@ -587,7 +587,7 @@
             {
                 "id": "mothblanket",
                 "name": "Moth-eaten blanket",
-                "require": "scavenging>0",
+                "require": "scavenging>1",
                 "max": 1,
                 "cost": {
                     "foraging": 3
@@ -617,7 +617,7 @@
             {
                 "id": "destroyedpainting",
                 "name": "Destroyed painting",
-                "require": "scavenging>0",
+                "require": "scavenging>2",
                 "cost": {
                     "foraging": 3
                 },
@@ -639,6 +639,26 @@
                 },
                 "mod": {
                     "rats.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "brokenrosario",
+                "name": "Broken Rosario",
+                "desc": "An old, broken necklace with beads. Attached to it is something that was once a cross.",
+                "require": "gratitude>4&&scavenging>2",
+                "tag": "pray_tool",
+                "max": 1,
+                "cost": {
+                    "thoughts": 30,
+                    "gratitude": 3,
+                    "foraging": 30
+                },
+                "mod": {
+                    "gratitude.max": 10,
+                    "faith.max": 10,
+                    "sadness.max": -5,
+                    "sorrow.max": -3,
                     "space": 1
                 }
             }
