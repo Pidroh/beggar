@@ -376,6 +376,16 @@
                 }
             },
             {
+                "id": "cunningthoughts",
+                "name": "Cunning thoughts",
+                "desc": "An unsettling rush of sharp, clever ideas, emerging with a newfound edge.",
+                "require": "gutterborn&introspection>2",
+                "max": 1,
+                "cost": {
+                    "thoughts": 15
+                }
+            },
+            {
                 "id": "chargefaith",
                 "name": "Thank the alms",
                 "desc": "Show your gratitude about the help you receive",
@@ -590,6 +600,19 @@
                 "mod": {
                     "thoughts.max": 5,
                     "supplication.max": 15
+                }
+            },
+            {
+                "id": "cunning",
+                "name": "Cunning",
+                "desc": "Behind a charming facade, shadows plot in silence.",
+                "require": "cunningthoughts",
+                "cost": {
+                    "thoughts": 100
+                },
+                "mod": {
+                    "thoughts.max": 3,
+                    "guilty.max": 1
                 }
             }
         ]
