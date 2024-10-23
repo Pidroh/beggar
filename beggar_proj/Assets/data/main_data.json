@@ -141,6 +141,19 @@
                 }
             },
             {
+                "id": "stealbread",
+                "name": "Steal breadcrumbs",
+                "desc": "Casually pilfer scraps from unsuspecting neighbors",
+                "require": "cunning>0",
+                "duration": 3,
+                "result": {
+                    "breadcrumbs": 10,
+                    "guilty": 1,
+                    "faith": -1,
+                    "gratitude": -1
+                }
+            },
+            {
                 "id": "eatcrumbs",
                 "name": "Eat old crumbs",
                 "desc": "It tastes really bad, unless you're really, really hungry",
@@ -372,7 +385,8 @@
                     "sadness": 5
                 },
                 "result": {
-                    "faith": 1
+                    "faith": 1,
+                    "guilt": -1
                 }
             },
             {
