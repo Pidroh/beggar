@@ -78,8 +78,13 @@
                 "max": 5,
                 "mod": {
                     "supplication.max": 1,
-                    "gratitude.max": 5
+                    "gratitude.max": 3
                 }
+            },
+            {
+                "id": "guilt",
+                "desc": "A lingering whisper of choices past.",
+                "max": 5
             },
             {
                 "id": "rats",
