@@ -532,16 +532,16 @@
                 "desc" : "Each rat is a loyal companion, bringing warmth in the cold streets.",
                 "tags": "t_tier0",
                 "lock": "t_tier0",
-                "require": "",
+                "require": "rodentology>=3",
+                "need": "rats>=5",
                 "cost": {
                     "thoughts": 5,
-                    "supplication": 40,
+                    "rats": 5,
                     "nutrition": 2
                 },
                 "mod": {
-                    "supplication.max": 10,
-                    "thoughts.max": 10,
-                    "sadness.max": 10
+                    "rodentology.max": 2,
+                    "rats.max": 3
                 }
             },
             {
