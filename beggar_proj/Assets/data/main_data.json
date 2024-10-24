@@ -398,7 +398,7 @@
                 "id": "cunningthoughts",
                 "name": "Cunning thoughts",
                 "desc": "An unsettling rush of sharp, clever ideas, emerging with a newfound edge.",
-                "require": "gutterborn&introspection>2",
+                "require": "gutterborn&&introspection>2",
                 "max": 1,
                 "cost": {
                     "thoughts": 15
@@ -517,7 +517,6 @@
                 "require": "faith>4",
                 "cost": {
                     "thoughts": 5,
-                    "supplication": 40,
                     "gratitude": 10,
                     "faith": 10,
                     "nutrition": 2
@@ -551,16 +550,14 @@
                 "desc" : "BREAD SNATCHER DESCRIPTION",
                 "tags": "t_tier0",
                 "lock": "t_tier0",
-                "require": "",
+                "require": "t_job&&cunning>1",
                 "cost": {
-                    "thoughts": 5,
-                    "supplication": 40,
+                    "thoughts": 15,
+                    "guilt": 10,
                     "nutrition": 2
                 },
                 "mod": {
-                    "supplication.max": 10,
-                    "thoughts.max": 10,
-                    "sadness.max": 10
+                    "cunning.max": 2
                 }
             }
         ]
