@@ -243,6 +243,28 @@ public class CanvasMaker
         return dc;
     }
 
+    public static DialogView CreateDialog(CreateObjectRequest dialogBody, CreateObjectRequest buttonObjReq, CreateButtonRequest buttonReq)
+    {
+        var overlay = CreateSimpleImage(dialogBody.SecondaryColor);
+        var bg = CreateSimpleImage(dialogBody.SecondaryColor);
+        bg.SetParent(overlay);
+        var yesB = CreateButton(ReusableLocalizationKeys.CST_YES, buttonObjReq, buttonReq);
+        var noB = CreateButton(ReusableLocalizationKeys.CST_NO, buttonObjReq, buttonReq);
+        yesB.Button.transform.SetParent(bg.transform);
+        noB.Button.transform.SetParent(bg.transform);
+        var dialogText = CreateTextUnit(buttonObjReq.MainColor, buttonObjReq.font, 18);
+        dialogText.SetParent(bg);
+        var dv = new DialogView() 
+        { 
+           dialogText = dialogText,
+           buttonConfirm = yesB,
+           buttonCancel = noB,
+           parentTransform = bg,
+           fullScreenOverlay = overlay
+        };
+        return dv;
+    }
+
     static LayoutParent CreateChild(GameObject parent, int index, ScrollStyle scrollStyle)
     {
         LayoutParent lp = null;

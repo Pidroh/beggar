@@ -19,6 +19,8 @@ public class MainGameControlSetup
         });
         mgc.EngineView.Init(2);
 
+        dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.ButtonObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
+
         // -------------------------------------------------
         // TAB BUTTON INSTANTIATING AND OTHER SMALL SETUP
         // -------------------------------------------------

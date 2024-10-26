@@ -314,6 +314,8 @@ namespace HeartUnity.View
             }
         }
 
+        
+
         private void UpdateFont()
         {
             if (fontGroup != null && Local.HasMoreThaOneLanguage && text != null)
@@ -390,6 +392,11 @@ namespace HeartUnity.View
         {
             transform.SetParent(parentRectTransform);
             return this;
+        }
+
+        public UIUnit SetParent(UIUnit parent)
+        {
+            return SetParent(parent.RectTransform);
         }
     }
 

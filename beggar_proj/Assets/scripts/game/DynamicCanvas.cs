@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using HeartUnity.View;
 
+public class DialogView
+{
+    public UIUnit dialogText;
+    public ButtonWithProgressBar buttonConfirm;
+    public ButtonWithProgressBar buttonCancel;
+    public UIUnit fullScreenOverlay;
+    public UIUnit parentTransform;
+
+    public bool IsVisible { get => fullScreenOverlay.Active; internal set => fullScreenOverlay.Active = value; }
+}
+
 public class DynamicCanvas
 {
-    
+
     public List<LayoutParent> children = new List<LayoutParent>();
     public List<LayoutParent> LowerMenus = new();
+    public List<DialogView> DialogViews = new();
     public Queue<LayoutParent> ActiveChildren = new();
     public GameObject canvasGO;
 
@@ -17,6 +29,16 @@ public class DynamicCanvas
     public bool OverlayVisible => OverlayRoot.gameObject.activeSelf;
     private const int minimumDefaultTabPixelWidth = 320;
     public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
+
+    internal void AddDialog(DialogView dialogView)
+    {
+        dialogView.fullScreenOverlay.SetParent(RootRT);
+        dialogView.fullScreenOverlay.RectTransform.FillParent();
+        dialogView.parentTransform.RectTransform.FillParent();
+        dialogView.parentTransform.RectTransform.SetOffsets(10);
+        dialogView.dialogText.FontSizePhysical = 18;
+        DialogViews.Add(dialogView);
+    }
 
     public LayoutParent CreateLowerMenuLayout(int height)
     {
@@ -30,13 +52,13 @@ public class DynamicCanvas
         return layoutParent;
     }
 
-    public int CalculateNumberOfVisibleHorizontalChildren() 
+    public int CalculateNumberOfVisibleHorizontalChildren()
     {
         var physicalTabPixelSize = Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
         return Mathf.Max(Mathf.FloorToInt(Screen.width / physicalTabPixelSize), 1);
     }
 
-    public void ShowChild(int childIndex) 
+    public void ShowChild(int childIndex)
     {
         ShowChild(children[childIndex]);
     }
@@ -45,20 +67,22 @@ public class DynamicCanvas
     {
         // Show/Hide children based on Canvas width
         int maxActiveChildrenCount = CalculateNumberOfVisibleHorizontalChildren();
-        while (maxActiveChildrenCount < ActiveChildren.Count) {
+        while (maxActiveChildrenCount < ActiveChildren.Count)
+        {
             ActiveChildren.Dequeue();
         }
 
         // Show EVERY children IF it can show every children AND not every children is shown
         // Once the need to unlock tabs appears (like a tab that only appears in the middle game),
         // this code will likely break (since even locked tabs will show)
-        if (maxActiveChildrenCount >= children.Count && ActiveChildren.Count < children.Count) {
+        if (maxActiveChildrenCount >= children.Count && ActiveChildren.Count < children.Count)
+        {
             foreach (var item in children)
             {
                 ShowChild(item);
             }
         }
-        
+
         if (maxActiveChildrenCount > 0)
         {
             int activeChildrenCount = ActiveChildren.Count;
@@ -108,6 +132,12 @@ public class DynamicCanvas
             }
         }
 
+        foreach (var item in DialogViews)
+        {
+            if (!item.IsVisible) continue;
+
+        }
+
         OverlayMainLayout.ManualUpdate();
     }
 
@@ -119,9 +149,9 @@ public class DynamicCanvas
     {
         if (ActiveChildren.Contains(layoutParent)) return;
         ActiveChildren.Enqueue(layoutParent);
-        
+
     }
 
-    
+
 }
 

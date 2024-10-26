@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace arcania
 {
@@ -82,7 +83,12 @@ namespace arcania
         public static ConditionalExpression Parse(string input, ArcaniaUnits arcaniaUnits)
         {
             if (string.IsNullOrWhiteSpace(input)) return null;
+            Debug.Log(input);
             var tokens = Tokenize(input);
+            foreach (var t in tokens)
+            {
+                Debug.Log(t);
+            }
             ConditionalExpressionData conditionalExpressionData = ParseExpression(tokens, arcaniaUnits);
             return new ConditionalExpression() {
                 expression = conditionalExpressionData,
@@ -145,9 +151,13 @@ namespace arcania
                     ComparisonOperator op;
                     int value;
 
-                    if (i + 1 < tokens.Count && operatorMap.ContainsKey(tokens[i + 1]))
+                    bool hasNext = i + 1 < tokens.Count;
+                    var opGotten = ComparisonOperator.And;
+                    bool operatorExistsNext = hasNext ? operatorMap.TryGetValue(tokens[i + 1], out opGotten) : false;
+                    if (hasNext && operatorExistsNext && !IsLogicalOperator(opGotten))
                     {
-                        op = operatorMap[tokens[++i]];
+                        i++;
+                        op = opGotten;
                         value = int.Parse(tokens[++i]);
                     }
                     else
@@ -166,6 +176,13 @@ namespace arcania
             }
 
             return stack.Pop();
+        }
+
+        private static bool IsLogicalOperator(ComparisonOperator opGotten)
+        {
+            if (opGotten is ComparisonOperator.And) return true;
+            if (opGotten is ComparisonOperator.Or) return true;
+            return false;
         }
 
         private static LogicalExpression CreateLogicalExpression(Stack<ConditionalExpressionData> stack, string op)

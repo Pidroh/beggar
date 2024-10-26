@@ -41,9 +41,21 @@ namespace HeartUnity.View
 
         public static void SetOffsets(this RectTransform trans, RectOffset offsets)
         {
-            trans.offsetMin = new Vector2(offsets.left, offsets.bottom);
-            trans.offsetMax = new Vector2(-offsets.right, -offsets.top);
+            int left = offsets.left;
+            int bottom = offsets.bottom;
+
+            int right = -offsets.right;
+            int top = -offsets.top;
+            SetOffsets(trans, left, bottom, right, top);
         }
+
+        public static void SetOffsets(this RectTransform trans, int left, int bottom, int right, int top)
+        {
+            trans.offsetMin = new Vector2(left, bottom);
+            trans.offsetMax = new Vector2(right, top);
+        }
+
+        public static void SetOffsets(this RectTransform trans, int allValues) => SetOffsets(trans, allValues, allValues, allValues, allValues);
 
         public static void SetPivotAndAnchors(this RectTransform trans, Vector2 aVec)
         {

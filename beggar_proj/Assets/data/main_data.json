@@ -153,7 +153,7 @@
                 "duration": 3,
                 "result": {
                     "breadcrumbs": 10,
-                    "guilty": 1,
+                    "guilt": 1,
                     "faith": -1,
                     "gratitude": -1
                 }
@@ -628,7 +628,7 @@
                 },
                 "mod": {
                     "thoughts.max": 3,
-                    "guilty.max": 1
+                    "guilt.max": 1
                 }
             }
         ]
