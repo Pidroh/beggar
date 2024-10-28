@@ -235,6 +235,8 @@ public class CanvasMaker
         // Set the EventSystem as a sibling of the Canvas
         eventSystemGO.transform.SetParent(dc.canvasGO.transform, false);
 
+        // shows in the opposite order so that the bottoms ones are shown last
+        // thus, prioritized
         for (int i = N - 1; i >= 0; i--)
         {
             dc.ShowChild(dc.children[i]);

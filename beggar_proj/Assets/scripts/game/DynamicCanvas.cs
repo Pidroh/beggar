@@ -28,6 +28,8 @@ public class DynamicCanvas
     public LayoutParent OverlayMainLayout { get; set; }
     public bool OverlayVisible => OverlayRoot.gameObject.activeSelf;
     private const int minimumDefaultTabPixelWidth = 320;
+
+    // Pixel size adjusted from fall back DPI to actual DPI
     public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
 
     internal void AddDialog(DialogView dialogView)
@@ -54,8 +56,13 @@ public class DynamicCanvas
 
     public int CalculateNumberOfVisibleHorizontalChildren()
     {
-        var physicalTabPixelSize = Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
+        var physicalTabPixelSize = GetAdjustedMinimumTabPixelWidth();
         return Mathf.Max(Mathf.FloorToInt(Screen.width / physicalTabPixelSize), 1);
+    }
+
+    private float GetAdjustedMinimumTabPixelWidth()
+    {
+        return Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
     }
 
     public void ShowChild(int childIndex)
@@ -87,8 +94,8 @@ public class DynamicCanvas
         {
             int activeChildrenCount = ActiveChildren.Count;
             float availableWidth = Screen.width;
-            float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth * 2 * DefaultPixelSizeToPhysicalPixelSize);
-            childWidth = Mathf.Max(childWidth, minimumDefaultTabPixelWidth);
+            var minimumTabWidth = GetAdjustedMinimumTabPixelWidth();
+            float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, minimumTabWidth, minimumTabWidth * 2);
 
             // Calculate total width of active children
             float totalWidth = childWidth * activeChildrenCount;
