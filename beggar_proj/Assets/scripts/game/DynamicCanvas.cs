@@ -142,11 +142,19 @@ public class DynamicCanvas
         foreach (var item in DialogViews)
         {
             if (!item.IsVisible) continue;
+            float dialogWidth = GetAdjustedMinimumTabPixelWidth();
+            item.parentTransform.RectTransform.SetWidth(dialogWidth);
+            item.dialogText.RectTransform.SetWidth(dialogWidth - 10 * RectTransformExtensions.MilimeterToPixel);
             var height = (40+5*2 + 5 * 1) * RectTransformExtensions.MilimeterToPixel + item.dialogText.text.preferredHeight;
-            item.buttonConfirm.Button.RectTransform.SetBottomLocalY(5);
-            item.buttonCancel.Button.RectTransform.SetBottomLocalY(5);
-            item.buttonCancel.Button.RectTransform.SetHeightMilimeters(40);
-            item.buttonConfirm.Button.RectTransform.SetHeightMilimeters(40);
+            for (int i = 0; i < 2; i++)
+            {
+                var rectTransform = i == 0 ? item.buttonConfirm.Button.RectTransform : item.buttonCancel.Button.RectTransform;
+                rectTransform.SetBottomLocalY(5);
+                rectTransform.SetHeightMilimeters(40);
+                rectTransform.SetWidth(dialogWidth * 0.5f - 10 * RectTransformExtensions.MilimeterToPixel);
+                rectTransform.SetLeftLocalX(5 + i * rectTransform.GetWidth());
+            }
+            item.buttonConfirm.Button.RectTransform.SetWidth(5);
             item.dialogText.RectTransform.SetTopLocalY(5);
             item.parentTransform.RectTransform.SetHeight(height);
         }
