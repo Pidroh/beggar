@@ -135,8 +135,12 @@ public class DynamicCanvas
         foreach (var item in DialogViews)
         {
             if (!item.IsVisible) continue;
-            var padding = 5;
             var height = (40+5*2 + 5 * 1) * RectTransformExtensions.MilimeterToPixel + item.dialogText.text.preferredHeight;
+            item.buttonConfirm.Button.RectTransform.SetBottomLocalY(5);
+            item.buttonCancel.Button.RectTransform.SetBottomLocalY(5);
+            item.buttonCancel.Button.RectTransform.SetHeightMilimeters(40);
+            item.buttonConfirm.Button.RectTransform.SetHeightMilimeters(40);
+            item.dialogText.RectTransform.SetTopLocalY(5);
             item.parentTransform.RectTransform.SetHeight(height);
         }
 
