@@ -67,6 +67,15 @@ public class JsonReader
         var items = parentNode["items"];
         string typeS = parentNode["type"];
         if (!EnumHelper<UnitType>.TryGetEnumFromName(typeS, out var type)) Debug.LogError($"{typeS} not found in UnitType");
+        if (type == UnitType.DIALOG)
+        {
+            foreach (var item in items.AsArray.Children)
+            {
+                continue writing this
+            }
+            // ReadDialog(arcaniaUnits, items.AsArray.Children);
+            return;
+        }
         if (!arcaniaUnits.datas.ContainsKey(type)) arcaniaUnits.datas[type] = new();
         foreach (var item in items.AsArray.Children)
         {
@@ -74,7 +83,7 @@ public class JsonReader
             ReadBasicUnit(ru, item, arcaniaUnits, type);
 
             IDPointer iDPointer = arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id);
-            if (iDPointer.RuntimeUnit != null) 
+            if (iDPointer.RuntimeUnit != null)
             {
                 Debug.LogError($"Potential ID duplication: {iDPointer.id}");
             }
@@ -348,7 +357,7 @@ public class ConfigBasic
 
 public enum UnitType
 {
-    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB
+    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG
 }
 
 public enum ModType

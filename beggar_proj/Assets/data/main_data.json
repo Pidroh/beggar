@@ -634,6 +634,17 @@
         ]
     },
     {
+        "type": "DIALOG",
+        "items":[
+            {
+                "id": "dialog_job",
+                "title": "Class Selection",
+                "content": "Picking a class will lock out the other classes from the same tier. Are you sure?",
+                "tags": "t_tier0"
+            }
+        ]
+    },
+    {
         "type": "FURNITURE",
         "items":[
             {
