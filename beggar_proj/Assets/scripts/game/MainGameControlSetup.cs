@@ -19,7 +19,7 @@ public class MainGameControlSetup
         });
         mgc.EngineView.Init(2);
 
-        dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.ButtonObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
+        dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.DialogObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
 
         // -------------------------------------------------
         // TAB BUTTON INSTANTIATING AND OTHER SMALL SETUP
@@ -280,7 +280,6 @@ public class MainGameControlSetup
                             tcu.DurationText.RectOffset = new RectOffset(20, 20, 0, 0);
                             tcu.DurationText.LayoutChild.PreferredSizeMM[1] = 10;
                             tcu.DurationText.ManualUpdate();
-                            t.FontSizePhysical = 16;
                             AddToExpands(tcu.DurationText.LayoutChild);
 
                         }

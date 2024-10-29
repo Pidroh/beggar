@@ -38,7 +38,6 @@ public class DynamicCanvas
         dialogView.fullScreenOverlay.RectTransform.FillParent();
         dialogView.parentTransform.RectTransform.FillParent();
         dialogView.parentTransform.RectTransform.SetOffsets(10);
-        dialogView.dialogText.FontSizePhysical = 18;
         DialogViews.Add(dialogView);
     }
 
@@ -143,20 +142,26 @@ public class DynamicCanvas
         {
             if (!item.IsVisible) continue;
             float dialogWidth = GetAdjustedMinimumTabPixelWidth();
+            item.parentTransform.RectTransform.pivot = Vector2.zero;
+            
             item.parentTransform.RectTransform.SetWidth(dialogWidth);
             item.dialogText.RectTransform.SetWidth(dialogWidth - 10 * RectTransformExtensions.MilimeterToPixel);
-            var height = (40+5*2 + 5 * 1) * RectTransformExtensions.MilimeterToPixel + item.dialogText.text.preferredHeight;
+            item.dialogText.ChangeHeightToFitTextPreferredHeight();
+            var buttonHeightMm = 10;
+            // only decide height after text width is stabilized
+            var dialogHeight = (buttonHeightMm + 5 * 2 + 5 * 1) * RectTransformExtensions.MilimeterToPixel + item.dialogText.text.preferredHeight;
             for (int i = 0; i < 2; i++)
             {
                 var rectTransform = i == 0 ? item.buttonConfirm.Button.RectTransform : item.buttonCancel.Button.RectTransform;
-                rectTransform.SetBottomLocalY(5);
-                rectTransform.SetHeightMilimeters(40);
+                rectTransform.SetBottomLocalY(5 * RectTransformExtensions.MilimeterToPixel);
+                rectTransform.SetHeightMilimeters(buttonHeightMm);
                 rectTransform.SetWidth(dialogWidth * 0.5f - 10 * RectTransformExtensions.MilimeterToPixel);
-                rectTransform.SetLeftLocalX(5 + i * rectTransform.GetWidth());
+                rectTransform.SetLeftLocalX(5 * RectTransformExtensions.MilimeterToPixel + i * (rectTransform.GetWidth() + 5 * RectTransformExtensions.MilimeterToPixel));
             }
-            item.buttonConfirm.Button.RectTransform.SetWidth(5);
-            item.dialogText.RectTransform.SetTopLocalY(5);
-            item.parentTransform.RectTransform.SetHeight(height);
+            item.dialogText.RectTransform.SetBottomLocalY((5 + buttonHeightMm + 5) * RectTransformExtensions.MilimeterToPixel);
+            item.parentTransform.RectTransform.SetHeight(dialogHeight);
+            item.parentTransform.RectTransform.SetLeftXToParent((item.fullScreenOverlay.RectTransform.GetWidth() - dialogWidth) * 0.5f);
+            item.parentTransform.RectTransform.SetBottomYToParent((item.fullScreenOverlay.RectTransform.GetHeight() - dialogHeight) * 0.5f);
         }
 
         OverlayMainLayout.ManualUpdate();

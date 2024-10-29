@@ -167,7 +167,6 @@ public class CanvasMaker
         };
         bbb.SetProgress(0f);
         bbb.HeightMms = 10;
-        bbb.DefaultFontSize = 16;
         return bbb;
     }
 
@@ -185,6 +184,7 @@ public class CanvasMaker
         text.font = font;
         text.raycastTarget = false;
         UIUnit textUiUnit = textObject.AddComponent<UIUnit>();
+        textUiUnit.FontSizePhysical = fontSize;
         textUiUnit.text = text;
         return textUiUnit;
     }
@@ -247,15 +247,16 @@ public class CanvasMaker
 
     public static DialogView CreateDialog(CreateObjectRequest dialogBody, CreateObjectRequest buttonObjReq, CreateButtonRequest buttonReq)
     {
-        var overlay = CreateSimpleImage(dialogBody.SecondaryColor);
-        var bg = CreateSimpleImage(dialogBody.SecondaryColor);
+        var overlay = CreateSimpleImage(new Color(0, 0, 0, 0.75f));
+        var bg = CreateSimpleImage(dialogBody.MainColor);
         bg.SetParent(overlay);
         var yesB = CreateButton(ReusableLocalizationKeys.CST_YES, buttonObjReq, buttonReq);
         var noB = CreateButton(ReusableLocalizationKeys.CST_NO, buttonObjReq, buttonReq);
         yesB.Button.transform.SetParent(bg.transform);
         noB.Button.transform.SetParent(bg.transform);
-        var dialogText = CreateTextUnit(buttonObjReq.MainColor, buttonObjReq.font, 18);
+        var dialogText = CreateTextUnit(dialogBody.SecondaryColor, buttonObjReq.font, 18);
         dialogText.SetParent(bg);
+        dialogText.rawText = "HEY TWITCH WOHOO";
         var dv = new DialogView() 
         { 
            dialogText = dialogText,

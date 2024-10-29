@@ -416,6 +416,12 @@ MonoBehaviour:
     MainSprite: {fileID: 0}
     secondarySprite: {fileID: 0}
     font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DialogObjectRequest:
+    MainColor: {r: 0.30371127, g: 0.32131046, b: 0.3679245, a: 1}
+    SecondaryColor: {r: 0.6448024, g: 0.84034514, b: 0.8490566, a: 1}
+    MainSprite: {fileID: 0}
+    secondarySprite: {fileID: 0}
+    font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   ButtonRequest:
     MainBody:
       NormalColor: {r: 0.30980393, g: 0.454902, b: 0.83921576, a: 1}
@@ -458,6 +464,7 @@ MonoBehaviour:
       m_Top: 5
       m_Bottom: 5
   MainTextColor: {r: 0.6603774, g: 0.65318894, b: 0.6136526, a: 1}
+  lastSaveTime: 0
 --- !u!4 &2118819688
 Transform:
   m_ObjectHideFlags: 0

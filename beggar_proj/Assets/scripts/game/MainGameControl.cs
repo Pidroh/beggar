@@ -16,6 +16,7 @@ public class MainGameControl : MonoBehaviour
     public TMP_FontAsset Font;
     public Sprite ExpanderSprite;
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
+    public CanvasMaker.CreateObjectRequest DialogObjectRequest;
     public CanvasMaker.CreateButtonRequest ButtonRequest;
     public CanvasMaker.CreateCanvasRequest CanvasRequest;
     public CanvasMaker.CreateGaugeRequest SkillXPGaugeRequest;

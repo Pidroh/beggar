@@ -106,7 +106,6 @@ public class ButtonWithProgressBar
     public UIUnit ProgressImage;
 
     public int HeightMms { get; internal set; }
-    public int DefaultFontSize { get; internal set; }
     public bool Visible { get => Button.Active; set => Button.Active = value; }
 
     internal void SetProgress(float v)
@@ -118,7 +117,6 @@ public class ButtonWithProgressBar
     internal void ManualUpdate()
     {
         Button.RectTransform.SetHeightMilimeters(HeightMms);
-        Button.text.SetFontSizePhysical(DefaultFontSize);
     }
 
     internal void SetWidthMM(int mmWidth)
