@@ -8,6 +8,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 {
 
     public List<RuntimeUnit> RunningTasks = new();
+    private RuntimeUnit _dataWaitingForDialog;
 
     public RuntimeUnit InterruptedAction { get; private set; }
 
@@ -42,6 +43,15 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     public void StartActionExternally(RuntimeUnit data) 
     {
+        foreach (var tag in data.ConfigBasic.Tags)
+        {
+            if (tag.Tag.Dialogs.Count > 0) 
+            {
+                _dataWaitingForDialog = data;
+                this._model.Dialog.ShowDialog(tag.Tag.Dialogs[0]);
+                return;
+            }
+        }
         InterruptedAction = null;
         StartAction(data);
     }
@@ -87,6 +97,14 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     public void ManualUpdate(float dt)
     {
+        if (_dataWaitingForDialog != null && _model.Dialog.HasResult(out int option)) 
+        {
+            if (option == 0) 
+            {
+                this.StartAction(_dataWaitingForDialog);
+            }
+            _dataWaitingForDialog = null;
+        }
         using var _1 = ListPool<RuntimeUnit>.Get(out var list);
         list.AddRange(RunningTasks);
         foreach (var run in list)

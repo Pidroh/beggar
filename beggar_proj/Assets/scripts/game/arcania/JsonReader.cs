@@ -81,6 +81,10 @@ public class JsonReader
                 {
                     if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: dr.TagPointers, pair.Value.AsString, arcaniaUnits);
                 }
+                foreach (var tag in dr.TagPointers)
+                {
+                    tag.Tag.Dialogs.Add(dr);
+                }
                 arcaniaUnits.Dialogs.Add(dr);
             }
             // ReadDialog(arcaniaUnits, items.AsArray.Children);
@@ -410,6 +414,7 @@ public class TagRuntime
 {
     public string tagName;
     public List<RuntimeUnit> UnitsWithTag = new();
+    public List<DialogRuntime> Dialogs = new();
 
     public TagRuntime(string tagName)
     {

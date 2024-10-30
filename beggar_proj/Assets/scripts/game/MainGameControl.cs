@@ -50,14 +50,24 @@ public class MainGameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // -----------------------------------------------------------
+        // Engine etc updating
+        // -----------------------------------------------------------
         EngineView.ManualUpdate();
         PlayTimeControl.Update();
+
+        // -----------------------------------------------------------
+        // Save data
+        // -----------------------------------------------------------
         const int SAVE_COOLDOWN = 30;
         if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN) 
         {
             lastSaveTime = Time.unscaledTime;
             ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
         }
+        // -----------------------------------------------------------
+        // Debug command
+        // -----------------------------------------------------------
         {
             if (DebugMenuManager.CheckCommand("speed", out int v))
             {
@@ -84,24 +94,47 @@ public class MainGameControl : MonoBehaviour
                 arcaniaModel.FindRuntimeUnit(label).SetValue(v);
             }
         }
-        
+
+        // -----------------------------------------------------------
         // Show end game
+        // -----------------------------------------------------------
         if (EndGameRuntimeUnit != null && EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
         {
             dynamicCanvas.ShowOverlay();
             this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {PlayTimeControl.PlayTimeToShowAsString}";
         }
-
+        // -----------------------------------------------------------
+        // Time, game updating
+        // -----------------------------------------------------------
         RobustDeltaTime.ManualUpdate();
         while (RobustDeltaTime.TryGetProcessedDeltaTime(out float dt)) {
             arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
         }
+        // -----------------------------------------------------------
+        // UI update
+        // -----------------------------------------------------------
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
-
-
         TabButtonLayout.SelfChild.RectTransform.SetHeightMilimeters(10);
+        // -----------------------------------------------------------
+        // Dialog
+        // -----------------------------------------------------------
+        if (arcaniaModel.Dialog.dialogState.ShouldShow != dynamicCanvas.IsDialogActive)
+        {
+            var dialog = arcaniaModel.Dialog.ActiveDialog;
+            if (arcaniaModel.Dialog.dialogState.ShouldShow)
+            {
+                dynamicCanvas.ShowDialog(dialog.Id, dialog.Title, dialog.Content);
+            }
+            else 
+            {
+                dynamicCanvas.HideAllDialog();
+            }
+        }
+        // -----------------------------------------------------------
+        // Main update loop
+        // -----------------------------------------------------------
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
@@ -145,7 +178,9 @@ public class MainGameControl : MonoBehaviour
             }
             var UnitGroupControls = tabControl.UnitGroupControls;
 
-
+            // -----------------------------------------------------------
+            // Update per unit
+            // -----------------------------------------------------------
             foreach (var pair in UnitGroupControls)
             {
                 foreach (var tcu in pair.Value)

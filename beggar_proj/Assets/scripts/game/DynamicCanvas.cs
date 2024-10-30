@@ -167,6 +167,11 @@ public class DynamicCanvas
         OverlayMainLayout.ManualUpdate();
     }
 
+    internal void ShowDialog(string id, string title, string content)
+    {
+        ssss
+    }
+
     internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
 
     internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);

@@ -17,88 +17,6 @@ public class ConfigFurniture
     public int SpaceConsumed;
 }
 
-public class TabRuntime
-{
-
-    public List<UnitType> AcceptedUnitTypes = new();
-    public List<Separator> Separators = new();
-
-    public TabRuntime(RuntimeUnit ru)
-    {
-        this.RuntimeUnit = ru;
-        this.RuntimeUnit.Tab = this;
-    }
-
-    public RuntimeUnit RuntimeUnit { get; }
-    public bool ContainsLogs { get; internal set; }
-    public bool OpenSettings { get; internal set; }
-
-    public class Separator {
-        public List<UnitType> AcceptedUnitTypes = new();
-        public bool RequireMax;
-        public bool RequireInstant;
-        public bool Default;
-
-        public string Name { get; internal set; }
-        public bool ShowSpace { get; internal set; }
-    }
-}
-
-public class SkillRuntime
-{
-    public int xp;
-    public ConfigSkill skillData;
-    public RuntimeUnit RuntimeUnit;
-    private bool _acquired;
-
-    public SkillRuntime(RuntimeUnit ru)
-    {
-        this.RuntimeUnit = ru;
-        this.RuntimeUnit.Skill = this;
-        skillData = new ConfigSkill();
-    }
-
-    public bool Acquired => _acquired;
-
-    public float XPRatio => xp / (float) GetMaxXP();
-
-    internal void Acquire()
-    {
-        _acquired = true;
-    }
-
-    internal bool HasEnoughXPToLevelUp()
-    {
-        return xp >= GetMaxXP();
-    }
-
-    private int GetMaxXP()
-    {
-        float MaxXPForLevel = 50 * Mathf.Pow(1.35f, RuntimeUnit.Value + skillData.LearningDifficultyLevel);
-        return Mathf.FloorToInt(MaxXPForLevel);
-    }
-
-    internal void StudySkillTick()
-    {
-        xp += 1;
-    }
-}
-
-public class LogUnit 
-{
-    public LogType logType;
-
-    public RuntimeUnit Unit { get; internal set; }
-
-    public enum LogType 
-    { 
-        UNIT_UNLOCKED, // When the unit's require is met
-        SKILL_IMPROVED,
-        CLASS_CHANGE, 
-
-    }
-}
-
 public class ArcaniaModel
 {
     public List<LogUnit> LogUnits = new();
@@ -106,6 +24,7 @@ public class ArcaniaModel
     public ArcaniaModelActionRunner Runner;
     public ArcaniaModelHousing Housing;
     float _oneSecondCounter;
+    public DialogModel Dialog = new();
 
     public ArcaniaModel()
     {
@@ -222,5 +141,59 @@ public class ArcaniaModel
         if (ru != null) return ru;
         Debug.Log($"Runtime unit of type |{type}| and ID |{v}| NOT FOUND");
         return null;
+    }
+
+    public class DialogModel 
+    {
+        public DialogRuntime ActiveDialog;
+        public DialogState dialogState;
+        public int? pickedOption;
+
+        public void ShowDialog(DialogRuntime dialogRuntime)
+        {
+            ActiveDialog = dialogRuntime;
+            dialogState = DialogModel.DialogState.ACTIVE;
+            pickedOption = null;
+        }
+
+        public void Update() 
+        {
+            if (pickedOption.HasValue) 
+            {
+                switch (dialogState)
+                {
+                    case DialogState.INACTIVE:
+                        break;
+                    case DialogState.ACTIVE:
+                        dialogState = DialogState.RESULT_HAPPENED_THIS_FRAME;
+                        break;
+                    case DialogState.RESULT_HAPPENED_THIS_FRAME:
+                        pickedOption = null;
+                        dialogState = DialogState.INACTIVE;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void DialogComplete(int pickedOption) 
+        {
+            // only goes to result complete on next frame
+            this.pickedOption = pickedOption;
+        }
+
+        internal bool HasResult(out int option)
+        {
+            option = pickedOption.HasValue ? pickedOption.Value : -1;
+            return this.dialogState == DialogState.RESULT_HAPPENED_THIS_FRAME;
+        }
+
+        public enum DialogState 
+        { 
+            INACTIVE,
+            ACTIVE,
+            RESULT_HAPPENED_THIS_FRAME,
+        }
     }
 }
