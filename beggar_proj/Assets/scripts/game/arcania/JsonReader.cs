@@ -77,7 +77,10 @@ public class JsonReader
                     Content = item["content"],
                     Id = item["id"],
                 };
-                
+                foreach (var pair in item)
+                {
+                    if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: dr.TagPointers, pair.Value.AsString, arcaniaUnits);
+                }
                 arcaniaUnits.Dialogs.Add(dr);
             }
             // ReadDialog(arcaniaUnits, items.AsArray.Children);
