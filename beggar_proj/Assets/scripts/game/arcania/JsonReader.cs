@@ -71,7 +71,14 @@ public class JsonReader
         {
             foreach (var item in items.AsArray.Children)
             {
-                continue writing this
+                var dr = new DialogRuntime() 
+                { 
+                    Title = item["content"],
+                    Content = item["content"],
+                    Id = item["id"],
+                };
+                
+                arcaniaUnits.Dialogs.Add(dr);
             }
             // ReadDialog(arcaniaUnits, items.AsArray.Children);
             return;
@@ -386,6 +393,14 @@ public class ResourceChange
 {
     public IDPointer IdPointer;
     public int valueChange;
+}
+
+public class DialogRuntime
+{
+    public string Id;
+    public string Title;
+    public string Content;
+    public List<IDPointer> TagPointers = new();
 }
 
 public class TagRuntime
