@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeartUnity;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace arcania
         LessThanOrEqual,
         Equal,
         NotEqual,
-        And,
+        And,    
         Or
     }
 
@@ -93,8 +94,40 @@ namespace arcania
             return new ConditionalExpression() {
                 expression = conditionalExpressionData,
                 rawExpression = input,
-                humanExpression = TranslateExpression(input)
             };
+        }
+
+        public static string ToHumanLanguage(ConditionalExpressionData expression)
+        {
+            if (expression is Condition condition)
+            {
+                string op = condition.Operator switch
+                {
+                    ComparisonOperator.GreaterThan => ">",
+                    ComparisonOperator.GreaterThanOrEqual => ">=",
+                    ComparisonOperator.LessThan => "<",
+                    ComparisonOperator.LessThanOrEqual => "<=",
+                    ComparisonOperator.Equal => "=",
+                    ComparisonOperator.NotEqual => "!=",
+                    _ => ""
+                };
+
+                string nameOfThing = condition.Pointer.RuntimeUnit?.Name;
+                if (nameOfThing == null) nameOfThing = condition.Pointer.Tag.tagName;
+                return $"{Local.GetText(nameOfThing)} {op} {condition.Value}";
+            }
+            else if (expression is LogicalExpression logical)
+            {
+                string op = logical.Operator switch
+                {
+                    ComparisonOperator.And => "and",
+                    ComparisonOperator.Or => "or",
+                    _ => ""
+                };
+
+                return $"({ToHumanLanguage(logical.Left)}) {op} ({ToHumanLanguage(logical.Right)})";
+            }
+            return "";
         }
 
         public static string TranslateExpression(string expression)

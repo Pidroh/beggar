@@ -23,6 +23,11 @@ public class JsonReader
         {
             ReadArrayOwner(arcaniaDatas, parentNode);
         }
+        //--------------------------------------------------------------
+        // POST PROCESSING #post-processing
+        //--------------------------------------------------------------
+        // MODS #mods #post-processing
+        //--------------------------------------------------------------
         for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
@@ -60,6 +65,17 @@ public class JsonReader
             mod.Target.RuntimeUnit.RegisterModTargetingSelf(mod);
         }
 
+        //--------------------------------------------------------------
+        // Conditions #conditions #post-processing
+        //--------------------------------------------------------------
+        foreach (var item in arcaniaDatas.datas)
+        {
+            foreach (var u in item.Value)
+            {
+                if (u.ConfigTask?.Need == null) continue;
+                u.ConfigTask.Need.humanExpression = ConditionalExpressionParser.ToHumanLanguage(u.ConfigTask.Need.expression);
+            }
+        }
     }
 
     private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode)

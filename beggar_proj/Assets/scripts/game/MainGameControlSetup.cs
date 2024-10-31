@@ -271,6 +271,11 @@ public class MainGameControlSetup
                         var ModUnit = tcu.ModsUnit;
                         ExpandableManager expandManager = tcu.ExpandManager;
                         CreateModViews(item, layout, separators, ModUnit, expandManager);
+                        {
+                            var requirements = item.ConfigTask.Need;
+                            requirements.humanExpression
+                        }
+                        
 
                         {
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
