@@ -32,6 +32,8 @@ public class DynamicCanvas
     // Pixel size adjusted from fall back DPI to actual DPI
     public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
 
+    public bool IsDialogActive { get; internal set; }
+
     internal void AddDialog(DialogView dialogView)
     {
         dialogView.fullScreenOverlay.SetParent(RootRT);
@@ -169,7 +171,10 @@ public class DynamicCanvas
 
     internal void ShowDialog(string id, string title, string content)
     {
-        ssss
+        var dv = DialogViews[0];
+        dv.dialogText.SetTextRaw(content);
+        dv.buttonConfirm.Button.SetTextKey(ReusableLocalizationKeys.CST_YES);
+        dv.buttonCancel.Button.SetTextKey(ReusableLocalizationKeys.CST_NO);
     }
 
     internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
