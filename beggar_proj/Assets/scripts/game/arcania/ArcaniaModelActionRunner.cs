@@ -99,7 +99,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     {
         if (_dataWaitingForDialog != null && _model.Dialog.HasResult(out int option)) 
         {
-            if (option == 0) 
+            if (option == 0 && CanStartAction(_dataWaitingForDialog)) 
             {
                 this.StartAction(_dataWaitingForDialog);
             }

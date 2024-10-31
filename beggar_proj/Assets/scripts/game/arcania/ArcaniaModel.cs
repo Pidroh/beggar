@@ -48,6 +48,7 @@ public class ArcaniaModel
 
     public void ManualUpdate(float dt)
     {
+        Dialog.ManualUpdate();
         Runner.ManualUpdate(dt);
         _oneSecondCounter += dt;
         var applyRateNumber = 0;
@@ -158,7 +159,7 @@ public class ArcaniaModel
             pickedOption = null;
         }
 
-        public void Update() 
+        public void ManualUpdate() 
         {
             if (pickedOption.HasValue) 
             {

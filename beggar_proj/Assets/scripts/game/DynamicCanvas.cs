@@ -32,7 +32,16 @@ public class DynamicCanvas
     // Pixel size adjusted from fall back DPI to actual DPI
     public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
 
-    public bool IsDialogActive { get; internal set; }
+    public bool IsDialogActive => IsAnyDialogVisible();
+
+    private bool IsAnyDialogVisible()
+    {
+        foreach (var dv in DialogViews)
+        {
+            if (dv.Visible) return true;
+        }
+        return false;
+    }
 
     internal void AddDialog(DialogView dialogView)
     {

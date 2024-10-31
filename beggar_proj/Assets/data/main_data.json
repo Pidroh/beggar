@@ -545,6 +545,18 @@
                 }
             },
             {
+                "id" : "test",
+                "name": "Test Class",
+                "desc" : "Each rat is a loyal companion, bringing warmth in the cold streets.",
+                "tags": "t_tier0",
+                "lock": "t_tier0",
+                "max": 1,
+                "mod": {
+                    "rodentology.max": 2,
+                    "rats.max": 3
+                }
+            },
+            {
                 "id" : "breadsnatcher",
                 "name": "Bread Snatcher",
                 "desc" : "BREAD SNATCHER DESCRIPTION",

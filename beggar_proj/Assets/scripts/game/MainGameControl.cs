@@ -94,6 +94,15 @@ public class MainGameControl : MonoBehaviour
                 arcaniaModel.FindRuntimeUnit(label).SetValue(v);
             }
         }
+        {
+            if (DebugMenuManager.CheckCommand("resources"))
+            {
+                foreach (var item in arcaniaModel.arcaniaUnits.datas[UnitType.RESOURCE])
+                {
+                    item.ChangeValue(99999);
+                }
+            }
+        }
 
         // -----------------------------------------------------------
         // Show end game
