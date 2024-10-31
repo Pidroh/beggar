@@ -24,6 +24,11 @@ public class RuntimeUnit
         return true;
     }
 
+    private bool IsNeedMet()
+    {
+        return MeetsCondition(ConfigTask.Need?.expression);
+    }
+
     internal bool UpdateRequireStatus()
     {
         if (!IsPossiblyVisibleRegardlessOfRequire()) return false;
@@ -161,4 +166,6 @@ public class RuntimeUnit
     public bool HasMax => CalculateMax() >= 0;
 
     public bool IsTaskHalfWay => !IsTaskComplete() && TaskProgress != 0;
+
+    public bool NeedMet => IsNeedMet();
 }

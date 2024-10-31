@@ -208,6 +208,7 @@ public class JsonReader
             if (pair.Key == "perpetual") explicitPerpetualDefinition = true;
             if (pair.Key == "duration") ct.Duration = pair.Value.AsInt;
             if (pair.Key == "slot") ct.SlotKey = pair.Value.AsString;
+            if (pair.Key == "need") ct.Need = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
         }
         if (!ct.Duration.HasValue)
         {

@@ -23,6 +23,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     }
     public bool CanStartAction(RuntimeUnit data)
     {
+        if (!data.NeedMet) return false;
         // once you refactor this so that you don't need to pay the cost every time (only when starting for 'the first time')
         // make CanStudySkill also use this
         if (!data.IsTaskHalfWay) if (!_model.CanAfford(data.ConfigTask.Cost)) return false;
