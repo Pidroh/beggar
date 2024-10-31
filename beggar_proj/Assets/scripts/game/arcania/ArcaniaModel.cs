@@ -149,6 +149,8 @@ public class ArcaniaModel
         public DialogState dialogState;
         public int? pickedOption;
 
+        public bool ShouldShow => dialogState == DialogState.ACTIVE;
+
         public void ShowDialog(DialogRuntime dialogRuntime)
         {
             ActiveDialog = dialogRuntime;

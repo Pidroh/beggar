@@ -120,17 +120,25 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         // Dialog
         // -----------------------------------------------------------
-        if (arcaniaModel.Dialog.dialogState.ShouldShow != dynamicCanvas.IsDialogActive)
+        if (arcaniaModel.Dialog.ShouldShow != dynamicCanvas.IsDialogActive)
         {
             var dialog = arcaniaModel.Dialog.ActiveDialog;
-            if (arcaniaModel.Dialog.dialogState.ShouldShow)
+            if (arcaniaModel.Dialog.ShouldShow)
             {
                 dynamicCanvas.ShowDialog(dialog.Id, dialog.Title, dialog.Content);
             }
             else 
             {
-                dynamicCanvas.HideAllDialog();
+                dynamicCanvas.HideAllDialogs();
             }
+        }
+        if (dynamicCanvas.DialogViews[0].buttonConfirm.Button.Clicked) 
+        {
+            arcaniaModel.Dialog.DialogComplete(0);
+        }
+        if (dynamicCanvas.DialogViews[0].buttonCancel.Button.Clicked)
+        {
+            arcaniaModel.Dialog.DialogComplete(1);
         }
         // -----------------------------------------------------------
         // Main update loop

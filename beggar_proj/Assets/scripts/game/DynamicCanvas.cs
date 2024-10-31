@@ -10,7 +10,7 @@ public class DialogView
     public UIUnit fullScreenOverlay;
     public UIUnit parentTransform;
 
-    public bool IsVisible { get => fullScreenOverlay.Active; internal set => fullScreenOverlay.Active = value; }
+    public bool Visible { get => fullScreenOverlay.Active; internal set => fullScreenOverlay.Active = value; }
 }
 
 public class DynamicCanvas
@@ -40,6 +40,7 @@ public class DynamicCanvas
         dialogView.fullScreenOverlay.RectTransform.FillParent();
         dialogView.parentTransform.RectTransform.FillParent();
         dialogView.parentTransform.RectTransform.SetOffsets(10);
+        dialogView.Visible = false;
         DialogViews.Add(dialogView);
     }
 
@@ -142,7 +143,7 @@ public class DynamicCanvas
 
         foreach (var item in DialogViews)
         {
-            if (!item.IsVisible) continue;
+            if (!item.Visible) continue;
             float dialogWidth = GetAdjustedMinimumTabPixelWidth();
             item.parentTransform.RectTransform.pivot = Vector2.zero;
             
@@ -169,9 +170,18 @@ public class DynamicCanvas
         OverlayMainLayout.ManualUpdate();
     }
 
+    internal void HideAllDialogs()
+    {
+        foreach (var dv in DialogViews)
+        {
+            dv.Visible = false;
+        }
+    }
+
     internal void ShowDialog(string id, string title, string content)
     {
         var dv = DialogViews[0];
+        dv.Visible = true;
         dv.dialogText.SetTextRaw(content);
         dv.buttonConfirm.Button.SetTextKey(ReusableLocalizationKeys.CST_YES);
         dv.buttonCancel.Button.SetTextKey(ReusableLocalizationKeys.CST_NO);
