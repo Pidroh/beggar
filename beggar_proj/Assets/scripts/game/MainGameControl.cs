@@ -211,6 +211,7 @@ public class MainGameControl : MonoBehaviour
                     if (tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
                     var modUnit = tcu.ModsUnit;
                     FeedMods(data, modUnit);
+                    tcu.needConditionUnit?.TTV?.ManualUpdate();
 
                     switch (pair.Key)
                     {

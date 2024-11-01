@@ -279,10 +279,10 @@ public class MainGameControlSetup
                         // Need #need #condition
                         //-------------------------------------------------------
                         {
-                            var requirements = item.ConfigTask.Need;
-                            var sepLabel = "Needs:";
+                            var requirements = item.ConfigTask?.Need;
                             if (requirements != null)
                             {
+                                var sepLabel = "Needs:";
                                 var sepaNeed = CreateSeparator(layout, expandManager, sepLabel);
                                 separators.Add(sepaNeed);
                                 var ttv = CreateTripleTextView(layout, expandManager);

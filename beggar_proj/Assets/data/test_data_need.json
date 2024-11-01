@@ -1,0 +1,165 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+            {
+                "id": "supplication",
+                "max": 30,
+                "initial": 30,
+                "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items":[
+            {
+                "id": "beg_a",
+                "name": "Beg for crumbs",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "duration": 5,
+                "max": 3,
+                "locked": false,
+                "need": "supplication > 1",
+                "result":{
+                    "supplication": 100
+                }
+            },
+            {
+                "id": "beg_a2",
+                "name": "Beg for crumbs2",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "duration": 5,
+                "max": 3,
+                "locked": false,
+                "need": "supplication",
+                "result":{
+                    "supplication": 100
+                }
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items":[
+            {
+                "id": "Back Alley",
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "mod": {
+                    "space.max": 3
+                }
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+            {
+                "id": "brokenmirror",
+                "name": "Broken mirror",
+                "cost": {
+                    "supplication": 3
+                },
+                "result": {
+                    "supplication": 3
+                }
+            }
+            
+
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items":[
+            {
+                "id": "introspection",
+                "cost": {
+
+                },
+                "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
+                "mod": {
+
+                    "supplication.max": 5
+                }
+            },
+            {
+                "id": "rodentology",
+                "name": "Ratkinship",
+                "desc": "If you want to understand men, study mice",
+                "cost": {
+                },
+                "mod": {
+
+                    "supplication.max": 2
+                }
+            },
+            {
+                "id": "scavenging",
+                "name": "Scavenging",
+                "desc": "Seek out and collect natural resources and useful items from the environment.",
+                "require": "introspection>1",
+                "cost": {
+                },
+                "mod": {
+                    "supplication.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "TAB",
+        "items":[
+            {
+                "id": "task",
+                "unit_types": [
+                    "TASK",
+                    "HOUSE",
+                    "FURNITURE",
+                    "SKILL"
+                ],
+                "icon" : "task",
+                "separator": [
+                    {
+                        "id": "housing",
+                        "name": "Housing",
+                        "show_space": true,
+                        "unit_types": [
+                            "TASK",
+                            "HOUSE",
+                            "FURNITURE",
+                            "SKILL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "resource",
+                "unit_types": [
+                    "RESOURCE"
+                ],
+                "icon" : "resource",
+                "separator": [
+                    {
+                        "id": "resource",
+                        "name": "Resources",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "id": "log",
+                "unit_types": [
+                ],
+                "contains_logs": true,
+                "icon" : "logs",
+                "separator": [
+                    {
+                        "id": "log",
+                        "name": "Log",
+                        "default": true
+                    }
+                ]
+            }
+        ]
+    }
+]
