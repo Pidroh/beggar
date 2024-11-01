@@ -114,6 +114,11 @@ namespace arcania
 
                 string nameOfThing = condition.Pointer.RuntimeUnit?.Name;
                 if (nameOfThing == null) nameOfThing = condition.Pointer.Tag.tagName;
+                if ((condition.Value == 0 && condition.Operator == ComparisonOperator.GreaterThan) ||
+                     condition.Value == 1 && condition.Operator == ComparisonOperator.GreaterThanOrEqual) 
+                {
+                    return $"{Local.GetText(nameOfThing)}";
+                }
                 return $"{Local.GetText(nameOfThing)} {op} {condition.Value}";
             }
             else if (expression is LogicalExpression logical)
