@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class MainGameControlSetup
 {
-    public static void Setup(MainGameControl mgc) {
+    public static void Setup(MainGameControl mgc)
+    {
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(mgc.ResourceJson.text, arcaniaDatas);
@@ -14,7 +15,8 @@ public class MainGameControlSetup
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
         mgc.TabButtonLayout = lowerMenuLayout;
 
-        mgc.EngineView = EngineView.CreateEngineViewThroughCode(new EngineView.EngineViewInitializationParameter() {
+        mgc.EngineView = EngineView.CreateEngineViewThroughCode(new EngineView.EngineViewInitializationParameter()
+        {
             canvas = dynamicCanvas.Canvas
         });
         mgc.EngineView.Init(2);
@@ -26,7 +28,7 @@ public class MainGameControlSetup
         // -------------------------------------------------
         foreach (var item in arcaniaDatas.datas[UnitType.TAB])
         {
-            
+
             var button = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
 
             var lc = new LayoutChild()
@@ -101,8 +103,8 @@ public class MainGameControlSetup
                     dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(spaceT);
                     sep.SpaceAmountText = spaceT;
                 }
-                // -------------------------------------------------
-                END_OF_SEPARATOR_INSTANCE:
+            // -------------------------------------------------
+            END_OF_SEPARATOR_INSTANCE:
                 foreach (var pair in UnitGroupControls)
                 {
                     foreach (var item in arcaniaDatas.datas[pair.Key])
@@ -266,17 +268,32 @@ public class MainGameControlSetup
                             }
                         }
 
-
+                        //-------------------------------------------------------
+                        // Mod #mod
+                        //-------------------------------------------------------
                         List<SeparatorWithLabel> separators = tcu.Separators;
                         var ModUnit = tcu.ModsUnit;
                         ExpandableManager expandManager = tcu.ExpandManager;
                         CreateModViews(item, layout, separators, ModUnit, expandManager);
+                        //-------------------------------------------------------
+                        // Need #need #condition
+                        //-------------------------------------------------------
                         {
                             var requirements = item.ConfigTask.Need;
-                            requirements.humanExpression
+                            var sepLabel = "Needs:";
+                            if (requirements != null)
+                            {
+                                var sepaNeed = CreateSeparator(layout, expandManager, sepLabel);
+                                separators.Add(sepaNeed);
+                                var ttv = CreateTripleTextView(layout, expandManager);
+                                tcu.needConditionUnit.TTV = ttv;
+                                tcu.needConditionUnit.TTV.MainText.SetTextKey(requirements.humanExpression);
+                            }
                         }
-                        
 
+                        //-------------------------------------------------------
+                        // Duration #duration
+                        //-------------------------------------------------------
                         {
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
@@ -312,7 +329,7 @@ public class MainGameControlSetup
             mgc.EndGameMessage = endMessage;
         }
 
-        
+
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
         {
@@ -354,7 +371,8 @@ public class MainGameControlSetup
         var text = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
         // var image = CanvasMaker.CreateSimpleImage(mgc.ButtonObjectRequest.SecondaryColor);
         var lc = LayoutChild.Create(text.transform);
-        if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED) {
+        if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED)
+        {
             text.rawText = $"Unlocked {logUnit.Unit.ConfigBasic.name}";
         }
         lp.AddLayoutChildAndParentIt(lc);

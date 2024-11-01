@@ -31,6 +31,10 @@ public class TabControlUnit
     }
 }
 
+public class ConditionControlUnit
+{
+    public TripleTextView TTV { get; internal set; }
+}
 
 public class ModsControlUnit
 {
@@ -72,6 +76,7 @@ public class RTControlUnit
     public List<SeparatorWithLabel> Separators = new();
 
     public ModsControlUnit ModsUnit = new();
+    public ConditionControlUnit needConditionUnit = new();
 
     public bool IsExpanded => (bwe != null && bwe.Expanded) || (lwe != null && lwe.Expanded);
 
