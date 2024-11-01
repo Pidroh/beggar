@@ -36,6 +36,30 @@
                 "result":{
                     "supplication": 100
                 }
+            },
+            {
+                "id": "beg_a3",
+                "name": "Beg for crumbs3",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "duration": 5,
+                "max": 3,
+                "locked": false,
+                "need": "some_tag",
+                "result":{
+                    "supplication": 100
+                }
+            },
+            {
+                "id": "beg_a4",
+                "name": "Beg for crumbs4",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "tag": "some_tag",
+                "duration": 5,
+                "max": 3,
+                "locked": false,
+                "result":{
+                    "supplication": 100
+                }
             }
         ]
     },
