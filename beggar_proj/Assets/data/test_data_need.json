@@ -5,7 +5,7 @@
             {
                 "id": "supplication",
                 "max": 30,
-                "initial": 30,
+                "initial": 0,
                 "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
             }
         ]
