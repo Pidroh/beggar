@@ -19,7 +19,6 @@ namespace arcania
         Or
     }
 
-
     public class ConditionalExpression
     {
         public string rawExpression;
@@ -111,7 +110,6 @@ namespace arcania
                     ComparisonOperator.NotEqual => "!=",
                     _ => ""
                 };
-
                 string nameOfThing = condition.Pointer.RuntimeUnit?.Name;
                 if (nameOfThing == null) nameOfThing = condition.Pointer.Tag.tagName;
                 if ((condition.Value == 0 && condition.Operator == ComparisonOperator.GreaterThan) ||
@@ -129,7 +127,6 @@ namespace arcania
                     ComparisonOperator.Or => "or",
                     _ => ""
                 };
-
                 return $"({ToHumanLanguage(logical.Left)}) {op} ({ToHumanLanguage(logical.Right)})";
             }
             return "";
