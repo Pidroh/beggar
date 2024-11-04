@@ -186,7 +186,7 @@ public class TripleTextView
         RectTransform rtSecondary = SecondaryText.RectTransform;
         RectTransform rtTertiary = TertiaryText.RectTransform;
 
-        rtMain.SetWidth(Parent.GetWidth());
+        rtMain.SetWidth(Parent.GetWidth() * 0.33f);
         rtSecondary.SetWidth(Parent.GetWidth() * 0.33f);
         rtTertiary.SetWidth(Parent.GetWidth() * 0.33f);
 
