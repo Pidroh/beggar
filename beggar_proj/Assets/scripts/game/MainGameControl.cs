@@ -103,6 +103,18 @@ public class MainGameControl : MonoBehaviour
                 }
             }
         }
+        {
+            if (DebugMenuManager.CheckCommand("require"))
+            {
+                foreach (var item in arcaniaModel.arcaniaUnits.datas)
+                {
+                    foreach (var d in item.Value)
+                    {
+                        d.ForceMeetRequire();
+                    }
+                }
+            }
+        }
 
         // -----------------------------------------------------------
         // Show end game

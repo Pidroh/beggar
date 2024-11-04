@@ -124,6 +124,11 @@ public class RuntimeUnit
         return false;
     }
 
+    internal void ForceMeetRequire()
+    {
+        RequireMet = true;
+    }
+
     internal void ApplyRate()
     {
         var rate = this.GetModSum(ModType.RateChange);
