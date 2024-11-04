@@ -145,40 +145,21 @@ public class TripleTextView
         get => Texts[2];
         set => Texts[2] = value;
     }
+    public TTVMode Mode = TripleTextView.TTVMode.All3;
+
+    public enum TTVMode 
+    { 
+        All3,
+        PrimarySecondary,
+
+    }
 
     public void ManualUpdate()
     {
-        LayoutChild.RectTransform.SetHeightMilimeters(12);
+        
         foreach (var t in Texts)
         {
             t.text.SetFontSizePhysical(15);
-        }
-        if (!tertiaryWidthCalculated)
-        {
-            var tmp = TertiaryText.text;
-            if (tmp != null)
-            {
-                // Save the current text
-                string originalText = tmp.text;
-
-                // Set the text to the target string
-                tmp.text = "(0000/0000)";
-
-                // Force update the canvas to ensure size calculation
-                Canvas.ForceUpdateCanvases();
-
-                // Calculate the preferred width
-                float preferredWidth = tmp.preferredWidth;
-
-                // Restore the original text
-                tmp.text = originalText;
-
-                // Update the width of the TertiaryText RectTransform
-                RectTransform rt = TertiaryText.GetComponent<RectTransform>();
-                rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, preferredWidth);
-
-                tertiaryWidthCalculated = true;
-            }
         }
 
         // Get RectTransforms
@@ -186,9 +167,23 @@ public class TripleTextView
         RectTransform rtSecondary = SecondaryText.RectTransform;
         RectTransform rtTertiary = TertiaryText.RectTransform;
 
-        rtMain.SetWidth(Parent.GetWidth() * 0.33f);
-        rtSecondary.SetWidth(Parent.GetWidth() * 0.33f);
-        rtTertiary.SetWidth(Parent.GetWidth() * 0.33f);
+        if(Mode == TTVMode.All3) {
+            rtMain.SetWidth(Parent.GetWidth() * 0.33f);
+            rtSecondary.SetWidth(Parent.GetWidth() * 0.33f);
+            rtTertiary.SetWidth(Parent.GetWidth() * 0.33f);
+        }
+        // LayoutChild.RectTransform.SetHeightMilimeters(12);
+        var height = MainText.text.preferredHeight;
+        LayoutChild.RectTransform.SetHeight(height + 3 * RectTransformExtensions.MilimeterToPixel);
+
+
+        if (Mode == TTVMode.PrimarySecondary)
+        {
+            rtMain.SetWidth(Parent.GetWidth() * 0.5f);
+            rtSecondary.SetWidth(Parent.GetWidth() * 0.5f);
+            rtTertiary.SetWidth(0);
+        }
+
 
         // Align MainText with the left side of Parent
         rtMain.anchorMin = new Vector2(0, rtMain.anchorMin.y);
@@ -209,8 +204,6 @@ public class TripleTextView
         rtSecondary.anchoredPosition = new Vector2(-rtTertiary.sizeDelta.x * rtTertiary.pivot.x, rtSecondary.anchoredPosition.y);
 
     }
-
-    private bool tertiaryWidthCalculated = false;
 }
 
 public class SeparatorWithLabel
