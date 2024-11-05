@@ -1,6 +1,9 @@
 ﻿//using UnityEngine.U2D;
 
 using System.Collections.Generic;
+#if !UNITY_SWITCH
+using System.IO;
+#endif
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
@@ -173,8 +176,6 @@ namespace HeartUnity.View
             switch (settingDialog.id)
             {
                 case ReusableSettingMenu.DIALOG_ID_DELETE_DATA:
-#if UNITY_WEBGL
-#else
 #if !UNITY_SWITCH
                     string dataPath = Application.persistentDataPath;
                     string[] files = Directory.GetFiles(dataPath);
@@ -187,7 +188,6 @@ namespace HeartUnity.View
                         catch (System.Exception){}
                     }
                     
-#endif
 #endif
                     PlayerPrefs.DeleteAll();
                     break;
