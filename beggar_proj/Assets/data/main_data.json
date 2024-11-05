@@ -349,7 +349,7 @@
             {
                 "id": "lament",
                 "desc": "To find solace in sorrow, one must first embrace the depths of their own despair.",
-                "require": "thoughts>=2&&unlocksadness>0",
+                "require": "unlocksadness>0",
                 "duration": 4,
                 "cost": {
                     "thoughts": 3
@@ -442,6 +442,7 @@
                 "name": "Rumours about food",
                 "desc": "Your hear a group talking about a place to get food",
                 "locked": false,
+                "require": "beggarhood>1",
                 "max": 1,
                 "cost":{
                     "supplication": 10,
@@ -557,7 +558,8 @@
                     "nutrition": 2
                 },
                 "mod": {
-                    "cunning.max": 2
+                    "cunning.max": 2,
+                    "guilt.max": 10
                 }
             }
         ]
@@ -611,7 +613,8 @@
                 "desc": "How good you are at mingling with fellow beggars",
                 "require": "tjob",
                 "cost": {
-                    "thoughts": 100
+                    "thoughts": 50,
+                    "supplication.max": 20
                 },
                 "mod": {
                     "thoughts.max": 5,
