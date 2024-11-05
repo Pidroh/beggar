@@ -113,7 +113,8 @@ public class RTControlUnit
         {
             lwe.ManualUpdate();
         }
-        DurationText.Visible = duration > 0 && DurationText.Visible;
+        if(DurationText != null)
+            DurationText.Visible = duration > 0 && DurationText.Visible;
         if (Data.ConfigBasic.UnitType == UnitType.SKILL)
         {
             MainTitle.Element.SetTextRaw(Data.Name);

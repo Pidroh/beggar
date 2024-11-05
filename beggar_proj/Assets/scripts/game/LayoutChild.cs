@@ -260,8 +260,6 @@ public class LabelWithExpandable
 
     public bool Expanded => ExpandManager.Expanded;
 
-    public List<GameObject> ExpandTargets = new();
-
     public LabelWithExpandable(IconButton expand, UIUnit mainText)
     {
         ExpandManager = new(expand);

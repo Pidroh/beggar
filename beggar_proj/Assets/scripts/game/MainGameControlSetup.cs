@@ -294,6 +294,7 @@ public class MainGameControlSetup
                         //-------------------------------------------------------
                         // Duration #duration
                         //-------------------------------------------------------
+                        if(hasBWE)
                         {
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
@@ -303,7 +304,6 @@ public class MainGameControlSetup
                             tcu.DurationText.LayoutChild.PreferredSizeMM[1] = 10;
                             tcu.DurationText.ManualUpdate();
                             AddToExpands(tcu.DurationText.LayoutChild);
-
                         }
 
                         void AddToExpands(LayoutChild c)
