@@ -45,6 +45,10 @@ public class JsonReader
             {
                 mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
             }
+            if (mod.ModType == ModType.RateChange)
+            {
+                mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
+            }
             //--------------------------------------------------------------
             if (mod.ModType == ModType.SpaceConsumption)
             {
