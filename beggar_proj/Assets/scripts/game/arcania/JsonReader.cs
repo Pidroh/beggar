@@ -1,4 +1,5 @@
 using arcania;
+using HeartUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +33,19 @@ public class JsonReader
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
             mod.Source.ModsOwned.Add(mod);
+            //--------------------------------------------------------------
+            // MODS human text
+            //--------------------------------------------------------------
+            string targetTextKey = null;
+            targetTextKey = mod.Target?.RuntimeUnit?.Name;
+            if (targetTextKey == null) {
+                targetTextKey = mod.Target?.Tag?.tagName;
+            }
+            if (mod.ModType == ModType.MaxChange) 
+            {
+                mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+            }
+            //--------------------------------------------------------------
             if (mod.ModType == ModType.SpaceConsumption)
             {
                 mod.Source.ConfigFurniture.SpaceConsumed = Mathf.FloorToInt(mod.Value);
@@ -411,6 +425,7 @@ public class ModRuntime
 
     public ResourceChangeType? ResourceChangeType { get; internal set; }
     public string SourceJsonKey { get; internal set; }
+    public string HumanText { get; internal set; }
 }
 
 public class ResourceChange
