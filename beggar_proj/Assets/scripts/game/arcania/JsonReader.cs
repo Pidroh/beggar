@@ -36,10 +36,17 @@ public class JsonReader
             //--------------------------------------------------------------
             // MODS human text
             //--------------------------------------------------------------
-            string targetTextKey = null;
-            targetTextKey = mod.Target?.RuntimeUnit?.Name;
-            if (targetTextKey == null) {
-                targetTextKey = mod.Target?.Tag?.tagName;
+            string targetTextKey = GetPointerTextKey(mod.Target);
+            string intermediaryTextKey = GetPointerTextKey(mod.Intermediary);
+            string GetPointerTextKey(IDPointer pointer) 
+            {
+                string textKey = null;
+                textKey = pointer?.RuntimeUnit?.Name;
+                if (textKey == null)
+                {
+                    textKey = pointer?.Tag?.tagName;
+                }
+                return textKey;
             }
             if (mod.ModType == ModType.MaxChange) 
             {
@@ -49,6 +56,17 @@ public class JsonReader
             {
                 mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
             }
+            if (mod.ModType == ModType.ResourceChangeChanger)
+            {
+                if (mod.ResourceChangeType == ResourceChangeType.EFFECT)
+                    mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
+                else mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
+            }
+            if (mod.HumanText == null) 
+            {
+                Debug.Log("Human text logic not implemented (use this for break points)");
+            }
+            mod.HumanText = mod.HumanText == null ? "HUMAN TEXT NEEDS TO BE IMPLEMENTED" : mod.HumanText;
             //--------------------------------------------------------------
             if (mod.ModType == ModType.SpaceConsumption)
             {
