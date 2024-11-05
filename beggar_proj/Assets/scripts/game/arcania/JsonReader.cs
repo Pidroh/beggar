@@ -50,7 +50,9 @@ public class JsonReader
             }
             if (mod.ModType == ModType.MaxChange) 
             {
-                mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                // space max increasing has no target
+                if (targetTextKey != null) mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                else mod.HumanText = $"Max Space:";
             }
             if (mod.ModType == ModType.RateChange)
             {
@@ -62,11 +64,17 @@ public class JsonReader
                     mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
                 else mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
             }
+            if (mod.ModType == ModType.SpaceConsumption) 
+            {
+                mod.HumanText = "House Space:";
+            }
             if (mod.HumanText == null) 
             {
                 Debug.Log("Human text logic not implemented (use this for break points)");
             }
             mod.HumanText = mod.HumanText == null ? "HUMAN TEXT NEEDS TO BE IMPLEMENTED" : mod.HumanText;
+            //--------------------------------------------------------------
+            // MODS human text END
             //--------------------------------------------------------------
             if (mod.ModType == ModType.SpaceConsumption)
             {

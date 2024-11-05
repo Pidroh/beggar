@@ -305,7 +305,7 @@ public class MainGameControl : MonoBehaviour
                 var ttv = modUnit.ModTTVs[i];
                 ttv.LayoutChild.Visible = md.ModType != ModType.Lock && ttv.LayoutChild.Visible;
 
-                ttv.MainText.rawText = md.SourceJsonKey;
+                ttv.MainText.rawText = md.HumanText;
                 ttv.SecondaryText.rawText = $"{md.Value}";
                 ttv.TertiaryText.rawText = string.Empty;
                 ttv.ManualUpdate();
