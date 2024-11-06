@@ -627,10 +627,10 @@
                 "id": "beggarhood",
                 "name": "Beggarhood",
                 "desc": "How good you are at mingling with fellow beggars",
-                "require": "tjob",
+                "require": "t_job",
                 "cost": {
                     "thoughts": 50,
-                    "supplication.max": 20
+                    "supplication": 20
                 },
                 "mod": {
                     "thoughts.max": 5,
