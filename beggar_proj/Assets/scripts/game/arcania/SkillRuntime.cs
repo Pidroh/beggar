@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class SkillRuntime
 {
@@ -37,5 +38,11 @@ public class SkillRuntime
     internal void StudySkillTick()
     {
         xp += 1;
+    }
+
+    internal void Load(ArcaniaSkillPersistence skill)
+    {
+        xp = skill.xp;
+        _acquired = skill.acquired;
     }
 }

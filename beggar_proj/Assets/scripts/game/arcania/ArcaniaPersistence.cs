@@ -29,7 +29,8 @@ public class ArcaniaPersistence
                 {
                     apd.Skills.Add(new ArcaniaSkillPersistence() {
                         id = unit.ConfigBasic.Id,
-                        xp = unit.Skill.xp
+                        xp = unit.Skill.xp,
+                        acquired = unit.Skill.Acquired
                     });
                 }
             }
@@ -56,7 +57,7 @@ public class ArcaniaPersistence
         {
             if (!arcaniaUnits.IdMapper.TryGetValue(skill.id, out var v)) continue;
             if (v.RuntimeUnit.Skill == null) continue;
-            v.RuntimeUnit.Skill.xp = skill.xp;
+            v.RuntimeUnit.Skill.Load(skill);
         }
 
     }
@@ -90,4 +91,5 @@ public class ArcaniaSkillPersistence
 {
     public string id;
     public int xp;
+    public bool acquired;
 }
