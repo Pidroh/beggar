@@ -799,6 +799,24 @@
                     "faith.max": 10,
                     "sadness.max": -5,
                     "sorrow.max": -3,
+                    "guilt.max": -5,
+                    "space": 1
+                }
+            },
+            {
+                "id": "stolenbread",
+                "name": "Crime Bread",
+                "desc": "Dried out stolen food. A keep sake of a small crime",
+                "require": "stealbread>=3&&cunning>2",
+                "max": 1,
+                "cost": {
+                    "breadcrumbs": 40,
+                    "supplication": 100
+                },
+                "mod": {
+                    "guilt.max": 10,
+                    "faith.max": -5,
+                    "gratitude.max": -5,
                     "space": 1
                 }
             }
