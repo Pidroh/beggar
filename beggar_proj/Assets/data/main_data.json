@@ -552,7 +552,7 @@
                 "require": "rodentology>=3",
                 "need": "rats>=5",
                 "cost": {
-                    "thoughts": 5,
+                    "thoughts": 50,
                     "rats": 5,
                     "nutrition": 2
                 },
