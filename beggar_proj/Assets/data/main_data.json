@@ -485,14 +485,15 @@
                 "id": "ponderexistence",
                 "name": "What is reality?",
                 "desc": "Ask a rat about the nature of your reality",
-                "require": "sadness > 4 && rodentology > 2",
+                "require": "tier_1&&rats>0",
                 "max": 1,
                 "duration": 90,
                 "cost":{
-                    "thoughts": 70,
+                    "thoughts": 140,
                     "sadness": 50,
-                    "supplication": 350,
-                    "rats": 3
+                    "supplication": 650,
+                    "sorrow": 5,
+                    "rats": 1
                 },
                 "run":{
                     "thoughts": 1,
@@ -602,7 +603,7 @@
                 "require": "t_tier0&&introspection>3",
                 "cost": {
                     "sadness": 30,
-                    "sorrow": 10,
+                    "sorrow": 4,
                     "nutrition": 5
                 },
                 "mod": {
