@@ -159,6 +159,20 @@
                 }
             },
             {
+                "id": "Inner Mind",
+                "desc": "Your sharpened mind grants clarity and deeper insight, unveiling hidden truths within yourself.",
+                "max": 2,
+                "require": "t_tier0",
+                "duration": 10,
+                "cost": {
+                    "supplication": 200,
+                    "thoughts": 50
+                },
+                "mod": {
+                    "introspection.max": 1
+                }
+            },
+            {
                 "id": "eatcrumbs",
                 "name": "Eat old crumbs",
                 "desc": "It tastes really bad, unless you're really, really hungry",
@@ -379,14 +393,14 @@
                 "name": "Shed tears",
                 "desc": "Let the sadness flow and transform",
                 "flavor": "Tears come from the heart and not from the brain",
-                "require": "introspection>0",
+                "require": "introspection>=5",
                 "duration": 5,
                 "cost": {
                     "thoughts": 3,
                     "sadness": 10
                 },
                 "run": {
-                    "focus": 1
+                    "supplication": 1
                 },
                 "result": {
                     "sorrow": 1
