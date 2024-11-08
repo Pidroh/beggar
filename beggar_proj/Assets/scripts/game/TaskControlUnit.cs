@@ -146,12 +146,12 @@ public class RTControlUnit
 
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
-
+            ResourceChangeType resourceChangeType = (ResourceChangeType) i;
             var sep = ChangeGroupSeparators[i];
 
             ResourceChangeGroup item = ChangeGroups[i];
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
-            if (item == null || (Data.Skill != null && Data.Skill.Acquired && i == (int)ResourceChangeType.COST))
+            if (item == null || (Data.Skill != null && Data.Skill.Acquired && resourceChangeType == ResourceChangeType.COST))
             {
                 if (sep != null) sep.LayoutChild.Visible = false;
                 for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
@@ -172,10 +172,12 @@ public class RTControlUnit
                 TripleTextView ttv = item.tripleTextViews[ttvIndex];
                 var rc = resourceChanges[ttvIndex];
 
-                RuntimeUnit ru = rc.IdPointer.RuntimeUnit;
-                ttv.MainText.SetTextRaw(ru.Visible ? ru.Name : "???");
-                ttv.SecondaryText.SetTextRaw(bySecond ? $"{rc.valueChange}/s" : $"{rc.valueChange}");
-                ttv.TertiaryText.SetTextRaw($"({ru.Value} / {ru.Max})");
+                RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
+                ttv.MainText.SetTextRaw(dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???");
+                float valueChange = rc.valueChange;
+                valueChange += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
+                ttv.SecondaryText.SetTextRaw(bySecond ? $"{valueChange}/s" : $"{valueChange}");
+                ttv.TertiaryText.SetTextRaw($"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})");
                 ttv.ManualUpdate();
             }
         }
