@@ -159,7 +159,8 @@
                 }
             },
             {
-                "id": "Inner Mind",
+                "id": "innermind",
+                "name": "Inner Mind",
                 "desc": "Your sharpened mind grants clarity and deeper insight, unveiling hidden truths within yourself.",
                 "max": 2,
                 "require": "t_tier0",
@@ -590,6 +591,25 @@
                 "mod": {
                     "cunning.max": 2,
                     "guilt.max": 10
+                }
+            },
+            {
+                "id" : "beggar",
+                "name": "Beggar",
+                "desc" : "WIP",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&introspection>3",
+                "cost": {
+                    "sadness": 30,
+                    "sorrow": 10,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "thoughts.max": 50,
+                    "supplication.max": 100,
+                    "supplication.rate": 1,
+                    "innermind.max": 2
                 }
             }
         ]
