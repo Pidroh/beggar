@@ -1,4 +1,5 @@
 
+using HeartUnity;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
@@ -12,7 +13,7 @@ public class CustomBuild
         // Access command-line arguments
         string[] args = System.Environment.GetCommandLineArgs();
         string[] configurationPaths = AssetDatabase.FindAssets("t:FileBuildConfigurations");
-        
+
         string buildConfigTag = null;
         for (int i = 0; i < args.Length; i++)
         {
@@ -33,15 +34,22 @@ public class CustomBuild
                 return;
             }
         }
-        
+
     }
 
     public static void BuildGameEntry(FileBuildConfigurations.Entry entry)
     {
         var copyFileConfig = entry.copyFileTag;
         var outputPath = entry.outputPath;
+        if (outputPath.Contains("%V%")) 
+        {
+            var config = HeartGame.GetConfig();
+            outputPath = outputPath.Replace("%V%", config.versionNumber.ToString("D4"));
+        }
+
         if (!string.IsNullOrWhiteSpace(copyFileConfig))
         {
+            
             var result = FileReplaceWindow.ReplaceFilesForTag(copyFileConfig);
             Debug.Log(result ? "Successful replace!" : "Failed to replace");
         }
@@ -65,7 +73,11 @@ public class CustomBuild
         if (summary.result == BuildResult.Succeeded)
         {
             Debug.Log("Build succeeded: " + summary.totalSize + " bytes");
-            ExecuteCommand($"7z a -r -tzip \"../{entry.tag}.zip\" ./{Path.GetDirectoryName(entry.outputPath)}/*");
+            if (entry.buildTarget != BuildTarget.WebGL)
+            {
+                ExecuteCommand($"7z a -r -tzip \"../{entry.tag}.zip\" ./{Path.GetDirectoryName(outputPath)}/*");
+            }
+
         }
 
         if (summary.result == BuildResult.Failed)

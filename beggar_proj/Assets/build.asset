@@ -15,5 +15,5 @@ MonoBehaviour:
   entries:
   - tag: 
     copyFileTag: 
-    outputPath: builds/web%V%/nostalpix.exe
+    outputPath: builds/site/web%V%/
     buildTarget: 20
