@@ -132,6 +132,15 @@
                 }
             },
             {
+                "id": "relax_thoughts",
+                "name": "Refresh",
+                "desc": "Clear your mind, exchanging scattered thoughts for a surge of renewed energy.",
+                "require": "thoughts>2",
+                "result":{
+                    "supplication": 1
+                }
+            },
+            {
                 "id": "pleafocus",
                 "name": "Rest",
                 "desc": "Take a break to recuperate and regain vitality",
