@@ -15,8 +15,15 @@
             },
             {
                 "id": "breadcrumbs",
-                "desc": "Small, dry pieces of old bread",
+                "name": "Foodcrumbs",
+                "desc": "Small, old pieces of food",
                 "max": 15
+            },
+            {
+                "id": "food",
+                "name": "Food",
+                "desc": "Nutritious substance",
+                "max": 0
             },
             {
                 "id": "nutrition",
@@ -73,7 +80,7 @@
                 }
             },
             {
-                "id": "weakfaith",
+                "id": "faith",
                 "name": "Faint Faith",
                 "desc": "The start of belief in the divine",
                 "max": 5,
