@@ -352,6 +352,7 @@
                 "desc": "I'm hungry and no is gonna take care of me",
                 "duration": 8,
                 "max": 1,
+                "tag": "max_decrease",
                 "require": "stealbread>=3",
                 "mod":{
                     "guilt.max": 20,
@@ -695,6 +696,12 @@
                 "title": "Class Selection",
                 "content": "Picking a class will lock out the other classes from the same tier. Are you sure?",
                 "tags": "t_tier0"
+            },
+            {
+                "id": "irreversible",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. Are you sure?",
+                "tags": "max_decrease"
             }
         ]
     },
