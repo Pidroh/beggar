@@ -65,7 +65,7 @@
             },
             {
                 "id": "gratitude",
-                "desc": "WIP",
+                "desc": "Readiness to return kindness",
                 "max": 10,
                 "mod": {
                     "supplication.max": 1,
@@ -73,8 +73,9 @@
                 }
             },
             {
-                "id": "faith",
-                "desc": "WIP",
+                "id": "weakfaith",
+                "name": "Faint Faith",
+                "desc": "The start of belief in the divine",
                 "max": 5,
                 "mod": {
                     "supplication.max": 1,
@@ -581,7 +582,7 @@
             {
                 "id" : "breadsnatcher",
                 "name": "Bread Snatcher",
-                "desc" : "BREAD SNATCHER DESCRIPTION",
+                "desc" : "You better pay attention. Get distracted and your food will be gone.",
                 "tags": "t_tier0",
                 "lock": "t_tier0",
                 "require": "t_job&&cunning>1",
@@ -598,7 +599,7 @@
             {
                 "id" : "beggar",
                 "name": "Beggar",
-                "desc" : "WIP",
+                "desc" : "A person who lives by asking for money or food",
                 "tags": "t_tier1",
                 "lock": "t_tier1",
                 "require": "t_tier0&&introspection>3",
