@@ -62,7 +62,7 @@ public class CustomBuild
         {
             scenes = new[] { "Assets/Scenes/MainScene.unity", "Assets/Reusable/SettingsMenu.unity" }, // Adjust the scenes array as necessary
             locationPathName = outputPath,
-            target = BuildTarget.StandaloneWindows64,
+            target = entry.buildTarget,
             options = BuildOptions.None
         };
 

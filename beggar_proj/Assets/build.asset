@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: build
   m_EditorClassIdentifier: 
   entries:
-  - tag: 
+  - tag: web
     copyFileTag: 
-    outputPath: builds/site/web%V%/
+    outputPath: ../builds/site/web%V%/
     buildTarget: 20
