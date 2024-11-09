@@ -40,7 +40,7 @@ public class CustomBuild
     {
         var copyFileConfig = entry.copyFileTag;
         var outputPath = entry.outputPath;
-        if (copyFileConfig != null)
+        if (!string.IsNullOrWhiteSpace(copyFileConfig))
         {
             var result = FileReplaceWindow.ReplaceFilesForTag(copyFileConfig);
             Debug.Log(result ? "Successful replace!" : "Failed to replace");
