@@ -46,6 +46,13 @@ public class CustomBuild
             var config = HeartGame.GetConfig();
             outputPath = outputPath.Replace("%V%", config.versionNumber.ToString("D4"));
         }
+        if (outputPath.Contains("%BETA%"))
+        {
+            var config = HeartGame.GetConfig();
+            outputPath = outputPath.Replace("%BETA%", config.betaVersion ? "_beta" : "");
+            
+            
+        }
 
         if (!string.IsNullOrWhiteSpace(copyFileConfig))
         {
