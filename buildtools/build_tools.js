@@ -2,34 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const dirPath = path.join(__dirname, '../builds/site');
-const templatePath = path.join(__dirname, 'redirector_template.html');
-const outputPath = path.join(dirPath, 'index.html');
 
-fs.readdir(dirPath, (err, files) => {
-    if (err) throw err;
-
-    // Find the folder with the "webNNNN" format with the highest number
-    const webFolders = files
-        .filter(file => fs.statSync(path.join(dirPath, file)).isDirectory())
-        .filter(folder => /^web\d{4}$/.test(folder))
-        .sort((a, b) => parseInt(b.slice(3), 10) - parseInt(a.slice(3), 10));
-
-    const highestFolder = webFolders[0];
-
-    // Read the template file
-    fs.readFile(templatePath, 'utf-8', (err, data) => {
-        if (err) throw err;
-
-        // Replace &URL& with the highest webNNNN string
-        const updatedContent = data.replace('%URL%', highestFolder);
-
-        // Write to index.html in the builds/site directory
-        fs.writeFile(outputPath, updatedContent, 'utf-8', (err) => {
-            if (err) throw err;
-            console.log('index.html created/updated successfully.');
-        });
-    });
-});
 
 const menuTemplatePath = path.join(__dirname, 'menu_template.html');
 const outputMenuPath = path.join(dirPath, 'menu.html');
@@ -53,7 +26,7 @@ fs.readdir(dirPath, (err, items) => {
             const versionNumber = dir.slice(3);
             
             // Set the first button to "Latest Version"
-            const buttonText = index === 0 ? 'Latest Version' : `Version ${versionNumber}`;
+            const buttonText = `Version ${versionNumber}`;
         
             return `<button onclick="window.location.href='./${dir}/index.html'">${buttonText}</button>`;
         }).join('\n');
@@ -68,3 +41,41 @@ fs.readdir(dirPath, (err, items) => {
         });
     });
 });
+
+const latestPath = path.join(dirPath, 'latest');
+const latestBetaPath = path.join(dirPath, 'latest_beta');
+
+// Helper to filter and find the highest NNNN folders
+const findHighest = (folders, pattern) => {
+    var filtered = folders
+    .filter(name => pattern.test(name));
+    console.log(filtered);
+  return filtered
+    .map(name => parseInt(name.match(/\d+/)[0], 10))
+    .sort((a, b) => b - a)[0];
+};
+
+// Get folders in dirPath
+const folders = fs.readdirSync(dirPath).filter(folder => fs.lstatSync(path.join(dirPath, folder)).isDirectory());
+console.log(folders);
+
+const highestNumber = findHighest(folders, /^web\d{4}$/);
+console.log(highestNumber);
+const highestBetaNumber = findHighest(folders, /^web\d{4}_beta$/);
+
+const highestFolder = highestNumber ? `web${highestNumber.toLocaleString('en-US', {minimumIntegerDigits:4, useGrouping: false})}` : null;
+const highestBetaFolder = highestBetaNumber ? `web${highestBetaNumber}_beta` : null;
+
+
+if (highestFolder) {
+    console.log(highestFolder);
+    //if (!fs.existsSync(latestPath)) fs.mkdirSync(latestPath, { recursive: true });
+  fs.rmSync(latestPath, { recursive: true, force: true });
+  fs.cpSync(path.join(dirPath, highestFolder), latestPath, { recursive: true });
+}
+
+if (highestBetaFolder) {
+  //  if (!fs.existsSync(latestBetaPath)) fs.mkdirSync(latestBetaPath, { recursive: true });
+  fs.rmSync(latestBetaPath, { recursive: true, force: true });
+  fs.cpSync(path.join(dirPath, highestBetaFolder), latestBetaPath, { recursive: true });
+}
