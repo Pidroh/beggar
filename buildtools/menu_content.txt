@@ -1,0 +1,4 @@
+    <div id="menu-bar">
+      <a href="../menu.html" target="_blank">Menu</a>
+      <a href="https://discord.gg/AtGrxpM" target="_blank">Discord</a>
+    </div>
