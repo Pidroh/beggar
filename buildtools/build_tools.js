@@ -3,6 +3,19 @@ const path = require('path');
 
 const dirPath = path.join(__dirname, '../builds/site');
 
+const { execFileSync } = require('child_process');
+
+function Execute(scriptPath) {
+  try {
+    const output = execFileSync('node', [scriptPath], { encoding: 'utf-8' });
+    return output;
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    return null;
+  }
+}
+
+
 
 const menuTemplatePath = path.join(__dirname, 'menu_template.html');
 const outputMenuPath = path.join(dirPath, 'menu.html');
@@ -79,3 +92,6 @@ if (highestBetaFolder) {
   fs.rmSync(latestBetaPath, { recursive: true, force: true });
   fs.cpSync(path.join(dirPath, highestBetaFolder), latestBetaPath, { recursive: true });
 }
+
+Execute("add_menu.js");
+Execute("modifier_builds.js");
