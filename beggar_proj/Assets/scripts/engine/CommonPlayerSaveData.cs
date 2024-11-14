@@ -5,8 +5,25 @@ using System;
 namespace HeartUnity
 {
     [Serializable]
-    public class CommonPlayerSaveData 
+    public class CommonPlayerSaveData
     {
         public int TotalPlayTimeSeconds;
+    }
+
+    public class CommonPlayerSaveDataPersistence
+    {
+        // if you ever implement multiple slots or something of the sort, you're gonna have to change this
+        SaveDataUnit<CommonPlayerSaveData> SaveDataUnit = new SaveDataUnit<CommonPlayerSaveData>("player_common");
+        public bool TryLoad(out CommonPlayerSaveData playerSaveData)
+        {
+            var r = !SaveDataUnit.TryLoad(out var obj);
+            playerSaveData = obj;
+            return r;
+        }
+
+        public void Save(CommonPlayerSaveData playerSaveData) 
+        {
+            SaveDataUnit.Save(playerSaveData);
+        }
     }
 }
