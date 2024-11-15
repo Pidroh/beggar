@@ -22,7 +22,8 @@ public class MainGameControl : MonoBehaviour
     public CanvasMaker.CreateGaugeRequest SkillXPGaugeRequest;
     public ArcaniaModel arcaniaModel = new();
 
-    public PlayTimeControl PlayTimeControl = new();
+    public PlayTimeControl PlayTimeControl = new PlayTimeControl();
+    public CommonPlayerSaveDataPersistence commonPlayerSaveDataPersistence = new CommonPlayerSaveDataPersistence();
 
     public Color MainTextColor;
 
@@ -45,6 +46,11 @@ public class MainGameControl : MonoBehaviour
         RobustDeltaTime = new();
         ArcaniaPersistence = new();
         ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits);
+        if (commonPlayerSaveDataPersistence.TryLoad(out var playerSave))
+        {
+            PlayTimeControl.Init(playerSave);
+        }
+
     }
 
     // Update is called once per frame
@@ -60,7 +66,7 @@ public class MainGameControl : MonoBehaviour
         // Save data
         // -----------------------------------------------------------
         const int SAVE_COOLDOWN = 30;
-        if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN) 
+        if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN)
         {
             lastSaveTime = Time.unscaledTime;
             ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
@@ -128,7 +134,8 @@ public class MainGameControl : MonoBehaviour
         // Time, game updating
         // -----------------------------------------------------------
         RobustDeltaTime.ManualUpdate();
-        while (RobustDeltaTime.TryGetProcessedDeltaTime(out float dt)) {
+        while (RobustDeltaTime.TryGetProcessedDeltaTime(out float dt))
+        {
             arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
         }
         // -----------------------------------------------------------
@@ -148,12 +155,12 @@ public class MainGameControl : MonoBehaviour
             {
                 dynamicCanvas.ShowDialog(dialog.Id, dialog.Title, dialog.Content);
             }
-            else 
+            else
             {
                 dynamicCanvas.HideAllDialogs();
             }
         }
-        if (dynamicCanvas.DialogViews[0].buttonConfirm.Button.Clicked) 
+        if (dynamicCanvas.DialogViews[0].buttonConfirm.Button.Clicked)
         {
             arcaniaModel.Dialog.DialogComplete(0);
         }
@@ -185,12 +192,14 @@ public class MainGameControl : MonoBehaviour
                 if (tabControl.TabData.Tab.OpenSettings)
                 {
                     ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
+                    // PlayTimeControl.
                     ReusableSettingMenu.GoToSettings();
                 }
-                else {
+                else
+                {
                     dynamicCanvas.ShowChild(tabIndex);
                 }
-                
+
             }
             if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
             if (tabControl.TabData.Tab.ContainsLogs)
