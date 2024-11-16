@@ -65,7 +65,7 @@ namespace HeartUnity
 #if UNITY_WEBGL
             isWebGL = true;
 #endif
-            forcePlayerPrefs = unit.ForcePrefs;
+            forcePlayerPrefs = unit.ForcePrefs || isWebGL;
 
             var key = unit.Key;
             var backupKey = key + "_backup";
@@ -103,6 +103,7 @@ namespace HeartUnity
         {
             if (IsPlayerPrefs)
             {
+                Debug.Log("Load File player prefs " + location);
                 return TryLoadPlayerPrefs(location, out jsonData);
             }
             else
@@ -121,12 +122,15 @@ namespace HeartUnity
                 if (mainFileExist)
                 {
                     data = File.ReadAllText(location);
+                    Debug.Log("Load File ok "+location);
                     return true;
                 }
             }
             catch (System.Exception)
             {
+                Debug.Log("Load File problem serialization" + location);
             }
+            Debug.Log("Load File problem " + location);
             data = null;
             return false;
         }
@@ -152,14 +156,18 @@ namespace HeartUnity
         {
             PlayerPrefs.SetString(mainSaveLocation, json);
             PlayerPrefs.SetString(backupSaveLocation, json);
+            Debug.Log("Save local prefs "+mainSaveLocation);
+            Debug.Log("Save local prefs backup" + backupSaveLocation);
             PlayerPrefs.Save();
             return;
         }
 
         private void SaveFileSystem(string json)
         {
-            System.IO.File.WriteAllText(backupSaveLocation, json);
-            System.IO.File.WriteAllText(mainSaveLocation, json);
+            File.WriteAllText(backupSaveLocation, json);
+            File.WriteAllText(mainSaveLocation, json);
+            Debug.Log("Save file "+mainSaveLocation);
+            Debug.Log("Save file back " + backupSaveLocation);
         }
 
         internal void Save(string data)
