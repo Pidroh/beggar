@@ -68,11 +68,11 @@ namespace HeartUnity
             }
         }
 
-        public SettingModel Init(TextAsset data)
+        public SettingModel Init(TextAsset data, HeartGame heartGame)
         {
             this.defaultData = data;
             unitControls.Clear();
-            persistence = new SettingPersistence();
+            persistence = new SettingPersistence(heartGame);
             ReadData();
             Load();
             Enforce();
@@ -225,7 +225,7 @@ namespace HeartUnity
                 FULLSCREEN, EXIT_GAME, EXIT_MENU, MASTER_VOLUME, MUSIC_VOLUME, SFX_VOLUME, VOICE_VOLUME,
                 LANGUAGE_SELECTION, DELETE_DATA, 
                 PP_COLOR_CORRECTION, PP_BLOOM, PP_TONE, PP_SCANLINE, PP_VIGNETTE,
-                SHOW_CREDITS, EXPORT_SAVE, IMPORT_SAVE
+                SHOW_CREDITS, EXPORT_SAVE, IMPORT_SAVE, DISCORD_SERVER
             }
 
             public enum SettingType

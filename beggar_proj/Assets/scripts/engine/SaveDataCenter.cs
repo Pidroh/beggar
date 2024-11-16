@@ -16,7 +16,7 @@ namespace HeartUnity
             {
                 foreach (var u in units)
                 {
-                    var ptu = new PersistentTextUnit(u.Key);
+                    var ptu = new PersistentTextUnit(u.Key, null);
                     var foundData = ptu.TryLoad(ptu.mainSaveLocation, out var data);
                     if (foundData) 
                     {
@@ -38,7 +38,7 @@ namespace HeartUnity
                 {
                     if (!names.Contains(u.Key)) continue;
                     var index = names.IndexOf(u.Key);
-                    var ptu = new PersistentTextUnit(u.Key);
+                    var ptu = new PersistentTextUnit(u.Key, null);
                     ptu.Save(content[index]);
                 }
             }

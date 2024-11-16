@@ -23,6 +23,7 @@ namespace HeartUnity
         public View viewConfig;
         public InputPromptVisuals inputPromptVisuals;
         public List<PersistenceUnit> PersistenceUnits;
+        public URLs urls;
 
         [Serializable]
         public class View
@@ -37,6 +38,12 @@ namespace HeartUnity
         {
             public bool ForcePrefs;
             public string Key;
+        }
+
+        [Serializable]
+        public class URLs
+        {
+            public string DiscordServer;
         }
     }
 }

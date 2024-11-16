@@ -56,7 +56,13 @@ namespace HeartUnity.View
 
         public ButtonBinding IdentifyKeyboardOrGamepadBindingForLatestDevice(List<ButtonBinding> bb, out InputDevice id)
         {
+
+#if UNITY_SWITCH
+            InputDevice keyboardOrMouseOnlyDevice = InputDevice.CONTROLLER;
+#else
             InputDevice keyboardOrMouseOnlyDevice = latestInputDeviceKeyboardOrGamepad.HasValue ? latestInputDeviceKeyboardOrGamepad.Value : InputDevice.KEYBOARD;
+#endif
+
             foreach (var b in bb)
             {
 
@@ -81,7 +87,12 @@ namespace HeartUnity.View
                     }
                 }
             }
+            
+#if UNITY_SWITCH
+            id = InputDevice.CONTROLLER;
+#else
             id = InputDevice.KEYBOARD;
+#endif
             return null;
         }
 

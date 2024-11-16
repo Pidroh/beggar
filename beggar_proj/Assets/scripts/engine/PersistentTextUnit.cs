@@ -8,12 +8,14 @@ namespace HeartUnity
 {
     public class PersistentTextUnit 
     {
+#if UNITY_SWITCH
+        NintendoSwitchPersistentTextUnit switchTextUnit;
+#endif
         internal string mainSaveLocation;
         internal string backupSaveLocation;
-        private bool _isSwitch;
         public bool forcePlayerPrefs = false;
         public bool isWebGL = false;
-        public bool IsPlayerPrefs => forcePlayerPrefs || _isSwitch;
+        public bool IsPlayerPrefs => forcePlayerPrefs;
         public static readonly List<PersistenceUnit> DefaultSaveDataUnits = new List<PersistenceUnit>() {
             new PersistenceUnit()
             {
@@ -22,7 +24,7 @@ namespace HeartUnity
             }
         };
 
-        public PersistentTextUnit(string key) {
+        public PersistentTextUnit(string key, HeartGame heartGame) {
             var config = HeartGame.GetConfig();
             PersistenceUnit FindUnit(List<PersistenceUnit> persistenceUnits)
             {
@@ -44,26 +46,31 @@ namespace HeartUnity
             {
                 Debug.LogError($"Engine Error: Persistence key not found {key}");
             }
-            Init(unit);
+            Init(unit, heartGame);
         }
 
-        public PersistentTextUnit(PersistenceUnit unit)
+        public PersistentTextUnit(PersistenceUnit unit, HeartGame heartGame)
         {
-            Init(unit);
+            Init(unit, heartGame);
+
         }
 
-        internal void Init(PersistenceUnit unit)
+        internal void Init(PersistenceUnit unit, HeartGame heartGame)
         {
 #if UNITY_WEBGL
             isWebGL = true;
-#endif
-#if UNITY_SWITCH
-            _isSwitch = true;
 #endif
             forcePlayerPrefs = unit.ForcePrefs;
 
             var key = unit.Key;
             var backupKey = key + "_backup";
+#if UNITY_SWITCH && !UNITY_EDITOR
+            switchTextUnit = new(unit, heartGame.crossSceneData.UserId);
+            return;
+#endif
+#if UNITY_SWITCH && UNITY_EDITOR
+            forcePlayerPrefs = true;
+#endif
             if (IsPlayerPrefs)
             {
                 mainSaveLocation = key;
@@ -75,6 +82,18 @@ namespace HeartUnity
             backupSaveLocation = Application.persistentDataPath + "/" + backupKey;
 #endif
         }
+#if UNITY_SWITCH && !UNITY_EDITOR
+        internal bool TryLoad(string location, out string jsonData)
+        {
+            jsonData = switchTextUnit.LoadPlayerPrefs();
+            return jsonData != null;
+        }
+
+        internal void Save(string data)
+        {
+            switchTextUnit.Save(data);
+        }
+#else
         internal bool TryLoad(string location, out string jsonData)
         {
             if (IsPlayerPrefs)
@@ -85,6 +104,7 @@ namespace HeartUnity
             {
                 return TryLoadFileSystem(location, out jsonData);
             }
+
         }
 
         private static bool TryLoadFileSystem(string location, out string data)
@@ -123,22 +143,6 @@ namespace HeartUnity
             return false;
         }
 
-        public void Delete()
-        {
-            Delete(mainSaveLocation);
-            Delete(backupSaveLocation);
-        }
-
-        private void Delete(string location)
-        {
-            var mainFileExist = File.Exists(location);
-
-            if (mainFileExist)
-            {
-                File.Delete(location);
-            }
-        }
-
         private void SaveLocalPrefs(string json)
         {
             PlayerPrefs.SetString(mainSaveLocation, json);
@@ -162,5 +166,25 @@ namespace HeartUnity
             }
             SaveFileSystem(data);
         }
+#endif
+
+
+        public void Delete()
+        {
+            Delete(mainSaveLocation);
+            Delete(backupSaveLocation);
+        }
+
+        private void Delete(string location)
+        {
+            var mainFileExist = File.Exists(location);
+
+            if (mainFileExist)
+            {
+                File.Delete(location);
+            }
+        }
+
+        
     }
 }

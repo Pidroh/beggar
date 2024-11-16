@@ -15,11 +15,11 @@ public class MainGameControlSetup
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
         mgc.TabButtonLayout = lowerMenuLayout;
 
-        mgc.EngineView = EngineView.CreateEngineViewThroughCode(new EngineView.EngineViewInitializationParameter()
+        mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
         {
             canvas = dynamicCanvas.Canvas
-        });
-        mgc.EngineView.Init(2);
+        }, 2);
+
 
         dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.DialogObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
 

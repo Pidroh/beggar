@@ -24,5 +24,10 @@ namespace HeartUnity
 #endif
             Application.OpenURL(url);
         }
+
+        internal static void OpenURL(string url)
+        {
+            Application.OpenURL(url);
+        }
     }
 }

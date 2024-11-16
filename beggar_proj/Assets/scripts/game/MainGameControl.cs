@@ -22,9 +22,6 @@ public class MainGameControl : MonoBehaviour
     public CanvasMaker.CreateGaugeRequest SkillXPGaugeRequest;
     public ArcaniaModel arcaniaModel = new();
 
-    public PlayTimeControl PlayTimeControl = new PlayTimeControl();
-    public CommonPlayerSaveDataPersistence commonPlayerSaveDataPersistence = new CommonPlayerSaveDataPersistence();
-
     public Color MainTextColor;
 
     public EngineView EngineView { get; internal set; }
@@ -35,17 +32,23 @@ public class MainGameControl : MonoBehaviour
 
     public RobustDeltaTime RobustDeltaTime = new();
     public ArcaniaPersistence ArcaniaPersistence;
+
+    public HeartGame HeartGame { get; private set; }
+
     public float lastSaveTime;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        HeartGame = HeartGame.Init();
         lastSaveTime = Time.unscaledTime;
         MainGameControlSetup.Setup(this);
         RobustDeltaTime = new();
-        ArcaniaPersistence = new();
+        ArcaniaPersistence = new(HeartGame);
         ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits);
+        HeartGame.
+        CommonPlayerSaveDataPersistence commonPlayerSaveDataPersistence = HeartGame.CreateCommonPlayerSaveDataPersistence();
         if (commonPlayerSaveDataPersistence.TryLoad(out var playerSave))
         {
             PlayTimeControl.Init(playerSave);

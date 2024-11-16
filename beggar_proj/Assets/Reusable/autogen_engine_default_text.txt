@@ -59,7 +59,7 @@ Awakening_1$$Awakening 1$Despertar 1$覚醒 1$각성 1$觉醒 1$覺醒 1
 Language$$Language$Idioma$言語$언어$语言$語言
 Inventory$$Inventory$Inventário$インベントリ$인벤토리$库存$庫存
 End_Turn$$End Turn$Encerrar Turno$ターン終了$턴 종료$结束回合$結束回合
-No_need$$No need$Sem necessidade$不需要$필요 없음$不需要$不需要
+No_need$$No need$Sem necessidade$必要ない$필요 없음$不需要$不需要
 Sure$$Sure$Claro$もちろん$확실히$当然$當然
 Tutorial$$Tutorial$Tutorial$チュートリアル$튜토리얼$教程$教學
 Player_turn$$Player turn$Turno do Jogador$プレイヤーターン$플레이어 턴$玩家回合$玩家回合
@@ -262,10 +262,10 @@ Thunbi$$Thunbi$Thunbi$サバイ$툰비$途尼比$猫桶
 Thunchick$$Thunchick$TTrinque$サンチック$텐치크$枝状阵营$湯昌立
 Sell$$Sell$Vender$売る$판매$出售$販售
 Color_correction$$Color correction$Correção de cor.$カラー補正$색상 보정$色彩校正$顏色校正
-Tone_correction$$Tone correction$Correção de tom$音程補正$음색 보정$音调校正$音調修正
+Tone_correction$$Tone correction$Correção de tom$トーン補正$톤 보정$色调校正$色調校正
 Scanline$$Scanline$Scanline$スキャンライン$스캔라인$扫描线$掃描線
 Vignette$$Vignette$Cena$ビネット$비네티트$小插曲$小插曲
-Bloom$$Bloom$Florescer$開花$번영$绽放$綻放
+Bloom$$Bloom$Brilho$ブルーム$블룸 효과$光晕效果$光暈效果
 Delete_data$$Delete data$Excluir dados.$データを削除します。$데이터 삭제$删除数据$刪除數據
 New_York$$New York$Nova York$ニューヨーク$뉴욕$纽约$紐約
 Hell_York$$Hell York$Inferno York$ヘル・ヨーク$헬요크$地狱约克$地獄紐約
@@ -320,7 +320,7 @@ Catfi$fire cat$Catfi$Gatufogo$ファイヤニャン$불고양이$火猫$火貓
 Catma$ magic cat$Catma$Gatímago$マジカット$마캣$魔猫$魔貓
 Catmag$stronger magic cat$Catmag$Mágigato$キョウジャナイ$마법고양이$魔力猫$強魔貓
 Hoodbit$hooded rabbit$Hoodbit$Capurabbit$フードビット$후드비트$披风兽$兔袍族
-Fighbit$fighter rabbit$Fighbit$Lutazatrix$ファイトッビット$투토비트$搏兔$格鬥兔
+Fighbit$fighter rabbit$Fighbit$Lutazatrix$ファイトッビット$투토비트$搏兔$格鬥兔
 Spooky$scary monster$Spooky$Assustamonstra$スプーキー$스푸키$幽灵兽$幽灵怪
 Scary$ scary stronger monster$Scary$Assustador$恐怖力怪獣$무서운$恐魔$巨怖力
 Gembit$gem rabbit$Gembit$Pedrobronco$ジェムビット$젬빗$宝宝兔$寶寶兔
@@ -381,4 +381,31 @@ Thunder_Starter_Deck$$Thunder Starter Deck$Deck Inicial de Trovão$サンダー�
 $$$$$$$
 Not_enough_to_draw_cards$$Not enough to draw cards$Não é suficiente para sacar cartas.$カードを引くのに十分ではありません。$카드를 뽑기에 충분치 않습니다.$抽卡次数不够$抽牌數量不夠
 You_have_too_many_cards$$You have too many cards$Você tem cartas demais.$カードが多すぎます$카드가 너무 많습니다$你手牌过多$你手上的卡片太多
-Draw_Points$$Draw Points$Pontos de Compra$ドローポイント$드로우 포인트$抽牌点数$抽卡點EnglishPortuguêsPortuguês BR日本語繁體中文简体中文한국어
+Draw_Points$$Draw Points$Pontos de Compra$ドローポイント$드로우 포인트$抽牌点数$抽卡點
+Your_monsters_can_still_attack.<br>Tap_on_your_monsters_in_the_field_to_attack.$$Your monsters can still attack.<br>Tap on your monsters in the field to attack.$Seus monstros ainda podem atacar.<br>Toque em seus monstros no campo para atacar.$モンスターはまだ攻撃できます。<br>フィールド上のモンスターをタップして攻撃します。$당신의 몬스터는 여전히 공격할 수 있습니다.<br>필드의 몬스터를 탭하여 공격하세요.$你的怪兽仍然可以攻击。<br>轻触场上的怪兽进行攻击。$你的怪獸仍然可以攻擊！<br>輕觸場上的怪獸進行攻擊。
+Eden_York$$Eden York$Éden York$イーデン・ヨーク$이덴 요크$伊甸·约克$伊甸約克
+China_Town$$China Town$Bairro Chinês$チャイナタウン$차이나 타운$唐人街$唐人街
+Fifth_Avenue$$Fifth Avenue$Quinta Avenida$フィフスアベニュー$제 5 아베뉴$第五大道$第五大道
+Empire_State$$Empire State$Estado Imperial$エンパイアステート$엠파이어 스테이트$帝国大厦$帝國大廈
+Grand_Central$$Grand Central$Central Grande$グランドセントラル$그랜드 센트럴$中央车站$中央車站
+Humiliate$$Humiliate$Humilhar$屈辱$몰상식하게하다$羞辱$羞辱
+All_enemies$$All enemies$Todos os inimigos$全ての敵$모든 적$所有敌人$所有敵人
+Nightmare$$Nightmare$Pesadelo$悪夢$악몽$噩梦$惡夢
+Judgement$$Judgement$Julgamento$裁き$심판$裁决$裁決
+Flaregg$$Flaregg$Flaregg$フレアッグ$번개르그$熾焰龍$烈焰蛋
+Pyrotail$$Pyrotail$Pyrotail$火尾$파이로테일$火尾$火焰尾
+Clawk$$Clawk$Clawk$クローク$클로크$克劳科$匡克
+Thundra$$Thundra$Thundra$サンドラ$썬드라$瑟德拉$雷霆女神
+Chillix$$Chillix$Chillix$チリックス$칠릭스$冰凉星$冰封夜溫
+Blizowl$$Blizowl$Blizowl$ブリザウル$블리자울$暴雪猫头鹰$暴雪貓頭鷹
+Too_many_cards!$$Too many cards!$Muitas cartas!$カードが多すぎます！$너무 많은 카드!$卡片太多啦!$太多張卡！
+You_have_too_many_cards._Please_sell_some_of_your_cards.$$You have too many cards. Please sell some of your cards.$Você tem cartas demais. Por favor, venda algumas de suas cartas.$手持ちのカードが多すぎます。一部のカードを売却してください。$너는 너무 많은 카드를 가지고 있어. 카드 중 일부를 팔아주세요.$你有太多的卡牌。请卖掉一些你的卡牌。$你有太多卡片。請賣掉一些你的卡片。
+It's_not_over_yet!$$It's not over yet!$Ainda não acabou!$まだ終わっていません！$아직 끝나지 않았어요!$还没结束呢！$還沒結束呢！
+New_game_in_development$$New game in development$Novo jogo em desenvolvimento$開発中の新しいゲーム$개발 중인 새로운 게임$新游戏开发中.$開發中的新遊戲
+Start_Game$$Start Game$Iniciar Jogo.$ゲームを開始$게임 시작$开始游戏$開始遊戲
+Go_wishlist$$Go wishlist$Adicionar à lista de desejos.$ウィッシュリストに追加$위시리스트에 추가하기$加入愿望清单$加入願望清單
+Discord_Server$$Discord Server$Servidor do Discord$ディスコードサーバー$디스코드 서버$Discord$Discord
+You_now_have_access_to_Eden_York._There,_you_might_find_the_Divine_Birds..._If_you're_strong_enough.<br><br>Beware,_you_might_need_to_heavily_upgrade_your_cards_to_win.$$You now have access to Eden York. There, you might find the Divine Birds... If you're strong enough.<br><br>Beware, you might need to heavily upgrade your cards to win.$Agora você tem acesso a Eden York. Lá, você pode encontrar os Pássaros Divinos... Se for forte o suficiente.<br><br>Cuidado, você pode precisar melhorar bastante suas cartas para vencer.$これでエデンヨークにアクセスできます。そこでは神聖な鳥たちに出会えるかもしれません…あなたが十分に強ければ。<br><br>気をつけて、勝つためにはカードを大幅に強化する必要があるかもしれません。$이제 Eden York에 접근할 수 있습니다. 거기서 신성한 새들을 찾을 수도 있습니다... 당신이 충분히 강하다면.<br><br>조심하세요, 이기려면 카드를 많이 업그레이드해야 할 수도 있습니다.$您现在可以进入 Eden York。在那里，您可能会找到神鸟……如果您足够强大。<br><br>小心，您可能需要大幅升级您的卡牌才能获胜。$您現在可以進入 Eden York。在那裡，您可能會找到神鳥……如果您足夠強大。<br><br>小心，您可能需要大幅升級您的卡牌才能獲勝。
+Card_Nova_Hyper,_the_sequel_to_Perfect_Hand_of_Nostalpix,_is_in_development.<br><br>Please_wishlist_to_support_its_success,_it_really_helps.$$Card Nova Hyper, the sequel to Perfect Hand of Nostalpix, is in development.<br><br>Please wishlist to support its success, it really helps.$Card Nova Hyper, a sequência de Perfect Hand of Nostalpix, está em desenvolvimento.<br><br>Por favor, adicione à sua lista de desejos para apoiar seu sucesso, isso realmente ajuda.$Card Nova Hyper、ピクスの切り札の続編が開発中です。<br><br>成功をサポートするためにウィッシュリストに追加してください。これが本当に助けになります。$Card Nova Hyper, Perfect Hand of Nostalpix의 후속작이 개발 중입니다.<br><br>성공을 위해 위시리스트에 추가해주세요. 정말 큰 도움이 됩니다.$Card Nova Hyper，即 Perfect Hand of Nostalpix 的续作，正在开发中。<br><br>请添加到愿望清单以支持其成功，这真的会有所帮助。$Card Nova Hyper，即 Perfect Hand of Nostalpix 的續作，正在開發中。<br><br>請添加到願望清單以支持其成功，這真的會有所幫助。
+Wishlist_the_sequel!$$Wishlist the sequel!$Wishlist a sequel!$続編をウィッシュリストに追加！$후속작을 위시리스트에!$愿望单上加续集！$願望單上加續集！
+In_development$$In development$Em desenvolvimento$開発中$개발 중$开发中$開發中EnglishPortuguêsPortuguês BR日本語繁體中文简体中文한국어

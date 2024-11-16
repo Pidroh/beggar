@@ -4,7 +4,12 @@ using System.Collections.Generic;
 
 public class ArcaniaPersistence
 {
-    public SaveDataUnit<ArcaniaPersistenceData> saveUnit = new("maindata");
+    public SaveDataUnit<ArcaniaPersistenceData> saveUnit;
+
+    public ArcaniaPersistence(HeartGame hg) 
+    {
+        saveUnit = new SaveDataUnit<ArcaniaPersistenceData>("maindata", hg);
+    }
 
     public void Save(ArcaniaUnits units) 
     {

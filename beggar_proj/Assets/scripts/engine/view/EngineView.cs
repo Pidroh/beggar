@@ -12,7 +12,8 @@ namespace HeartUnity.View
             public Canvas canvas;
         }
 
-        public static EngineView CreateEngineViewThroughCode(EngineViewInitializationParameter param)
+        // access this through an instance of heart game
+        internal static EngineView CreateEngineViewThroughCode(EngineViewInitializationParameter param)
         {
             var go = new GameObject();
             var ev = go.AddComponent<EngineView>();
@@ -38,7 +39,7 @@ namespace HeartUnity.View
         public static float dpi => overwrittenDpi.HasValue ? overwrittenDpi.Value : Screen.dpi;
         private static float? overwrittenDpi;
 
-        public void Init(int initialLayer)
+        internal void Init(int initialLayer)
         {
             UIUnit.EngineView = this;
             if(prefabHolder != null)

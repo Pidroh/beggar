@@ -3,6 +3,7 @@
 using HeartUnity.View;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using static HeartUnity.SettingModel;
 
 namespace HeartUnity
@@ -12,10 +13,16 @@ namespace HeartUnity
     public class SettingPersistence
     {
         public const string Key = "settings";
-        public SaveDataUnit<SettingPersistenceData> saveDataUnit = new(Key);
+        public SaveDataUnit<SettingPersistenceData> saveDataUnit;
+
+        public SettingPersistence(HeartGame heartGame) 
+        {
+             saveDataUnit = new(Key, heartGame);
+        }
 
         internal void LoadMethod(List<SettingUnitRealTime> unitControls)
         {
+            Debug.Log($"Setting load try");
             if (saveDataUnit.TryLoad(out var data))
             {
                 foreach (var uc in unitControls)
@@ -31,6 +38,10 @@ namespace HeartUnity
                         }
                     }
                 }
+            }
+            else
+            {
+                Debug.Log($"Setting load failed");
             }
         }
 

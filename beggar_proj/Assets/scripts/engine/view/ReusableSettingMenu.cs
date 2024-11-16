@@ -33,13 +33,15 @@ namespace HeartUnity.View
                     ToPreviousScene();
                     break;
                 case SettingSceneMode.LANGUAGE_IN_SETTINGS:
-                    ReusableSettingMenu.GoToSettings(CloseScene);
+                    ReusableSettingMenu.BeforeGoToSettings(CloseScene);
+                    heartGame.ChangeScene(SettingSceneName);
                     break;
                 case SettingSceneMode.LANGUAGE_EXTERNAL:
                     ToPreviousScene();
                     break;
                 case SettingSceneMode.CREDITS:
-                    ReusableSettingMenu.GoToSettings(CloseScene);
+                    ReusableSettingMenu.BeforeGoToSettings(CloseScene);
+                    heartGame.ChangeScene(SettingSceneName);
                     break;
                 default:
                     break;
@@ -70,13 +72,12 @@ namespace HeartUnity.View
         private const string DIALOG_ID_DELETE_DATA = "dialog_id_delete_data";
         public const string SettingSceneName = "SettingsMenu";
 
-        public static void GoToSettings(string closeScene = null)
+        public static void BeforeGoToSettings(string closeScene = null)
         {
             if (closeScene == null)
                 CloseScene = SceneManager.GetActiveScene().name;
             else
                 CloseScene = closeScene;
-            SceneManager.LoadScene(SettingSceneName);
             crossSceneData.settingSceneMode = SettingSceneMode.SETTINGS;
         }
 
@@ -90,12 +91,11 @@ namespace HeartUnity.View
             return s;
         }
 
-        public static void GoToLanguageSelection(bool recordSceneReturn = true)
+        public static void BeforeGoToLanguageSelection(bool recordSceneReturn = true)
         {
             if (recordSceneReturn)
                 CloseScene = SceneManager.GetActiveScene().name;
             crossSceneData.settingSceneMode = recordSceneReturn ? SettingSceneMode.LANGUAGE_EXTERNAL : SettingSceneMode.LANGUAGE_IN_SETTINGS;
-            SceneManager.LoadScene(SettingSceneName);
         }
 
 
@@ -106,7 +106,7 @@ namespace HeartUnity.View
             crossSceneData.settingSceneMode = SettingSceneMode.DIALOG;
             ReusableSettingMenu.crossSceneData.settingDialog = settingDialog;
 
-            SceneManager.LoadScene(SettingSceneName);
+            heartGame.ChangeScene(SettingSceneName);
         }
 
         public void Awake()
@@ -115,9 +115,7 @@ namespace HeartUnity.View
             model = heartGame.settingModel;
             Cursor.visible = true;
             input.menu = this;
-            engineView = GameObject.FindObjectOfType<EngineView>();
-            engineView.Init(0);
-            heartGame.BindEngineView(engineView);
+            engineView = heartGame.BindAndGetEngineView();
             bindings = InputManager.CreateDefaultButtonBindings();
             settingDialog = crossSceneData.settingDialog;
             settingSceneMode = crossSceneData.settingSceneMode;
@@ -172,7 +170,12 @@ namespace HeartUnity.View
 
         public void PressDialogButton(bool confirmTCancelF)
         {
-            if (!confirmTCancelF) { GoToSettings(CloseScene); return; }
+            if (!confirmTCancelF)
+            {
+                BeforeGoToSettings(CloseScene);
+                heartGame.ChangeScene(SettingSceneName);
+                return;
+            }
             switch (settingDialog.id)
             {
                 case ReusableSettingMenu.DIALOG_ID_DELETE_DATA:
@@ -194,7 +197,8 @@ namespace HeartUnity.View
                 default:
                     break;
             }
-            GoToSettings(CloseScene);
+            BeforeGoToSettings(CloseScene);
+            heartGame.ChangeScene(SettingSceneName);
 
         }
 
@@ -278,11 +282,21 @@ namespace HeartUnity.View
         {
             MainGameConfig mainGameConfig = HeartGame.GetConfig();
             var credits = mainGameConfig.Credits;
+            var disableDiscordButton = string.IsNullOrWhiteSpace(mainGameConfig.urls?.DiscordServer) || Application.platform == RuntimePlatform.Switch;
+            var disableDeleteData = Application.platform == RuntimePlatform.Switch;
+            var disableExitButton = Application.platform == RuntimePlatform.Switch || Application.platform == RuntimePlatform.WebGLPlayer;
+            var disableFullScreen = Application.platform == RuntimePlatform.Switch;
+            var disableVoice = mainGameConfig.voiceLists == null || mainGameConfig.voiceLists.Length == 0;
+
             foreach (var uc in model.unitControls)
             {
-                var disableExitButton = Application.platform == RuntimePlatform.Switch || Application.platform == RuntimePlatform.WebGLPlayer;
+                
                 if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.LANGUAGE_SELECTION && Local.Instance.languages.Count <= 1) continue;
                 if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.SHOW_CREDITS && credits == null) continue;
+                if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.DISCORD_SERVER && disableDiscordButton) continue;
+                if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.DELETE_DATA && disableDeleteData) continue;
+                if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.FULLSCREEN && disableFullScreen) continue;
+                if (uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.VOICE_VOLUME && disableVoice) continue;
                 if (disableExitButton && uc.settingData.standardSettingType == SettingUnitData.StandardSettingType.EXIT_GAME) continue;
                 var settingUnitUI = new SettingUnitUI();
                 unitUIs.Add(settingUnitUI);
@@ -452,12 +466,16 @@ namespace HeartUnity.View
                     break;
                 case SettingUnitData.StandardSettingType.LANGUAGE_SELECTION:
                     engineView.inputManager.RecordSceneLatestDevice();
-                    ReusableSettingMenu.GoToLanguageSelection(false);
+                    ReusableSettingMenu.BeforeGoToLanguageSelection(false);
+                    heartGame.ChangeScene(ReusableSettingMenu.SettingSceneName);
                     break;
                 case SettingUnitData.StandardSettingType.SHOW_CREDITS:
                     crossSceneData.settingSceneMode = SettingSceneMode.CREDITS;
                     engineView.inputManager.RecordSceneLatestDevice();
-                    SceneManager.LoadScene(SettingSceneName);
+                    heartGame.ChangeScene(SettingSceneName);
+                    break;
+                case SettingUnitData.StandardSettingType.DISCORD_SERVER:
+                    URLOpener.OpenURL(HeartGame.GetConfig().urls.DiscordServer);
                     break;
                 case SettingUnitData.StandardSettingType.MASTER_VOLUME:
                 case SettingUnitData.StandardSettingType.MUSIC_VOLUME:
