@@ -77,7 +77,7 @@ console.log(highestNumber);
 const highestBetaNumber = findHighest(folders, /^web\d{4}_beta$/);
 
 const highestFolder = highestNumber ? `web${highestNumber.toLocaleString('en-US', {minimumIntegerDigits:4, useGrouping: false})}` : null;
-const highestBetaFolder = highestBetaNumber ? `web${highestBetaNumber}_beta` : null;
+const highestBetaFolder = highestBetaNumber ? `web${highestNumber.toLocaleString('en-US', {minimumIntegerDigits:4, useGrouping: false})}_beta` : null;
 
 
 if (highestFolder) {

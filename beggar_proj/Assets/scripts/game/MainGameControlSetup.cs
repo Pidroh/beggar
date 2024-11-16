@@ -321,7 +321,7 @@ public class MainGameControlSetup
         {
             mgc.EndGameRuntimeUnit = arcaniaModel.FindRuntimeUnit(UnitType.TASK, "ponderexistence");
             var endMessage = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 18);
-            endMessage.rawText = $"GAME CLEARED \nYou have become one with existence. \n At least until more content is added. \n\n Comment on the reddit post: \"I'm the beggar's journey\"";
+            endMessage.rawText = $"GAME CLEARED \nYou have become one with existence. \n At least until more content is added. \n\n Let me know you finished the game by sending me: \"I'm the beggar's journey\".\n\n\n You can use Reddit, email, the Discord channel, etc";
 
             var lc = LayoutChild.Create(endMessage.transform);
             endMessage.RectTransform.FillParent();

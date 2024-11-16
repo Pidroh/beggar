@@ -58,6 +58,11 @@ namespace HeartUnity
             _commonSaveDataPersistence = new CommonPlayerSaveDataPersistence(key, this);
         }
 
+        public void SaveCommon()
+        {
+            SaveCommonData();
+        }
+
 #if UNITY_SWITCH
         private static void TryLoadSwitchUser(HeartGame heartGame)
         {
@@ -125,11 +130,9 @@ namespace HeartUnity
             }
 
             // only saves if it has correctly loaded once
-            if (_commonSaveDataPersistence != null) 
+            if (_commonSaveDataPersistence != null)
             {
-                var common = new CommonPlayerSaveData();
-                common.TotalPlayTimeSeconds = (int) PlayTimeControl.playTime;
-                _commonSaveDataPersistence.Save(common);
+                SaveCommonData();
                 // this should only be called if the PlayTimeControl has been inited, so it's fine if it's called here
                 // in other words, if there is no commonSaveDataPersistence, you shouldn't call before change scene
                 PlayTimeControl.BeforeChangeScene();
@@ -140,6 +143,13 @@ namespace HeartUnity
             crossSceneDataStatic = crossSceneData;
             crossSceneDataStatic.previousSceneName = sceneName;
             SceneManager.LoadScene(newScene);
+        }
+
+        private void SaveCommonData()
+        {
+            var common = new CommonPlayerSaveData();
+            common.TotalPlayTimeSeconds = (int)PlayTimeControl.playTime;
+            _commonSaveDataPersistence.Save(common);
         }
 
         public struct CrossSceneData

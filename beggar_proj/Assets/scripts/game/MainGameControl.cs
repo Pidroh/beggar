@@ -67,6 +67,7 @@ public class MainGameControl : MonoBehaviour
         {
             lastSaveTime = Time.unscaledTime;
             ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
+            HeartGame.SaveCommon();
         }
         // -----------------------------------------------------------
         // Debug command
