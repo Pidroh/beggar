@@ -20,7 +20,7 @@ namespace HeartUnity
         }
         public bool TryLoad(out CommonPlayerSaveData playerSaveData)
         {
-            var r = !SaveDataUnit.TryLoad(out var obj);
+            var r = SaveDataUnit.TryLoad(out var obj);
             playerSaveData = obj;
             return r;
         }

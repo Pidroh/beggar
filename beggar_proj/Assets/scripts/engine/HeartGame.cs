@@ -9,6 +9,7 @@ namespace HeartUnity
 {
     public class HeartGame
     {
+        public const string DefaultCommonsSaveDataKey = "player_commons";
         public SettingModel settingModel;
 
         private UnityLogIntegration _unityLogIntegration;
@@ -20,6 +21,7 @@ namespace HeartUnity
         public EngineView EngineView { get; private set; }
 
         public PlayTimeControl PlayTimeControl = new PlayTimeControl();
+        private CommonPlayerSaveDataPersistence _commonSaveDataPersistence;
 
         public static HeartGame Init()
         {
@@ -41,13 +43,19 @@ namespace HeartUnity
             return heartGame;
         }
 
-        public void CommonDataLoad()
+        // Can overwrite key if you need multiple keys for slots and stuff
+        public void CommonDataLoad(string key = HeartGame.DefaultCommonsSaveDataKey)
         {
-            CommonPlayerSaveDataPersistence commonPlayerSaveDataPersistence = HeartGame.CreateCommonPlayerSaveDataPersistence("player_commons");
-            if (commonPlayerSaveDataPersistence.TryLoad(out var playerSave))
+            CreateCommonPlayerSaveDataPersistence(key);
+            if (_commonSaveDataPersistence.TryLoad(out var playerSave))
             {
                 PlayTimeControl.Init(playerSave);
             }
+        }
+
+        private void CreateCommonPlayerSaveDataPersistence(string key)
+        {
+            _commonSaveDataPersistence = new CommonPlayerSaveDataPersistence(key, this);
         }
 
 #if UNITY_SWITCH
@@ -91,6 +99,7 @@ namespace HeartUnity
 
         private void BindEngineView(EngineView engineView)
         {
+            if (engineView.reusableMenuPrefabs == null) return;
             _unityLogIntegration = new UnityLogIntegration(engineView);
 
         }
@@ -114,6 +123,18 @@ namespace HeartUnity
             if (EngineView == null) {
                 Debug.LogError("Heart Game needs EngineView to be functional, create or bind EngineView through it's API");
             }
+
+            // only saves if it has correctly loaded once
+            if (_commonSaveDataPersistence != null) 
+            {
+                var common = new CommonPlayerSaveData();
+                common.TotalPlayTimeSeconds = (int) PlayTimeControl.playTime;
+                _commonSaveDataPersistence.Save(common);
+                // this should only be called if the PlayTimeControl has been inited, so it's fine if it's called here
+                // in other words, if there is no commonSaveDataPersistence, you shouldn't call before change scene
+                PlayTimeControl.BeforeChangeScene();
+            }
+
             EngineView.inputManager.RecordSceneLatestDevice();
             var sceneName = SceneManager.GetActiveScene().name;
             crossSceneDataStatic = crossSceneData;

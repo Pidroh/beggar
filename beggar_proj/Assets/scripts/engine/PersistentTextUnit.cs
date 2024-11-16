@@ -21,7 +21,12 @@ namespace HeartUnity
             {
                 Key = SettingPersistence.Key,
                 ForcePrefs = false
-            }
+            },
+            new PersistenceUnit()
+            {
+                Key = HeartGame.DefaultCommonsSaveDataKey,
+                ForcePrefs = false
+            },
         };
 
         public PersistentTextUnit(string key, HeartGame heartGame) {

@@ -47,13 +47,7 @@ public class MainGameControl : MonoBehaviour
         RobustDeltaTime = new();
         ArcaniaPersistence = new(HeartGame);
         ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits);
-        HeartGame.
-        CommonPlayerSaveDataPersistence commonPlayerSaveDataPersistence = HeartGame.CreateCommonPlayerSaveDataPersistence();
-        if (commonPlayerSaveDataPersistence.TryLoad(out var playerSave))
-        {
-            PlayTimeControl.Init(playerSave);
-        }
-
+        HeartGame.CommonDataLoad();
     }
 
     // Update is called once per frame
@@ -62,8 +56,8 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         // Engine etc updating
         // -----------------------------------------------------------
+        HeartGame.ManualUpdate();
         EngineView.ManualUpdate();
-        PlayTimeControl.Update();
 
         // -----------------------------------------------------------
         // Save data
@@ -131,7 +125,7 @@ public class MainGameControl : MonoBehaviour
         if (EndGameRuntimeUnit != null && EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
         {
             dynamicCanvas.ShowOverlay();
-            this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {PlayTimeControl.PlayTimeToShowAsString}";
+            this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {HeartGame.PlayTimeControl.PlayTimeToShowAsString}";
         }
         // -----------------------------------------------------------
         // Time, game updating
@@ -195,8 +189,7 @@ public class MainGameControl : MonoBehaviour
                 if (tabControl.TabData.Tab.OpenSettings)
                 {
                     ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
-                    // PlayTimeControl.
-                    ReusableSettingMenu.GoToSettings();
+                    HeartGame.GoToSettings();
                 }
                 else
                 {
