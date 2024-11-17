@@ -60,12 +60,15 @@ const latestBetaPath = path.join(dirPath, 'latest_beta');
 
 // Helper to filter and find the highest NNNN folders
 const findHighest = (folders, pattern) => {
+
     var filtered = folders
     .filter(name => pattern.test(name));
     console.log(filtered);
-  return filtered
+    var sorted = filtered
     .map(name => parseInt(name.match(/\d+/)[0], 10))
-    .sort((a, b) => b - a)[0];
+    .sort((a, b) => b - a);
+    console.log(sorted);
+  return sorted[0];
 };
 
 // Get folders in dirPath
@@ -75,9 +78,10 @@ console.log(folders);
 const highestNumber = findHighest(folders, /^web\d{4}$/);
 console.log(highestNumber);
 const highestBetaNumber = findHighest(folders, /^web\d{4}_beta$/);
+console.log("Highest beta number: " +highestBetaNumber);
 
 const highestFolder = highestNumber ? `web${highestNumber.toLocaleString('en-US', {minimumIntegerDigits:4, useGrouping: false})}` : null;
-const highestBetaFolder = highestBetaNumber ? `web${highestNumber.toLocaleString('en-US', {minimumIntegerDigits:4, useGrouping: false})}_beta` : null;
+const highestBetaFolder = highestBetaNumber ? `web${highestBetaNumber.toLocaleString('en-US', {minimumIntegerDigits:4, useGrouping: false})}_beta` : null;
 
 
 if (highestFolder) {
@@ -88,6 +92,7 @@ if (highestFolder) {
 }
 
 if (highestBetaFolder) {
+    console.log("highest beta folder " + highestBetaFolder);
   //  if (!fs.existsSync(latestBetaPath)) fs.mkdirSync(latestBetaPath, { recursive: true });
   fs.rmSync(latestBetaPath, { recursive: true, force: true });
   fs.cpSync(path.join(dirPath, highestBetaFolder), latestBetaPath, { recursive: true });
