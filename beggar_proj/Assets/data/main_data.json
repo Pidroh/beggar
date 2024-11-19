@@ -706,6 +706,31 @@
         ]
     },
     {
+        "type": "LOCATION",
+        "items": [
+            {
+                "id": "creepyalley",
+                "name": "Creepy Alley",
+                "desc": "WIP",
+                "require": "foodcrumbs>12",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 10,
+                    "thoughts": 20
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["lostbeggar", "meancat", "ratpack"]
+
+            }, 
+            {}
+        ]
+    },
+    {
         "type": "DIALOG",
         "items":[
             {
