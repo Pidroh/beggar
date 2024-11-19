@@ -775,16 +775,16 @@
                 }
             },
             {
-                "id": "meancat",
-                "name": "Mean cat",
-                "desc": "A stray cat hisses and attempts to scratch passerby",
+                "id": "ratpack",
+                "name": "Rat pack",
+                "desc": "Rats running through the streets, threatening to climb on folks",
                 "effect": {
-                    "irritation": "-2~2",
-                    "fatigue": "-2~2",
-                    "rats": "-0.1~0"
+                    "irritation": "-1~2",
+                    "fatigue": "-1~1",
+                    "ratbond": 1
                 },
                 "result": {
-                    "rats": "0~2"
+                    "rats": "1~3"
                 }
             }
         ]
