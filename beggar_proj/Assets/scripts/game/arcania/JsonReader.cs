@@ -222,7 +222,13 @@ public class JsonReader
                 {
                     Length = item.GetValueOrDefault("length", 10)
                 };
-                new LocationRuntime(ru, cl);
+                var lr = new LocationRuntime(ru, cl);
+                var encounterIds = item["encs"].AsArray;
+                foreach (var eId in encounterIds)
+                {
+                    var id = eId.Value.AsString;
+                    lr.Encounters.Add(arcaniaUnits.GetOrCreateIdPointer(id));
+                }
             }
             if (type == UnitType.CLASS)
             {
