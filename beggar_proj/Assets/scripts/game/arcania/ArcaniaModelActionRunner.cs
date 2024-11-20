@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Pool;
 using static ArcaniaModel;
 
-
 public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 {
 

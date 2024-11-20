@@ -177,4 +177,6 @@ public class RuntimeUnit
     public bool IsTaskHalfWay => !IsTaskComplete() && TaskProgress != 0;
 
     public bool NeedMet => IsNeedMet();
+
+    public ConfigResource ConfigResource { get; internal set; }
 }
