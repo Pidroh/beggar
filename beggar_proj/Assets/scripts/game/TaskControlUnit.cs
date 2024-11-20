@@ -174,9 +174,13 @@ public class RTControlUnit
 
                 RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
                 ttv.MainText.SetTextRaw(dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???");
-                float valueChange = rc.valueChange;
-                valueChange += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
-                ttv.SecondaryText.SetTextRaw(bySecond ? $"{valueChange}/s" : $"{valueChange}");
+                var min = rc.valueChange.min;
+                var max = rc.valueChange.max;
+                //float valueChange = rc.valueChange;
+                min += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
+                max += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
+                var valueText = min == max ? $"{min}~{max}" : $"{min}";
+                ttv.SecondaryText.SetTextRaw(bySecond ? $"{valueText}/s" : $"{valueText}");
                 ttv.TertiaryText.SetTextRaw($"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})");
                 ttv.ManualUpdate();
             }

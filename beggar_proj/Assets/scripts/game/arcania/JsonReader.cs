@@ -302,10 +302,27 @@ public class JsonReader
     {
         foreach (var c in value)
         {
+            var min = 0f;
+            var max = 0f;
+            if (c.Value.IsNumber)
+            {
+                var number = c.Value.AsFloat;
+                min = number;
+                max = number;
+            }
+            else 
+            {
+                if (c.Value.IsString) 
+                {
+                    var values = c.Value.AsString.Split("~");
+                    min = float.Parse(values[0]);
+                    max = float.Parse(values[1]);
+                }
+            }
             var rc = new ResourceChange()
             {
                 IdPointer = arcaniaUnits.GetOrCreateIdPointer(c.Key),
-                valueChange = c.Value.AsInt * signalMultiplier
+                valueChange = new FloatRange(min * signalMultiplier, max * signalMultiplier)
             };
             list.Add(rc);
         }
@@ -475,8 +492,9 @@ public class ModRuntime
 public class ResourceChange
 {
     public IDPointer IdPointer;
-    public int valueChange;
+    public FloatRange valueChange;
 }
+
 
 public class DialogRuntime
 {

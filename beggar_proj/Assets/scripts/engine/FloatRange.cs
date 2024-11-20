@@ -24,5 +24,19 @@ namespace HeartUnity
         public float getValue(float key) {
             return key * value2 +(1 - key) * value1;
         }
+
+        public bool BothEqual(float v)
+        {
+            return min == v && max == v;
+        }
+
+        public bool SmallerThan(float v)
+        {
+            return min < v && max < v;
+        }
+
+        public bool BiggerThan(float v) => max > v && min > v;
+        public bool BiggerOrEqual(float v) => max >= v && min >= v;
+        public bool SmallerOrEqual(float v) => max <= v && min <= v;
     }
 }

@@ -102,7 +102,7 @@ public class ArcaniaModel
     {
         foreach (var rc in changes)
         {
-            if (rc.valueChange == 0) continue;
+            if (rc.valueChange.BothEqual(0f)) continue;
             if (rc.IdPointer.RuntimeUnit.CanFullyAcceptChange(rc.valueChange)) continue;
             return false;
         }
@@ -113,9 +113,9 @@ public class ArcaniaModel
     {
         foreach (var rc in changes)
         {
-            if (rc.valueChange == 0) continue;
-            if (rc.valueChange > 0 && rc.IdPointer.RuntimeUnit.IsMaxed) continue;
-            if (rc.valueChange < 0 && rc.IdPointer.RuntimeUnit.IsZero) continue;
+            if (rc.valueChange.BothEqual(0f)) continue;
+            if (rc.valueChange.BiggerThan(0f) && rc.IdPointer.RuntimeUnit.IsMaxed) continue;
+            if (rc.valueChange.SmallerThan(0f) && rc.IdPointer.RuntimeUnit.IsZero) continue;
             return true;
         }
         return false;

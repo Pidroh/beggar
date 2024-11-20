@@ -1,4 +1,5 @@
 ﻿using arcania;
+using HeartUnity;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class RuntimeUnit
 {
     public ConfigBasic ConfigBasic;
     public ConfigTask ConfigTask;
+
+    public LocationRuntime Location { get; internal set; }
+
     public SkillRuntime Skill;
     public List<ModRuntime> ModsTargetingSelf = new();
     public List<ModRuntime> ModsOwned = new();
@@ -83,10 +87,10 @@ public class RuntimeUnit
         ChangeValue(v - _value);
     }
 
-    internal void ChangeValueByResourceChange(RuntimeUnit parent, int valueChange, ResourceChangeType changeType)
+    internal void ChangeValueByResourceChange(RuntimeUnit parent, FloatRange valueChange, ResourceChangeType changeType)
     {
         var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
-        ChangeValue(valueChange + modV);
+        ChangeValue(valueChange.getValue(Random.Range(0f, 1f)) + modV);
     }
 
     public float GetModSumWithIntermediaryCheck(RuntimeUnit intermediary, ModType modType, ResourceChangeType changeType)
@@ -137,16 +141,16 @@ public class RuntimeUnit
 
     internal bool IsInstant() => !ConfigTask.Duration.HasValue;
 
-    internal bool CanFullyAcceptChange(int valueChange)
+    internal bool CanFullyAcceptChange(FloatRange valueChange)
     {
-        if (valueChange < 0) return Mathf.Abs(valueChange) <= Value;
+        if (valueChange.SmallerThan(0f)) return valueChange.BiggerOrEqual(-Value); //return Mathf.Abs(valueChange) <= Value;
         // no max
         if (Max < 0) return true;
-        if (valueChange > 0)
+        if (valueChange.BiggerThan(0f))
         {
             if (Max == 0) return false;
             int ValueToReachMax = Max - Value;
-            return ValueToReachMax >= valueChange;
+            return valueChange.SmallerOrEqual(ValueToReachMax);
         }
         return true;
     }
