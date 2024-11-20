@@ -163,6 +163,13 @@ public class JsonReader
                 Debug.LogError($"Potential ID duplication: {iDPointer.id}");
             }
             iDPointer.RuntimeUnit = ru;
+            if (type == UnitType.RESOURCE) 
+            {
+                ru.ConfigResource = new ConfigResource()
+                {
+                    Stressor = item.GetValueOrDefault("stressor", false)
+                };
+            }
             if (type == UnitType.TAB)
             {
                 var tr = new TabRuntime(ru);

@@ -3,6 +3,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ConfigResource 
+{
+    public bool Stressor;
+}
 
 public class ConfigEncounter
 {
