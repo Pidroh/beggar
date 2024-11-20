@@ -1,6 +1,30 @@
 ﻿using System;
 using UnityEngine;
 
+public class LocationRuntime
+{
+    public int progress;
+    public ConfigLocation configLocation;
+    public RuntimeUnit RuntimeUnit;
+
+    public LocationRuntime(RuntimeUnit ru, ConfigLocation cl)
+    {
+        this.RuntimeUnit = ru;
+        this.RuntimeUnit.Location = this;
+        configLocation = cl;
+    }
+
+    public float ProgressRatio => progress / configLocation.Length;
+
+
+    /*
+    internal void Load(LocationProgress locationP)
+    {
+
+    }
+    */
+}
+
 public class SkillRuntime
 {
     public int xp;

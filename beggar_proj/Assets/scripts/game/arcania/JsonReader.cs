@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
-    
+
 public class JsonReader
 {
 
@@ -29,6 +29,7 @@ public class JsonReader
         //--------------------------------------------------------------
         // MODS #mods #post-processing
         //--------------------------------------------------------------
+        #region mods post processing
         for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
@@ -38,7 +39,7 @@ public class JsonReader
             //--------------------------------------------------------------
             string targetTextKey = GetPointerTextKey(mod.Target);
             string intermediaryTextKey = GetPointerTextKey(mod.Intermediary);
-            string GetPointerTextKey(IDPointer pointer) 
+            string GetPointerTextKey(IDPointer pointer)
             {
                 string textKey = null;
                 textKey = pointer?.RuntimeUnit?.Name;
@@ -48,7 +49,7 @@ public class JsonReader
                 }
                 return textKey;
             }
-            if (mod.ModType == ModType.MaxChange) 
+            if (mod.ModType == ModType.MaxChange)
             {
                 // space max increasing has no target
                 if (targetTextKey != null) mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
@@ -64,11 +65,11 @@ public class JsonReader
                     mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
                 else mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
             }
-            if (mod.ModType == ModType.SpaceConsumption) 
+            if (mod.ModType == ModType.SpaceConsumption)
             {
                 mod.HumanText = "House Space:";
             }
-            if (mod.HumanText == null) 
+            if (mod.HumanText == null)
             {
                 Debug.Log("Human text logic not implemented (use this for break points)");
             }
@@ -108,7 +109,7 @@ public class JsonReader
 
             mod.Target.RuntimeUnit.RegisterModTargetingSelf(mod);
         }
-
+        #endregion
         //--------------------------------------------------------------
         // Conditions #conditions #post-processing
         //--------------------------------------------------------------
@@ -131,8 +132,8 @@ public class JsonReader
         {
             foreach (var item in items.AsArray.Children)
             {
-                var dr = new DialogRuntime() 
-                { 
+                var dr = new DialogRuntime()
+                {
                     Title = item["content"],
                     Content = item["content"],
                     Id = item["id"],
@@ -202,6 +203,15 @@ public class JsonReader
                 {
                     arcaniaUnits.RestActionActive = ru;
                 }
+            }
+            if (type == UnitType.LOCATION)
+            {
+                ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
+                var cl = new ConfigLocation()
+                {
+                    Length = item.GetValueOrDefault("length", 10)
+                };
+                new LocationRuntime(ru, cl);
             }
             if (type == UnitType.CLASS)
             {
@@ -432,7 +442,7 @@ public class ConfigBasic
 
 public enum UnitType
 {
-    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG
+    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
 }
 
 public enum ModType

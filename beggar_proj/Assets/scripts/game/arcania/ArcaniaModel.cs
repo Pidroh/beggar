@@ -1,13 +1,23 @@
-﻿using System;
+﻿using SimpleJSON;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public class ConfigEncounter
+{
+}
+
+public class ConfigLocation
+{
+    public int Length { get; set; }
+}
 public class ConfigSkill
 {
     public int LearningDifficultyLevel;
 }
 
-public class ConfigHouse 
+public class ConfigHouse
 {
     public int AvailableSpace;
 }
@@ -61,9 +71,10 @@ public class ArcaniaModel
         {
             foreach (var item in pair.Value)
             {
-                if (item.UpdateRequireStatus() && item.ConfigBasic.UnitType != UnitType.TAB) 
+                if (item.UpdateRequireStatus() && item.ConfigBasic.UnitType != UnitType.TAB)
                 {
-                    LogUnits.Add(new LogUnit() { 
+                    LogUnits.Add(new LogUnit()
+                    {
                         logType = LogUnit.LogType.UNIT_UNLOCKED,
                         Unit = item
                     });
@@ -121,7 +132,7 @@ public class ArcaniaModel
         return null;
     }
 
-    public RuntimeUnit FindRuntimeUnit(string id) 
+    public RuntimeUnit FindRuntimeUnit(string id)
     {
         var types = EnumHelper<UnitType>.GetAllValues();
         foreach (var t in types)
@@ -133,7 +144,7 @@ public class ArcaniaModel
         }
         Debug.Log($"Runtime unit of ID |{id}| NOT FOUND");
         return null;
-        
+
     }
 
     internal RuntimeUnit FindRuntimeUnit(UnitType type, string v)
@@ -144,7 +155,7 @@ public class ArcaniaModel
         return null;
     }
 
-    public class DialogModel 
+    public class DialogModel
     {
         public DialogRuntime ActiveDialog;
         public DialogState dialogState;
@@ -159,9 +170,9 @@ public class ArcaniaModel
             pickedOption = null;
         }
 
-        public void ManualUpdate() 
+        public void ManualUpdate()
         {
-            if (pickedOption.HasValue) 
+            if (pickedOption.HasValue)
             {
                 switch (dialogState)
                 {
@@ -180,7 +191,7 @@ public class ArcaniaModel
             }
         }
 
-        public void DialogComplete(int pickedOption) 
+        public void DialogComplete(int pickedOption)
         {
             // only goes to result complete on next frame
             this.pickedOption = pickedOption;
@@ -192,8 +203,8 @@ public class ArcaniaModel
             return this.dialogState == DialogState.RESULT_HAPPENED_THIS_FRAME;
         }
 
-        public enum DialogState 
-        { 
+        public enum DialogState
+        {
             INACTIVE,
             ACTIVE,
             RESULT_HAPPENED_THIS_FRAME,
