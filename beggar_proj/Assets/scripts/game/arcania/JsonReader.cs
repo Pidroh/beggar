@@ -196,6 +196,10 @@ public class JsonReader
                 }
 
             }
+            if (type == UnitType.ENCOUNTER) 
+            {
+                ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
+            }
             if (type == UnitType.TASK)
             {
                 ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
