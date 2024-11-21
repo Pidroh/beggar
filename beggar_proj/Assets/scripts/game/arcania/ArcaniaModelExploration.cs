@@ -1,7 +1,13 @@
-﻿using static ArcaniaModel;
+﻿using HeartUnity;
+using System;
+using UnityEngine;
+using static ArcaniaModel;
 
 public class ArcaniaModelExploration : ArcaniaModelSubmodule
 {
+    public float encounterProgress;
+    public int locationProgress;
+    public RuntimeUnit ActiveEncounter;
     public ArcaniaModelExploration(ArcaniaModel arcaniaModel) : base(arcaniaModel)
     {
     }
@@ -17,7 +23,25 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         }
         if (runningLocation == null) return;
         var activeLocation = runningLocation;
+        #region Spawn encounter
+        if (ActiveEncounter == null) {
 
-
+            var ele = activeLocation.Location.Encounters.RandomElement();
+            ActiveEncounter = ele.RuntimeUnit;
+            encounterProgress = 0f;
+        }
+        #endregion
+        encounterProgress += Time.deltaTime;
+        if (encounterProgress >= ActiveEncounter.ConfigEncounter.Length)
+        {
+            #region encounter won
+            ActiveEncounter = null;
+            locationProgress++;
+            #endregion
+        }
+        else 
+        { 
+        }
     }
+
 }

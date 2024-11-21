@@ -179,4 +179,5 @@ public class RuntimeUnit
     public bool NeedMet => IsNeedMet();
 
     public ConfigResource ConfigResource { get; internal set; }
+    public ConfigEncounter ConfigEncounter { get; internal set; }
 }

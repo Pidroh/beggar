@@ -206,6 +206,10 @@ public class JsonReader
             if (type == UnitType.ENCOUNTER) 
             {
                 ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
+                ru.ConfigEncounter = new ConfigEncounter()
+                {
+                    Length = item.GetValueOrDefault("length", 5)
+                };
             }
             if (type == UnitType.TASK)
             {

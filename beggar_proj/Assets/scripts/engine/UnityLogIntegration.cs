@@ -24,9 +24,11 @@ namespace HeartUnity
 
         internal void ManualUpdate()
         {
+#if DEBUG
             if (engineView.inputManager.IsButtonPressed(DefaultButtons.LEFT_TRIGGER_2) && engineView.inputManager.IsButtonDown(DefaultButtons.RIGHT_TRIGGER_2)) {
                 logActive = !logActive;
             }
+#endif
             logText.gameObject.SetActive(logActive);
             if (logActive)
             {
