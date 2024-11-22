@@ -117,16 +117,19 @@
             {
                 "id": "perplexetion",
                 "stressor": true,
+                "tags": "stress",
                 "max": 10
             },
             {
                 "id": "fatigue",
                 "stressor": true,
+                "tags": "stress",
                 "max": 10
             },
             {
                 "id": "irritation",
                 "stressor": true,
+                "tags": "stress",
                 "max": 10
             }
         ]
@@ -163,7 +166,8 @@
                 "slot": "rest",
                 "effect": {
                     "supplication": 1,
-                    "foraging": 1
+                    "foraging": 1,
+                    ""
                 }
             },
             {
