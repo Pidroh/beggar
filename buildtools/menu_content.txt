@@ -1,4 +1,4 @@
     <div id="menu-bar">
       <a href="../menu.html" target="_blank">Menu</a>
-      <a href="patreon.com/perennialhearts" target="_blank">Patreon</a>
+      <a href="https://www.patreon.com/perennialhearts" target="_blank">Patreon</a>
     </div>
