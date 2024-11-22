@@ -308,7 +308,7 @@ public class JsonReader
                 ct.Duration = 1;
             }
         }
-        if (ct.Duration.HasValue && !ct.Perpetual && !explicitPerpetualDefinition && !ru.HasMax)
+        if (ct.Duration.HasValue && !ct.Perpetual && !explicitPerpetualDefinition && !ru.HasMax && ru.ConfigBasic.UnitType != UnitType.LOCATION)
         {
             ct.Perpetual = true;
         }

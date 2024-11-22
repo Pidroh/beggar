@@ -46,6 +46,11 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
             #endregion 
         }
+        if (locationProgress >= activeLocation.Location.configLocation.Length) 
+        {
+            locationProgress = 0;
+            _model.Runner.CompleteTask(activeLocation);
+        }
     }
 
 }

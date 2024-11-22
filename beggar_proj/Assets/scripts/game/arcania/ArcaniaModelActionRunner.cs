@@ -76,7 +76,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         return true;
     }
 
-    private void CompleteTask(RuntimeUnit data)
+    public void CompleteTask(RuntimeUnit data)
     {
         data.TaskProgress = 0;
         data.ChangeValue(1);
