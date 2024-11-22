@@ -35,6 +35,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         if (encounterProgress >= ActiveEncounter.ConfigEncounter.Length)
         {
             #region encounter won
+            _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.RESULT);
             ActiveEncounter = null;
             locationProgress++;
             #endregion
