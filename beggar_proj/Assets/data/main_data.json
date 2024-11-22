@@ -167,7 +167,7 @@
                 "effect": {
                     "supplication": 1,
                     "foraging": 1,
-                    ""
+                    "stress": -1
                 }
             },
             {

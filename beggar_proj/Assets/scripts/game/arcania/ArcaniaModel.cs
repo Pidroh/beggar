@@ -130,8 +130,8 @@ public class ArcaniaModel
         foreach (var rc in changes)
         {
             if (rc.valueChange.BothEqual(0f)) continue;
-            if (rc.valueChange.BiggerThan(0f) && rc.IdPointer.RuntimeUnit.IsMaxed) continue;
-            if (rc.valueChange.SmallerThan(0f) && rc.IdPointer.RuntimeUnit.IsZero) continue;
+            if (rc.valueChange.BiggerThan(0f) && rc.IdPointer.IsAllMaxed()) continue;
+            if (rc.valueChange.SmallerThan(0f) && rc.IdPointer.IsAllZero()) continue;
             return true;
         }
         return false;

@@ -89,20 +89,21 @@ public class RTControlUnit
 
     public void ManualUpdate()
     {
-        if (ButtonAdd != null) {
+        if (ButtonAdd != null)
+        {
             ButtonAdd.ManualUpdate();
             ButtonRemove.ManualUpdate();
             ButtonAdd.SetWidthMM(15);
             ButtonRemove.SetWidthMM(15);
         }
-        
+
         SimpleChild<UIUnit> description = Description;
         description.Element.text.SetFontSizePhysical(15);
         string desc = Data.ConfigBasic.Desc;
         FeedDescription(description, desc);
         var duration = Data.ConfigTask != null && Data.ConfigTask.Duration.HasValue ? Data.ConfigTask.Duration.Value : -1;
-        
-        if(duration > 0) DurationText.Element.rawText = $"Duration: {duration}s";
+
+        if (duration > 0) DurationText.Element.rawText = $"Duration: {duration}s";
         if (bwe != null)
         {
             bwe.ManualUpdate();
@@ -113,7 +114,7 @@ public class RTControlUnit
         {
             lwe.ManualUpdate();
         }
-        if(DurationText != null)
+        if (DurationText != null)
             DurationText.Visible = duration > 0 && DurationText.Visible;
         if (Data.ConfigBasic.UnitType == UnitType.SKILL)
         {
@@ -134,11 +135,11 @@ public class RTControlUnit
             ValueText.rawText = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
             ValueText.text.SetFontSizePhysical(16);
         }
-       
+
         if (!IsExpanded) return;
-        
-        
-        
+
+
+
         foreach (var sep in Separators)
         {
             sep.ManualUpdate();
@@ -146,7 +147,7 @@ public class RTControlUnit
 
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
-            ResourceChangeType resourceChangeType = (ResourceChangeType) i;
+            ResourceChangeType resourceChangeType = (ResourceChangeType)i;
             var sep = ChangeGroupSeparators[i];
 
             ResourceChangeGroup item = ChangeGroups[i];
@@ -172,16 +173,31 @@ public class RTControlUnit
                 TripleTextView ttv = item.tripleTextViews[ttvIndex];
                 var rc = resourceChanges[ttvIndex];
 
-                RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
-                ttv.MainText.SetTextRaw(dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???");
                 var min = rc.valueChange.min;
                 var max = rc.valueChange.max;
+
+                string targetName = null;
+                string tertiaryText = "";
+                if (rc.IdPointer.RuntimeUnit != null)
+                {
+                    RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
+                    min += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
+                    max += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
+                    targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
+                    tertiaryText = $"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})";
+                }
+                else
+                {
+                    targetName = rc.IdPointer.Tag.tagName;
+                }
+
+                ttv.MainText.SetTextRaw(targetName);
+
                 //float valueChange = rc.valueChange;
-                min += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
-                max += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
-                var valueText = min == max ? $"{min}~{max}" : $"{min}";
+
+                var valueText = min != max ? $"{min}~{max}" : $"{min}";
                 ttv.SecondaryText.SetTextRaw(bySecond ? $"{valueText}/s" : $"{valueText}");
-                ttv.TertiaryText.SetTextRaw($"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})");
+                ttv.TertiaryText.SetTextRaw(tertiaryText);
                 ttv.ManualUpdate();
             }
         }

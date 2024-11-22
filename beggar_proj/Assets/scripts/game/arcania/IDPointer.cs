@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class IDPointer
 {
@@ -26,5 +27,31 @@ public class IDPointer
         Debug.Log($"ID Pointer {id} has no value!");
 #endif
         return 0;
+    }
+
+    internal bool IsAllMaxed()
+    {
+        if(RuntimeUnit != null) 
+        {
+            return RuntimeUnit.IsMaxed;
+        }
+        foreach (var item in Tag.UnitsWithTag)
+        {
+            if (!item.IsMaxed) return false;
+        }
+        return true;
+    }
+
+    internal bool IsAllZero()
+    {
+        if (RuntimeUnit != null)
+        {
+            return RuntimeUnit.Value <= 0;
+        }
+        foreach (var item in Tag.UnitsWithTag)
+        {
+            if (item.Value > 0) return false;
+        }
+        return true;
     }
 }
