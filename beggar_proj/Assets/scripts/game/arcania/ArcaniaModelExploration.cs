@@ -40,7 +40,10 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             #endregion
         }
         else 
-        { 
+        {
+            #region encounter progress
+            _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
+            #endregion 
         }
     }
 

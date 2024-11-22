@@ -10,6 +10,7 @@ public class ConfigResource
 
 public class ConfigEncounter
 {
+    public JSONNode Length { get; internal set; }
 }
 
 public class ConfigLocation
