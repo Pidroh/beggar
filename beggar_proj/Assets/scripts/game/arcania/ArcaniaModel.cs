@@ -36,6 +36,7 @@ public class ArcaniaModel
 {
     public List<LogUnit> LogUnits = new();
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
+    public ArcaniaModelExploration Exploration;
     public ArcaniaModelActionRunner Runner;
     public ArcaniaModelHousing Housing;
     float _oneSecondCounter;
@@ -45,6 +46,7 @@ public class ArcaniaModel
     {
         Runner = new(this);
         Housing = new(this);
+        Exploration = new(this);
     }
 
     internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
@@ -65,6 +67,7 @@ public class ArcaniaModel
     {
         Dialog.ManualUpdate();
         Runner.ManualUpdate(dt);
+        Exploration.ManualUpdate();
         _oneSecondCounter += dt;
         var applyRateNumber = 0;
         while (_oneSecondCounter > 1f)
