@@ -1,5 +1,6 @@
 ﻿using HeartUnity;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using static ArcaniaModel;
 
@@ -8,6 +9,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
     public float encounterProgress;
     public int locationProgress;
     public RuntimeUnit ActiveEncounter;
+    public List<RuntimeUnit> Stressors = new();
     public ArcaniaModelExploration(ArcaniaModel arcaniaModel) : base(arcaniaModel)
     {
     }
@@ -53,4 +55,16 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         }
     }
 
+    internal void FinishedSettingUpUnits()
+    {
+        foreach (var item in _model.arcaniaUnits.datas[UnitType.RESOURCE])
+        {
+            if (item.ConfigResource == null) continue;
+            if ((item.ConfigResource.Stressor))
+            {
+                Stressors.Add(item);
+            }
+        }
+        
+    }
 }

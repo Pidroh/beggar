@@ -10,6 +10,9 @@ public class MainGameControlSetup
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(mgc.ResourceJson.text, arcaniaDatas);
+
+        arcaniaModel.FinishedSettingUpUnits();
+
         var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest);
         mgc.dynamicCanvas = dynamicCanvas;
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);

@@ -163,6 +163,11 @@ public class ArcaniaModel
         return null;
     }
 
+    internal void FinishedSettingUpUnits()
+    {
+        Exploration.FinishedSettingUpUnits();
+    }
+
     public class DialogModel
     {
         public DialogRuntime ActiveDialog;
