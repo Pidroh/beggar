@@ -46,6 +46,14 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         {
             #region encounter progress
             _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
+            foreach (var str in Stressors)
+            {
+                if (str.IsMaxed) 
+                {
+                    _model.Runner.InterruptTask(activeLocation);
+                    return;
+                }
+            }
             #endregion 
         }
         if (locationProgress >= activeLocation.Location.configLocation.Length) 

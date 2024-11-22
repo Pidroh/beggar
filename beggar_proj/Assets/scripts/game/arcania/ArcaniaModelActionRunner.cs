@@ -121,8 +121,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
             if (!taskContinue)
             {
-                StopTask(run);
-                TaskInterruptedTrySwap(run);
+                InterruptTask(run);
                 continue;
             }
 
@@ -165,6 +164,12 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             }
             
         }
+    }
+
+    public void InterruptTask(RuntimeUnit run)
+    {
+        StopTask(run);
+        TaskInterruptedTrySwap(run);
     }
 
     private void StopTask(RuntimeUnit run)
