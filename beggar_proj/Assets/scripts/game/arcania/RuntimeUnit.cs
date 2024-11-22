@@ -120,6 +120,11 @@ public class RuntimeUnit
 
     internal bool IsTaskComplete()
     {
+        if (Location != null) 
+        {
+            // Location completition is done through Arcania model Exploration
+            return false;
+        }
         if (Skill != null)
         {
             return Skill.HasEnoughXPToLevelUp();
