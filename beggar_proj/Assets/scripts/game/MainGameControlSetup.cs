@@ -60,10 +60,11 @@ public class MainGameControlSetup
                     case UnitType.SKILL:
                     case UnitType.HOUSE:
                     case UnitType.FURNITURE:
+                    case UnitType.LOCATION:
                         tcu.UnitGroupControls[t] = new();
                         break;
                     case UnitType.TAB:
-                        break;
+                    case UnitType.ENCOUNTER:
                     default:
                         break;
                 }
@@ -79,7 +80,7 @@ public class MainGameControlSetup
             // Tab separator instancing
             foreach (var sep in tabControl.Separators)
             {
-                var UnitGroupControls = tabControl.UnitGroupControls;
+                var unitGroupControls = tabControl.UnitGroupControls;
 
                 // -------------------------------------------------
                 // SEPARATOR GRAPHIC INSTANCING
@@ -108,7 +109,7 @@ public class MainGameControlSetup
                 }
             // -------------------------------------------------
             END_OF_SEPARATOR_INSTANCE:
-                foreach (var pair in UnitGroupControls)
+                foreach (var pair in unitGroupControls)
                 {
                     foreach (var item in arcaniaDatas.datas[pair.Key])
                     {
@@ -297,7 +298,7 @@ public class MainGameControlSetup
                         //-------------------------------------------------------
                         // Duration #duration
                         //-------------------------------------------------------
-                        if(hasBWE)
+                        if (hasBWE)
                         {
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;

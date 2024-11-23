@@ -24,7 +24,7 @@ public class IDPointer
             return 0;
         }
 #if UNITY_EDITOR
-        Debug.Log($"ID Pointer {id} has no value!");
+        Debug.LogError($"ID Pointer {id} has no value!");
 #endif
         return 0;
     }

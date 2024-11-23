@@ -731,8 +731,7 @@
                 "id": "creepyalley",
                 "name": "Creepy Alley",
                 "desc": "WIP",
-                "require": "foodcrumbs>12",
-                "locked": false,
+                "require": "breadcrumbs>12",
                 "length": 10,
                 "run": {
                     "supplication": 1

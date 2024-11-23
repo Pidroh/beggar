@@ -19,7 +19,7 @@ public class RuntimeUnit
 
     public int Max => CalculateMax();
 
-    public bool Visible => IsPossiblyVisibleRegardlessOfRequire() && RequireMet;
+    public bool Visible => RequireMet && IsPossiblyVisibleRegardlessOfRequire();
 
     public bool IsPossiblyVisibleRegardlessOfRequire() 
     {

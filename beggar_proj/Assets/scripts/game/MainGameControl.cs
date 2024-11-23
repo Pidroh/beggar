@@ -285,6 +285,16 @@ public class MainGameControl : MonoBehaviour
                                 }
                             }
                             break;
+                        case UnitType.LOCATION:
+                            {
+                                tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                                tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
+                                if (tcu.TaskClicked)
+                                {
+                                    arcaniaModel.Runner.StartActionExternally(data);
+                                }
+                            }
+                            break;
                         case UnitType.CLASS:
                             {
                                 tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
