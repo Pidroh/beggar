@@ -199,6 +199,7 @@ public class MainGameControl : MonoBehaviour
 
             }
             if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
+            #region log updating
             if (tabControl.TabData.Tab.ContainsLogs)
             {
                 while (tabControl.LogControlUnits.Count < arcaniaModel.LogUnits.Count)
@@ -211,6 +212,7 @@ public class MainGameControl : MonoBehaviour
                     item.Lc.RectTransform.SetHeightMilimeters(9);
                 }
             }
+            #endregion
             var UnitGroupControls = tabControl.UnitGroupControls;
 
             // -----------------------------------------------------------
