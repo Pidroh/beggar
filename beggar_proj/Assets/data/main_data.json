@@ -732,6 +732,7 @@
                 "name": "Creepy Alley",
                 "desc": "WIP",
                 "require": "foodcrumbs>12",
+                "locked": false,
                 "length": 10,
                 "run": {
                     "supplication": 1
@@ -1032,6 +1033,21 @@
                     {
                         "id": "resource",
                         "name": "Resources",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "id": "exploration",
+                "exploration_active_tab": true,
+                "unit_types": [
+                    "LOCATION"
+                ],
+                "icon" : "location",
+                "separator": [
+                    {
+                        "id": "location",
+                        "name": "Locations",
                         "default": true
                     }
                 ]
