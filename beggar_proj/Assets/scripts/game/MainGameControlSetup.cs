@@ -74,6 +74,7 @@ public class MainGameControlSetup
         // -------------------------------------------------
         // MAIN GRAPHIC ELEMENT INSTANTIATING
         // -------------------------------------------------
+        #region MAIN GRAPHIC ELEMENT INSTANTIATING
         for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = mgc.TabControlUnits[tabIndex];
@@ -320,6 +321,36 @@ public class MainGameControlSetup
             }
 
         }
+        #endregion
+
+        #region EXPLORATION GRAPHICS INSTANTIATING
+        for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
+        {
+            TabControlUnit tab = mgc.TabControlUnits[tabIndex];
+            if (!tab.TabData.Tab.ExplorationActiveTab) continue;
+            
+            for (int indexExplorationElement = 0; indexExplorationElement < 2; indexExplorationElement++)
+            {
+                var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
+                var hasBWE = false;
+                var tcu = new RTControlUnit();
+                tcu.ParentTabSeparator = null;
+                if (!hasBWE)
+                {
+                    var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
+                    var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
+                    var lwe = new LabelWithExpandable(iconButton, titleText);
+
+                    dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
+                    layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
+                    titleText.SetTextRaw("Location name");
+                    tcu.lwe = lwe;
+                }
+            }
+            
+            
+        }
+        #endregion
 
         // end game message related
         {

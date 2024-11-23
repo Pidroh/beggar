@@ -36,13 +36,14 @@ public class MainGameControl : MonoBehaviour
     public HeartGame HeartGame { get; private set; }
 
     public float lastSaveTime;
-
+    public ControlExploration controlExploration;
 
     // Start is called before the first frame update
     void Start()
     {
         HeartGame = HeartGame.Init();
         lastSaveTime = Time.unscaledTime;
+        controlExploration = new ControlExploration(this);
         MainGameControlSetup.Setup(this);
         RobustDeltaTime = new();
         ArcaniaPersistence = new(HeartGame);

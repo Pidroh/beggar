@@ -178,6 +178,7 @@ public class JsonReader
                 ReadUnitTypesToArray(item, acceptedUnitTypes, key);
                 foreach (var pair in item)
                 {
+                    if (pair.Key == "exploration_active_tab") tr.ExplorationActiveTab = pair.Value.AsBool;
                     if (pair.Key == "contains_logs") tr.ContainsLogs = pair.Value.AsBool;
                     if (pair.Key == "open_settings") tr.OpenSettings = pair.Value.AsBool;
                 }
