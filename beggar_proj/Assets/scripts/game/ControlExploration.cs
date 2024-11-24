@@ -2,7 +2,7 @@
 
 public class ControlExploration : ControlSubUnit
 {
-    public ArcaniaModelExploration expo => _model.Exploration;
+    public ArcaniaModelExploration modelExploration => _model.Exploration;
     public ExplorationDataHolder dataHolder = new();
     public ControlExploration(MainGameControl ctrl) : base(ctrl)
     {
@@ -10,7 +10,12 @@ public class ControlExploration : ControlSubUnit
 
     public void ManualUpdate() 
     {
-        dataHolder.LocationTCU.Data = expo.LastActiveLocation;
+        dataHolder.LocationTCU.Data = modelExploration.LastActiveLocation;
+        foreach (var item in dataHolder.ExplorationActiveUnits)
+        {
+            item.SetVisible(modelExploration.IsExplorationActive);
+        }
+        if (!modelExploration.IsExplorationActive) return;
         dataHolder.LocationTCU.ManualUpdate();
         dataHolder.EncounterTCU.ManualUpdate();
     }

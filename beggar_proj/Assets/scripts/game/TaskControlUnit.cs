@@ -211,6 +211,12 @@ public class RTControlUnit
         description.Element.SetTextRaw(desc);
         description.ManualUpdate();
     }
+
+    internal void SetVisible(bool visible)
+    {
+        bwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
+        lwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
+    }
 }
 
 public class ResourceChangeGroup

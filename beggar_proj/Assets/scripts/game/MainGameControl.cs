@@ -226,8 +226,8 @@ public class MainGameControl : MonoBehaviour
                     var data = tcu.Data;
                     tcu.ManualUpdate();
                     bool visible = data.Visible;
-                    tcu.bwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
-                    tcu.lwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
+                    tcu.SetVisible(visible);
+                    
                     if (!visible) continue;
                     if (tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
                     var modUnit = tcu.ModsUnit;

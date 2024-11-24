@@ -15,6 +15,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
     }
 
     public RuntimeUnit LastActiveLocation { get; private set; }
+    public bool IsExplorationActive => ActiveEncounter != null;
 
     public void ManualUpdate()
     {
