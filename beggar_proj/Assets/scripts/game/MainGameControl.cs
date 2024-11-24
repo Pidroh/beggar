@@ -173,6 +173,7 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
+            var tabNormalContentVisible = !(tabControl.TabData.Tab.ExplorationActiveTab && arcaniaModel.Exploration.IsExplorationActive);
             tabControl.SelectionButton.ManualUpdate();
 
             foreach (var sep in tabControl.Separators)
@@ -225,7 +226,7 @@ public class MainGameControl : MonoBehaviour
                 {
                     var data = tcu.Data;
                     tcu.ManualUpdate();
-                    bool visible = data.Visible;
+                    bool visible = data.Visible && tabNormalContentVisible;
                     tcu.SetVisible(visible);
                     
                     if (!visible) continue;
