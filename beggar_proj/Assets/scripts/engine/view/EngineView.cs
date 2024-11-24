@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace HeartUnity.View
@@ -23,7 +22,6 @@ namespace HeartUnity.View
         }
 
         public CanvasScaler canvasScaler;
-        public PixelPerfectCamera pixelCamera;
         public UIUnitManager unitManager;
         public UICreationHelper creationHelper;
         private DebugMenuManager debugMenuManager;
@@ -38,6 +36,7 @@ namespace HeartUnity.View
 
         public static float dpi => overwrittenDpi.HasValue ? overwrittenDpi.Value : Screen.dpi;
         private static float? overwrittenDpi;
+        private bool pixelPerfectScale;
 
         internal void Init(int initialLayer)
         {
@@ -167,10 +166,10 @@ namespace HeartUnity.View
 
         private void RefreshScale()
         {
-            if (pixelCamera == null) return;
+            if (pixelPerfectScale) return;
             var maxScale = 1;
-            int scaleX = Mathf.FloorToInt(Screen.width / pixelCamera.refResolutionX);
-            int scaleY = Mathf.FloorToInt(Screen.height / pixelCamera.refResolutionY);
+            int scaleX = Mathf.FloorToInt(Screen.width / 640);
+            int scaleY = Mathf.FloorToInt(Screen.height / 360);
             if (scaleX > maxScale)
             {
                 maxScale = scaleX;

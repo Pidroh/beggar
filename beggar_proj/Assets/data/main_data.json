@@ -115,7 +115,7 @@
                 "max": 3
             },
             {
-                "id": "perplexetion",
+                "id": "perplexion",
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
@@ -730,7 +730,25 @@
             {
                 "id": "creepyalley",
                 "name": "Creepy Alley",
-                "desc": "WIP",
+                "desc": "Narrow walls of weathered stone close in, stained with grime and etched with deep cracks",
+                "require": "breadcrumbs>12",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 10,
+                    "thoughts": 20
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["lostbeggar", "meancat", "ratpack", "drawing_wall", "sick_man"]
+            },
+            {
+                "id": "churchfront",
+                "name": "Entrance of the Church of Our lady",
+                "desc": "Ivy-clad stone walls surround a cobblestone path, lined with flickering lanterns and a small prayer shrine",
                 "require": "breadcrumbs>12",
                 "length": 10,
                 "run": {
@@ -761,7 +779,7 @@
                 },
                 "result": {
                     "supplication": 5,
-                    "sadness": 2
+                    "sadness": 1
                 }
             }, 
             {
@@ -788,6 +806,36 @@
                 },
                 "result": {
                     "rats": "1~3"
+                }
+            },
+            {
+                "id": "drawing_wall",
+                "name": "Wall Drawing",
+                "desc": "Eerie patterns drawn on the wall",
+                "effect": {
+                    "introspection.xp": 1,
+                    "perplexion": "-1~2"
+                },
+                "result": {
+                    "supplication": 4,
+                    "sorrow": 1,
+                    "faith": 1
+                }
+            },
+            {
+                "id": "sick_man",
+                "name": "Sick man",
+                "desc": "A sick, delirious man, mumbling",
+                "effect": {
+                    "introspection.xp": 1,
+                    "perplexion": "-1~1",
+                    "irritation": "-1~2"
+
+                },
+                "result": {
+                    "thoughts": 3,
+                    "sorrow": 1,
+                    "guilt": 1
                 }
             }
         ]
