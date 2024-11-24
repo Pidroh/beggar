@@ -23,6 +23,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             runningLocation = task;
             break;
         }
+        if (runningLocation == null) ActiveEncounter = null;
         if (runningLocation == null) return;
         var activeLocation = runningLocation;
         #region Spawn encounter
@@ -45,7 +46,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         else 
         {
             #region encounter progress
-            _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
+            
             foreach (var str in Stressors)
             {
                 if (str.IsMaxed) 
@@ -72,6 +73,15 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             {
                 Stressors.Add(item);
             }
+        }
+        
+    }
+
+    internal void UpdateLoopProgressedSecond()
+    {
+        if (ActiveEncounter != null) 
+        {
+            _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
         }
         
     }
