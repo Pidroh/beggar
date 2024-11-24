@@ -347,6 +347,17 @@ public class MainGameControlSetup
                     titleText.SetTextRaw("Location name");
                     tcu.lwe = lwe;
                 }
+                switch (indexExplorationElement)
+                {
+                    case 0:
+                        mgc.controlExploration.controlView.LocationTCU = tcu;
+                        break;
+                    case 1:
+                        mgc.controlExploration.controlView.EncounterTCU = tcu;
+                        break;
+                    default:
+                        break;
+                }
             }
             
             

@@ -131,6 +131,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             // reached a new second in progress
             if (Mathf.FloorToInt(run.TaskProgress) > Mathf.FloorToInt(beforeProg))
             {
+                _model.Exploration.UpdateLoopProgressedSecond();
                 _model.ApplyResourceChanges(run, ResourceChangeType.RUN);
                 _model.ApplyResourceChanges(run, ResourceChangeType.EFFECT);
                 if (run.ConfigBasic.UnitType == UnitType.SKILL)

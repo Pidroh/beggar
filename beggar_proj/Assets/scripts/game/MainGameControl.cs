@@ -315,6 +315,10 @@ public class MainGameControl : MonoBehaviour
 
         }
 
+        #region Sub unit update
+        controlExploration.ManualUpdate();
+        #endregion
+
         static void FeedMods(RuntimeUnit data, ModsControlUnit modUnit)
         {
             for (int i = 0; i < data.ModsOwned.Count; i++)
