@@ -14,6 +14,8 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
     {
     }
 
+    public RuntimeUnit LastActiveLocation { get; private set; }
+
     public void ManualUpdate()
     {
         RuntimeUnit runningLocation = null;
@@ -26,6 +28,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         if (runningLocation == null) ActiveEncounter = null;
         if (runningLocation == null) return;
         var activeLocation = runningLocation;
+        LastActiveLocation = activeLocation;
         #region Spawn encounter
         if (ActiveEncounter == null) {
 

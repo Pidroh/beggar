@@ -350,16 +350,16 @@ public class MainGameControlSetup
                 switch (indexExplorationElement)
                 {
                     case 0:
-                        mgc.controlExploration.controlView.LocationTCU = tcu;
+                        mgc.controlExploration.dataHolder.LocationTCU = tcu;
                         break;
                     case 1:
-                        mgc.controlExploration.controlView.EncounterTCU = tcu;
+                        mgc.controlExploration.dataHolder.EncounterTCU = tcu;
                         break;
                     default:
                         break;
                 }
             }
-            
+            mgc.controlExploration.dataHolder.FinishSetup();
             
         }
         #endregion
