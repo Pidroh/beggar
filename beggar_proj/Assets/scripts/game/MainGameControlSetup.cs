@@ -1,4 +1,5 @@
-﻿using HeartUnity.View;
+﻿using HeartUnity;
+using HeartUnity.View;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,8 +13,8 @@ public class MainGameControlSetup
         JsonReader.ReadJson(mgc.ResourceJson.text, arcaniaDatas);
 
         arcaniaModel.FinishedSettingUpUnits();
-
-        var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest);
+        var config = HeartGame.GetConfig();
+        var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         mgc.dynamicCanvas = dynamicCanvas;
         var lowerMenuLayout = dynamicCanvas.CreateLowerMenuLayout(60).SetStretchWidth(true).SetLayoutType(LayoutParent.LayoutType.HORIZONTAL);
         mgc.TabButtonLayout = lowerMenuLayout;

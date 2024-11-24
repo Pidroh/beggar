@@ -34,3 +34,4 @@ MonoBehaviour:
     Key: maindata
   urls:
     DiscordServer: 
+  reusableCanvas: {fileID: 2817623443350666770, guid: 35da9fb0e0cbbd54ea7e5997936398e7, type: 3}

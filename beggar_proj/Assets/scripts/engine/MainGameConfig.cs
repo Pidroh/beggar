@@ -24,6 +24,7 @@ namespace HeartUnity
         public InputPromptVisuals inputPromptVisuals;
         public List<PersistenceUnit> PersistenceUnits;
         public URLs urls;
+        public Canvas reusableCanvas;
 
         [Serializable]
         public class View
