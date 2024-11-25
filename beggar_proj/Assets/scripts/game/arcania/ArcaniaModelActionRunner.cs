@@ -205,6 +205,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     private bool CheckIfActionIsMeaningful(RuntimeUnit run)
     {
         if (run.HasMax) return true;
+        if (run.ConfigBasic.UnitType == UnitType.LOCATION) return true;
 
         return (_model.DoChangesMakeADifference(run.ConfigTask.Result) || _model.DoChangesMakeADifference(run.ConfigTask.Effect));
     }
