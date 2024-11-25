@@ -20,6 +20,10 @@ public class ControlExploration : ControlSubUnit
         dataHolder.EncounterTCU.lwe.MainText.rawText = modelExploration.ActiveEncounter.ConfigBasic.name;
         dataHolder.LocationTCU.XPGauge.SetRatio(modelExploration.ExplorationRatio);
         dataHolder.EncounterTCU.XPGauge.SetRatio(modelExploration.EncounterRatio);
+        if (dataHolder.FleeTCU.TaskClicked) 
+        {
+            _model.Exploration.Flee();
+        }
         foreach (var item in dataHolder.ExplorationActiveUnits)
         {
             item.lwe?.ManualUpdate();

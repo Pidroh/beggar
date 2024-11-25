@@ -41,11 +41,11 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         RunContinuously(data);
     }
 
-    public void StartActionExternally(RuntimeUnit data) 
+    public void StartActionExternally(RuntimeUnit data)
     {
         foreach (var tag in data.ConfigBasic.Tags)
         {
-            if (tag.Tag.Dialogs.Count > 0) 
+            if (tag.Tag.Dialogs.Count > 0)
             {
                 _dataWaitingForDialog = data;
                 this._model.Dialog.ShowDialog(tag.Tag.Dialogs[0]);
@@ -59,7 +59,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     private void StartAction(RuntimeUnit data)
     {
         // only DONE or FRESH tasks need to pay the cost
-        if(!data.IsTaskHalfWay) _model.ApplyResourceChanges(data, ResourceChangeType.COST);
+        if (!data.IsTaskHalfWay) _model.ApplyResourceChanges(data, ResourceChangeType.COST);
         if (data.IsInstant()) CompleteTask(data);
         if (data.IsInstant()) return;
         RunContinuously(data);
@@ -76,6 +76,17 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         return true;
     }
 
+    internal void StopAllOfType(UnitType unitType)
+    {
+        using var _1 = ListPool<RuntimeUnit>.Get(out var list);
+        list.AddRange(RunningTasks);
+        foreach (var run in list)
+        {
+            if (run.ConfigBasic.UnitType != unitType) continue;
+            StopTask(run);
+        }
+    }
+
     public void CompleteTask(RuntimeUnit data)
     {
         data.TaskProgress = 0;
@@ -86,20 +97,22 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         {
             StartAction(data);
         }
-        else {
+        else
+        {
             // instant tasks don't cause swapping
-            if (data.ConfigTask.Duration > 0) {
+            if (data.ConfigTask.Duration > 0)
+            {
                 TaskInterruptedTrySwap(data);
             }
-            
+
         }
     }
 
     public void ManualUpdate(float dt)
     {
-        if (_dataWaitingForDialog != null && _model.Dialog.HasResult(out int option)) 
+        if (_dataWaitingForDialog != null && _model.Dialog.HasResult(out int option))
         {
-            if (option == 0 && CanStartAction(_dataWaitingForDialog)) 
+            if (option == 0 && CanStartAction(_dataWaitingForDialog))
             {
                 this.StartAction(_dataWaitingForDialog);
             }
@@ -127,7 +140,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
             float beforeProg = run.TaskProgress;
             run.TaskProgress += dt;
-            
+
             // reached a new second in progress
             if (Mathf.FloorToInt(run.TaskProgress) > Mathf.FloorToInt(beforeProg))
             {
@@ -137,7 +150,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
                 if (run.ConfigBasic.UnitType == UnitType.SKILL)
                 {
                     run.Skill.StudySkillTick();
-                    if (run.Skill.HasEnoughXPToLevelUp()) 
+                    if (run.Skill.HasEnoughXPToLevelUp())
                     {
                         run.ChangeValue(1);
                         run.Skill.xp = 0;
@@ -163,7 +176,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
                     CompleteTask(run);
                 }
             }
-            
+
         }
     }
 
@@ -182,11 +195,12 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     {
         if (run == _model.arcaniaUnits.RestActionActive && InterruptedAction != null)
         {
-            if (!CanStartAction(InterruptedAction)) {
+            if (!CanStartAction(InterruptedAction))
+            {
                 InterruptedAction = null;
                 return;
             }
-            
+
             StartAction(InterruptedAction);
         }
         else

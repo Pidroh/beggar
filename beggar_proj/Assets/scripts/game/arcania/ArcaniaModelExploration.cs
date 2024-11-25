@@ -69,6 +69,11 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         }
     }
 
+    internal void Flee()
+    {
+        _model.Runner.StopAllOfType(UnitType.LOCATION);
+    }
+
     private void EnsureEncounter(RuntimeUnit activeLocation)
     {
         #region Spawn encounter
