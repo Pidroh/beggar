@@ -16,6 +16,8 @@ public class ControlExploration : ControlSubUnit
             item.SetVisible(modelExploration.IsExplorationActive);
         }
         if (!modelExploration.IsExplorationActive) return;
+        dataHolder.LocationTCU.lwe.MainText.rawText = modelExploration.LastActiveLocation.ConfigBasic.name;
+        dataHolder.EncounterTCU.lwe.MainText.rawText = modelExploration.LastActiveLocation.ConfigBasic.name;
         dataHolder.LocationTCU.XPGauge.SetRatio(modelExploration.ExplorationRatio);
         dataHolder.EncounterTCU.XPGauge.SetRatio(modelExploration.EncounterRatio);
         foreach (var item in dataHolder.ExplorationActiveUnits)
