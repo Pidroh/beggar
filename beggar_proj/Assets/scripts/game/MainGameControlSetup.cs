@@ -330,19 +330,28 @@ public class MainGameControlSetup
             TabControlUnit tab = mgc.TabControlUnits[tabIndex];
             if (!tab.TabData.Tab.ExplorationActiveTab) continue;
             
-            for (int indexExplorationElement = 0; indexExplorationElement < 2; indexExplorationElement++)
+            for (int indexExplorationElement = 0; indexExplorationElement < 3; indexExplorationElement++)
             {
                 var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
-                var hasBWE = false;
+                dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
+                var hasBWE = indexExplorationElement > 1;
                 var tcu = new RTControlUnit();
                 tcu.ParentTabSeparator = null;
+                if (hasBWE)
+                {
+                    var button = CanvasMaker.CreateButton("Flee", mgc.ButtonObjectRequest, mgc.ButtonRequest);
+                    var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
+                    var bwe = new ButtonWithExpandable(button, iconButton);
+                    tcu.bwe = bwe;
+                    layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
+                    bwe.LayoutChild.GameObject.name = "WTF IS";
+                }
+
                 if (!hasBWE)
                 {
                     var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
                     var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
                     var lwe = new LabelWithExpandable(iconButton, titleText);
-
-                    dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
                     layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                     titleText.SetTextRaw("Location name");
                     tcu.lwe = lwe;
@@ -356,6 +365,9 @@ public class MainGameControlSetup
                         break;
                     case 1:
                         mgc.controlExploration.dataHolder.EncounterTCU = tcu;
+                        break;
+                    case 2:
+                        mgc.controlExploration.dataHolder.FleeTCU = tcu;
                         break;
                     default:
                         break;

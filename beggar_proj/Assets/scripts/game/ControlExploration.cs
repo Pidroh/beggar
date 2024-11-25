@@ -24,6 +24,7 @@ public class ControlExploration : ControlSubUnit
         {
             item.lwe?.ManualUpdate();
             item.XPGauge?.ManualUpdate();
+            item.bwe?.ManualUpdate();
         }
         // dataHolder.LocationTCU.ManualUpdate();
         // dataHolder.EncounterTCU.ManualUpdate();
@@ -34,11 +35,14 @@ public class ExplorationDataHolder
 {
     public RTControlUnit LocationTCU { get; internal set; }
     public RTControlUnit EncounterTCU { get; internal set; }
+    public RTControlUnit FleeTCU { get; internal set; }
+
     public List<RTControlUnit> ExplorationActiveUnits = new();
 
     public void FinishSetup() 
     {
         ExplorationActiveUnits.Add(LocationTCU);
         ExplorationActiveUnits.Add(EncounterTCU);
+        ExplorationActiveUnits.Add(FleeTCU);
     }
 }

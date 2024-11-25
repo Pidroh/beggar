@@ -520,7 +520,7 @@ public class ResourceChange
 {
     public IDPointer IdPointer;
     public FloatRange valueChange;
-    public ResourceChangeModificationType ModificationType
+    public ResourceChangeModificationType ModificationType = ResourceChangeModificationType.NormalChange;
     public enum ResourceChangeModificationType 
     { 
         NormalChange,
