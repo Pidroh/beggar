@@ -56,7 +56,19 @@ public class ArcaniaModel
         {
             foreach (var ru in c.IdPointer)
             {
-                ru.ChangeValueByResourceChange(parent, c.valueChange, changeType);
+                switch (c.ModificationType)
+                {
+                    case ResourceChange.ResourceChangeModificationType.NormalChange:
+                        ru.ChangeValueByResourceChange(parent, c.valueChange, changeType);
+                        break;
+                    case ResourceChange.ResourceChangeModificationType.XpChange:
+                        // Mods not supported for now
+                        ru.Skill.xp += (int) c.valueChange.getValue(UnityEngine.Random.Range(0f, 1f));
+                        break;
+                    default:
+                        break;
+                }
+                
             }
         }
     }

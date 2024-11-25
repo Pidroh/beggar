@@ -163,7 +163,7 @@ public class JsonReader
                 Debug.LogError($"Potential ID duplication: {iDPointer.id}");
             }
             iDPointer.RuntimeUnit = ru;
-            if (type == UnitType.RESOURCE) 
+            if (type == UnitType.RESOURCE)
             {
                 ru.ConfigResource = new ConfigResource()
                 {
@@ -204,7 +204,7 @@ public class JsonReader
                 }
 
             }
-            if (type == UnitType.ENCOUNTER) 
+            if (type == UnitType.ENCOUNTER)
             {
                 ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
                 ru.ConfigEncounter = new ConfigEncounter()
@@ -328,19 +328,28 @@ public class JsonReader
                 min = number;
                 max = number;
             }
-            else 
+            else
             {
-                if (c.Value.IsString) 
+                if (c.Value.IsString)
                 {
                     var values = c.Value.AsString.Split("~");
                     min = float.Parse(values[0]);
                     max = float.Parse(values[1]);
                 }
             }
+
+            string header = c.Key;
+            var changeType = ResourceChange.ResourceChangeModificationType.NormalChange;
+            if (header.Contains(".xp"))
+            {
+                header = header.Replace(".xp", "");
+                changeType = ResourceChange.ResourceChangeModificationType.XpChange;
+            }
             var rc = new ResourceChange()
             {
-                IdPointer = arcaniaUnits.GetOrCreateIdPointer(c.Key),
-                valueChange = new FloatRange(min * signalMultiplier, max * signalMultiplier)
+                IdPointer = arcaniaUnits.GetOrCreateIdPointer(header),
+                valueChange = new FloatRange(min * signalMultiplier, max * signalMultiplier),
+                ModificationType = changeType
             };
             list.Add(rc);
         }
@@ -511,7 +520,14 @@ public class ResourceChange
 {
     public IDPointer IdPointer;
     public FloatRange valueChange;
+    public ResourceChangeModificationType ModificationType
+    public enum ResourceChangeModificationType 
+    { 
+        NormalChange,
+        XpChange
+    }
 }
+
 
 
 public class DialogRuntime
@@ -526,7 +542,7 @@ public class TagRuntime
 {
     public string tagName;
     public List<RuntimeUnit> UnitsWithTag = new();
-    
+
     public List<DialogRuntime> Dialogs = new();
 
     public TagRuntime(string tagName)

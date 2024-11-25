@@ -33,14 +33,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         if (runningLocation == null) return;
         var activeLocation = runningLocation;
         LastActiveLocation = activeLocation;
-        #region Spawn encounter
-        if (ActiveEncounter == null) {
-
-            var ele = activeLocation.Location.Encounters.RandomElement();
-            ActiveEncounter = ele.RuntimeUnit;
-            encounterProgress = 0f;
-        }
-        #endregion
+        EnsureEncounter(activeLocation); 
         encounterProgress += Time.deltaTime;
         if (encounterProgress >= ActiveEncounter.ConfigEncounter.Length)
         {
@@ -50,13 +43,13 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             locationProgress++;
             #endregion
         }
-        else 
+        else
         {
             #region encounter progress
-            
+
             foreach (var str in Stressors)
             {
-                if (str.IsMaxed) 
+                if (str.IsMaxed)
                 {
                     _model.Runner.InterruptTask(activeLocation);
                     return;
@@ -64,11 +57,29 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             }
             #endregion 
         }
-        if (locationProgress >= activeLocation.Location.configLocation.Length) 
+        
+        if (locationProgress >= activeLocation.Location.configLocation.Length)
         {
             locationProgress = 0;
             _model.Runner.CompleteTask(activeLocation);
         }
+        else 
+        {
+            EnsureEncounter(activeLocation);
+        }
+    }
+
+    private void EnsureEncounter(RuntimeUnit activeLocation)
+    {
+        #region Spawn encounter
+        if (ActiveEncounter == null)
+        {
+
+            var ele = activeLocation.Location.Encounters.RandomElement();
+            ActiveEncounter = ele.RuntimeUnit;
+            encounterProgress = 0f;
+        }
+        #endregion
     }
 
     internal void FinishedSettingUpUnits()
