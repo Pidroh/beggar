@@ -16,8 +16,15 @@ public class ControlExploration : ControlSubUnit
             item.SetVisible(modelExploration.IsExplorationActive);
         }
         if (!modelExploration.IsExplorationActive) return;
-        dataHolder.LocationTCU.ManualUpdate();
-        dataHolder.EncounterTCU.ManualUpdate();
+        dataHolder.LocationTCU.XPGauge.SetRatio(modelExploration.ExplorationRatio);
+        dataHolder.EncounterTCU.XPGauge.SetRatio(modelExploration.EncounterRatio);
+        foreach (var item in dataHolder.ExplorationActiveUnits)
+        {
+            item.lwe?.ManualUpdate();
+            item.XPGauge?.ManualUpdate();
+        }
+        // dataHolder.LocationTCU.ManualUpdate();
+        // dataHolder.EncounterTCU.ManualUpdate();
     }
 }
 

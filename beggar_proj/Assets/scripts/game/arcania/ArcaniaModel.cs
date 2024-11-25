@@ -54,15 +54,10 @@ public class ArcaniaModel
         var changes = parent.ConfigTask.GetResourceChangeList(changeType);
         foreach (var c in changes)
         {
-            if(c.IdPointer.Tag != null)
+            foreach (var ru in c.IdPointer)
             {
-                foreach (var item in c.IdPointer.Tag.UnitsWithTag)
-                {
-                    item.ChangeValueByResourceChange(parent, c.valueChange, changeType);
-                }
-                continue;
+                ru.ChangeValueByResourceChange(parent, c.valueChange, changeType);
             }
-            c.IdPointer.RuntimeUnit.ChangeValueByResourceChange(parent, c.valueChange, changeType);
         }
     }
 

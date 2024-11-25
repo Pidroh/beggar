@@ -346,6 +346,8 @@ public class MainGameControlSetup
                     layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                     titleText.SetTextRaw("Location name");
                     tcu.lwe = lwe;
+                    tcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
+                    layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
                 }
                 switch (indexExplorationElement)
                 {

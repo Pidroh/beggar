@@ -30,6 +30,11 @@ public class Gauge
         RectTransformExtensions.SetOffsets(bgRT, gaugeRequest.Padding);
     }
 
+    internal void SetRatio(object explorationRatio)
+    {
+        throw new NotImplementedException();
+    }
+
     public void ManualUpdate()
     {
         layoutChild.RectTransform.SetHeightMilimeters(heightMM);

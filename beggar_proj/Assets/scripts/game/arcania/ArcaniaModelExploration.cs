@@ -17,6 +17,9 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
     public RuntimeUnit LastActiveLocation { get; private set; }
     public bool IsExplorationActive => ActiveEncounter != null;
 
+    public float ExplorationRatio => ((float) locationProgress) / LastActiveLocation.Location.configLocation.Length;
+    public float EncounterRatio => ActiveEncounter == null ? 0f : ((float)encounterProgress) / ActiveEncounter.ConfigEncounter.Length;
+
     public void ManualUpdate()
     {
         RuntimeUnit runningLocation = null;
