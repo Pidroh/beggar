@@ -42,6 +42,7 @@ public class ExplorationDataHolder
     public RTControlUnit LocationRCU { get; internal set; }
     public RTControlUnit EncounterRCU { get; internal set; }
     public RTControlUnit FleeRCU { get; internal set; }
+    public List<RTControlUnit> StressorsRCU { get; internal set; } = new();
 
     public List<RTControlUnit> ExplorationActiveUnits = new();
 
@@ -49,6 +50,7 @@ public class ExplorationDataHolder
     {
         ExplorationActiveUnits.Add(LocationRCU);
         ExplorationActiveUnits.Add(EncounterRCU);
+        ExplorationActiveUnits.AddRange(StressorsRCU);
         ExplorationActiveUnits.Add(FleeRCU);
     }
 }

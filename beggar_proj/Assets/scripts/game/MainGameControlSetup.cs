@@ -3,6 +3,7 @@ using HeartUnity.View;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class MainGameControlSetup
 {
@@ -313,51 +314,67 @@ public class MainGameControlSetup
         {
             TabControlUnit tab = mgc.TabControlUnits[tabIndex];
             if (!tab.TabData.Tab.ExplorationActiveTab) continue;
+            
 
-            for (int indexExplorationElement = 0; indexExplorationElement < 3; indexExplorationElement++)
+            for (int indexExplorationElement = 0; indexExplorationElement < 4; indexExplorationElement++)
             {
-                var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
-                dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
-                var hasBWE = indexExplorationElement > 1;
-                var rcu = new RTControlUnit();
-                rcu.ParentTabSeparator = null;
-                if (hasBWE)
+                int numberOfEles = 1;
+                if (indexExplorationElement == 3) 
                 {
-                    var button = CanvasMaker.CreateButton("Flee", mgc.ButtonObjectRequest, mgc.ButtonRequest);
-                    var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
-                    var bwe = new ButtonWithExpandable(button, iconButton);
-                    rcu.bwe = bwe;
-                    layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
-                    bwe.LayoutChild.GameObject.name = "WTF IS";
+                    numberOfEles = mgc.arcaniaModel.Exploration.Stressors.Count;
                 }
+                for (int eleIndex = 0; eleIndex < numberOfEles; eleIndex++)
+                {
+                    var fleeButton = indexExplorationElement == 3;
+                    var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
+                    dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
+                    var hasBWE = fleeButton;
+                    var rcu = new RTControlUnit();
+                    rcu.ParentTabSeparator = null;
+                    if (hasBWE)
+                    {
+                        var button = CanvasMaker.CreateButton("Flee", mgc.ButtonObjectRequest, mgc.ButtonRequest);
+                        var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
+                        var bwe = new ButtonWithExpandable(button, iconButton);
+                        rcu.bwe = bwe;
+                        layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
+                        bwe.LayoutChild.GameObject.name = "WTF IS";
+                    }
 
-                if (!hasBWE)
-                {
-                    var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
-                    var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
-                    var lwe = new LabelWithExpandable(iconButton, titleText);
-                    layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
-                    titleText.SetTextRaw("Location name");
-                    rcu.lwe = lwe;
-                    rcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
-                    layout.AddLayoutChildAndParentIt(rcu.XPGauge.layoutChild);
+                    if (!hasBWE)
+                    {
+                        var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
+                        var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
+                        var lwe = new LabelWithExpandable(iconButton, titleText);
+                        layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
+                        titleText.SetTextRaw("Location name");
+                        rcu.lwe = lwe;
+                        rcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
+                        layout.AddLayoutChildAndParentIt(rcu.XPGauge.layoutChild);
+                    }
+                    switch (indexExplorationElement)
+                    {
+                        case 0:
+                            mgc.controlExploration.dataHolder.LocationRCU = rcu;
+                            CreateReserveChangeViews(mgc, layout, rcu);
+                            break;
+                        case 1: // encounter
+                            mgc.controlExploration.dataHolder.EncounterRCU = rcu;
+                            CreateReserveChangeViews(mgc, layout, rcu);
+                            break;
+                        case 2:
+                            mgc.controlExploration.dataHolder.StressorsRCU.Add(rcu);
+                            break;
+                        case 3:
+                            mgc.controlExploration.dataHolder.FleeRCU = rcu;
+                            break;
+                        default:
+                            break;
+                    }
                 }
-                switch (indexExplorationElement)
-                {
-                    case 0:
-                        mgc.controlExploration.dataHolder.LocationRCU = rcu;
-                        CreateReserveChangeViews(mgc, layout, rcu);
-                        break;
-                    case 1: // encounter
-                        mgc.controlExploration.dataHolder.EncounterRCU = rcu;
-                        CreateReserveChangeViews(mgc, layout, rcu);
-                        break;
-                    case 2:
-                        mgc.controlExploration.dataHolder.FleeRCU = rcu;
-                        break;
-                    default:
-                        break;
-                }
+                
+                // if it's the enemy encounter one
+                
             }
             mgc.controlExploration.dataHolder.FinishSetup();
 
