@@ -150,6 +150,8 @@ public class TripleTextView
         get => Texts[2];
         set => Texts[2] = value;
     }
+    public bool Visible { get => LayoutChild.Visible; internal set => LayoutChild.Visible = value; }
+
     public TTVMode Mode = TripleTextView.TTVMode.All3;
 
     public enum TTVMode 

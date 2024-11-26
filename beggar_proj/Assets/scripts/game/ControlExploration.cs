@@ -10,17 +10,18 @@ public class ControlExploration : ControlSubUnit
 
     public void ManualUpdate() 
     {
-        dataHolder.LocationTCU.Data = modelExploration.LastActiveLocation;
+        dataHolder.LocationRCU.Data = modelExploration.LastActiveLocation;
+        dataHolder.EncounterRCU.Data = modelExploration.ActiveEncounter;
         foreach (var item in dataHolder.ExplorationActiveUnits)
         {
             item.SetVisible(modelExploration.IsExplorationActive);
         }
         if (!modelExploration.IsExplorationActive) return;
-        dataHolder.LocationTCU.lwe.MainText.rawText = modelExploration.LastActiveLocation.ConfigBasic.name;
-        dataHolder.EncounterTCU.lwe.MainText.rawText = modelExploration.ActiveEncounter.ConfigBasic.name;
-        dataHolder.LocationTCU.XPGauge.SetRatio(modelExploration.ExplorationRatio);
-        dataHolder.EncounterTCU.XPGauge.SetRatio(modelExploration.EncounterRatio);
-        if (dataHolder.FleeTCU.TaskClicked) 
+        dataHolder.LocationRCU.lwe.MainText.rawText = modelExploration.LastActiveLocation.ConfigBasic.name;
+        dataHolder.EncounterRCU.lwe.MainText.rawText = modelExploration.ActiveEncounter.ConfigBasic.name;
+        dataHolder.LocationRCU.XPGauge.SetRatio(modelExploration.ExplorationRatio);
+        dataHolder.EncounterRCU.XPGauge.SetRatio(modelExploration.EncounterRatio);
+        if (dataHolder.FleeRCU.TaskClicked) 
         {
             _model.Exploration.Flee();
         }
@@ -29,6 +30,7 @@ public class ControlExploration : ControlSubUnit
             item.lwe?.ManualUpdate();
             item.XPGauge?.ManualUpdate();
             item.bwe?.ManualUpdate();
+            item.UpdateChangeGroups();
         }
         // dataHolder.LocationTCU.ManualUpdate();
         // dataHolder.EncounterTCU.ManualUpdate();
@@ -37,16 +39,16 @@ public class ControlExploration : ControlSubUnit
 
 public class ExplorationDataHolder
 {
-    public RTControlUnit LocationTCU { get; internal set; }
-    public RTControlUnit EncounterTCU { get; internal set; }
-    public RTControlUnit FleeTCU { get; internal set; }
+    public RTControlUnit LocationRCU { get; internal set; }
+    public RTControlUnit EncounterRCU { get; internal set; }
+    public RTControlUnit FleeRCU { get; internal set; }
 
     public List<RTControlUnit> ExplorationActiveUnits = new();
 
     public void FinishSetup() 
     {
-        ExplorationActiveUnits.Add(LocationTCU);
-        ExplorationActiveUnits.Add(EncounterTCU);
-        ExplorationActiveUnits.Add(FleeTCU);
+        ExplorationActiveUnits.Add(LocationRCU);
+        ExplorationActiveUnits.Add(EncounterRCU);
+        ExplorationActiveUnits.Add(FleeRCU);
     }
 }

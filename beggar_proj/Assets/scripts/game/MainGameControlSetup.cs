@@ -140,15 +140,15 @@ public class MainGameControlSetup
                         var hasValueText = !hasBWE || taskWithMax;
                         var valueTextIsOnLWE = !hasBWE;
 
-                        var tcu = new RTControlUnit();
-                        tcu.ParentTabSeparator = unitSeparator;
+                        var rcu = new RTControlUnit();
+                        rcu.ParentTabSeparator = unitSeparator;
 
                         if (hasBWE)
                         {
                             var button = CanvasMaker.CreateButton(item.ConfigBasic.name, mgc.ButtonObjectRequest, mgc.ButtonRequest);
                             var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
                             var bwe = new ButtonWithExpandable(button, iconButton);
-                            tcu.bwe = bwe;
+                            rcu.bwe = bwe;
                         }
 
                         if (!hasBWE)
@@ -159,7 +159,7 @@ public class MainGameControlSetup
 
                             layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                             titleText.SetTextRaw(item.ConfigBasic.name);
-                            tcu.lwe = lwe;
+                            rcu.lwe = lwe;
                         }
 
 
@@ -175,8 +175,8 @@ public class MainGameControlSetup
                             layoutAddRemove.AddLayoutChildAndParentIt(buttonRemove.Button);
                             layoutAddRemove.SelfChild.SetPreferredHeightMM(10);
                             layout.AddLayoutAndParentIt(layoutAddRemove);
-                            tcu.ButtonRemove = buttonRemove;
-                            tcu.ButtonAdd = buttonAdd;
+                            rcu.ButtonRemove = buttonRemove;
+                            rcu.ButtonAdd = buttonAdd;
                         }
                         if (pair.Key == UnitType.SKILL)
                         {
@@ -184,29 +184,29 @@ public class MainGameControlSetup
                                 var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 30);
                                 t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                                 // bwe.ExpandTargets
-                                tcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
-                                tcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
-                                layout.AddLayoutChildAndParentIt(tcu.MainTitle.LayoutChild);
+                                rcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
+                                rcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
+                                layout.AddLayoutChildAndParentIt(rcu.MainTitle.LayoutChild);
                             }
                             {
                                 var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 30);
                                 t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
                                 // bwe.ExpandTargets
-                                tcu.SkillLevelText = t;
-                                t.SetParent(tcu.MainTitle.ElementRectTransform);
+                                rcu.SkillLevelText = t;
+                                t.SetParent(rcu.MainTitle.ElementRectTransform);
                                 t.RectTransform.FillParent();
                                 t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
 
                             }
-                            tcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
-                            layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
+                            rcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
+                            layout.AddLayoutChildAndParentIt(rcu.XPGauge.layoutChild);
                         }
                         dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
 
                         if (hasBWE)
                         {
-                            layout.AddLayoutChildAndParentIt(tcu.bwe);
-                            tcu.bwe.MainButton.SetTextRaw(item.ConfigBasic.name);
+                            layout.AddLayoutChildAndParentIt(rcu.bwe);
+                            rcu.bwe.MainButton.SetTextRaw(item.ConfigBasic.name);
                         }
 
                         // value text instantiation
@@ -214,10 +214,10 @@ public class MainGameControlSetup
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
                             // bwe.ExpandTargets
-                            tcu.ValueText = t;
+                            rcu.ValueText = t;
                             if (valueTextIsOnLWE)
                             {
-                                t.SetParent(tcu.lwe.MainText.RectTransform);
+                                t.SetParent(rcu.lwe.MainText.RectTransform);
                                 t.RectTransform.FillParent();
                                 t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
                             }
@@ -231,18 +231,18 @@ public class MainGameControlSetup
 
                         }
 
-                        pair.Value.Add(tcu);
-                        tcu.Data = item;
+                        pair.Value.Add(rcu);
+                        rcu.Data = item;
                         {
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                             // bwe.ExpandTargets
-                            tcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
-                            tcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
+                            rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+                            rcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
                             if (hasBWE)
-                                AddToExpands(tcu.Description.LayoutChild);
+                                AddToExpands(rcu.Description.LayoutChild);
                             else
-                                layout.AddLayoutChildAndParentIt(tcu.Description.LayoutChild);
+                                layout.AddLayoutChildAndParentIt(rcu.Description.LayoutChild);
 
                         }
 
@@ -250,36 +250,20 @@ public class MainGameControlSetup
                         {
                             if (item.ConfigTask == null) break;
                             var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
-                            var rcgIndex = i;
+                            if (arrayOfChanges == null) continue;
+                            int count = arrayOfChanges.Count;
+                            
+                            CreateResourceChangeViews(i, count, rcu, layout);
 
-                            if (arrayOfChanges != null)
-                            {
-                                tcu.ChangeGroups[rcgIndex] = new ResourceChangeGroup();
-                                string textKey = (ResourceChangeType)rcgIndex switch
-                                {
-                                    ResourceChangeType.COST => "cost",
-                                    ResourceChangeType.RESULT => "result",
-                                    ResourceChangeType.RUN => "run",
-                                    ResourceChangeType.EFFECT => "effect",
-                                    _ => null,
-                                };
-                                SeparatorWithLabel swl = CreateSeparator(layout, tcu.ExpandManager, textKey);
 
-                                tcu.ChangeGroupSeparators[rcgIndex] = swl;
-                            }
-                            foreach (var changeU in arrayOfChanges)
-                            {
-                                TripleTextView ttv = CreateTripleTextView(layout, tcu.ExpandManager);
-                                tcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
-                            }
                         }
 
                         //-------------------------------------------------------
                         // Mod #mod
                         //-------------------------------------------------------
-                        List<SeparatorWithLabel> separators = tcu.Separators;
-                        var ModUnit = tcu.ModsUnit;
-                        ExpandableManager expandManager = tcu.ExpandManager;
+                        List<SeparatorWithLabel> separators = rcu.Separators;
+                        var ModUnit = rcu.ModsUnit;
+                        ExpandableManager expandManager = rcu.ExpandManager;
                         CreateModViews(item, layout, separators, ModUnit, expandManager);
                         //-------------------------------------------------------
                         // Need #need #condition
@@ -292,8 +276,8 @@ public class MainGameControlSetup
                                 var sepaNeed = CreateSeparator(layout, expandManager, sepLabel);
                                 separators.Add(sepaNeed);
                                 var ttv = CreateTripleTextView(layout, expandManager);
-                                tcu.needConditionUnit.TTV = ttv;
-                                tcu.needConditionUnit.TTV.MainText.SetTextKey(requirements.humanExpression);
+                                rcu.needConditionUnit.TTV = ttv;
+                                rcu.needConditionUnit.TTV.MainText.SetTextKey(requirements.humanExpression);
                             }
                         }
 
@@ -305,16 +289,16 @@ public class MainGameControlSetup
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                             // bwe.ExpandTargets
-                            tcu.DurationText = new SimpleChild<UIUnit>(t, t.RectTransform);
-                            tcu.DurationText.RectOffset = new RectOffset(20, 20, 0, 0);
-                            tcu.DurationText.LayoutChild.PreferredSizeMM[1] = 10;
-                            tcu.DurationText.ManualUpdate();
-                            AddToExpands(tcu.DurationText.LayoutChild);
+                            rcu.DurationText = new SimpleChild<UIUnit>(t, t.RectTransform);
+                            rcu.DurationText.RectOffset = new RectOffset(20, 20, 0, 0);
+                            rcu.DurationText.LayoutChild.PreferredSizeMM[1] = 10;
+                            rcu.DurationText.ManualUpdate();
+                            AddToExpands(rcu.DurationText.LayoutChild);
                         }
 
                         void AddToExpands(LayoutChild c)
                         {
-                            tcu.ExpandManager.ExpandTargets.Add(c.GameObject);
+                            rcu.ExpandManager.ExpandTargets.Add(c.GameObject);
                             layout.AddLayoutChildAndParentIt(c);
                         }
                     }
@@ -329,20 +313,20 @@ public class MainGameControlSetup
         {
             TabControlUnit tab = mgc.TabControlUnits[tabIndex];
             if (!tab.TabData.Tab.ExplorationActiveTab) continue;
-            
+
             for (int indexExplorationElement = 0; indexExplorationElement < 3; indexExplorationElement++)
             {
                 var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
                 dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
                 var hasBWE = indexExplorationElement > 1;
-                var tcu = new RTControlUnit();
-                tcu.ParentTabSeparator = null;
+                var rcu = new RTControlUnit();
+                rcu.ParentTabSeparator = null;
                 if (hasBWE)
                 {
                     var button = CanvasMaker.CreateButton("Flee", mgc.ButtonObjectRequest, mgc.ButtonRequest);
                     var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
                     var bwe = new ButtonWithExpandable(button, iconButton);
-                    tcu.bwe = bwe;
+                    rcu.bwe = bwe;
                     layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
                     bwe.LayoutChild.GameObject.name = "WTF IS";
                 }
@@ -354,27 +338,29 @@ public class MainGameControlSetup
                     var lwe = new LabelWithExpandable(iconButton, titleText);
                     layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
                     titleText.SetTextRaw("Location name");
-                    tcu.lwe = lwe;
-                    tcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
-                    layout.AddLayoutChildAndParentIt(tcu.XPGauge.layoutChild);
+                    rcu.lwe = lwe;
+                    rcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
+                    layout.AddLayoutChildAndParentIt(rcu.XPGauge.layoutChild);
                 }
                 switch (indexExplorationElement)
                 {
                     case 0:
-                        mgc.controlExploration.dataHolder.LocationTCU = tcu;
+                        mgc.controlExploration.dataHolder.LocationRCU = rcu;
+                        CreateReserveChangeViews(mgc, layout, rcu);
                         break;
-                    case 1:
-                        mgc.controlExploration.dataHolder.EncounterTCU = tcu;
+                    case 1: // encounter
+                        mgc.controlExploration.dataHolder.EncounterRCU = rcu;
+                        CreateReserveChangeViews(mgc, layout, rcu);
                         break;
                     case 2:
-                        mgc.controlExploration.dataHolder.FleeTCU = tcu;
+                        mgc.controlExploration.dataHolder.FleeRCU = rcu;
                         break;
                     default:
                         break;
                 }
             }
             mgc.controlExploration.dataHolder.FinishSetup();
-            
+
         }
         #endregion
 
@@ -390,7 +376,27 @@ public class MainGameControlSetup
             mgc.EndGameMessage = endMessage;
         }
 
+        void CreateResourceChangeViews(int rcgIndex, int count, RTControlUnit rcu, LayoutParent layout)
+        {
+            rcu.ChangeGroups[rcgIndex] = new ResourceChangeGroup();
+            string textKey = (ResourceChangeType)rcgIndex switch
+            {
+                ResourceChangeType.COST => "cost",
+                ResourceChangeType.RESULT => "result",
+                ResourceChangeType.RUN => "run",
+                ResourceChangeType.EFFECT => "effect",
+                _ => null,
+            };
+            SeparatorWithLabel swl = CreateSeparator(layout, rcu.ExpandManager, textKey);
 
+            rcu.ChangeGroupSeparators[rcgIndex] = swl;
+
+            for (int arrayChangePos = 0; arrayChangePos < count; arrayChangePos++)
+            {
+                TripleTextView ttv = CreateTripleTextView(layout, rcu.ExpandManager);
+                rcu.ChangeGroups[rcgIndex].tripleTextViews.Add(ttv);
+            }
+        }
 
         SeparatorWithLabel CreateSeparator(LayoutParent layout, ExpandableManager expand, string textKey)
         {
@@ -424,6 +430,14 @@ public class MainGameControlSetup
                 var ttv = CreateTripleTextView(layout, expandManager);
                 ttv.Mode = TripleTextView.TTVMode.PrimarySecondary;
                 ModUnit.ModTTVs.Add(ttv);
+            }
+        }
+
+        void CreateReserveChangeViews(MainGameControl mgc, LayoutParent layout, RTControlUnit rcu)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                CreateResourceChangeViews(i, 5, rcu, layout);
             }
         }
     }

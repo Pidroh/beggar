@@ -145,6 +145,13 @@ public class RTControlUnit
             sep.ManualUpdate();
         }
 
+        UpdateChangeGroups();
+
+    }
+
+    public void UpdateChangeGroups()
+    {
+        if (Data == null) return;
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
             ResourceChangeType resourceChangeType = (ResourceChangeType)i;
@@ -171,12 +178,14 @@ public class RTControlUnit
             for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
             {
                 TripleTextView ttv = item.tripleTextViews[ttvIndex];
+                ttv.Visible = resourceChanges.Count > ttvIndex;
+                if (!ttv.Visible) break;
                 var rc = resourceChanges[ttvIndex];
 
                 var min = rc.valueChange.min;
                 var max = rc.valueChange.max;
 
-                string targetName = null;
+                string targetName;
                 string tertiaryText = "";
                 if (rc.IdPointer.RuntimeUnit != null)
                 {
@@ -201,7 +210,6 @@ public class RTControlUnit
                 ttv.ManualUpdate();
             }
         }
-
     }
 
     public static void FeedDescription(SimpleChild<UIUnit> description, string desc)
