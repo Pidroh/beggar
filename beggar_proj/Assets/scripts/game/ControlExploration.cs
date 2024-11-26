@@ -17,8 +17,12 @@ public class ControlExploration : ControlSubUnit
             item.SetVisible(modelExploration.IsExplorationActive);
         }
         if (!modelExploration.IsExplorationActive) return;
-        dataHolder.LocationRCU.lwe.MainText.rawText = modelExploration.LastActiveLocation.ConfigBasic.name;
-        dataHolder.EncounterRCU.lwe.MainText.rawText = modelExploration.ActiveEncounter.ConfigBasic.name;
+        // dataHolder.LocationRCU.lwe.MainText.rawText = modelExploration.LastActiveLocation.ConfigBasic.name;
+        // dataHolder.EncounterRCU.lwe.MainText.rawText = modelExploration.ActiveEncounter.ConfigBasic.name;
+        foreach (var rcuStress in dataHolder.StressorsRCU)
+        {
+            rcuStress.XPGauge.SetRatio(rcuStress.Data.ValueRatio);
+        }
         dataHolder.LocationRCU.XPGauge.SetRatio(modelExploration.ExplorationRatio);
         dataHolder.EncounterRCU.XPGauge.SetRatio(modelExploration.EncounterRatio);
         if (dataHolder.FleeRCU.TaskClicked) 
@@ -30,7 +34,9 @@ public class ControlExploration : ControlSubUnit
             item.lwe?.ManualUpdate();
             item.XPGauge?.ManualUpdate();
             item.bwe?.ManualUpdate();
-            item.UpdateChangeGroups();
+            if(item.IsExpanded) item.UpdateChangeGroups();
+            if (item.Data == null) continue;
+            item.lwe.MainText.rawText = item.Data.ConfigBasic.name;
         }
         // dataHolder.LocationTCU.ManualUpdate();
         // dataHolder.EncounterTCU.ManualUpdate();

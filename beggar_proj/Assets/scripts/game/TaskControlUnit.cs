@@ -179,7 +179,7 @@ public class RTControlUnit
             {
                 TripleTextView ttv = item.tripleTextViews[ttvIndex];
                 ttv.Visible = resourceChanges.Count > ttvIndex;
-                if (!ttv.Visible) break;
+                if (!ttv.Visible) continue;
                 var rc = resourceChanges[ttvIndex];
 
                 var min = rc.valueChange.min;

@@ -185,4 +185,5 @@ public class RuntimeUnit
 
     public ConfigResource ConfigResource { get; internal set; }
     public ConfigEncounter ConfigEncounter { get; internal set; }
+    public float ValueRatio => HasMax ? _value / Max : 0f;
 }

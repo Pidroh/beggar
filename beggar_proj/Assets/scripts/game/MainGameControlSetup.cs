@@ -319,17 +319,24 @@ public class MainGameControlSetup
             for (int indexExplorationElement = 0; indexExplorationElement < 4; indexExplorationElement++)
             {
                 int numberOfEles = 1;
-                if (indexExplorationElement == 3) 
+                bool isStressors = indexExplorationElement == 2;
+                var fleeButton = indexExplorationElement == 3;
+                if (isStressors) 
                 {
                     numberOfEles = mgc.arcaniaModel.Exploration.Stressors.Count;
                 }
                 for (int eleIndex = 0; eleIndex < numberOfEles; eleIndex++)
                 {
-                    var fleeButton = indexExplorationElement == 3;
+                    
+                    
                     var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
                     dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
                     var hasBWE = fleeButton;
                     var rcu = new RTControlUnit();
+                    if (isStressors)
+                    {
+                        rcu.Data = mgc.arcaniaModel.Exploration.Stressors[eleIndex];
+                    }
                     rcu.ParentTabSeparator = null;
                     if (hasBWE)
                     {
