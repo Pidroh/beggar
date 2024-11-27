@@ -17,7 +17,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
     public RuntimeUnit LastActiveLocation { get; private set; }
     public bool IsExplorationActive => ActiveEncounter != null;
 
-    public float ExplorationRatio => ((float) locationProgress) / LastActiveLocation.Location.configLocation.Length;
+    public float ExplorationRatio => ((float)locationProgress) / LastActiveLocation.Location.configLocation.Length;
     public float EncounterRatio => ActiveEncounter == null ? 0f : ((float)encounterProgress) / ActiveEncounter.ConfigEncounter.Length;
 
     public void ManualUpdate()
@@ -32,8 +32,13 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         if (runningLocation == null) ActiveEncounter = null;
         if (runningLocation == null) return;
         var activeLocation = runningLocation;
-        LastActiveLocation = activeLocation;
-        EnsureEncounter(activeLocation); 
+        if (LastActiveLocation != activeLocation)
+        {
+            locationProgress = 0;
+            LastActiveLocation = activeLocation;
+        }
+
+        EnsureEncounter(activeLocation);
         encounterProgress += Time.deltaTime;
         if (encounterProgress >= ActiveEncounter.ConfigEncounter.Length)
         {
@@ -57,16 +62,21 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             }
             #endregion 
         }
-        
+
         if (locationProgress >= activeLocation.Location.configLocation.Length)
         {
             locationProgress = 0;
             _model.Runner.CompleteTask(activeLocation);
         }
-        else 
+        else
         {
             EnsureEncounter(activeLocation);
         }
+    }
+
+    internal void LoadLastActiveLocation(RuntimeUnit runtimeUnit)
+    {
+        LastActiveLocation = runtimeUnit;
     }
 
     internal void Flee()
@@ -97,15 +107,15 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
                 Stressors.Add(item);
             }
         }
-        
+
     }
 
     internal void UpdateLoopProgressedSecond()
     {
-        if (ActiveEncounter != null) 
+        if (ActiveEncounter != null)
         {
             _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
         }
-        
+
     }
 }
