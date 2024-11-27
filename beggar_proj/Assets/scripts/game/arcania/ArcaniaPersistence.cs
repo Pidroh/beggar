@@ -52,8 +52,9 @@ public class ArcaniaPersistence
     {
         if (!saveUnit.TryLoad(out var persistence)) return;
         exploration.locationProgress = persistence.Exploration.locationProgress;
-        exploration.LoadLastActiveLocation(arcaniaUnits.GetOrCreateIdPointer(persistence.Exploration.lastLocationID)?.RuntimeUnit);
-        
+        if (!string.IsNullOrWhiteSpace(persistence.Exploration.lastLocationID)) 
+            exploration.LoadLastActiveLocation(arcaniaUnits.GetOrCreateIdPointer(persistence.Exploration.lastLocationID)?.RuntimeUnit);
+
         foreach (var basic in persistence.Basics)
         {
             if (!arcaniaUnits.IdMapper.TryGetValue(basic.id, out var v)) continue;

@@ -47,7 +47,7 @@ public class MainGameControl : MonoBehaviour
         MainGameControlSetup.Setup(this);
         RobustDeltaTime = new();
         ArcaniaPersistence = new(HeartGame);
-        ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits);
+        ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
         HeartGame.CommonDataLoad();
     }
 
@@ -67,7 +67,7 @@ public class MainGameControl : MonoBehaviour
         if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN)
         {
             lastSaveTime = Time.unscaledTime;
-            ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
+            ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
             HeartGame.SaveCommon();
         }
         // -----------------------------------------------------------
@@ -191,7 +191,7 @@ public class MainGameControl : MonoBehaviour
             {
                 if (tabControl.TabData.Tab.OpenSettings)
                 {
-                    ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
+                    ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
                     HeartGame.GoToSettings();
                 }
                 else
