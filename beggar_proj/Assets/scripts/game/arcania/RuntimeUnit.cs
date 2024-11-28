@@ -129,7 +129,7 @@ public class RuntimeUnit
         {
             return Skill.HasEnoughXPToLevelUp();
         }
-        if (ConfigTask.Duration.HasValue) return TaskProgress > ConfigTask.Duration.Value;
+        if (ConfigTask.Duration.HasValue) return TaskProgress >= ConfigTask.Duration.Value;
         return false;
     }
 
