@@ -666,10 +666,29 @@
                     "ratbond.max": 20,
                     "guilt.max": 20,
                     "ratology.max": 1,
-                    "crimeskill.maxWIP": 1
+                    "crimeskill.maxWIP": 1,
+                    "rat.max": 1
                 }
-            }
-
+            },
+            {
+                "id": "ratwarden",
+                "name": "Rat Warden",
+                "desc": "You are the protector of all RATRACESCIENCEWIP",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "ratology>3&&ratbeggar",
+                "cost": {
+                    "ratbond": 10,
+                    "guilt": 15
+                },
+                "mods":
+                {
+                    "ratbond.max": 40,
+                    "ratology.max": 2,
+                    "rat.max": 2
+                }
+            },
+            
         ]
     },
     {
