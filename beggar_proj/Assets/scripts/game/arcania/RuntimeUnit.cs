@@ -21,7 +21,7 @@ public class RuntimeUnit
 
     public bool Visible => RequireMet && IsPossiblyVisibleRegardlessOfRequire();
 
-    public bool IsPossiblyVisibleRegardlessOfRequire() 
+    public bool IsPossiblyVisibleRegardlessOfRequire()
     {
         if (this.GetModSum(ModType.Lock) > 0) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
@@ -120,7 +120,7 @@ public class RuntimeUnit
 
     internal bool IsTaskComplete()
     {
-        if (Location != null) 
+        if (Location != null)
         {
             // Location completition is done through Arcania model Exploration
             return false;
@@ -170,7 +170,15 @@ public class RuntimeUnit
     public float _value;
 
     public float TaskProgress { get; internal set; }
-    public float TaskProgressRatio => Skill != null ? TaskProgress : (!ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value);
+    public float TaskProgressRatio => CalculateTaskProgressRatio();
+
+    private float CalculateTaskProgressRatio()
+    {
+        if (Skill != null) return TaskProgress;
+
+        return (!ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value);
+    }
+
     public bool IsMaxed => Value >= MaxForCeiling;
 
     public bool IsZero => Value == 0;

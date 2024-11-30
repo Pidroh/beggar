@@ -87,7 +87,7 @@ public class RTControlUnit
     public TabControlUnit.SeparatorInTab ParentTabSeparator { get; internal set; }
     public SimpleChild<UIUnit> DurationText { get; internal set; }
 
-    public void ManualUpdate()
+    public void ManualUpdate(ArcaniaModel arcaniaModel)
     {
         if (ButtonAdd != null)
         {
@@ -107,7 +107,9 @@ public class RTControlUnit
         if (bwe != null)
         {
             bwe.ManualUpdate();
-            bwe.ButtonProgressBar.SetProgress(Data.TaskProgressRatio);
+            float progRatio = Data.TaskProgressRatio;
+            if (Data.Location != null) progRatio = arcaniaModel.Exploration.LastActiveLocation == Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
+            bwe.ButtonProgressBar.SetProgress(progRatio);
             bwe.MainButton.LongPressMulticlickEnabled = Data.IsInstant();
         }
         if (lwe != null)

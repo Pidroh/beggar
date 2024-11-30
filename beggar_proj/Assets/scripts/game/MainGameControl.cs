@@ -225,7 +225,7 @@ public class MainGameControl : MonoBehaviour
                 foreach (var tcu in pair.Value)
                 {
                     var data = tcu.Data;
-                    tcu.ManualUpdate();
+                    tcu.ManualUpdate(arcaniaModel);
                     bool visible = data.Visible && tabNormalContentVisible;
                     tcu.SetVisible(visible);
                     
