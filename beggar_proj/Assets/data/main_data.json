@@ -649,7 +649,27 @@
                     "supplication.rate": 1,
                     "innermind.max": 2
                 }
+            },
+            {
+                "id": "streetrat",
+                "name": "Street Rat",
+                "desc": "Rat and man, working as one to empty all wallets",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "ratology>3&&agile&&somethingStealingWIP",
+                "cost": {
+                    "ratbond": 10,
+                    "guilt": 15
+                },
+                "mods":
+                {
+                    "ratbond.max": 20,
+                    "guilt.max": 20,
+                    "ratology.max": 1,
+                    "crimeskill.maxWIP": 1
+                }
             }
+
         ]
     },
     {

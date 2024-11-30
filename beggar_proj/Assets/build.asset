@@ -17,3 +17,7 @@ MonoBehaviour:
     copyFileTag: 
     outputPath: ../builds/site/web%V%%BETA%/
     buildTarget: 20
+  - tag: webtest
+    copyFileTag: 
+    outputPath: ../builds/test/webtest%V%%BETA%/
+    buildTarget: 20
