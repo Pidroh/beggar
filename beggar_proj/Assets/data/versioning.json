@@ -1,0 +1,15 @@
+{
+    "active_editor_version": "latest_web",
+    "configs": [
+        {
+            "id": "latest_web",
+            "version": 15,
+            "build_type_id": "web"
+        },
+        {
+            "id": "patreon_web",
+            "version": 18,
+            "build_type_id": "patreon"
+        }
+    ]
+}
