@@ -238,6 +238,7 @@ public class CanvasMaker
             {
                 dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
             }
+            dc.childrenForLayouting.AddRange(dc.children);
             dc.RootRT = rootRT;
             dc.OverlayRoot = canvasGO.GetComponent<RectTransform>().CreateFullSizeChild("overlay_root");
             {
@@ -252,7 +253,7 @@ public class CanvasMaker
             // thus, prioritized
             for (int i = N - 1; i >= 0; i--)
             {
-                dc.ShowChild(dc.children[i]);
+                dc.ShowChild(dc.childrenForLayouting[i]);
             }
         }
 

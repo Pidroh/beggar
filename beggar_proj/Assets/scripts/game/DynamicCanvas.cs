@@ -16,8 +16,8 @@ public class DialogView
 
 public class DynamicCanvas
 {
-
     public List<LayoutParent> children = new List<LayoutParent>();
+    public List<LayoutParent> childrenForLayouting = new List<LayoutParent>();
     public List<LayoutParent> LowerMenus = new();
     public List<DialogView> DialogViews = new();
     public Queue<LayoutParent> ActiveChildren = new();
@@ -99,7 +99,7 @@ public class DynamicCanvas
         // Show EVERY children IF it can show every children AND not every children is shown
         // Once the need to unlock tabs appears (like a tab that only appears in the middle game),
         // this code will likely break (since even locked tabs will show)
-        if (maxActiveChildrenCount >= children.Count && ActiveChildren.Count < children.Count)
+        if (maxActiveChildrenCount >= childrenForLayouting.Count && ActiveChildren.Count < childrenForLayouting.Count)
         {
             foreach (var item in children)
             {
@@ -127,7 +127,7 @@ public class DynamicCanvas
                 LowerMenuTotalHeight += item.SelfChild.RectTransform.GetHeight();
             }
 
-            List<LayoutParent> layouts = children;
+            List<LayoutParent> layouts = childrenForLayouting;
             foreach (var layoutP in layouts)
             {
                 var child = layoutP.SelfChild.RectTransform.gameObject;
@@ -217,7 +217,7 @@ public class DynamicCanvas
         {
             HideChild(layoutParent);
         }
-        else 
+        else
         {
             ShowChild(layoutParent);
         }
@@ -238,6 +238,8 @@ public class DynamicCanvas
     internal void ShowChild(LayoutParent layoutParent)
     {
         if (ActiveChildren.Contains(layoutParent)) return;
+        while (childrenForLayouting.Remove(layoutParent)) { }
+        childrenForLayouting.Insert(0, layoutParent);
         ActiveChildren.Enqueue(layoutParent);
     }
 
