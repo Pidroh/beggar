@@ -330,7 +330,10 @@ public class MainGameControl : MonoBehaviour
                 ttv.LayoutChild.Visible = md.ModType != ModType.Lock && ttv.LayoutChild.Visible;
 
                 ttv.MainText.rawText = md.HumanText;
-                ttv.SecondaryText.rawText = $"{md.Value}";
+                if(md.Value > 0)
+                    ttv.SecondaryText.rawText = $"+{md.Value}";  
+                else
+                    ttv.SecondaryText.rawText = $"{md.Value}";
                 ttv.TertiaryText.rawText = string.Empty;
                 ttv.ManualUpdate();
             }
