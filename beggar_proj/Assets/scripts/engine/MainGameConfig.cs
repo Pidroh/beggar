@@ -12,6 +12,7 @@ namespace HeartUnity
     public class MainGameConfig : ScriptableObject
     {
         public int versionNumber;
+        public string gameTitle;
         public bool betaVersion;
         public MusicDataList musicList;
         public AudioDataList audioList;

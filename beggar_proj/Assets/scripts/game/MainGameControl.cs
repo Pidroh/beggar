@@ -196,7 +196,15 @@ public class MainGameControl : MonoBehaviour
                 }
                 else
                 {
-                    dynamicCanvas.ShowChild(tabIndex);
+                    if (dynamicCanvas.CanShowOnlyOneChild())
+                    {
+                        dynamicCanvas.ShowChild(tabIndex);
+                    }
+                    else 
+                    {
+                        dynamicCanvas.ToggleChild(tabIndex);
+                    }
+                    
                 }
 
             }

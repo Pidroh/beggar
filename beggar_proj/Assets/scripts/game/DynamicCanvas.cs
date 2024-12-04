@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using HeartUnity.View;
+using UnityEngine.Pool;
 
 public class DialogView
 {
@@ -74,6 +75,11 @@ public class DynamicCanvas
     private float GetAdjustedMinimumTabPixelWidth()
     {
         return Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
+    }
+
+    public void ToggleChild(int childIndex)
+    {
+        ToggleChild(children[childIndex]);
     }
 
     public void ShowChild(int childIndex)
@@ -155,7 +161,7 @@ public class DynamicCanvas
             if (!item.Visible) continue;
             float dialogWidth = GetAdjustedMinimumTabPixelWidth();
             item.parentTransform.RectTransform.pivot = Vector2.zero;
-            
+
             item.parentTransform.RectTransform.SetWidth(dialogWidth);
             item.dialogText.RectTransform.SetWidth(dialogWidth - 10 * RectTransformExtensions.MilimeterToPixel);
             item.dialogText.ChangeHeightToFitTextPreferredHeight();
@@ -187,6 +193,11 @@ public class DynamicCanvas
         }
     }
 
+    internal bool CanShowOnlyOneChild()
+    {
+        return CalculateNumberOfVisibleHorizontalChildren() <= 1;
+    }
+
     internal void ShowDialog(string id, string title, string content)
     {
         var dv = DialogViews[0];
@@ -200,11 +211,34 @@ public class DynamicCanvas
 
     internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);
 
+    internal void ToggleChild(LayoutParent layoutParent)
+    {
+        if (ActiveChildren.Contains(layoutParent))
+        {
+            HideChild(layoutParent);
+        }
+        else 
+        {
+            ShowChild(layoutParent);
+        }
+    }
+
+    private void HideChild(LayoutParent layoutParent)
+    {
+        using var _1 = ListPool<LayoutParent>.Get(out var list);
+        list.AddRange(ActiveChildren);
+        ActiveChildren.Clear();
+        foreach (var item in list)
+        {
+            if (item == layoutParent) continue;
+            ActiveChildren.Enqueue(item);
+        }
+    }
+
     internal void ShowChild(LayoutParent layoutParent)
     {
         if (ActiveChildren.Contains(layoutParent)) return;
         ActiveChildren.Enqueue(layoutParent);
-
     }
 
 

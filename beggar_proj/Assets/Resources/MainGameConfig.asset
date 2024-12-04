@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MainGameConfig
   m_EditorClassIdentifier: 
   versionNumber: 11
+  gameTitle: beggar_incremental
   betaVersion: 1
   musicList: {fileID: -1364661469213232964, guid: 9f9856be5965df645a15af0a23e0dc85, type: 3}
   audioList: {fileID: -3544310644606591711, guid: 9f9856be5965df645a15af0a23e0dc85, type: 3}

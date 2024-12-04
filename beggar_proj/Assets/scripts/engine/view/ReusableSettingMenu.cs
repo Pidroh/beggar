@@ -443,8 +443,9 @@ namespace HeartUnity.View
 #if !PLATFORM_SWITCH
                 case SettingUnitData.StandardSettingType.EXPORT_SAVE:
                     {
+                        var config = HeartGame.GetConfig();
                         var bytes = SaveDataCenter.GenerateExportSave();
-                        _fileUtilities.ExportBytes(bytes, "savedata", "hg");
+                        _fileUtilities.ExportBytes(bytes, $"{config.gameTitle}_savedata{System.DateTime.Now.ToString("yyyy_M_d_H_m_s")}", "hg");
                     }
                     break;
                 case SettingUnitData.StandardSettingType.IMPORT_SAVE:
