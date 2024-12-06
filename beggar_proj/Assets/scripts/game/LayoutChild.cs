@@ -154,8 +154,8 @@ public class TripleTextView
 
     public TTVMode Mode = TripleTextView.TTVMode.All3;
 
-    public enum TTVMode 
-    { 
+    public enum TTVMode
+    {
         All3,
         PrimarySecondary,
 
@@ -163,7 +163,7 @@ public class TripleTextView
 
     public void ManualUpdate()
     {
-        
+
         foreach (var t in Texts)
         {
             t.text.SetFontSizePhysical(15);
@@ -174,7 +174,8 @@ public class TripleTextView
         RectTransform rtSecondary = SecondaryText.RectTransform;
         RectTransform rtTertiary = TertiaryText.RectTransform;
 
-        if(Mode == TTVMode.All3) {
+        if (Mode == TTVMode.All3)
+        {
             rtMain.SetWidth(Parent.GetWidth() * 0.33f);
             rtSecondary.SetWidth(Parent.GetWidth() * 0.33f);
             rtTertiary.SetWidth(Parent.GetWidth() * 0.33f);
@@ -257,7 +258,7 @@ public class SeparatorWithLabel
 
 public class LabelWithExpandable
 {
-    
+
     public ExpandableManager ExpandManager;
     public UIUnit MainText;
 
@@ -270,13 +271,15 @@ public class LabelWithExpandable
     public LabelWithExpandable(IconButton expand, UIUnit mainText)
     {
         ExpandManager = new(expand);
+        ExpandManager.ExtraExpandButtons.Add(mainText);
         MainText = mainText;
         this.LayoutChild = LayoutChild.Create(expand.transform, mainText.transform);
         expand.transform.localPosition = Vector3.zero;
         mainText.transform.localPosition = Vector3.zero;
     }
 
-    public void ManualUpdate() {
+    public void ManualUpdate()
+    {
         ExpandManager.ManualUpdate();
         var heightMM = 10; // Fixed height for both buttons
 
@@ -308,12 +311,13 @@ public class LabelWithExpandable
         MainText.RectTransform.SetBottomYToParent(0);
 
     }
-    
+
 }
 
 public class ExpandableManager
 {
     public IconButton ExpandButton;
+    public List<UIUnit> ExtraExpandButtons = new();
     private bool _expanded = false;
     public List<GameObject> ExpandTargets = new();
 
@@ -333,6 +337,16 @@ public class ExpandableManager
         {
             _expanded = !_expanded;
         }
+        else
+        {
+            foreach (var extraB in ExtraExpandButtons)
+            {
+                if (!extraB.Clicked) continue;
+                _expanded = !_expanded;
+                break;
+            }
+        }
+
         foreach (var item in ExpandTargets)
         {
             item.SetActive(Expanded);
@@ -352,7 +366,7 @@ public class ButtonWithExpandable
     public IconButton ExpandButton => ExpandManager.ExpandButton;
     public LayoutChild LayoutChild;
     public List<GameObject> ExpandTargets => ExpandManager.ExpandTargets;
-    
+
     public ExpandableManager ExpandManager;
 
     public bool Expanded => ExpandManager.Expanded;

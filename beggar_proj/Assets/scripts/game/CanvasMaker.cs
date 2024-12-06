@@ -191,6 +191,18 @@ public class CanvasMaker
         return textUiUnit;
     }
 
+    public static UIUnit CreateTextUnitClickable(Color textColor, TMP_FontAsset font, int fontSize)
+    {
+        var textUiUnit = CreateTextUnit(textColor, font, fontSize);
+        
+        GameObject buttonObject = CreateButtonObject(new Color(0, 0, 0, 0));
+        var uiUnit = buttonObject.AddComponent<UIUnit>();
+        uiUnit.text = textUiUnit.text;
+        textUiUnit.transform.SetParent(buttonObject.transform);
+        textUiUnit.RectTransform.FillParent();
+        return uiUnit;
+    }
+
     public static DynamicCanvas CreateCanvas(int N, CreateCanvasRequest canvasReq, Canvas reusableCanvas)
     {
         DynamicCanvas dc = new DynamicCanvas();

@@ -154,7 +154,8 @@ public class MainGameControlSetup
 
                         if (!hasBWE)
                         {
-                            var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
+                            var titleText = CanvasMaker.CreateTextUnitClickable(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
+                            
                             var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
                             var lwe = new LabelWithExpandable(iconButton, titleText);
 
