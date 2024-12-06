@@ -1,19 +1,4 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-
-[CreateAssetMenu(fileName = "ArcaniaGameConfiguration", menuName = "Arcania/Arcania Game Configuration", order = 1)]
-public class ArcaniaGameConfiguration : ScriptableObject
-{
-    public List<Entry> entries;
-
-    [Serializable]
-    public class Entry
-    {
-        public string id;
-    }
-}
-
 
 public class DeleteMe : MonoBehaviour
 {

@@ -8,7 +8,7 @@ using UnityEngine;
 public class MainGameControl : MonoBehaviour
 {
 
-    public TextAsset ResourceJson;
+    public ArcaniaGameConfigurationUnit ResourceJson;
     public DynamicCanvas dynamicCanvas;
     public List<TabControlUnit> TabControlUnits = new();
 

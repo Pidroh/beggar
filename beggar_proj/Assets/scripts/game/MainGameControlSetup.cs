@@ -11,7 +11,7 @@ public class MainGameControlSetup
     {
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
-        JsonReader.ReadJson(mgc.ResourceJson.text, arcaniaDatas);
+        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas);
 
         arcaniaModel.FinishedSettingUpUnits();
         var config = HeartGame.GetConfig();

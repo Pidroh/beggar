@@ -9,21 +9,26 @@ using UnityEngine.Pool;
 public class JsonReader
 {
 
-    public static void ReadJson(string json, ArcaniaUnits arcaniaDatas)
+    public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas)
     {
-        var parentNode = SimpleJSON.JSON.Parse(json);
-        int currentModAmount = arcaniaDatas.Mods.Count;
-        if (parentNode.IsArray)
+        var jsonDatas = config.jsonDatas;
+        foreach (var item in jsonDatas)
         {
-            foreach (var c in parentNode.Children)
+            var parentNode = SimpleJSON.JSON.Parse(item.text);
+            int currentModAmount = arcaniaDatas.Mods.Count;
+            if (parentNode.IsArray)
             {
-                ReadArrayOwner(arcaniaDatas, c);
+                foreach (var c in parentNode.Children)
+                {
+                    ReadArrayOwner(arcaniaDatas, c);
+                }
+            }
+            else
+            {
+                ReadArrayOwner(arcaniaDatas, parentNode);
             }
         }
-        else
-        {
-            ReadArrayOwner(arcaniaDatas, parentNode);
-        }
+       
         //--------------------------------------------------------------
         // POST PROCESSING #post-processing
         //--------------------------------------------------------------
