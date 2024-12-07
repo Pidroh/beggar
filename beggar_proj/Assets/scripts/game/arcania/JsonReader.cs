@@ -73,7 +73,7 @@ public class JsonReader
             }
             if (mod.ModType == ModType.SpaceConsumption)
             {
-                mod.HumanText = "House Space:";
+                mod.HumanText = "Space Occupied:";
             }
             if (mod.HumanText == null)
             {
