@@ -15,6 +15,9 @@ public class RuntimeUnit
     public List<ModRuntime> ModsOwned = new();
     public bool RequireMet = false;
 
+    // Skills cannot drop below max
+    public bool MaxCanLimitValue => Skill == null;
+
     public string Name => ConfigBasic.name;
 
     public int Max => CalculateMax();
@@ -77,7 +80,10 @@ public class RuntimeUnit
 
     internal void ChangeValue(float valueChange)
     {
-        _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
+        if (MaxCanLimitValue)
+            _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
+        else
+            _value = Mathf.Max(_value + valueChange, 0);
     }
 
     public void ModifyValue(float valueChange) => ChangeValue(valueChange);
