@@ -11,11 +11,11 @@ public class JsonReader
 
     public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas)
     {
+        int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
         var jsonDatas = config.jsonDatas;
         foreach (var item in jsonDatas)
         {
             var parentNode = SimpleJSON.JSON.Parse(item.text);
-            int currentModAmount = arcaniaDatas.Mods.Count;
             if (parentNode.IsArray)
             {
                 foreach (var c in parentNode.Children)
@@ -28,14 +28,15 @@ public class JsonReader
                 ReadArrayOwner(arcaniaDatas, parentNode);
             }
         }
-       
+        
+
         //--------------------------------------------------------------
         // POST PROCESSING #post-processing
         //--------------------------------------------------------------
         // MODS #mods #post-processing
         //--------------------------------------------------------------
         #region mods post processing
-        for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
+        for (int i = modAmountBeforeReadingData; i < arcaniaDatas.Mods.Count; i++)
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
             mod.Source.ModsOwned.Add(mod);

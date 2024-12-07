@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7796bf8d17eb13542901a550686d7fe4, type: 3}
   m_Name: ArcaniaConfig
   m_EditorClassIdentifier: 
-  jsonDatas: []
+  jsonDatas:
+  - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
