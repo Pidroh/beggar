@@ -54,6 +54,7 @@ public class LayoutChild
     public GameObject GameObject => RectTransform.gameObject;
     internal bool Visible { get => RectTransform.gameObject.activeSelf; set => RectTransform.gameObject.SetActive(value); }
     public float?[] PreferredSizeMM = new float?[2];
+    public List<TextDrivenPreferredHeightUnit> TextDrivenHeight = new();
 
     public static LayoutChild Create(Transform transform1 = null, Transform transform2 = null)
     {
@@ -73,6 +74,21 @@ public class LayoutChild
     internal void SetPreferredHeightMM(int v)
     {
         PreferredSizeMM[1] = v;
+    }
+
+    public class TextDrivenPreferredHeightUnit
+    {
+        public UIUnit text;
+        public float AdditionalHeight;
+    }
+
+    internal void AddTextDrivenHeight(UIUnit text, float v)
+    {
+        TextDrivenHeight.Add(new TextDrivenPreferredHeightUnit() 
+        { 
+            AdditionalHeight = v,
+            text = text
+        });
     }
 }
 
