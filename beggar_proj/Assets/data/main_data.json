@@ -522,17 +522,18 @@
                 "id": "ponderexistence",
                 "name": "What is reality?",
                 "desc": "Ask a rat about the nature of your reality",
-                "require": "t_tier1&&rats>0",
+                "requireZZ": "t_tier1&&rats>0",
                 "max": 1,
                 "duration": 90,
-                "cost":{
+                "tags": "ending_game",
+                "costZZZ":{
                     "thoughts": 140,
                     "sadness": 50,
                     "supplication": 650,
                     "sorrow": 5,
                     "rats": 1
                 },
-                "run":{
+                "runZZZ":{
                     "thoughts": 1,
                     "supplication": 1
                 },
@@ -893,6 +894,12 @@
                 "title": "Irreversible Action",
                 "content": "Once done, this action cannot be undone. Are you sure?",
                 "tags": "max_decrease"
+            },
+            {
+                "id": "ending",
+                "title": "End of the Journey",
+                "content": "Performing this action will complete the game. Are you sure?",
+                "tags": "ending_game"
             }
         ]
     },

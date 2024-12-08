@@ -15,7 +15,7 @@ public class ArcaniaPersistence
     {
         ArcaniaPersistenceData apd = new();
         apd.Exploration.locationProgress = exploration.locationProgress;
-        apd.Exploration.lastLocationID = exploration.LastActiveLocation.ConfigBasic.Id;
+        apd.Exploration.lastLocationID = exploration.LastActiveLocation?.ConfigBasic.Id;
         foreach (var u in units.datas)
         {
             foreach (var unit in u.Value)
