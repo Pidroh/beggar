@@ -404,6 +404,7 @@ public class MainGameControlSetup
             dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(LayoutChild.Create(settingB.Button.transform));
             settingB.Button.transform.localPosition = Vector3.zero;
             mgc.EndGameMessage = endMessage;
+            mgc.SettingButtonEnding = settingB;
         }
 
         void CreateResourceChangeViews(int rcgIndex, int count, RTControlUnit rcu, LayoutParent layout)

@@ -34,6 +34,7 @@ public class MainGameControl : MonoBehaviour
     public ArcaniaPersistence ArcaniaPersistence;
 
     public HeartGame HeartGame { get; private set; }
+    public ButtonWithProgressBar SettingButtonEnding { get; internal set; }
 
     public float lastSaveTime;
     public ControlExploration controlExploration;
@@ -144,6 +145,10 @@ public class MainGameControl : MonoBehaviour
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
         TabButtonLayout.SelfChild.RectTransform.SetHeightMilimeters(10);
+        if (SettingButtonEnding.Button.Clicked) 
+        {
+            GoToSettings();
+        }
         // -----------------------------------------------------------
         // Dialog
         // -----------------------------------------------------------
@@ -191,8 +196,7 @@ public class MainGameControl : MonoBehaviour
             {
                 if (tabControl.TabData.Tab.OpenSettings)
                 {
-                    ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
-                    HeartGame.GoToSettings();
+                    GoToSettings();
                 }
                 else
                 {
@@ -347,5 +351,11 @@ public class MainGameControl : MonoBehaviour
                 ttv.ManualUpdate();
             }
         }
+    }
+
+    private void GoToSettings()
+    {
+        ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
+        HeartGame.GoToSettings();
     }
 }
