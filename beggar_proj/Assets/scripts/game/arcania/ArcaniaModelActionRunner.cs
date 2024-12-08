@@ -43,13 +43,16 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     public void StartActionExternally(RuntimeUnit data)
     {
-        foreach (var tag in data.ConfigBasic.Tags)
+        if (!RunningTasks.Contains(data)) 
         {
-            if (tag.Tag.Dialogs.Count > 0)
+            foreach (var tag in data.ConfigBasic.Tags)
             {
-                _dataWaitingForDialog = data;
-                this._model.Dialog.ShowDialog(tag.Tag.Dialogs[0]);
-                return;
+                if (tag.Tag.Dialogs.Count > 0)
+                {
+                    _dataWaitingForDialog = data;
+                    this._model.Dialog.ShowDialog(tag.Tag.Dialogs[0]);
+                    return;
+                }
             }
         }
         InterruptedAction = null;
