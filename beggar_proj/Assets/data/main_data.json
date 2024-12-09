@@ -820,7 +820,27 @@
                     "rare_itemWIP": "1~5"
                 },
                 "encs": ["meancat", "ratpack"]
+            },
+            {
+                "id": "sewer",
+                "name": "Sewers",
+                "desc": "Narrow stone tunnels carry waste downhill, draining into the river outside the city.",
+                "require": "midden",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "thoughts": 20
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["meancat", "ratpack"]
             }
+
+            
         ]
     },
     {
