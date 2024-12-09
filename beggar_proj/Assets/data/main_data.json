@@ -819,7 +819,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["lostbeggar", "meancat", "ratpack"]
+                "encs": ["meancat", "ratpack"]
             }
         ]
     },
