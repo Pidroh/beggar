@@ -807,7 +807,7 @@
                 "id": "midden",
                 "name": "Market Midden",
                 "desc": "The holes where they throw all the garbage in",
-                "require": "breadcrumbs>12",
+                "require": "creepyalley",
                 "length": 10,
                 "run": {
                     "supplication": 1
