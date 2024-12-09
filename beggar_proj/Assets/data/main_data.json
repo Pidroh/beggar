@@ -688,7 +688,7 @@
                     "ratology.max": 2,
                     "rat.max": 2
                 }
-            },
+            }
             
         ]
     },
@@ -802,7 +802,24 @@
                     "rare_itemWIP": "1~5"
                 },
                 "encs": ["lostbeggar", "meancat", "ratpack"]
-
+            },
+            {
+                "id": "midden",
+                "name": "Market Midden",
+                "desc": "The holes where they throw all the garbage in",
+                "require": "breadcrumbs>12",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "thoughts": 20
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["lostbeggar", "meancat", "ratpack"]
             }
         ]
     },
@@ -879,7 +896,7 @@
                 }
             }
         ]
-    }
+    },
     {
         "type": "DIALOG",
         "items":[
