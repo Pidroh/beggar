@@ -1041,6 +1041,24 @@
                 }
             },
             {
+                "id": "meatbarrel",
+                "name": "Spoiled meat barrel",
+                "desc": "It smells horrible",
+                "require": "midden",
+                "max": 1,
+                "cost": {
+                    "thoughts": 50,
+                    "foraging": 30
+                },
+                "mod": {
+                    "rats.max": 3,
+                    "ratbond.max": 10,
+                    "rodentology.max": 1,
+                    "supplication.max": -20,
+                    "space": 3
+                }
+            },
+            {
                 "id": "brokenrosario",
                 "name": "Broken Rosario",
                 "desc": "An old, broken necklace with beads. Attached to it is something that was once a cross.",
