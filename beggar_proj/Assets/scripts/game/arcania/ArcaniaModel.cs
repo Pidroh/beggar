@@ -126,6 +126,7 @@ public class ArcaniaModel
         foreach (var rc in changes)
         {
             if (rc.valueChange.BothEqual(0f)) continue;
+            rc.IdPointer.CheckValidity();
             if (rc.IdPointer.RuntimeUnit.CanFullyAcceptChange(rc.valueChange)) continue;
             return false;
         }

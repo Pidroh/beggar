@@ -107,6 +107,11 @@
                 "max": 5   
             },
             {
+                "id": "catbond",
+                "desc": "A faint connection forms with your cats, creating a slight sense of understanding and trust.",
+                "max": 5   
+            },
+            {
                 "id": "foraging",
                 "require": "scavenging>0",
                 "desc": "Scavenge the environment for useful items and hidden treasures.",
@@ -715,7 +720,7 @@
                 "lock": "t_tier2",
                 "require": "animallove>0",
                 "cost": {
-                    "rat": 3,
+                    "rats": 3,
                     "ratbond": 15
                 },
                 "mods":
@@ -813,6 +818,19 @@
                 "mod": {
                     "thoughts.max": 3,
                     "guilt.max": 1
+                }
+            },
+            {
+                "id": "animallove",
+                "name": "Animal Care",
+                "desc": "A certain affinity for handling animals",
+                "require": "ratbond>20&rodentology>2",
+                "cost": {
+                    "thoughts": 60
+                },
+                "mod": {
+                    "ratbond.max": 5,
+                    "catbond.max": 5
                 }
             }
         ]

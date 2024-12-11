@@ -85,4 +85,13 @@ public class IDPointer : IEnumerable<RuntimeUnit>
     {
         return ((IEnumerable)RuntimeUnits).GetEnumerator();
     }
+
+    internal void CheckValidity()
+    {
+        if (Tag != null) return;
+        if (RuntimeUnit != null) return;
+#if UNITY_EDITOR
+        Debug.LogError($"ID Pointer {id} is invalid");
+#endif
+    }
 }
