@@ -44,9 +44,7 @@
                 "id": "thoughts",
                 "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
                 "max": 5
-            },
-            
-            
+            },            
             {
                 "id": "deadflower",
                 "desc": "A withered bloom that once symbolized hope, now a reminder of loss and decay.",
@@ -677,7 +675,7 @@
                 "desc": "Rat and man, working as one to empty all wallets",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
-                "require": "ratology>3&&agile&&somethingStealingWIP",
+                "require": "rodentology>3&&agile&&somethingStealingWIP",
                 "cost": {
                     "ratbond": 10,
                     "guilt": 15
@@ -686,7 +684,7 @@
                 {
                     "ratbond.max": 20,
                     "guilt.max": 20,
-                    "ratology.max": 1,
+                    "rodentology.max": 1,
                     "crimeskill.maxWIP": 1,
                     "rat.max": 1
                 }
@@ -697,7 +695,7 @@
                 "desc": "You are the protector of all RATRACESCIENCEWIP",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
-                "require": "ratology>3&&ratbeggar",
+                "require": "rodentology>3&&ratbeggar",
                 "cost": {
                     "ratbond": 10,
                     "guilt": 15
@@ -705,7 +703,7 @@
                 "mods":
                 {
                     "ratbond.max": 40,
-                    "ratology.max": 2,
+                    "rodentology.max": 2,
                     "rat.max": 2
                 }
             },
