@@ -1079,7 +1079,23 @@
                 "id": "mysterygarbage",
                 "name": "Mystery Garbage",
                 "desc": "Nobody could ever know what this is. It smells bad, but comforting.",
-                "require": "midden",
+                "require": "sewer",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "ratbond": 20
+                },
+                "mod": {
+                    "ratbond.max": 25,
+                    "supplication.max": -15,
+                    "space": 2
+                }
+            },
+            {
+                "id": "ratstatue",
+                "name": "Rat Statue",
+                "desc": "A beautiful, oversized statue of a rat. Who made this?",
+                "require": "sewer&&rodentology>=4",
                 "max": 1,
                 "cost": {
                     "foraging": 30,
