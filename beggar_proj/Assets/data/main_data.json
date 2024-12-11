@@ -1047,8 +1047,8 @@
                 "require": "midden",
                 "max": 1,
                 "cost": {
-                    "thoughts": 50,
-                    "foraging": 30
+                    "foraging": 30,
+                    "ratbond": 20
                 },
                 "mod": {
                     "rats.max": 3,
@@ -1056,6 +1056,24 @@
                     "rodentology.max": 1,
                     "supplication.max": -20,
                     "space": 3
+                }
+            },
+            {
+                "id": "rottenfruit",
+                "name": "Rotten fruit sack",
+                "desc": "Tons of flies all around",
+                "require": "midden",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "ratbond": 20
+                },
+                "mod": {
+                    "rats.max": 2,
+                    "ratbond.max": 5,
+                    "rodentology.max": 1,
+                    "supplication.max": -15,
+                    "space": 2
                 }
             },
             {
