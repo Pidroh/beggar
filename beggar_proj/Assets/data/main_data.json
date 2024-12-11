@@ -688,8 +688,25 @@
                     "ratology.max": 2,
                     "rat.max": 2
                 }
+            },
+            {
+                "id": "catbeggar",
+                "name": "Cat Beggar",
+                "desc": "They call him the cat weirdo",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "animallove>0",
+                "cost": {
+                    "rat": 3,
+                    "ratbond": 15
+                },
+                "mods":
+                {
+                    "cat.max": 1,
+                    "catbond.max": 20,
+                    "felinology.max": 1
+                }
             }
-            
         ]
     },
     {
