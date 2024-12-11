@@ -652,6 +652,26 @@
                 }
             },
             {
+                "id" : "cutpurse",
+                "name": "Cutpurse",
+                "desc" : "Steals valuables through pickpocketing and quick, stealthy movements.",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&introspection>3&&cunning>2",
+                "cost": {
+                    "guilt": 15,
+                    "sorrow": 4,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "thoughts.max": 50,
+                    "supplication.max": 80,
+                    "supplication.rate": 0.2,
+                    "cunning.max": 1,
+                    "innermind.max": 2
+                }
+            },
+            {
                 "id": "streetrat",
                 "name": "Street Rat",
                 "desc": "Rat and man, working as one to empty all wallets",
