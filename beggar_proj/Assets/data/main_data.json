@@ -298,6 +298,22 @@
                 }
             },
             {
+                "id": "agile",
+                "name": "Agile",
+                "desc": "You realize you have quick reflexes",
+                "tag": "trait1",
+                "lock": "trait1",
+                "duration": 3,
+                "max": 1,
+                "require": "exercise>2",
+                "cost": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fatigue.rate": -0.2 
+                }
+            },
+            {
                 "id": "rat_insight",
                 "name": "Rat's Insight",
                 "desc": "By observing rats, you gain a sharper, more cunning perspective on your thoughts.",
@@ -765,6 +781,32 @@
                     "thoughts.max": 5,
                     "sadness.max": 5,
                     "supplication.max": 5
+                }
+            },
+            {
+                "id": "thinking",
+                "require": "introspection>2",
+                "cost": {
+                    "thoughts": 5,
+                    "skillpoints": 100
+                },
+                "desc": "Your capability of forming thoughts",
+                "mod": {
+                    "thoughts.max": 2,
+                    "perplexion.max": 0.5,
+                    "think.effect.thoughts": 0.1
+                }
+            },
+            {
+                "id": "exercise",
+                "name": "Exercise",
+                "require": "introspection>2",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "desc": "The readiness of your body for doing exercise",
+                "mod": {
+                    "fatigue.max": 0.5
                 }
             },
             {

@@ -131,6 +131,12 @@ public class JsonReader
                 u.ConfigTask.Need.humanExpression = ConditionalExpressionParser.ToHumanLanguage(u.ConfigTask.Need.expression);
             }
         }
+        #region check broken pointers
+        foreach (var item in arcaniaDatas.IdMapper.Values)
+        {
+            item.CheckValidity();
+        }
+        #endregion
     }
 
     private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode)
