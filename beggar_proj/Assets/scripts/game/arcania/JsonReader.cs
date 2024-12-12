@@ -75,6 +75,10 @@ public class JsonReader
             {
                 mod.HumanText = "Space Occupied:";
             }
+            if(mod.ModType == ModType.Lock) 
+            {
+                mod.HumanText = "Currently Invisible";
+            }
             if (mod.HumanText == null)
             {
                 Debug.Log("Human text logic not implemented (use this for break points)");
