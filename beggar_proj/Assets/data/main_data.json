@@ -300,7 +300,7 @@
             {
                 "id": "agile",
                 "name": "Agile",
-                "desc": "You realize you have quick reflexes",
+                "desc": "You realize you have quick reflexes, you can act without thinking",
                 "tag": "trait1",
                 "lock": "trait1",
                 "duration": 3,
@@ -313,6 +313,23 @@
                     "fatigue.rate": -0.2 
                 }
             },
+            {
+                "id": "calm",
+                "name": "Calm thinker",
+                "desc": "You realize you are a calm thinker, someone who thinks deeply before acting",
+                "tag": "trait1",
+                "lock": "trait1",
+                "duration": 3,
+                "max": 1,
+                "require": "thinking>2",
+                "cost": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "perplexion.rate": -0.2 
+                }
+            },
+
             {
                 "id": "rat_insight",
                 "name": "Rat's Insight",
@@ -1043,6 +1060,12 @@
                 "id": "irreversible",
                 "title": "Irreversible Action",
                 "content": "Once done, this action cannot be undone. Are you sure?",
+                "tags": "max_decrease"
+            },
+            {
+                "id": "exclusive_upgrade",
+                "title": "Upgrade Selection",
+                "content": "Picking this upgrade will lock out upgrades from the same tier. Are you sure?",
                 "tags": "max_decrease"
             },
             {
