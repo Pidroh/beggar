@@ -52,6 +52,33 @@
                 "max": 0
             },
             {
+                "id": "clarity",
+                "desc": "Clear thought, clear mind",
+                "max": 3,
+                "mod": {
+                    "thoughts.max": 1
+                }
+            },
+            {
+                "id": "reflection",
+                "desc": "The capacibility to think about our past",
+                "flavor": "The mirror of the mind",
+                "max": 3,
+                "mod": {
+                    "thoughts.max": 5
+                }
+            },
+            {
+                "id": "metathought",
+                "name": "Meta thought",
+                "desc": "The capacibility to think about our past",
+                "flavor": "The mirror of the mind",
+                "max": 3,
+                "mod": {
+                    "thoughts.max": 10
+                }
+            },
+            {
                 "id": "sadness",
                 "desc": "The weight of our emotions reflects the depth of our experiences",
                 "flavor": "Silent ache",
@@ -693,6 +720,7 @@
                 "desc" : "Steals valuables through pickpocketing and quick, stealthy movements.",
                 "tags": "t_tier1",
                 "lock": "t_tier1",
+                "tag": "criminal",
                 "require": "t_tier0&&introspection>3&&cunning>2",
                 "cost": {
                     "guilt": 15,
@@ -713,7 +741,8 @@
                 "desc": "Rat and man, working as one to empty all wallets",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
-                "require": "rodentology>3&&agile&&somethingStealingWIP",
+                "tag": "criminal",
+                "require": "rodentology>3&&agile&&stealbread>5&&t_tier1",
                 "cost": {
                     "ratbond": 10,
                     "guilt": 15
@@ -723,7 +752,7 @@
                     "ratbond.max": 20,
                     "guilt.max": 20,
                     "rodentology.max": 1,
-                    "crimeskill.maxWIP": 1,
+                    "cunning.max": 1,
                     "rat.max": 1
                 }
             },
