@@ -302,6 +302,18 @@
                 }
             },
             {
+                "id": "buyfood",
+                "name": "Buy Food",
+                "desc": "Buy enough food for the day",
+                "require": "coin>2",
+                "cost":{
+                    "coin": 2
+                },
+                "result": {
+                    "food": 1
+                }
+            },
+            {
                 "id": "pouch",
                 "name": "Pouch",
                 "desc": "Keep your money safe, says the wizard",
