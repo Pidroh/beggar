@@ -475,6 +475,9 @@
                 }
             },
             {
+                
+            },
+            {
                 "id": "pickpocket",
                 "name": "Pick Pocket",
                 "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
