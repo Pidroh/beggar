@@ -189,6 +189,30 @@
                 }
             },
             {
+                "id": "clarify",
+                "name": "Organize Thoughts",
+                "require": "thoughts>10",
+                "run": {
+                    "supplication": 1,
+                    "thoughts": 1
+                },
+                "result":{
+                    "clarity": 1
+                }
+            },
+            {
+                "id": "reflect",
+                "name": "Reflect",
+                "require": "t_tier1&&introspection>5",
+                "run": {
+                    "supplication": 1,
+                    "thoughts": 1
+                },
+                "result":{
+                    "clarity": 1
+                }
+            },
+            {
                 "id": "pleafocus",
                 "name": "Rest",
                 "desc": "Take a break to recuperate and regain vitality",
