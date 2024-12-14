@@ -1266,6 +1266,20 @@
                 }
             },
             {
+                "id": "cheese",
+                "name": "Cheese",
+                "require": "coin>3",
+                "max": 2,
+                "cost": {
+                    "coin": 4
+                },
+                "mod": {
+                    "rats.max": 1,
+                    "ratbond.max": 20,
+                    "space": 1
+                }
+            },
+            {
                 "id": "ratpond",
                 "name": "Rat puddle",
                 "desc": "A puddle of water for the rats to drink",
