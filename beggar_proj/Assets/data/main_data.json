@@ -314,6 +314,37 @@
                 }
             },
             {
+                "id": "realmeal",
+                "name": "Real meal",
+                "desc": "Finally a real meal... It has been a while",
+                "require": "food",
+                "duration": 10,
+                "cost": {
+                    "food": 1
+                },
+                "result": {
+                    "sadness": -5,
+                    "sorrow": -5
+                },
+                "mod": {
+                    "nutrition.max": 100,
+                    "nutrition.rate": 0.25
+                }
+            },
+            {
+                "id": "eatfood",
+                "name": "Eat",
+                "desc": "Time to eat",
+                "require": "realmeal",
+                "duration": 7,
+                "cost": {
+                    "food": 1
+                },
+                "result": {
+                    "nutrition": 25
+                }
+            },
+            {
                 "id": "pouch",
                 "name": "Pouch",
                 "desc": "Keep your money safe, says the wizard",
