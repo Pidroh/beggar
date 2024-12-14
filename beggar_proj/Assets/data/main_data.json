@@ -134,6 +134,11 @@
                 "max": 5   
             },
             {
+                "id": "coin",
+                "desc": "A small disk made of silver",
+                "max": 3
+            },
+            {
                 "id": "catbond",
                 "desc": "A faint connection forms with your cats, creating a slight sense of understanding and trust.",
                 "max": 5   
