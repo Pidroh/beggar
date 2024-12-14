@@ -475,6 +475,23 @@
                 }
             },
             {
+                "id": "pickpocket",
+                "name": "Pick Pocket",
+                "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
+                "duration": 3,
+                "require": "pickpocketer",
+                "need": "danger < 10",
+                "success_rate": 50,
+                "result": {
+                    "danger": "0~2",
+                    "coin": "0~2",
+                    "guilt": 1
+                },
+                "result_fail": {
+                    "danger": "1~5"
+                }
+            },
+            {
                 "id": "guiltcunning",
                 "name": "Not my fault",
                 "desc": "I'm hungry and no is gonna take care of me",
@@ -749,7 +766,7 @@
                 "desc" : "Steals valuables through pickpocketing and quick, stealthy movements.",
                 "tags": "t_tier1",
                 "lock": "t_tier1",
-                "tag": "criminal",
+                "tag": "criminal,pickpocketer",
                 "require": "t_tier0&&introspection>3&&cunning>2",
                 "cost": {
                     "guilt": 15,
