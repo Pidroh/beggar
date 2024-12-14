@@ -136,7 +136,7 @@
             {
                 "id": "coin",
                 "desc": "A small disk made of silver",
-                "max": 3
+                "max": 5
             },
             {
                 "id": "catbond",
@@ -299,6 +299,32 @@
                     "supplication.rate": 0.05,
                     "sadness.max": 5,
                     "thoughts.max": 10
+                }
+            },
+            {
+                "id": "pouch",
+                "name": "Pouch",
+                "desc": "Keep your money safe, says the wizard",
+                "require": "coin>3",
+                "max": 3,
+                "cost":{
+                    "coin": 3
+                },
+                "mod": {
+                    "coin.max": 5
+                }
+            },
+            {
+                "id": "purse",
+                "name": "Purse",
+                "desc": "Common way to carry... Wait. I have seen this somewhere else.",
+                "require": "coin>10",
+                "max": 2,
+                "cost":{
+                    "coin": 10
+                },
+                "mod": {
+                    "coin.max": 15
                 }
             },
             {
