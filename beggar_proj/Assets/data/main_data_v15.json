@@ -1449,6 +1449,7 @@
                 "id": "firewood",
                 "name": "Firewood",
                 "desc": "Some firewood, keeps you warm at night",
+                "require": "coin>2",
                 "max": 1,
                 "cost": {
                     "coin": 3
