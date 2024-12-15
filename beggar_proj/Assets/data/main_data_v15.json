@@ -924,24 +924,6 @@
                     "catbond.max": 20,
                     "felinology.max": 1
                 }
-            },
-            {
-                "id" : "acolyte",
-                "name": "Acolyte",
-                "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
-                "tags": "t_tier2",
-                "lock": "t_tier2",
-                "require": "t_tier1",
-                "cost": {
-                    "thoughts": 5,
-                    "gratitude": 10,
-                    "faith": 10,
-                    "nutrition": 2
-                },
-                "mod": {
-                    "faith.max": 20,
-                    "gratitude.max": 20
-                }
             }
         ]
     },

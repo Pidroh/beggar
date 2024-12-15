@@ -1,0 +1,90 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+        ]
+    },
+    {
+        "type": "TASK",
+        "items":[
+            
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items":[
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items":[
+            {
+                "id" : "acolyte",
+                "name": "Acolyte",
+                "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "t_tier1",
+                "cost": {
+                    "thoughts": 5,
+                    "gratitude": 10,
+                    "faith": 10,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "gratitude.max": 20
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items":[
+           
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+            {
+                "id": "churchfront",
+                "name": "Entrance of the Church of Our lady",
+                "desc": "Ivy-clad stone walls surround a cobblestone path, lined with flickering lanterns and a small prayer shrine",
+                "require": "breadcrumbs>12",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "thoughts": 20
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["lostbeggar", "meancat", "ratpack"]
+            }
+        ]
+    },
+    {
+         "type": "ENCOUNTER",
+        "items": [
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items":[
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+        ]
+    },
+    {
+        "type": "TAB",
+        "items":[
+        ]
+    }
+]
