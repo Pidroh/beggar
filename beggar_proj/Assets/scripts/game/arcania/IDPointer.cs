@@ -90,6 +90,7 @@ public class IDPointer : IEnumerable<RuntimeUnit>
     {
         if (Tag != null) return;
         if (RuntimeUnit != null) return;
+        if (id == "space") return;
 #if UNITY_EDITOR
         Debug.LogError($"ID Pointer {id} is invalid");
 #endif

@@ -26,6 +26,11 @@
                 "max": 0
             },
             {
+                "id": "danger",
+                "desc": "How likely you are to be in danger",
+                "max": 100
+            },
+            {
                 "id": "nutrition",
                 "max": 5,
                 "desc": "Higher values mean your character is well-fed, while lower values indicate hunger.",
@@ -60,7 +65,7 @@
                 }
             },
             {
-                "id": "reflect",
+                "id": "reflection",
                 "name": "Reflection",
                 "desc": "The capacibility to think about our past",
                 "flavor": "The mirror of the mind",
@@ -145,6 +150,11 @@
                 "max": 5   
             },
             {
+                "id": "skillpoints",
+                "name": "Skill points",
+                "desc": "Used to attain skills"
+            },
+            {
                 "id": "foraging",
                 "require": "scavenging>0",
                 "desc": "Scavenge the environment for useful items and hidden treasures.",
@@ -207,15 +217,18 @@
                 }
             },
             {
-                "id": "reflect",
-                "name": "Reflect",
+                "id": "organizethoughts",
+                "name": "Organize thoughts",
                 "require": "t_tier1&&introspection>5",
+                "duration": 3,
                 "run": {
                     "supplication": 1,
                     "thoughts": 1
                 },
                 "result":{
-                    "clarity": 1
+                    "clarity": 1,
+                    "thoughts": 1
+
                 }
             },
             {
@@ -228,6 +241,41 @@
                     "supplication": 1,
                     "foraging": 1,
                     "stress": -1
+                }
+            },
+            {
+                "id": "skilled",
+                "name": "Become skilled",
+                "desc": "Maybe it is time to gain a new skill",
+                "require": "t_tier0",
+                "duration": 5,
+                "max": 1,
+                "result": {
+                    "skillpoints": 100
+                }
+            },
+            {
+                "id": "tier1reach",
+                "name": "Growth I",
+                "desc": "You seem to have reached a new stage in life?",
+                "require": "t_tier1",
+                "duration": 5,
+                "max": 1,
+                "mod": {
+                    "skilled.max": 1,
+                    "clarity.max": 10
+                }
+            },
+            {
+                "id": "tier2reach",
+                "name": "Growth II",
+                "desc": "You seem to have reached a new stage in life?",
+                "require": "t_tier2",
+                "duration": 5,
+                "max": 1,
+                "mod": {
+                    "skilled.max": 1,
+                    "clarity.max": 25
                 }
             },
             {
@@ -545,15 +593,12 @@
                 }
             },
             {
-                
-            },
-            {
                 "id": "pickpocket",
                 "name": "Pick Pocket",
                 "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
                 "duration": 3,
                 "require": "pickpocketer",
-                "need": "danger < 10",
+                "need": "danger<10",
                 "success_rate": 50,
                 "result": {
                     "danger": "0~2",
@@ -855,7 +900,7 @@
                 "tags": "t_tier1",
                 "lock": "t_tier1",
                 "tag": "criminal,pickpocketer",
-                "require": "t_tier0&&introspection>3&&cunning>2",
+                "require": "t_tier0&&introspection>3&&cunning>2&&agile",
                 "cost": {
                     "guilt": 15,
                     "sorrow": 4,
