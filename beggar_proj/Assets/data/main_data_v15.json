@@ -60,7 +60,8 @@
                 }
             },
             {
-                "id": "reflection",
+                "id": "reflect",
+                "name": "Reflection",
                 "desc": "The capacibility to think about our past",
                 "flavor": "The mirror of the mind",
                 "max": 3,
@@ -384,8 +385,8 @@
             },
 
             {
-                "id": "reflection",
-                "desc": "",
+                "id": "reflect",
+                "desc": "Reflect",
                 "duration": 3,
                 "max": 2,
                 "require": "thoughts>=5",
