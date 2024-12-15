@@ -1280,6 +1280,20 @@
                 }
             },
             {
+                "id": "blanket",
+                "name": "Old blanket",
+                "require": "coin>5",
+                "max": 1,
+                "cost": {
+                    "coin": 8
+                },
+                "mod": {
+                    "pleafocus.effect.supplication" : 5,
+                    "supplication.max": 20,
+                    "space": 2
+                }
+            },
+            {
                 "id": "spoiledgrains",
                 "name": "Spoiled Grains",
                 "tag": "ratsource",
@@ -1385,6 +1399,22 @@
                 "mod": {
                     "ratbond.max": 25,
                     "supplication.max": -15,
+                    "space": 2
+                }
+            },
+            {
+                "id": "firewood",
+                "name": "Firewood",
+                "desc": "Some firewood, keeps you warm at night",
+                "max": 1,
+                "cost": {
+                    "coin": 3
+                },
+                "mod": {
+                    "nutrition.max": 50,
+                    "supplication.max": 50,
+                    "supplication.rate": 1,
+                    "coin.rate": -0.05,
                     "space": 2
                 }
             },
