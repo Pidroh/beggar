@@ -687,6 +687,21 @@
                 }
             },
             {
+                "id": "warmclothes",
+                "name": "Old clothes",
+                "desc": "They aren't half bad",
+                "max": 1,
+                "require": "coin>4",
+                "cost": {
+                    "coin": 5
+                },
+                "mod": {
+                    "supplication.rate": 1,
+                    "thoughts.rate": 0.5,
+                    "nutrition.max": 25
+                }
+            },
+            {
                 "id": "free_food_lead",
                 "name": "Rumours about food",
                 "desc": "Your hear a group talking about a place to get food",
