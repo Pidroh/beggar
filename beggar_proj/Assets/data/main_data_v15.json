@@ -247,7 +247,7 @@
                 }
             },
             {
-                "id": "theself_i",
+                "id": "theself_1",
                 "name": "The self",
                 "require": "contemplation",
                 "duration": 15,
@@ -1211,6 +1211,24 @@
     {
         "type": "LOCATION",
         "items": [
+            {
+                "id": "emotions",
+                "name": "Surface emotions",
+                "desc": "In facing yourself, you gotta start somewhere",
+                "require": "theself_1",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 20,
+                    "clarity": 5
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["boredom_weak_emotion", "sad_weak_emotion", "frustration_weak_emotion", "joy_weak_emotion", "anxiety_weak_emotion"]
+            },
             {
                 "id": "creepyalley",
                 "name": "Creepy Alley",
