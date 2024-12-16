@@ -235,7 +235,7 @@
             {
                 "id": "organizethoughts",
                 "name": "Organize thoughts",
-                "require": "t_tier1&&introspection>2",
+                "require": "introspection>3",
                 "duration": 3,
                 "run": {
                     "supplication": 1,
