@@ -9,6 +9,24 @@
                 "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
             },
             {
+                "id": "loneliness",
+                "max": 10,
+                "initial": 10,
+                "desc": "You are alone",
+                "mod": {
+                    "happiness.max": -5
+                }
+            },
+            {
+                "id": "happiness",
+                "max": 0,
+                "desc": "Joy thrives in the quiet moments you almost overlook",
+                "mod" : {
+                    "supplication.max": 10,
+                    "sadness.rate": -1
+                }
+            },
+            {
                 "id": "focus",
                 "desc": "Represents your character's mental clarity and concentration.",
                 "max": 5
@@ -710,6 +728,73 @@
                 },
                 "result": {
                     "faith": 1
+                }
+            },
+            {
+                "id": "catnotlonely",
+                "name": "Cat buddy",
+                "desc": "Recognize your cat as a little friend",
+                "require": "felinology>0",
+                "need": "petcat",
+                "duration": 10,
+                "cost": {
+                    "thoughts": 20,
+                    "catbond": 20,
+                    "breadcrumbs": 30
+                },
+                "result": {
+                    "loneliness": -1
+                }
+            },
+            {
+                "id": "cathappy",
+                "name": "Cat buddy II",
+                "desc": "Your cat helps you out on the path towards something, though you are not sure what that is.",
+                "require": "felinology>2",
+                "need": "petcat",
+                "duration": 15,
+                "cost": {
+                    "thoughts": 20,
+                    "catbond": 30,
+                    "breadcrumbs": 30
+                },
+                "result": {
+                    "loneliness": -1
+                },
+                "mod": {
+                    "happiness.max": 5
+                }
+            },
+            {
+                "id": "catbegging",
+                "name": "Beg with a cat",
+                "desc": "Your cat joins you in your begging activities",
+                "require": "felinology>1",
+                "need": "petcat",
+                "duration": 15,
+                "cost": {
+                    "thoughts": 15,
+                    "catbond": 15,
+                    "breadcrumbs": 20
+                },
+                "mod": {
+                    "supplication.max": 60,
+                    "supplication.rate": 1
+                }
+            },
+            {
+                "id": "catsupport",
+                "name": "Beg with a cat",
+                "desc": "Cats can be moral support, you know?",
+                "require": "felinology>2",
+                "need": "petcat",
+                "duration": 40,
+                "cost": {
+                    "thoughts": 15,
+                    "catbond": 60
+                },
+                "mod": {
+                    "irritation.max": 10
                 }
             },
             {
