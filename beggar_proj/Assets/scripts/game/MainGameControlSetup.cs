@@ -248,7 +248,7 @@ public class MainGameControlSetup
 
                         }
 
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < (int) ResourceChangeType.MAX; i++)
                         {
                             if (item.ConfigTask == null) break;
                             var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
@@ -466,7 +466,7 @@ public class MainGameControlSetup
 
         void CreateReserveChangeViews(MainGameControl mgc, LayoutParent layout, RTControlUnit rcu)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < (int) ResourceChangeType.MAX; i++)
             {
                 CreateResourceChangeViews(i, 5, rcu, layout);
             }
