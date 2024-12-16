@@ -1073,6 +1073,19 @@
                 }
             },
             {
+                "id": "contemplation",
+                "require": "t_tier1&&introspection>4",
+                "cost": {
+                    "thoughts": 100
+                },
+                "desc": "Looking further within.",
+                "mod": {
+                    "thoughts.max": 3,
+                    "thoughts.rate": 0.1,
+                    "clarity.max": 1
+                }
+            },
+            {
                 "id": "thinking",
                 "require": "introspection>2&&skillpoints>0",
                 "cost": {
