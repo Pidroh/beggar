@@ -195,7 +195,10 @@ public class RTControlUnit
                     min += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
                     max += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
                     targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
-                    tertiaryText = $"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})";
+                    if(dataThatWillBeChanged.HasMax)
+                        tertiaryText = $"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})";
+                    else
+                        tertiaryText = $"({dataThatWillBeChanged.Value})";
                 }
                 else
                 {
