@@ -959,7 +959,7 @@
                 "desc": "They call him the cat weirdo",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
-                "require": "animallove>0",
+                "require": "animallove>0&&t_tier1",
                 "cost": {
                     "rats": 3,
                     "ratbond": 15
@@ -992,7 +992,7 @@
             },
             {
                 "id": "thinking",
-                "require": "introspection>2",
+                "require": "introspection>2&&skillpoints>0",
                 "cost": {
                     "thoughts": 5,
                     "skillpoints": 100
@@ -1007,7 +1007,7 @@
             {
                 "id": "exercise",
                 "name": "Exercise",
-                "require": "introspection>2",
+                "require": "introspection>2&&skillpoints>0",
                 "cost": {
                     "skillpoints": 100
                 },

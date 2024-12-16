@@ -450,7 +450,7 @@ public class JsonReader
         {
             if (pair.Key == "initial") ru.SetValue(pair.Value.AsInt);
             if (pair.Key == "name") bu.name = pair.Value;
-            if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
+            if (pair.Key == "mod" || pair.Key == "mods") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "lock")
