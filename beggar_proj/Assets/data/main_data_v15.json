@@ -135,6 +135,16 @@
                 }
             },
             {
+                "id": "cat",
+                "name": "Stray cat",
+                "desc": "Cats living in the city, yet odly are always near you",
+                "max": 0,
+                "mod": {
+                    "catbond.max": 10,
+                    "catbond.rate": 0.01
+                }
+            },
+            {
                 "id": "ratbond",
                 "desc": "A faint connection forms with your rats, creating a slight sense of understanding and trust.",
                 "max": 5   
@@ -932,7 +942,7 @@
                     "guilt.max": 20,
                     "rodentology.max": 1,
                     "cunning.max": 1,
-                    "rat.max": 1
+                    "rats.max": 1
                 }
             },
             {
@@ -950,7 +960,7 @@
                 {
                     "ratbond.max": 40,
                     "rodentology.max": 2,
-                    "rat.max": 2
+                    "rats.max": 2
                 }
             },
             {
@@ -959,7 +969,7 @@
                 "desc": "They call him the cat weirdo",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
-                "require": "animallove>0&&t_tier1",
+                "require": "petcat&&felinology>0&&t_tier1",
                 "cost": {
                     "rats": 3,
                     "ratbond": 15
@@ -1028,6 +1038,19 @@
                     "rats.max": 1,
                     "thoughts.max": 1,
                     "supplication.max": 2
+                }
+            },
+            {
+                "id": "felinology",
+                "name": "Catkinship",
+                "desc": "Mysterious beings, yet cute and fascinating",
+                "require": "petcat",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "cat.max": 1,
+                    "catbond.max": 3
                 }
             },
             {
@@ -1392,6 +1415,25 @@
                 "mod": {
                     "rats.max": 1,
                     "space": 1
+                }
+            },
+            {
+                "id": "petcat",
+                "name": "Pet Cat",
+                "desc": "A selfish buddy, but a buddy nonetheless",
+                "require": "animallove>1",
+                "max": 1,
+                "cost": {
+                    "rats": 5
+                },
+                "mod": {
+                    "rats.rate": -0.5,
+                    "supplication.max": 50,
+                    "supplication.rate": 1,
+                    "animallove.max": 1,
+                    "catbond.rate": 0.4,
+                    "catbond.max": 30,
+                    "space": 3
                 }
             },
             {
