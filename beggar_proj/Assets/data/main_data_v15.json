@@ -215,21 +215,9 @@
                 }
             },
             {
-                "id": "clarify",
-                "name": "Organize Thoughts",
-                "require": "thoughts>10",
-                "run": {
-                    "supplication": 1,
-                    "thoughts": 1
-                },
-                "result":{
-                    "clarity": 1
-                }
-            },
-            {
                 "id": "organizethoughts",
                 "name": "Organize thoughts",
-                "require": "t_tier1&&introspection>5",
+                "require": "t_tier1&&introspection>2",
                 "duration": 3,
                 "run": {
                     "supplication": 1,
@@ -238,7 +226,6 @@
                 "result":{
                     "clarity": 1,
                     "thoughts": 1
-
                 }
             },
             {
