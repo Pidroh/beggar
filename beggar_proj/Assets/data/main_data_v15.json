@@ -247,6 +247,22 @@
                 }
             },
             {
+                "id": "theself_i",
+                "name": "The self",
+                "require": "contemplation",
+                "duration": 15,
+                "cost": {
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 1
+                },
+                "mod":{
+                    "clarity.max": 2,
+                    "thoughts.max": 2
+                }
+            },
+            {
                 "id": "pleafocus",
                 "name": "Rest",
                 "desc": "Take a break to recuperate and regain vitality",
