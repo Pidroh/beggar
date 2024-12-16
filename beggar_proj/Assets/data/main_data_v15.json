@@ -1220,6 +1220,9 @@
                 "run": {
                     "supplication": 1
                 },
+                "result_once": {
+                    "skillpoints": 25
+                },
                 "result": {
                     "supplication": 20,
                     "clarity": 5
@@ -1242,6 +1245,9 @@
                     "supplication": 10,
                     "thoughts": 20
                 },
+                "result_once": {
+                    "skillpoints": 25
+                },
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
@@ -1259,6 +1265,9 @@
                 "result": {
                     "faith": 10,
                     "thoughts": 20
+                },
+                "result_once": {
+                    "skillpoints": 25
                 },
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
@@ -1278,6 +1287,9 @@
                     "faith": 10,
                     "thoughts": 20
                 },
+                "result_once": {
+                    "skillpoints": 25
+                },
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
@@ -1295,6 +1307,9 @@
                 "result": {
                     "faith": 10,
                     "thoughts": 20
+                },
+                "result_once": {
+                    "skillpoints": 25
                 },
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
