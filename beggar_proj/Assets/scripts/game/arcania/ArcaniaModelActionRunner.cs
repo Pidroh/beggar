@@ -43,7 +43,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     public void StartActionExternally(RuntimeUnit data)
     {
-        if (!RunningTasks.Contains(data)) 
+        if (!RunningTasks.Contains(data))
         {
             foreach (var tag in data.ConfigBasic.Tags)
             {
@@ -93,8 +93,11 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     public void CompleteTask(RuntimeUnit data)
     {
         data.TaskProgress = 0;
+        var firstTime = data.Value == 0;
         data.ChangeValue(1);
         _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
+        if (firstTime)
+            _model.ApplyResourceChanges(data, ResourceChangeType.RESULT_ONCE);
         StopTask(data);
         if (data.ConfigTask.Perpetual && this.CanStartAction(data))
         {

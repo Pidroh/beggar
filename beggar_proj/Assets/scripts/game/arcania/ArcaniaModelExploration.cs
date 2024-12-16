@@ -44,6 +44,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         {
             #region encounter won
             _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.RESULT);
+            // RESULT_ONCE should not be applied here because currently the encounter itself doesn't have a value
             ActiveEncounter = null;
             locationProgress++;
             #endregion
