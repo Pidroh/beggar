@@ -266,7 +266,7 @@ public class CanvasMaker
             for (int i = N - 1; i >= 0; i--)
             //for (int i = 0; i < N; i++)
             {
-                dc.ShowChild(dc.childrenForLayouting[i]);
+                dc.ShowChild(dc.children[i]);
             }
         }
 
