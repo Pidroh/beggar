@@ -195,9 +195,6 @@ public class MainGameControl : MonoBehaviour
             tabControl.SelectionButton.Visible = tabControl.TabData.Visible;
             dynamicCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
             tabControl.SelectionButton.Button.Image.color = dynamicCanvas.IsChildVisible(tabIndex) ? this.ButtonRequest_TabSelected.MainBody.NormalColor : this.ButtonRequest.MainBody.NormalColor;
-            if (tabControl.TabData.Visible) 
-            { 
-            }
 
             if (tabControl.SelectionButton.Button.Clicked)
             {

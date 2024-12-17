@@ -92,9 +92,11 @@ public class ArcaniaModel
         }
         foreach (var pair in arcaniaUnits.datas)
         {
+            if (pair.Key == UnitType.ENCOUNTER) continue;
+            if (pair.Key == UnitType.TAB) continue;
             foreach (var item in pair.Value)
             {
-                if (item.UpdateRequireStatus() && item.ConfigBasic.UnitType != UnitType.TAB)
+                if (item.UpdateRequireStatus())
                 {
                     LogUnits.Add(new LogUnit()
                     {
