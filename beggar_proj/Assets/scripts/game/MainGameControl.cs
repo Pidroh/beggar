@@ -18,6 +18,7 @@ public class MainGameControl : MonoBehaviour
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
     public CanvasMaker.CreateObjectRequest DialogObjectRequest;
     public CanvasMaker.CreateButtonRequest ButtonRequest;
+    public CanvasMaker.CreateButtonRequest ButtonRequest_TabSelected;
     public CanvasMaker.CreateCanvasRequest CanvasRequest;
     public CanvasMaker.CreateGaugeRequest SkillXPGaugeRequest;
     public ArcaniaModel arcaniaModel = new();
@@ -193,6 +194,10 @@ public class MainGameControl : MonoBehaviour
             }
             tabControl.SelectionButton.Visible = tabControl.TabData.Visible;
             dynamicCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
+            tabControl.SelectionButton.Button.Image.color = dynamicCanvas.IsChildVisible(tabIndex) ? this.ButtonRequest_TabSelected.MainBody.NormalColor : this.ButtonRequest.MainBody.NormalColor;
+            if (tabControl.TabData.Visible) 
+            { 
+            }
 
             if (tabControl.SelectionButton.Button.Clicked)
             {

@@ -446,6 +446,31 @@ MonoBehaviour:
       ClickColor: {r: 0, g: 0, b: 0, a: 0}
       HoverColor: {r: 0, g: 0, b: 0, a: 0}
       SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  ButtonRequest_TabSelected:
+    MainBody:
+      NormalColor: {r: 0.4117647, g: 0.6117647, b: 0.59607846, a: 1}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+    Outline:
+      NormalColor: {r: 0, g: 0, b: 0, a: 0}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+    GaugeFill:
+      NormalColor: {r: 0, g: 0, b: 0, a: 0}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor:
+      NormalColor: {r: 0, g: 0, b: 0, a: 0}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0, g: 0, b: 0, a: 0}
   CanvasRequest:
     ScrollStyle:
       ScrollBarBG: {r: 0.53900003, g: 0.53900003, b: 0.53900003, a: 0.43137255}

@@ -196,6 +196,11 @@ public class DynamicCanvas
         }
     }
 
+    internal bool IsChildVisible(int tabIndex)
+    {
+        return ActiveChildren.Contains(children[tabIndex]);
+    }
+
     internal void HideAllDialogs()
     {
         foreach (var dv in DialogViews)
