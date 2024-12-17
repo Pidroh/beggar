@@ -185,6 +185,17 @@ public class DynamicCanvas
         OverlayMainLayout.ManualUpdate();
     }
 
+    internal void EnableChild(int tabIndex, bool enabled)
+    {
+        // you might need to do something else when enabling a tab, but for now nothing to do
+        // only thing you gotta do for now is to hide if disabled
+        if (enabled) return;
+        if (ActiveChildren.Contains(children[tabIndex])) 
+        {
+            HideChild(children[tabIndex]);
+        }
+    }
+
     internal void HideAllDialogs()
     {
         foreach (var dv in DialogViews)

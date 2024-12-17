@@ -29,6 +29,8 @@ public class TabControlUnit
         public UIUnit SpaceAmountText { get; internal set; }
         public UIUnit Text { get; internal set; }
     }
+
+    
 }
 
 public class ConditionControlUnit

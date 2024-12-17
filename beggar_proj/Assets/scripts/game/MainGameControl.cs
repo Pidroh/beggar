@@ -145,7 +145,7 @@ public class MainGameControl : MonoBehaviour
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
         TabButtonLayout.SelfChild.RectTransform.SetHeightMilimeters(10);
-        if (SettingButtonEnding.Button.Clicked) 
+        if (SettingButtonEnding.Button.Clicked)
         {
             GoToSettings();
         }
@@ -192,6 +192,8 @@ public class MainGameControl : MonoBehaviour
                 sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
             }
             tabControl.SelectionButton.Visible = tabControl.TabData.Visible;
+            dynamicCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
+
             if (tabControl.SelectionButton.Button.Clicked)
             {
                 if (tabControl.TabData.Tab.OpenSettings)
@@ -204,11 +206,11 @@ public class MainGameControl : MonoBehaviour
                     {
                         dynamicCanvas.ShowChild(tabIndex);
                     }
-                    else 
+                    else
                     {
                         dynamicCanvas.ToggleChild(tabIndex);
                     }
-                    
+
                 }
 
             }
@@ -240,16 +242,17 @@ public class MainGameControl : MonoBehaviour
                     tcu.ManualUpdate(arcaniaModel);
                     bool visible = data.Visible && tabNormalContentVisible;
                     tcu.SetVisible(visible);
-                    
+
                     if (!visible) continue;
                     if (tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
-                    if (tcu.ExpandManager.Expanded){
+                    if (tcu.ExpandManager.Expanded)
+                    {
                         var modUnit = tcu.ModsUnit;
                         FeedMods(data, modUnit);
                         tcu.needConditionUnit?.TTV?.ManualUpdate();
                     }
-                    
-                    
+
+
 
                     switch (pair.Key)
                     {
@@ -347,8 +350,8 @@ public class MainGameControl : MonoBehaviour
 
                 ttv.MainText.rawText = md.HumanText;
 
-                if(md.Value > 0 && md.ModType != ModType.SpaceConsumption)
-                    ttv.SecondaryText.rawText = $"+{md.Value}";  
+                if (md.Value > 0 && md.ModType != ModType.SpaceConsumption)
+                    ttv.SecondaryText.rawText = $"+{md.Value}";
                 else
                     ttv.SecondaryText.rawText = $"{md.Value}";
                 ttv.TertiaryText.rawText = string.Empty;
