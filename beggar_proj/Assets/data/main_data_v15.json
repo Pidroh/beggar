@@ -1313,7 +1313,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["meancat", "ratpack"]
+                "encs": ["meancat", "ratpack", "hungry_beggar", "smelly_puddle", "pattern_bones"]
             },
             {
                 "id": "sewer",
@@ -1334,7 +1334,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["meancat", "ratpack"]
+                "encs": ["meancat", "ratpack", "smelly_puddle", "pattern_bones", "sick_man", "rusted grate", "waste_stream", "lost_diary_page"]
             }
 
             
