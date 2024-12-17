@@ -31,9 +31,9 @@ public class MainGameControlSetup
         // -------------------------------------------------
         // TAB BUTTON INSTANTIATING AND OTHER SMALL SETUP
         // -------------------------------------------------
-        foreach (var item in arcaniaDatas.datas[UnitType.TAB])
+        for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
-
+            RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             var button = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
 
             var lc = new LayoutChild()
@@ -47,6 +47,7 @@ public class MainGameControlSetup
                 SelectionButton = button,
                 TabData = item
             };
+            dynamicCanvas.children[tabIndex].SelfChild.GameObject.name = $"tab_{item.Name}";
             mgc.TabControlUnits.Add(tcu);
             foreach (var sepD in item.Tab.Separators)
             {
