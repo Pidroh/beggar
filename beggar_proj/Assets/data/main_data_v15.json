@@ -1037,6 +1037,7 @@
                 "lock": "t_tier2",
                 "tag": "criminal",
                 "require": "rodentology>3&&agile&&stealbread>5&&t_tier1",
+                "need": "theself_2",
                 "cost": {
                     "ratbond": 10,
                     "guilt": 15
@@ -1056,6 +1057,7 @@
                 "desc": "You are the protector of all RATRACESCIENCEWIP",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
+                "need": "theself_2",
                 "require": "rodentology>3&&ratbeggar",
                 "cost": {
                     "ratbond": 10,
@@ -1074,6 +1076,7 @@
                 "desc": "They call him the cat weirdo",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
+                "need": "theself_2",
                 "require": "petcat&&felinology>0&&t_tier1",
                 "cost": {
                     "rats": 3,
