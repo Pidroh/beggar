@@ -263,6 +263,23 @@
                 }
             },
             {
+                "id": "theself_2",
+                "name": "Emotions of the self",
+                "require": "contemplation>2&&emotions_loc",
+                "duration": 60,
+                "cost": {
+                    "clarity": 40
+                },
+                "run": {
+                    "thoughts": 2
+                },
+                "mod":{
+                    "clarity.max": 10,
+                    "thoughts.rate": 0.5,
+                    "sadness.max": 10
+                }
+            },
+            {
                 "id": "pleafocus",
                 "name": "Rest",
                 "desc": "Take a break to recuperate and regain vitality",
@@ -1212,7 +1229,7 @@
         "type": "LOCATION",
         "items": [
             {
-                "id": "emotions",
+                "id": "emotions_loc",
                 "name": "Surface emotions",
                 "desc": "In facing yourself, you gotta start somewhere",
                 "require": "theself_1",
