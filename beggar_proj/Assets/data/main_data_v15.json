@@ -205,6 +205,12 @@
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
+            },
+            {
+                "id": "fear",
+                "stressor": true,
+                "tags": "stress",
+                "max": 10
             }
         ]
     },
@@ -1334,7 +1340,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["meancat", "ratpack", "smelly_puddle", "pattern_bones", "sick_man", "rusted grate", "waste_stream", "lost_diary_page"]
+                "encs": ["meancat", "ratpack", "smelly_puddle", "pattern_bones", "sick_man", "rusted_grate", "waste_stream", "lost_diary_page"]
             }
 
             
@@ -1545,6 +1551,21 @@
                 "result": {
                     "clarity": "0~1",
                     "rats": "0~2"
+                }
+            },
+            {
+                "id": "hungry_beggar",
+                "name": "Hungry beggar",
+                "desc": "Deep in hunger, close to insanity",
+                "effect": {
+                    "breadcrumbs": "-2~0",
+                    "fatigue": "0~2",
+                    "irritation": "0~2"
+                },
+                "result": {
+                    "sadness": "0~2",
+                    "food": "-1~0",
+                    "breadcrumbs": "-1~0"
                 }
             },
             {
