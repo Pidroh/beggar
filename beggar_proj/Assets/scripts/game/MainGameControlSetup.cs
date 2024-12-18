@@ -156,7 +156,7 @@ public class MainGameControlSetup
                         if (!hasBWE)
                         {
                             var titleText = CanvasMaker.CreateTextUnitClickable(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
-                            
+                            titleText.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                             var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
                             var lwe = new LabelWithExpandable(iconButton, titleText);
 
@@ -353,6 +353,7 @@ public class MainGameControlSetup
                     if (!hasBWE)
                     {
                         var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
+                        titleText.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                         var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
                         var lwe = new LabelWithExpandable(iconButton, titleText);
                         layout.AddLayoutChildAndParentIt(lwe.LayoutChild);

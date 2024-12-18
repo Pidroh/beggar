@@ -323,7 +323,7 @@ public class LabelWithExpandable
 
         // Adjust the width of MainButton to occupy remaining space
 
-        MainText.RectTransform.SetLeftXToParent(0);
+        MainText.RectTransform.SetLeftXToParent(10);
         MainText.RectTransform.SetBottomYToParent(0);
 
     }
