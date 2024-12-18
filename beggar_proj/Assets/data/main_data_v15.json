@@ -1488,6 +1488,77 @@
                     "clarity": "-1~1",
                     "sorrow": "0~1"
                 }
+            },
+            {
+                "id": "smelly_puddle",
+                "name": "Smelly puddle",
+                "desc": "Water on the ground. It stinks.",
+                "effect": {
+                    "irritation": "0~2",
+                    "perplexion": "0~2",
+                    "sadness": "0~2",
+                    "supplication": "-1~0"
+                },
+                "result": {
+                    "clarity": "-1~1",
+                    "rats": "0~1"
+                }
+            },
+            {
+                "id": "pattern_bones",
+                "name": "Bones in a pattern",
+                "desc": "Bones arranged in an intriguing pattern",
+                "effect": {
+                    "thoughts": "0~1",
+                    "perplexion": "0~2",
+                    "fear": "0~1",
+                    "sadness": "0~1",
+                    "thinking.xp": 1
+                },
+                "result": {
+                    "clarity": "-1~1"
+                }
+            },
+            {
+                "id": "rusted_grate",
+                "name": "Rusted grate",
+                "desc": "Grates of iron, filled with rust. I wonder what is beyond...",
+                "effect": {
+                    "thoughts": "-1~1",
+                    "perplexion": "0~1",
+                    "fear": "0~2"
+                },
+                "result": {
+                    "clarity": "-1~1"
+                }
+            },
+            {
+                "id": "waste_stream",
+                "name": "Waste stream",
+                "desc": "Water flow that carries garbage away from the town",
+                "effect": {
+                    "rats": "0~1",
+                    "fatigue": "0~3",
+                    "perplexion": "0~1",
+                    "thoughts": "-1~1"
+                },
+                "result": {
+                    "clarity": "0~1",
+                    "rats": "0~2"
+                }
+            },
+            {
+                "id": "lost_diary_page",
+                "name": "Lost page",
+                "desc": "A page filled with words, barely readable",
+                "effect": {
+                    "thoughts": "0~1",
+                    "perplexion": "0~2",
+                    "thinking.xp": 1
+                },
+                "result": {
+                    "thoughts": "2~6"
+                }
             }
         ]
     },
