@@ -184,7 +184,7 @@ public class MainGameControlSetup
                         if (pair.Key == UnitType.SKILL)
                         {
                             {
-                                var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 30);
+                                var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, mgc.SkillFontSize);
                                 t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                                 // bwe.ExpandTargets
                                 rcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
@@ -192,13 +192,13 @@ public class MainGameControlSetup
                                 layout.AddLayoutChildAndParentIt(rcu.MainTitle.LayoutChild);
                             }
                             {
-                                var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 30);
+                                var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, mgc.SkillFontSize);
                                 t.text.horizontalAlignment = HorizontalAlignmentOptions.Right;
                                 // bwe.ExpandTargets
                                 rcu.SkillLevelText = t;
                                 t.SetParent(rcu.MainTitle.ElementRectTransform);
                                 t.RectTransform.FillParent();
-                                t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
+                                // t.RectTransform.SetOffsets(new RectOffset(0, 0, 0, 0));
 
                             }
                             rcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
@@ -222,7 +222,7 @@ public class MainGameControlSetup
                             {
                                 t.SetParent(rcu.lwe.MainText.RectTransform);
                                 t.RectTransform.FillParent();
-                                t.RectTransform.SetOffsets(new RectOffset(20, 20, 10, 0));
+                                // t.RectTransform.SetOffsets(new RectOffset(0, 0, 0, 0));
                             }
                             else
                             {
@@ -239,9 +239,10 @@ public class MainGameControlSetup
                         {
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                            t.text.verticalAlignment = VerticalAlignmentOptions.Top;
                             // bwe.ExpandTargets
                             rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
-                            rcu.Description.RectOffset = new RectOffset(20, 20, 0, 0);
+                            rcu.Description.RectOffset = new RectOffset(20, 20, 0, 10);
                             if (hasBWE)
                                 AddToExpands(rcu.Description.LayoutChild);
                             else

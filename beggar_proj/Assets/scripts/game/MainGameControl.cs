@@ -39,6 +39,7 @@ public class MainGameControl : MonoBehaviour
 
     public float lastSaveTime;
     public ControlExploration controlExploration;
+    public int SkillFontSize;
 
     // Start is called before the first frame update
     void Start()

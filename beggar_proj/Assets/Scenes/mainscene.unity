@@ -489,6 +489,7 @@ MonoBehaviour:
       m_Bottom: 5
   MainTextColor: {r: 0.6603774, g: 0.65318894, b: 0.6136526, a: 1}
   lastSaveTime: 0
+  SkillFontSize: 25
 --- !u!4 &2118819688
 Transform:
   m_ObjectHideFlags: 0
