@@ -256,6 +256,7 @@
                 "name": "The self",
                 "require": "contemplation",
                 "duration": 15,
+                "max": 1,
                 "cost": {
                     "clarity": 5
                 },
@@ -272,6 +273,7 @@
                 "name": "Emotions of the self",
                 "require": "contemplation>2&&emotions_loc",
                 "duration": 60,
+                "max": 1,
                 "cost": {
                     "clarity": 40
                 },
