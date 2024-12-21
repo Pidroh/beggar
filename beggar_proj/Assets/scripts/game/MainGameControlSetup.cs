@@ -406,6 +406,7 @@ public class MainGameControlSetup
                 ResourceChangeType.RESULT => "result",
                 ResourceChangeType.RUN => "run",
                 ResourceChangeType.EFFECT => "effect",
+                ResourceChangeType.RESULT_ONCE => "first time",
                 _ => null,
             };
             SeparatorWithLabel swl = CreateSeparator(layout, rcu.ExpandManager, textKey);
