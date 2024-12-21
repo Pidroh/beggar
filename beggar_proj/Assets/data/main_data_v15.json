@@ -242,7 +242,7 @@
                 "id": "organizethoughts",
                 "name": "Organize thoughts",
                 "require": "introspection>3",
-                "duration": 3,
+                "duration": 6,
                 "run": {
                     "supplication": 1,
                     "thoughts": 1
@@ -309,25 +309,25 @@
                 "id": "contemplatedoll",
                 "name": "Contemplate Doll",
                 "desc": "What is the story behind that doll? There is something about it that...",
-                "require": "contemplation>2",
+                "require": "contemplation>3",
                 "duration": 70,
                 "max": 1,
                 "cost": {
-                    "clarity": 5,
+                    "clarity": 15,
                     "thoughts": 90
                 },
                 "run": {
                     "thoughts": 1
                 },
                 "mod":{
-                    "clarity.max": 2,
-                    "doll.mod.clarity.max": 5
+                    "clarity.max": 5,
+                    "doll.mod.clarity.max": 25
                 }
             },
             {
-                "id": "contemplatedoll",
-                "name": "Contemplate Doll",
-                "desc": "What is the story behind that doll? There is something about it that...",
+                "id": "sensitivecontemplation",
+                "name": "Sensitive contemplation",
+                "desc": "Reach out to deeper feelings, contemplating inward",
                 "require": "contemplation>2",
                 "duration": 70,
                 "max": 1,
@@ -339,8 +339,8 @@
                     "thoughts": 1
                 },
                 "mod":{
-                    "clarity.max": 2,
-                    "doll.mod.clarity.max": 5
+                    "clarity.max": 5,
+                    "organizethoughts.effect.clarity": 1
                 }
             },
             {
@@ -1954,8 +1954,25 @@
                     "gratitude.max": -5,
                     "space": 1
                 }
-            }
-
+            },
+            {
+                "id": "deadflowers",
+                "name": "Dead flowers",
+                "desc": "The ephemarility of life",
+                "require": "sensitivecontemplation",
+                "max": 3,
+                "cost": {
+                    "thoughts": 30,
+                    "clarity": 12,
+                    "foraging": 30
+                },
+                "mod": {
+                    "contemplation.max": 1,
+                    "clarity.max": 3,
+                    "organizethoughts.effect.clarity": 1,
+                    "space": 1
+                }
+            },
         ]
     },
     {
