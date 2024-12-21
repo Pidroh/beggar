@@ -28,7 +28,7 @@ public class JsonReader
                 ReadArrayOwner(arcaniaDatas, parentNode);
             }
         }
-        
+
 
         //--------------------------------------------------------------
         // POST PROCESSING #post-processing
@@ -58,7 +58,18 @@ public class JsonReader
             if (mod.ModType == ModType.MaxChange)
             {
                 // space max increasing has no target
-                if (targetTextKey != null) mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                if (targetTextKey != null)
+                {
+                    if (intermediaryTextKey != null)
+                    {
+                        mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
+                    }
+                    else
+                    {
+                        mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                    }
+
+                }
                 else mod.HumanText = $"Max Space:";
             }
             if (mod.ModType == ModType.RateChange)
@@ -75,7 +86,7 @@ public class JsonReader
             {
                 mod.HumanText = "Space Occupied:";
             }
-            if(mod.ModType == ModType.Lock) 
+            if (mod.ModType == ModType.Lock)
             {
                 mod.HumanText = "Currently Invisible";
             }
@@ -398,10 +409,19 @@ public class JsonReader
 
                 if (last == "max") modType = ModType.MaxChange;
                 if (last == "rate") modType = ModType.RateChange;
+
+                // EXAMPLES:
+                //   crakedvase.mod.clarity.max
+                if (splittedValues.Length == 4)
+                {
+                    secondary = splittedValues[splittedValues.Length - 4];
+                }
+
                 // if still undecided
                 if (modType == ModType.Invalid)
                 {
                     // TODO make this be an dictionary between string and ResourceChangeType, so you can handle every case without hard coding
+                    // EXAMPLE: pleafocus.effect.supplication
                     if (oneBeforeLast == "effect")
                     {
                         target = last;
@@ -510,16 +530,6 @@ public enum UnitType
     RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
 }
 
-public enum ModType
-{
-    Invalid,
-    MaxChange,
-    RateChange,
-    SpaceConsumption,
-    Lock,
-    ResourceChangeChanger
-}
-
 public class ModRuntime
 {
     public ModType ModType;
@@ -538,8 +548,8 @@ public class ResourceChange
     public IDPointer IdPointer;
     public FloatRange valueChange;
     public ResourceChangeModificationType ModificationType = ResourceChangeModificationType.NormalChange;
-    public enum ResourceChangeModificationType 
-    { 
+    public enum ResourceChangeModificationType
+    {
         NormalChange,
         XpChange
     }

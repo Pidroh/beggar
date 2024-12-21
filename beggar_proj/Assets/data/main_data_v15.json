@@ -302,7 +302,7 @@
                 },
                 "mod":{
                     "clarity.max": 2,
-                    "crakedvase.mod.clarity.max": 5
+                    "crackedvase.mod.clarity.max": 5
                 }
             },
             {
@@ -1960,7 +1960,7 @@
                 "name": "Dead flowers",
                 "desc": "The ephemarility of life",
                 "require": "sensitivecontemplation",
-                "max": 3,
+                "max": 1,
                 "cost": {
                     "thoughts": 30,
                     "clarity": 12,
