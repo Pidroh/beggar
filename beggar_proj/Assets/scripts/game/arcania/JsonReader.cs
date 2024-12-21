@@ -98,6 +98,10 @@ public class JsonReader
             //--------------------------------------------------------------
             // MODS human text END
             //--------------------------------------------------------------
+            //--------------------------------------------------------------
+            // MODS misc
+            //--------------------------------------------------------------
+
             if (mod.ModType == ModType.SpaceConsumption)
             {
                 mod.Source.ConfigFurniture.SpaceConsumed = Mathf.FloorToInt(mod.Value);
@@ -115,20 +119,18 @@ public class JsonReader
                 continue;
             }
 
-            if (mod.Target.Tag != null)
+            if (mod.Intermediary != null) 
             {
-                foreach (var item in mod.Target.Tag.UnitsWithTag)
+                foreach (var ru in mod.Intermediary.RuntimeUnits)
                 {
-                    item.RegisterModTargetingSelf(mod);
+                    ru.RegisterModTargetingSelf(mod);
                 }
-                continue;
-            }
-            if (mod.Target.RuntimeUnit == null)
-            {
-                Debug.Log($"Target not found {mod.Target.id}");
             }
 
-            mod.Target.RuntimeUnit.RegisterModTargetingSelf(mod);
+            foreach (var ru in mod.Target.RuntimeUnits)
+            {
+                ru.RegisterModTargetingSelf(mod);
+            }
         }
         #endregion
         //--------------------------------------------------------------
