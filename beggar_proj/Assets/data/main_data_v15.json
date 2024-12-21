@@ -287,6 +287,24 @@
                 }
             },
             {
+                "id": "thiscrackedvase",
+                "name": "This cracked vase",
+                "desc": "I wonder who was the original owner of the cracked vase",
+                "require": "contemplation>1",
+                "duration": 90,
+                "max": 1,
+                "cost": {
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 1
+                },
+                "mod":{
+                    "clarity.max": 2,
+                    "crakedvase.mod.clarity.max": 5
+                }
+            },
+            {
                 "id": "pleafocus",
                 "name": "Rest",
                 "desc": "Take a break to recuperate and regain vitality",
@@ -1422,7 +1440,7 @@
                 "name": "A bit bored",
                 "desc": "If only something interesting would happen...",
                 "effect": {
-                    "contemplation.xp": 2,
+                    "contemplation.xp": 1,
                     "perplexion": "0~1",
                     "irritation": "0~1",
                     "thoughts": "-2~0"
