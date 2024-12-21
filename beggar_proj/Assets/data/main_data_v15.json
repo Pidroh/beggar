@@ -531,7 +531,6 @@
                 "name": "Agile",
                 "desc": "You realize you have quick reflexes, you can act without thinking",
                 "tag": "trait1",
-                "lock": "trait1",
                 "duration": 3,
                 "max": 1,
                 "require": "exercise>2",
@@ -547,7 +546,6 @@
                 "name": "Calm thinker",
                 "desc": "You realize you are a calm thinker, someone who thinks deeply before acting",
                 "tag": "trait1",
-                "lock": "trait1",
                 "duration": 3,
                 "max": 1,
                 "require": "thinking>2",
@@ -1602,8 +1600,7 @@
             {
                 "id": "exclusive_upgrade",
                 "title": "Upgrade Selection",
-                "content": "Picking this upgrade will lock out upgrades from the same tier. Are you sure?",
-                "tags": "max_decrease"
+                "content": "Picking this upgrade will lock out upgrades from the same tier. Are you sure?"
             },
             {
                 "id": "ending",
