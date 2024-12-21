@@ -34,6 +34,7 @@ public class ControlExploration : ControlSubUnit
             item.lwe?.ManualUpdate();
             item.XPGauge?.ManualUpdate();
             item.bwe?.ManualUpdate();
+            item.FeedDescription();
             if(item.IsExpanded) item.UpdateChangeGroups();
             if (item.Data == null) continue;
             item.lwe.MainText.rawText = item.Data.ConfigBasic.name;

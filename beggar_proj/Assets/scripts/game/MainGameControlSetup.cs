@@ -227,7 +227,7 @@ public class MainGameControlSetup
                             else
                             {
                                 var lc = LayoutChild.Create(t.transform);
-                                AddToExpands(lc);
+                                AddToExpands(lc, layout, rcu);
                                 t.RectTransform.FillParent();
                                 lc.RectTransform.SetHeight(20);
                             }
@@ -237,16 +237,8 @@ public class MainGameControlSetup
                         pair.Value.Add(rcu);
                         rcu.Data = item;
                         {
-                            var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
-                            t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
-                            t.text.verticalAlignment = VerticalAlignmentOptions.Top;
-                            // bwe.ExpandTargets
-                            rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
-                            rcu.Description.RectOffset = new RectOffset(20, 20, 0, 10);
-                            if (hasBWE)
-                                AddToExpands(rcu.Description.LayoutChild);
-                            else
-                                layout.AddLayoutChildAndParentIt(rcu.Description.LayoutChild);
+                            var addToExpands = hasBWE;
+                            AddDescription(mgc, layout, rcu, addToExpands);
 
                         }
 
@@ -297,14 +289,10 @@ public class MainGameControlSetup
                             rcu.DurationText.RectOffset = new RectOffset(20, 20, 0, 0);
                             rcu.DurationText.LayoutChild.PreferredSizeMM[1] = 10;
                             rcu.DurationText.ManualUpdate();
-                            AddToExpands(rcu.DurationText.LayoutChild);
+                            AddToExpands(rcu.DurationText.LayoutChild, layout, rcu);
                         }
 
-                        void AddToExpands(LayoutChild c)
-                        {
-                            rcu.ExpandManager.ExpandTargets.Add(c.GameObject);
-                            layout.AddLayoutChildAndParentIt(c);
-                        }
+                        
                     }
                 }
             }
@@ -330,8 +318,6 @@ public class MainGameControlSetup
                 }
                 for (int eleIndex = 0; eleIndex < numberOfEles; eleIndex++)
                 {
-                    
-                    
                     var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
                     dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
                     var hasBWE = fleeButton;
@@ -371,6 +357,7 @@ public class MainGameControlSetup
                             break;
                         case 1: // encounter
                             mgc.controlExploration.dataHolder.EncounterRCU = rcu;
+                            AddDescription(mgc, layout, rcu, true);
                             CreateReserveChangeViews(mgc, layout, rcu);
                             break;
                         case 2:
@@ -473,6 +460,26 @@ public class MainGameControlSetup
             {
                 CreateResourceChangeViews(i, 5, rcu, layout);
             }
+        }
+
+        void AddToExpands(LayoutChild c, LayoutParent layout, RTControlUnit rcu)
+        {
+            rcu.ExpandManager.ExpandTargets.Add(c.GameObject);
+            layout.AddLayoutChildAndParentIt(c);
+        }
+
+        void AddDescription(MainGameControl mgc, LayoutParent layout, RTControlUnit rcu, bool addToExpands)
+        {
+            var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
+            t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+            t.text.verticalAlignment = VerticalAlignmentOptions.Top;
+            // bwe.ExpandTargets
+            rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
+            rcu.Description.RectOffset = new RectOffset(20, 20, 0, 10);
+            if (addToExpands)
+                AddToExpands(rcu.Description.LayoutChild, layout, rcu);
+            else
+                layout.AddLayoutChildAndParentIt(rcu.Description.LayoutChild);
         }
     }
 

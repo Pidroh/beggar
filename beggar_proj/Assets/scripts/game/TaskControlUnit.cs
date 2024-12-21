@@ -99,10 +99,7 @@ public class RTControlUnit
             ButtonRemove.SetWidthMM(15);
         }
 
-        SimpleChild<UIUnit> description = Description;
-        description.Element.text.SetFontSizePhysical(15);
-        string desc = Data.ConfigBasic.Desc;
-        FeedDescription(description, desc);
+        FeedDescription();
         var duration = Data.ConfigTask != null && Data.ConfigTask.Duration.HasValue ? Data.ConfigTask.Duration.Value : -1;
 
         if (duration > 0) DurationText.Element.rawText = $"Duration: {duration}s";
@@ -151,6 +148,15 @@ public class RTControlUnit
 
         UpdateChangeGroups();
 
+    }
+
+    public void FeedDescription()
+    {
+        SimpleChild<UIUnit> description = Description;
+        if (description == null) return;
+        description.Element.text.SetFontSizePhysical(15);
+        string desc = Data.ConfigBasic.Desc;
+        FeedDescription(description, desc);
     }
 
     public void UpdateChangeGroups()
