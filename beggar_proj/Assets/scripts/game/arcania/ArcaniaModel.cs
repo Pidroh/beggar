@@ -82,7 +82,7 @@ public class ArcaniaModel
     {
         Dialog.ManualUpdate();
         Runner.ManualUpdate(dt);
-        Exploration.ManualUpdate();
+        Exploration.ManualUpdate(dt);
         _oneSecondCounter += dt;
         var applyRateNumber = 0;
         while (_oneSecondCounter > 1f)

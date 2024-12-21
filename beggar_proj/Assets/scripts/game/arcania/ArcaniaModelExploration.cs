@@ -20,7 +20,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
     public float ExplorationRatio => ((float)locationProgress) / LastActiveLocation.Location.configLocation.Length;
     public float EncounterRatio => ActiveEncounter == null ? 0f : ((float)encounterProgress) / ActiveEncounter.ConfigEncounter.Length;
 
-    public void ManualUpdate()
+    public void ManualUpdate(float dt)
     {
         RuntimeUnit runningLocation = null;
         foreach (var task in _model.Runner.RunningTasks)
@@ -39,7 +39,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         }
 
         EnsureEncounter(activeLocation);
-        encounterProgress += Time.deltaTime;
+        encounterProgress += dt;
         if (encounterProgress >= ActiveEncounter.ConfigEncounter.Length)
         {
             #region encounter won
