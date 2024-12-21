@@ -99,6 +99,13 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         if (firstTime)
             _model.ApplyResourceChanges(data, ResourceChangeType.RESULT_ONCE);
         StopTask(data);
+        bool isLocation = data.ConfigBasic.UnitType == UnitType.LOCATION;
+        if (isLocation)
+        {
+            // If completes location, just tries 
+            TryStartRestAction();
+            return;
+        }
         if (data.ConfigTask.Perpetual && this.CanStartAction(data))
         {
             StartAction(data);
@@ -211,15 +218,23 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         }
         else
         {
-            if (_model.arcaniaUnits.RestActionActive == null) return;
-            RuntimeUnit restAct = _model.arcaniaUnits.RestActionActive;
-            if (!CanStartAction(restAct) || !restAct.Visible)
-            {
-                return;
-            }
+            bool restActionStarted = TryStartRestAction();
+            if (!restActionStarted) return;
             InterruptedAction = run;
-            StartAction(_model.arcaniaUnits.RestActionActive);
+
         }
+    }
+
+    private bool TryStartRestAction()
+    {
+        if (_model.arcaniaUnits.RestActionActive == null) return false;
+        RuntimeUnit restAct = _model.arcaniaUnits.RestActionActive;
+        if (!CanStartAction(restAct) || !restAct.Visible)
+        {
+            return false;
+        }
+        StartAction(_model.arcaniaUnits.RestActionActive);
+        return true;
     }
 
     private bool CheckIfActionIsMeaningful(RuntimeUnit run)
