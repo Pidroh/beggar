@@ -12,6 +12,7 @@ public class RuntimeUnit
 
     public SkillRuntime Skill;
     public List<ModRuntime> ModsTargetingSelf = new();
+    public List<ModRuntime> ModsSelfAsIntermediary = new();
     public List<ModRuntime> ModsOwned = new();
     public bool RequireMet = false;
 
@@ -164,6 +165,11 @@ public class RuntimeUnit
             return valueChange.SmallerOrEqual(ValueToReachMax);
         }
         return true;
+    }
+
+    internal void RegisterModWithSelfAsIntermediary(ModRuntime mod)
+    {
+        ModsSelfAsIntermediary.Add(mod);
     }
 
     internal void RegisterModTargetingSelf(ModRuntime modData)

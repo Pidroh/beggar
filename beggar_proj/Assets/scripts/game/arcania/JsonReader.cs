@@ -123,7 +123,7 @@ public class JsonReader
             {
                 foreach (var ru in mod.Intermediary.RuntimeUnits)
                 {
-                    ru.RegisterModTargetingSelf(mod);
+                    ru.RegisterModWithSelfAsIntermediary(mod);
                 }
             }
 
