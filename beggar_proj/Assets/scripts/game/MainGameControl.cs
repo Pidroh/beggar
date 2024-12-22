@@ -347,16 +347,33 @@ public class MainGameControl : MonoBehaviour
             for (int i = 0; i < data.ModsOwned.Count; i++)
             {
                 ModRuntime md = data.ModsOwned[i];
-
+                float value = md.Value;
                 var ttv = modUnit.ModTTVs[i];
+                string rawText = md.HumanText;
+                FeedModView(md, value, ttv, rawText);
+            }
+            if (modUnit.ExtraModSeparator == null) return;
+            var modsAsIntermediaryVisible = false;
+            for (int i = 0; i < data.ModsSelfAsIntermediary.Count; i++)
+            {
+                ModRuntime modRuntime = data.ModsSelfAsIntermediary[i];
+                var ttv = modUnit.ModIntermediaryTTVs[i];
+                if (modRuntime.Source.Value <= 0) 
+                {
+                    ttv.Visible = false;
+                    continue;
+                }
+                FeedModView(modRuntime, modRuntime.Source.Value * modRuntime.Value, ttv, modRuntime.HumanTextIntermediary);
+            }
+
+            static void FeedModView(ModRuntime md, float value, TripleTextView ttv, string rawText)
+            {
                 ttv.LayoutChild.Visible = md.ModType != ModType.Lock && ttv.LayoutChild.Visible;
-
-                ttv.MainText.rawText = md.HumanText;
-
-                if (md.Value > 0 && md.ModType != ModType.SpaceConsumption)
-                    ttv.SecondaryText.rawText = $"+{md.Value}";
+                ttv.MainText.rawText = rawText;
+                if (value > 0 && md.ModType != ModType.SpaceConsumption)
+                    ttv.SecondaryText.rawText = $"+{value}";
                 else
-                    ttv.SecondaryText.rawText = $"{md.Value}";
+                    ttv.SecondaryText.rawText = $"{value}";
                 ttv.TertiaryText.rawText = string.Empty;
                 ttv.ManualUpdate();
             }

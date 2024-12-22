@@ -45,6 +45,7 @@ public class JsonReader
             //--------------------------------------------------------------
             string targetTextKey = GetPointerTextKey(mod.Target);
             string intermediaryTextKey = GetPointerTextKey(mod.Intermediary);
+            string sourceNameKey = mod.Source.Name;
             string GetPointerTextKey(IDPointer pointer)
             {
                 string textKey = null;
@@ -63,6 +64,7 @@ public class JsonReader
                     if (intermediaryTextKey != null)
                     {
                         mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
+                        mod.HumanTextIntermediary = $" Mod Max {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)})";
                     }
                     else
                     {
@@ -543,6 +545,7 @@ public class ModRuntime
     public ResourceChangeType? ResourceChangeType { get; internal set; }
     public string SourceJsonKey { get; internal set; }
     public string HumanText { get; internal set; }
+    public string HumanTextIntermediary { get; internal set; }
 }
 
 public class ResourceChange

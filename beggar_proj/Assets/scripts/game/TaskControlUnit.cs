@@ -42,6 +42,7 @@ public class ModsControlUnit
 {
     public List<TripleTextView> ModTTVs { get; internal set; } = new();
     public List<TripleTextView> ModIntermediaryTTVs { get; internal set; } = new();
+    public SeparatorWithLabel ExtraModSeparator { get; internal set; }
 }
 
 public class LogControlUnit
