@@ -41,6 +41,7 @@ public class ConditionControlUnit
 public class ModsControlUnit
 {
     public List<TripleTextView> ModTTVs { get; internal set; } = new();
+    public List<TripleTextView> ModIntermediaryTTVs { get; internal set; } = new();
 }
 
 public class LogControlUnit

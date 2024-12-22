@@ -261,6 +261,7 @@ public class MainGameControlSetup
                         var ModUnit = rcu.ModsUnit;
                         ExpandableManager expandManager = rcu.ExpandManager;
                         CreateModViews(item, layout, separators, ModUnit, expandManager);
+                        CreateModIntermediaryViews(item, layout, separators, ModUnit, expandManager);
                         //-------------------------------------------------------
                         // Need #need #condition
                         //-------------------------------------------------------
@@ -444,6 +445,7 @@ public class MainGameControlSetup
         void CreateModViews(RuntimeUnit item, LayoutParent layout, List<SeparatorWithLabel> separators, ModsControlUnit ModUnit, ExpandableManager expandManager)
         {
             if (item.ModsOwned.Count == 0) return;
+            List<TripleTextView> modTTVs = ModUnit.ModTTVs;
             var sep = CreateSeparator(layout, expandManager, "Mods:");
             separators.Add(sep);
             foreach (var md in item.ModsOwned)
@@ -451,9 +453,29 @@ public class MainGameControlSetup
 
                 var ttv = CreateTripleTextView(layout, expandManager);
                 ttv.Mode = TripleTextView.TTVMode.PrimarySecondary;
-                ModUnit.ModTTVs.Add(ttv);
+                
+                modTTVs.Add(ttv);
             }
         }
+
+        void CreateModIntermediaryViews(RuntimeUnit item, LayoutParent layout, List<SeparatorWithLabel> separators, ModsControlUnit ModUnit, ExpandableManager expandManager)
+        {
+            if (item.ModsSelfAsIntermediary.Count == 0) return;
+            List<TripleTextView> modTTVs = ModUnit.ModIntermediaryTTVs;
+
+            var sep = CreateSeparator(layout, expandManager, "extra mods:");
+            ModUnit.ExtraModSeparator = sep;
+            separators.Add(sep);
+            foreach (var md in item.ModsSelfAsIntermediary)
+            {
+
+                var ttv = CreateTripleTextView(layout, expandManager);
+                ttv.Mode = TripleTextView.TTVMode.PrimarySecondary;
+
+                modTTVs.Add(ttv);
+            }
+        }
+
 
         void CreateReserveChangeViews(MainGameControl mgc, LayoutParent layout, RTControlUnit rcu)
         {
