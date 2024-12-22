@@ -202,8 +202,10 @@ public class RTControlUnit
                 if (rc.IdPointer.RuntimeUnit != null)
                 {
                     RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
-                    min += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
-                    max += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
+
+                    // no longer do the mod sum thingy because you are showing it under extra mods
+                    // min += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
+                    // max += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
                     targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
                     if(dataThatWillBeChanged.HasMax)
                         tertiaryText = $"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})";
