@@ -364,7 +364,9 @@ public class MainGameControl : MonoBehaviour
                     continue;
                 }
                 FeedModView(modRuntime, modRuntime.Source.Value * modRuntime.Value, ttv, modRuntime.HumanTextIntermediary);
+                modsAsIntermediaryVisible = true;
             }
+            modUnit.ExtraModSeparator.LayoutChild.Visible = modsAsIntermediaryVisible;
 
             static void FeedModView(ModRuntime md, float value, TripleTextView ttv, string rawText)
             {
