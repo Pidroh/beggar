@@ -81,7 +81,11 @@ public class JsonReader
             if (mod.ModType == ModType.ResourceChangeChanger)
             {
                 if (mod.ResourceChangeType == ResourceChangeType.EFFECT)
+                {
                     mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
+                    mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
+                }
+                
                 else mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
             }
             if (mod.ModType == ModType.SpaceConsumption)
@@ -121,7 +125,7 @@ public class JsonReader
                 continue;
             }
 
-            if (mod.Intermediary != null) 
+            if (mod.Intermediary != null)
             {
                 foreach (var ru in mod.Intermediary.RuntimeUnits)
                 {
