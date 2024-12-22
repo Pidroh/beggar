@@ -27,7 +27,7 @@ public class RuntimeUnit
 
     public bool IsPossiblyVisibleRegardlessOfRequire()
     {
-        if (this.GetModSum(ModType.Lock) > 0) return false;
+        if (this.HasModActive(ModType.Lock)) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
         return true;
     }
@@ -114,13 +114,28 @@ public class RuntimeUnit
         return v;
     }
 
+    public bool HasModActive(ModType modType) 
+    {
+        foreach (var mod in ModsTargetingSelf)
+        {
+            if (mod.ModType != modType) continue;
+            if (mod.Source.Value > 0) return true;
+        }
+        return false;
+    }
+
     private float GetModSum(ModType modType)
     {
         var v = 0f;
         foreach (var mod in ModsTargetingSelf)
         {
             if (mod.ModType != modType) continue;
-            v += mod.Source.Value * mod.Value;
+            float value = mod.Source.Value * mod.Value;
+            if (mod.Intermediary != null) 
+            {
+                value *= mod.Intermediary.GetValue();
+            }
+            v += value;
         }
         return v;
     }
