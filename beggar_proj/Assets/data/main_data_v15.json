@@ -1161,7 +1161,7 @@
             {
                 "id": "ratwarden",
                 "name": "Rat Warden",
-                "desc": "You are the protector of all RATRACESCIENCEWIP",
+                "desc": "You are the protector of the fellow rats",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "need": "theself_2",
