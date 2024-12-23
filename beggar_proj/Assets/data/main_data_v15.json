@@ -967,6 +967,7 @@
         "items":[
             {
                 "id": "Back Alley",
+                "name": "Back Alley",
                 "require": "t_job",
                 "cost": {
                     "thoughts": 3
@@ -974,6 +975,32 @@
                 "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
                 "mod": {
                     "space.max": 3
+                }
+            },
+            {
+                "id": "churchoutskirts",
+                "require": "churchbeggar",
+                "cost": {
+                    "thoughts": 10,
+                    "faith": 4
+                },
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "mod": {
+                    "space.max": 5,
+                    "faith.max": 10
+                }
+            },
+            {
+                "id": "churchoutskirts",
+                "require": "churchbeggar",
+                "cost": {
+                    "thoughts": 10,
+                    "faith": 4
+                },
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "mod": {
+                    "space.max": 5,
+                    "faith.max": 10
                 }
             }
         ]
