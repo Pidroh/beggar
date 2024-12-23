@@ -984,23 +984,26 @@
                     "thoughts": 10,
                     "faith": 4
                 },
-                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "desc": "Not too far from the Church of Our Lady, close to the divine",
                 "mod": {
                     "space.max": 5,
-                    "faith.max": 10
+                    "faith.max": 10,
+                    "chargefaith.effect.faith": 1
                 }
             },
             {
-                "id": "churchoutskirts",
-                "require": "churchbeggar",
+                "id": "underbridge",
+                "name": "Under the bridge",
+                "require": "t_tier1&&beggarhood>1",
                 "cost": {
                     "thoughts": 10,
                     "faith": 4
                 },
-                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "desc": "A safer place to sleep, protected from the rain.",
                 "mod": {
-                    "space.max": 5,
-                    "faith.max": 10
+                    "space.max": 6,
+                    "rest.effect.supplication": 1,
+                    "nutrition.max": 3
                 }
             }
         ]
