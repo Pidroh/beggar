@@ -996,14 +996,29 @@
                 "name": "Under the bridge",
                 "require": "t_tier1&&beggarhood>1",
                 "cost": {
-                    "thoughts": 10,
-                    "faith": 4
+                    "thoughts": 60
                 },
                 "desc": "A safer place to sleep, protected from the rain.",
                 "mod": {
                     "space.max": 6,
                     "rest.effect.supplication": 1,
                     "nutrition.max": 3
+                }
+            },
+            {
+                "id": "sewer_home",
+                "name": "Sewer",
+                "require": "sewer",
+                "cost": {
+                    "thoughts": 80
+                },
+                "desc": "Disguting, but spaceful.",
+                "mod": {
+                    "space.max": 10,
+                    "rest.effect.supplication": -1,
+                    "supplication.max": -100,
+                    "happiness.max": -20,
+                    "rats.max": 5
                 }
             }
         ]
