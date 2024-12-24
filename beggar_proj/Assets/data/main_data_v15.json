@@ -1001,7 +1001,7 @@
                 "desc": "A safer place to sleep, protected from the rain.",
                 "mod": {
                     "space.max": 6,
-                    "rest.effect.supplication": 1,
+                    "pleafocus.effect.supplication": 1,
                     "nutrition.max": 3
                 }
             },
@@ -1015,7 +1015,7 @@
                 "desc": "Disguting, but spaceful.",
                 "mod": {
                     "space.max": 10,
-                    "rest.effect.supplication": -1,
+                    "pleafocus.effect.supplication": -1,
                     "supplication.max": -100,
                     "happiness.max": -20,
                     "rats.max": 5
@@ -1161,7 +1161,7 @@
             {
                 "id": "ratwarden",
                 "name": "Rat Warden",
-                "desc": "You are the protector of the fellow rats",
+                "desc": "You are the protector of fellow rats",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "need": "theself_2",
