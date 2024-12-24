@@ -93,11 +93,20 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     public void CompleteTask(RuntimeUnit data)
     {
         data.TaskProgress = 0;
-        var firstTime = data.Value == 0;
-        data.ChangeValue(1);
-        _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
-        if (firstTime)
-            _model.ApplyResourceChanges(data, ResourceChangeType.RESULT_ONCE);
+        var success = data.ConfigTask.SuccessRatePercent.HasValue ? data.ConfigTask.SuccessRatePercent.Value > UnityEngine.Random.Range(0, 100) : true;
+        if (success)
+        {
+            var firstTime = data.Value == 0;
+            data.ChangeValue(1);
+            _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
+            if (firstTime)
+                _model.ApplyResourceChanges(data, ResourceChangeType.RESULT_ONCE);
+        }
+        else 
+        {
+            _model.ApplyResourceChanges(data, ResourceChangeType.RESULT_FAIL);
+        }
+
         StopTask(data);
         bool isLocation = data.ConfigBasic.UnitType == UnitType.LOCATION;
         if (isLocation)

@@ -17,7 +17,7 @@ public class ConfigTask
     public int? Duration { get; internal set; } = null;
     public string SlotKey { get; internal set; }
     public ConditionalExpression Need { get; internal set; }
-    public int SuccessRatePercent { get; internal set; }
+    public int? SuccessRatePercent { get; internal set; } = null;
 
     internal List<ResourceChange> GetResourceChangeList(int i)
     {
