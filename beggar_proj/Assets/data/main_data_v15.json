@@ -706,7 +706,6 @@
                 "id": "pickpocket",
                 "name": "Pick Pocket",
                 "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
-                "duration": 3,
                 "require": "pickpocketer",
                 "need": "danger<10",
                 "success_rate": 50,
@@ -736,13 +735,14 @@
             {
                 "id": "pickpocketrat",
                 "name": "Pickpocketing Rats",
-                "desc": "Train pick",
+                "desc": "Coordinate stealing feats with your rats",
                 "tag": "pickpockter",
-                "require": "streetrat",
-                "duration": 10,
+                "require": "streetrat&&!pickpocket",
+                "duration": 15,
                 "max": 1,
                 "cost": {
-                    "ratbond": 40
+                    "ratbond": 60,
+                    "rats": 5
                 },
                 "mod": {
                     "guilt.max": 5
