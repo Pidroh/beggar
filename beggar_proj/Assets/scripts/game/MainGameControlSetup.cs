@@ -292,8 +292,20 @@ public class MainGameControlSetup
                             rcu.DurationText.ManualUpdate();
                             AddToExpands(rcu.DurationText.LayoutChild, layout, rcu);
                         }
+                        #region success rate #successrate
+                        {
+                            var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
+                            t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                            // bwe.ExpandTargets
+                            SimpleChild<UIUnit> successText = new SimpleChild<UIUnit>(t, t.RectTransform);
+                            successText.RectOffset = new RectOffset(20, 20, 0, 0);
+                            successText.LayoutChild.PreferredSizeMM[1] = 10;
+                            successText.ManualUpdate();
+                            AddToExpands(successText.LayoutChild, layout, rcu);
+                            rcu.SuccessText = successText;
+                        }
+                        #endregion
 
-                        
                     }
                 }
             }

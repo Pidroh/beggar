@@ -30,7 +30,7 @@ public class TabControlUnit
         public UIUnit Text { get; internal set; }
     }
 
-    
+
 }
 
 public class ConditionControlUnit
@@ -90,6 +90,7 @@ public class RTControlUnit
     public ButtonWithProgressBar ButtonAdd { get; internal set; }
     public TabControlUnit.SeparatorInTab ParentTabSeparator { get; internal set; }
     public SimpleChild<UIUnit> DurationText { get; internal set; }
+    public SimpleChild<UIUnit> SuccessText { get; internal set; }
 
     public void ManualUpdate(ArcaniaModel arcaniaModel)
     {
@@ -105,6 +106,8 @@ public class RTControlUnit
         var duration = Data.ConfigTask != null && Data.ConfigTask.Duration.HasValue ? Data.ConfigTask.Duration.Value : -1;
 
         if (duration > 0) DurationText.Element.rawText = $"Duration: {duration}s";
+        if (Data.ConfigTask != null && Data.ConfigTask.SuccessRatePercent.HasValue)
+            SuccessText.Element.rawText = $"Success rate: {Data.ConfigTask.SuccessRatePercent.Value}%";
         if (bwe != null)
         {
             bwe.ManualUpdate();
@@ -119,6 +122,7 @@ public class RTControlUnit
         }
         if (DurationText != null)
             DurationText.Visible = duration > 0 && DurationText.Visible;
+        SuccessText.Visible = Data.ConfigTask != null && Data.ConfigTask.SuccessRatePercent.HasValue && SuccessText.Visible;
         if (Data.ConfigBasic.UnitType == UnitType.SKILL)
         {
             MainTitle.Element.SetTextRaw(Data.Name);
@@ -207,7 +211,7 @@ public class RTControlUnit
                     // min += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
                     // max += dataThatWillBeChanged.GetModSumWithIntermediaryCheck(Data, ModType.ResourceChangeChanger, resourceChangeType);
                     targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
-                    if(dataThatWillBeChanged.HasMax)
+                    if (dataThatWillBeChanged.HasMax)
                         tertiaryText = $"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})";
                     else
                         tertiaryText = $"({dataThatWillBeChanged.Value})";
