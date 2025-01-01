@@ -733,6 +733,22 @@
                 }
             },
             {
+                "id": "ratbread",
+                "name": "Rat carriers",
+                "desc": "Train your rats to steal food with you",
+                "duration": 10,
+                "require": "streetrat",
+                "max": 1,
+                "cost": {
+                    "ratbond": 100,
+                    "rats": 8
+                },
+                "mod": {
+                    "stealbread.result.breadcrumbs": 5,
+                    "stealbread.result.ratbond": 2
+                }
+            },
+            {
                 "id": "pickpocketrat",
                 "name": "Pickpocketing Rats",
                 "desc": "Coordinate stealing feats with your rats",
@@ -741,8 +757,8 @@
                 "duration": 15,
                 "max": 1,
                 "cost": {
-                    "ratbond": 60,
-                    "rats": 5
+                    "ratbond": 80,
+                    "rats": 8
                 },
                 "mod": {
                     "guilt.max": 5
