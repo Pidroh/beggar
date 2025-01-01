@@ -730,7 +730,22 @@
                     "guilt": 3
                 },
                 "mod": {
-                    "pleafocus.effect.danger": -0.1
+                    "pleafocus.effect.danger": -0.2
+                }
+            },
+            {
+                "id": "pickpocketrat",
+                "name": "Pickpocketing Rats",
+                "desc": "Train pick",
+                "tag": "pickpockter",
+                "require": "streetrat",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "ratbond": 40
+                },
+                "mod": {
+                    "guilt.max": 5
                 }
             },
             {
