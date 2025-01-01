@@ -749,6 +749,24 @@
                 }
             },
             {
+                "id": "ratoath",
+                "name": "Rat Oath",
+                "desc": "Make a promise to protect fellow rats, no matter the cost",
+                "duration": 100,
+                "require": "ratwarden",
+                "needs": "petcat==0",
+                "lock": "petcat",
+                "max": 1,
+                "cost": {
+                    "ratbond": 100,
+                    "rats": 8
+                },
+                "mod": {
+                    "rats.max": 3,
+                    "ratbond.max": 50
+                }
+            },
+            {
                 "id": "pickpocketrat",
                 "name": "Pickpocketing Rats",
                 "desc": "Coordinate stealing feats with your rats",
