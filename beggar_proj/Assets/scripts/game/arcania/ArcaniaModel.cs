@@ -59,7 +59,7 @@ public class ArcaniaModel
             if (mod.Source.Value == 0) continue;
             foreach (var item in mod.Target.RuntimeUnits)
             {
-                item.ChangeValue(mod.Source.Value * parent.Value * mod.Value);
+                item.ChangeValue(mod.Source.Value * mod.Value);
             }
             //mod.Target.
             
@@ -168,7 +168,7 @@ public class ArcaniaModel
         {
             if (item.ResourceChangeType != changeType) continue;
             if (item.Source.Value == 0) continue;
-            var totalValue = item.Value * item.Source.Value * ru.Value;
+            var totalValue = item.Value * item.Source.Value;
             if (totalValue == 0) continue;
             if (totalValue > 0 && item.Target.IsAllMaxed()) continue;
             if (totalValue < 0 && item.Target.IsAllZero()) continue;
