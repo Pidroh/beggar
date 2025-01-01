@@ -52,6 +52,18 @@ public class ArcaniaModel
     internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
     {
         var changes = parent.ConfigTask.GetResourceChangeList(changeType);
+        foreach (var mod in parent.ModsSelfAsIntermediary)
+        {
+            if (mod.ModType != ModType.ResourceChangeChanger) continue;
+            if (mod.ResourceChangeType != changeType) continue;
+            if (mod.Source.Value == 0) continue;
+            foreach (var item in mod.Target.RuntimeUnits)
+            {
+                item.ChangeValue(mod.Source.Value * parent.Value * mod.Value);
+            }
+            //mod.Target.
+            
+        }
         foreach (var c in changes)
         {
             foreach (var ru in c.IdPointer)
@@ -148,7 +160,21 @@ public class ArcaniaModel
             return true;
         }
         return false;
+    }
 
+    internal bool DoChangeModsMakeADifferenceForIntermediary(RuntimeUnit ru, ResourceChangeType changeType)
+    {
+        foreach (var item in ru.ModsSelfAsIntermediary)
+        {
+            if (item.ResourceChangeType != changeType) continue;
+            if (item.Source.Value == 0) continue;
+            var totalValue = item.Value * item.Source.Value * ru.Value;
+            if (totalValue == 0) continue;
+            if (totalValue > 0 && item.Target.IsAllMaxed()) continue;
+            if (totalValue < 0 && item.Target.IsAllZero()) continue;
+            return true;
+        }
+        return false;
     }
 
     private RuntimeUnit FindRuntimeUnitInternal(UnitType type, string v)
@@ -244,4 +270,6 @@ public class ArcaniaModel
             RESULT_HAPPENED_THIS_FRAME,
         }
     }
+
+
 }

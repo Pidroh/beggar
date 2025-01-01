@@ -251,7 +251,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         if (run.HasMax) return true;
         if (run.ConfigBasic.UnitType == UnitType.LOCATION) return true;
         if (run.Value == 0 && _model.DoChangesMakeADifference(run.ConfigTask.ResultOnce)) return true;
-        return (_model.DoChangesMakeADifference(run.ConfigTask.Result) || _model.DoChangesMakeADifference(run.ConfigTask.Effect));
+        return (_model.DoChangesMakeADifference(run.ConfigTask.Result) || _model.DoChangesMakeADifference(run.ConfigTask.Effect) || _model.DoChangeModsMakeADifferenceForIntermediary(run, ResourceChangeType.RESULT) || _model.DoChangeModsMakeADifferenceForIntermediary(run, ResourceChangeType.EFFECT));
     }
 
 

@@ -720,6 +720,20 @@
                 }
             },
             {
+                "id": "laylow",
+                "name": "Laying low",
+                "desc": "Let the danger pass while you rest",
+                "duration": 10,
+                "require": "danger>=10",
+                "max": 1,
+                "result": {
+                    "guilt": 3
+                },
+                "mod": {
+                    "pleafocus.effect.danger": -0.1
+                }
+            },
+            {
                 "id": "guiltcunning",
                 "name": "Not my fault",
                 "desc": "I'm hungry and no is gonna take care of me",
@@ -2017,7 +2031,7 @@
                     "organizethoughts.effect.clarity": 1,
                     "space": 1
                 }
-            },
+            }
         ]
     },
     {

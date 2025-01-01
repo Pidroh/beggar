@@ -96,8 +96,8 @@ public class RuntimeUnit
 
     internal void ChangeValueByResourceChange(RuntimeUnit parent, FloatRange valueChange, ResourceChangeType changeType)
     {
-        var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
-        ChangeValue(valueChange.getValue(Random.Range(0f, 1f)) + modV);
+        // var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
+        ChangeValue(valueChange.getValue(Random.Range(0f, 1f)));
     }
 
     public float GetModSumWithIntermediaryCheck(RuntimeUnit intermediary, ModType modType, ResourceChangeType changeType)
