@@ -163,6 +163,26 @@
                 }
             },
             {
+                "id": "ratcorpse",
+                "name": "Rat corpse",
+                "desc": "A dead rat",
+                "max": 3,
+                "mod": {
+                    "ratbond.max": 3,
+                    "supplication.max": -1
+                }
+            },
+            {
+                "id": "catcorpse",
+                "name": "Rat corpse",
+                "desc": "A dead rat",
+                "max": 3,
+                "mod": {
+                    "catbond.max": 3,
+                    "supplication.max": -1
+                }
+            },
+            {
                 "id": "ratbond",
                 "desc": "A faint connection forms with your rats, creating a slight sense of understanding and trust.",
                 "max": 5   
@@ -756,7 +776,7 @@
                 "cost": {
                     "happiness": 3
                 },
-                "result": {
+                "mod": {
                     "nutrition.rate": 0.2,
                     "nutrition.max": 10,
                     "supplication.max": 50
@@ -771,7 +791,7 @@
                     "happiness": 5,
                     "thoughts": 100
                 },
-                "result": {
+                "mod": {
                     "thoughts.max": 20,
                     "think.effect.thoughts": 1,
                     "think.effect.happiness": 0.05
@@ -786,7 +806,7 @@
                     "happiness": 5,
                     "gratitude": 30
                 },
-                "result": {
+                "mod": {
                     "gratitude.rate": 0.5,
                     "think.effect.gratitude": 0.5,
                     "gratitude.max": 5
