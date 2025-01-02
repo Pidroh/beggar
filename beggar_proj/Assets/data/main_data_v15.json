@@ -735,6 +735,20 @@
                 }
             },
             {
+                "id": "happycat",
+                "name": "Enjoy cat",
+                "desc": "Time to spend some quality time with my cat",
+                "require": "petcat&&felinology>4&&cathappy>1",
+                "duration": 10,
+                "effect": {
+                    "catbond": 1
+                },
+                "result": {
+                    "happiness": 1,
+                    "sadness": -1
+                }
+            },
+            {
                 "id": "laylow",
                 "name": "Laying low",
                 "desc": "Let the danger pass while you rest",
@@ -949,6 +963,7 @@
                 "desc": "Recognize your cat as a little friend",
                 "require": "felinology>0",
                 "need": "petcat",
+                "max": 1,
                 "duration": 10,
                 "cost": {
                     "thoughts": 20,
@@ -965,6 +980,7 @@
                 "desc": "Your cat helps you out on the path towards something, though you are not sure what that is.",
                 "require": "felinology>2",
                 "need": "petcat",
+                "max": 1,
                 "duration": 15,
                 "cost": {
                     "thoughts": 20,
@@ -997,7 +1013,7 @@
             },
             {
                 "id": "catsupport",
-                "name": "Beg with a cat",
+                "name": "Felyne support",
                 "desc": "Cats can be moral support, you know?",
                 "require": "felinology>2",
                 "need": "petcat",
@@ -1008,6 +1024,27 @@
                 },
                 "mod": {
                     "irritation.max": 10
+                }
+            },
+            {
+                "id": "cathappy_b",
+                "name": "Cat buddy III",
+                "desc": "Meow",
+                "require": "felinology>3",
+                "need": "petcat",
+                "max": 1,
+                "duration": 50,
+                "cost": {
+                    "thoughts": 25,
+                    "catbond": 80
+                },
+                "result": {
+                    "loneliness": -2
+                },
+                "mod": {
+                    "cathappy.max": 1,
+                    "catnotlonely.max": 1,
+                    "felinology.max": 1
                 }
             },
             {
