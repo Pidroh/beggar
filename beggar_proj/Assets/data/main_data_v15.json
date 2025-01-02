@@ -762,8 +762,47 @@
                     "rats": 8
                 },
                 "mod": {
-                    "rats.max": 3,
-                    "ratbond.max": 50
+                    "rodentology.max": 1,
+                    "ratbond.max": 50,
+                    "felinology.max": -3
+                }
+            },
+            {
+                "id": "killcat",
+                "name": "Kill a cat",
+                "desc": "Kill the enemy",
+                "duration": 15,
+                "require": "ratoath",
+                "need": "weapon",
+                "result": {
+                    "ratbond": 20,
+                    "guilt": 3,
+                    "catcorpse": 1
+                },
+                "mod": {
+                    "catbond.max": -20
+                }
+            },
+            {
+                "id": "deadcatritual",
+                "name": "Felyne Death Ritual",
+                "desc": "Celebrate the death of evil",
+                "duration": 100,
+                "require": "catcorpse&&SOMEVALUEOFRATSKILL",
+                "max": 3,
+                "cost": {
+                    "catcorpse": 1,
+                    "ratbond": 5
+                },
+                "run": {
+                    "ratbond": 1
+                },
+                "effect": {
+                    "rodentology.xp": 1
+                },
+                "mod": {
+                    "ratbond.rate": 0.5,
+                    "rats.max": 1
                 }
             },
             {
