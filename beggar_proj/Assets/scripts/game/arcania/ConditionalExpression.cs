@@ -106,7 +106,8 @@ namespace arcania
                     _ => ""
                 };
                 string nameOfThing = condition.Pointer.RuntimeUnit?.Name;
-                if (nameOfThing == null) nameOfThing = condition.Pointer.Tag.tagName;
+                if (nameOfThing == null) nameOfThing = condition.Pointer.Tag?.tagName;
+                if (nameOfThing == null) Debug.LogError($"pointer null {condition.Pointer.id}");
                 if ((condition.Value == 0 && condition.Operator == ComparisonOperator.GreaterThan) ||
                      condition.Value == 1 && condition.Operator == ComparisonOperator.GreaterThanOrEqual) 
                 {
