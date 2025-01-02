@@ -1384,6 +1384,19 @@
                 }
             },
             {
+                "id": "bestiality",
+                "name": "Bestiality",
+                "desc": "Humans are animals",
+                "require": "catcorpse||ratcorpse",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "ratbond.max": 4,
+                    "catbond.max": 4
+                }
+            },
+            {
                 "id": "scavenging",
                 "name": "Scavenging",
                 "desc": "Seek out and collect natural resources and useful items from the environment.",
