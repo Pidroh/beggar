@@ -1144,19 +1144,37 @@
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
-                "costZZZ":{
+                "cost":{
                     "thoughts": 140,
                     "sadness": 50,
                     "supplication": 650,
                     "sorrow": 5,
                     "rats": 1
                 },
-                "runZZZ":{
+                "run":{
                     "thoughts": 1,
                     "supplication": 1
                 },
                 "result": {
                     "nutrition": 1
+                }
+            },
+            {
+                "id": "ponderhappiness",
+                "name": "What is happiness?",
+                "desc": "Ask your cat about the nature of happiness",
+                "require": "t_tier2&&petcat>0&&happiness>0",
+                "max": 1,
+                "duration": 90,
+                "tags": "ending_game",
+                "need": "petcat>0",
+                "cost":{    
+                    "supplication": 650,
+                    "happiness": 5
+                },
+                "run":{
+                    "thoughts": 1,
+                    "supplication": 1
                 }
             }
         ]
