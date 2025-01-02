@@ -882,11 +882,11 @@
                 "name": "Felyne Death Ritual",
                 "desc": "Celebrate the death of evil",
                 "duration": 100,
-                "require": "catcorpse&&SOMEVALUEOFRATSKILL",
+                "require": "catcorpse&&rodentology>8",
                 "max": 3,
                 "cost": {
                     "catcorpse": 1,
-                    "ratbond": 5
+                    "ratbond": 20
                 },
                 "run": {
                     "ratbond": 1
