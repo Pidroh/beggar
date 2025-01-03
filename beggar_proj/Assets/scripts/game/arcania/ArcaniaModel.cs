@@ -152,32 +152,8 @@ public class ArcaniaModel
         return true;
     }
 
-    internal bool DoChangeModsMakeADifferenceForIntermediary(RuntimeUnit ru, ResourceChangeType changeType)
-    {
-        foreach (var item in ru.ModsSelfAsIntermediary)
-        {
-            if (item.ResourceChangeType != changeType) continue;
-            if (item.Source.Value == 0) continue;
-            var totalValue = item.Value * item.Source.Value;
-            if (totalValue == 0) continue;
-            if (totalValue > 0 && item.Target.IsAllMaxed()) continue;
-            if (totalValue < 0 && item.Target.IsAllZero()) continue;
-            return true;
-        }
-        return false;
-    }
 
-    public bool DoChangesMakeADifference(List<ResourceChange> changes)
-    {
-        foreach (var rc in changes)
-        {
-            if (rc.valueChange.BothEqual(0f)) continue;
-            if (rc.valueChange.BiggerThan(0f) && rc.IdPointer.IsAllMaxed()) continue;
-            if (rc.valueChange.SmallerThan(0f) && rc.IdPointer.IsAllZero()) continue;
-            return true;
-        }
-        return false;
-    }
+
 
     internal bool DoChangesMakeADifference(RuntimeUnit ru, ResourceChangeType changeType)
     {
