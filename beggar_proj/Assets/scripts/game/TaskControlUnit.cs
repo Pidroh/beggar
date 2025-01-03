@@ -122,7 +122,7 @@ public class RTControlUnit
         }
         if (DurationText != null)
             DurationText.Visible = duration > 0 && DurationText.Visible;
-        SuccessText.Visible = Data.ConfigTask != null && Data.ConfigTask.SuccessRatePercent.HasValue && SuccessText.Visible;
+        if (SuccessText != null) SuccessText.Visible = Data.ConfigTask != null && Data.ConfigTask.SuccessRatePercent.HasValue && SuccessText.Visible;
         if (Data.ConfigBasic.UnitType == UnitType.SKILL)
         {
             MainTitle.Element.SetTextRaw(Data.Name);

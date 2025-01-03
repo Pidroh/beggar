@@ -292,7 +292,10 @@ public class MainGameControlSetup
                             rcu.DurationText.ManualUpdate();
                             AddToExpands(rcu.DurationText.LayoutChild, layout, rcu);
                         }
+
                         #region success rate #successrate
+                        bool? hasSuccessRate = (item.ConfigTask?.SuccessRatePercent.HasValue);
+                        if (hasSuccessRate.HasValue && hasSuccessRate.Value)
                         {
                             var t = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.ButtonObjectRequest.font, 16);
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
@@ -305,6 +308,8 @@ public class MainGameControlSetup
                             rcu.SuccessText = successText;
                         }
                         #endregion
+
+
 
                     }
                 }
