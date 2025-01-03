@@ -672,7 +672,7 @@
                 "desc": "The presence of rats amplifies the depth of your sadness, bringing it into sharper focus.",
                 "duration": 10,
                 "max": 1,
-                "require": "rodentology>=3",
+                "require": "rodentology>=4",
                 "cost": {
                     "ratbond": 30,
                     "sadness": 10
@@ -680,7 +680,6 @@
                 "mod":{
                     "sadness.max": 10,
                     "ratbond.max": 10
-                    
                 }
             },
             {
@@ -1402,7 +1401,7 @@
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "need": "theself_2",
-                "require": "rodentology>3&&ratbeggar",
+                "require": "rodentology>=6&&ratbeggar",
                 "cost": {
                     "ratbond": 10,
                     "guilt": 15

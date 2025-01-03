@@ -1,9 +1,11 @@
-﻿using SimpleJSON;
+﻿using HeartUnity;
+using SimpleJSON;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class ConfigResource 
+public class ConfigResource
 {
     public bool Stressor;
 }
@@ -62,7 +64,7 @@ public class ArcaniaModel
                 item.ChangeValue(mod.Source.Value * mod.Value);
             }
             //mod.Target.
-            
+
         }
         foreach (var c in changes)
         {
@@ -75,12 +77,12 @@ public class ArcaniaModel
                         break;
                     case ResourceChange.ResourceChangeModificationType.XpChange:
                         // Mods not supported for now
-                        ru.Skill.xp += (int) c.valueChange.getValue(UnityEngine.Random.Range(0f, 1f));
+                        ru.Skill.xp += (int)c.valueChange.getValue(UnityEngine.Random.Range(0f, 1f));
                         break;
                     default:
                         break;
                 }
-                
+
             }
         }
     }
@@ -104,7 +106,7 @@ public class ArcaniaModel
         }
         foreach (var pair in arcaniaUnits.datas)
         {
-            
+
             foreach (var item in pair.Value)
             {
                 bool updateRequireStatusResult = item.UpdateRequireStatus();
@@ -150,6 +152,21 @@ public class ArcaniaModel
         return true;
     }
 
+    internal bool DoChangeModsMakeADifferenceForIntermediary(RuntimeUnit ru, ResourceChangeType changeType)
+    {
+        foreach (var item in ru.ModsSelfAsIntermediary)
+        {
+            if (item.ResourceChangeType != changeType) continue;
+            if (item.Source.Value == 0) continue;
+            var totalValue = item.Value * item.Source.Value;
+            if (totalValue == 0) continue;
+            if (totalValue > 0 && item.Target.IsAllMaxed()) continue;
+            if (totalValue < 0 && item.Target.IsAllZero()) continue;
+            return true;
+        }
+        return false;
+    }
+
     public bool DoChangesMakeADifference(List<ResourceChange> changes)
     {
         foreach (var rc in changes)
@@ -162,17 +179,50 @@ public class ArcaniaModel
         return false;
     }
 
-    internal bool DoChangeModsMakeADifferenceForIntermediary(RuntimeUnit ru, ResourceChangeType changeType)
+    internal bool DoChangesMakeADifference(RuntimeUnit ru, ResourceChangeType changeType)
     {
+        using var _1 = DictionaryPool<IDPointer, FloatRange>.Get(out var dict);
+        // Account for total normal effect changes
+        foreach (var rc in ru.ConfigTask.GetResourceChangeList(changeType))
+        {
+            if (rc.valueChange.BothEqual(0f)) continue;
+            if (dict.TryGetValue(rc.IdPointer, out var amt))
+            {
+                dict[rc.IdPointer] = amt + rc.valueChange;
+            }
+            else
+            {
+                dict[rc.IdPointer] = rc.valueChange;
+            }
+        }
+        // Account for mods where parent is the intermediary
         foreach (var item in ru.ModsSelfAsIntermediary)
         {
             if (item.ResourceChangeType != changeType) continue;
             if (item.Source.Value == 0) continue;
             var totalValue = item.Value * item.Source.Value;
             if (totalValue == 0) continue;
-            if (totalValue > 0 && item.Target.IsAllMaxed()) continue;
-            if (totalValue < 0 && item.Target.IsAllZero()) continue;
+            if (dict.TryGetValue(item.Target, out var amt))
+            {
+                dict[item.Target] = amt + totalValue;
+            }
+            else
+            {
+                dict[item.Target] = new FloatRange(totalValue, totalValue);
+            }
+        }
+        
+        // do the final calculation to see if it is meaningful
+        foreach (var item in dict)
+        {
+            var IdPointer = item.Key;
+            var valueChange = item.Value;
+            if (valueChange.BothEqual(0f)) continue;
+            if (valueChange.BiggerThan(0f) && IdPointer.IsAllMaxed()) continue;
+            if (valueChange.SmallerThan(0f) && IdPointer.IsAllZero()) continue;
+            // only 1 thing needs to be meaningful
             return true;
+
         }
         return false;
     }
