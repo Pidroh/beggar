@@ -772,6 +772,7 @@
                 "name": "Nutritional harmony",
                 "require": "happiness",
                 "duration": 40,
+                "max":1,
                 "cost": {
                     "happiness": 3
                 },
@@ -786,6 +787,7 @@
                 "name": "Positive thinking",
                 "require": "happiness",
                 "duration": 40,
+                "max":1,
                 "cost": {
                     "happiness": 5,
                     "thoughts": 100
@@ -801,6 +803,7 @@
                 "name": "Inner warmth",
                 "require": "happiness",
                 "duration": 40,
+                "max":1,
                 "cost": {
                     "happiness": 5,
                     "gratitude": 30
@@ -1064,6 +1067,7 @@
                 "require": "felinology>1",
                 "need": "petcat",
                 "duration": 15,
+                "max": 1,
                 "cost": {
                     "thoughts": 15,
                     "catbond": 15,
@@ -1081,6 +1085,7 @@
                 "require": "felinology>2",
                 "need": "petcat",
                 "duration": 40,
+                "max": 1,
                 "cost": {
                     "thoughts": 15,
                     "catbond": 60
@@ -1102,12 +1107,13 @@
                     "catbond": 80
                 },
                 "result": {
-                    "loneliness": -2
+                    "loneliness": -3
                 },
                 "mod": {
                     "cathappy.max": 1,
                     "catnotlonely.max": 1,
-                    "felinology.max": 1
+                    "felinology.max": 1,
+                    "happiness.max": 15
                 }
             },
             {
@@ -1188,12 +1194,14 @@
                 "tags": "ending_game",
                 "need": "petcat>0",
                 "cost":{    
-                    "supplication": 650,
-                    "happiness": 5
+                    "supplication": 450,
+                    "thoughts": 200,
+                    "clarity": 80,
+                    "happiness": 7
                 },
                 "run":{
-                    "thoughts": 1,
-                    "supplication": 1
+                    "thoughts": 5,
+                    "supplication": 5
                 }
             }
         ]
@@ -1422,8 +1430,8 @@
                 "need": "theself_2",
                 "require": "petcat&&felinology>0&&t_tier1",
                 "cost": {
-                    "rats": 3,
-                    "ratbond": 15
+                    "cat": 2,
+                    "catbond": 15
                 },
                 "mods":
                 {
@@ -2292,6 +2300,20 @@
                 "mod": {
                     "guilt.max": 5,
                     "cunning.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "catfoodtray",
+                "name": "Foodtray",
+                "require": "felinology>1",
+                "cost": {
+                    "foraging": 20,
+                    "breadcrumbs": 40
+                },
+                "mod": {
+                    "breadcrumbs.rate": -0.1,
+                    "cat.rate": 0.1,
                     "space": 1
                 }
             }
