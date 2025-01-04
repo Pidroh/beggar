@@ -399,9 +399,12 @@ public class MainGameControlSetup
 
         // end game message related
         {
-            mgc.EndGameRuntimeUnit = arcaniaModel.FindRuntimeUnit(UnitType.TASK, "ponderexistence");
+            for (int i = 0; i < EndingControl.endingUnitIds.Length; i++)
+            {
+                string item = EndingControl.endingUnitIds[i];
+                mgc.endingControl.runtimeUnits[i] = arcaniaModel.FindRuntimeUnit(UnitType.TASK, item);
+            }
             var endMessage = CanvasMaker.CreateTextUnit(mgc.MainTextColor, mgc.Font, 18);
-            endMessage.rawText = $"GAME CLEARED \nYou have become one with existence. \n At least until more content is added. \n\n Let me know you finished the game by sending me: \"I'm the beggar's journey\".\n\n\n You can use Reddit, email, the Discord channel, etc";
             var lc = LayoutChild.Create(endMessage.transform);
             lc.AddTextDrivenHeight(endMessage, 10f);
 
@@ -411,7 +414,7 @@ public class MainGameControlSetup
             dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(lc);
             dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(LayoutChild.Create(settingB.Button.transform));
             settingB.Button.transform.localPosition = Vector3.zero;
-            mgc.EndGameMessage = endMessage;
+            mgc.endingControl.EndGameMessage = endMessage;
             mgc.SettingButtonEnding = settingB;
         }
 

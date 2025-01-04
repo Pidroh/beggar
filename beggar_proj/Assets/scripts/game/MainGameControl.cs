@@ -11,6 +11,7 @@ public class MainGameControl : MonoBehaviour
     public ArcaniaGameConfigurationUnit ResourceJson;
     public DynamicCanvas dynamicCanvas;
     public List<TabControlUnit> TabControlUnits = new();
+    public EndingControl endingControl = new();
 
     [SerializeField]
     public TMP_FontAsset Font;
@@ -27,8 +28,6 @@ public class MainGameControl : MonoBehaviour
 
     public EngineView EngineView { get; internal set; }
     public float TimeMultiplier { get; private set; } = 1;
-    public RuntimeUnit EndGameRuntimeUnit { get; internal set; }
-    public UIUnit EndGameMessage { get; internal set; }
     public LayoutParent TabButtonLayout { get; internal set; }
 
     public RobustDeltaTime RobustDeltaTime = new();
@@ -127,11 +126,8 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         // Show end game
         // -----------------------------------------------------------
-        if (EndGameRuntimeUnit != null && EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
-        {
-            dynamicCanvas.ShowOverlay();
-            this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {HeartGame.PlayTimeControl.PlayTimeToShowAsString}";
-        }
+        endingControl.ManualUpdate(this);
+        
         // -----------------------------------------------------------
         // Time, game updating
         // -----------------------------------------------------------
@@ -386,5 +382,38 @@ public class MainGameControl : MonoBehaviour
     {
         ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
         HeartGame.GoToSettings();
+    }
+}
+
+public class EndingControl 
+{
+    public const int ENDING_COUNT = 2;
+    public static string[] endingUnitIds = new string[ENDING_COUNT] { "ponderexistence", "ponderhappiness" };
+    public static string[] endingPrefix = new string[ENDING_COUNT] { "You have become one with existence", "You are seeking happiness with your cats" };
+    public static string[] endingMessageSnippet = new string[ENDING_COUNT] { "I'm the beggar's journey", "The beggar's journey is the cat" };
+    public static string endingMessage = "GAME CLEARED \n$PART1$. \n At least until more content is added. \n\n Let me know you finished the game by sending me: \"$PART2$\".\n\n\n You can comment on the Reddit post, email, the Discord channel, etc";
+    public RuntimeUnit[] runtimeUnits = new RuntimeUnit[ENDING_COUNT] { null, null };
+    public UIUnit EndGameMessage { get; internal set; }
+
+    internal void ManualUpdate(MainGameControl mainGameControl)
+    {
+        TryShowEnding(mainGameControl);
+    }
+
+    private void TryShowEnding(MainGameControl mainGameControl)
+    {
+        var dynamicCanvas = mainGameControl.dynamicCanvas;
+        if (dynamicCanvas == null) return;
+        if (dynamicCanvas.OverlayVisible) return;
+        for (int i = 0; i < runtimeUnits.Length; i++)
+        {
+            RuntimeUnit ru = runtimeUnits[i];
+            if (ru.Value <= 0) continue;
+            dynamicCanvas.ShowOverlay();
+            var message = endingMessage;
+            message = message.Replace("$PART1$", endingPrefix[i]).Replace("$PART2$", endingMessageSnippet[i]);
+            EndGameMessage.rawText = message;
+            return;
+        }
     }
 }
