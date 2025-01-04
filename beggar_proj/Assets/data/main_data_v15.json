@@ -41,7 +41,7 @@
                 "id": "food",
                 "name": "Food",
                 "desc": "Nutritious substance",
-                "max": 0
+                "max": 2
             },
             {
                 "id": "danger",
@@ -174,8 +174,8 @@
             },
             {
                 "id": "catcorpse",
-                "name": "Rat corpse",
-                "desc": "A dead rat",
+                "name": "Cat corpse",
+                "desc": "A dead cat",
                 "max": 3,
                 "mod": {
                     "catbond.max": 3,
@@ -2295,7 +2295,7 @@
                 "require": "scavenging>2&&ratoath",
                 "tag": "weapon",
                 "cost": {
-                    "foraging": 40
+                    "foraging": 30
                 },
                 "mod": {
                     "guilt.max": 5,
