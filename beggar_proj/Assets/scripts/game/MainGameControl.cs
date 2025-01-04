@@ -132,9 +132,10 @@ public class MainGameControl : MonoBehaviour
         // Time, game updating
         // -----------------------------------------------------------
         RobustDeltaTime.ManualUpdate();
+        RobustDeltaTime.MultiplyTime(TimeMultiplier);
         while (RobustDeltaTime.TryGetProcessedDeltaTime(out float dt))
         {
-            arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
+            arcaniaModel.ManualUpdate(Time.deltaTime);
         }
         // -----------------------------------------------------------
         // UI update

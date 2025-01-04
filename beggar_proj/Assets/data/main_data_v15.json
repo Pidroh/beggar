@@ -250,6 +250,20 @@
                 }
             },
             {
+                "id": "eatcat",
+                "name": "Eat cat corpse",
+                "desc": "Raw",
+                "require": "bestiality>2",
+                "duration": 10,
+                "cost": {
+                    "catcorpse": 1
+                },
+                "result": {
+                    "nutrition": 30,
+                    "sadness": 5
+                }
+            },
+            {
                 "id": "relax_thoughts",
                 "name": "Refresh",
                 "desc": "Clear your mind, exchanging scattered thoughts for a surge of renewed energy.",
@@ -1536,20 +1550,6 @@
                 "mod": {
                     "ratbond.max": 4,
                     "catbond.max": 4
-                }
-            },
-            {
-                "id": "eatcat",
-                "name": "Eat cat corpse",
-                "desc": "Raw",
-                "require": "bestiality>2",
-                "duration": 10,
-                "cost": {
-                    "catcorpse": 1
-                },
-                "result": {
-                    "nutrition": 30,
-                    "sadness": 5
                 }
             },
             {
