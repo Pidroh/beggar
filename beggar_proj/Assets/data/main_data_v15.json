@@ -1622,8 +1622,8 @@
                     "skillpoints": 25
                 },
                 "result": {
-                    "supplication": 20,
-                    "clarity": 5
+                    "supplication": 80,
+                    "clarity": 10
                 },
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
@@ -1661,8 +1661,8 @@
                     "supplication": 1
                 },
                 "result": {
-                    "faith": 10,
-                    "thoughts": 20
+                    "faith": 40,
+                    "thoughts": 30
                 },
                 "result_once": {
                     "skillpoints": 25
@@ -1682,8 +1682,8 @@
                     "supplication": 1
                 },
                 "result": {
-                    "faith": 10,
-                    "thoughts": 20
+                    "rats": 20,
+                    "ratbond": 20
                 },
                 "result_once": {
                     "skillpoints": 25
@@ -1703,8 +1703,8 @@
                     "supplication": 1
                 },
                 "result": {
-                    "faith": 10,
-                    "thoughts": 20
+                    "rats": 50,
+                    "ratbond": 200
                 },
                 "result_once": {
                     "skillpoints": 25
