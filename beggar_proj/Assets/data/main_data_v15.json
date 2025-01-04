@@ -1677,7 +1677,7 @@
                 "name": "Market Midden",
                 "desc": "The holes where they throw all the garbage in",
                 "require": "creepyalley",
-                "length": 10,
+                "length": 15,
                 "run": {
                     "supplication": 1
                 },
@@ -1698,7 +1698,7 @@
                 "name": "Sewers",
                 "desc": "Narrow stone tunnels carry waste downhill, draining into the river outside the city.",
                 "require": "midden",
-                "length": 10,
+                "length": 20,
                 "run": {
                     "supplication": 1
                 },
