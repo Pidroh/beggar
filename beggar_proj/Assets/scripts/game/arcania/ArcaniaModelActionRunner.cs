@@ -225,6 +225,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             }
 
             StartAction(InterruptedAction);
+            InterruptedAction = null;
         }
         else
         {
