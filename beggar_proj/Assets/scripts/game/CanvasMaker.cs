@@ -421,10 +421,7 @@ public class CanvasMaker
         var ttv = new TripleTextView();
         GameObject parentGo = new GameObject();
         RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
-        ttv.LayoutChild = new LayoutChild()
-        {
-            RectTransform = parentRectTransform
-        };
+        ttv.LayoutChild = new LayoutChild(parentRectTransform, parentGo);
 
         ttv.MainText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
         ttv.SecondaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);

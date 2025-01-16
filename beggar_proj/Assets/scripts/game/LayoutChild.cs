@@ -50,11 +50,16 @@ public class Gauge
 public class LayoutChild
 {
     public RectTransform RectTransform;
-
     public GameObject GameObject;
     internal bool Visible { get => GameObject.activeSelf; set => GameObject.SetActive(value); }
     public float?[] PreferredSizeMM = new float?[2];
     public List<TextDrivenPreferredHeightUnit> TextDrivenHeight = new();
+
+    public LayoutChild(RectTransform rectTransform, GameObject gameObject)
+    {
+        RectTransform = rectTransform;
+        GameObject = gameObject;
+    }
 
     public static LayoutChild Create(Transform transform1 = null, Transform transform2 = null)
     {
@@ -62,11 +67,7 @@ public class LayoutChild
         parentGo.name = "layout-child";
         RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
 
-        var lc = new LayoutChild()
-        {
-            RectTransform = parentRectTransform,
-            GameObject = parentGo
-        };
+        var lc = new LayoutChild(parentRectTransform, parentGo);
         transform1?.SetParent(parentRectTransform);
         transform2?.transform.SetParent(parentRectTransform);
         return lc;
@@ -245,10 +246,7 @@ public class SeparatorWithLabel
         GameObject parentGo = new GameObject();
         RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
 
-        LayoutChild = new LayoutChild()
-        {
-            RectTransform = parentRectTransform
-        };
+        LayoutChild = new LayoutChild(parentRectTransform, parentGo);
         Text.transform.SetParent(parentRectTransform);
         Image.transform.SetParent(parentRectTransform);
         Text.RectTransform.SetHeight(14);

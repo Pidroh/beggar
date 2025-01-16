@@ -36,10 +36,7 @@ public class MainGameControlSetup
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             var button = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
 
-            var lc = new LayoutChild()
-            {
-                RectTransform = button.Button.RectTransform
-            };
+            var lc = new LayoutChild(button.Button.RectTransform, button.Button.gameObject);
             lowerMenuLayout.AddLayoutChildAndParentIt(lc);
             var tcu = new TabControlUnit()
             {
@@ -97,10 +94,7 @@ public class MainGameControlSetup
                     text.RectTransform.FillParent();
                     text.RectTransform.SetOffsetMinByIndex(0, 0);
                     text.rawText = sep.Data.Name;
-                    LayoutChild layoutChild = new LayoutChild()
-                    {
-                        RectTransform = image.RectTransform
-                    };
+                    LayoutChild layoutChild = new LayoutChild(image.RectTransform, image.gameObject);
                     dynamicCanvas.children[tabIndex].AddLayoutChildAndParentIt(layoutChild);
                     dynamicCanvas.children[tabIndex].InvertChildrenPositionIndex = tabControl.TabData.Tab.ContainsLogs;
                     sep.SeparatorLC = layoutChild;

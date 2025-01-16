@@ -19,10 +19,7 @@ public class LayoutParent
     public LayoutParent(RectTransform rT)
     {
 
-        SelfChild = new LayoutChild()
-        {
-            RectTransform = rT
-        };
+        SelfChild = new LayoutChild(rT, rT.gameObject);
     }
 
     public LayoutParent(LayoutChild lC)
@@ -229,10 +226,7 @@ public class LayoutParent
 
     internal void AddLayoutChildAndParentIt(UIUnit unit)
     {
-        AddLayoutChildAndParentIt(new LayoutChild()
-        {
-            RectTransform = unit.RectTransform
-        });
+        AddLayoutChildAndParentIt(new LayoutChild(unit.RectTransform, unit.gameObject));
     }
 
     public enum LayoutType
