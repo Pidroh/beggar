@@ -162,6 +162,7 @@ public class RTControlUnit
         if (description == null) return;
         description.Element.text.SetFontSizePhysical(15);
         string desc = Data.ConfigBasic.Desc;
+        if (description.Element.text.text == desc) return;
         FeedDescription(description, desc);
     }
 

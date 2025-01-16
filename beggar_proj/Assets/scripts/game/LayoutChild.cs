@@ -51,8 +51,8 @@ public class LayoutChild
 {
     public RectTransform RectTransform;
 
-    public GameObject GameObject => RectTransform.gameObject;
-    internal bool Visible { get => RectTransform.gameObject.activeSelf; set => RectTransform.gameObject.SetActive(value); }
+    public GameObject GameObject;
+    internal bool Visible { get => GameObject.activeSelf; set => GameObject.SetActive(value); }
     public float?[] PreferredSizeMM = new float?[2];
     public List<TextDrivenPreferredHeightUnit> TextDrivenHeight = new();
 
@@ -64,7 +64,8 @@ public class LayoutChild
 
         var lc = new LayoutChild()
         {
-            RectTransform = parentRectTransform
+            RectTransform = parentRectTransform,
+            GameObject = parentGo
         };
         transform1?.SetParent(parentRectTransform);
         transform2?.transform.SetParent(parentRectTransform);
