@@ -190,7 +190,7 @@ public class MainGameControl : MonoBehaviour
                 sep.SpaceAmountText.text.SetFontSizePhysical(18);
                 sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
             }
-            tabControl.SelectionButton.Visible = tabControl.TabData.Visible;
+            tabControl.SelectionButtonLayoutChild.VisibleSelf = tabControl.TabData.Visible;
             dynamicCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
             tabControl.SelectionButton.Button.Image.color = dynamicCanvas.IsChildVisible(tabIndex) ? this.ButtonRequest_TabSelected.MainBody.NormalColor : this.ButtonRequest.MainBody.NormalColor;
 

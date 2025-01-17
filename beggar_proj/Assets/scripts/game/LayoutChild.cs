@@ -162,7 +162,8 @@ public class ButtonWithProgressBar
     public UIUnit ProgressImage;
 
     public int HeightMms { get; internal set; }
-    public bool Visible { get => Button.Active; set => Button.Active = value; }
+    // do not use visible in set, instead deactivate with Layout Child
+    public bool Visible { get => Button.Active;  }
 
     internal void SetProgress(float v)
     {
