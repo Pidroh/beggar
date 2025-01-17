@@ -160,7 +160,10 @@ public class RTControlUnit
             ValueText.text.SetFontSizePhysical(16);
         }
 
-        if (!IsExpanded) return;
+        if (!IsExpanded) {
+            Dirty = false;
+            return; 
+        }
 
 
 
@@ -176,11 +179,13 @@ public class RTControlUnit
 
     public void FeedDescription()
     {
+        if (!Dirty) return;
         SimpleChild<UIUnit> description = Description;
         if (description == null) return;
         description.Element.text.SetFontSizePhysical(15);
         string desc = Data.ConfigBasic.Desc;
-        if (description.Element.text.text == desc) return;
+        // this check is done by dirty checking
+        // if (description.Element.text.text == desc) return;
         FeedDescription(description, desc);
     }
 

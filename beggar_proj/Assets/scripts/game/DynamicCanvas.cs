@@ -117,7 +117,7 @@ public class DynamicCanvas
             float availableWidth = Screen.width;
             var minimumTabWidth = GetAdjustedMinimumTabPixelWidth();
             float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, minimumTabWidth, minimumTabWidth * 2);
-            WidthChangedThisFrame = childWidth == _previousWidth;
+            WidthChangedThisFrame = childWidth != _previousWidth;
             _previousWidth = childWidth;
 
             // Calculate total width of active children
