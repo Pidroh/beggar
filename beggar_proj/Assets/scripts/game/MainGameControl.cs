@@ -142,7 +142,7 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible
-        dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
+        dynamicCanvas.LowerMenus[0].SelfChild.VisibleSelf = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
         TabButtonLayout.SelfChild.RectTransform.SetHeightMilimeters(10);
         if (SettingButtonEnding.Button.Clicked)
         {
@@ -363,11 +363,11 @@ public class MainGameControl : MonoBehaviour
                 FeedModView(modRuntime, modRuntime.Source.Value * modRuntime.Value, ttv, modRuntime.HumanTextIntermediary);
                 modsAsIntermediaryVisible = true;
             }
-            modUnit.ExtraModSeparator.LayoutChild.Visible = modsAsIntermediaryVisible;
+            modUnit.ExtraModSeparator.LayoutChild.VisibleSelf = modsAsIntermediaryVisible;
 
             static void FeedModView(ModRuntime md, float value, TripleTextView ttv, string rawText)
             {
-                ttv.LayoutChild.Visible = md.ModType != ModType.Lock && ttv.LayoutChild.Visible;
+                ttv.LayoutChild.VisibleSelf = md.ModType != ModType.Lock && ttv.LayoutChild.Visible;
                 ttv.MainText.rawText = rawText;
                 if (value > 0 && md.ModType != ModType.SpaceConsumption)
                     ttv.SecondaryText.rawText = $"+{value}";

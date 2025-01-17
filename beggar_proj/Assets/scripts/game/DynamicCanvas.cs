@@ -130,11 +130,10 @@ public class DynamicCanvas
             List<LayoutParent> layouts = childrenForLayouting;
             foreach (var layoutP in layouts)
             {
-                var child = layoutP.SelfChild.RectTransform.gameObject;
-                layoutP.SelfChild.Visible = ActiveChildren.Contains(layoutP);
-                if (child.activeSelf)
+                layoutP.SelfChild.SetVisibleSelf(ActiveChildren.Contains(layoutP));
+                if (layoutP.SelfChild.Visible)
                 {
-                    RectTransform rt = child.GetComponent<RectTransform>();
+                    RectTransform rt = layoutP.SelfChild.RectTransform;
                     if (rt != null)
                     {
                         rt.sizeDelta = new Vector2(childWidth, rt.sizeDelta.y);

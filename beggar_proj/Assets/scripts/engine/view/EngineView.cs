@@ -36,6 +36,8 @@ namespace HeartUnity.View
 
         public static float dpi => overwrittenDpi.HasValue ? overwrittenDpi.Value : Screen.dpi;
         private static float? overwrittenDpi;
+        private static float? previousDpi;
+        public static bool DpiChanged;
         private bool pixelPerfectScale;
 
         internal void Init(int initialLayer)
@@ -296,6 +298,12 @@ namespace HeartUnity.View
         public static void ClearOverwriteDPI() 
         {
             overwrittenDpi = null;
+        }
+
+        public static void ManualUpdateStatic() 
+        {
+            DpiChanged = previousDpi.HasValue && previousDpi != dpi;
+            previousDpi = dpi;
         }
     }
 }

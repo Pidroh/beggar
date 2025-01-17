@@ -44,7 +44,7 @@ public class MainGameControlSetup
                 SelectionButton = button,
                 TabData = item
             };
-            dynamicCanvas.children[tabIndex].SelfChild.GameObject.name = $"tab_{item.Name}";
+            dynamicCanvas.children[tabIndex].SelfChild.ObjectName = $"tab_{item.Name}";
             mgc.TabControlUnits.Add(tcu);
             foreach (var sepD in item.Tab.Separators)
             {
@@ -137,6 +137,7 @@ public class MainGameControlSetup
                         var valueTextIsOnLWE = !hasBWE;
 
                         var rcu = new RTControlUnit();
+                        rcu.MainLayout = layout;
                         rcu.ParentTabSeparator = unitSeparator;
 
                         if (hasBWE)
@@ -182,7 +183,7 @@ public class MainGameControlSetup
                                 t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                                 // bwe.ExpandTargets
                                 rcu.MainTitle = new SimpleChild<UIUnit>(t, t.RectTransform);
-                                rcu.MainTitle.RectOffset = new RectOffset(20, 20, 10, 0);
+                                rcu.MainTitle.RectOffsetRequest = new RectOffset(20, 20, 10, 0);
                                 layout.AddLayoutChildAndParentIt(rcu.MainTitle.LayoutChild);
                             }
                             {
@@ -281,7 +282,7 @@ public class MainGameControlSetup
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                             // bwe.ExpandTargets
                             rcu.DurationText = new SimpleChild<UIUnit>(t, t.RectTransform);
-                            rcu.DurationText.RectOffset = new RectOffset(20, 20, 0, 0);
+                            rcu.DurationText.RectOffsetRequest = new RectOffset(20, 20, 0, 0);
                             rcu.DurationText.LayoutChild.PreferredSizeMM[1] = 10;
                             rcu.DurationText.ManualUpdate();
                             AddToExpands(rcu.DurationText.LayoutChild, layout, rcu);
@@ -295,7 +296,7 @@ public class MainGameControlSetup
                             t.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
                             // bwe.ExpandTargets
                             SimpleChild<UIUnit> successText = new SimpleChild<UIUnit>(t, t.RectTransform);
-                            successText.RectOffset = new RectOffset(20, 20, 0, 0);
+                            successText.RectOffsetRequest = new RectOffset(20, 20, 0, 0);
                             successText.LayoutChild.PreferredSizeMM[1] = 10;
                             successText.ManualUpdate();
                             AddToExpands(successText.LayoutChild, layout, rcu);
@@ -334,6 +335,7 @@ public class MainGameControlSetup
                     dynamicCanvas.children[tabIndex].AddLayoutAndParentIt(layout);
                     var hasBWE = fleeButton;
                     var rcu = new RTControlUnit();
+                    rcu.MainLayout = layout;
                     if (isStressors)
                     {
                         rcu.Data = mgc.arcaniaModel.Exploration.Stressors[eleIndex];
@@ -346,7 +348,7 @@ public class MainGameControlSetup
                         var bwe = new ButtonWithExpandable(button, iconButton);
                         rcu.bwe = bwe;
                         layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
-                        bwe.LayoutChild.GameObject.name = "WTF IS";
+                        bwe.LayoutChild.ObjectName = "WTF IS";
                     }
 
                     if (!hasBWE)
@@ -445,7 +447,7 @@ public class MainGameControlSetup
             swl.LayoutChild.RectTransform.gameObject.name = $"SEP_{textKey}";
             layout.AddLayoutChildAndParentIt(swl.LayoutChild);
             swl.Text.SetTextRaw(textKey);
-            expand.ExpandTargets.Add(swl.LayoutChild.GameObject);
+            expand.ExpandTargets.Add(swl.LayoutChild);
             return swl;
         }
 
@@ -453,7 +455,7 @@ public class MainGameControlSetup
         {
             TripleTextView ttv = CanvasMaker.CreateTripleTextView(mgc.ButtonObjectRequest);
             layout.AddLayoutChildAndParentIt(ttv.LayoutChild);
-            expand.ExpandTargets.Add(ttv.LayoutChild.RectTransform.gameObject);
+            expand.ExpandTargets.Add(ttv.LayoutChild);
             return ttv;
         }
 
@@ -502,7 +504,7 @@ public class MainGameControlSetup
 
         void AddToExpands(LayoutChild c, LayoutParent layout, RTControlUnit rcu)
         {
-            rcu.ExpandManager.ExpandTargets.Add(c.GameObject);
+            rcu.ExpandManager.ExpandTargets.Add(c);
             layout.AddLayoutChildAndParentIt(c);
         }
 
@@ -513,7 +515,7 @@ public class MainGameControlSetup
             t.text.verticalAlignment = VerticalAlignmentOptions.Top;
             // bwe.ExpandTargets
             rcu.Description = new SimpleChild<UIUnit>(t, t.RectTransform);
-            rcu.Description.RectOffset = new RectOffset(20, 20, 0, 10);
+            rcu.Description.RectOffsetRequest = new RectOffset(20, 20, 0, 10);
             if (addToExpands)
                 AddToExpands(rcu.Description.LayoutChild, layout, rcu);
             else
