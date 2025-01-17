@@ -23,6 +23,10 @@ public class DynamicCanvas
     public Queue<LayoutParent> ActiveChildren = new();
     public GameObject canvasGO;
 
+    public bool WidthChangedThisFrame { get; private set; }
+
+    private float _previousWidth;
+
     public RectTransform RootRT { get; internal set; }
     public Canvas Canvas { get; internal set; }
     public RectTransform OverlayRoot { get; internal set; }
@@ -113,6 +117,8 @@ public class DynamicCanvas
             float availableWidth = Screen.width;
             var minimumTabWidth = GetAdjustedMinimumTabPixelWidth();
             float childWidth = Mathf.Clamp(availableWidth / activeChildrenCount, minimumTabWidth, minimumTabWidth * 2);
+            WidthChangedThisFrame = childWidth == _previousWidth;
+            _previousWidth = childWidth;
 
             // Calculate total width of active children
             float totalWidth = childWidth * activeChildrenCount;

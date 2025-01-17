@@ -138,6 +138,7 @@ public class MainGameControlSetup
 
                         var rcu = new RTControlUnit();
                         rcu.MainLayout = layout;
+                        rcu.TabControl = tabControl;
                         rcu.ParentTabSeparator = unitSeparator;
 
                         if (hasBWE)
@@ -336,6 +337,7 @@ public class MainGameControlSetup
                     var hasBWE = fleeButton;
                     var rcu = new RTControlUnit();
                     rcu.MainLayout = layout;
+                    rcu.TabControl = tab;
                     if (isStressors)
                     {
                         rcu.Data = mgc.arcaniaModel.Exploration.Stressors[eleIndex];

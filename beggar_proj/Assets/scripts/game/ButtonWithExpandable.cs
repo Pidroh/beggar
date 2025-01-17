@@ -109,6 +109,11 @@ public class ButtonWithExpandable
         );
     }
 
+    internal void MarkAsDirty()
+    {
+        _dirty = true;
+    }
+
     internal void SetActive(bool visible)
     {
         this.LayoutChild.SetVisibleSelf(visible);

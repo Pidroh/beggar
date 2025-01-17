@@ -367,6 +367,10 @@ public class LabelWithExpandable
 
     }
 
+    internal void MarkAsDirty()
+    {
+        _dirty = true;
+    }
 }
 
 public class ExpandableManager

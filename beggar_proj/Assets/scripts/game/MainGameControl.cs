@@ -177,6 +177,7 @@ public class MainGameControl : MonoBehaviour
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
             TabControlUnit tabControl = TabControlUnits[tabIndex];
+            tabControl.Dirty = dynamicCanvas.WidthChangedThisFrame;
             var tabNormalContentVisible = !(tabControl.TabData.Tab.ExplorationActiveTab && arcaniaModel.Exploration.IsExplorationActive);
             tabControl.SelectionButton.ManualUpdate();
 

@@ -7,6 +7,7 @@ public class TabControlUnit
 {
     public LayoutChild SelectionButtonLayoutChild { get; internal set; }
     public RuntimeUnit TabData { get; internal set; }
+    public bool Dirty { get; internal set; }
 
     public Dictionary<UnitType, List<RTControlUnit>> UnitGroupControls = new();
     internal ButtonWithProgressBar SelectionButton;
@@ -92,11 +93,13 @@ public class RTControlUnit
     public SimpleChild<UIUnit> DurationText { get; internal set; }
     public SimpleChild<UIUnit> SuccessText { get; internal set; }
     public LayoutParent MainLayout { get; internal set; }
+    public TabControlUnit TabControl { get; internal set; }
 
     public bool Dirty = true;
 
     public void ManualUpdate(ArcaniaModel arcaniaModel)
     {
+        Dirty = TabControl.Dirty || Dirty;
         if (ButtonAdd != null)
         {
             ButtonAdd.ManualUpdate();
@@ -113,6 +116,10 @@ public class RTControlUnit
             SuccessText.Element.rawText = $"Success rate: {Data.ConfigTask.SuccessRatePercent.Value}%";
         if (bwe != null)
         {
+            if (Dirty) 
+            {
+                bwe.MarkAsDirty();
+            }
             bwe.ManualUpdate();
             float progRatio = Data.TaskProgressRatio;
             if (Data.Location != null) progRatio = arcaniaModel.Exploration.LastActiveLocation == Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
@@ -121,6 +128,9 @@ public class RTControlUnit
         }
         if (lwe != null)
         {
+            if (Dirty) {
+                lwe.MarkAsDirty();
+            }
             lwe.ManualUpdate();
         }
         if (DurationText != null)
