@@ -171,6 +171,7 @@ public class LayoutParent
 
         foreach (var lp in ChildrenLayoutParents)
         {
+            if (!lp.SelfChild.Visible) continue;
             lp.ManualUpdate();
         }
     }

@@ -240,11 +240,12 @@ public class MainGameControl : MonoBehaviour
                 foreach (var tcu in pair.Value)
                 {
                     var data = tcu.Data;
-                    tcu.ManualUpdate(arcaniaModel);
                     bool visible = data.Visible && tabNormalContentVisible;
                     tcu.SetVisible(visible);
 
                     if (!visible) continue;
+                    tcu.ManualUpdate(arcaniaModel);
+
                     if (tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
                     if (tcu.ExpandManager.Expanded)
                     {
@@ -333,7 +334,10 @@ public class MainGameControl : MonoBehaviour
                     }
                 }
             }
-
+            foreach (var sep in tabControl.Separators)
+            {
+                sep.ApplyVisible();
+            }
         }
 
         #region Sub unit update
