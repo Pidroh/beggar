@@ -193,6 +193,7 @@ public class MainGameControl : MonoBehaviour
 
             tabControl.SelectionButton.ManualUpdate();
             tabControl.SelectionButtonLarge.ManualUpdate();
+            tabControl.SelectionButtonLayoutChildLarge.RectTransform.SetHeightMilimeters(12);
             var isSmallerButtonActive = tabIndex < actualMaxOfLowerTabButtonsWithoutOtherButton;
 
             foreach (var sep in tabControl.Separators)
