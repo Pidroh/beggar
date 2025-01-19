@@ -30,6 +30,19 @@ public class MainGameControlSetup
 
         dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.DialogObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
 
+        for (int i = 0; i < 2; i++)
+        {
+            var overlayLayout = CanvasMaker.CreateLayout();
+            overlayLayout.SelfChild.RectTransform.SetParent(dynamicCanvas.OverlayRoot);
+            overlayLayout.SelfChild.RectTransform.FillParent();
+            dynamicCanvas.OverlayLayoutsSingleActive.Add(overlayLayout);
+
+            if (i == 0) mgc.EndingOverlayLayout = overlayLayout;
+            if (i == 1) mgc.TabButtonOverlayLayout = overlayLayout;
+
+        }
+
+
         // -------------------------------------------------
         // TAB BUTTON INSTANTIATING AND OTHER SMALL SETUP
         // -------------------------------------------------
@@ -37,6 +50,10 @@ public class MainGameControlSetup
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             var button = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
+            var largeTabButton = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id + "_large", mgc.ButtonObjectRequest, mgc.ButtonRequest);
+            LayoutChild largeTabButtonLC = LayoutChild.Create(largeTabButton.Button.transform);
+            mgc.TabButtonOverlayLayout.AddLayoutChildAndParentIt(largeTabButtonLC);
+            
 
             var lc = new LayoutChild(button.Button.RectTransform, button.Button.gameObject);
             lowerMenuLayout.AddLayoutChildAndParentIt(lc);
@@ -44,6 +61,8 @@ public class MainGameControlSetup
             {
                 SelectionButtonLayoutChild = lc,
                 SelectionButton = button,
+                SelectionButtonLarge = largeTabButton,
+                SelectionButtonLayoutChildLarge = largeTabButtonLC,
                 TabData = item
             };
             dynamicCanvas.children[tabIndex].SelfChild.ObjectName = $"tab_{item.Name}";
@@ -412,15 +431,7 @@ public class MainGameControlSetup
 
             endMessage.RectTransform.FillParent();
 
-            {
-                var overlayLayout = CanvasMaker.CreateLayout();
-                overlayLayout.SelfChild.RectTransform.SetParent(dynamicCanvas.OverlayRoot);
-                overlayLayout.SelfChild.RectTransform.FillParent();
-                dynamicCanvas.OverlayLayoutsSingleActive.Add(overlayLayout);
-
-                mgc.EndingOverlayLayout = overlayLayout;
-            }
-
+           
             mgc.EndingOverlayLayout.AddLayoutChildAndParentIt(lc);
             mgc.EndingOverlayLayout.AddLayoutChildAndParentIt(LayoutChild.Create(settingB.Button.transform));
             settingB.Button.transform.localPosition = Vector3.zero;
