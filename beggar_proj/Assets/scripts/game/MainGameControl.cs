@@ -51,7 +51,6 @@ public class MainGameControl : MonoBehaviour
         ArcaniaPersistence = new(HeartGame);
         ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
         HeartGame.CommonDataLoad();
-        EngineView.DisabledAutoScaling = true;
     }
 
     // Update is called once per frame

@@ -58,7 +58,7 @@ public class LayoutChild
     private bool _parentShowing = true;
     private bool _visibleResult = true;
     private bool _visibleSelf = true;
-    public bool VisibleSelf  { set => SetVisibleSelf(value); }
+    public bool VisibleSelf  { get => _visibleSelf; set => SetVisibleSelf(value); }
     public string ObjectName { set { _gameObject.name = value; } }
 
     public LayoutChild(RectTransform rectTransform, GameObject gameObject)

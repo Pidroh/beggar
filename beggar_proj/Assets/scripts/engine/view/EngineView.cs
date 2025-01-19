@@ -9,6 +9,7 @@ namespace HeartUnity.View
         public struct EngineViewInitializationParameter
         {
             public Canvas canvas;
+            public bool DisableAutoScaling;
         }
 
         // access this through an instance of heart game
@@ -16,6 +17,7 @@ namespace HeartUnity.View
         {
             var go = new GameObject();
             var ev = go.AddComponent<EngineView>();
+            ev.DisabledAutoScaling = param.DisableAutoScaling;
             ev.canvas = param.canvas;
             ev.canvasScaler = ev.canvas.GetComponent<CanvasScaler>();
             return ev;

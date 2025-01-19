@@ -101,11 +101,12 @@ public class RTControlUnit
     public LayoutParent MainLayout { get; internal set; }
     public TabControlUnit TabControl { get; internal set; }
 
-    public bool Dirty = true;
+    public int Dirty = 1;
 
     public void ManualUpdate(ArcaniaModel arcaniaModel)
     {
-        Dirty = TabControl.Dirty || Dirty;
+        if (Dirty < 0) Dirty = 0;
+        if (Dirty == 0 && TabControl.Dirty) Dirty++;
         if (ButtonAdd != null)
         {
             ButtonAdd.ManualUpdate();
@@ -122,7 +123,7 @@ public class RTControlUnit
             SuccessText.Element.rawText = $"Success rate: {Data.ConfigTask.SuccessRatePercent.Value}%";
         if (bwe != null)
         {
-            if (Dirty) 
+            if (Dirty > 0) 
             {
                 bwe.MarkAsDirty();
             }
@@ -134,7 +135,7 @@ public class RTControlUnit
         }
         if (lwe != null)
         {
-            if (Dirty) {
+            if (Dirty > 0) {
                 lwe.MarkAsDirty();
             }
             lwe.ManualUpdate();
@@ -144,7 +145,7 @@ public class RTControlUnit
         if (SuccessText != null) SuccessText.Visible = Data.ConfigTask != null && Data.ConfigTask.SuccessRatePercent.HasValue && SuccessText.Visible;
         if (Data.ConfigBasic.UnitType == UnitType.SKILL)
         {
-            if (Dirty || EngineView.DpiChanged) 
+            if (Dirty > 0 || EngineView.DpiChanged) 
             {
                 MainTitle.Element.SetTextRaw(Data.Name);
                 MainTitle.LayoutChild.RectTransform.SetHeight(MainTitle.Element.text.preferredHeight + 20);
@@ -167,7 +168,7 @@ public class RTControlUnit
         }
 
         if (!IsExpanded) {
-            Dirty = false;
+            Dirty--;
             return; 
         }
 
@@ -179,13 +180,13 @@ public class RTControlUnit
         }
 
         UpdateChangeGroups();
-        Dirty = false;
+        Dirty--;
 
     }
 
     public void FeedDescription()
     {
-        if (!Dirty) return;
+        if (Dirty <= 0) return;
         SimpleChild<UIUnit> description = Description;
         if (description == null) return;
         description.Element.text.SetFontSizePhysical(15);
@@ -251,7 +252,7 @@ public class RTControlUnit
                     targetName = rc.IdPointer.Tag.tagName;
                 }
 
-                if (Dirty) 
+                if (Dirty > 0) 
                 {
                     ttv.MainText.SetTextRaw(targetName);
                 }
@@ -277,6 +278,8 @@ public class RTControlUnit
 
     internal void SetVisible(bool visible)
     {
+        var wannaDirty = MainLayout.SelfChild.VisibleSelf != visible;
+        if (wannaDirty) Dirty = 2;
         MainLayout.SelfChild.VisibleSelf = visible;
     }
 }

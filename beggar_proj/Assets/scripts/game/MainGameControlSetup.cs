@@ -22,8 +22,10 @@ public class MainGameControlSetup
 
         mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
         {
-            canvas = dynamicCanvas.Canvas
-        }, 2);
+            canvas = dynamicCanvas.Canvas,
+            DisableAutoScaling = true
+
+        }, 2) ;
 
 
         dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.DialogObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
