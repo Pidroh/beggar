@@ -50,7 +50,7 @@ public class MainGameControlSetup
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             var button = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
-            var largeTabButton = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id + "_large", mgc.ButtonObjectRequest, mgc.ButtonRequest);
+            var largeTabButton = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
             LayoutChild largeTabButtonLC = LayoutChild.Create(largeTabButton.Button.transform);
             largeTabButton.Button.RectTransform.localPosition = Vector3.zero;
             largeTabButtonLC.RectTransform.SetHeight(largeTabButton.Button.RectTransform.GetHeight()+7);
