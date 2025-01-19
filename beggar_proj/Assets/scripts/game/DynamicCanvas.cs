@@ -30,7 +30,7 @@ public class DynamicCanvas
     public RectTransform RootRT { get; internal set; }
     public Canvas Canvas { get; internal set; }
     public RectTransform OverlayRoot { get; internal set; }
-    public LayoutParent OverlayMainLayout { get; set; }
+    public List<LayoutParent> OverlayLayoutsSingleActive = new();
     public bool OverlayVisible => OverlayRoot.gameObject.activeSelf;
     private const int minimumDefaultTabPixelWidth = 320;
 
@@ -186,8 +186,11 @@ public class DynamicCanvas
             item.parentTransform.RectTransform.SetLeftXToParent((item.fullScreenOverlay.RectTransform.GetWidth() - dialogWidth) * 0.5f);
             item.parentTransform.RectTransform.SetBottomYToParent((item.fullScreenOverlay.RectTransform.GetHeight() - dialogHeight) * 0.5f);
         }
-
-        OverlayMainLayout.ManualUpdate();
+        foreach (var item in OverlayLayoutsSingleActive)
+        {
+            if (!item.SelfChild.Visible) continue;
+            item.ManualUpdate();
+        }
     }
 
     internal void EnableChild(int tabIndex, bool enabled)

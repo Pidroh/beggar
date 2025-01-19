@@ -25,7 +25,7 @@ public class MainGameControlSetup
             canvas = dynamicCanvas.Canvas,
             DisableAutoScaling = true
 
-        }, 2) ;
+        }, 2);
 
 
         dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.DialogObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
@@ -240,13 +240,13 @@ public class MainGameControlSetup
 
                         }
 
-                        for (int i = 0; i < (int) ResourceChangeType.MAX; i++)
+                        for (int i = 0; i < (int)ResourceChangeType.MAX; i++)
                         {
                             if (item.ConfigTask == null) break;
                             var arrayOfChanges = item.ConfigTask.GetResourceChangeList(i);
                             if (arrayOfChanges == null) continue;
                             int count = arrayOfChanges.Count;
-                            
+
                             CreateResourceChangeViews(i, count, rcu, layout);
 
 
@@ -321,14 +321,14 @@ public class MainGameControlSetup
         {
             TabControlUnit tab = mgc.TabControlUnits[tabIndex];
             if (!tab.TabData.Tab.ExplorationActiveTab) continue;
-            
+
 
             for (int indexExplorationElement = 0; indexExplorationElement < 4; indexExplorationElement++)
             {
                 int numberOfEles = 1;
                 bool isStressors = indexExplorationElement == 2;
                 var fleeButton = indexExplorationElement == 3;
-                if (isStressors) 
+                if (isStressors)
                 {
                     numberOfEles = mgc.arcaniaModel.Exploration.Stressors.Count;
                 }
@@ -388,9 +388,9 @@ public class MainGameControlSetup
                             break;
                     }
                 }
-                
+
                 // if it's the enemy encounter one
-                
+
             }
             mgc.controlExploration.dataHolder.FinishSetup();
 
@@ -409,10 +409,20 @@ public class MainGameControlSetup
             lc.AddTextDrivenHeight(endMessage, 10f);
 
             var settingB = CanvasMaker.CreateButton("Settings", mgc.ButtonObjectRequest, mgc.ButtonRequest);
-            
+
             endMessage.RectTransform.FillParent();
-            dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(lc);
-            dynamicCanvas.OverlayMainLayout.AddLayoutChildAndParentIt(LayoutChild.Create(settingB.Button.transform));
+
+            {
+                var overlayLayout = CanvasMaker.CreateLayout();
+                overlayLayout.SelfChild.RectTransform.SetParent(dynamicCanvas.OverlayRoot);
+                overlayLayout.SelfChild.RectTransform.FillParent();
+                dynamicCanvas.OverlayLayoutsSingleActive.Add(overlayLayout);
+
+                mgc.EndingOverlayLayout = overlayLayout;
+            }
+
+            mgc.EndingOverlayLayout.AddLayoutChildAndParentIt(lc);
+            mgc.EndingOverlayLayout.AddLayoutChildAndParentIt(LayoutChild.Create(settingB.Button.transform));
             settingB.Button.transform.localPosition = Vector3.zero;
             mgc.endingControl.EndGameMessage = endMessage;
             mgc.SettingButtonEnding = settingB;
@@ -474,7 +484,7 @@ public class MainGameControlSetup
 
                 var ttv = CreateTripleTextView(layout, expandManager);
                 ttv.Mode = TripleTextView.TTVMode.PrimarySecondary;
-                
+
                 modTTVs.Add(ttv);
             }
         }
@@ -500,7 +510,7 @@ public class MainGameControlSetup
 
         void CreateReserveChangeViews(MainGameControl mgc, LayoutParent layout, RTControlUnit rcu)
         {
-            for (int i = 0; i < (int) ResourceChangeType.MAX; i++)
+            for (int i = 0; i < (int)ResourceChangeType.MAX; i++)
             {
                 CreateResourceChangeViews(i, 5, rcu, layout);
             }
