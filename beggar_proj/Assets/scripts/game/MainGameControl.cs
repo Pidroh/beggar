@@ -178,7 +178,8 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         var widthMM = dynamicCanvas.LowerMenus[0].SelfChild.RectTransform.GetWidthMilimeters();
         var maxNumberOfLowerTabButtons = Mathf.FloorToInt(widthMM / 10f);
-        var allTabButtonVisiblesInLowerMenu = TabControlUnits.Count <= maxNumberOfLowerTabButtons;
+        // Count -1 because onf the tab control units is the one to show others
+        var allTabButtonVisiblesInLowerMenu = (TabControlUnits.Count-1) <= maxNumberOfLowerTabButtons;
         var actualMaxOfLowerTabButtonsWithoutOtherButton = maxNumberOfLowerTabButtons;
         if (!allTabButtonVisiblesInLowerMenu) actualMaxOfLowerTabButtonsWithoutOtherButton--;
         // -----------------------------------------------------------
@@ -206,7 +207,11 @@ public class MainGameControl : MonoBehaviour
                 sep.SpaceAmountText.text.SetFontSizePhysical(18);
                 sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
             }
-            tabControl.SelectionButtonLayoutChild.VisibleSelf = tabControl.TabData.Visible;
+
+            bool tabVisible = tabControl.TabData.Visible;
+            if (tabControl.TabData.Tab.OpenOtherTabs && allTabButtonVisiblesInLowerMenu) tabVisible = false;
+            if (tabControl.TabData.Tab.OpenOtherTabs && !allTabButtonVisiblesInLowerMenu) isSmallerButtonActive = true;
+            tabControl.SelectionButtonLayoutChild.VisibleSelf = tabVisible;
             tabControl.SelectionButtonLayoutChildLarge.VisibleSelf = tabControl.TabData.Visible;
             tabControl.SelectionButtonLayoutChild.SetParentShowing(isSmallerButtonActive);
             tabControl.SelectionButtonLayoutChildLarge.SetParentShowing(!isSmallerButtonActive);
