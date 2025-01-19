@@ -270,8 +270,8 @@ public class RTControlUnit
     public static void FeedDescription(SimpleChild<UIUnit> description, string desc)
     {
         description.LayoutChild.VisibleSelf = !string.IsNullOrWhiteSpace(desc);
-        description.LayoutChild.RectTransform.SetHeight(description.Element.text.preferredHeight + 25);
         description.Element.SetTextRaw(desc);
+        description.LayoutChild.RectTransform.SetHeight(description.Element.text.preferredHeight + 25);
         description.ManualUpdate();
     }
 

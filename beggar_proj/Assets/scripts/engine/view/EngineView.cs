@@ -39,6 +39,7 @@ namespace HeartUnity.View
         private static float? previousDpi;
         public static bool DpiChanged;
         private bool pixelPerfectScale;
+        public bool DisabledAutoScaling;
 
         internal void Init(int initialLayer)
         {
@@ -168,7 +169,7 @@ namespace HeartUnity.View
 
         private void RefreshScale()
         {
-            if (pixelPerfectScale) return;
+            if (pixelPerfectScale || DisabledAutoScaling) return;
             var maxScale = 1;
             int scaleX = Mathf.FloorToInt(Screen.width / 640);
             int scaleY = Mathf.FloorToInt(Screen.height / 360);
