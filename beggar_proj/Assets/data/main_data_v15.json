@@ -1179,7 +1179,7 @@
                 "id": "ponderexistence",
                 "name": "What is reality?",
                 "desc": "Ask a rat about the nature of your reality",
-                "requireZZ": "t_tier2&&rats>0",
+                "require": "t_tier2&&rats>0",
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
