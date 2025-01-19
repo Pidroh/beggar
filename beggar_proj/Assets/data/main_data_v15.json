@@ -2326,8 +2326,7 @@
                 "id": "task",
                 "unit_types": [
                     "TASK",
-                    "CLASS",
-                    "SKILL"
+                    "CLASS"
                 ],
                 "icon" : "task",
                 "separator": [
@@ -2361,13 +2360,6 @@
                         "unit_types": [
                             "CLASS"
                         ]
-                    },
-                    {
-                        "id": "skill",
-                        "name": "Skills",
-                        "unit_types": [
-                            "SKILL"
-                        ]
                     }
                 ]
             },
@@ -2383,6 +2375,23 @@
                         "id": "resource",
                         "name": "Resources",
                         "default": true
+                    }
+                ]
+            },
+            {
+                "id": "skill",
+                "unit_types": [
+                    "SKILL"
+                ],
+                "require": "t_job",
+                "icon" : "skill",
+                "separator": [
+                    {
+                        "id": "skill",
+                        "name": "Skills",
+                        "unit_types": [
+                            "SKILL"
+                        ]
                     }
                 ]
             },
