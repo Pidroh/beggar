@@ -216,6 +216,7 @@ public class JsonReader
                     if (pair.Key == "exploration_active_tab") tr.ExplorationActiveTab = pair.Value.AsBool;
                     if (pair.Key == "contains_logs") tr.ContainsLogs = pair.Value.AsBool;
                     if (pair.Key == "open_settings") tr.OpenSettings = pair.Value.AsBool;
+                    if (pair.Key == "open_other_tabs") tr.OpenOtherTabs = pair.Value.AsBool;
                 }
 
                 SimpleJSON.JSONNode separatorNode = item.GetValueOrDefault("separator", null);

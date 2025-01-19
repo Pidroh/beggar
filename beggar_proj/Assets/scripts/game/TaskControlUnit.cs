@@ -8,6 +8,8 @@ public class TabControlUnit
     public LayoutChild SelectionButtonLayoutChild { get; internal set; }
     public RuntimeUnit TabData { get; internal set; }
     public bool Dirty { get; internal set; }
+    public ButtonWithProgressBar SelectionButtonLarge { get; internal set; }
+    public LayoutChild SelectionButtonLayoutChildLarge { get; internal set; }
 
     public Dictionary<UnitType, List<RTControlUnit>> UnitGroupControls = new();
     internal ButtonWithProgressBar SelectionButton;

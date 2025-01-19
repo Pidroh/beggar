@@ -35,6 +35,8 @@ public class MainGameControl : MonoBehaviour
 
     public HeartGame HeartGame { get; private set; }
     public ButtonWithProgressBar SettingButtonEnding { get; internal set; }
+    public LayoutParent EndingOverlayLayout { get; internal set; }
+    public LayoutParent TabButtonOverlayLayout { get; internal set; }
 
     public float lastSaveTime;
     public ControlExploration controlExploration;
@@ -127,7 +129,7 @@ public class MainGameControl : MonoBehaviour
         // Show end game
         // -----------------------------------------------------------
         endingControl.ManualUpdate(this);
-        
+
         // -----------------------------------------------------------
         // Time, game updating
         // -----------------------------------------------------------
@@ -172,14 +174,26 @@ public class MainGameControl : MonoBehaviour
             arcaniaModel.Dialog.DialogComplete(1);
         }
         // -----------------------------------------------------------
+        // Calculate how many tab buttons can be shown as small buttons
+        // -----------------------------------------------------------
+        var widthMM = dynamicCanvas.LowerMenus[0].SelfChild.RectTransform.GetWidthMilimeters();
+        var maxNumberOfLowerTabButtons = Mathf.FloorToInt(widthMM / 10f);
+        var allTabButtonVisiblesInLowerMenu = TabControlUnits.Count <= maxNumberOfLowerTabButtons;
+        var actualMaxOfLowerTabButtonsWithoutOtherButton = maxNumberOfLowerTabButtons;
+        if (!allTabButtonVisiblesInLowerMenu) actualMaxOfLowerTabButtonsWithoutOtherButton--;
+        // -----------------------------------------------------------
         // Main update loop
         // -----------------------------------------------------------
         for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
         {
+
             TabControlUnit tabControl = TabControlUnits[tabIndex];
             tabControl.Dirty = dynamicCanvas.WidthChangedThisFrame;
             var tabNormalContentVisible = !(tabControl.TabData.Tab.ExplorationActiveTab && arcaniaModel.Exploration.IsExplorationActive);
+
             tabControl.SelectionButton.ManualUpdate();
+            tabControl.SelectionButtonLarge.ManualUpdate();
+            var isSmallerButtonActive = tabIndex < actualMaxOfLowerTabButtonsWithoutOtherButton;
 
             foreach (var sep in tabControl.Separators)
             {
@@ -192,27 +206,34 @@ public class MainGameControl : MonoBehaviour
                 sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
             }
             tabControl.SelectionButtonLayoutChild.VisibleSelf = tabControl.TabData.Visible;
+            tabControl.SelectionButtonLayoutChildLarge.VisibleSelf = tabControl.TabData.Visible;
+            tabControl.SelectionButtonLayoutChild.SetParentShowing(isSmallerButtonActive);
+
             dynamicCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
             tabControl.SelectionButton.Button.Image.color = dynamicCanvas.IsChildVisible(tabIndex) ? this.ButtonRequest_TabSelected.MainBody.NormalColor : this.ButtonRequest.MainBody.NormalColor;
 
-            if (tabControl.SelectionButton.Button.Clicked)
+            bool clickedTabButton = tabControl.SelectionButton.Button.Clicked || tabControl.SelectionButtonLarge.Button.Clicked;
+            if (clickedTabButton)
             {
                 if (tabControl.TabData.Tab.OpenSettings)
                 {
                     GoToSettings();
                 }
-                else
+                else if (tabControl.TabData.Tab.OpenOtherTabs)
                 {
-                    if (dynamicCanvas.CanShowOnlyOneChild())
-                    {
-                        dynamicCanvas.ShowChild(tabIndex);
-                    }
-                    else
-                    {
-                        dynamicCanvas.ToggleChild(tabIndex);
-                    }
+                    dynamicCanvas.ShowOverlay(this.TabButtonOverlayLayout);
 
                 }
+                else if (dynamicCanvas.CanShowOnlyOneChild())
+                {
+                    dynamicCanvas.ShowChild(tabIndex);
+                }
+                else
+                {
+                    dynamicCanvas.ToggleChild(tabIndex);
+                }
+
+
 
             }
             if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
@@ -360,7 +381,7 @@ public class MainGameControl : MonoBehaviour
             {
                 ModRuntime modRuntime = data.ModsSelfAsIntermediary[i];
                 var ttv = modUnit.ModIntermediaryTTVs[i];
-                if (modRuntime.Source.Value <= 0) 
+                if (modRuntime.Source.Value <= 0)
                 {
                     ttv.Visible = false;
                     continue;
@@ -391,7 +412,7 @@ public class MainGameControl : MonoBehaviour
     }
 }
 
-public class EndingControl 
+public class EndingControl
 {
     public const int ENDING_COUNT = 2;
     public static string[] endingUnitIds = new string[ENDING_COUNT] { "ponderexistence", "ponderhappiness" };

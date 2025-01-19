@@ -235,6 +235,15 @@ public class DynamicCanvas
 
     internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);
 
+    internal void ShowOverlay(LayoutParent overlayLay)
+    {
+        ShowOverlay();
+        foreach (var item in OverlayLayoutsSingleActive)
+        {
+            item.SelfChild.VisibleSelf = item == overlayLay;
+        }
+    }
+
     internal void ToggleChild(LayoutParent layoutParent)
     {
         if (ActiveChildren.Contains(layoutParent))

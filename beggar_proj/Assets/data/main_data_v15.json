@@ -2456,6 +2456,13 @@
                 ],
                 "icon" : "settings",
                 "open_settings": true
+            },
+            {
+                "id": "others",
+                "unit_types": [
+                ],
+                "icon" : "others",
+                "open_other_tabs": true
             }
         ]
     }
