@@ -209,6 +209,7 @@ public class MainGameControl : MonoBehaviour
             tabControl.SelectionButtonLayoutChild.VisibleSelf = tabControl.TabData.Visible;
             tabControl.SelectionButtonLayoutChildLarge.VisibleSelf = tabControl.TabData.Visible;
             tabControl.SelectionButtonLayoutChild.SetParentShowing(isSmallerButtonActive);
+            tabControl.SelectionButtonLayoutChildLarge.SetParentShowing(!isSmallerButtonActive);
 
             dynamicCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
             tabControl.SelectionButton.Button.Image.color = dynamicCanvas.IsChildVisible(tabIndex) ? this.ButtonRequest_TabSelected.MainBody.NormalColor : this.ButtonRequest.MainBody.NormalColor;
