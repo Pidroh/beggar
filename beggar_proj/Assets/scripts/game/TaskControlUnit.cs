@@ -106,7 +106,12 @@ public class RTControlUnit
     public void ManualUpdate(ArcaniaModel arcaniaModel)
     {
         if (Dirty < 0) Dirty = 0;
-        if (Dirty == 0 && TabControl.Dirty) Dirty++;
+        if (Dirty == 0) 
+        {
+            if (TabControl.Dirty) Dirty++;
+            if (bwe?.ExpandManager.Dirty ?? false) Dirty++;
+            if (lwe?.ExpandManager.Dirty ?? false) Dirty++;
+        }
         if (ButtonAdd != null)
         {
             ButtonAdd.ManualUpdate();

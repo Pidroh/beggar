@@ -379,6 +379,7 @@ public class ExpandableManager
     public List<UIUnit> ExtraExpandButtons = new();
     private bool _expanded = false;
     public List<LayoutChild> ExpandTargets = new();
+    public bool Dirty;
 
     public bool Expanded { get => _expanded && ExpandButton.Active; set => _expanded = value; }
 
@@ -389,6 +390,7 @@ public class ExpandableManager
 
     public void ManualUpdate()
     {
+        var previous = _expanded;
         ExpandButton.Active = ExpandTargets.Count > 0;
         if (!ExpandButton.ActiveSelf) _expanded = true;
         ExpandButton.icon.transform.localEulerAngles = new Vector3(0, 0, Expanded ? 180 : -90);
@@ -410,6 +412,7 @@ public class ExpandableManager
         {
             item.SetParentShowing(Expanded);
         }
+        Dirty = _expanded != previous;
     }
 }
 
