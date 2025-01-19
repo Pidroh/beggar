@@ -233,7 +233,10 @@ public class MainGameControl : MonoBehaviour
                 {
                     dynamicCanvas.ToggleChild(tabIndex);
                 }
-
+                if (tabControl.SelectionButtonLarge.Button.Clicked) 
+                {
+                    dynamicCanvas.HideOverlay();
+                }
 
 
             }
