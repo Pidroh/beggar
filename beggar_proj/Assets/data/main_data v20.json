@@ -34,9 +34,10 @@
             {
                 "id": "tonsure",
                 "name": "Tonsure",
-                "desc": "The act of shaving one's head, as proof of devotion",
+                "desc": "The act of shaving one's head, as proof of devotion. You then become a member of church.",
                 "require": "ecclesiatics>1",
                 "duration": 120,
+                "lock": "beggary",
                 "max": 1,
                 "cost": {
                     "churchrespect": 5
@@ -105,7 +106,8 @@
                 "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
-                "require": "t_tier1",
+                "need": "theself_2",
+                "require": "t_tier1&&ordination_2",
                 "cost": {
                     "thoughts": 5,
                     "gratitude": 10,
@@ -114,7 +116,8 @@
                 },
                 "mod": {
                     "faith.max": 20,
-                    "gratitude.max": 20
+                    "churchrespect.max": 80,
+                    "ecclesiatics.max": 1
                 }
             }
         ]
@@ -164,7 +167,7 @@
                 "id": "ordination_2",
                 "name": "Second Ordination",
                 "desc": "Advance in the minor orders of the church, getting closer and closer to the divine",
-                "require": "ordination_1&&ecclesiatics>3",
+                "require": "ordination_1&&ecclesiatics>3&&tonsure",
                 "length": 25,
                 "run": {
                     "supplication": 1
