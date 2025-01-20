@@ -2,6 +2,13 @@
     {
         "type": "RESOURCE",
         "items":[
+            
+            {
+                "id": "churchrespect",
+                "name": "Church Respect",
+                "max": 5,
+                "desc": "How well seen you are by members of the church"
+            }
         ]
     },
     {
