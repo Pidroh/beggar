@@ -164,16 +164,17 @@
                 "id": "ordination_2",
                 "name": "Second Ordination",
                 "desc": "Advance in the minor orders of the church, getting closer and closer to the divine",
-                "require": "tonsure",
+                "require": "ordination_1&&ecclesiatics>3",
                 "length": 25,
                 "run": {
                     "supplication": 1
                 },
                 "result": {
-                    "faith": 40
+                    "faith": 50,
+                    "churchrespect": 20
                 },
                 "result_once": {
-                    "skillpoints": 25
+                    "skillpoints": 30
                 },
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
