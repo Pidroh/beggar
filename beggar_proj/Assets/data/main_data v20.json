@@ -159,6 +159,26 @@
                     "rare_itemWIP": "1~5"
                 },
                 "encs": []
+            },
+            {
+                "id": "ordination_2",
+                "name": "Second Ordination",
+                "desc": "Advance in the minor orders of the church, getting closer and closer to the divine",
+                "require": "tonsure",
+                "length": 25,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 40
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": []
             }
         ]
     },
