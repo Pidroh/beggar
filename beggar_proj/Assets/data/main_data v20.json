@@ -66,7 +66,7 @@
                 "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
                 "tags": "t_tier1",
                 "lock": "t_tier1",
-                "require": "t_tier0&&ordination_1&&baptism",
+                "require": "t_tier0&&ordination_1",
                 "cost": {
                     "churchrespect": 20,
                     "gratitude": 10,
@@ -121,7 +121,26 @@
     {
         "type": "LOCATION",
         "items": [
-            
+            {
+                "id": "ordination_1",
+                "name": "First Ordination",
+                "desc": "Join the minor orders of the church, on the path of serving the divine",
+                "require": "tonsure",
+                "length": 20,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 40
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": []
+            }
         ]
     },
     {
