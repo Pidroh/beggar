@@ -7,7 +7,42 @@
     {
         "type": "TASK",
         "items":[
-            
+            {
+                "id": "baptism",
+                "name": "Baptism",
+                "require": "ecclesiatics>0",
+                "duration": 90,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 5
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 10,
+                    "chuchrespect.max": 20
+                }
+            },
+            {
+                "id": "helpchurch",
+                "name": "Religious Volunteering",
+                "desc": "Help out with small tasks in the church",
+                "require": "ecclesiatics>0",
+                "duration": 5,
+                "max": 1,
+                "run": {
+                    "gratitude": 1,
+                    "supplication": 1
+                },
+                "effect": {
+                    "ecclesiatics.xp": 1
+                },
+                "result": {
+                    "churchrespect": 1,
+                    "faith": 1
+                }
+            }
         ]
     },
     {
