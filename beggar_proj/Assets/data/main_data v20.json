@@ -79,7 +79,7 @@
         "type": "CLASS",
         "items":[
             {
-                "id" : "churchdoorkeeper",
+                "id" : "churchporter",
                 "name": "Church Porter",
                 "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
                 "tags": "t_tier1",
@@ -95,6 +95,7 @@
                     "faith.max": 20,
                     "gratitude.max": 20,
                     "churchrespect": 40,
+                    "ecclesiatics.max": 1,
                     "guilty.max": -5
                 }
             },
@@ -178,7 +179,7 @@
                 "id": "rosario",
                 "name": "Rosario",
                 "desc": "A beautiful rosario, brand new",
-                "require": "faith>10&&churchbeggar",
+                "require": "ecclesiatics>2&&(churchbeggar||churchporter)",
                 "tag": "pray_tool",
                 "max": 1,
                 "cost": {
