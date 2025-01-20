@@ -32,6 +32,24 @@
                 }
             },
             {
+                "id": "tonsure",
+                "name": "Tonsure",
+                "desc": "The act of shaving one's head, as proof of devotion",
+                "require": "ecclesiatics>1",
+                "duration": 120,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 5
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 5,
+                    "chuchrespect.max": 30
+                }
+            },
+            {
                 "id": "helpchurch",
                 "name": "Religious Volunteering",
                 "desc": "Help out with small tasks in the church",
