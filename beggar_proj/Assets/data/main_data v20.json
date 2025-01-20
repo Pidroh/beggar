@@ -66,9 +66,9 @@
                 "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
                 "tags": "t_tier1",
                 "lock": "t_tier1",
-                "require": "t_tier0&&ecclesiatics",
+                "require": "t_tier0&&ecclesiatics>1",
                 "cost": {
-                    "thoughts": 5,
+                    "churchrespect": 20,
                     "gratitude": 10,
                     "faith": 10,
                     "nutrition": 2
@@ -76,6 +76,7 @@
                 "mod": {
                     "faith.max": 20,
                     "gratitude.max": 20,
+                    "churchrespect": 40,
                     "guilty.max": -5
                 }
             },
