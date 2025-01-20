@@ -19,6 +19,24 @@
         "type": "CLASS",
         "items":[
             {
+                "id" : "churchdoorkeeper",
+                "name": "Church Porter",
+                "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&ecclesiatics",
+                "cost": {
+                    "thoughts": 5,
+                    "gratitude": 10,
+                    "faith": 10,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "gratitude.max": 20
+                }
+            },
+            {
                 "id" : "acolyte",
                 "name": "Acolyte",
                 "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
