@@ -32,6 +32,21 @@
                 }
             },
             {
+                "id": "foodchurch",
+                "name": "Church meals",
+                "desc": "Church providden meal",
+                "require": "jointhechurch",
+                "duration": 10,
+                "cost": {
+                    "churchrespect": 15,
+                    "faith": 15
+                },
+                "result": {
+                    "food": 1,
+                    "gratitude": 10
+                }
+            },
+            {
                 "id": "tonsure",
                 "name": "Tonsure",
                 "desc": "The act of shaving one's head, as proof of devotion.",
