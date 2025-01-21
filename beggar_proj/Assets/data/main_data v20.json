@@ -119,6 +119,27 @@
                     "churchrespect.max": 80,
                     "ecclesiatics.max": 1
                 }
+            },
+            {
+                "id" : "lector",
+                "name": "Lector",
+                "desc" : "A member of the minor order of the church. In charge of reading and teaching sacred texts.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&ordination_2&&latin>1",
+                "cost": {
+                    "thoughts": 5,
+                    "gratitude": 10,
+                    "faith": 10,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 50,
+                    "latin.max": 1,
+                    "ecclesiatics.max": 1
+                }
             }
         ]
     },
