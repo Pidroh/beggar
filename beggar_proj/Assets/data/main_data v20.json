@@ -290,7 +290,7 @@
                 "id": "eucharisty_assistance",
                 "name": "Assisting the eucharist",
                 "desc": "Prepare the altar, candles, and help out with other things during the eucharist",
-                "require": "jointhechurch&&t_tier2",
+                "require": "jointhechurch&&(acolyte||lector)",
                 "length": 8,
                 "run": {
                     "supplication": 1
