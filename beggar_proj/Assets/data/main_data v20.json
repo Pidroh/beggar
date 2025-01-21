@@ -71,7 +71,7 @@
                 "desc": "Officially join the church",
                 "require": "ecclesiatics>2&&tonsure",
                 "duration": 120,
-                "lock": "beggary,thievery",
+                "lock": "beggary",
                 "max": 1,
                 "cost": {
                     "churchrespect": 20,

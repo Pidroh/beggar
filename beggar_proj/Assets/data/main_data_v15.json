@@ -242,6 +242,7 @@
                 "name": "Beg for crumbs",
                 "desc": "You take what you get (you can long press to multi-click)",
                 "locked": false,
+                "tag": "beggary",
                 "cost":{
                     "supplication": 1
                 },
@@ -429,6 +430,7 @@
                 "name": "Wait for alms",
                 "desc": "Receive food from the church",
                 "require": "free_food_lead",
+                "tag": "beggary",
                 "duration": 5,
                 "result": {
                     "breadcrumbs": 10,
@@ -440,6 +442,7 @@
                 "name": "Steal breadcrumbs",
                 "desc": "Casually pilfer scraps from unsuspecting neighbors",
                 "require": "cunning>0",
+                "tag": "thievery,beggary",
                 "duration": 3,
                 "result": {
                     "breadcrumbs": 10,
@@ -468,6 +471,7 @@
                 "name": "Eat old crumbs",
                 "desc": "It tastes really bad, unless you're really, really hungry",
                 "require": "breadcrumbs > 6",
+                "tag": "beggary",
                 "duration": 5,
                 "cost":{
                     "breadcrumbs": 10
@@ -757,6 +761,7 @@
                 "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
                 "require": "pickpocketer",
                 "need": "danger<10",
+                "tag": "thievery",
                 "success_rate": 50,
                 "result": {
                     "danger": "0~2",
