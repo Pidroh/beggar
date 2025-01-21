@@ -137,6 +137,18 @@
                     "gratitude.max": 1,
                     "guilty.max": -5
                 }
+            },
+            {
+                "id": "latin",
+                "require": "ecclesiatics>3",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "desc": "The languaged used in the Roman Empire. Necessary to read scriptures.",
+                "mod": {
+                    "thoughts.max": 10,
+                    "clarity.max": 2
+                }
             }
         ]
     },
