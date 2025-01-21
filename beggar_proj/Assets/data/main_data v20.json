@@ -207,6 +207,18 @@
                     "thoughts.max": 10,
                     "clarity.max": 2
                 }
+            },
+            {
+                "id": "holyscriptures",
+                "require": "",
+                "cost": {
+                    "skillpoints": 20
+                },
+                "desc": "Knowledge of the religious scriptures.",
+                "mod": {
+                    "thoughts.max": 10,
+                    "clarity.max": 2
+                }
             }
         ]
     },
