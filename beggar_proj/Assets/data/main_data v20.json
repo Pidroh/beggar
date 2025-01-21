@@ -66,6 +66,27 @@
                 }
             },
             {
+                "id": "celibacy",
+                "name": "Vow of Celibacy",
+                "desc": "A holy promise to turn away from physical connection, surrendering to a higher calling.",
+                "require": "jointhechurch&&t_tier2",
+                "duration": 120,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 50,
+                    "thoughts": 200,
+                    "supplication": 200
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 5,
+                    "chuchrespect.max": 50,
+                    "churchrespect.rate": 0.1
+                }
+            },
+            {
                 "id": "jointhechurch",
                 "name": "Join the Church",
                 "desc": "Officially join the church",
@@ -216,8 +237,7 @@
                 },
                 "desc": "Knowledge of the religious scriptures.",
                 "mod": {
-                    "thoughts.max": 10,
-                    "clarity.max": 2
+                    "faith.max": 5
                 }
             }
         ]
