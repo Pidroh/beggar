@@ -34,7 +34,7 @@
             {
                 "id": "tonsure",
                 "name": "Tonsure",
-                "desc": "The act of shaving one's head, as proof of devotion. You then become a member of church.",
+                "desc": "The act of shaving one's head, as proof of devotion.",
                 "require": "ecclesiatics>1",
                 "duration": 120,
                 "lock": "beggary",
@@ -48,6 +48,28 @@
                 "mod":{
                     "faith.max": 5,
                     "chuchrespect.max": 30
+                }
+            },
+            {
+                "id": "jointhechurch",
+                "name": "Join the Church",
+                "desc": "Officially join the church",
+                "require": "ecclesiatics>2&&tonsure",
+                "duration": 120,
+                "lock": "beggary,thievery",
+                "max": 1,
+                "cost": {
+                    "churchrespect": 20,
+                    "faith": 10,
+                    "clarity": 5,
+                    "thoughts": 80
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 50,
+                    "chuchrespect.max": 50
                 }
             },
             {
