@@ -122,7 +122,7 @@
                 "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
                 "tags": "t_tier1",
                 "lock": "t_tier1",
-                "require": "t_tier0&&ordination_1&&tonsure",
+                "require": "t_tier0&&ordination_1&&jointhechurch",
                 "cost": {
                     "churchrespect": 20,
                     "gratitude": 10,
@@ -217,7 +217,7 @@
                 "id": "ordination_1",
                 "name": "First Ordination",
                 "desc": "Join the minor orders of the church, on the path of serving the divine",
-                "require": "tonsure",
+                "require": "jointhechurch",
                 "length": 20,
                 "run": {
                     "supplication": 1
@@ -237,7 +237,7 @@
                 "id": "ordination_2",
                 "name": "Second Ordination",
                 "desc": "Advance in the minor orders of the church, getting closer and closer to the divine",
-                "require": "ordination_1&&ecclesiatics>3&&tonsure",
+                "require": "ordination_1&&ecclesiatics>3&&jointhechurch",
                 "length": 25,
                 "run": {
                     "supplication": 1
