@@ -210,7 +210,7 @@
             },
             {
                 "id": "holyscriptures",
-                "require": "",
+                "require": "ecclesiatics>4&&latin>2",
                 "cost": {
                     "skillpoints": 20
                 },
