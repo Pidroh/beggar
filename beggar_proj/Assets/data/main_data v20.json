@@ -486,6 +486,19 @@
                 }
             },
             {
+                "id": "cityknowledge",
+                "name": "Street knowledge",
+                "desc": "You konw what lies in that corner",
+                "require": "beggarhood>=4&&begging>0",
+                "cost": {
+                    "supplication": 600,
+                    "clarity": 15
+                },
+                "mod": {
+                    "foraging.max": 5
+                }
+            },
+            {
                 "id": "holyscriptures",
                 "require": "ecclesiatics>4&&latin>2",
                 "cost": {
