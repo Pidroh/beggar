@@ -199,6 +199,22 @@
                     "churchrespect": 1,
                     "faith": 1
                 }
+            },
+            {
+                "id": "revisit_thoughts",
+                "name": "Revisit thoughts",
+                "require": "introspection>5&&contemplation>3",
+                "duration": 10,
+                "cost": {
+                    "clarity": 10
+                },
+                "run": {
+                    "supplication": 10,
+                    "thoughts": 5
+                },
+                "result":{
+                    "reflection": 1
+                }
             }
         ]
     },
