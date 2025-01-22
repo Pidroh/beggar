@@ -351,8 +351,8 @@
                 "desc" : "The third major order of the Church. A religious leader capable of performing all sorts of rituals.",
                 "tags": "t_tier3",
                 "lock": "t_tier3",
-                "need": "",
-                "require": "t_tier2&&deacon&&holyscriptures>4&&eucharistics>6",
+                "need": "theself_3&&holyscriptures>4",
+                "require": "t_tier2&&deacon&&eucharistics>6",
                 "cost": {
                     "thoughts": 5,
                     "gratitude": 10,
