@@ -8,6 +8,15 @@
                 "name": "Church Respect",
                 "max": 5,
                 "desc": "How well seen you are by members of the church"
+            },
+            {
+                "id": "reflection",
+                "name": "Reflection",
+                "max": 3,
+                "desc": "Thought applied to the self, to the past",
+                "mod": {
+                    "clarity.max": 3
+                }
             }
         ]
     },
