@@ -441,7 +441,7 @@
             },
             {
                 "id": "latin",
-                "require": "ecclesiatics>3",
+                "require": "ecclesiatics>3||convincejohn",
                 "cost": {
                     "skillpoints": 100
                 },
