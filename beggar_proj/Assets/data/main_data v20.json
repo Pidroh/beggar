@@ -385,6 +385,21 @@
                 }
             },
             {
+                "id": "philosophy",
+                "require": "introspection>=4&&john_conversation",
+                "need": "contemplation>=3",
+                "cost": {
+                    "thoughts": 80,
+                    "clarity": 10
+                },
+                "desc": "The study of the fundamental questions",
+                "mod": {
+                    "thought.max": 5,
+                    "clarity.max": 3,
+                    "reflection.max": 1
+                }
+            },
+            {
                 "id": "latin",
                 "require": "ecclesiatics>3",
                 "cost": {
@@ -465,6 +480,28 @@
                 "result": {
                     "faith": 50,
                     "churchrespect": 20
+                },
+                "result_once": {
+                    "skillpoints": 30
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": []
+            },
+            {
+                "id": "john_conversation",
+                "name": "A walk with John the Wise",
+                "desc": "The sage of the streets, strolling in town",
+                "require": "beggarhood>=3",
+                "length": 15,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 20,
+                    "thoughts": 30,
+                    "clarity": 5
                 },
                 "result_once": {
                     "skillpoints": 30
