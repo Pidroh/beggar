@@ -59,7 +59,7 @@
                 "id": "convincejohn",
                 "name": "Convince John to help with letters",
                 "desc": "Legend says that John can read and write. Maybe he can help you do the same.",
-                "require": "lostphilosopher&&ecclesiatics<3",
+                "require": "john_home&&ecclesiatics<3",
                 "duration": 40,
                 "max": 1,
                 "cost": {
