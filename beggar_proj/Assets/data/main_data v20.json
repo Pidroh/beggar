@@ -129,6 +129,28 @@
                 }
             },
             {
+                "id": "subdeacon",
+                "name": "Subdeacon",
+                "desc": "Be appointed a Subdeacon, the first major order in the Church",
+                "require": "eucharist_assistance&&celibacy",
+                "duration": 90,
+                "max": 1,
+                "need": "eucharist_assistance&&holyscriptures",
+                "cost": {
+                    "churchrespect": 250,
+                    "faith": 10,
+                    "thoughts": 80
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "chuchrespect.max": 100,
+                    "eucharistics.max": 1,
+                    "holyscriptures.max": 1
+                }
+            },
+            {
                 "id": "helpchurch",
                 "name": "Religious Volunteering",
                 "desc": "Help out with small tasks in the church",
