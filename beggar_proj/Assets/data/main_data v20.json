@@ -109,6 +109,26 @@
                 }
             },
             {
+                "id": "firsteucharist",
+                "name": "First eucharist assistance",
+                "desc": "You have completed your first eucharist assistance. May the Mother bless you!",
+                "require": "eucharist_assistance",
+                "duration": 5,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 20,
+                    "faith": 10,
+                    "clarity": 5,
+                    "thoughts": 80
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "chuchrespect.max": 100
+                }
+            },
+            {
                 "id": "helpchurch",
                 "name": "Religious Volunteering",
                 "desc": "Help out with small tasks in the church",
@@ -287,7 +307,7 @@
                 "encs": []
             },
             {
-                "id": "eucharisty_assistance",
+                "id": "eucharist_assistance",
                 "name": "Assisting the eucharist",
                 "desc": "Prepare the altar, candles, and help out with other things during the eucharist",
                 "require": "jointhechurch&&(acolyte||lector)",
