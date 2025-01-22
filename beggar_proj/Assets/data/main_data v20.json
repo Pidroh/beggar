@@ -202,6 +202,24 @@
                 }
             },
             {
+                "id": "reflectgatherer",
+                "name": "Reflections of the Gatherer",
+                "desc": "Look back on how you have gathered so far. Find a path to improve.",
+                "duration": 50,
+                "max": 1,
+                "require": "scavenging>=3&&reflection",
+                "run": {
+                    "thoughts": 3,
+                    "clarity": 1
+                },
+                "mod":{
+                    "scavenging.max": 1
+                },
+                "cost": {
+                    "reflection": 1
+                }
+            },
+            {
                 "id": "helpchurch",
                 "name": "Religious Volunteering",
                 "desc": "Help out with small tasks in the church",
