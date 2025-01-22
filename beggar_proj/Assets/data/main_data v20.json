@@ -470,6 +470,26 @@
                     "guilt.max": -15,
                     "space": 1
                 }
+            },
+            {
+                "id": "childdrawing",
+                "name": "Wood drawing",
+                "desc": "A piece of wood with a carved drawing. Was it a child who made it?",
+                "require": "reflection>2&&scavenging>3",
+                "tag": "pray_tool",
+                "max": 1,
+                "cost": {
+                    "faith": 15,
+                    "gratitude": 10,
+                    "churchrespect": 10
+                },
+                "mod": {
+                    "ecclesiatics.max": 1,
+                    "churchrespect": 10,
+                    "faith.max": 10,
+                    "guilt.max": -15,
+                    "space": 1
+                }
             }
         ]
     },
