@@ -96,6 +96,26 @@
                 }
             },
             {
+                "id": "theself_3",
+                "name": "Who am I?",
+                "desc": "Reflect on thyself.",
+                "require": "t_tier2",
+                "duration": 140,
+                "max": 1,
+                "cost": {
+                    "clarity": 60,
+                    "reflection": 10
+                },
+                "run": {
+                    "thoughts": 3
+                },
+                "mod":{
+                    "reflection.max": 5,
+                    "clarity.max": 10,
+                    "organizethoughts.effect.clarity": 1
+                }
+            },
+            {
                 "id": "jointhechurch",
                 "name": "Join the Church",
                 "desc": "Officially join the church",
