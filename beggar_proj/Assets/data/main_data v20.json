@@ -305,6 +305,26 @@
                 }
             },
             {
+                "id" : "lostphilosopher",
+                "name": "Lost Philosopher",
+                "desc" : "The one who stays in the streets. Thinking, mumbling. Trying to reach the answer.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&philosophy>=2",
+                "cost": {
+                    "thoughts": 5,
+                    "gratitude": 10,
+                    "faith": 10,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "philosophy.max": 1,
+                    "contemplation.max": 1,
+                    "beggarhood.max": 1
+                }
+            },
+            {
                 "id" : "acolyte",
                 "name": "Acolyte",
                 "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
