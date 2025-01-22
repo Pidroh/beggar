@@ -41,6 +41,25 @@
                 }
             },
             {
+                "id": "sharethebegging",
+                "name": "Share the begging",
+                "desc": "Tell your fellow beggars about your beg skills",
+                "require": "begging>1",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "supplication": 450,
+                    "thoughts": 50
+                },
+                "run": {
+                    "supplication": 5
+                },
+                "mod":{
+                    "beggarhood.max": 1,
+                    "supplication.max": 20
+                }
+            },
+            {
                 "id": "foodchurch",
                 "name": "Church meals",
                 "desc": "Church providden meal",
