@@ -154,7 +154,7 @@
                 "id": "deacon",
                 "name": "Deacon",
                 "desc": "Be appointed a Deacon, the next major order in the Church",
-                "require": "deacon",
+                "require": "subdeacon",
                 "duration": 200,
                 "max": 1,
                 "need": "holyscriptures>2&&eucharistics>5",
@@ -260,6 +260,27 @@
                     "faith.max": 20,
                     "churchrespect.max": 50,
                     "latin.max": 1,
+                    "ecclesiatics.max": 1
+                }
+            },
+            {
+                "id" : "priest",
+                "name": "Priest",
+                "desc" : "The third major order of the Church. A religious leader capable of performing all sorts of rituals.",
+                "tags": "t_tier3",
+                "lock": "t_tier3",
+                "need": "",
+                "require": "t_tier2&&deacon&&holyscriptures>4&&eucharistics>6",
+                "cost": {
+                    "thoughts": 5,
+                    "gratitude": 10,
+                    "faith": 10,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 50,
+                    "holyscriptures.max": 1,
                     "ecclesiatics.max": 1
                 }
             }
