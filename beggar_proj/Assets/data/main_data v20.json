@@ -203,7 +203,7 @@
             {
                 "id": "revisit_thoughts",
                 "name": "Revisit thoughts",
-                "require": "introspection>5&&contemplation>3",
+                "require": "thinkbreakthrough",
                 "duration": 10,
                 "cost": {
                     "clarity": 10
@@ -214,6 +214,25 @@
                 },
                 "result":{
                     "reflection": 1
+                }
+            },
+            {
+                "id": "thinkbreakthrough",
+                "name": "Time of reflection",
+                "require": "introspection>5&&contemplation>3",
+                "max": 2,
+                "duration": 55,
+                "cost": {
+                    "thoughts": 200
+                },
+                "run": {
+                    "clarity": 1
+                },
+                "mod": {
+                    "clarity.max": 5,
+                    "thoughts.max": 50,
+                    "reflection.max": 1
+
                 }
             }
         ]
