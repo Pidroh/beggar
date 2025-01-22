@@ -530,6 +530,28 @@
                     "rare_itemWIP": "1~5"
                 },
                 "encs": []
+            },
+            {
+                "id": "john_home",
+                "name": "House of the Wise",
+                "desc": "The home of John the Wise. A tent filled with strange trinkets.",
+                "require": "beggarhood>=4&&lostphilosopher",
+                "length": 20,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 20,
+                    "thoughts": 30,
+                    "clarity": 5
+                },
+                "result_once": {
+                    "skillpoints": 35
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": []
             }
         ]
     },
