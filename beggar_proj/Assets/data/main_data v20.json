@@ -443,12 +443,27 @@
                 "id": "latin",
                 "require": "ecclesiatics>3||convincejohn",
                 "cost": {
-                    "skillpoints": 100
+                    "thoughts": 250,
+                    "clarity": 10
                 },
                 "desc": "The languaged used in the Roman Empire. Necessary to read scriptures.",
                 "mod": {
                     "thoughts.max": 10,
                     "clarity.max": 2
+                }
+            },
+            {
+                "id": "begging",
+                "require": "beggarhood>=3",
+                "cost": {
+                    "thoughts": 290,
+                    "supplication": 600,
+                    "clarity": 5
+                },
+                "desc": "The subtle craft of making others see their role as saviors",
+                "mod": {
+                    "supplication.max": 100,
+                    "supplication.rate": 0.5
                 }
             },
             {
