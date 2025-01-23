@@ -79,6 +79,18 @@
                 }
             },
             {
+                "id": "tier3reach",
+                "name": "Growth III",
+                "desc": "You seem to have reached a new stage in life?",
+                "require": "t_tier3",
+                "duration": 25,
+                "max": 1,
+                "mod": {
+                    "skilled.max": 1,
+                    "clarity.max": 25
+                }
+            },
+            {
                 "id": "foodchurch",
                 "name": "Church meals",
                 "desc": "Church providden meal",
@@ -460,7 +472,8 @@
                 },
                 "mod": {
                     "begging.max": 1,
-                    "beggarhood.max": 1
+                    "beggarhood.max": 1,
+                    "innermind.max": 1
                 }
             }
         ]
