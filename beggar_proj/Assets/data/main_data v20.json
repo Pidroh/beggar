@@ -451,7 +451,7 @@
                 },
                 "mod": {
                     "faith.max": 20,
-                    "churchrespect.max": 50,
+                    "churchrespect.max": 150,
                     "holyscriptures.max": 1,
                     "ecclesiatics.max": 1
                 }
@@ -460,7 +460,7 @@
                 "id" : "expertbeggar",
                 "name": "Expert Beggar",
                 "desc" : "A master of the streets, the coinosseur of the begging arts.",
-                "tags": "t_tier3",
+                "tags": "t_tier3,beggary",
                 "lock": "t_tier3",
                 "need": "theself_3&&begging>=4&&beggarhood>=5&&cityknowledge>=3",
                 "require": "t_tier2&&begging>2&&beggarhood>=3&&cityknowledge>=1",
@@ -701,7 +701,7 @@
                 },
                 "mod": {
                     "ecclesiatics.max": 1,
-                    "churchrespect": 10,
+                    "churchrespect.max": 10,
                     "faith.max": 10,
                     "guilt.max": -15,
                     "space": 1
