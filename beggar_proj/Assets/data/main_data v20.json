@@ -60,6 +60,25 @@
                 }
             },
             {
+                "id": "beggingspots",
+                "name": "Begging spots",
+                "desc": "Use your knowledge of the streets to find the best places for begging",
+                "require": "cityknowledge>0",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "supplication": 100,
+                    "foraging": 30
+                },
+                "run": {
+                    "supplication": 5
+                },
+                "mod":{
+                    "begging.max": 1,
+                    "beg_a.result.breadcrumbs": 1
+                }
+            },
+            {
                 "id": "foodchurch",
                 "name": "Church meals",
                 "desc": "Church providden meal",
@@ -488,10 +507,11 @@
             {
                 "id": "cityknowledge",
                 "name": "Street knowledge",
-                "desc": "You konw what lies in that corner",
+                "desc": "You know what lies in most corners",
                 "require": "beggarhood>=4&&begging>0",
                 "cost": {
                     "supplication": 600,
+                    "thoughts": 200,
                     "clarity": 15
                 },
                 "mod": {
@@ -667,6 +687,21 @@
                 "mod": {
                     "reflection.max": 10,
                     "space": 1
+                }
+            },
+            {
+                "id": "storytellingdolls",
+                "name": "Storytelling dolls",
+                "desc": "You use these to narrate wonderful stories to your fellow beggars",
+                "require": "cityknowledge>1",
+                "max": 1,
+                "cost": {
+                    "foraging": 50
+                },
+                "mod": {
+                    "beggarhood.max": 1,
+                    "supplication.max": 100,
+                    "space": 3
                 }
             }
         ]
