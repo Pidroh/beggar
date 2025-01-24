@@ -91,7 +91,7 @@
             },
             {
                 "id": "latinbasics",
-                "name": "Latin basic phrases",
+                "name": "Basic phrases",
                 "desc": "Salve, delicatus in occursum adventus tui, ego sum in amore cum te",
                 "require": "latin>0",
                 "duration": 20,
@@ -104,6 +104,21 @@
                     "supplication.max": 50,
                     "supplication.rate": 0.5,
                     "churchrespect.max": 10
+                }
+            },
+            {
+                "id": "latinreading",
+                "name": "Elementary reading",
+                "desc": "Legere aliqua potes.",
+                "require": "latin>1",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 150
+                },
+                "mod":{
+                    "thoughts.max": 100,
+                    "academics.max": 5
                 }
             },
             {
