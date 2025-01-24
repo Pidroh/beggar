@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonDatas:
   - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
+  - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
+  - {fileID: 4900000, guid: 7a9fa94f04cbd3f41baa847d4443b463, type: 3}
