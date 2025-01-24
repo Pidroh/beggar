@@ -73,6 +73,23 @@
                 }
             },
             {
+                "id": "socraticmethod",
+                "name": "Socratic Method",
+                "desc": "Ask the right questions. The goal is not the answer, but the thought.",
+                "require": "philosophy>2",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 300,
+                    "clarity": 15,
+                    "reflection": 2
+                },
+                "mod":{
+                    "think.effect.thoughts": 2,
+                    "organizethoughts.effect.clarity": 1
+                }
+            },
+            {
                 "id": "sharethebegging",
                 "name": "Share the begging",
                 "desc": "Tell your fellow beggars about your beg skills",
