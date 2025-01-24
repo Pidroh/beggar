@@ -506,7 +506,7 @@
                 "desc": "Buy enough food for the day",
                 "require": "coin>2",
                 "cost":{
-                    "coin": 2
+                    "coin": 1
                 },
                 "result": {
                     "food": 1
@@ -553,7 +553,7 @@
                 "require": "realmeal",
                 "duration": 7,
                 "cost": {
-                    "food": 1
+                    "food": 5
                 },
                 "result": {
                     "nutrition": 25

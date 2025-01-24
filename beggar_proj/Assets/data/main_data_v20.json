@@ -26,7 +26,7 @@
             {
                 "id": "baptism",
                 "name": "Baptism",
-                "require": "ecclesiatics>0",
+                "require": "ecclesiology>0",
                 "duration": 90,
                 "max": 1,
                 "cost": {
@@ -109,7 +109,7 @@
                 "id": "convincejohn",
                 "name": "Convince John to help with letters",
                 "desc": "Legend says that John can read and write. Maybe he can help you do the same.",
-                "require": "john_home&&ecclesiatics<3",
+                "require": "john_home&&ecclesiology<3",
                 "duration": 40,
                 "max": 1,
                 "cost": {
@@ -129,7 +129,7 @@
                 "id": "tonsure",
                 "name": "Tonsure",
                 "desc": "The act of shaving one's head, as proof of devotion.",
-                "require": "ecclesiatics>1",
+                "require": "ecclesiology>1",
                 "duration": 120,
                 "lock": "beggary",
                 "max": 1,
@@ -189,7 +189,7 @@
                 "id": "jointhechurch",
                 "name": "Join the Church",
                 "desc": "Officially join the church",
-                "require": "ecclesiatics>2&&tonsure",
+                "require": "ecclesiology>2&&tonsure",
                 "duration": 120,
                 "lock": "beggary",
                 "max": 1,
@@ -205,6 +205,24 @@
                 "mod":{
                     "faith.max": 50,
                     "chuchrespect.max": 50
+                }
+            },
+            {
+                "id": "beg_b",
+                "name": "Beg for food",
+                "desc": "Your pleading eyes can get all sorts of food",
+                "require": "expertbeggar",
+                "cost":{
+                    "supplication": 15
+                },
+                "success_rate": 60,
+                "result": {
+                    "coin": "0~1",
+                    "food": "0~2",
+                    "breadcrumbs": "15~30"
+                },
+                "result_fail": {
+                    "breadcrumbs": "15~30"
                 }
             },
             {
@@ -293,7 +311,7 @@
                 "id": "helpchurch",
                 "name": "Religious Volunteering",
                 "desc": "Help out with small tasks in the church",
-                "require": "ecclesiatics>0",
+                "require": "ecclesiology>0",
                 "duration": 5,
                 "max": 1,
                 "run": {
@@ -301,7 +319,7 @@
                     "supplication": 1
                 },
                 "effect": {
-                    "ecclesiatics.xp": 1
+                    "ecclesiology.xp": 1
                 },
                 "result": {
                     "churchrespect": 1,
@@ -370,7 +388,7 @@
                     "faith.max": 20,
                     "gratitude.max": 20,
                     "churchrespect": 40,
-                    "ecclesiatics.max": 1,
+                    "ecclesiology.max": 1,
                     "guilty.max": -5
                 }
             },
@@ -411,7 +429,7 @@
                 "mod": {
                     "faith.max": 20,
                     "churchrespect.max": 80,
-                    "ecclesiatics.max": 1
+                    "ecclesiology.max": 1
                 }
             },
             {
@@ -432,7 +450,7 @@
                     "faith.max": 20,
                     "churchrespect.max": 50,
                     "latin.max": 1,
-                    "ecclesiatics.max": 1
+                    "ecclesiology.max": 1
                 }
             },
             {
@@ -453,7 +471,7 @@
                     "faith.max": 20,
                     "churchrespect.max": 150,
                     "holyscriptures.max": 1,
-                    "ecclesiatics.max": 1
+                    "ecclesiology.max": 1
                 }
             },
             {
@@ -461,7 +479,7 @@
                 "name": "Expert Beggar",
                 "desc" : "A master of the streets, the coinosseur of the begging arts.",
                 "tags": "t_tier3,beggary",
-                "lock": "t_tier3",
+                "lock": "t_tier3,beg_a",
                 "need": "theself_3&&begging>=4&&beggarhood>=5&&cityknowledge>=3",
                 "require": "t_tier2&&begging>2&&beggarhood>=3&&cityknowledge>=1",
                 "cost": {
@@ -511,7 +529,7 @@
             },
             {
                 "id": "latin",
-                "require": "ecclesiatics>3||convincejohn",
+                "require": "ecclesiology>3||convincejohn",
                 "cost": {
                     "thoughts": 250,
                     "clarity": 10
@@ -552,7 +570,7 @@
             },
             {
                 "id": "holyscriptures",
-                "require": "ecclesiatics>4&&latin>2",
+                "require": "ecclesiology>4&&latin>2",
                 "cost": {
                     "skillpoints": 20
                 },
@@ -590,7 +608,7 @@
                 "id": "ordination_2",
                 "name": "Second Ordination",
                 "desc": "Advance in the minor orders of the church, getting closer and closer to the divine",
-                "require": "ordination_1&&ecclesiatics>3&&jointhechurch",
+                "require": "ordination_1&&ecclesiology>3&&jointhechurch",
                 "length": 25,
                 "run": {
                     "supplication": 1
@@ -691,7 +709,7 @@
                 "id": "rosario",
                 "name": "Rosario",
                 "desc": "A beautiful rosario, brand new",
-                "require": "ecclesiatics>2&&(churchbeggar||churchporter)",
+                "require": "ecclesiology>2&&(churchbeggar||churchporter)",
                 "tag": "pray_tool",
                 "max": 1,
                 "cost": {
@@ -700,7 +718,7 @@
                     "churchrespect": 10
                 },
                 "mod": {
-                    "ecclesiatics.max": 1,
+                    "ecclesiology.max": 1,
                     "churchrespect.max": 10,
                     "faith.max": 10,
                     "guilt.max": -15,
