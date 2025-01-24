@@ -17,6 +17,18 @@
                 "mod": {
                     "clarity.max": 3
                 }
+            },
+            {
+                "id": "fundamentals",
+                "name": "Fundamentals",
+                "max": 3,
+                "desc": "The basics of knowledge"
+            },
+            {
+                "id": "academics",
+                "name": "Academics",
+                "max": 1,
+                "desc": "Crystalized fundamentals"
             }
         ]
     },
@@ -108,6 +120,21 @@
             },
             {
                 "id": "latinreading",
+                "name": "Elementary reading",
+                "desc": "Legere aliqua potes.",
+                "require": "latin>1",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 150
+                },
+                "mod":{
+                    "thoughts.max": 100,
+                    "academics.max": 5
+                }
+            },
+            {
+                "id": "",
                 "name": "Elementary reading",
                 "desc": "Legere aliqua potes.",
                 "require": "latin>1",
