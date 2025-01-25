@@ -479,6 +479,21 @@
                 }
             },
             {
+                "id": "firstverse",
+                "name": "First divine verse",
+                "desc": "Read out a verse from the scripture out loud, for your fellows at the church",
+                "require": "latinreading&&ecclesiology>2&&jointhechurch",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "thoughts": 80
+                },
+                "mod": {
+                    "churchrespect.max":20
+                }
+            },
+            {
                 "id": "revisit_thoughts",
                 "name": "Revisit thoughts",
                 "require": "thinkbreakthrough",
