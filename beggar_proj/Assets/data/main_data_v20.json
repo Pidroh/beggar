@@ -448,6 +448,37 @@
                 }
             },
             {
+                "id": "basicsknowledge",
+                "name": "Learn the basics",
+                "desc": "The very basic bricks of knowledge",
+                "require": "fundamentals>0",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 1
+                },
+                "mod": {
+                    "fundamentals.max": 2,
+                    "study.speed": 10,
+                    "clarity.max" : 5
+                }
+            },
+            {
+                "id": "betterreading",
+                "name": "Better reading",
+                "desc": "Learn how to focus more on your reading",
+                "require": "fundamentals>0",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2
+                },
+                "mod": {
+                    "study.speed": 25,
+                    "study.effect.fundamentals": 0.25
+                }
+            },
+            {
                 "id": "revisit_thoughts",
                 "name": "Revisit thoughts",
                 "require": "thinkbreakthrough",
