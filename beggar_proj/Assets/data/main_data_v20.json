@@ -494,6 +494,23 @@
                 }
             },
             {
+                "id": "basicschurch",
+                "name": "Basics of the Church",
+                "desc": "Formarly the basic principles of the church",
+                "require": "ecclesiology>1&&fundamentals>1",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "faith": 15
+                },
+                "mod": {
+                    "churchrespect.max":20,
+                    "faith.max": 10,
+                    "fundamentals.max": 1
+                }
+            },
+            {
                 "id": "revisit_thoughts",
                 "name": "Revisit thoughts",
                 "require": "thinkbreakthrough",
