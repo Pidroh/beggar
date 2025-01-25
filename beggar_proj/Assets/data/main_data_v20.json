@@ -227,6 +227,26 @@
                 }
             },
             {
+                "id": "studystudy",
+                "name": "Study studying?",
+                "desc": "How to get better at studying?",
+                "require": "basicknowledge",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4
+                },
+                "run": {
+                    "thoughts": 5
+                },
+                "mod": {
+                    "fundamentals.max": 1
+                },
+                "result": {
+                    "clarity": 80
+                }
+            },
+            {
                 "id": "convincejohn",
                 "name": "Convince John to help with letters",
                 "desc": "Legend says that John can read and write. Maybe he can help you do the same.",
@@ -694,6 +714,20 @@
                     "faith.max": 5,
                     "gratitude.max": 1,
                     "guilty.max": -5
+                }
+            },
+            {
+                "id": "academia",
+                "require": "studystudy",
+                "cost": {
+                    "fundamentals": 5,
+                    "thoughts": 300,
+                    "clarity": 25
+                },
+                "desc": "The pursuit of knowledge",
+                "mod": {
+                    "fundamentals.max": 3,
+                    "study.speed": 3
                 }
             },
             {
