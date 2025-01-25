@@ -134,7 +134,7 @@
                 }
             },
             {
-                "id": "",
+                "id": "latinreading",
                 "name": "Elementary reading",
                 "desc": "Legere aliqua potes.",
                 "require": "latin>1",
@@ -211,6 +211,19 @@
                 "result": {
                     "food": 1,
                     "gratitude": 10
+                }
+            },
+            {
+                "id": "study",
+                "name": "Study",
+                "desc": "Get down on the fundamentals",
+                "require": "latinreading",
+                "duration": 15,
+                "run": {
+                    "thoughts": 5
+                },
+                "result": {
+                    "fundamentals": 1
                 }
             },
             {
