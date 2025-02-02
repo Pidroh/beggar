@@ -172,6 +172,27 @@
                 }
             },
             {
+                "id": "begginingmeaning",
+                "name": "The meaning of begging",
+                "desc": "What it means to ask people for things",
+                "require": "begging>2",
+                "duration": 100,
+                "max": 1,
+                "cost": {
+                    "supplication": 700,
+                    "clarity": 5,
+                    "thoughts": 300
+                },
+                "run": {
+                    "supplication": 5
+                },
+                "mod":{
+                    "supplication.max": 100,
+                    "pleafocus.effect.supplication": 2,
+                    "clarity.max": 3
+                }
+            },
+            {
                 "id": "beggingspots",
                 "name": "Begging spots",
                 "desc": "Use your knowledge of the streets to find the best places for begging",
