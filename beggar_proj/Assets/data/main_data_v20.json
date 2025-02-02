@@ -134,21 +134,6 @@
                 }
             },
             {
-                "id": "latinreading",
-                "name": "Elementary reading",
-                "desc": "Legere aliqua potes.",
-                "require": "latin>1",
-                "duration": 20,
-                "max": 1,
-                "cost": {
-                    "thoughts": 150
-                },
-                "mod":{
-                    "thoughts.max": 100,
-                    "academics.max": 5
-                }
-            },
-            {
                 "id": "sharethebegging",
                 "name": "Share the begging",
                 "desc": "Tell your fellow beggars about your beg skills",
@@ -165,6 +150,25 @@
                 "mod":{
                     "beggarhood.max": 1,
                     "supplication.max": 20
+                }
+            },
+            {
+                "id": "optimizebegging",
+                "name": "Advanced begging",
+                "desc": "Pour the knowledge you accumulated in your begging",
+                "require": "begging>0",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "clarity": 5,
+                    "thoughts": 50
+                },
+                "run": {
+                    "thoughts": 3
+                },
+                "mod":{
+                    "beg_a.result.breadcrumbs": 2,
+                    "beg_b.result.breadcrumbs": 2
                 }
             },
             {
