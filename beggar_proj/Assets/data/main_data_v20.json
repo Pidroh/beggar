@@ -134,6 +134,44 @@
                 }
             },
             {
+                "id": "widowmite",
+                "name": "Widow's Mite",
+                "desc": "The story of a faithful woman who gave herself to the divine",
+                "require": "holyscriptures>0",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "faith": 30,
+                    "fundamentals": 1
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod":{
+                    "gratitude.max": 30,
+                    "faith.max": 15
+                }
+            },
+            {
+                "id": "widowmite",
+                "name": "Widow's Mite",
+                "desc": "The story of a faithful woman who gave herself to the divine",
+                "require": "holyscriptures>0",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "faith": 30,
+                    "fundamentals": 1
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod":{
+                    "gratitude.max": 30,
+                    "faith.max": 15
+                }
+            },
+            {
                 "id": "sharethebegging",
                 "name": "Share the begging",
                 "desc": "Tell your fellow beggars about your beg skills",
