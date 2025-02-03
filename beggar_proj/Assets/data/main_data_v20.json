@@ -466,6 +466,27 @@
                     "churchrespect.max": 50
                 }
             },
+            {
+                "id": "sevensacraments",
+                "name": "The Sevent Sacraments",
+                "desc": "Learn every single one of the seven sacraments",
+                "require": "baptismknowledge||eucharistknowledge",
+                "need": "baptismknowledge&&eucharistknowledge",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 6,
+                    "clarity": 10
+                },
+                "run": {
+                    "thoughts": 20
+                },
+                "mod": {
+                    "fundamentals.max": 2,
+                    "thoughts.max": 60,
+                    "churchrespect.max": 80
+                }
+            },
             
             {
                 "id": "subdeaconduties",
