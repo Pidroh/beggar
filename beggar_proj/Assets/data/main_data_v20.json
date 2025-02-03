@@ -172,7 +172,7 @@
                 }
             },
             {
-                "id": "The Sheep and the Goats",
+                "id": "sheepgoat",
                 "name": "The Sheep and the Goats",
                 "desc": "A sheep on a hand, a goat on another, such is the depth of thought",
                 "require": "holyscriptures>1",
@@ -191,24 +191,26 @@
                 }
             },
             {
-                "id": "The Sheep and the Goats",
-                "name": "The Sheep and the Goats",
-                "desc": "A sheep on a hand, a goat on another, such is the depth of thought",
-                "require": "holyscriptures>1",
-                "duration": 15,
+                "id": "specklog",
+                "name": "The Speck and the Log",
+                "desc": "First, look at your own flaws",
+                "require": "holyscriptures>2",
+                "duration": 20,
                 "max": 1,
                 "cost": {
-                    "faith": 45,
+                    "faith": 55,
                     "fundamentals": 2
                 },
                 "run": {
                     "thoughts": 10
                 },
                 "mod":{
-                    "chuchrespect.max": 15,
-                    "faith.max": 15
+                    "chuchrespect.max": 20,
+                    "clarity.max": 5,
+                    "reflection.max": 2
                 }
             },
+            
             {
                 "id": "sharethebegging",
                 "name": "Share the begging",
@@ -345,6 +347,25 @@
                 },
                 "result": {
                     "clarity": 80
+                }
+            },
+            {
+                "id": "mass",
+                "name": "Knowledge of the Mass",
+                "desc": "The celebration of the eucharist",
+                "require": "basicschurch",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "faith.max": 10,
+                    "churchrespect.max": 10
                 }
             },
             {
@@ -617,7 +638,7 @@
             {
                 "id": "basicschurch",
                 "name": "Basics of the Church",
-                "desc": "Formarly the basic principles of the church",
+                "desc": "Formarly study the basic principles of the church",
                 "require": "ecclesiology>1&&fundamentals>1",
                 "duration": 20,
                 "max": 1,
