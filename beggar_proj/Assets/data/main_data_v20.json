@@ -427,6 +427,27 @@
                 }
             },
             {
+                "id": "baptismknowledge",
+                "name": "Knowledge of the Baptism",
+                "desc": "Learn all details and procedures of baptizing new souls",
+                "require": "intermediarychurch&&jointhechurch",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "clarity": 3
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "thoughts.max": 50,
+                    "churchrespect.max": 10
+                }
+            },
+            
+            {
                 "id": "subdeaconduties",
                 "name": "Subdeacon duties",
                 "desc": "Learn every duty of the subdeacon",
@@ -728,6 +749,26 @@
                     "churchrespect.max":20,
                     "faith.max": 10,
                     "fundamentals.max": 1
+                }
+            },
+            {
+                "id": "intermediarychurch",
+                "name": "Essentials of the Church",
+                "desc": "Go beyond the basic principles of the church into core aspects",
+                "require": "ecclesiology>2&&churchbasics",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 5,
+                    "faith": 20
+                },
+                "run": {
+                    "thoughts": 15
+                },
+                "mod": {
+                    "churchrespect.max":30,
+                    "faith.max": 15,
+                    "fundamentals.max": 2
                 }
             },
             {
