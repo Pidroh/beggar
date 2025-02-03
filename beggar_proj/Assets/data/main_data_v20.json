@@ -434,8 +434,8 @@
                 "duration": 50,
                 "max": 1,
                 "cost": {
-                    "fundamentals": 2,
-                    "clarity": 3
+                    "fundamentals": 4,
+                    "clarity": 8
                 },
                 "run": {
                     "thoughts": 10
@@ -443,7 +443,27 @@
                 "mod": {
                     "fundamentals.max": 1,
                     "thoughts.max": 50,
-                    "churchrespect.max": 10
+                    "churchrespect.max": 30
+                }
+            },
+            {
+                "id": "eucharistknowledge",
+                "name": "Knowledge of the Eucharist",
+                "desc": "Learn all details and procedures of the central religious act",
+                "require": "intermediarychurch&&jointhechurch",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 5,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "thoughts.max": 30,
+                    "churchrespect.max": 50
                 }
             },
             
