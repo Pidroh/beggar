@@ -372,7 +372,7 @@
                 "id": "altarservices",
                 "name": "Services of the Altar",
                 "desc": "Preparation and executions of all matters concerning the altar",
-                "require": "basicschurch",
+                "require": "mass",
                 "duration": 10,
                 "max": 1,
                 "cost": {
@@ -387,22 +387,63 @@
                 }
             },
             {
-                "id": "mass",
-                "name": "Knowledge of the Mass",
-                "desc": "The celebration of the eucharist",
+                "id": "maternostra",
+                "name": "Memorize Mater Nostra",
+                "desc": "Memorize every verse of the Mater Nostra",
                 "require": "basicschurch",
-                "duration": 10,
+                "duration": 50,
                 "max": 1,
                 "cost": {
-                    "fundamentals": 2
+                    "fundamentals": 2,
+                    "clarity": 3
                 },
                 "run": {
                     "thoughts": 10
                 },
                 "mod": {
                     "fundamentals.max": 1,
-                    "faith.max": 10,
+                    "thoughts.max": 50,
                     "churchrespect.max": 10
+                }
+            },
+            {
+                "id": "aveluna",
+                "name": "Memorize Ave Luna",
+                "desc": "Memorize every verse of the Ave Luna",
+                "require": "maternostra",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "clarity": 3
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "thoughts.max": 50,
+                    "churchrespect.max": 10
+                }
+            },
+            {
+                "id": "subdeaconduties",
+                "name": "Subdeacon duties",
+                "desc": "Learn every duty of the subdeacon",
+                "require": "celibacy&&basicschurch",
+                "need": "aveluna&&altarservices",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 3,
+                    "churchrespect.max": 50
                 }
             },
             {
@@ -552,7 +593,7 @@
                 "require": "eucharist_assistance&&celibacy",
                 "duration": 90,
                 "max": 1,
-                "need": "eucharist_assistance&&holyscriptures",
+                "need": "eucharist_assistance&&holyscriptures&&subdeaconduties",
                 "cost": {
                     "churchrespect": 250,
                     "faith": 10,
@@ -899,7 +940,7 @@
                 },
                 "desc": "The study of the fundamental questions",
                 "mod": {
-                    "thought.max": 5,
+                    "thoughts.max": 5,
                     "clarity.max": 3,
                     "reflection.max": 1
                 }
