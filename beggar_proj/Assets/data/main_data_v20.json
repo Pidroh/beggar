@@ -369,6 +369,43 @@
                 }
             },
             {
+                "id": "altarservices",
+                "name": "Services of the Altar",
+                "desc": "Preparation and executions of all matters concerning the altar",
+                "require": "basicschurch",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 2,
+                    "churchrespect.max": 15
+                }
+            },
+            {
+                "id": "mass",
+                "name": "Knowledge of the Mass",
+                "desc": "The celebration of the eucharist",
+                "require": "basicschurch",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "faith.max": 10,
+                    "churchrespect.max": 10
+                }
+            },
+            {
                 "id": "convincejohn",
                 "name": "Convince John to help with letters",
                 "desc": "Legend says that John can read and write. Maybe he can help you do the same.",
