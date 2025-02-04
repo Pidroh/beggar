@@ -495,7 +495,20 @@ public class JsonReader
             if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "lock")
             {
-                CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.AsString, null);
+                var lockTargetString = pair.Value.AsString;
+                if (lockTargetString.Contains(","))
+                {
+                    var values = lockTargetString.Split(",");
+                    foreach (var v in values)
+                    {
+                        CreateMod(ru, arcaniaUnits, 1, ModType.Lock, v, null);
+                    }
+                }
+                else
+                {
+                    CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.AsString, null);
+                }
+
             }
         }
         // default require for RESOURCE
