@@ -440,7 +440,7 @@ public class JsonReader
                 {
                     // TODO make this be an dictionary between string and ResourceChangeType, so you can handle every case without hard coding
                     // EXAMPLE: pleafocus.effect.supplication
-                    if (JsonReader.DictionaryOfChanges.TryGetValue(oneBeforeLast, out var v))
+                    if (oneBeforeLast != null && JsonReader.DictionaryOfChanges.TryGetValue(oneBeforeLast, out var v))
                     {
                         target = last;
                         modType = ModType.ResourceChangeChanger;

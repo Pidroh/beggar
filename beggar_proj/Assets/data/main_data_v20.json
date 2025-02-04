@@ -51,7 +51,7 @@
                 },
                 "mod":{
                     "faith.max": 10,
-                    "chuchrespect.max": 20
+                    "churchrespect.max": 20
                 }
             },
             {
@@ -169,7 +169,7 @@
                     "thoughts": 10
                 },
                 "mod":{
-                    "chuchrespect.max": 15,
+                    "churchrespect.max": 15,
                     "faith.max": 15
                 }
             },
@@ -188,7 +188,7 @@
                     "thoughts": 10
                 },
                 "mod":{
-                    "chuchrespect.max": 20,
+                    "churchrespect.max": 20,
                     "clarity.max": 5,
                     "reflection.max": 2
                 }
@@ -647,7 +647,7 @@
                 },
                 "mod":{
                     "faith.max": 5,
-                    "chuchrespect.max": 30
+                    "churchrespect.max": 30
                 }
             },
             {
@@ -667,7 +667,7 @@
                 },
                 "mod":{
                     "faith.max": 5,
-                    "chuchrespect.max": 50,
+                    "churchrespect.max": 50,
                     "churchrespect.rate": 0.1
                 }
             },
@@ -710,7 +710,7 @@
                 },
                 "mod":{
                     "faith.max": 50,
-                    "chuchrespect.max": 50
+                    "churchrespect.max": 50
                 }
             },
             {
@@ -748,7 +748,7 @@
                     "faith": 1
                 },
                 "mod":{
-                    "chuchrespect.max": 100
+                    "churchrespect.max": 100
                 }
             },
             {
@@ -768,8 +768,8 @@
                     "faith": 1
                 },
                 "mod":{
-                    "chuchrespect.max": 100,
-                    "eucharistics.max": 1,
+                    "churchrespect.max": 100,
+                    "ecclesiology.max": 1,
                     "holyscriptures.max": 1
                 }
             },
@@ -780,7 +780,7 @@
                 "require": "subdeacon",
                 "duration": 200,
                 "max": 1,
-                "need": "holyscriptures>2&&eucharistics>5",
+                "need": "holyscriptures>2&&ecclesiology>5",
                 "cost": {
                     "churchrespect": 250,
                     "faith": 10,
@@ -790,8 +790,8 @@
                     "faith": 1
                 },
                 "mod":{
-                    "chuchrespect.max": 100,
-                    "eucharistics.max": 1,
+                    "churchrespect.max": 100,
+                    "ecclesiology.max": 1,
                     "holyscriptures.max": 1
                 }
             },
@@ -978,7 +978,7 @@
                     "gratitude.max": 20,
                     "churchrespect": 40,
                     "ecclesiology.max": 1,
-                    "guilty.max": -5
+                    "guilt.max": -5
                 }
             },
             {
@@ -1049,7 +1049,7 @@
                 "tags": "t_tier3",
                 "lock": "t_tier3",
                 "need": "theself_3&&holyscriptures>4&&deacon",
-                "require": "t_tier2&&priestduties&&eucharistics>6",
+                "require": "t_tier2&&priestduties&&ecclesiology>6",
                 "cost": {
                     "thoughts": 5,
                     "gratitude": 10,
@@ -1098,7 +1098,7 @@
                 "mod": {
                     "faith.max": 5,
                     "gratitude.max": 1,
-                    "guilty.max": -5
+                    "guilt.max": -5
                 }
             },
             {
