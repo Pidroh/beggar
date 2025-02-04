@@ -83,16 +83,6 @@
                 }
             },
             {
-                "id": "reflection",
-                "name": "Reflection",
-                "desc": "The capacibility to think about our past",
-                "flavor": "The mirror of the mind",
-                "max": 3,
-                "mod": {
-                    "thoughts.max": 5
-                }
-            },
-            {
                 "id": "metathought",
                 "name": "Meta thought",
                 "desc": "The capacibility to think about our past",

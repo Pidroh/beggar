@@ -425,7 +425,7 @@ MonoBehaviour:
     MainBody:
       NormalColor: {r: 0.30980393, g: 0.454902, b: 0.83921576, a: 1}
       DisabledColor: {r: 0, g: 0, b: 0, a: 0}
-      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0.6892157, g: 0.8392157, b: 0.3098039, a: 1}
       HoverColor: {r: 0, g: 0, b: 0, a: 0}
       SelectedColor: {r: 0, g: 0, b: 0, a: 0}
     Outline:
