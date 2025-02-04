@@ -340,6 +340,9 @@ public class MainGameControl : MonoBehaviour
                                 {
                                     arcaniaModel.Runner.StartActionExternally(data);
                                 }
+                                if (tcu.bwe.MainButton.LongPressClickHappenedThisFrame) 
+                                { 
+                                }
                             }
                             break;
                         case UnitType.LOCATION:

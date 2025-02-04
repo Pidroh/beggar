@@ -161,6 +161,8 @@ public class CanvasMaker
             textRectTransform.offsetMax = Vector2.zero;
         }
         var uiUnit = buttonObject.AddComponent<UIUnit>();
+        uiUnit.NormalColor = buttonRequest.MainBody.NormalColor;
+        uiUnit.ClickColor = buttonRequest.MainBody.ClickColor;
         uiUnit.text = textUiUnit.text;
         var bbb = new ButtonWithProgressBar()
         {
