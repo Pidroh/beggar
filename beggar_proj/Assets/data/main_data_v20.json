@@ -529,6 +529,27 @@
                 }
             },
             {
+                "id": "priestduties",
+                "name": "Priest duties",
+                "desc": "Learn every duty of the priest",
+                "require": "deaconduties",
+                "need": "confessions&&advancedconsecration",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.max": 50,
+                    "faith.max":30
+                }
+            },
+            {
                 "id": "advancedsermons",
                 "name": "Advanced Sermons",
                 "desc": "Learn how to add real depth to your talks",
@@ -545,6 +566,66 @@
                 "mod": {
                     "fundamentals.max": 1,
                     "churchrespect.max": 30
+                }
+            },
+            {
+                "id": "transubstation",
+                "name": "Transubstation",
+                "desc": "The art of consegrating bread and wine",
+                "require": "sevensacraments",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.rate": 0.1,
+                    "faith.rate": 0.1
+                }
+            },
+            {
+                "id": "confessions",
+                "name": "Confessions",
+                "desc": "Learn to hear and absolve",
+                "require": "advancedsermons",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.rate": 0.1,
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "advancedconsecration",
+                "name": "Advanced Consecration",
+                "desc": "Become able to consecrate the altar",
+                "require": "transubstation",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "faith.rate": 0.1,
+                    "faith.max": 50
                 }
             },
             {
@@ -984,8 +1065,8 @@
                 "desc" : "The third major order of the Church. A religious leader capable of performing all sorts of rituals.",
                 "tags": "t_tier3",
                 "lock": "t_tier3",
-                "need": "theself_3&&holyscriptures>4",
-                "require": "t_tier2&&deacon&&eucharistics>6",
+                "need": "theself_3&&holyscriptures>4&&deacon",
+                "require": "t_tier2&&priestduties&&eucharistics>6",
                 "cost": {
                     "thoughts": 5,
                     "gratitude": 10,
