@@ -529,6 +529,25 @@
                 }
             },
             {
+                "id": "advancedsermons",
+                "name": "Advanced Sermons",
+                "desc": "Learn how to add real depth to your talks",
+                "require": "sevensacraments",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.max": 30
+                }
+            },
+            {
                 "id": "convincejohn",
                 "name": "Convince John to help with letters",
                 "desc": "Legend says that John can read and write. Maybe he can help you do the same.",
