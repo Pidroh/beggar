@@ -316,7 +316,7 @@
                 "id": "studystudy",
                 "name": "Study studying?",
                 "desc": "How to get better at studying?",
-                "require": "basicknowledge",
+                "require": "basicsknowledge",
                 "duration": 20,
                 "max": 1,
                 "cost": {
@@ -899,7 +899,7 @@
                 "id": "intermediarychurch",
                 "name": "Essentials of the Church",
                 "desc": "Go beyond the basic principles of the church into core aspects",
-                "require": "ecclesiology>2&&churchbasics",
+                "require": "ecclesiology>2&&basicschurch",
                 "duration": 40,
                 "max": 1,
                 "cost": {
