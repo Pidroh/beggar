@@ -8,7 +8,14 @@ using UnityEngine.Pool;
 
 public class JsonReader
 {
-
+    private static readonly Dictionary<string, ResourceChangeType> DictionaryOfChanges = new()
+    {
+        { "result", ResourceChangeType.RESULT },
+        { "effect", ResourceChangeType.EFFECT },
+        { "cost", ResourceChangeType.COST },
+        { "run", ResourceChangeType.RUN },
+        { "result_fail", ResourceChangeType.RESULT_FAIL },
+    };
     public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas)
     {
         int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
@@ -85,7 +92,7 @@ public class JsonReader
                     mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
                     mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
                 }
-                
+
                 else mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
             }
             if (mod.ModType == ModType.SpaceConsumption)
@@ -416,7 +423,7 @@ public class JsonReader
             }
             else
             {
-                var oneBeforeLast = splittedValues[splittedValues.Length - 2];
+                var oneBeforeLast = splittedValues.Length >= 2 ? splittedValues[splittedValues.Length - 2] : null;
 
                 if (last == "max") modType = ModType.MaxChange;
                 if (last == "rate") modType = ModType.RateChange;
@@ -433,12 +440,13 @@ public class JsonReader
                 {
                     // TODO make this be an dictionary between string and ResourceChangeType, so you can handle every case without hard coding
                     // EXAMPLE: pleafocus.effect.supplication
-                    if (oneBeforeLast == "effect")
+                    if (JsonReader.DictionaryOfChanges.TryGetValue(oneBeforeLast, out var v))
                     {
                         target = last;
                         modType = ModType.ResourceChangeChanger;
-                        changeType = ResourceChangeType.EFFECT;
+                        changeType = v;
                         secondary = splittedValues[splittedValues.Length - 3];
+
                     }
                 }
                 else
