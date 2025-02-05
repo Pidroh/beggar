@@ -1205,7 +1205,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": []
+                "encs": ["eyesfaithful", "bishopglare", "joinedprayer", "wordsbishop", "chant", "voicesgossip", "divinepictures", "silenceperiod", "keyschurch"]
             },
             {
                 "id": "ordination_2",
@@ -1226,7 +1226,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": []
+                "encs": ["eyesfaithful", "bishopglare", "joinedprayer", "wordsbishop", "chant", "voicesgossip", "divinepictures", "silenceperiod", "holdcandle"]
             },
             {
                 "id": "eucharist_assistance",
@@ -1247,7 +1247,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": []
+                "encs": ["preparealtar", "carrycandles", "liturgicalbooks", "cruetswine", "lavabo", "voicesgossip", "divinepictures", "silenceperiod"]
             },
             {
                 "id": "john_conversation",
@@ -1269,7 +1269,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": []
+                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose"]
             },
             {
                 "id": "john_home",
@@ -1291,7 +1291,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": []
+                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose", "sadpainting", "deadflowers", "johnnap"]
             }
         ]
     },
