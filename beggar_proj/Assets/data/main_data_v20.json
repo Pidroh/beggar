@@ -1398,7 +1398,8 @@
                     "perplexion": "0~2",
                     "irritation": "-2~2",
                     "thoughts": 1,
-                    "sadness": "0~2"
+                    "sadness": "0~2",
+                    "thinking.xp": 1
                 },
                 "result": {
                     "thoughts": 50,
