@@ -1423,6 +1423,21 @@
                     "sorrow": 10,
                     "sadness": 30
                 }
+            },
+            {
+                "id": "deadflowers",
+                "name": "Dead flowers",
+                "desc": "A bouquet of dead flowers left in the ground",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "thoughts": "-1~5",
+                    "sorrow": "0~1",
+                    "sadness": "0~3"
+                },
+                "result": {
+                    "clarity": 5,
+                    "sorrow": 5
+                }
             }
         ]
     },
