@@ -1374,6 +1374,21 @@
                     "happiness": 1,
                     "sadness": -20
                 }
+            },
+            {
+                "id": "mockingwords",
+                "name": "Mocking words",
+                "desc": "Words pierce your ears, belittling you",
+                "effect": {
+                    "perplexion": "0~2",
+                    "irritation": "0~3",
+                    "sadness": "0~2"
+                },
+                "result": {
+                    "thoughts": 10,
+                    "sorrow": 2,
+                    "sadness": 20
+                }
             }
         ]
     },
