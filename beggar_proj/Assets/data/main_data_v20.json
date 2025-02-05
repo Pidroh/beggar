@@ -1619,6 +1619,21 @@
                     "sadness": 5,
                     "introspection.xp": 10
                 }
+            },
+            {
+                "id": "divinepictures",
+                "name": "Divine pictures",
+                "desc": "Beautiful paintings on the church walls",
+                "effect": {
+                    "faith": "0~1",
+                    "perplexion": 1,
+                    "gratitude": 1,
+                },
+                "result": {
+                    "clarity": 10,
+                    "ecclesiology.xp": 5,
+                    "holyscriptures.xp": 5
+                }
             }
             
         ]
