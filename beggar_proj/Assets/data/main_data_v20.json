@@ -1665,18 +1665,19 @@
                 }
             },
             {
-                "id": "keyschurch",
-                "name": "Keys of the Church",
-                "desc": "The Bishop holds the keys towards you",
+                "id": "holdcandle",
+                "name": "The Candlestick",
+                "desc": "The Bishop holds the symbolic Candlestick towards you",
                 "effect": {
                     "faith": "0~1",
                     "clarity": "-2~-1",
-                    "fear": "0~1",
-                    "perplexion": "0~1"
+                    "fear": "0~3",
+                    "perplexion": "0~3",
+                    "ecclesiology.xp": 1
                 },
                 "result": {
-                    "faith": 5,
-                    "churchrespect": 20
+                    "faith": 50,
+                    "churchrespect": 50
                 }
             }
             
