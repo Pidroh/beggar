@@ -1546,17 +1546,31 @@
                 }
             },
             {
-                "id": "eyesfaithful",
-                "name": "The eyes of the faithful",
-                "desc": "They all stare at you",
+                "id": "bishopglare",
+                "name": "Bishop's glare",
+                "desc": "His old, warm eyes stare at you",
                 "effect": {
-                    "fear": "1~2",
+                    "fear": "0~2",
                     "fatigue": "0~2",
                     "churchrespect": 1
                 },
                 "result": {
-                    "clarity": 3,
-                    "faith": 10
+                    "clarity": 5,
+                    "faith": 15
+                }
+            },
+            {
+                "id": "bishopglare",
+                "name": "Bishop's glare",
+                "desc": "His old, warm eyes stare at you",
+                "effect": {
+                    "fear": "0~2",
+                    "fatigue": "0~2",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "clarity": 5,
+                    "faith": 15
                 }
             }
             
