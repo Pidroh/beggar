@@ -1344,6 +1344,20 @@
                     "clarity": 2,
                     "thoughts": 20
                 }
+            },
+            {
+                "id": "johnlaughter",
+                "name": "Laughter",
+                "desc": "John's laughter echoes through your ears",
+                "effect": {
+                    "perplexion": "0~2",
+                    "irritation": "0~3"
+                },
+                "result": {
+                    "thoughts": 10,
+                    "happiness": 1,
+                    "sadness": -20
+                }
             }
         ]
     },
