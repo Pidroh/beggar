@@ -1407,6 +1407,22 @@
                     "fundamentals": 2,
                     "academia.xp": 1
                 }
+            },
+            {
+                "id": "sadpainting",
+                "name": "Sad painting",
+                "desc": "A painting that inspires deep emotions",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "irritation": "-2~2",
+                    "sorrow": "0~1",
+                    "sadness": "0~2"
+                },
+                "result": {
+                    "clarity": 5,
+                    "sorrow": 10,
+                    "sadness": 30
+                }
             }
         ]
     },
