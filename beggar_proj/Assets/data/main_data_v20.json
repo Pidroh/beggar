@@ -1604,6 +1604,21 @@
                     "gratitude": 25,
                     "holyscriptures.xp": 2
                 }
+            },
+            {
+                "id": "voicesgossip",
+                "name": "Voices of gossip",
+                "desc": "You can hear the whispering, mean voices of the people",
+                "effect": {
+                    "faith": "-2~0",
+                    "gratitude": -1,
+                    "irritation": "0~2",
+                    "beggarhood.xp": 1
+                },
+                "result": {
+                    "sadness": 5,
+                    "introspection.xp": 10
+                }
             }
             
         ]
