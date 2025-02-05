@@ -1312,6 +1312,38 @@
                     "clarity": 1,
                     "sadness": 1
                 }
+            },
+            {
+                "id": "intriguingquestion",
+                "name": "Intriguing question",
+                "desc": "John poses a challenging question towards you",
+                "effect": {
+                    "thoughts": -1,
+                    "perplexion": "1~2",
+                    "irritation": "0~2",
+                    "sadness": 1
+                },
+                "result": {
+                    "supplication": 5,
+                    "clarity": 2,
+                    "thoughts": 15,
+                    "fundamentals": 3
+                }
+            },
+            {
+                "id": "johnchildhood",
+                "name": "John's childhood",
+                "desc": "John tells you one of his many adventures as a child",
+                "effect": {
+                    "thoughts": 1,
+                    "perplexion": "-1~1",
+                    "supplication": "1~3"
+                },
+                "result": {
+                    "academia.xp": 1,
+                    "clarity": 2,
+                    "thoughts": 20
+                }
             }
         ]
     },
