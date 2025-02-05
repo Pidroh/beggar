@@ -1464,7 +1464,23 @@
                 },
                 "result": {
                     "faith": 20,
-                    "churchrespect": 5
+                    "churchrespect": 5,
+                    "holyscriptures.xp": 5
+                }
+            },
+            {
+                "id": "carrycandles",
+                "name": "Carry candles",
+                "desc": "Transport the sacred lights to their place of honor, illuminating the ritual with care",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~2",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "ecclesiology.xp": 10
                 }
             }
         ]
