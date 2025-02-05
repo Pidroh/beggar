@@ -1389,6 +1389,23 @@
                     "sorrow": 2,
                     "sadness": 20
                 }
+            },
+            {
+                "id": "johnprose",
+                "name": "Prose",
+                "desc": "John's prose entices your brain",
+                "effect": {
+                    "perplexion": "0~2",
+                    "irritation": "-2~2",
+                    "thoughts": 1,
+                    "sadness": "0~2"
+                },
+                "result": {
+                    "thoughts": 50,
+                    "clarity": 5,
+                    "fundamentals": 2,
+                    "academia.xp": 1
+                }
             }
         ]
     },
