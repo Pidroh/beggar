@@ -1452,6 +1452,20 @@
                     "clarity": 5,
                     "thoughts": 5
                 }
+            },
+            {
+                "id": "preparealtar",
+                "name": "Preparing the altar",
+                "desc": "You help prepare the altar for the eucharist",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "fatigue": "0~3",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "faith": 20,
+                    "churchrespect": 5
+                }
             }
         ]
     },
