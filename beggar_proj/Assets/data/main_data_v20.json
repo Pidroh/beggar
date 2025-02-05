@@ -1482,6 +1482,22 @@
                     "churchrespect": 5,
                     "ecclesiology.xp": 10
                 }
+            },
+            {
+                "id": "liturgicalbooks",
+                "name": "Liturgical books",
+                "desc": "Prepare the books to be used in the ceremony",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~2",
+                    "churchrespect": 1,
+                    "holyscriptures.xp": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "holyscriptures.xp": 5
+                }
             }
         ]
     },
