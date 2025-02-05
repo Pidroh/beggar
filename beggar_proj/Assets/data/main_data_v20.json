@@ -1498,6 +1498,22 @@
                     "churchrespect": 5,
                     "holyscriptures.xp": 5
                 }
+            },
+            {
+                "id": "cruetswine",
+                "name": "Cruets of wine",
+                "desc": "Deliver the vessels of wine to the altar, preparing them for the sacred rite",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~3",
+                    "churchrespect": 1,
+                    "ecclesiology.xp": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "ecclesiology.xp": 3
+                }
             }
         ]
     },
