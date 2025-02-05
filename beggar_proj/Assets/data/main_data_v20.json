@@ -1298,6 +1298,21 @@
     {
          "type": "ENCOUNTER",
         "items": [
+            {
+                "id": "blueeyes",
+                "name": "Blue eyes",
+                "desc": "John's blue eyes stare deeply at you, trying to pierce into your soul",
+                "effect": {
+                    "supplication": -1,
+                    "fear": "0~2",
+                    "perplexion": "1~3"
+                },
+                "result": {
+                    "supplication": 5,
+                    "clarity": 1,
+                    "sadness": 1
+                }
+            }
         ]
     },
     {
