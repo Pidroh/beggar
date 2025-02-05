@@ -1514,7 +1514,24 @@
                     "churchrespect": 5,
                     "ecclesiology.xp": 3
                 }
+            },
+            {
+                "id": "lavabo",
+                "name": "The lavabo",
+                "desc": "Bring the water and bowl to the altar for the ceremonial hand washing",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~3",
+                    "nutrition": "0~1",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "ecclesiology.xp": 3
+                }
             }
+            
         ]
     },
     {
