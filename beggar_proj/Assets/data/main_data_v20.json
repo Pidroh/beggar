@@ -1560,17 +1560,19 @@
                 }
             },
             {
-                "id": "bishopglare",
-                "name": "Bishop's glare",
-                "desc": "His old, warm eyes stare at you",
+                "id": "joinedprayer",
+                "name": "Joined prayer",
+                "desc": "Pray together in communion",
                 "effect": {
-                    "fear": "0~2",
-                    "fatigue": "0~2",
+                    "faith": "0~1",
+                    "gratitude": 1,
                     "churchrespect": 1
                 },
                 "result": {
                     "clarity": 5,
-                    "faith": 15
+                    "faith": 25,
+                    "gratitude": 25,
+                    "holyscriptures.xp": 3
                 }
             }
             
