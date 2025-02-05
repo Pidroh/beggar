@@ -1438,6 +1438,20 @@
                     "clarity": 5,
                     "sorrow": 5
                 }
+            },
+            {
+                "id": "johnnap",
+                "name": "John's nap",
+                "desc": "He takes time to sleep. You can hear him sleep talking...",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "irritation": "0~3",
+                    "sadness": "-2~2"
+                },
+                "result": {
+                    "clarity": 5,
+                    "thoughts": 5
+                }
             }
         ]
     },
