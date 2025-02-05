@@ -221,6 +221,12 @@
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
+            },
+            {
+                "id": "boredom",
+                "stressor": true,
+                "tags": "stress",
+                "max": 10
             }
         ]
     },

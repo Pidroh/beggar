@@ -1574,6 +1574,21 @@
                     "gratitude": 25,
                     "holyscriptures.xp": 3
                 }
+            },
+            {
+                "id": "wordsbishop",
+                "name": "Sermon of the Bishop",
+                "desc": "Another tale meant to impart knowledge",
+                "effect": {
+                    "faith": "0~1",
+                    "perplexion": "-1~3",
+                    "boredom": 1
+                },
+                "result": {
+                    "faith": 25,
+                    "gratitude": 25,
+                    "holyscriptures.xp": 3
+                }
             }
             
         ]
