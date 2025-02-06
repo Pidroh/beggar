@@ -31,8 +31,10 @@ public class ControlExploration : ControlSubUnit
         }
         foreach (var item in dataHolder.ExplorationActiveUnits)
         {
+            item.lwe?.MarkAsDirty();
             item.lwe?.ManualUpdate();
             item.XPGauge?.ManualUpdate();
+            item.bwe?.MarkAsDirty();
             item.bwe?.ManualUpdate();
             item.FeedDescription();
             if(item.IsExpanded) item.UpdateChangeGroups();
