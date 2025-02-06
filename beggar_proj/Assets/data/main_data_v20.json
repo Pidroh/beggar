@@ -819,7 +819,6 @@
                 "desc": "Help out with small tasks in the church",
                 "require": "ecclesiology>0",
                 "duration": 5,
-                "max": 1,
                 "run": {
                     "gratitude": 1,
                     "supplication": 1
