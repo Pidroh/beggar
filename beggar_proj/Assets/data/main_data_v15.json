@@ -1028,6 +1028,7 @@
                 "desc": "Show your gratitude about the help you receive",
                 "require": "firstfaith",
                 "need": "pray_tool",
+                "tag": "beggary",
                 "duration": 5,
                 "cost": {
                     "gratitude": 1,

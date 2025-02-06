@@ -23,7 +23,7 @@
             {
                 "id": "fundamentals",
                 "name": "Fundamentals",
-                "max": 3,
+                "max": 0,
                 "desc": "The basics of knowledge"
             },
             {
@@ -132,7 +132,7 @@
                 },
                 "mod":{
                     "thoughts.max": 100,
-                    "academics.max": 5
+                    "fundamentals.max": 3 
                 }
             },
             {
@@ -287,7 +287,7 @@
             {
                 "id": "foodchurch",
                 "name": "Church meals",
-                "desc": "Church providden meal",
+                "desc": "Meal given by the church",
                 "require": "jointhechurch",
                 "duration": 10,
                 "cost": {
@@ -297,6 +297,23 @@
                 "result": {
                     "food": 1,
                     "gratitude": 10
+                }
+            },
+            {
+                "id": "thankfulthoughts",
+                "name": "Thankful thoughts",
+                "desc": "Always being thankful",
+                "require": "jointhechurch",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "thoughts": 120
+                },
+                "result": {
+                    "gratitude": 100
+                },
+                "mod": {
+                    "think.effect.gratitude": 1
                 }
             },
             {
@@ -310,6 +327,21 @@
                 },
                 "result": {
                     "fundamentals": 1
+                }
+            },
+            {
+                "id": "pray",
+                "name": "Pray",
+                "desc": "May your words reach the Divine",
+                "require": "baptism",
+                "duration": 5,
+                "run": {
+                    "thoughts": 1,
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 2,
+                    "gratitude": 1
                 }
             },
             {
@@ -635,9 +667,8 @@
                 "id": "tonsure",
                 "name": "Tonsure",
                 "desc": "The act of shaving one's head, as proof of devotion.",
-                "require": "ecclesiology>1",
+                "require": "ecclesiology>1&&baptism",
                 "duration": 120,
-                "lock": "beggary",
                 "max": 1,
                 "cost": {
                     "churchrespect": 5
@@ -702,7 +733,7 @@
                 "cost": {
                     "churchrespect": 20,
                     "faith": 10,
-                    "clarity": 5,
+                    "clarity": 1,
                     "thoughts": 80
                 },
                 "run": {
