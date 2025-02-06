@@ -1194,6 +1194,7 @@
             },
             {
                 "id": "churchoutskirts",
+                "name": "Church outskirts",
                 "require": "churchbeggar",
                 "cost": {
                     "thoughts": 10,
