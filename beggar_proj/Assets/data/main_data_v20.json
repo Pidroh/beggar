@@ -726,6 +726,7 @@
                 "id": "jointhechurch",
                 "name": "Join the Church",
                 "desc": "Officially join the church",
+                "tag": "joinchurch",
                 "require": "ecclesiology>2&&tonsure",
                 "duration": 120,
                 "lock": "beggary",
@@ -1716,6 +1717,12 @@
     {
         "type": "DIALOG",
         "items":[
+            {
+                "id": "irreversible_church",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. You will no longer be able to beg on the streets, among other actions. But you will gain access to a whole new range of possibilities. Go ahead with this action?",
+                "tags": "joinchurch"
+            }
         ]
     },
     {
