@@ -41,7 +41,7 @@
                 "id": "food",
                 "name": "Food",
                 "desc": "Nutritious substance",
-                "max": 2
+                "max": 5
             },
             {
                 "id": "danger",

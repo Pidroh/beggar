@@ -999,15 +999,15 @@
                 "lock": "t_tier1",
                 "require": "t_tier0&&ordination_1&&jointhechurch",
                 "cost": {
-                    "churchrespect": 20,
-                    "gratitude": 10,
-                    "faith": 10,
-                    "nutrition": 2
+                    "churchrespect": 80,
+                    "gratitude": 150,
+                    "faith": 80,
+                    "nutrition": 100
                 },
                 "mod": {
                     "faith.max": 20,
                     "gratitude.max": 20,
-                    "churchrespect": 40,
+                    "churchrespect.max": 40,
                     "ecclesiology.max": 1,
                     "guilt.max": -5
                 }
@@ -1204,9 +1204,11 @@
             },
             {
                 "id": "holyscriptures",
+                "name": "Holy Scriptures",
                 "require": "ecclesiology>4&&latin>2",
                 "cost": {
-                    "skillpoints": 20
+                    "fundamentals": 3,
+                    "thoughts": 500
                 },
                 "desc": "Knowledge of the religious scriptures.",
                 "mod": {
