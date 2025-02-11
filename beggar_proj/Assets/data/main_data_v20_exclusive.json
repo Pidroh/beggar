@@ -55,14 +55,14 @@
                 "duration": 90,
                 "tags": "ending_game",
                 "cost":{    
-                    "supplication": 450,
-                    "thoughts": 200,
-                    "clarity": 80,
-                    "churchrespect": 300
+                    "supplication": 2000,
+                    "thoughts": 1500,
+                    "clarity": 100,
+                    "churchrespect": 900
                 },
                 "run":{
-                    "thoughts": 5,
-                    "supplication": 5
+                    "thoughts": 20,
+                    "supplication": 20
                 }
             }
             

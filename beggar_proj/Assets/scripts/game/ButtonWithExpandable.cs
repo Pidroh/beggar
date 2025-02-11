@@ -25,7 +25,7 @@ public class ButtonWithExpandable
 
     internal void MainButtonSelected(bool selected)
     {
-        MainButton.Image.color = selected ? _selectedColorButton : _originalColorButton;
+        MainButton.NormalColor = selected ? _selectedColorButton : _originalColorButton;
         if (!selected) return;
 
     }

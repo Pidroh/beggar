@@ -787,7 +787,7 @@
                 "id": "subdeacon",
                 "name": "Subdeacon",
                 "desc": "Be appointed a Subdeacon, the first major order in the Church",
-                "require": "eucharist_assistance&&celibacy",
+                "require": "subdeaconduties||eucharist_assistance&&celibacy",
                 "duration": 90,
                 "max": 1,
                 "need": "eucharist_assistance&&holyscriptures&&subdeaconduties",
@@ -965,7 +965,8 @@
             {
                 "id": "thinkbreakthrough",
                 "name": "Time of reflection",
-                "require": "introspection>5&&contemplation>3",
+                "need": "contemplation>3",
+                "require": "introspection>5&&contemplation>0",
                 "max": 2,
                 "duration": 55,
                 "cost": {
@@ -1777,7 +1778,7 @@
                     "foraging": 50
                 },
                 "mod": {
-                    "reflection.max": 10,
+                    "reflection.max": 5,
                     "space": 1
                 }
             },
