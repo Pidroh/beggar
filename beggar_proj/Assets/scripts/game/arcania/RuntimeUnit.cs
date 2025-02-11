@@ -168,6 +168,13 @@ public class RuntimeUnit
 
     internal bool IsInstant() => !ConfigTask.Duration.HasValue;
 
+    internal float GetSpeedMultiplier()
+    {
+        var speedP = 100f;
+        speedP += GetModSum(ModType.Speed);
+        return speedP * 0.01f;
+    }
+
     internal bool CanFullyAcceptChange(FloatRange valueChange)
     {
         if (valueChange.SmallerThan(0f)) return valueChange.BiggerOrEqual(-Value); //return Mathf.Abs(valueChange) <= Value;

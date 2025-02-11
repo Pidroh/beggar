@@ -162,7 +162,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             }
 
             float beforeProg = run.TaskProgress;
-            run.TaskProgress += dt;
+            float taskProgressDt = dt * run.GetSpeedMultiplier();
+            run.TaskProgress += taskProgressDt;
 
             // reached a new second in progress
             int previousProgress = Mathf.FloorToInt(beforeProg);
