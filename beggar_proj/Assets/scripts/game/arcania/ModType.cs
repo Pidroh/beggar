@@ -5,5 +5,6 @@
     RateChange,
     SpaceConsumption,
     Lock,
-    ResourceChangeChanger
+    ResourceChangeChanger,
+    Speed
 }
