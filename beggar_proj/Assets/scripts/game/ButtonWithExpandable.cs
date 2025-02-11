@@ -9,6 +9,7 @@ public class ButtonWithExpandable
     private Color _originalColorButton;
     private Color _selectedColorButton;
     private Color _originalColorProgress;
+    private readonly Color _selectedColorProgress;
     private readonly Color _disabledColorProgress;
 
     public IconButton ExpandButton => ExpandManager.ExpandButton;
@@ -17,6 +18,7 @@ public class ButtonWithExpandable
 
     public ExpandableManager ExpandManager;
     private bool _dirty;
+    private bool _selected;
 
     public bool Expanded => ExpandManager.Expanded;
 
@@ -25,6 +27,7 @@ public class ButtonWithExpandable
 
     internal void MainButtonSelected(bool selected)
     {
+        _selected = selected;
         MainButton.NormalColor = selected ? _selectedColorButton : _originalColorButton;
         if (!selected) return;
 
@@ -33,7 +36,7 @@ public class ButtonWithExpandable
     private void SetMainButtonEnabled(bool value)
     {
         MainButton.ButtonEnabled = value;
-        ButtonProgressBar.ProgressImage.Image.color = value ? _originalColorProgress : _disabledColorProgress;
+        ButtonProgressBar.ProgressImage.Image.color = value ? (_selected ? _selectedColorProgress : _originalColorProgress) : _disabledColorProgress;
     }
 
     public static implicit operator LayoutChild(ButtonWithExpandable a) => a.LayoutChild;
@@ -51,6 +54,7 @@ public class ButtonWithExpandable
         _selectedColorButton = c;
         _originalColorProgress = ButtonProgressBar.ProgressImage.Image.color;
         _disabledColorProgress = new Color(_originalColorProgress.r * 0.7f, _originalColorProgress.g * 0.7f, _originalColorProgress.b * 0.7f, _originalColorProgress.a);
+        _selectedColorProgress = new Color(_originalColorProgress.r, Mathf.Min(_originalColorProgress.g + 0.08f, 1f), Mathf.Min(_originalColorProgress.b + 0.08f, 1f), _originalColorProgress.a);
 
         this.LayoutChild = LayoutChild.Create(MainButton.transform, iconButton.transform);
         MainButton.transform.localPosition = Vector3.zero;
