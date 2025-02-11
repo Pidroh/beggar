@@ -1342,7 +1342,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose", "sadpainting", "deadflowers", "johnnap"]
+                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose", "sadpainting", "deadflowers_enc", "johnnap"]
             }
         ]
     },
@@ -1476,7 +1476,7 @@
                 }
             },
             {
-                "id": "deadflowers",
+                "id": "deadflowers_enc",
                 "name": "Dead flowers",
                 "desc": "A bouquet of dead flowers left in the ground",
                 "effect": {
