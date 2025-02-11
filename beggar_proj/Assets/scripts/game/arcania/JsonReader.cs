@@ -63,6 +63,10 @@ public class JsonReader
                 }
                 return textKey;
             }
+            if(mod.ModType == ModType.Speed) 
+            {
+                mod.HumanText = $"Speed % {Local.GetText(targetTextKey)}:";
+            }
             if (mod.ModType == ModType.MaxChange)
             {
                 // space max increasing has no target
