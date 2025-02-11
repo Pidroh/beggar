@@ -986,6 +986,23 @@
     {
         "type": "HOUSE",
         "items":[
+            {
+                "id": "churchbasic",
+                "name": "Church dormitory",
+                "require": "jointhechurch",
+                "cost": {
+                    "churchrespect": 30,
+                    "faith": 10
+                },
+                "desc": "Not too far from the Church of Our Lady, close to the divine",
+                "mod": {
+                    "space.max": 9,
+                    "faith.max": 50,
+                    "pray.effect.faith": 2,
+                    "churchrespect.max": 50
+
+                }
+            }
         ]
     },
     {

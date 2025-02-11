@@ -99,6 +99,10 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         {
             var firstTime = data.Value == 0;
             data.ChangeValue(1);
+            if (data.Skill != null)
+            {
+                data.Skill.xp = 0;
+            }
             _model.ApplyResourceChanges(data, ResourceChangeType.RESULT);
             if (firstTime)
                 _model.ApplyResourceChanges(data, ResourceChangeType.RESULT_ONCE);
