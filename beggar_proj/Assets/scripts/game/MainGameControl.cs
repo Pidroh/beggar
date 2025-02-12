@@ -179,7 +179,7 @@ public class MainGameControl : MonoBehaviour
         var widthMM = dynamicCanvas.LowerMenus[0].SelfChild.RectTransform.GetWidthMilimeters();
         var maxNumberOfLowerTabButtons = Mathf.FloorToInt(widthMM / 10f);
         // Count -1 because onf the tab control units is the one to show others
-        var allTabButtonVisiblesInLowerMenu = (TabControlUnits.Count-1) <= maxNumberOfLowerTabButtons;
+        var allTabButtonVisiblesInLowerMenu = (TabControlUnits.Count - 1) <= maxNumberOfLowerTabButtons;
         var actualMaxOfLowerTabButtonsWithoutOtherButton = maxNumberOfLowerTabButtons;
         if (!allTabButtonVisiblesInLowerMenu) actualMaxOfLowerTabButtonsWithoutOtherButton--;
         // -----------------------------------------------------------
@@ -240,7 +240,7 @@ public class MainGameControl : MonoBehaviour
                 {
                     dynamicCanvas.ToggleChild(tabIndex);
                 }
-                if (tabControl.SelectionButtonLarge.Button.Clicked) 
+                if (tabControl.SelectionButtonLarge.Button.Clicked)
                 {
                     dynamicCanvas.HideOverlay();
                 }
@@ -253,7 +253,24 @@ public class MainGameControl : MonoBehaviour
             {
                 while (tabControl.LogControlUnits.Count < arcaniaModel.LogUnits.Count)
                 {
-                    MainGameControlSetup.CreateLogControlUnit(mgc: this, tabControl: tabControl, lp: dynamicCanvas.children[tabIndex], logUnit: arcaniaModel.LogUnits[tabControl.LogControlUnits.Count]);
+                    LogUnit logUnit = arcaniaModel.LogUnits[tabControl.LogControlUnits.Count];
+                    if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED)
+                    {
+                        foreach (var tcVisible in this.TabControlUnits)
+                        {
+                            foreach (var uc in tcVisible.UnitGroupControls)
+                            {
+                                foreach (var item in uc.Value)
+                                {
+                                    if (item.IsExpanded) 
+                                    {
+                                        item.Dirty++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    MainGameControlSetup.CreateLogControlUnit(mgc: this, tabControl: tabControl, lp: dynamicCanvas.children[tabIndex], logUnit: logUnit);
                 }
                 foreach (var item in tabControl.LogControlUnits)
                 {
