@@ -289,6 +289,11 @@ public class RTControlUnit
         if (wannaDirty) Dirty = 2;
         MainLayout.SelfChild.VisibleSelf = visible;
     }
+
+    internal void MarkDirty()
+    {
+        Dirty = UnityEngine.Mathf.Max(1, Dirty + 1);
+    }
 }
 
 public class ResourceChangeGroup

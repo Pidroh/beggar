@@ -41,6 +41,7 @@ public class MainGameControl : MonoBehaviour
     public float lastSaveTime;
     public ControlExploration controlExploration;
     public int SkillFontSize;
+    private int _logCountPreProcessedByControl;
 
     // Start is called before the first frame update
     void Start()
@@ -249,6 +250,33 @@ public class MainGameControl : MonoBehaviour
             }
             if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
             #region log updating
+            var dirtyfyExpanded = false;
+            while (_logCountPreProcessedByControl < arcaniaModel.LogUnits.Count)
+            {
+                LogUnit logUnit = arcaniaModel.LogUnits[_logCountPreProcessedByControl];
+                if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED)
+                {
+                    dirtyfyExpanded = true;
+                }
+                _logCountPreProcessedByControl++;
+            }
+            if (dirtyfyExpanded) 
+            {
+                foreach (var tcVisible in this.TabControlUnits)
+                {
+                    foreach (var uc in tcVisible.UnitGroupControls)
+                    {
+                        foreach (var item in uc.Value)
+                        {
+                            if (item.IsExpanded)
+                            {
+                                item.MarkDirty();
+                            }
+                        }
+                    }
+                }
+            }
+            #region log feeding on the UI
             if (tabControl.TabData.Tab.ContainsLogs)
             {
                 while (tabControl.LogControlUnits.Count < arcaniaModel.LogUnits.Count)
@@ -278,6 +306,7 @@ public class MainGameControl : MonoBehaviour
                     item.Lc.RectTransform.SetHeightMilimeters(9);
                 }
             }
+            #endregion
             #endregion
             var UnitGroupControls = tabControl.UnitGroupControls;
 
