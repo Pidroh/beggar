@@ -1079,10 +1079,11 @@
                 "need": "theself_2",
                 "require": "t_tier1&&ordination_2&&latin>1",
                 "cost": {
-                    "thoughts": 5,
-                    "gratitude": 10,
-                    "faith": 10,
-                    "nutrition": 2
+                    "thoughts": 550,
+                    "gratitude": 400,
+                    "faith": 100,
+                    "nutrition": 70,
+                    "fundamentals": 2
                 },
                 "mod": {
                     "faith.max": 20,
