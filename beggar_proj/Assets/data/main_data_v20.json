@@ -1039,10 +1039,10 @@
                 "need": "theself_2",
                 "require": "t_tier1&&philosophy>=2",
                 "cost": {
-                    "thoughts": 5,
-                    "gratitude": 10,
-                    "faith": 10,
-                    "nutrition": 2
+                    "thoughts": 200,
+                    "supplication": 400,
+                    "clarity": 25,
+                    "nutrition": 8
                 },
                 "mod": {
                     "philosophy.max": 1,
@@ -1121,10 +1121,11 @@
                 "need": "theself_3&&begging>=4&&beggarhood>=5&&cityknowledge>=3",
                 "require": "t_tier2&&begging>2&&beggarhood>=3&&cityknowledge>=1",
                 "cost": {
-                    "thoughts": 5,
-                    "gratitude": 10,
-                    "faith": 10,
-                    "nutrition": 2
+                    "supplication": 1000,
+                    "thoughts": 400,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "nutrition": 8
                 },
                 "mod": {
                     "begging.max": 1,
