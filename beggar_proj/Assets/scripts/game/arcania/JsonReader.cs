@@ -91,7 +91,7 @@ public class JsonReader
             }
             if (mod.ModType == ModType.ResourceChangeChanger)
             {
-                if (mod.ResourceChangeType == ResourceChangeType.EFFECT)
+                if (mod.ResourceChangeType == ResourceChangeType.EFFECT || mod.ResourceChangeType == ResourceChangeType.RESULT)
                 {
                     mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
                     mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
