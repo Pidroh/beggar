@@ -12,15 +12,15 @@
                 "duration": 90,
                 "tags": "ending_game",
                 "cost":{
-                    "thoughts": 250,
-                    "clarity": 50,
-                    "supplication": 650,
-                    "sorrow": 5,
+                    "thoughts": 500,
+                    "clarity": 90,
+                    "supplication": 1100,
+                    "reflection": 12,
                     "rats": 1
                 },
                 "run":{
-                    "thoughts": 5,
-                    "supplication": 5
+                    "thoughts": 8,
+                    "supplication": 8
                 },
                 "result": {
                     "nutrition": 1
