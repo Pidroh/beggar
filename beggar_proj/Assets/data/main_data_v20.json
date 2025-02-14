@@ -1101,10 +1101,10 @@
                 "need": "theself_3&&holyscriptures>4&&deacon",
                 "require": "t_tier2&&priestduties&&ecclesiology>6",
                 "cost": {
-                    "thoughts": 5,
-                    "gratitude": 10,
-                    "faith": 10,
-                    "nutrition": 2
+                    "thoughts": 1600,
+                    "gratitude": 1000,
+                    "faith": 350,
+                    "nutrition": 90
                 },
                 "mod": {
                     "faith.max": 20,
