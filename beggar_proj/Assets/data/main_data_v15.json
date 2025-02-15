@@ -1363,8 +1363,8 @@
                 "require": "rodentology>3&&agile&&stealbread>5&&t_tier1",
                 "need": "theself_2",
                 "cost": {
-                    "ratbond": 10,
-                    "guilt": 15
+                    "ratbond": 120,
+                    "guilt": 20
                 },
                 "mods":
                 {
@@ -1384,8 +1384,8 @@
                 "need": "theself_2",
                 "require": "rodentology>=6&&ratbeggar",
                 "cost": {
-                    "ratbond": 10,
-                    "guilt": 15
+                    "ratbond": 200,
+                    "rats": 18
                 },
                 "mods":
                 {

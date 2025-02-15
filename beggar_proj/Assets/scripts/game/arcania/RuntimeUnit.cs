@@ -81,10 +81,52 @@ public class RuntimeUnit
 
     internal void ChangeValue(float valueChange)
     {
+        var valueWasZero = Value == 0;
         if (MaxCanLimitValue)
             _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
         else
             _value = Mathf.Max(_value + valueChange, 0);
+        if (valueWasZero && Value != 0) 
+        {
+            DirtyThingsWhenNotZero();
+        }
+
+    }
+
+    private void DirtyThingsWhenNotZero()
+    {
+        if (Dirty) return;
+        Dirty = true;
+        foreach (var mod in this.ModsOwned)
+        {
+            if (mod.Intermediary != null)
+            {
+                foreach (var ru in mod.Intermediary.RuntimeUnits)
+                {
+                    ru.DirtyThingsWhenNotZero();
+                }
+            }
+            // targets will be done above if there is an intermediary
+            else if (mod.Target != null)
+            {
+                foreach (var ru in mod.Target.RuntimeUnits)
+                {
+                    ru.DirtyThingsWhenNotZero();
+                }
+
+            }
+
+        }
+        foreach (var mod in this.ModsSelfAsIntermediary)
+        {
+            if (mod.Target != null)
+            {
+                foreach (var ru in mod.Target.RuntimeUnits)
+                {
+                    ru.DirtyThingsWhenNotZero();
+                }
+            }
+        }
     }
 
     public void ModifyValue(float valueChange) => ChangeValue(valueChange);
@@ -228,4 +270,6 @@ public class RuntimeUnit
     public ConfigResource ConfigResource { get; internal set; }
     public ConfigEncounter ConfigEncounter { get; internal set; }
     public float ValueRatio => HasMax ? _value / Max : 0f;
+
+    public bool Dirty { get; private set; }
 }

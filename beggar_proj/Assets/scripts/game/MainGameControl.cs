@@ -492,8 +492,11 @@ public class EndingControl
         for (int i = 0; i < runtimeUnits.Length; i++)
         {
             RuntimeUnit ru = runtimeUnits[i];
+            // older versions might not have all the endings
+            if (ru == null) continue;
             if (ru.Value <= 0) continue;
             dynamicCanvas.ShowOverlay();
+
             var message = endingMessage;
             message = message.Replace("$PART1$", endingPrefix[i]).Replace("$PART2$", endingMessageSnippet[i]);
             EndGameMessage.rawText = message;

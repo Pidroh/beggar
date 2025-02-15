@@ -113,6 +113,7 @@ public class RTControlUnit
             if (TabControl.Dirty) Dirty++;
             if (bwe?.ExpandManager.Dirty ?? false) Dirty++;
             if (lwe?.ExpandManager.Dirty ?? false) Dirty++;
+            if (Data.Dirty) Dirty++;
         }
         if (ButtonAdd != null)
         {
