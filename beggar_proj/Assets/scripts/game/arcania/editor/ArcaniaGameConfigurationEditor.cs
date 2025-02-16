@@ -20,6 +20,7 @@ public class ArcaniaGameConfigurationEditor : Editor
                 var entry = config.entries[i];
                 GUILayout.BeginHorizontal();
                 var apply = false;
+                var build = false;
                 if (GUILayout.Button($"Apply {config.entries[i].id}"))
                 {
                     apply = true;
@@ -27,14 +28,25 @@ public class ArcaniaGameConfigurationEditor : Editor
                 if (GUILayout.Button($"Build {config.entries[i].id}"))
                 {
                     apply = true;
+                    build = true;
                 }
+                var gameConfigEngine = (apply || build) ? HeartUnity.HeartGame.GetConfig() : null;
                 if (apply) 
                 {
                     config.configurationReference.jsonDatas.Clear();
                     config.configurationReference.jsonDatas.AddRange(entry.jsonDatas);
+                    if (entry.versionOverride > 0) 
+                    {
+                        gameConfigEngine.versionNumber = entry.versionOverride;
+                        EditorUtility.SetDirty(gameConfigEngine);
+                    }
                     EditorUtility.SetDirty(config.configurationReference); // Marks the object as dirty
                     AssetDatabase.SaveAssets(); // Saves the asset to disk
                     AssetDatabase.Refresh();
+                }
+                if (build) 
+                {
+                    CustomBuild.BuildWithTag(entry.buildConfigId);
                 }
 
                 GUILayout.EndHorizontal();
