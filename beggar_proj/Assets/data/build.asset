@@ -21,3 +21,7 @@ MonoBehaviour:
     copyFileTag: 
     outputPath: ../builds/test/webtest%V%%BETA%/
     buildTarget: 20
+  - tag: web_patreon
+    copyFileTag: 
+    outputPath: ../builds/patreon/webtest%V%%BETA%/
+    buildTarget: 20
