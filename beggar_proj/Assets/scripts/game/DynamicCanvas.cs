@@ -260,7 +260,7 @@ public class DynamicCanvas
     {
         using var _1 = ListPool<LayoutParent>.Get(out var list);
         list.AddRange(ActiveChildren);
-        ActiveChildren.Clear();
+        ActiveChildren.Clear(); 
         foreach (var item in list)
         {
             if (item == layoutParent) continue;

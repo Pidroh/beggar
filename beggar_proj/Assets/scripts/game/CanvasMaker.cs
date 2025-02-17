@@ -382,12 +382,6 @@ public class CanvasMaker
         scrollbar.targetGraphic = handleImage;
         scrollbar.handleRect = handleRT;
 
-        // Hide Child if Canvas width is less than required
-        if (Screen.width < 320 * (index + 1))
-        {
-            childGO.SetActive(false);
-        }
-
         return lp;
     }
 

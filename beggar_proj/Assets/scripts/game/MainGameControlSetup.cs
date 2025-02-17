@@ -550,6 +550,15 @@ public class MainGameControlSetup
         }
     }
 
+    internal static void SetupPostLoad(MainGameControl mainGameControl)
+    {
+        for (int i = 0; i < mainGameControl.TabControlUnits.Count; i++)
+        {
+            TabControlUnit item = mainGameControl.TabControlUnits[i];
+            mainGameControl.dynamicCanvas.EnableChild(i, item.TabData.Visible);
+        }
+    }
+
     internal static void CreateLogControlUnit(MainGameControl mgc, TabControlUnit tabControl, LayoutParent lp, LogUnit logUnit)
     {
         var text = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);

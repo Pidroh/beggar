@@ -54,6 +54,9 @@ public class MainGameControl : MonoBehaviour
         ArcaniaPersistence = new(HeartGame);
         ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
         HeartGame.CommonDataLoad();
+        // Let the model run once so you can finish up setup with the latest info on visibility
+        arcaniaModel.ManualUpdate(0);
+        MainGameControlSetup.SetupPostLoad(this);
     }
 
     // Update is called once per frame
@@ -65,6 +68,7 @@ public class MainGameControl : MonoBehaviour
         HeartGame.ManualUpdate();
         EngineView.ManualUpdate();
 
+        #region save
         // -----------------------------------------------------------
         // Save data
         // -----------------------------------------------------------
@@ -75,6 +79,9 @@ public class MainGameControl : MonoBehaviour
             ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
             HeartGame.SaveCommon();
         }
+        #endregion
+
+        #region debug command
         // -----------------------------------------------------------
         // Debug command
         // -----------------------------------------------------------
@@ -125,7 +132,7 @@ public class MainGameControl : MonoBehaviour
                 }
             }
         }
-
+        #endregion
         // -----------------------------------------------------------
         // Show end game
         // -----------------------------------------------------------
