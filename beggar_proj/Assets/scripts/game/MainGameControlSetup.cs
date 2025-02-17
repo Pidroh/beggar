@@ -168,7 +168,7 @@ public class MainGameControlSetup
                         {
                             var button = CanvasMaker.CreateButton(item.ConfigBasic.name, mgc.ButtonObjectRequest, mgc.ButtonRequest);
                             var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
-                            var bwe = new ButtonWithExpandable(button, iconButton);
+                            var bwe = new ButtonWithExpandable(button, iconButton, mgc.ButtonRequest);
                             rcu.bwe = bwe;
                         }
 
@@ -370,7 +370,7 @@ public class MainGameControlSetup
                     {
                         var button = CanvasMaker.CreateButton("Flee", mgc.ButtonObjectRequest, mgc.ButtonRequest);
                         var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
-                        var bwe = new ButtonWithExpandable(button, iconButton);
+                        var bwe = new ButtonWithExpandable(button, iconButton, mgc.ButtonRequest);
                         rcu.bwe = bwe;
                         layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
                         bwe.LayoutChild.ObjectName = "WTF IS";

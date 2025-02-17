@@ -41,17 +41,13 @@ public class ButtonWithExpandable
 
     public static implicit operator LayoutChild(ButtonWithExpandable a) => a.LayoutChild;
 
-    public ButtonWithExpandable(ButtonWithProgressBar button, IconButton iconButton)
+    public ButtonWithExpandable(ButtonWithProgressBar button, IconButton iconButton, CanvasMaker.CreateButtonRequest buttonRequest)
     {
         ExpandManager = new(iconButton);
         MainButton = button.Button;
         ButtonProgressBar = button;
         _originalColorButton = MainButton.Image.color;
-        var c = MainButton.Image.color;
-        c.r = Mathf.Min(1f, c.r * 1.3f);
-        c.g = Mathf.Min(1f, c.g * 1.3f);
-        c.b *= 0.9f;
-        _selectedColorButton = c;
+        _selectedColorButton = buttonRequest.MainBody.SelectedColor;
         _originalColorProgress = ButtonProgressBar.ProgressImage.Image.color;
         _disabledColorProgress = new Color(_originalColorProgress.r * 0.7f, _originalColorProgress.g * 0.7f, _originalColorProgress.b * 0.7f, _originalColorProgress.a);
         _selectedColorProgress = new Color(_originalColorProgress.r, Mathf.Min(_originalColorProgress.g + 0.08f, 1f), Mathf.Min(_originalColorProgress.b + 0.08f, 1f), _originalColorProgress.a);
