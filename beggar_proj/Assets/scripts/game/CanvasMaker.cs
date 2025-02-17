@@ -313,6 +313,12 @@ public class CanvasMaker
         // Add ScrollView
         ScrollRect scrollRect = childGO.AddComponent<ScrollRect>();
         scrollRect.horizontal = false;
+#if !UNITY_EDITOR
+        scrollRect.scrollSensitivity *= 0.1f;
+#endif
+#if UNITY_EDITOR
+        scrollRect.scrollSensitivity *= 2f;
+#endif 
 
         // Add Viewport
         GameObject viewportGO = new GameObject("Viewport");
