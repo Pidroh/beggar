@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03490226fc68abc4ea67d3dd9981104d, type: 3}
   m_Name: MainGameConfig
   m_EditorClassIdentifier: 
-  versionNumber: 15
+  versionNumber: 20
   gameTitle: beggar_incremental
   betaVersion: 1
   musicList: {fileID: -1364661469213232964, guid: 9f9856be5965df645a15af0a23e0dc85, type: 3}
