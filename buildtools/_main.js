@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 Execute("version_note_for_menu.js");
 const dirPath = path.join(__dirname, '../builds/site');
 
-const { execFileSync } = require('child_process');
 
 function Execute(scriptPath) {
   try {

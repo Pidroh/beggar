@@ -1,14 +1,16 @@
-- Version 10
-Latest: true
-Dev notes: Saving added!
+- Version 20
+Patreon: true
+Dev notes: Faith, reason, and the power of literacy await (Contains all content of version 0.15)
 # CHANGES
-16 resource(s)
-28 task(s)
-1 house(s)
-5 class(s)
-5 skill(s)
-2 dialog(s)
-10 furniture(s)
+4 new resource(s)
+51 new task(s)
+1 new house(s)
+6 new class(s)
+7 new skill(s)
+5 new location(s)
+25 new encounter(s)
+1 new dialog(s)
+3 new furniture(s)
 
 - Version 15
 Beta: true
@@ -24,16 +26,14 @@ Dev notes: Rat companions, feline friendships, and a life of crime
 2 new dialog(s)
 11 new furniture(s)
 
-- Version 20
-Patreon: true
-Dev notes: Faith, reason, and the power of literacy await
+- Version 11
+Latest: true
+Dev notes: Saving added!
 # CHANGES
-4 new resource(s)
-51 new task(s)
-1 new house(s)
-6 new class(s)
-7 new skill(s)
-5 new location(s)
-25 new encounter(s)
-1 new dialog(s)
-3 new furniture(s)
+16 resource(s)
+28 task(s)
+1 house(s)
+5 class(s)
+5 skill(s)
+2 dialog(s)
+10 furniture(s)

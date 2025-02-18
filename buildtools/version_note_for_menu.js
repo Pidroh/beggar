@@ -35,7 +35,7 @@ fs.readFile('version_notes.txt', 'utf8', (err, data) => {
       }
     });
 
-    versionHeader += extraVersionText;
+    versionHeader += " "+ extraVersionText;
 
     const changesStartIndex = lines.indexOf('# CHANGES') + 1;
     const changes = lines.slice(changesStartIndex).join('<br>');
