@@ -1,4 +1,17 @@
+- Version 10
+Latest: true
+Dev notes: Saving added!
+# CHANGES
+16 resource(s)
+28 task(s)
+1 house(s)
+5 class(s)
+5 skill(s)
+2 dialog(s)
+10 furniture(s)
+
 - Version 15
+Beta: true
 Dev notes: Rat companions, feline friendships, and a life of crime
 # CHANGES
 16 new resource(s)
@@ -10,7 +23,6 @@ Dev notes: Rat companions, feline friendships, and a life of crime
 16 new encounter(s)
 2 new dialog(s)
 11 new furniture(s)
-3 new tab(s)
 
 - Version 20
 Patreon: true
