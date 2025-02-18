@@ -20,21 +20,22 @@ fs.readFile('version_notes.txt', 'utf8', (err, data) => {
     }
 
     let devNotes = '';
-    let patreon = false;
+    var extraVersionText = "";
 
     // Check for Patreon and Dev notes
     lines.forEach(line => {
       if (line.toLowerCase().includes('patreon: true')) {
-        patreon = true;
+        extraVersionText = "(Patreon Early Access)";
       } else if (line.toLowerCase().startsWith('dev notes:')) {
         devNotes = line.replace('Dev notes:', '').trim();
+      } else if (line.toLowerCase().includes('latest: true')){
+        extraVersionText = "(Stable)";
+      } else if (line.toLowerCase().includes('beta: true')){
+        extraVersionText = "(Beta)";
       }
     });
 
-    // Add (Patreon Early Access) if Patreon is true
-    if (patreon) {
-      versionHeader += ' (Patreon Early Access)';
-    }
+    versionHeader += extraVersionText;
 
     const changesStartIndex = lines.indexOf('# CHANGES') + 1;
     const changes = lines.slice(changesStartIndex).join('<br>');
