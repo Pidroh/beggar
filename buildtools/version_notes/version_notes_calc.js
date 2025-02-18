@@ -26,8 +26,8 @@ function getIdMap(jsonData) {
     return idMap;
 }
 
-function compareVersions(prevData, currData, currVersion) {
-    const prevIds = getIdMap(prevData);
+function compareVersions(prevData, currData, currVersion, isOldestVersion) {
+    const prevIds = isOldestVersion ? {} : getIdMap(prevData);
     const currIds = getIdMap(currData);
 
     console.log(`Version ${currVersion}`);
@@ -35,8 +35,10 @@ function compareVersions(prevData, currData, currVersion) {
         const prevSet = prevIds[type] || new Set();
         const currSet = currIds[type];
         const newIds = [...currSet].filter(id => !prevSet.has(id));
-        //console.log(newIds);
-        console.log(`${newIds.length} new ${type.toLowerCase()}(s)`);
+        if(isOldestVersion)
+        console.log(`${newIds.length} ${type.toLowerCase()}(s)`);
+        else
+            console.log(`${newIds.length} new ${type.toLowerCase()}(s)`);
     });
     console.log('');
 }
@@ -47,9 +49,10 @@ function main() {
 
     let prevData = JSON.parse(fs.readFileSync(path.join(folderPath, files[0].file), 'utf8'));
 
-    for (let i = 1; i < files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
         const currData = JSON.parse(fs.readFileSync(path.join(folderPath, files[i].file), 'utf8'));
-        compareVersions(prevData, currData, files[i].version);
+        const isOldestVersion = i === 0;
+        compareVersions(prevData, currData, files[i].version, isOldestVersion);
         prevData = currData;
     }
 }
