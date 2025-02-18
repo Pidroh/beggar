@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+Execute("version_note_for_menu.js");
 const dirPath = path.join(__dirname, '../builds/site');
 
 const { execFileSync } = require('child_process');
@@ -44,8 +45,11 @@ fs.readdir(dirPath, (err, items) => {
             return `<button onclick="window.location.href='./${dir}/index.html'">${buttonText}</button>`;
         }).join('\n');
 
-        // Replace %MENU% with the buttons in the template
-        const finalContent = templateContent.replace('%MENU%', buttonsHTML);
+        const releaseNotesIns = fs.readFileSync('menu_release_notes_for_insertion.txt', 'utf8');
+        const finalContent = templateContent.replace('%MENU%', buttonsHTML).replace("%RELEASE_NOTES%", releaseNotesIns);
+
+        
+        
 
         // Save the final content as menu.html
         fs.writeFile(outputMenuPath, finalContent, 'utf-8', (err) => {

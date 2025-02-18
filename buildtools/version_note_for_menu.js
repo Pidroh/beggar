@@ -10,7 +10,7 @@ fs.readFile('version_notes.txt', 'utf8', (err, data) => {
   versions.forEach(version => {
     const lines = version.split('\n');
     let versionHeader = lines[0].replace('Version ', '').trim();
-
+    
     // Ensure only the number is extracted, ignoring the - part
     versionHeader = versionHeader.replace(/[^0-9.]/g, ''); // Remove anything that's not a number or dot
 
@@ -19,7 +19,23 @@ fs.readFile('version_notes.txt', 'utf8', (err, data) => {
       versionHeader = `0.${versionHeader}`;
     }
 
-    const devNotes = lines[1].replace('Dev notes:', '').trim();
+    let devNotes = '';
+    let patreon = false;
+
+    // Check for Patreon and Dev notes
+    lines.forEach(line => {
+      if (line.toLowerCase().includes('patreon: true')) {
+        patreon = true;
+      } else if (line.toLowerCase().startsWith('dev notes:')) {
+        devNotes = line.replace('Dev notes:', '').trim();
+      }
+    });
+
+    // Add (Patreon Early Access) if Patreon is true
+    if (patreon) {
+      versionHeader += ' (Patreon Early Access)';
+    }
+
     const changesStartIndex = lines.indexOf('# CHANGES') + 1;
     const changes = lines.slice(changesStartIndex).join('<br>');
 

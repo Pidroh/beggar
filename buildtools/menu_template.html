@@ -25,8 +25,7 @@
         .area {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            
             padding: 20px;
             height: 100%;
             box-sizing: border-box;
@@ -35,10 +34,14 @@
             width: 50%;
             background-color: #fff;
             border-right: 2px solid #ddd;
+            justify-content: center;
+            align-items: center;
         }
         .area-b {
             width: 50%;
             background-color: #fff;
+            align-items: left;
+            justify-content: left;
         }
         h1 {
             font-size: 32px;
@@ -66,7 +69,6 @@
             background-color: #3e8e41;
         }
         .release-notes {
-            text-align: center;
         }
         .release-notes h2 {
             font-size: 26px;
@@ -97,7 +99,7 @@
         <div class="area area-b">
             <div class="release-notes">
                 <h2>Release Notes</h2>
-                %RELEASE_NOTES%<
+                %RELEASE_NOTES%
             </div>
         </div>
     </div>
