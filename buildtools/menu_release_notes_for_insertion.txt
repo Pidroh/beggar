@@ -1,0 +1,13 @@
+
+      <div class="version">
+        <h2>Version 0.15</h2>
+        <p>Rat companions, feline friendships, and a life of crime</p>
+        <p>16 new resource(s)<br>36 new task(s)<br>3 new house(s)<br>4 new class(s)<br>6 new skill(s)<br>5 new location(s)<br>16 new encounter(s)<br>2 new dialog(s)<br>11 new furniture(s)<br>3 new tab(s)</p>
+      </div>
+    
+      <div class="version">
+        <h2>Version 0.20</h2>
+        <p>Patreon: true</p>
+        <p>4 new resource(s)<br>51 new task(s)<br>1 new house(s)<br>6 new class(s)<br>7 new skill(s)<br>5 new location(s)<br>25 new encounter(s)<br>1 new dialog(s)<br>3 new furniture(s)</p>
+      </div>
+    

@@ -10,21 +10,41 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
-            flex-direction: column;
-            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
         }
-        .button-container {
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+        }
+        .area {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            max-width: 400px;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
+            height: 100%;
             box-sizing: border-box;
+        }
+        .area-a {
+            width: 50%;
+            background-color: #fff;
+            border-right: 2px solid #ddd;
+        }
+        .area-b {
+            width: 50%;
+            background-color: #fff;
+        }
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 40px;
+            text-align: center;
         }
         button {
             padding: 15px;
@@ -36,6 +56,7 @@
             cursor: pointer;
             width: 100%;
             text-align: center;
+            margin-bottom: 15px;
             transition: background-color 0.3s;
         }
         button:hover {
@@ -44,29 +65,41 @@
         button:active {
             background-color: #3e8e41;
         }
-        @media (max-width: 600px) {
-            button {
-                font-size: 16px;
-                padding: 12px;
-            }
+        .release-notes {
+            text-align: center;
         }
-        h1 {
-            font-size: 24px;
+        .release-notes h2 {
+            font-size: 26px;
             color: #333;
             margin-bottom: 20px;
         }
-
+        .release-notes p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .meta-data {
+            font-size: 14px;
+            color: #999;
+        }
     </style>
 </head>
 <body>
-    <h1>Beggar Incremental</h1>
-    <div class="button-container">
-        <button onclick="window.location.href='./latest/index.html'">Play the Game</button>
-        <button onclick="window.location.href='./latest_beta/index.html'">Play the Beta</button>
-        %MENU%
-        <button onclick="window.open('https://discord.gg/AtGrxpM', '_blank')">Discord Channel</button>
-        <button onclick="window.open('https://store.steampowered.com/app/1858120/Generic_RPG_Idle/', '_blank')">Generic RPG Idle</button>
+    <div class="container">
+        <div class="area area-a">
+            <h1>Beggar Incremental</h1>
+            <button onclick="window.location.href='./latest/index.html'">Play the Game</button>
+            <button onclick="window.location.href='./latest_beta/index.html'">Play the Beta</button>
+            %MENU%
+            <button onclick="window.open('https://discord.gg/AtGrxpM', '_blank')">Discord Channel</button>
+            <button onclick="window.open('https://store.steampowered.com/app/1858120/Generic_RPG_Idle/', '_blank')">Generic RPG Idle</button>
+        </div>
+        <div class="area area-b">
+            <div class="release-notes">
+                <h2>Release Notes</h2>
+                %RELEASE_NOTES%<
+            </div>
+        </div>
     </div>
-
 </body>
 </html>

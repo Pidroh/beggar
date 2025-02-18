@@ -35,8 +35,8 @@ function compareVersions(prevData, currData, currVersion) {
         const prevSet = prevIds[type] || new Set();
         const currSet = currIds[type];
         const newIds = [...currSet].filter(id => !prevSet.has(id));
-        console.log(newIds);
-        console.log(`${newIds.length} new ${type}(s)`);
+        //console.log(newIds);
+        console.log(`${newIds.length} new ${type.toLowerCase()}(s)`);
     });
     console.log('');
 }
