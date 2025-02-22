@@ -13,7 +13,7 @@ Dev notes: Faith, reason, and the power of literacy await (Contains all content 
 3 new furniture(s)
 
 - Version 15
-Beta: true
+Latest: true
 Dev notes: Rat companions, feline friendships, and a life of crime
 # CHANGES
 16 new resource(s)
@@ -27,7 +27,6 @@ Dev notes: Rat companions, feline friendships, and a life of crime
 11 new furniture(s)
 
 - Version 11
-Latest: true
 Dev notes: Saving added!
 # CHANGES
 16 resource(s)
