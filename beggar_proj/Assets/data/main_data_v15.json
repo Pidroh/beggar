@@ -1382,7 +1382,7 @@
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "need": "theself_2",
-                "require": "rodentology>=6&&ratbeggar",
+                "require": "rodentology>=6&&ratbeggar&&t_tier1",
                 "cost": {
                     "ratbond": 200,
                     "rats": 18

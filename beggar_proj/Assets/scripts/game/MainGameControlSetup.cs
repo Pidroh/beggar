@@ -1,6 +1,7 @@
 ﻿using HeartUnity;
 using HeartUnity.View;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -9,6 +10,9 @@ public class MainGameControlSetup
 {
     public static void Setup(MainGameControl mgc)
     {
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+        //System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("fr-FR");
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas);
