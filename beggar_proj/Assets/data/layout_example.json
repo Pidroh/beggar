@@ -1,0 +1,187 @@
+{
+    "layouts": [
+        {
+            "id": "content_holder_expandable",
+            "comment": "Used for all the main parts of content in each scroll, like task buttons and resources",
+            "color_id": "background_content",
+            "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
+            "padding": [4, 7, 4, 7]
+        },
+        {
+            "id": "expandable_task_main_buttons",
+            "comment": "Contains the task execution button and the expander arrow",
+            "axis_mode": ["PARENT_SIZE_PERCENT", "SELF_SIZE"],
+            "size": [100, 40],
+            "fixed_children": [
+                {
+                    "type": "button",
+                    "id": "task_button",
+                    "axis_mode": ["FILL_REMAINING_SIZE", "PARENT_SIZE_PERCENT"],
+                    "position_mode": ["LEFT_ZERO", "CENTER"]
+                },
+                {
+                    "type": "button",
+                    "id": "expander_arrow",
+                    "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
+                    "size": [40, 100],
+                    "position_mode": ["RIGHT_ZERO", "CENTER"]
+                }
+            ]
+        },
+        {
+            "id": "expandable_resource_text",
+            "comment": "Contains resource text with expandable button",
+            "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
+            "min_size": [-1, 40],
+            "fixed_children": [
+                {
+                    "type": "text",
+                    "id": "resource_text",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"],
+                    "position_mode": ["LEFT_ZERO", "CENTER"]
+                },
+                {
+                    "type": "button",
+                    "id": "expander_arrow",
+                    "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
+                    "size": [40, 100],
+                    "position_mode": ["RIGHT_ZERO", "CENTER"]
+                },
+                {
+                    "type": "text",
+                    "id": "resource_text",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"],
+                    "position_mode": ["SIBLING_DISTANCE_REVERSE", "CENTER"],
+                    "text_horizontal": "RIGHT"
+                }
+            ]
+        },
+        {
+            "id": "lore_text",
+            "comment": "Contains the lore text for tasks, resources, etc",
+            "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
+            "size": [100, -1],
+            "fixed_children": [
+                {
+                    "type": "text",
+                    "id": "lore_text",
+                    "axis_mode": ["TEXT_PREFERRED", "TEXT_PREFERRED"],
+                    "position_mode": ["CENTER", "CENTER"],
+                    "text_horizontal": "CENTER"
+                }
+            ]
+        },
+        {
+            "id": "left_mini_header",
+            "comment": "Contains the mini header for cost, result, etc",
+            "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
+            "padding": [10, 0, 2, 23],
+            "size": [100, -1],
+            "fixed_children": [
+                {
+                    "type": "text",
+                    "id": "mini_header_text",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"],
+                    "position_mode": ["LEFT_ZERO", "CENTER"]
+                }
+            ]
+        },
+        {
+            "id": "in_header_triple_statistic",
+            "comment": "Contains the content below each mini header for cost, result, etc",
+            "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
+            "padding": [2, 0, 2, 30],
+            "size": [100, -1],
+            "fixed_children": [
+                {
+                    "type": "text",
+                    "id": "simple_text",
+                    "axis_mode": ["STEP_SIZE_TEXT", "TEXT_PREFERRED"],
+                    "step_sizes": [[93, 113, 133], []],
+                    "position_mode": ["LEFT_ZERO", "CENTER"]
+                },
+                {
+                    "type": "text",
+                    "id": "simple_text",
+                    "axis_mode": ["STEP_SIZE_TEXT", "TEXT_PREFERRED"],
+                    "step_sizes": [[22, 44, 88], []],
+                    "position_mode": ["SIBLING_DISTANCE", "CENTER"],
+                    "text_horizontal": "RIGHT"
+                },
+                {
+                    "type": "text",
+                    "id": "accessory_text",
+                    "axis_mode": ["STEP_SIZE_TEXT", "TEXT_PREFERRED"],
+                    "step_sizes": [[50, 100], []],
+                    "position_mode": ["SIBLING_DISTANCE", "CENTER"],
+                    "text_horizontal": "LEFT"
+                }
+            ]
+        }
+
+    ],
+    "text": [
+        {
+            "id": "button_text",
+            "alias_ids": ["resource_text"],
+            "size": 12,
+            "color_id": "main_text"
+        },
+        {
+            "id": "lore_text",
+            "size": 10,
+            "color_id": "lore_text"
+        },
+        {
+            "id": "mini_header_text",
+            "size": 10,
+            "color_id": "mini_header_text"
+        },
+        {
+            "id": "simple_text",
+            "size": 12,
+            "color_id": "simple_text"
+        },
+        {
+            "id": "accessory_text",
+            "size": 12,
+            "color_id": "accessory_text"
+        }
+    ],
+    "buttons": [
+        {
+            "id": "task_button",
+            "padding": [0, 15, 0, 35],
+            "text": {
+                "id": "button_text",
+                "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"]
+            },
+            "text_2": {
+                "id": "accessory_text",
+                "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
+                "position_mode": ["RIGHT_ZERO", "CENTER"]
+            }
+        },
+        {
+            "id": "expander_arrow",
+            "sprite": {
+                "image": "expander_arrow_medium",
+                "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
+                "size": [36, 19]
+            },
+        }
+    ],
+    "colors": [
+        {
+            "id": "background_content",
+            "colors": ["f1f1f1ff", "343a4aff"]
+        },
+        {
+            "212121ff" main text
+        },
+        {
+            4d4d4dff lore text
+        }
+    ],
+    "color_presets": ["light", "dark"]
+}
