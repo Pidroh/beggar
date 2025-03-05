@@ -36,11 +36,29 @@ namespace JLayout {
                         case "axis_mode":
                             ld.AxisModes = ReadAxis(pair.Value.Children);
                             break;
+                        case "padding":
+                            ld.Padding = ReadPadding(pair.Value.Children);
+                            break;
                         default:
                             break;
                     }
                 }
             }
+        }
+
+        private static RectOffset ReadPadding(IEnumerable<SimpleJSON.JSONNode> children)
+        {
+            var index = 0;
+            var ro = new RectOffset();
+            foreach (var item in children)
+            {
+                var n = item.AsInt;
+                if (index == 0) ro.top = n;
+                if (index == 1) ro.right = n;
+                if (index == 2) ro.bottom = n;
+                if (index == 3) ro.left = n;
+            }
+            return ro;
         }
 
         private static AxisMode[] ReadAxis(IEnumerable<SimpleJSON.JSONNode> children)
@@ -123,6 +141,8 @@ namespace JLayout {
     {
         public string Id { get; internal set; }
         public Pointer<ColorData> ColorReference { get; internal set; }
+        public RectOffset Padding { get; internal set; }
+
         public AxisMode[] AxisModes;
     }
 
