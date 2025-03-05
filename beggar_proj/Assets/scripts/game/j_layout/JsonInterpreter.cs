@@ -5,12 +5,12 @@ using UnityEngine;
 namespace JLayout {
     public class JsonInterpreter
     {
-        public static void ReadJson(string rawJsonText, LayoutDataMaster layoutMaster) 
+        public static void ReadJson(string rawJsonText, LayoutDataMaster layoutMaster)
         {
             var parentNode = SimpleJSON.JSON.Parse(rawJsonText);
             foreach (var item in parentNode)
             {
-                if (item.Key == "layouts") 
+                if (item.Key == "layouts")
                 {
                     ReadLayouts(item.Value, layoutMaster);
                 }
@@ -39,11 +39,30 @@ namespace JLayout {
                         case "padding":
                             ld.Padding = ReadPadding(pair.Value.Children);
                             break;
+                        case "size":
+                            ld.Size = ReadVector2Int(pair.Value.Children);
+                            break;
+                        case "min_size":
+                            ld.MinSize = ReadVector2Int(pair.Value.Children);
+                            break;
                         default:
                             break;
                     }
                 }
             }
+        }
+
+        private static Vector2Int ReadVector2Int(IEnumerable<SimpleJSON.JSONNode> children)
+        {
+            Vector2Int v = new();
+            int i = 0;
+            foreach (var item in children)
+            {
+                if (i == 0) v.x = item.AsInt;
+                if (i == 1) v.y = item.AsInt;
+                i++;
+            }
+            return v;
         }
 
         private static RectOffset ReadPadding(IEnumerable<SimpleJSON.JSONNode> children)
@@ -57,6 +76,7 @@ namespace JLayout {
                 if (index == 1) ro.right = n;
                 if (index == 2) ro.bottom = n;
                 if (index == 3) ro.left = n;
+                index++;
             }
             return ro;
         }
@@ -67,9 +87,9 @@ namespace JLayout {
             var index = 0;
             foreach (var c in children)
             {
-                if (!EnumHelper<AxisMode>.TryGetEnumFromName(c.AsString, out var v)) 
+                if (!EnumHelper<AxisMode>.TryGetEnumFromName(c.AsString, out var v))
                 {
-                    Debug.LogError("Enum not existant? "+c.AsString);
+                    Debug.LogError("Enum not existant? " + c.AsString);
                 }
                 ams[index] = v;
                 index++;
@@ -78,35 +98,35 @@ namespace JLayout {
         }
     }
 
-    public class LayoutDataMaster 
+    public class LayoutDataMaster
     {
         public PointerHolder<LayoutData> LayoutDatas = new();
         public PointerHolder<ColorData> ColorDatas = new();
 
 
-        
+
 
     }
 
     public class ColorData
-    { 
+    {
     }
 
-    public class LayoutUnit 
-    { 
+    public class LayoutUnit
+    {
 
     }
 
-    public enum AxisMode 
-    { 
+    public enum AxisMode
+    {
         // Fill up a percentage of the parent. If size not set, assumes 100%
-        PARENT_SIZE_PERCENT, 
+        PARENT_SIZE_PERCENT,
         // The size is set by the element, using DPI adaptative pixels
-        SELF_SIZE, 
+        SELF_SIZE,
         // The minimum size necessary to contain children (taking into account padding)
-        CONTAIN_CHILDREN, 
+        CONTAIN_CHILDREN,
         // Fills up the space left behind by siblings
-        FILL_REMAINING_SIZE, 
+        FILL_REMAINING_SIZE,
         // Use up as much space as necessary by the font and the text. In the case of width, will not go above parent width
         TEXT_PREFERRED
     }
@@ -128,7 +148,7 @@ namespace JLayout {
             return pointer;
         }
 
-        
+
     }
 
     public class Pointer<T>
@@ -142,9 +162,15 @@ namespace JLayout {
         public string Id { get; internal set; }
         public Pointer<ColorData> ColorReference { get; internal set; }
         public RectOffset Padding { get; internal set; }
+        public Vector2Int Size;
+        public Vector2Int MinSize;
+        public List<LayoutChildData> Children = new();
 
         public AxisMode[] AxisModes;
     }
 
+    public class LayoutChildData
+    {
 
+    } 
 }
