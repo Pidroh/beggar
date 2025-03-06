@@ -1,23 +1,60 @@
 ﻿using HeartUnity;
 using HeartUnity.View;
+using JLayout;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 
+public class MainGameControlSetupJLayout
+{
+    public static void Setup(MainGameControlSetup mgc)
+    {
+
+    }
+
+    internal static void SetupCanvas(MainGameControl mgc)
+    {
+        LayoutDataMaster layoutMaster = new LayoutDataMaster();
+        JsonInterpreter.ReadJson(mgc.ResourceJson.layoutJson.text, layoutMaster);
+        var arcaniaModel = mgc.arcaniaModel;
+        var arcaniaDatas = arcaniaModel.arcaniaUnits;
+        var config = HeartGame.GetConfig();
+        var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
+        mgc.dynamicCanvas = dynamicCanvas;
+
+        mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
+        {
+            canvas = dynamicCanvas.Canvas,
+            DisableAutoScaling = true
+
+        }, 2);
+
+        create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
+        for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TASK].Count; tabIndex++)
+        {
+
+        }
+    }
+}
+
 public class MainGameControlSetup
 {
     public static void Setup(MainGameControl mgc)
     {
-        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
-        //System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("fr-FR");
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas);
 
         arcaniaModel.FinishedSettingUpUnits();
+
+    }
+
+    public static void SetupCanvas(MainGameControl mgc)
+    {
+        var arcaniaModel = mgc.arcaniaModel;
+        var arcaniaDatas = arcaniaModel.arcaniaUnits;
         var config = HeartGame.GetConfig();
         var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         mgc.dynamicCanvas = dynamicCanvas;
@@ -57,9 +94,9 @@ public class MainGameControlSetup
             var largeTabButton = CanvasMaker.CreateButton(item.Tab.RuntimeUnit.ConfigBasic.Id, mgc.ButtonObjectRequest, mgc.ButtonRequest);
             LayoutChild largeTabButtonLC = LayoutChild.Create(largeTabButton.Button.transform);
             largeTabButton.Button.RectTransform.localPosition = Vector3.zero;
-            largeTabButtonLC.RectTransform.SetHeight(largeTabButton.Button.RectTransform.GetHeight()+7);
+            largeTabButtonLC.RectTransform.SetHeight(largeTabButton.Button.RectTransform.GetHeight() + 7);
             mgc.TabButtonOverlayLayout.AddLayoutChildAndParentIt(largeTabButtonLC);
-            
+
 
             var lc = new LayoutChild(button.Button.RectTransform, button.Button.gameObject);
             lowerMenuLayout.AddLayoutChildAndParentIt(lc);
@@ -437,7 +474,7 @@ public class MainGameControlSetup
 
             endMessage.RectTransform.FillParent();
 
-           
+
             mgc.EndingOverlayLayout.AddLayoutChildAndParentIt(lc);
             mgc.EndingOverlayLayout.AddLayoutChildAndParentIt(LayoutChild.Create(settingB.Button.transform));
             settingB.Button.transform.localPosition = Vector3.zero;

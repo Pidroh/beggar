@@ -3,6 +3,7 @@ using HeartUnity.View;
 using JLayout;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -50,15 +51,19 @@ public class MainGameControl : MonoBehaviour
         HeartGame = HeartGame.Init();
         lastSaveTime = Time.unscaledTime;
         controlExploration = new ControlExploration(this);
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         MainGameControlSetup.Setup(this);
+        bool classicCanvasSystem = false;
+        if (classicCanvasSystem) MainGameControlSetup.SetupCanvas(this);
+        else MainGameControlSetupJLayout.SetupCanvas(this);
         RobustDeltaTime = new();
         ArcaniaPersistence = new(HeartGame);
         ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
         HeartGame.CommonDataLoad();
         // Let the model run once so you can finish up setup with the latest info on visibility
         arcaniaModel.ManualUpdate(0);
-        MainGameControlSetup.SetupPostLoad(this);
-        JsonInterpreter.ReadJson(ResourceJson.layoutJson.text, new LayoutDataMaster());
+        if (classicCanvasSystem) MainGameControlSetup.SetupPostLoad(this);
     }
 
     // Update is called once per frame
