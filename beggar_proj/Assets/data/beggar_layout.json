@@ -120,7 +120,7 @@
         }
 
     ],
-    "text": [
+    "texts": [
         {
             "id": "button_text",
             "alias_ids": ["resource_text"],
@@ -152,23 +152,31 @@
         {
             "id": "task_button",
             "padding": [0, 15, 0, 35],
-            "text": {
-                "id": "button_text",
-                "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"]
-            },
-            "text_2": {
-                "id": "accessory_text",
-                "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
-                "position_mode": ["RIGHT_ZERO", "CENTER"]
-            }
+            "fixed_children": [
+                {
+                    "type": "text",
+                    "id": "button_text",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"]
+                },
+                {
+                    "id": "accessory_text",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
+                    "position_mode": ["RIGHT_ZERO", "CENTER"]
+                }
+            ]
         },
         {
             "id": "expander_arrow",
-            "sprite": {
-                "image": "expander_arrow_medium",
-                "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
-                "size": [36, 19]
-            },
+            "fixed_children": [
+                {
+                    "type": "image",
+                    "image": "expander_arrow_medium",
+                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+                    "position_mode": ["CENTER", "CENTER"],
+                    "size": [36, 19]
+                }
+            ]
+            
         }
     ],
     "colors": [

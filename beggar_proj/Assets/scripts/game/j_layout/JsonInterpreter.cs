@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace JLayout {
+namespace JLayout
+{
     public class JsonInterpreter
     {
         public static void ReadJson(string rawJsonText, LayoutDataMaster layoutMaster)
@@ -18,6 +19,9 @@ namespace JLayout {
                     case "button":
                         ReadButtons(item.Value, layoutMaster);
                         break;
+                    case "texts":
+                        ReadTexts(item.Value, layoutMaster);
+                        break;
                     default:
                         break;
                 }
@@ -26,21 +30,57 @@ namespace JLayout {
 
         private static void ReadButtons(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
         {
-            throw new NotImplementedException();
+            foreach (var buttonEntry in value.Children)
+            {
+                var buttonData = new ButtonData();
+                buttonData.LayoutData = ReadLayout(layoutMaster, buttonEntry);
+                layoutMaster.ButtonDatas.Bind(buttonData.id, buttonData);
+            }
+        }
+
+        private static void ReadTexts(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
+        {
+            foreach (var textEntry in value.Children)
+            {
+                var textData = new TextData();
+                textData.Id = textEntry["id"].AsString;
+                
+                
+                var colorId = textEntry["color_id"].AsString;
+                textData.ColorPointer = layoutMaster.ColorDatas.GetOrCreatePointer(colorId);
+                textData.Size = textEntry["size"].AsInt;
+
+                layoutMaster.TextDatas.Bind(textData.Id, textData);
+                if (textEntry.HasKey("alias_ids"))
+                {
+                    var aliases = textEntry["alias_ids"].AsArray;
+                    foreach (var item in aliases.Children)
+                    {
+                        layoutMaster.TextDatas.Bind(item.AsString, textData);
+                    }
+                }
+            }
         }
 
         private static void ReadLayouts(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
         {
             foreach (var layoutEntry in value.Children)
             {
-                var ld = new LayoutData();
-                ld.commons = ReadCommons(layoutMaster, layoutEntry);
+                LayoutData ld = ReadLayout(layoutMaster, layoutEntry);
                 layoutMaster.LayoutDatas.GetOrCreatePointer(ld.Id).data = ld;
-                if (layoutEntry.HasKey("children")) 
-                {
-                    ld.Children = ReadChildren(layoutEntry["children"].Children, layoutMaster);
-                }
             }
+        }
+
+        private static LayoutData ReadLayout(LayoutDataMaster layoutMaster, SimpleJSON.JSONNode layoutEntry)
+        {
+            var ld = new LayoutData();
+            ld.commons = ReadCommons(layoutMaster, layoutEntry);
+            if (layoutEntry.HasKey("children"))
+            {
+                ld.Children = ReadChildren(layoutEntry["children"].Children, layoutMaster);
+            }
+
+            return ld;
         }
 
         private static LayoutCommons ReadCommons(LayoutDataMaster layoutMaster, SimpleJSON.JSONNode layoutEntry)
@@ -210,13 +250,13 @@ namespace JLayout {
 
     }
 
-    public enum ChildType 
-    { 
+    public enum ChildType
+    {
         button, text, image
     }
 
-    public enum TextHorizontal 
-    { 
+    public enum TextHorizontal
+    {
         RIGHT, LEFT, CENTER
     }
 
@@ -234,8 +274,8 @@ namespace JLayout {
         TEXT_PREFERRED
     }
 
-    public enum PositionMode 
-    { 
+    public enum PositionMode
+    {
         LEFT_ZERO, RIGHT_ZERO, CENTER, SIBLING_DISTANCE,
     }
 
@@ -257,7 +297,12 @@ namespace JLayout {
             return pointer;
         }
 
-
+        internal void Bind(string id, T buttonData)
+        {
+            var p = GetOrCreatePointer(id);
+            p.Id = id;
+            p.data = buttonData;
+        }
     }
 
     public class Pointer<T>
@@ -266,7 +311,7 @@ namespace JLayout {
         public T data;
     }
 
-    public class LayoutCommons 
+    public class LayoutCommons
     {
         public Pointer<ColorData> ColorReference { get; internal set; }
         public RectOffset Padding { get; internal set; }
@@ -287,9 +332,19 @@ namespace JLayout {
         public List<LayoutChildData> Children = new();
     }
 
-    public class ButtonData { }
+    public class ButtonData
+    {
+        public LayoutData layoutData;
+        public string id => LayoutData.Id;
+        public LayoutData LayoutData { get; internal set; }
+    }
 
-    public class TextData { }
+    public class TextData
+    {
+        public Pointer<ColorData> ColorPointer { get; internal set; }
+        public int Size { get; internal set; }
+        public string Id { get; internal set; }
+    }
 
     public class LayoutChildData
     {
