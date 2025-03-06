@@ -10,11 +10,23 @@ namespace JLayout {
             var parentNode = SimpleJSON.JSON.Parse(rawJsonText);
             foreach (var item in parentNode)
             {
-                if (item.Key == "layouts")
+                switch (item.Key)
                 {
-                    ReadLayouts(item.Value, layoutMaster);
+                    case "layouts":
+                        ReadLayouts(item.Value, layoutMaster);
+                        break;
+                    case "button":
+                        ReadButtons(item.Value, layoutMaster);
+                        break;
+                    default:
+                        break;
                 }
             }
+        }
+
+        private static void ReadButtons(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
+        {
+            throw new NotImplementedException();
         }
 
         private static void ReadLayouts(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
