@@ -22,9 +22,37 @@ namespace JLayout
                     case "texts":
                         ReadTexts(item.Value, layoutMaster);
                         break;
+                    case "colors":
+                        ReadColors(item.Value, layoutMaster);
+                        break;
                     default:
                         break;
                 }
+            }
+        }
+
+        private static void ReadColors(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
+        {
+            foreach (var colorEntry in value.Children)
+            {
+                var colorData = new ColorData();
+                colorData.Id = colorEntry["id"].AsString;
+                var colorCodeArray = colorEntry["colors"].AsArray;
+                var colors = new Color[colorCodeArray.Count];
+                for (int i = 0; i < colors.Length; i++)
+                {
+                    string colorCode = colorCodeArray[i].AsString;
+                    if (ColorUtility.TryParseHtmlString(colorCode, out Color c))
+                    {
+                        colors[i] = c;
+                    }
+                    else 
+                    {
+                        Debug.LogError("color code is wrong? "+colorCode);
+                    }
+                }
+                colorData.Colors = colors;
+                layoutMaster.ColorDatas.Bind(colorData.Id, colorData);
             }
         }
 
@@ -243,6 +271,8 @@ namespace JLayout
 
     public class ColorData
     {
+        public Color[] Colors { get; internal set; }
+        public string Id { get; internal set; }
     }
 
     public class LayoutUnit
