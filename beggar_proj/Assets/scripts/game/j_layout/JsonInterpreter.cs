@@ -62,6 +62,10 @@ namespace JLayout {
                     case "step_sizes":
                         ld.StepSizes = ReadArrayOfArrayOfInt(pair.Value.Children);
                         break;
+                    case "text_horizontal":
+                        ld.TextHorizontalMode = EnumHelper<TextHorizontal>.TryGetEnumFromName(pair.Value.AsString, out var mode) ? mode : mode;
+
+                        break;
                     default:
                         break;
                 }
@@ -197,7 +201,11 @@ namespace JLayout {
     public enum ChildType 
     { 
         button, text, image
+    }
 
+    public enum TextHorizontal 
+    { 
+        RIGHT, LEFT, CENTER
     }
 
     public enum AxisMode
@@ -252,6 +260,7 @@ namespace JLayout {
         public RectOffset Padding { get; internal set; }
         public string Id { get; internal set; }
         public PositionMode[] PositionModes { get; internal set; }
+        public TextHorizontal TextHorizontalMode { get; internal set; }
 
         public Vector2Int Size;
         public Vector2Int MinSize;
