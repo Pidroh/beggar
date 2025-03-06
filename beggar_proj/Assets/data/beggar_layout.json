@@ -177,10 +177,12 @@
             "colors": ["f1f1f1ff", "343a4aff"]
         },
         {
-            "212121ff" main text
+            "id": "background_content",
+            "colors": ["f1f1f1ff", "343a4aff 212121ff main text"]
         },
         {
-            4d4d4dff lore text
+            "id": "background_content",
+            "colors": ["f1f1f1ff", "343a4aff 4d4d4dff lore text"]
         }
     ],
     "color_presets": ["light", "dark"]

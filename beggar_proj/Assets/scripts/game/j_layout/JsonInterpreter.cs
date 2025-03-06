@@ -47,7 +47,7 @@ namespace JLayout {
                     case "axis_mode":
                         ld.AxisModes = ReadAxis(pair.Value.Children);
                         break;
-                    case "axis_mode":
+                    case "position_mode":
                         ld.PositionModes = ReadEnumDoubleArray<PositionMode>(pair.Value.Children);
                         break;
                     case "padding":
@@ -86,9 +86,11 @@ namespace JLayout {
 
         private static List<LayoutChildData> ReadChildren(IEnumerable<SimpleJSON.JSONNode> children, LayoutDataMaster master)
         {
+            List<LayoutChildData> l = new();
             foreach (var childEntry in children)
             {
                 LayoutChildData childData = new();
+                l.Add(childData);
                 childData.Commons = ReadCommons(master, childEntry);
                 if (!EnumHelper<ChildType>.TryGetEnumFromName(childEntry["type"], out var cT)) Debug.LogError("");
                 switch (cT)
@@ -106,6 +108,7 @@ namespace JLayout {
                 }
 
             }
+            return l;
         }
 
         private static Vector2Int ReadVector2Int(IEnumerable<SimpleJSON.JSONNode> children)
@@ -228,6 +231,7 @@ namespace JLayout {
             else
             {
                 pointer = new Pointer<T>();
+                pointer.Id = id;
                 PointerMap[id] = pointer;
             }
             return pointer;

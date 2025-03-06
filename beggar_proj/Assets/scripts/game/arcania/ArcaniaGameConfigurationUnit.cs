@@ -5,5 +5,6 @@ using UnityEngine;
 public class ArcaniaGameConfigurationUnit : ScriptableObject
 {
     public List<TextAsset> jsonDatas;
+    public TextAsset layoutJson;
 
 }

@@ -1,5 +1,6 @@
 using HeartUnity;
 using HeartUnity.View;
+using JLayout;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -57,6 +58,7 @@ public class MainGameControl : MonoBehaviour
         // Let the model run once so you can finish up setup with the latest info on visibility
         arcaniaModel.ManualUpdate(0);
         MainGameControlSetup.SetupPostLoad(this);
+        JsonInterpreter.ReadJson(ResourceJson.layoutJson.text, new LayoutDataMaster());
     }
 
     // Update is called once per frame
