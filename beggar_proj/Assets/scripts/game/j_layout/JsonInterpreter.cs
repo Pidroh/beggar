@@ -47,6 +47,9 @@ namespace JLayout {
                     case "axis_mode":
                         ld.AxisModes = ReadAxis(pair.Value.Children);
                         break;
+                    case "axis_mode":
+                        ld.PositionModes = ReadEnumDoubleArray<PositionMode>(pair.Value.Children);
+                        break;
                     case "padding":
                         ld.Padding = ReadPadding(pair.Value.Children);
                         break;
@@ -56,11 +59,29 @@ namespace JLayout {
                     case "min_size":
                         ld.MinSize = ReadVector2Int(pair.Value.Children);
                         break;
+                    case "step_sizes":
+                        ld.StepSizes = ReadArrayOfArrayOfInt(pair.Value.Children);
+                        break;
                     default:
                         break;
                 }
             }
             return ld;
+        }
+
+        private static List<List<int>> ReadArrayOfArrayOfInt(IEnumerable<SimpleJSON.JSONNode> children)
+        {
+            List<List<int>> ml = new();
+            foreach (var item in children)
+            {
+                var l = new List<int>();
+                foreach (var item2 in item.Children)
+                {
+                    l.Add(item2.AsInt);
+                }
+                ml.Add(l);
+            }
+            return ml;
         }
 
         private static List<LayoutChildData> ReadChildren(IEnumerable<SimpleJSON.JSONNode> children, LayoutDataMaster master)
@@ -84,10 +105,6 @@ namespace JLayout {
                         break;
                 }
 
-                foreach (var pair in childEntry)
-                {
-                    if(pair)
-                }
             }
         }
 
@@ -127,6 +144,22 @@ namespace JLayout {
             foreach (var c in children)
             {
                 if (!EnumHelper<AxisMode>.TryGetEnumFromName(c.AsString, out var v))
+                {
+                    Debug.LogError("Enum not existant? " + c.AsString);
+                }
+                ams[index] = v;
+                index++;
+            }
+            return ams;
+        }
+
+        private static T[] ReadEnumDoubleArray<T>(IEnumerable<SimpleJSON.JSONNode> children) where T : System.Enum
+        {
+            var ams = new T[2];
+            var index = 0;
+            foreach (var c in children)
+            {
+                if (!EnumHelper<T>.TryGetEnumFromName(c.AsString, out var v))
                 {
                     Debug.LogError("Enum not existant? " + c.AsString);
                 }
@@ -178,6 +211,11 @@ namespace JLayout {
         TEXT_PREFERRED
     }
 
+    public enum PositionMode 
+    { 
+        LEFT_ZERO, RIGHT_ZERO, CENTER, SIBLING_DISTANCE,
+    }
+
     public class PointerHolder<T>
     {
         public Dictionary<string, Pointer<T>> PointerMap = new();
@@ -209,10 +247,12 @@ namespace JLayout {
         public Pointer<ColorData> ColorReference { get; internal set; }
         public RectOffset Padding { get; internal set; }
         public string Id { get; internal set; }
+        public PositionMode[] PositionModes { get; internal set; }
 
         public Vector2Int Size;
         public Vector2Int MinSize;
         public AxisMode[] AxisModes;
+        public List<List<int>> StepSizes;
     }
 
     public class LayoutData
