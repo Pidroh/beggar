@@ -20,23 +20,26 @@ public class MainGameControlSetupJLayout
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         var config = HeartGame.GetConfig();
         JLayoutRuntimeData runtime = new();
-        var dynamicCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
-        mgc.JCanvas = dynamicCanvas;
+        var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
+        mgc.JCanvas = jCanvas;
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;
 
         mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
         {
-            canvas = dynamicCanvas.Canvas,
+            canvas = jCanvas.Canvas,
             DisableAutoScaling = true
 
         }, 2);
 
+        var taskParent = jCanvas.children[0];
         //create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TASK].Count; tabIndex++)
         {
             var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
             JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+            taskParent.AddLayoutAsChild(layoutRU);
+            
         }
     }
 }
