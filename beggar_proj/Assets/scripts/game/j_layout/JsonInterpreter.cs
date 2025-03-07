@@ -43,6 +43,7 @@ namespace JLayout
                 for (int i = 0; i < colors.Length; i++)
                 {
                     string colorCode = colorCodeArray[i].AsString;
+                    if (!colorCode.Contains("#")) colorCode = "#" + colorCode;
                     if (ColorUtility.TryParseHtmlString(colorCode, out Color c))
                     {
                         colors[i] = c;
@@ -333,6 +334,11 @@ namespace JLayout
             var p = GetOrCreatePointer(id);
             p.Id = id;
             p.data = buttonData;
+        }
+
+        internal T GetData(string id)
+        {
+            return PointerMap[id].data;
         }
     }
 

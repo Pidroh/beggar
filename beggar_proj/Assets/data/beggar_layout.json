@@ -185,12 +185,12 @@
             "colors": ["f1f1f1ff", "343a4aff"]
         },
         {
-            "id": "background_content",
-            "colors": ["f1f1f1ff", "343a4aff 212121ff main text"]
+            "id": "main_text",
+            "colors": ["212121ff", "212121ff"]
         },
         {
-            "id": "background_content",
-            "colors": ["f1f1f1ff", "343a4aff 4d4d4dff lore text"]
+            "id": "lore_text",
+            "colors": ["4d4d4dff", "4d4d4dff"]
         }
     ],
     "color_presets": ["light", "dark"]

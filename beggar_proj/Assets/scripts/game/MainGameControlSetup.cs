@@ -6,6 +6,7 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
+using static JLayout.JLayoutRuntimeData;
 
 public class MainGameControlSetupJLayout
 {
@@ -18,6 +19,7 @@ public class MainGameControlSetupJLayout
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         var config = HeartGame.GetConfig();
+        JLayoutRuntimeData runtime = new();
         var dynamicCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         mgc.JCanvas = dynamicCanvas;
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
@@ -33,7 +35,8 @@ public class MainGameControlSetupJLayout
         //create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TASK].Count; tabIndex++)
         {
-
+            var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
+            JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HeartUnity.View;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,6 +24,7 @@ namespace JLayout
             }
 
             public RectTransform ContentTransformOverride { get; internal set; }
+            public LayoutData LayoutData { get; internal set; }
         }
 
         public class JLayoutChild
@@ -137,7 +139,7 @@ namespace JLayout
         }
 
 
-        public static JLayoutRuntimeUnit CreateLayout()
+        private static JLayoutRuntimeUnit CreateLayout()
         {
             JLayoutRuntimeUnit lp;
             {
@@ -151,13 +153,22 @@ namespace JLayout
             return lp;
         }
 
+        internal static JLayoutRuntimeUnit CreateLayout(LayoutData layoutD, JLayoutRuntimeData runtime)
+        {
+            return CreateLayout();
+        }
+
         static JLayoutRuntimeUnit CreateChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)
         {
             JLayoutRuntimeUnit lp = null;
+
             lp = CreateLayout();
             var ld = new LayoutData();
+            ld.commons = new();
+            ld.commons.AxisModes = new AxisMode[2];
             ld.commons.AxisModes[0] = AxisMode.SELF_SIZE;
             ld.commons.AxisModes[1] = AxisMode.CONTAIN_CHILDREN;
+            lp.LayoutData = ld;
 
             var childRT = lp.RectTransform;
             var childGO = lp.RectTransform.gameObject;
