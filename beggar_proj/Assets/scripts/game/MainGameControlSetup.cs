@@ -9,10 +9,7 @@ using UnityEngine.Pool;
 
 public class MainGameControlSetupJLayout
 {
-    public static void Setup(MainGameControlSetup mgc)
-    {
 
-    }
 
     internal static void SetupCanvas(MainGameControl mgc)
     {
@@ -21,8 +18,10 @@ public class MainGameControlSetupJLayout
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         var config = HeartGame.GetConfig();
-        var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
-        mgc.dynamicCanvas = dynamicCanvas;
+        var dynamicCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
+        mgc.JCanvas = dynamicCanvas;
+        // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
+        //mgc.dynamicCanvas = dynamicCanvas;
 
         mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
         {
@@ -31,7 +30,7 @@ public class MainGameControlSetupJLayout
 
         }, 2);
 
-        create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
+        //create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TASK].Count; tabIndex++)
         {
 

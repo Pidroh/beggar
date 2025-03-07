@@ -39,6 +39,7 @@ public class MainGameControl : MonoBehaviour
     public ButtonWithProgressBar SettingButtonEnding { get; internal set; }
     public LayoutParent EndingOverlayLayout { get; internal set; }
     public LayoutParent TabButtonOverlayLayout { get; internal set; }
+    public JLayCanvas JCanvas { get; internal set; }
 
     public float lastSaveTime;
     public ControlExploration controlExploration;

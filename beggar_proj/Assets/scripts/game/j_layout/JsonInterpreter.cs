@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JLayout
 {
-   
+
     public class JsonInterpreter
     {
         public static void ReadJson(string rawJsonText, LayoutDataMaster layoutMaster)
