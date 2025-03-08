@@ -35,12 +35,25 @@ public class MainGameControlSetupJLayout
 
         var taskParent = jCanvas.children[0];
         //create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
-        for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TASK].Count; tabIndex++)
+        for (int taskDataIndex = 0; taskDataIndex < arcaniaDatas.datas[UnitType.TASK].Count; taskDataIndex++)
         {
+            var modelData = arcaniaDatas.datas[UnitType.TASK][taskDataIndex];
             var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
             JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
             taskParent.AddLayoutAsChild(layoutRU);
-            
+
+            var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
+            if (hasTaskButton) 
+            {
+                var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
+                layoutRU.AddLayoutAsChild(buttonLayoutRU);
+            }
+            if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc)) 
+            {
+                var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
+                layoutRU.AddLayoutAsChild(descLayout);
+            }
+
         }
     }
 }
