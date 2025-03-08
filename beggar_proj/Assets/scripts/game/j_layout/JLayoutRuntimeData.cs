@@ -198,6 +198,12 @@ namespace JLayout
                 TextChildren.Add(textChild);
             }
 
+            internal void SetText(int v, string textKey)
+            {
+                // localize this?
+                TextChildren[v].UiUnit.rawText = textKey;
+            }
+
             private void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons)
             {
                 JLayoutChild item = new JLayoutChild()
@@ -217,7 +223,7 @@ namespace JLayout
             public JLayoutRuntimeUnit LayoutRU { get; internal set; }
             public LayoutCommons Commons { get; internal set; }
             public UIUnit UiUnit;
-            public RectTransform Rect => LayoutRU.RectTransform ?? UiUnit.RectTransform;
+            public RectTransform Rect => LayoutRU?.RectTransform ?? UiUnit?.RectTransform;
         }
     }
 

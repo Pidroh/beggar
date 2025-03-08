@@ -20,6 +20,7 @@ public class MainGameControlSetupJLayout
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         var config = HeartGame.GetConfig();
         JLayoutRuntimeData runtime = new();
+        runtime.DefaultFont = mgc.Font;
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         runtime.jLayCanvas = jCanvas;
         mgc.LayoutRuntime = runtime;
@@ -47,19 +48,33 @@ public class MainGameControlSetupJLayout
             {
                 var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
                 layoutRU.AddLayoutAsChild(buttonLayoutRU);
+                buttonLayoutRU.SetText(0, modelData.Name);
             }
             if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))
             {
                 var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
                 layoutRU.AddLayoutAsChild(descLayout);
+                descLayout.SetText(0, modelData.ConfigBasic.Desc);
             }
             if (modelData.ConfigTask != null)
             {
-                foreach (var rcl in modelData.ConfigTask.ResourceChangeLists)
+                for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
                 {
+                    List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
                     if (rcl == null) continue;
                     if (rcl.Count == 0) continue;
+                    string textKey = (ResourceChangeType) rcgIndex switch
+                    {
+                        ResourceChangeType.COST => "cost",
+                        ResourceChangeType.RESULT => "result",
+                        ResourceChangeType.RUN => "run",
+                        ResourceChangeType.EFFECT => "effect",
+                        ResourceChangeType.RESULT_ONCE => "first time",
+                        ResourceChangeType.RESULT_FAIL => "result failure",
+                        _ => null,
+                    };
                     var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
+                    miniHeader.SetText(0, textKey);
                     layoutRU.AddLayoutAsChild(miniHeader);
                     foreach (var rcu in rcl)
                     {

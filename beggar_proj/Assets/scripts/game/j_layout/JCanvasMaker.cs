@@ -144,6 +144,7 @@ namespace JLayout
         private static JLayoutRuntimeUnit CreateButton(ButtonData buttonD, JLayoutRuntimeData runtime)
         {
             var layout = CreateLayout(buttonD.LayoutData, runtime);
+            layout.RectTransform.gameObject.name = "button";
             return layout;
         }
 

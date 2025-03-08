@@ -159,6 +159,7 @@
                     "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"]
                 },
                 {
+                    "type": "text",
                     "id": "accessory_text",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
                     "position_mode": ["RIGHT_ZERO", "CENTER"]
@@ -191,6 +192,18 @@
         {
             "id": "lore_text",
             "colors": ["4d4d4dff", "4d4d4dff"]
+        },
+        {
+            "id": "mini_header_text",
+            "colors": ["969696ff", "969696ff"]
+        },
+        {
+            "id": "simple_text",
+            "colors": ["4d4d4dff", "4d4d4dff"]
+        },
+        {
+            "id": "accessory_text",
+            "colors": ["4d4d4d96", "4d4d4d96"]
         }
     ],
     "color_presets": ["light", "dark"]

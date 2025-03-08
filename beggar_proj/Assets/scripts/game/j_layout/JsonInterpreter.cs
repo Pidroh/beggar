@@ -17,7 +17,7 @@ namespace JLayout
                     case "layouts":
                         ReadLayouts(item.Value, layoutMaster);
                         break;
-                    case "button":
+                    case "buttons":
                         ReadButtons(item.Value, layoutMaster);
                         break;
                     case "texts":
