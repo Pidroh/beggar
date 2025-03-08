@@ -43,16 +43,33 @@ public class MainGameControlSetupJLayout
             taskParent.AddLayoutAsChild(layoutRU);
 
             var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
-            if (hasTaskButton) 
+            if (hasTaskButton)
             {
                 var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
                 layoutRU.AddLayoutAsChild(buttonLayoutRU);
             }
-            if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc)) 
+            if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))
             {
                 var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
                 layoutRU.AddLayoutAsChild(descLayout);
             }
+            if (modelData.ConfigTask != null)
+            {
+                foreach (var rcl in modelData.ConfigTask.ResourceChangeLists)
+                {
+                    if (rcl == null) continue;
+                    if (rcl.Count == 0) continue;
+                    var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
+                    layoutRU.AddLayoutAsChild(miniHeader);
+                    foreach (var rcu in rcl)
+                    {
+                        var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
+                        layoutRU.AddLayoutAsChild(triple);
+                    }
+                    
+                }
+            }
+
 
         }
     }
