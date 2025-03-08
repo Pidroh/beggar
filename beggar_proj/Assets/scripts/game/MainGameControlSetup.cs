@@ -48,7 +48,7 @@ public class MainGameControlSetupJLayout
             {
                 var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
                 layoutRU.AddLayoutAsChild(buttonLayoutRU);
-                buttonLayoutRU.SetText(0, modelData.Name);
+                buttonLayoutRU.ButtonChildren[0].SetText(0, modelData.Name);
             }
             if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))
             {

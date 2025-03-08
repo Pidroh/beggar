@@ -111,6 +111,7 @@ namespace JLayout
                             JLayoutRuntimeUnit buttonLayout = CreateButton(childData.ButtonRef.data, runtime);
                             // will have to fuse commons data eventually
                             jLayoutRuntimeUnit.AddLayoutAsChild(buttonLayout, childData);
+                            jLayoutRuntimeUnit.BindButton(buttonLayout);
                         }
                         break;
                     case { TextRef: not null }:

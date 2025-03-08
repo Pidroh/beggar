@@ -17,94 +17,102 @@ namespace JLayout
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
                 parentLayout.RectTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
-                
+
 
                 // layout code
-                var parentRect = parentLayout.ContentTransform;
+                var contentRect = parentLayout.ContentTransform;
 
-                var defaultPositionModes = parentLayout.DefaultPositionModes;
                 #region solve layout width
-                SolveLayoutWidth(parentLayout, parentRect);
+                SolveLayoutWidth(parentLayout, contentRect);
                 #endregion
 
-                JLayoutChild previousChild = null;
-                foreach (var child in parentLayout.Children)
+                TemporarySolveHeightAndPosition(parentLayout, contentRect);
+            }
+        }
+
+        private static void TemporarySolveHeightAndPosition(JLayoutRuntimeUnit parentLayout, RectTransform contentRect)
+        {
+            var defaultPositionModes = parentLayout.DefaultPositionModes;
+            JLayoutChild previousChild = null;
+            foreach (var child in parentLayout.Children)
+            {
+                if (child.LayoutRU != null) 
                 {
-                    RectTransform childRect = child.Rect;
-                    var padding = parentLayout.LayoutData.commons.Padding;
-
-                    #region size
-                    var axisModes = child.Commons.AxisModes;
-                    for (int axis = 0; axis < axisModes.Length; axis++)
-                    {
-                        var axisM = axisModes[axis];
-                        switch (axisM)
-                        {
-                            case AxisMode.PARENT_SIZE_PERCENT:
-                                // var sizeRatio = 1f;
-                                if (axis == 0)
-                                {
-                                    childRect.SetWidth(parentRect.GetWidth());
-                                }
-                                else
-                                {
-                                    childRect.SetHeight(parentRect.GetHeight());
-                                }
-                                break;
-                            case AxisMode.SELF_SIZE:
-                                childRect.SetSizeMilimeters(axis, child.Commons.Size[axis]);
-                                break;
-                            case AxisMode.CONTAIN_CHILDREN:
-                                break;
-                            case AxisMode.FILL_REMAINING_SIZE:
-
-                                break;
-                            case AxisMode.TEXT_PREFERRED:
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    #endregion
-
-                    #region position
-                    var positionModes = child.Commons.PositionModes ?? defaultPositionModes;
-                    for (int axis = 0; axis < 2; axis++)
-                    {
-                        var pm = positionModes[axis];
-                        switch (pm)
-                        {
-                            case PositionMode.LEFT_ZERO:
-                                Debug.Assert(axis == 0);
-                                childRect.SetLeftLocalX(padding.left);
-                                break;
-                            case PositionMode.RIGHT_ZERO:
-                                Debug.Assert(axis == 0);
-                                childRect.SetRightLocalX(-padding.right);
-                                break;
-                            case PositionMode.CENTER:
-                                childRect.SetPivotAndAnchors(new Vector2(0.5f, 0.5f));
-                                childRect.localPosition = Vector3.zero;
-                                break;
-                            case PositionMode.SIBLING_DISTANCE:
-                                var prevRect = previousChild?.Rect;
-
-                                if (axis == 0)
-                                {
-                                    childRect.SetLeftLocalX(prevRect?.GetRightLocalX() ?? 0);
-                                }
-                                if (axis == 1)
-                                {
-                                    childRect.SetTopLocalY(prevRect?.GetBottomLocalY() ?? 0);
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    #endregion
-                    previousChild = child;
+                    TemporarySolveHeightAndPosition(child.LayoutRU, child.LayoutRU.ContentTransform);
                 }
+                RectTransform childRect = child.Rect;
+                var padding = parentLayout.LayoutData.commons.Padding;
+
+                #region size
+                var axisModes = child.Commons.AxisModes;
+                var yAxis = 1;
+
+                var axisM = axisModes[yAxis];
+                switch (axisM)
+                {
+                    case AxisMode.PARENT_SIZE_PERCENT:
+                        // var sizeRatio = 1f;
+                        if (yAxis == 0)
+                        {
+                        }
+                        else
+                        {
+                            childRect.SetHeight(contentRect.GetHeight());
+                        }
+                        break;
+                    case AxisMode.SELF_SIZE:
+                        childRect.SetSizeMilimeters(yAxis, child.Commons.Size[yAxis]);
+                        break;
+                    case AxisMode.CONTAIN_CHILDREN:
+                        break;
+                    case AxisMode.FILL_REMAINING_SIZE:
+
+                        break;
+                    case AxisMode.TEXT_PREFERRED:
+                        break;
+                    default:
+                        break;
+                }
+
+                #endregion
+
+                #region position
+                var positionModes = child.Commons.PositionModes ?? defaultPositionModes;
+                for (int axis = 0; axis < 2; axis++)
+                {
+                    var pm = positionModes[axis];
+                    switch (pm)
+                    {
+                        case PositionMode.LEFT_ZERO:
+                            Debug.Assert(axis == 0);
+                            childRect.SetLeftLocalX(padding.left);
+                            break;
+                        case PositionMode.RIGHT_ZERO:
+                            Debug.Assert(axis == 0);
+                            childRect.SetRightLocalX(-padding.right);
+                            break;
+                        case PositionMode.CENTER:
+                            childRect.SetPivotAndAnchors(new Vector2(0.5f, 0.5f));
+                            childRect.localPosition = Vector3.zero;
+                            break;
+                        case PositionMode.SIBLING_DISTANCE:
+                            var prevRect = previousChild?.Rect;
+
+                            if (axis == 0)
+                            {
+                                childRect.SetLeftLocalX(prevRect?.GetRightLocalX() ?? 0);
+                            }
+                            if (axis == 1)
+                            {
+                                childRect.SetTopLocalY(prevRect?.GetBottomLocalY() ?? 0);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                #endregion
+                previousChild = child;
             }
         }
 
@@ -147,7 +155,7 @@ namespace JLayout
 
             foreach (var child in parentLayout.Children)
             {
-                if (child.LayoutRU != null) 
+                if (child.LayoutRU != null)
                 {
                     SolveLayoutWidth(child.LayoutRU, child.LayoutRU.ContentTransform);
                 }
@@ -166,6 +174,7 @@ namespace JLayout
             //public List<JLayoutRuntimeUnit> Sublayouts = new();
             public List<JLayoutChild> Children = new();
             public List<JLayoutChild> TextChildren = new();
+            public List<JLayoutRuntimeUnit> ButtonChildren = new();
 
             public JLayoutRuntimeUnit(RectTransform childRT2)
             {
@@ -192,6 +201,11 @@ namespace JLayout
 
             // Some day you might have to fuse the buttonLayout commons with childData commons
             internal void AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons);
+
+            internal void BindButton(JLayoutRuntimeUnit buttonLayout)
+            {
+                ButtonChildren.Add(buttonLayout);
+            }
 
             internal void BindText(JLayoutChild textChild)
             {
