@@ -54,7 +54,7 @@ namespace JLayout
                 // Create N children
                 for (int i = 0; i < N; i++)
                 {
-                    dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
+                    dc.children.Add(CreateCanvasScrollChild(rootGO, i, canvasReq.ScrollStyle));
                 }
                 dc.childrenForLayouting.AddRange(dc.children);
                 dc.RootRT = rootRT;
@@ -95,10 +95,24 @@ namespace JLayout
         {
             JLayoutRuntimeUnit jLayoutRuntimeUnit = CreateLayout();
             jLayoutRuntimeUnit.LayoutData = layoutD;
+            if (layoutD.commons.ColorReference != null) 
+            {
+                var color = layoutD.commons.ColorReference.data.Colors[0];
+                var img = jLayoutRuntimeUnit.RectTransform.gameObject.AddComponent<Image>();
+                img.color = color;
+            }
+            foreach (var childData in layoutD.Children)
+            {
+                if (childData.ButtonRef != null) 
+                {
+                    JLayoutRuntimeUnit buttonLayout = CreateButton(layoutD, runtime);
+                    jLayoutRuntimeUnit.AddLayoutAsChild();
+                }
+            }
             return jLayoutRuntimeUnit;
         }
 
-        static JLayoutRuntimeUnit CreateChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)
+        static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)
         {
             JLayoutRuntimeUnit lp = null;
 

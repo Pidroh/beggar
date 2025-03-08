@@ -15,9 +15,11 @@ namespace JLayout
             {
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
                 parentLayout.RectTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                
 
                 // layout code
-                var parentRect = parentLayout.RectTransform;
+                var parentRect = parentLayout.ContentTransform;
 
                 var defaultPositionModes = parentLayout.DefaultPositionModes;
                 #region solve layout width
@@ -146,7 +148,7 @@ namespace JLayout
             {
                 if (child.LayoutRU != null) 
                 {
-                    SolveLayoutWidth(child.LayoutRU, child.LayoutRU.RectTransform);
+                    SolveLayoutWidth(child.LayoutRU, child.LayoutRU.ContentTransform);
                 }
             }
         }
