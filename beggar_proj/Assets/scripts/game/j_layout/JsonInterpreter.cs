@@ -105,9 +105,9 @@ namespace JLayout
         {
             var ld = new LayoutData();
             ld.commons = ReadCommons(layoutMaster, layoutEntry);
-            if (layoutEntry.HasKey("children"))
+            if (layoutEntry.HasKey("fixed_children"))
             {
-                ld.Children = ReadChildren(layoutEntry["children"].Children, layoutMaster);
+                ld.Children = ReadChildren(layoutEntry["fixed_children"].Children, layoutMaster);
             }
 
             return ld;
@@ -302,13 +302,16 @@ namespace JLayout
         CONTAIN_CHILDREN,
         // Fills up the space left behind by siblings
         FILL_REMAINING_SIZE,
-        // Use up as much space as necessary by the font and the text. In the case of width, will not go above parent width
-        TEXT_PREFERRED
+        // Use up as much space as necessary by the font and the text. Not applicable to width
+        TEXT_PREFERRED,
+        // Similar to text preferred, but will over extend to use the step sizes depending on text size
+        STEP_SIZE_TEXT
     }
 
     public enum PositionMode
     {
         LEFT_ZERO, RIGHT_ZERO, CENTER, SIBLING_DISTANCE,
+        SIBLING_DISTANCE_REVERSE
     }
 
     public class PointerHolder<T>
@@ -375,7 +378,6 @@ namespace JLayout
 
     public class ButtonData
     {
-        public LayoutData layoutData;
         public string id => LayoutData.Id;
         public LayoutData LayoutData { get; internal set; }
     }

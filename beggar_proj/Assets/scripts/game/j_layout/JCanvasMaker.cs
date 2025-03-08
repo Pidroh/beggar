@@ -1,4 +1,5 @@
 ﻿using HeartUnity.View;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
@@ -103,13 +104,47 @@ namespace JLayout
             }
             foreach (var childData in layoutD.Children)
             {
-                if (childData.ButtonRef != null) 
+                switch (childData)
                 {
-                    JLayoutRuntimeUnit buttonLayout = CreateButton(layoutD, runtime);
-                    jLayoutRuntimeUnit.AddLayoutAsChild();
+                    case { ButtonRef: not null }:
+                        {
+                            JLayoutRuntimeUnit buttonLayout = CreateButton(childData.ButtonRef.data, runtime);
+                            // will have to fuse commons data eventually
+                            jLayoutRuntimeUnit.AddLayoutAsChild(buttonLayout, childData);
+                        }
+                        break;
+                    case { TextRef: not null }:
+                        {
+                            JLayoutChild textChild = CreateText(childData, childData.TextRef.data, runtime);
+                            jLayoutRuntimeUnit.AddChild(textChild);
+                            jLayoutRuntimeUnit.BindText(textChild);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
             return jLayoutRuntimeUnit;
+        }
+
+        private static JLayoutChild CreateText(LayoutChildData childData, TextData data, JLayoutRuntimeData runtime)
+        {
+            var textColor = data.ColorPointer.data.Colors[0];
+            var fontSize = data.Size;
+            var uiUnit = CanvasMaker.CreateTextUnit(textColor, runtime.DefaultFont, fontSize);
+            var commons = childData.Commons;
+            return new JLayoutChild
+            {
+                Commons = commons,
+                LayoutChild = childData,
+                UiUnit = uiUnit
+            };
+        }
+
+        private static JLayoutRuntimeUnit CreateButton(ButtonData buttonD, JLayoutRuntimeData runtime)
+        {
+            var layout = CreateLayout(buttonD.LayoutData, runtime);
+            return layout;
         }
 
         static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)

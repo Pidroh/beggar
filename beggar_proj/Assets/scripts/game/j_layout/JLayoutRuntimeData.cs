@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using static JLayout.JLayoutRuntimeData;
 using HeartUnity.View;
+using TMPro;
 
 namespace JLayout
 {
@@ -157,11 +158,14 @@ namespace JLayout
     {
         public JLayCanvas jLayCanvas;
 
+        public TMP_FontAsset DefaultFont { get; internal set; }
+
         public class JLayoutRuntimeUnit
         {
             public RectTransform RectTransform;
             //public List<JLayoutRuntimeUnit> Sublayouts = new();
             public List<JLayoutChild> Children = new();
+            public List<JLayoutChild> TextChildren = new();
 
             public JLayoutRuntimeUnit(RectTransform childRT2)
             {
@@ -174,9 +178,28 @@ namespace JLayout
 
             public PositionMode[] DefaultPositionModes { get; internal set; }
 
+            internal void AddChild(JLayoutChild child)
+            {
+                Children.Add(child);
+                child.Rect.SetParent(RectTransform);
+            }
+
             internal void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU)
             {
                 var commons = layoutRU.LayoutData.commons;
+                AddLayoutAsChild(layoutRU, commons);
+            }
+
+            // Some day you might have to fuse the buttonLayout commons with childData commons
+            internal void AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons);
+
+            internal void BindText(JLayoutChild textChild)
+            {
+                TextChildren.Add(textChild);
+            }
+
+            private void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons)
+            {
                 JLayoutChild item = new JLayoutChild()
                 {
                     LayoutRU = layoutRU,
@@ -193,7 +216,8 @@ namespace JLayout
 
             public JLayoutRuntimeUnit LayoutRU { get; internal set; }
             public LayoutCommons Commons { get; internal set; }
-            public RectTransform Rect => LayoutRU.RectTransform;
+            public UIUnit UiUnit;
+            public RectTransform Rect => LayoutRU.RectTransform ?? UiUnit.RectTransform;
         }
     }
 
