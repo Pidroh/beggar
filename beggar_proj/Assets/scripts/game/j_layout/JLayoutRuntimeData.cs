@@ -15,15 +15,17 @@ namespace JLayout
             {
                 var width = 320;
                 JLayoutChild previousChild = null;
+                var defaultPositionModes = mainCanvasChild.DefaultPositionModes;
                 foreach (var child in mainCanvasChild.Children)
                 {
                     RectTransform childRect = child.Rect;
                     var padding = child.Commons.Padding;
+
                     #region position
-                    
+                    var positionModes = child.Commons.PositionModes ?? defaultPositionModes;
                     for (int axis = 0; axis < 2; axis++)
                     {
-                        var pm = child.Commons.PositionModes[axis];
+                        var pm = positionModes[axis];
                         switch (pm)
                         {
                             case PositionMode.LEFT_ZERO:
@@ -39,16 +41,15 @@ namespace JLayout
                                 childRect.localPosition = Vector3.zero;
                                 break;
                             case PositionMode.SIBLING_DISTANCE:
-                                var prevRect = previousChild.Rect;
-                                var prevLocal = prevRect.localPosition;
+                                var prevRect = previousChild?.Rect;
 
                                 if (axis == 0) 
                                 {
-                                    childRect.SetLeftLocalX(prevRect.GetRightLocalX());
+                                    childRect.SetLeftLocalX(prevRect?.GetRightLocalX() ?? 0);
                                 }
                                 if (axis == 1)
                                 {
-                                    childRect.SetTopLocalY(prevRect.GetBottomLocalY());
+                                    childRect.SetTopLocalY(prevRect?.GetBottomLocalY() ?? 0);
                                 }
                                 break;
                             default:
@@ -80,6 +81,8 @@ namespace JLayout
             public RectTransform ContentTransformOverride { get; internal set; }
             public LayoutData LayoutData { get; internal set; }
             public RectTransform ContentTransform => ContentTransformOverride ?? RectTransform;
+
+            public PositionMode[] DefaultPositionModes { get; internal set; }
 
             internal void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU)
             {

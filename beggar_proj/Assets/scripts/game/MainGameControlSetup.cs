@@ -21,7 +21,8 @@ public class MainGameControlSetupJLayout
         var config = HeartGame.GetConfig();
         JLayoutRuntimeData runtime = new();
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
-        mgc.JCanvas = jCanvas;
+        runtime.jLayCanvas = jCanvas;
+        mgc.LayoutRuntime = runtime;
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;
 

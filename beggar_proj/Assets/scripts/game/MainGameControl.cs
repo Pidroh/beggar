@@ -39,7 +39,7 @@ public class MainGameControl : MonoBehaviour
     public ButtonWithProgressBar SettingButtonEnding { get; internal set; }
     public LayoutParent EndingOverlayLayout { get; internal set; }
     public LayoutParent TabButtonOverlayLayout { get; internal set; }
-    public JLayCanvas JCanvas { get; internal set; }
+    public JLayoutRuntimeData LayoutRuntime { get; internal set; }
 
     public float lastSaveTime;
     public ControlExploration controlExploration;
@@ -158,6 +158,7 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         // UI update
         // -----------------------------------------------------------
+        JLayoutRuntimeExecuter.ManualUpdate(this.LayoutRuntime);
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.VisibleSelf = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;

@@ -93,7 +93,9 @@ namespace JLayout
 
         internal static JLayoutRuntimeUnit CreateLayout(LayoutData layoutD, JLayoutRuntimeData runtime)
         {
-            return CreateLayout();
+            JLayoutRuntimeUnit jLayoutRuntimeUnit = CreateLayout();
+            jLayoutRuntimeUnit.LayoutData = layoutD;
+            return jLayoutRuntimeUnit;
         }
 
         static JLayoutRuntimeUnit CreateChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)
@@ -195,6 +197,7 @@ namespace JLayout
             handleImage.color = scrollStyle.ScrollHandleColor;
             scrollbar.targetGraphic = handleImage;
             scrollbar.handleRect = handleRT;
+            lp.DefaultPositionModes = new PositionMode[2] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
 
             return lp;
         }
