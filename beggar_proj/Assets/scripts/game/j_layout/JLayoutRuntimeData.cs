@@ -7,19 +7,62 @@ using HeartUnity.View;
 
 namespace JLayout
 {
-    public static class JLayoutRuntimeExecuter 
+    public static class JLayoutRuntimeExecuter
     {
-        public static void ManualUpdate(JLayoutRuntimeData data) 
+        public static void ManualUpdate(JLayoutRuntimeData data)
         {
             foreach (var mainCanvasChild in data.jLayCanvas.ActiveChildren)
             {
-                var width = 320;
+                JLayoutRuntimeUnit parentLayout = mainCanvasChild;
+                parentLayout.RectTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+
+                // layout code
+                var parentRect = parentLayout.RectTransform;
+
+                var defaultPositionModes = parentLayout.DefaultPositionModes;
+                #region solve layout width
+                SolveLayoutWidth(parentLayout, parentRect);
+                #endregion
+
                 JLayoutChild previousChild = null;
-                var defaultPositionModes = mainCanvasChild.DefaultPositionModes;
-                foreach (var child in mainCanvasChild.Children)
+                foreach (var child in parentLayout.Children)
                 {
                     RectTransform childRect = child.Rect;
-                    var padding = child.Commons.Padding;
+                    var padding = parentLayout.LayoutData.commons.Padding;
+
+                    #region size
+                    var axisModes = child.Commons.AxisModes;
+                    for (int axis = 0; axis < axisModes.Length; axis++)
+                    {
+                        var axisM = axisModes[axis];
+                        switch (axisM)
+                        {
+                            case AxisMode.PARENT_SIZE_PERCENT:
+                                // var sizeRatio = 1f;
+                                if (axis == 0)
+                                {
+                                    childRect.SetWidth(parentRect.GetWidth());
+                                }
+                                else
+                                {
+                                    childRect.SetHeight(parentRect.GetHeight());
+                                }
+                                break;
+                            case AxisMode.SELF_SIZE:
+                                childRect.SetSizeMilimeters(axis, child.Commons.Size[axis]);
+                                break;
+                            case AxisMode.CONTAIN_CHILDREN:
+                                break;
+                            case AxisMode.FILL_REMAINING_SIZE:
+
+                                break;
+                            case AxisMode.TEXT_PREFERRED:
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    #endregion
 
                     #region position
                     var positionModes = child.Commons.PositionModes ?? defaultPositionModes;
@@ -43,7 +86,7 @@ namespace JLayout
                             case PositionMode.SIBLING_DISTANCE:
                                 var prevRect = previousChild?.Rect;
 
-                                if (axis == 0) 
+                                if (axis == 0)
                                 {
                                     childRect.SetLeftLocalX(prevRect?.GetRightLocalX() ?? 0);
                                 }
@@ -61,7 +104,52 @@ namespace JLayout
                 }
             }
         }
-        
+
+        private static void SolveLayoutWidth(JLayoutRuntimeUnit parentLayout, RectTransform parentRect)
+        {
+            var widthOfContentMM = parentRect.GetWidthMilimeters() - parentLayout.LayoutData.commons.Padding.horizontal;
+            var widthOfContentMMForComsumption = widthOfContentMM;
+            using var _1 = ListPool<JLayoutChild>.Get(out var fillUpChildren);
+            foreach (var child in parentLayout.Children)
+            {
+                switch (child.Commons.AxisModes[0])
+                {
+                    case AxisMode.PARENT_SIZE_PERCENT:
+                        child.Rect.SetWidthMilimeters(widthOfContentMM);
+                        widthOfContentMMForComsumption = 0;
+                        break;
+                    case AxisMode.SELF_SIZE:
+                        child.Rect.SetWidthMilimeters(child.Commons.Size[0]);
+                        widthOfContentMMForComsumption -= child.Commons.Size[0];
+                        break;
+                    case AxisMode.CONTAIN_CHILDREN:
+                        Debug.LogError("Not supported");
+                        break;
+                    case AxisMode.FILL_REMAINING_SIZE:
+                        fillUpChildren.Add(child);
+                        break;
+                    case AxisMode.TEXT_PREFERRED:
+                        Debug.LogError("Not supported");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Debug.Assert(fillUpChildren.Count <= 1);
+
+            if (fillUpChildren.Count == 1)
+            {
+                fillUpChildren[0].Rect.SetWidthMilimeters(widthOfContentMMForComsumption);
+            }
+
+            foreach (var child in parentLayout.Children)
+            {
+                if (child.LayoutRU != null) 
+                {
+                    SolveLayoutWidth(child.LayoutRU, child.LayoutRU.RectTransform);
+                }
+            }
+        }
     }
     public class JLayoutRuntimeData
     {
@@ -87,7 +175,8 @@ namespace JLayout
             internal void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU)
             {
                 var commons = layoutRU.LayoutData.commons;
-                JLayoutChild item = new JLayoutChild() {
+                JLayoutChild item = new JLayoutChild()
+                {
                     LayoutRU = layoutRU,
                     Commons = commons
                 };

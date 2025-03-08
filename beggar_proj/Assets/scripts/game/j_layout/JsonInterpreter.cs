@@ -48,9 +48,9 @@ namespace JLayout
                     {
                         colors[i] = c;
                     }
-                    else 
+                    else
                     {
-                        Debug.LogError("color code is wrong? "+colorCode);
+                        Debug.LogError("color code is wrong? " + colorCode);
                     }
                 }
                 colorData.Colors = colors;
@@ -74,8 +74,8 @@ namespace JLayout
             {
                 var textData = new TextData();
                 textData.Id = textEntry["id"].AsString;
-                
-                
+
+
                 var colorId = textEntry["color_id"].AsString;
                 textData.ColorPointer = layoutMaster.ColorDatas.GetOrCreatePointer(colorId);
                 textData.Size = textEntry["size"].AsInt;
@@ -351,7 +351,9 @@ namespace JLayout
     public class LayoutCommons
     {
         public Pointer<ColorData> ColorReference { get; internal set; }
-        public RectOffset Padding { get; internal set; }
+        public static RectOffset ZeroOffset = new RectOffset(0, 0, 0, 0);
+        public RectOffset _padding;
+        public RectOffset Padding { get => _padding ?? ZeroOffset; set => _padding = value; }
         public string Id { get; internal set; }
         public PositionMode[] PositionModes { get; internal set; }
         public TextHorizontal TextHorizontalMode { get; internal set; }

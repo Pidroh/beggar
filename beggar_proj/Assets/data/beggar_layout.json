@@ -65,7 +65,7 @@
                 {
                     "type": "text",
                     "id": "lore_text",
-                    "axis_mode": ["TEXT_PREFERRED", "TEXT_PREFERRED"],
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"],
                     "position_mode": ["CENTER", "CENTER"],
                     "text_horizontal": "CENTER"
                 }

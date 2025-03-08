@@ -15,6 +15,7 @@ namespace HeartUnity.View
         public const float MilimiterToPixelFallback = 96f / 25.4f;
         public const float PixelToMilimiterFallback = 25.4f / 96f;
         public static float DpiScaleFromDefault => EngineView.dpi / 96f;
+        public static float DefaultPixelSizeToPhysicalPixelSize => PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
 
         public static float MilimeterToPixel => EngineView.dpi <= 0 ? MilimiterToPixelFallback : EngineView.dpi / 25.4f;
         public static float PixelToMilimeter => EngineView.dpi <= 0 ? PixelToMilimiterFallback : 25.4f / EngineView.dpi;
@@ -203,12 +204,12 @@ namespace HeartUnity.View
 
         public static float GetRightLocalX(this RectTransform trans)
         {
-            return trans.localPosition.x + (1 - trans.pivot.x) * trans.rect.width;
+            return trans.localPosition.x + trans.pivot.x * trans.rect.width;
         }
 
         public static float GetBottomLocalY(this RectTransform trans)
         {
-            return trans.localPosition.y + (1 - trans.pivot.y) * trans.rect.height;
+            return trans.localPosition.y - (1 - trans.pivot.y) * trans.rect.height;
         }
 
         public static void SetRightLocalX(this RectTransform trans, float newPos)
