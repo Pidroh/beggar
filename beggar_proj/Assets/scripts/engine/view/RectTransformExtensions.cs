@@ -158,7 +158,13 @@ namespace HeartUnity.View
             //trans.SetBottomLocalY(bottomY);
         }
 
-        private static void SetAnchorsByIndex(this RectTransform trans, int index, float value)
+        public static void SetPivotByIndex(this RectTransform trans, int index, float value) 
+        {
+            var pivot = trans.pivot;
+            pivot[index] = value;
+            trans.pivot = pivot;
+        }
+        public static void SetAnchorsByIndex(this RectTransform trans, int index, float value)
         {
             var am = trans.anchorMin;
             var amM = trans.anchorMax;
@@ -220,6 +226,11 @@ namespace HeartUnity.View
         public static void SetLocalX(this RectTransform trans, float newPos)
         {
             trans.localPosition = new Vector3(newPos, trans.localPosition.y, trans.localPosition.z);
+        }
+
+        public static void SetLocalY(this RectTransform trans, float newPos)
+        {
+            trans.localPosition = new Vector3(trans.localPosition.x, newPos, trans.localPosition.z);
         }
 
         public static void SetLocalXY(this RectTransform trans, float newPosX, float newPosY)

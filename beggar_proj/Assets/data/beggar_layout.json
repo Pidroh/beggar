@@ -163,7 +163,7 @@
                     "type": "text",
                     "id": "accessory_text",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
-                    "position_mode": ["RIGHT_ZERO", "CENTER"]
+                    "position_mode": ["CENTER", "CENTER"]
                 }
             ]
         },

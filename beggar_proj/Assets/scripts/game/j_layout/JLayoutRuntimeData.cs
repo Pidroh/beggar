@@ -20,6 +20,7 @@ namespace JLayout
                 parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.RectTransform.SetLeftXToParent(0);
                 mainCanvasChild.RectTransform.gameObject.SetActive(mainCanvasChild.Children.Count > 0);
+                if (mainCanvasChild.Children.Count == 0) continue;
 
                 // layout code
                 var contentRect = parentLayout.ContentTransform;
@@ -95,11 +96,17 @@ namespace JLayout
                             break;
                         case PositionMode.RIGHT_ZERO:
                             Debug.Assert(axis == 0);
-                            childRect.SetRightXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            childRect.SetRightXToParent(padding.right * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             break;
                         case PositionMode.CENTER:
-                            childRect.SetPivotAndAnchors(new Vector2(0.5f, 0.5f));
-                            childRect.localPosition = Vector3.zero;
+                            //childRect.SetPivotAndAnchors(new Vector2(0.5f, 0.5f));
+                            childRect.SetAnchorsByIndex(axis, 0.5f);
+                            childRect.SetPivotByIndex(axis, 0.5f);
+                            if (axis == 0)
+                                childRect.SetLocalX(0);
+                            if (axis == 1)
+                                childRect.SetLocalY(0);
+
                             break;
                         case PositionMode.SIBLING_DISTANCE:
                             var prevRect = previousChild?.Rect;
