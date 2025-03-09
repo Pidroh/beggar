@@ -76,7 +76,7 @@
             "id": "left_mini_header",
             "comment": "Contains the mini header for cost, result, etc",
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
-            "padding": [10, 0, 2, 23],
+            "padding": [10, 0, 4, 23],
             "size": [100, -1],
             "fixed_children": [
                 {

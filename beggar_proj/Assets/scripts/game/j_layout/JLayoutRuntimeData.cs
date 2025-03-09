@@ -17,7 +17,7 @@ namespace JLayout
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
                 // temporary code
                 parentLayout.RectTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
-                parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.RectTransform.SetLeftXToParent(0);
                 mainCanvasChild.RectTransform.gameObject.SetActive(mainCanvasChild.Children.Count > 0);
                 if (mainCanvasChild.Children.Count == 0) continue;
@@ -37,7 +37,7 @@ namespace JLayout
         {
             var defaultPositionModes = parentLayout.DefaultPositionModes;
             JLayoutChild previousChild = null;
-            float totalChildHeight = 0f;
+            float totalChildOccupiedHeight = 0f;
             var padding = parentLayout.LayoutData.commons.Padding;
             foreach (var child in parentLayout.Children)
             {
@@ -46,7 +46,7 @@ namespace JLayout
                     TemporarySolveHeightAndPosition(child.LayoutRU, child.LayoutRU.ContentTransform);
                 }
                 RectTransform childRect = child.Rect;
-                
+
 
                 #region size
                 var axisModes = child.Commons.AxisModes;
@@ -80,12 +80,28 @@ namespace JLayout
                         break;
                 }
 
-                totalChildHeight += childRect.GetHeight();
+
+                
 
                 #endregion
 
-                #region position
                 var positionModes = child.PositionModes ?? defaultPositionModes;
+
+                #region total height calculation
+                if (positionModes[1] == PositionMode.SIBLING_DISTANCE)
+                {
+                    totalChildOccupiedHeight += childRect.GetHeight();
+                }
+                else 
+                {
+                    totalChildOccupiedHeight = Mathf.Max(childRect.GetHeight(), totalChildOccupiedHeight);
+                }
+                #endregion
+
+                #region position calculation
+
+
+
                 for (int axis = 0; axis < 2; axis++)
                 {
                     var pm = positionModes[axis];
@@ -106,9 +122,9 @@ namespace JLayout
                             childRect.SetAnchorsByIndex(axis, 0.5f);
                             childRect.SetPivotByIndex(axis, 0.5f);
                             if (axis == 0)
-                                childRect.SetLocalX(0);
+                                childRect.SetLocalX((padding.left - padding.right) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             if (axis == 1)
-                                childRect.SetLocalY(0);
+                                childRect.SetLocalY((padding.bottom - padding.top) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
 
                             break;
                         case PositionMode.SIBLING_DISTANCE:
@@ -124,7 +140,7 @@ namespace JLayout
                                     childRect.SetTopLocalY(prevRect.GetBottomLocalY());
                                 }
                             }
-                            else 
+                            else
                             {
                                 if (axis == 0)
                                 {
@@ -152,7 +168,7 @@ namespace JLayout
             Debug.Assert(heightAxis != null);
             if (heightAxis == AxisMode.CONTAIN_CHILDREN)
             {
-                parentLayout.ContentTransform.SetHeight(totalChildHeight + padding.vertical * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                parentLayout.ContentTransform.SetHeight(totalChildOccupiedHeight + padding.vertical * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
             }
 
         }
@@ -188,7 +204,7 @@ namespace JLayout
                         Debug.LogError("Not supported");
                         break;
                     case AxisMode.STEP_SIZE_TEXT:
-                        if (!child.OnMaxStep(0)) 
+                        if (!child.OnMaxStep(0))
                         {
                             var preferredWidth = child.UiUnit.text.preferredWidth;
                             var stepSizes = child.Commons.StepSizes;
@@ -196,9 +212,9 @@ namespace JLayout
                             int preferredIndex = 0;
                             for (int i = 0; i < stepSizes[0].Count; i++)
                             {
-                                if (preferredSize < (stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize - 10)) 
+                                if (preferredSize < (stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize - 10))
                                 {
-                                    preferredSize = (int) (stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    preferredSize = (int)(stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                                     preferredIndex = i;
                                     break;
                                 }

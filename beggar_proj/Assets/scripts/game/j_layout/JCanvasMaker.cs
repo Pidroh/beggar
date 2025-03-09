@@ -163,7 +163,6 @@ namespace JLayout
                 TextHorizontal.CENTER => TMPro.HorizontalAlignmentOptions.Center,
                 _ => TMPro.HorizontalAlignmentOptions.Left
             };
-            uiUnit.text.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Left;
             var commons = childData.Commons;
             return new JLayoutChild
             {
