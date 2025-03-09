@@ -34,9 +34,10 @@ namespace JLayout
         {
             var defaultPositionModes = parentLayout.DefaultPositionModes;
             JLayoutChild previousChild = null;
+            float totalChildHeight = 0f;
             foreach (var child in parentLayout.Children)
             {
-                if (child.LayoutRU != null) 
+                if (child.LayoutRU != null)
                 {
                     TemporarySolveHeightAndPosition(child.LayoutRU, child.LayoutRU.ContentTransform);
                 }
@@ -61,18 +62,19 @@ namespace JLayout
                         }
                         break;
                     case AxisMode.SELF_SIZE:
-                        childRect.SetSizeMilimeters(yAxis, child.Commons.Size[yAxis]);
+                        childRect.SetHeight(child.Commons.Size[yAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                         break;
                     case AxisMode.CONTAIN_CHILDREN:
                         break;
                     case AxisMode.FILL_REMAINING_SIZE:
-
                         break;
                     case AxisMode.TEXT_PREFERRED:
                         break;
                     default:
                         break;
                 }
+
+                totalChildHeight += childRect.GetHeight();
 
                 #endregion
 
@@ -114,24 +116,36 @@ namespace JLayout
                 #endregion
                 previousChild = child;
             }
+
+            AxisMode? heightAxis = parentLayout.AxisMode?[1];
+            if (heightAxis == null) {
+                Debug.LogError("!!");
+            }
+            Debug.Assert(heightAxis != null);
+            if (heightAxis == AxisMode.CONTAIN_CHILDREN)
+            {
+                parentLayout.ContentTransform.SetHeight(totalChildHeight);
+            }
+
         }
 
         private static void SolveLayoutWidth(JLayoutRuntimeUnit parentLayout, RectTransform parentRect)
         {
-            var widthOfContentMM = parentRect.GetWidthMilimeters() - parentLayout.LayoutData.commons.Padding.horizontal;
-            var widthOfContentMMForComsumption = widthOfContentMM;
+            var widthOfContentPhysical = parentRect.GetWidth() - parentLayout.LayoutData.commons.Padding.horizontal * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+            var widthOfContentForComsumptionPhysical = widthOfContentPhysical;
             using var _1 = ListPool<JLayoutChild>.Get(out var fillUpChildren);
             foreach (var child in parentLayout.Children)
             {
                 switch (child.Commons.AxisModes[0])
                 {
                     case AxisMode.PARENT_SIZE_PERCENT:
-                        child.Rect.SetWidthMilimeters(widthOfContentMM);
-                        widthOfContentMMForComsumption = 0;
+                        child.Rect.SetWidth(widthOfContentPhysical);
+                        widthOfContentForComsumptionPhysical = 0;
                         break;
                     case AxisMode.SELF_SIZE:
-                        child.Rect.SetWidthMilimeters(child.Commons.Size[0]);
-                        widthOfContentMMForComsumption -= child.Commons.Size[0];
+                        float actualWidth = child.Commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                        child.Rect.SetWidth(actualWidth);
+                        widthOfContentForComsumptionPhysical -= actualWidth;
                         break;
                     case AxisMode.CONTAIN_CHILDREN:
                         Debug.LogError("Not supported");
@@ -150,7 +164,7 @@ namespace JLayout
 
             if (fillUpChildren.Count == 1)
             {
-                fillUpChildren[0].Rect.SetWidthMilimeters(widthOfContentMMForComsumption);
+                fillUpChildren[0].Rect.SetWidthMilimeters(widthOfContentForComsumptionPhysical);
             }
 
             foreach (var child in parentLayout.Children)
@@ -184,6 +198,8 @@ namespace JLayout
             public RectTransform ContentTransformOverride { get; internal set; }
             public LayoutData LayoutData { get; internal set; }
             public RectTransform ContentTransform => ContentTransformOverride ?? RectTransform;
+            public AxisMode[] OverrideAxisMode { internal get; set; }
+            public AxisMode[] AxisMode => OverrideAxisMode ?? LayoutData.commons?.AxisModes;
 
             public PositionMode[] DefaultPositionModes { get; internal set; }
 
@@ -220,6 +236,15 @@ namespace JLayout
 
             private JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons, ChildAddParameters? param)
             {
+                bool differingCommons = layoutRU.LayoutData?.commons != commons;
+                if (differingCommons && layoutRU.LayoutData?.commons?.AxisModes != null && commons.AxisModes != null) 
+                {
+                    Debug.LogError("two axis modes!");
+                }
+                if (differingCommons && commons.AxisModes != null) 
+                {
+                    layoutRU.OverrideAxisMode = commons.AxisModes;
+                }
                 JLayoutChild item = new JLayoutChild()
                 {
                     LayoutRU = layoutRU,
@@ -233,7 +258,7 @@ namespace JLayout
 
             }
 
-            public struct ChildAddParameters 
+            public struct ChildAddParameters
             {
                 public PositionMode[] PositionModeOverride;
             }
