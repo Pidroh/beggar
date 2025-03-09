@@ -16,6 +16,7 @@
             {
                 "id": "beg_a",
                 "name": "Beg for crumbs",
+                "desc": "This test is going well, Discord??",
                 "duration": 5,
                 "max": 3,
                 "locked": false

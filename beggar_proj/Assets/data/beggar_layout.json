@@ -61,6 +61,7 @@
             "comment": "Contains the lore text for tasks, resources, etc",
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
             "size": [100, -1],
+            "padding": [6, 0, 6, 0],
             "fixed_children": [
                 {
                     "type": "text",
@@ -129,7 +130,7 @@
         },
         {
             "id": "lore_text",
-            "size": 10,
+            "size": 11,
             "color_id": "lore_text"
         },
         {

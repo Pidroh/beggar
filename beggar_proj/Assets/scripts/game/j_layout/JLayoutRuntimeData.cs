@@ -74,6 +74,7 @@ namespace JLayout
                     case AxisMode.FILL_REMAINING_SIZE:
                         break;
                     case AxisMode.TEXT_PREFERRED:
+                        child.UiUnit.ChangeHeightToFitTextPreferredHeight();
                         break;
                     default:
                         break;
