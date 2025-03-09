@@ -132,6 +132,9 @@ namespace JLayout
                     case "position_mode":
                         ld.PositionModes = ReadEnumDoubleArray<PositionMode>(pair.Value.Children);
                         break;
+                    case "position":
+                        ld.PositionOffsets = ReadVector2Int(pair.Value.Children);
+                        break;
                     case "padding":
                         ld.Padding = ReadPadding(pair.Value.Children);
                         break;
@@ -371,6 +374,7 @@ namespace JLayout
         public string Id { get; internal set; }
         public PositionMode[] PositionModes { get; internal set; }
         public TextHorizontal TextHorizontalMode { get; internal set; } = TextHorizontal.LEFT;
+        public Vector2Int PositionOffsets { get; internal set; }
 
         public Vector2Int Size;
         public Vector2Int MinSize;

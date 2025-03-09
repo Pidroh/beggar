@@ -141,11 +141,11 @@ namespace JLayout
                             {
                                 if (axis == 0)
                                 {
-                                    childRect.SetLeftLocalX(prevRect.GetRightLocalX());
+                                    childRect.SetLeftLocalX(prevRect.GetRightLocalX() + child.Commons.PositionOffsets[0]);
                                 }
                                 if (axis == 1)
                                 {
-                                    childRect.SetTopLocalY(prevRect.GetBottomLocalY());
+                                    childRect.SetTopLocalY(prevRect.GetBottomLocalY() + child.Commons.PositionOffsets[1]);
                                 }
                             }
                             else

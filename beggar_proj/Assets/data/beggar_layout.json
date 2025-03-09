@@ -5,7 +5,7 @@
             "comment": "Used for all the main parts of content in each scroll, like task buttons and resources",
             "color_id": "background_content",
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
-            "padding": [4, 4, 4, 7]
+            "padding": [4, 4, 7, 7]
         },
         {
             "id": "expandable_task_main_buttons",
@@ -115,6 +115,7 @@
                     "axis_mode": ["STEP_SIZE_TEXT", "TEXT_PREFERRED"],
                     "step_sizes": [[50, 100], []],
                     "position_mode": ["SIBLING_DISTANCE", "CENTER"],
+                    "position": [10, 0],
                     "text_horizontal": "LEFT"
                 }
             ]
