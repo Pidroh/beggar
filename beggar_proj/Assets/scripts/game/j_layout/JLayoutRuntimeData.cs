@@ -182,7 +182,7 @@ namespace JLayout
 
             if (fillUpChildren.Count == 1)
             {
-                fillUpChildren[0].Rect.SetWidthMilimeters(widthOfContentForComsumptionPhysical);
+                fillUpChildren[0].Rect.SetWidth(widthOfContentForComsumptionPhysical);
             }
 
             foreach (var child in parentLayout.Children)
