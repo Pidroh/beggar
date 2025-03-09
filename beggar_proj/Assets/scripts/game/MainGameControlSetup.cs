@@ -84,6 +84,9 @@ public class MainGameControlSetupJLayout
                     {
                         var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
                         layoutRU.AddLayoutAsChild(triple);
+                        triple.SetText(0, rcu.IdPointer.RuntimeUnit?.Name);
+                        triple.SetText(1, ""+rcu.valueChange.min);
+                        triple.SetText(2, "0");
                     }
                     
                 }

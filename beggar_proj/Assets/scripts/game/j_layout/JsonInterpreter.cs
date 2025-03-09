@@ -370,7 +370,7 @@ namespace JLayout
         public RectOffset Padding { get => _padding ?? ZeroOffset; set => _padding = value; }
         public string Id { get; internal set; }
         public PositionMode[] PositionModes { get; internal set; }
-        public TextHorizontal TextHorizontalMode { get; internal set; }
+        public TextHorizontal TextHorizontalMode { get; internal set; } = TextHorizontal.LEFT;
 
         public Vector2Int Size;
         public Vector2Int MinSize;

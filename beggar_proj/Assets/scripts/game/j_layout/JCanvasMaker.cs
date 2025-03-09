@@ -156,6 +156,14 @@ namespace JLayout
             var textColor = data.ColorPointer.data.Colors[0];
             var fontSize = data.Size;
             var uiUnit = CanvasMaker.CreateTextUnit(textColor, runtime.DefaultFont, fontSize);
+            uiUnit.text.horizontalAlignment = childData.Commons.TextHorizontalMode switch
+            {
+                TextHorizontal.RIGHT => TMPro.HorizontalAlignmentOptions.Right,
+                TextHorizontal.LEFT => TMPro.HorizontalAlignmentOptions.Left,
+                TextHorizontal.CENTER => TMPro.HorizontalAlignmentOptions.Center,
+                _ => TMPro.HorizontalAlignmentOptions.Left
+            };
+            uiUnit.text.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Left;
             var commons = childData.Commons;
             return new JLayoutChild
             {

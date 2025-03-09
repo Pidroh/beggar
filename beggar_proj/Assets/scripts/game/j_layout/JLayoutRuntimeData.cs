@@ -187,6 +187,28 @@ namespace JLayout
                     case AxisMode.TEXT_PREFERRED:
                         Debug.LogError("Not supported");
                         break;
+                    case AxisMode.STEP_SIZE_TEXT:
+                        if (!child.OnMaxStep(0)) 
+                        {
+                            var preferredWidth = child.UiUnit.text.preferredWidth;
+                            var stepSizes = child.Commons.StepSizes;
+                            var preferredSize = stepSizes[0][0];
+                            int preferredIndex = 0;
+                            for (int i = 0; i < stepSizes[0].Count; i++)
+                            {
+                                if (preferredSize < (stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize - 10)) 
+                                {
+                                    preferredSize = (int) (stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    preferredIndex = i;
+                                    break;
+                                }
+                            }
+                            child.UiUnit.RectTransform.SetWidth(preferredSize);
+                            child.SetCurrentStep(0, preferredIndex);
+
+                            child.UiUnit.text.textWrappingMode = child.OnMaxStep(0) ? TextWrappingModes.Normal : TextWrappingModes.NoWrap;
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -311,6 +333,17 @@ namespace JLayout
             public PositionMode[] PositionModeOverride;
 
             public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
+            public int[] currentStep = new int[2];
+
+            internal void SetCurrentStep(int v, int preferredIndex)
+            {
+                currentStep[v] = preferredIndex;
+            }
+
+            internal bool OnMaxStep(int v)
+            {
+                return currentStep[v] == Commons.StepSizes[v].Count - 1;
+            }
         }
     }
 

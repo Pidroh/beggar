@@ -19,7 +19,13 @@
                 "desc": "This test is going well, Discord??",
                 "duration": 5,
                 "max": 3,
-                "locked": false
+                "locked": false,
+                "result": {
+                    "supplication": 1
+                },
+                "cost": {
+                    "supplication": 1
+                }
             }
         ]
     },
