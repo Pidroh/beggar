@@ -159,14 +159,14 @@
                     "image": "button_fill",
                     "color_id": "button_fill",
                     "axis_mode": ["PARENT_SIZE_PERCENT_RAW", "PARENT_SIZE_PERCENT_RAW"],
-                    "position_mode": ["CENTER", "CENTER"]
+                    "position_mode": ["CENTER_RAW", "CENTER_RAW"]
                 },
                 {
                     "type": "image",
                     "image": "button_border",
                     "color_id": "button_border",
                     "axis_mode": ["PARENT_SIZE_PERCENT_RAW", "PARENT_SIZE_PERCENT_RAW"],
-                    "position_mode": ["CENTER", "CENTER"]
+                    "position_mode": ["CENTER_RAW", "CENTER_RAW"]
                 },
                 {
                     "type": "text",
