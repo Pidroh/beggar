@@ -154,6 +154,18 @@
             "padding": [0, 15, 0, 35],
             "fixed_children": [
                 {
+                    "type": "image",
+                    "image": "button_back",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
+                    "position_mode": ["CENTER", "CENTER"]
+                },
+                {
+                    "type": "image",
+                    "image": "button_back_overlay",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
+                    "position_mode": ["CENTER", "CENTER"]
+                },
+                {
                     "type": "text",
                     "id": "button_text",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"],
