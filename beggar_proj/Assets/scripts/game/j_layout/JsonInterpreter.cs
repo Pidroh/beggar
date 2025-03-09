@@ -319,8 +319,8 @@ namespace JLayout
 
     public enum PositionMode
     {
-        LEFT_ZERO, RIGHT_ZERO, CENTER, SIBLING_DISTANCE,
-        SIBLING_DISTANCE_REVERSE
+        LEFT_ZERO, RIGHT_ZERO, CENTER, CENTER_RAW, SIBLING_DISTANCE,
+        SIBLING_DISTANCE_REVERSE, 
     }
 
     public class PointerHolder<T>

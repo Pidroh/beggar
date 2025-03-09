@@ -127,6 +127,14 @@ namespace JLayout
                                 childRect.SetLocalY((padding.bottom - padding.top) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
 
                             break;
+                        case PositionMode.CENTER_RAW:
+                            childRect.SetAnchorsByIndex(axis, 0.5f);
+                            childRect.SetPivotByIndex(axis, 0.5f);
+                            if (axis == 0)
+                                childRect.SetLocalX(0);
+                            if (axis == 1)
+                                childRect.SetLocalY(0);
+                            break;
                         case PositionMode.SIBLING_DISTANCE:
                             var prevRect = previousChild?.Rect;
                             if (prevRect != null)
