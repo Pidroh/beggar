@@ -155,13 +155,13 @@
             "fixed_children": [
                 {
                     "type": "image",
-                    "image": "button_back",
+                    "image": "button_fill",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
                     "position_mode": ["CENTER", "CENTER"]
                 },
                 {
                     "type": "image",
-                    "image": "button_back_overlay",
+                    "image": "button_border",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
                     "position_mode": ["CENTER", "CENTER"]
                 },
