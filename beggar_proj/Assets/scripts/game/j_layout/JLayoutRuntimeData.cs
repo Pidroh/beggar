@@ -38,6 +38,7 @@ namespace JLayout
             var defaultPositionModes = parentLayout.DefaultPositionModes;
             JLayoutChild previousChild = null;
             float totalChildHeight = 0f;
+            var padding = parentLayout.LayoutData.commons.Padding;
             foreach (var child in parentLayout.Children)
             {
                 if (child.LayoutRU != null)
@@ -45,7 +46,7 @@ namespace JLayout
                     TemporarySolveHeightAndPosition(child.LayoutRU, child.LayoutRU.ContentTransform);
                 }
                 RectTransform childRect = child.Rect;
-                var padding = parentLayout.LayoutData.commons.Padding;
+                
 
                 #region size
                 var axisModes = child.Commons.AxisModes;
@@ -149,7 +150,7 @@ namespace JLayout
             Debug.Assert(heightAxis != null);
             if (heightAxis == AxisMode.CONTAIN_CHILDREN)
             {
-                parentLayout.ContentTransform.SetHeight(totalChildHeight);
+                parentLayout.ContentTransform.SetHeight(totalChildHeight + padding.vertical * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
             }
 
         }

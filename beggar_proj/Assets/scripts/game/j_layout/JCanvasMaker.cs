@@ -125,6 +125,7 @@ namespace JLayout
                         break;
                 }
             }
+            jLayoutRuntimeUnit.RectTransform.gameObject.name = "layout_" + layoutD.Id;
             return jLayoutRuntimeUnit;
         }
 
@@ -145,7 +146,7 @@ namespace JLayout
         private static JLayoutRuntimeUnit CreateButton(ButtonData buttonD, JLayoutRuntimeData runtime)
         {
             var layout = CreateLayout(buttonD.LayoutData, runtime);
-            layout.RectTransform.gameObject.name = "button";
+            layout.RectTransform.gameObject.name += " button";
             return layout;
         }
 

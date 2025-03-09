@@ -39,8 +39,10 @@ public class MainGameControlSetupJLayout
         for (int taskDataIndex = 0; taskDataIndex < arcaniaDatas.datas[UnitType.TASK].Count; taskDataIndex++)
         {
             var modelData = arcaniaDatas.datas[UnitType.TASK][taskDataIndex];
+            var id = modelData.ConfigBasic.Id;
             var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
             JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+            layoutRU.RectTransform.gameObject.name += " " + id;
             layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
             taskParent.AddLayoutAsChild(layoutRU);
 
