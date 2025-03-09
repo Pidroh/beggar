@@ -15,9 +15,11 @@ namespace JLayout
             foreach (var mainCanvasChild in data.jLayCanvas.ActiveChildren)
             {
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
+                // temporary code
                 parentLayout.RectTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
-
+                parentLayout.RectTransform.SetLeftXToParent(0);
+                mainCanvasChild.RectTransform.gameObject.SetActive(mainCanvasChild.Children.Count > 0);
 
                 // layout code
                 var contentRect = parentLayout.ContentTransform;
@@ -87,11 +89,13 @@ namespace JLayout
                     {
                         case PositionMode.LEFT_ZERO:
                             Debug.Assert(axis == 0);
-                            childRect.SetLeftLocalX(padding.left);
+                            // If this breaks because it's messing up with the anchors, you can create a variation where you take into account parent width
+                            // that should allow you to write the code without changing the anchors? Pivot? etc
+                            childRect.SetLeftXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             break;
                         case PositionMode.RIGHT_ZERO:
                             Debug.Assert(axis == 0);
-                            childRect.SetRightLocalX(-padding.right);
+                            childRect.SetRightXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             break;
                         case PositionMode.CENTER:
                             childRect.SetPivotAndAnchors(new Vector2(0.5f, 0.5f));
@@ -99,14 +103,27 @@ namespace JLayout
                             break;
                         case PositionMode.SIBLING_DISTANCE:
                             var prevRect = previousChild?.Rect;
-
-                            if (axis == 0)
+                            if (prevRect != null)
                             {
-                                childRect.SetLeftLocalX(prevRect?.GetRightLocalX() ?? 0);
+                                if (axis == 0)
+                                {
+                                    childRect.SetLeftLocalX(prevRect.GetRightLocalX());
+                                }
+                                if (axis == 1)
+                                {
+                                    childRect.SetTopLocalY(prevRect.GetBottomLocalY());
+                                }
                             }
-                            if (axis == 1)
+                            else 
                             {
-                                childRect.SetTopLocalY(prevRect?.GetBottomLocalY() ?? 0);
+                                if (axis == 0)
+                                {
+                                    childRect.SetLeftXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                }
+                                if (axis == 1)
+                                {
+                                    childRect.SetTopYToParent(padding.top * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                }
                             }
                             break;
                         default:
@@ -118,7 +135,8 @@ namespace JLayout
             }
 
             AxisMode? heightAxis = parentLayout.AxisMode?[1];
-            if (heightAxis == null) {
+            if (heightAxis == null)
+            {
                 Debug.LogError("!!");
             }
             Debug.Assert(heightAxis != null);
@@ -237,11 +255,11 @@ namespace JLayout
             private JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons, ChildAddParameters? param)
             {
                 bool differingCommons = layoutRU.LayoutData?.commons != commons;
-                if (differingCommons && layoutRU.LayoutData?.commons?.AxisModes != null && commons.AxisModes != null) 
+                if (differingCommons && layoutRU.LayoutData?.commons?.AxisModes != null && commons.AxisModes != null)
                 {
                     Debug.LogError("two axis modes!");
                 }
-                if (differingCommons && commons.AxisModes != null) 
+                if (differingCommons && commons.AxisModes != null)
                 {
                     layoutRU.OverrideAxisMode = commons.AxisModes;
                 }
