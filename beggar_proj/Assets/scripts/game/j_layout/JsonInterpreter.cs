@@ -301,7 +301,7 @@ namespace JLayout
 
     public enum AxisMode
     {
-        // Fill up a percentage of the parent. If size not set, assumes 100%
+        // Fill up a percentage of the parent. If size not set, assumes 100% (actually always 100% for now)
         PARENT_SIZE_PERCENT,
         // The size is set by the element, using DPI adaptative pixels
         SELF_SIZE,
@@ -312,7 +312,9 @@ namespace JLayout
         // Use up as much space as necessary by the font and the text. Not applicable to width
         TEXT_PREFERRED,
         // Similar to text preferred, but will over extend to use the step sizes depending on text size
-        STEP_SIZE_TEXT
+        STEP_SIZE_TEXT,
+        // PARENT_SIZE_PERCENT, but ignores padding
+        PARENT_SIZE_PERCENT_RAW
     }
 
     public enum PositionMode

@@ -56,6 +56,7 @@ namespace JLayout
                 switch (axisM)
                 {
                     case AxisMode.PARENT_SIZE_PERCENT:
+                    case AxisMode.PARENT_SIZE_PERCENT_RAW:
                         // var sizeRatio = 1f;
                         if (yAxis == 0)
                         {
@@ -164,6 +165,9 @@ namespace JLayout
             {
                 switch (child.Commons.AxisModes[0])
                 {
+                    case AxisMode.PARENT_SIZE_PERCENT_RAW:
+                        child.Rect.SetWidth(parentRect.GetWidth());
+                        break;
                     case AxisMode.PARENT_SIZE_PERCENT:
                         child.Rect.SetWidth(widthOfContentPhysical);
                         widthOfContentForComsumptionPhysical = 0;
