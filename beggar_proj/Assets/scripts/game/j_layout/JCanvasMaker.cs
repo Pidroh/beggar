@@ -121,12 +121,34 @@ namespace JLayout
                             jLayoutRuntimeUnit.BindText(textChild);
                         }
                         break;
+                    case { ImageKey: not null }:
+                        {
+                            JLayoutChild imageChild = CreateImage(childData, runtime);
+                            jLayoutRuntimeUnit.AddChild(imageChild);
+                            jLayoutRuntimeUnit.BindImage(imageChild);
+                        }
+                        break;
                     default:
                         break;
                 }
             }
             jLayoutRuntimeUnit.RectTransform.gameObject.name = "layout_" + layoutD.Id;
             return jLayoutRuntimeUnit;
+        }
+
+        public static JLayoutChild CreateImage(LayoutChildData childData, JLayoutRuntimeData runtime) 
+        {
+            var sprite = runtime.ImageSprites[childData.ImageKey];
+            var color = childData.ImageColorRef?.data.Colors[0] ?? Color.white;
+            var unit = CanvasMaker.CreateSimpleImage(color);
+            unit.Image.sprite = sprite;
+            unit.Image.type = Image.Type.Sliced;
+            return new JLayoutChild
+            {
+                Commons = childData.Commons,
+                LayoutChild = childData,
+                UiUnit = unit
+            };
         }
 
         private static JLayoutChild CreateText(LayoutChildData childData, TextData data, JLayoutRuntimeData runtime)

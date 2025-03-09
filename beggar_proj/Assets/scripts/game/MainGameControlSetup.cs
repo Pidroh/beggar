@@ -21,6 +21,7 @@ public class MainGameControlSetupJLayout
         var config = HeartGame.GetConfig();
         JLayoutRuntimeData runtime = new();
         runtime.DefaultFont = mgc.Font;
+        runtime.ImageSprites = mgc.ResourceJson.spritesForLayout;
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         runtime.jLayCanvas = jCanvas;
         mgc.LayoutRuntime = runtime;

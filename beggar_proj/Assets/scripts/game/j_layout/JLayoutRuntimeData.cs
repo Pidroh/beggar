@@ -208,6 +208,8 @@ namespace JLayout
 
         public TMP_FontAsset DefaultFont { get; internal set; }
 
+        public KeyedSprites ImageSprites;
+
         public class JLayoutRuntimeUnit
         {
             public RectTransform RectTransform;
@@ -215,6 +217,7 @@ namespace JLayout
             public List<JLayoutChild> Children = new();
             public List<JLayoutChild> TextChildren = new();
             public List<JLayoutRuntimeUnit> ButtonChildren = new();
+            public List<JLayoutChild> ImageChildren = new();
 
             public JLayoutRuntimeUnit(RectTransform childRT2)
             {
@@ -248,6 +251,8 @@ namespace JLayout
             {
                 ButtonChildren.Add(buttonLayout);
             }
+
+            internal void BindImage(JLayoutChild im) => ImageChildren.Add(im);
 
             internal void BindText(JLayoutChild textChild)
             {

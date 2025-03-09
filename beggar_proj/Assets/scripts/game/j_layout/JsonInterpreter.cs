@@ -189,6 +189,12 @@ namespace JLayout
                         childData.TextRef = master.TextDatas.GetOrCreatePointer(childData.Id);
                         break;
                     case ChildType.image:
+                        childData.ImageKey = childEntry["image"].AsString;
+                        if (childEntry.HasKey("color_id")) 
+                        {
+                            childData.ImageColorRef = master.ColorDatas.GetOrCreatePointer(childEntry["color_id"].AsString);
+                    
+                        }
                         break;
                     default:
                         break;
@@ -397,5 +403,7 @@ namespace JLayout
 
         public Pointer<TextData> TextRef { get; internal set; }
         public Pointer<ButtonData> ButtonRef { get; internal set; }
+        public string ImageKey { get; internal set; }
+        public Pointer<ColorData> ImageColorRef { get; internal set; }
     }
 }

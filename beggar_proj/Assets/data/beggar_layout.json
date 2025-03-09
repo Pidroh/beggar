@@ -156,12 +156,14 @@
                 {
                     "type": "image",
                     "image": "button_fill",
+                    "color_id": "button_fill",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
                     "position_mode": ["CENTER", "CENTER"]
                 },
                 {
                     "type": "image",
                     "image": "button_border",
+                    "color_id": "button_border",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "PARENT_SIZE_PERCENT"],
                     "position_mode": ["CENTER", "CENTER"]
                 },
@@ -217,6 +219,14 @@
         {
             "id": "accessory_text",
             "colors": ["4d4d4d96", "4d4d4d96"]
+        },
+        {
+            "id": "button_fill",
+            "colors": ["ffffffff", "4d4d4d96"]
+        },
+        {
+            "id": "button_border",
+            "colors": ["858585ff", "4d4d4d96"]
         }
     ],
     "color_presets": ["light", "dark"]
