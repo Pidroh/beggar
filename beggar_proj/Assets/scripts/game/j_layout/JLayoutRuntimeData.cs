@@ -77,7 +77,7 @@ namespace JLayout
                 #endregion
 
                 #region position
-                var positionModes = child.Commons.PositionModes ?? defaultPositionModes;
+                var positionModes = child.PositionModes ?? defaultPositionModes;
                 for (int axis = 0; axis < 2; axis++)
                 {
                     var pm = positionModes[axis];
@@ -193,14 +193,14 @@ namespace JLayout
                 child.Rect.SetParent(RectTransform);
             }
 
-            internal void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU)
+            internal void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, ChildAddParameters? param = null)
             {
                 var commons = layoutRU.LayoutData.commons;
-                AddLayoutAsChild(layoutRU, commons);
+                AddLayoutAsChild(layoutRU, commons, param);
             }
 
             // Some day you might have to fuse the buttonLayout commons with childData commons
-            internal void AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons);
+            internal void AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons, null);
 
             internal void BindButton(JLayoutRuntimeUnit buttonLayout)
             {
@@ -218,7 +218,7 @@ namespace JLayout
                 TextChildren[v].UiUnit.rawText = textKey;
             }
 
-            private void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons)
+            private JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons, ChildAddParameters? param)
             {
                 JLayoutChild item = new JLayoutChild()
                 {
@@ -227,6 +227,15 @@ namespace JLayout
                 };
                 Children.Add(item);
                 layoutRU.RectTransform.SetParent(ContentTransform);
+                if (!param.HasValue) return item;
+                item.PositionModeOverride = param.Value.PositionModeOverride;
+                return item;
+
+            }
+
+            public struct ChildAddParameters 
+            {
+                public PositionMode[] PositionModeOverride;
             }
         }
 
@@ -238,6 +247,9 @@ namespace JLayout
             public LayoutCommons Commons { get; internal set; }
             public UIUnit UiUnit;
             public RectTransform Rect => LayoutRU?.RectTransform ?? UiUnit?.RectTransform;
+            public PositionMode[] PositionModeOverride;
+
+            public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
         }
     }
 

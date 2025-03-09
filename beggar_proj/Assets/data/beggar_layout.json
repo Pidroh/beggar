@@ -156,7 +156,8 @@
                 {
                     "type": "text",
                     "id": "button_text",
-                    "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"]
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"],
+                    "position_mode": ["CENTER", "CENTER"]
                 },
                 {
                     "type": "text",

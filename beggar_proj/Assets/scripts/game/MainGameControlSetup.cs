@@ -41,13 +41,14 @@ public class MainGameControlSetupJLayout
             var modelData = arcaniaDatas.datas[UnitType.TASK][taskDataIndex];
             var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
             JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+            layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
             taskParent.AddLayoutAsChild(layoutRU);
 
             var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
             if (hasTaskButton)
             {
                 var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
-                layoutRU.AddLayoutAsChild(buttonLayoutRU);
+                layoutRU.AddLayoutAsChild(buttonLayoutRU) ;
                 buttonLayoutRU.ButtonChildren[0].SetText(0, modelData.Name);
             }
             if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))

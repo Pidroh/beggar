@@ -152,6 +152,7 @@ namespace JLayout
                         break;
                 }
             }
+            // ld.PositionModes ??= new PositionMode[2] { PositionMode.CENTER, PositionMode.CENTER };
             return ld;
         }
 
