@@ -186,7 +186,8 @@
             "fixed_children": [
                 {
                     "type": "image",
-                    "image": "expander_arrow_medium",
+                    "image": "arrow",
+                    "color_id": "mid_expander_arrow",
                     "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
                     "position_mode": ["CENTER", "CENTER"],
                     "size": [36, 19]
@@ -227,6 +228,10 @@
         {
             "id": "button_border",
             "colors": ["858585ff", "4d4d4d96"]
+        },
+        {
+            "id": "mid_expander_arrow",
+            "colors": ["686868ff", "686868ff"]
         }
     ],
     "color_presets": ["light", "dark"]
