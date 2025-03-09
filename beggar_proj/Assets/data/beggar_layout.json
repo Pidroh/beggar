@@ -5,7 +5,7 @@
             "comment": "Used for all the main parts of content in each scroll, like task buttons and resources",
             "color_id": "background_content",
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
-            "padding": [4, 7, 4, 7]
+            "padding": [4, 4, 4, 7]
         },
         {
             "id": "expandable_task_main_buttons",
@@ -23,7 +23,7 @@
                     "type": "button",
                     "id": "expander_arrow",
                     "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
-                    "size": [40, 100],
+                    "size": [42, 100],
                     "position_mode": ["RIGHT_ZERO", "CENTER"]
                 }
             ]
@@ -61,7 +61,7 @@
             "comment": "Contains the lore text for tasks, resources, etc",
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
             "size": [100, -1],
-            "padding": [6, 0, 6, 0],
+            "padding": [7, 0, 2, 0],
             "fixed_children": [
                 {
                     "type": "text",
@@ -76,7 +76,7 @@
             "id": "left_mini_header",
             "comment": "Contains the mini header for cost, result, etc",
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
-            "padding": [10, 0, 4, 23],
+            "padding": [8, 0, 3, 23],
             "size": [100, -1],
             "fixed_children": [
                 {
@@ -184,6 +184,7 @@
         },
         {
             "id": "expander_arrow",
+            "padding": [0, 0, 0, 2],
             "fixed_children": [
                 {
                     "type": "image",
@@ -191,7 +192,7 @@
                     "color_id": "mid_expander_arrow",
                     "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
                     "position_mode": ["CENTER", "CENTER"],
-                    "size": [36, 19]
+                    "size": [36, 20]
                 }
             ]
             
