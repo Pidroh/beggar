@@ -84,6 +84,8 @@ public class MainGameControlSetupJLayout
                     taskParent.AddLayoutAsChild(layoutRU);
 
                     var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
+                    var hasResourceExpander = !hasTaskButton && modelData.ConfigBasic.UnitType == UnitType.RESOURCE;
+
                     if (hasTaskButton)
                     {
                         var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
@@ -92,6 +94,14 @@ public class MainGameControlSetupJLayout
                         jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                         jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
                     }
+                    else if (hasResourceExpander)
+                    {
+                        var resourceLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
+                        layoutRU.AddLayoutAsChild(resourceLayoutRU);
+                        resourceLayoutRU.SetText(0, modelData.Name);
+                        jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
+                    }
+
                     if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))
                     {
                         var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
@@ -135,7 +145,7 @@ public class MainGameControlSetupJLayout
                     }
                 }
             }
-            
+
         }
     }
 }

@@ -13,7 +13,7 @@ namespace JLayout
         public static void ManualUpdate(JLayoutRuntimeData data)
         {
             var offset = 0f;
-            foreach (var mainCanvasChild in data.jLayCanvas.ActiveChildren)
+            foreach (var mainCanvasChild in data.jLayCanvas.childrenForLayouting)
             {
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
                 // temporary code
