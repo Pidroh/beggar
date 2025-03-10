@@ -289,113 +289,115 @@ namespace JLayout
 
         public KeyedSprites ImageSprites;
 
-        public class JLayoutRuntimeUnit
+        
+    }
+
+    public class JLayoutRuntimeUnit
+    {
+        public RectTransform RectTransform;
+        //public List<JLayoutRuntimeUnit> Sublayouts = new();
+        public List<JLayoutChild> Children = new();
+        public List<JLayoutChild> TextChildren = new();
+        public List<(JLayoutRuntimeUnit, JLayoutChild)> ButtonChildren = new();
+        public List<JLayoutChild> ImageChildren = new();
+
+        public JLayoutRuntimeUnit(RectTransform childRT2)
         {
-            public RectTransform RectTransform;
-            //public List<JLayoutRuntimeUnit> Sublayouts = new();
-            public List<JLayoutChild> Children = new();
-            public List<JLayoutChild> TextChildren = new();
-            public List<(JLayoutRuntimeUnit, JLayoutChild)> ButtonChildren = new();
-            public List<JLayoutChild> ImageChildren = new();
-
-            public JLayoutRuntimeUnit(RectTransform childRT2)
-            {
-                RectTransform = childRT2;
-            }
-
-            public RectTransform ContentTransformOverride { get; internal set; }
-            public LayoutData LayoutData { get; internal set; }
-            public RectTransform ContentTransform => ContentTransformOverride ?? RectTransform;
-            public AxisMode[] OverrideAxisMode { internal get; set; }
-            public AxisMode[] AxisMode => OverrideAxisMode ?? LayoutData.commons?.AxisModes;
-
-            public PositionMode[] DefaultPositionModes { get; internal set; }
-
-            internal void AddChild(JLayoutChild child)
-            {
-                Children.Add(child);
-                child.Rect.SetParent(RectTransform);
-            }
-
-            internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, ChildAddParameters? param = null)
-            {
-                var commons = layoutRU.LayoutData.commons;
-                return AddLayoutAsChild(layoutRU, commons, param);
-            }
-
-            // Some day you might have to fuse the buttonLayout commons with childData commons
-            internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons, null);
-
-            internal void BindButton(JLayoutRuntimeUnit buttonLayout, JLayoutChild buttonChildSelf)
-            {
-                ButtonChildren.Add((buttonLayout, buttonChildSelf));
-            }
-
-            internal void BindImage(JLayoutChild im) => ImageChildren.Add(im);
-
-            internal void BindText(JLayoutChild textChild)
-            {
-                TextChildren.Add(textChild);
-            }
-
-            internal void SetText(int v, string textKey)
-            {
-                // localize this?
-                TextChildren[v].UiUnit.rawText = textKey;
-            }
-
-            private JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons, ChildAddParameters? param)
-            {
-                bool differingCommons = layoutRU.LayoutData?.commons != commons;
-                if (differingCommons && layoutRU.LayoutData?.commons?.AxisModes != null && commons.AxisModes != null)
-                {
-                    Debug.LogError("two axis modes!");
-                }
-                if (differingCommons && commons.AxisModes != null)
-                {
-                    layoutRU.OverrideAxisMode = commons.AxisModes;
-                }
-                JLayoutChild item = new JLayoutChild()
-                {
-                    LayoutRU = layoutRU,
-                    Commons = commons
-                };
-                Children.Add(item);
-                layoutRU.RectTransform.SetParent(ContentTransform);
-                if (!param.HasValue) return item;
-                item.PositionModeOverride = param.Value.PositionModeOverride;
-                return item;
-
-            }
-
-            public struct ChildAddParameters
-            {
-                public PositionMode[] PositionModeOverride;
-            }
+            RectTransform = childRT2;
         }
 
-        public class JLayoutChild
+        public RectTransform ContentTransformOverride { get; internal set; }
+        public LayoutData LayoutData { get; internal set; }
+        public RectTransform ContentTransform => ContentTransformOverride ?? RectTransform;
+        public AxisMode[] OverrideAxisMode { internal get; set; }
+        public AxisMode[] AxisMode => OverrideAxisMode ?? LayoutData.commons?.AxisModes;
+
+        public PositionMode[] DefaultPositionModes { get; internal set; }
+
+        internal void AddChild(JLayoutChild child)
         {
-            public LayoutChildData LayoutChild;
+            Children.Add(child);
+            child.Rect.SetParent(RectTransform);
+        }
 
-            public JLayoutRuntimeUnit LayoutRU { get; internal set; }
-            public LayoutCommons Commons { get; internal set; }
-            public UIUnit UiUnit;
-            public RectTransform Rect => LayoutRU?.RectTransform ?? UiUnit?.RectTransform;
+        internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, ChildAddParameters? param = null)
+        {
+            var commons = layoutRU.LayoutData.commons;
+            return AddLayoutAsChild(layoutRU, commons, param);
+        }
+
+        // Some day you might have to fuse the buttonLayout commons with childData commons
+        internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons, null);
+
+        internal void BindButton(JLayoutRuntimeUnit buttonLayout, JLayoutChild buttonChildSelf)
+        {
+            ButtonChildren.Add((buttonLayout, buttonChildSelf));
+        }
+
+        internal void BindImage(JLayoutChild im) => ImageChildren.Add(im);
+
+        internal void BindText(JLayoutChild textChild)
+        {
+            TextChildren.Add(textChild);
+        }
+
+        internal void SetText(int v, string textKey)
+        {
+            // localize this?
+            TextChildren[v].UiUnit.rawText = textKey;
+        }
+
+        private JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, LayoutCommons commons, ChildAddParameters? param)
+        {
+            bool differingCommons = layoutRU.LayoutData?.commons != commons;
+            if (differingCommons && layoutRU.LayoutData?.commons?.AxisModes != null && commons.AxisModes != null)
+            {
+                Debug.LogError("two axis modes!");
+            }
+            if (differingCommons && commons.AxisModes != null)
+            {
+                layoutRU.OverrideAxisMode = commons.AxisModes;
+            }
+            JLayoutChild item = new JLayoutChild()
+            {
+                LayoutRU = layoutRU,
+                Commons = commons
+            };
+            Children.Add(item);
+            layoutRU.RectTransform.SetParent(ContentTransform);
+            if (!param.HasValue) return item;
+            item.PositionModeOverride = param.Value.PositionModeOverride;
+            return item;
+
+        }
+
+        public struct ChildAddParameters
+        {
             public PositionMode[] PositionModeOverride;
+        }
+    }
 
-            public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
-            public int[] currentStep = new int[2];
+    public class JLayoutChild
+    {
+        public LayoutChildData LayoutChild;
 
-            internal void SetCurrentStep(int v, int preferredIndex)
-            {
-                currentStep[v] = preferredIndex;
-            }
+        public JLayoutRuntimeUnit LayoutRU { get; internal set; }
+        public LayoutCommons Commons { get; internal set; }
+        public UIUnit UiUnit;
+        public RectTransform Rect => LayoutRU?.RectTransform ?? UiUnit?.RectTransform;
+        public PositionMode[] PositionModeOverride;
 
-            internal bool OnMaxStep(int v)
-            {
-                return currentStep[v] == Commons.StepSizes[v].Count - 1;
-            }
+        public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
+        public int[] currentStep = new int[2];
+
+        internal void SetCurrentStep(int v, int preferredIndex)
+        {
+            currentStep[v] = preferredIndex;
+        }
+
+        internal bool OnMaxStep(int v)
+        {
+            return currentStep[v] == Commons.StepSizes[v].Count - 1;
         }
     }
 

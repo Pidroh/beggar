@@ -1,4 +1,5 @@
-﻿using JLayout;
+﻿using HeartUnity;
+using JLayout;
 using System.Collections.Generic;
 
 public static class JGameControlExecuter 
@@ -57,9 +58,15 @@ public class JRTControlUnit
     public JButtonAccessor MainExecuteButton { get; internal set; }
     public JButtonAccessor ExpandButton { get; internal set; }
     public JLayTextAccessor Description { get; internal set; }
+    public AutoList<JResourceChangeGroup> ChangeGroups = new();
     public bool TaskClicked => MainExecuteButton.ButtonClicked;
 
     public RuntimeUnit Data { get; internal set; }
+}
+
+public class JResourceChangeGroup 
+{
+    public AutoList<JLayoutRuntimeUnit> tripleTextViews = new();
 }
 
 public class JGameControlDataHolder

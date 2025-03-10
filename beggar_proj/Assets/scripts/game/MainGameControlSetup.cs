@@ -61,7 +61,7 @@ public class MainGameControlSetupJLayout
             if (hasTaskButton)
             {
                 var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
-                layoutRU.AddLayoutAsChild(buttonLayoutRU) ;
+                layoutRU.AddLayoutAsChild(buttonLayoutRU);
                 buttonLayoutRU.ButtonChildren[0].Item1.SetText(0, modelData.Name);
                 jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                 jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
@@ -80,7 +80,9 @@ public class MainGameControlSetupJLayout
                     List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
                     if (rcl == null) continue;
                     if (rcl.Count == 0) continue;
-                    string textKey = (ResourceChangeType) rcgIndex switch
+                    jCU.ChangeGroups[rcgIndex] = new();
+                    var changeType = (ResourceChangeType)rcgIndex;
+                    string textKey = changeType switch
                     {
                         ResourceChangeType.COST => "cost",
                         ResourceChangeType.RESULT => "result",
@@ -98,10 +100,11 @@ public class MainGameControlSetupJLayout
                         var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
                         layoutRU.AddLayoutAsChild(triple);
                         triple.SetText(0, rcu.IdPointer.RuntimeUnit?.Name);
-                        triple.SetText(1, ""+rcu.valueChange.min);
+                        triple.SetText(1, "" + rcu.valueChange.min);
                         triple.SetText(2, "0");
+                        jCU.ChangeGroups[rcgIndex].tripleTextViews.Add(triple);
                     }
-                    
+
                 }
             }
 
@@ -138,7 +141,7 @@ public class MainGameControlSetup
             DisableAutoScaling = true
 
         }, 2);
-        
+
 
         dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.DialogObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
 
