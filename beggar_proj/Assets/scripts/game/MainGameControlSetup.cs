@@ -1,117 +1,11 @@
 ﻿using HeartUnity;
 using HeartUnity.View;
-using JLayout;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 using static JLayout.JLayoutRuntimeData;
-
-public class MainGameControlSetupJLayout
-{
-
-
-    internal static void SetupCanvas(MainGameControl mgc)
-    {
-        LayoutDataMaster layoutMaster = new LayoutDataMaster();
-        JsonInterpreter.ReadJson(mgc.ResourceJson.layoutJson.text, layoutMaster);
-        var arcaniaModel = mgc.arcaniaModel;
-        var arcaniaDatas = arcaniaModel.arcaniaUnits;
-        var config = HeartGame.GetConfig();
-        JLayoutRuntimeData runtime = new();
-        runtime.DefaultFont = mgc.Font;
-        runtime.ImageSprites = mgc.ResourceJson.spritesForLayout;
-        var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
-        runtime.jLayCanvas = jCanvas;
-        mgc.LayoutRuntime = runtime;
-        JGameControlDataHolder jControlDataHolder = new();
-        // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
-        //mgc.dynamicCanvas = dynamicCanvas;
-
-        mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
-        {
-            canvas = jCanvas.Canvas,
-            DisableAutoScaling = true
-
-        }, 2);
-
-        var taskParent = jCanvas.children[0];
-        JTabControlUnit jTabControl = new JTabControlUnit();
-        jControlDataHolder.TabControlUnits.Add(jTabControl);
-        mgc.JControlData = jControlDataHolder;
-        jTabControl.UnitGroupControls[UnitType.TASK] = new();
-        //create a fixed layout data or something that will hold the actions, then keep adding actions to it?
-        //I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
-        for (int taskDataIndex = 0; taskDataIndex < arcaniaDatas.datas[UnitType.TASK].Count; taskDataIndex++)
-        {
-            var jCU = new JRTControlUnit();
-            jTabControl.UnitGroupControls[UnitType.TASK].Add(jCU);
-
-            var modelData = arcaniaDatas.datas[UnitType.TASK][taskDataIndex];
-            jCU.Data = modelData;
-            var id = modelData.ConfigBasic.Id;
-            var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
-            JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
-            layoutRU.RectTransform.gameObject.name += " " + id;
-            layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
-            taskParent.AddLayoutAsChild(layoutRU);
-
-            var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
-            if (hasTaskButton)
-            {
-                var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
-                layoutRU.AddLayoutAsChild(buttonLayoutRU);
-                buttonLayoutRU.ButtonChildren[0].Item1.SetText(0, modelData.Name);
-                jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
-                jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
-            }
-            if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))
-            {
-                var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
-                layoutRU.AddLayoutAsChild(descLayout);
-                descLayout.SetText(0, modelData.ConfigBasic.Desc);
-                jCU.Description = new JLayTextAccessor(descLayout, 0);
-            }
-            if (modelData.ConfigTask != null)
-            {
-                for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
-                {
-                    List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
-                    if (rcl == null) continue;
-                    if (rcl.Count == 0) continue;
-                    jCU.ChangeGroups[rcgIndex] = new();
-                    var changeType = (ResourceChangeType)rcgIndex;
-                    string textKey = changeType switch
-                    {
-                        ResourceChangeType.COST => "cost",
-                        ResourceChangeType.RESULT => "result",
-                        ResourceChangeType.RUN => "run",
-                        ResourceChangeType.EFFECT => "effect",
-                        ResourceChangeType.RESULT_ONCE => "first time",
-                        ResourceChangeType.RESULT_FAIL => "result failure",
-                        _ => null,
-                    };
-                    var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
-                    miniHeader.SetText(0, textKey);
-                    layoutRU.AddLayoutAsChild(miniHeader);
-                    foreach (var rcu in rcl)
-                    {
-                        var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                        layoutRU.AddLayoutAsChild(triple);
-                        triple.SetText(0, rcu.IdPointer.RuntimeUnit?.Name);
-                        triple.SetText(1, "" + rcu.valueChange.min);
-                        triple.SetText(2, "0");
-                        jCU.ChangeGroups[rcgIndex].tripleTextViews.Add(triple);
-                    }
-
-                }
-            }
-
-
-        }
-    }
-}
 
 public class MainGameControlSetup
 {
@@ -244,7 +138,7 @@ public class MainGameControlSetup
                     sep.SpaceAmountText = spaceT;
                 }
             // -------------------------------------------------
-            END_OF_SEPARATOR_INSTANCE:
+                END_OF_SEPARATOR_INSTANCE:
                 foreach (var pair in unitGroupControls)
                 {
                     foreach (var item in arcaniaDatas.datas[pair.Key])
