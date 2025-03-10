@@ -13,6 +13,7 @@ public static class JGameControlExecuter
             {
                 foreach (var unit in pair.Value)
                 {
+                    UpdateChangeGroups(unit);
                     switch (pair.Key)
                     {
                         case UnitType.RESOURCE:
@@ -48,6 +49,77 @@ public static class JGameControlExecuter
                     }
 
                 }
+            }
+        }
+    }
+
+    public static void UpdateChangeGroups(JRTControlUnit unit)
+    {
+        // var Dirty = unit.Dirty;
+        var Dirty = 1;
+        var Data = unit.Data;
+        var ChangeGroups = unit.ChangeGroups;
+        if (Data == null) return;
+        for (int i = 0; i < ChangeGroups.Count; i++)
+        {
+            ResourceChangeType resourceChangeType = (ResourceChangeType)i;
+            //var sep = ChangeGroupSeparators[i];
+
+            var item = ChangeGroups[i];
+            var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
+            if (item == null || (Data.Skill != null && Data.Skill.Acquired && resourceChangeType == ResourceChangeType.COST))
+            {
+                // if (sep != null) sep.LayoutChild.VisibleSelf = false;
+                for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
+                {
+                    var ttv = item.tripleTextViews[ttvIndex];
+                    
+                    // ttv.LayoutChild.VisibleSelf = false;
+                }
+                continue;
+            }
+
+
+            //if (sep != null) sep.ManualUpdate();
+            //sep.LayoutChild.VisibleSelf = resourceChanges.Count > 0;
+            var bySecond = i == (int)ResourceChangeType.EFFECT || i == (int)ResourceChangeType.RUN;
+
+            for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
+            {
+                var ttv = item.tripleTextViews[ttvIndex];
+                //ttv.Visible = resourceChanges.Count > ttvIndex;
+                //if (!ttv.Visible) continue;
+                var rc = resourceChanges[ttvIndex];
+
+                var min = rc.valueChange.min;
+                var max = rc.valueChange.max;
+
+                string targetName;
+                string tertiaryText = "";
+                if (rc.IdPointer.RuntimeUnit != null)
+                {
+                    RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
+                    targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
+                    if (dataThatWillBeChanged.HasMax)
+                        tertiaryText = $"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})";
+                    else
+                        tertiaryText = $"({dataThatWillBeChanged.Value})";
+                }
+                else
+                {
+                    targetName = rc.IdPointer.Tag.tagName;
+                }
+
+                if (Dirty > 0)
+                {
+                    ttv.SetText(0, targetName);
+                }
+
+                var valueText = min != max ? $"{min}~{max}" : $"{min}";
+                string secondText = bySecond ? $"{valueText}/s" : $"{valueText}";
+                ttv.SetText(1, secondText);
+                ttv.SetText(2, tertiaryText);
+                //ttv.ManualUpdate();
             }
         }
     }
