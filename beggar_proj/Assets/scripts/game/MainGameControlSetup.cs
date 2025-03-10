@@ -25,6 +25,7 @@ public class MainGameControlSetupJLayout
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         runtime.jLayCanvas = jCanvas;
         mgc.LayoutRuntime = runtime;
+        JGameControlDataHolder jControlDataHolder = new();
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;
 
@@ -36,12 +37,19 @@ public class MainGameControlSetupJLayout
         }, 2);
 
         var taskParent = jCanvas.children[0];
-        //create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
+        JTabControlUnit jTabControl = new JTabControlUnit();
+        jControlDataHolder.TabControlUnits.Add(jTabControl);
+        mgc.JControlData = jControlDataHolder;
+        jTabControl.UnitGroupControls[UnitType.TASK] = new();
+        //create a fixed layout data or something that will hold the actions, then keep adding actions to it?
+        //I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
         for (int taskDataIndex = 0; taskDataIndex < arcaniaDatas.datas[UnitType.TASK].Count; taskDataIndex++)
         {
             var jCU = new JRTControlUnit();
+            jTabControl.UnitGroupControls[UnitType.TASK].Add(jCU);
 
             var modelData = arcaniaDatas.datas[UnitType.TASK][taskDataIndex];
+            jCU.Data = modelData;
             var id = modelData.ConfigBasic.Id;
             var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
             JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
@@ -54,7 +62,7 @@ public class MainGameControlSetupJLayout
             {
                 var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
                 layoutRU.AddLayoutAsChild(buttonLayoutRU) ;
-                buttonLayoutRU.ButtonChildren[0].SetText(0, modelData.Name);
+                buttonLayoutRU.ButtonChildren[0].Item1.SetText(0, modelData.Name);
                 jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                 jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
             }
@@ -130,7 +138,7 @@ public class MainGameControlSetup
             DisableAutoScaling = true
 
         }, 2);
-
+        
 
         dynamicCanvas.AddDialog(CanvasMaker.CreateDialog(mgc.DialogObjectRequest, mgc.ButtonObjectRequest, mgc.ButtonRequest));
 

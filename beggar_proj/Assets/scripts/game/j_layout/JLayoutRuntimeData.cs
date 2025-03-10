@@ -278,6 +278,8 @@ namespace JLayout
             this.buttonOwner = buttonOwner;
             this.index = index;
         }
+
+        public bool ButtonClicked => buttonOwner.ButtonChildren[index].Item2.UiUnit.Clicked;
     }
     public class JLayoutRuntimeData
     {
@@ -293,7 +295,7 @@ namespace JLayout
             //public List<JLayoutRuntimeUnit> Sublayouts = new();
             public List<JLayoutChild> Children = new();
             public List<JLayoutChild> TextChildren = new();
-            public List<JLayoutRuntimeUnit> ButtonChildren = new();
+            public List<(JLayoutRuntimeUnit, JLayoutChild)> ButtonChildren = new();
             public List<JLayoutChild> ImageChildren = new();
 
             public JLayoutRuntimeUnit(RectTransform childRT2)
@@ -324,9 +326,9 @@ namespace JLayout
             // Some day you might have to fuse the buttonLayout commons with childData commons
             internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons, null);
 
-            internal void BindButton(JLayoutRuntimeUnit buttonLayout)
+            internal void BindButton(JLayoutRuntimeUnit buttonLayout, JLayoutChild buttonChildSelf)
             {
-                ButtonChildren.Add(buttonLayout);
+                ButtonChildren.Add((buttonLayout, buttonChildSelf));
             }
 
             internal void BindImage(JLayoutChild im) => ImageChildren.Add(im);

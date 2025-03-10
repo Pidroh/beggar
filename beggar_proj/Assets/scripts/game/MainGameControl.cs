@@ -40,6 +40,7 @@ public class MainGameControl : MonoBehaviour
     public LayoutParent EndingOverlayLayout { get; internal set; }
     public LayoutParent TabButtonOverlayLayout { get; internal set; }
     public JLayoutRuntimeData LayoutRuntime { get; internal set; }
+    public JGameControlDataHolder JControlData { get; internal set; }
 
     public float lastSaveTime;
     public ControlExploration controlExploration;
@@ -153,12 +154,17 @@ public class MainGameControl : MonoBehaviour
         RobustDeltaTime.MultiplyTime(TimeMultiplier);
         while (RobustDeltaTime.TryGetProcessedDeltaTime(out float dt))
         {
-            arcaniaModel.ManualUpdate(Time.deltaTime);
+            arcaniaModel.ManualUpdate(dt);
         }
         // -----------------------------------------------------------
         // UI update
         // -----------------------------------------------------------
         JLayoutRuntimeExecuter.ManualUpdate(this.LayoutRuntime);
+
+        #region J Control Update
+        JGameControlExecuter.ManualUpdate(this, this.JControlData, Time.deltaTime);
+        #endregion
+
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.VisibleSelf = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;

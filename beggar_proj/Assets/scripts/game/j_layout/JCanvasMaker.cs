@@ -113,7 +113,7 @@ namespace JLayout
                             var child = jLayoutRuntimeUnit.AddLayoutAsChild(buttonLayout, childData);
                             child.UiUnit = uiUnit;
 
-                            jLayoutRuntimeUnit.BindButton(buttonLayout);
+                            jLayoutRuntimeUnit.BindButton(buttonLayout, child);
                         }
                         break;
                     case { TextRef: not null }:
@@ -179,12 +179,15 @@ namespace JLayout
             var layout = CreateLayout(buttonD.LayoutData, runtime);
             GameObject buttonObject = layout.RectTransform.gameObject;
             buttonObject.name += " button";
+            // Add Button component
+            var button = buttonObject.AddComponent<Button>();
+
             var uiUnit = buttonObject.AddComponent<UIUnit>();
+            uiUnit.Init();
             // Add CanvasRenderer component
             buttonObject.AddComponent<CanvasRenderer>();
 
-            // Add Button component
-            var button = buttonObject.AddComponent<Button>();
+            
 
             // Add Image component for button background
             Image buttonImage = buttonObject.AddComponent<Image>();
