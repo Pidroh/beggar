@@ -39,6 +39,8 @@ public class MainGameControlSetupJLayout
         //create a fixed layout data or something that will hold the actions, then keep adding actions to it? I feel like it's a two step process, one of dynamic objects hard coded and one of instantiating stuff from the JSON, based on the model data
         for (int taskDataIndex = 0; taskDataIndex < arcaniaDatas.datas[UnitType.TASK].Count; taskDataIndex++)
         {
+            var jCU = new JRTControlUnit();
+
             var modelData = arcaniaDatas.datas[UnitType.TASK][taskDataIndex];
             var id = modelData.ConfigBasic.Id;
             var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
@@ -53,12 +55,15 @@ public class MainGameControlSetupJLayout
                 var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
                 layoutRU.AddLayoutAsChild(buttonLayoutRU) ;
                 buttonLayoutRU.ButtonChildren[0].SetText(0, modelData.Name);
+                jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
+                jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
             }
             if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))
             {
                 var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
                 layoutRU.AddLayoutAsChild(descLayout);
                 descLayout.SetText(0, modelData.ConfigBasic.Desc);
+                jCU.Description = new JLayTextAccessor(descLayout, 0);
             }
             if (modelData.ConfigTask != null)
             {

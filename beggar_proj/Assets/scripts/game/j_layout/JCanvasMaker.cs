@@ -108,9 +108,11 @@ namespace JLayout
                 {
                     case { ButtonRef: not null }:
                         {
-                            JLayoutRuntimeUnit buttonLayout = CreateButton(childData.ButtonRef.data, runtime);
+                            (JLayoutRuntimeUnit buttonLayout, UIUnit uiUnit) = CreateButton(childData.ButtonRef.data, runtime);
                             // will have to fuse commons data eventually
-                            jLayoutRuntimeUnit.AddLayoutAsChild(buttonLayout, childData);
+                            var child = jLayoutRuntimeUnit.AddLayoutAsChild(buttonLayout, childData);
+                            child.UiUnit = uiUnit;
+
                             jLayoutRuntimeUnit.BindButton(buttonLayout);
                         }
                         break;
@@ -172,11 +174,23 @@ namespace JLayout
             };
         }
 
-        private static JLayoutRuntimeUnit CreateButton(ButtonData buttonD, JLayoutRuntimeData runtime)
+        private static (JLayoutRuntimeUnit,UIUnit) CreateButton(ButtonData buttonD, JLayoutRuntimeData runtime)
         {
             var layout = CreateLayout(buttonD.LayoutData, runtime);
-            layout.RectTransform.gameObject.name += " button";
-            return layout;
+            GameObject buttonObject = layout.RectTransform.gameObject;
+            buttonObject.name += " button";
+            var uiUnit = buttonObject.AddComponent<UIUnit>();
+            // Add CanvasRenderer component
+            buttonObject.AddComponent<CanvasRenderer>();
+
+            // Add Button component
+            var button = buttonObject.AddComponent<Button>();
+
+            // Add Image component for button background
+            Image buttonImage = buttonObject.AddComponent<Image>();
+            buttonImage.color = new Color(0, 0, 0, 0); // Set button background color
+            button.targetGraphic = buttonImage;
+            return (layout, uiUnit);
         }
 
         static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)

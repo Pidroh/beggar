@@ -253,6 +253,32 @@ namespace JLayout
             }
         }
     }
+
+    public class JImageAccessor { }
+
+    public class JLayTextAccessor
+    {
+        public JLayTextAccessor(JLayoutRuntimeUnit descLayout, int v)
+        {
+            DescLayout = descLayout;
+            V = v;
+        }
+
+        public JLayoutRuntimeUnit DescLayout { get; }
+        public int V { get; }
+    }
+
+    public class JButtonAccessor 
+    {
+        public JLayoutRuntimeUnit buttonOwner;
+        public int index;
+
+        public JButtonAccessor(JLayoutRuntimeUnit buttonOwner, int index)
+        {
+            this.buttonOwner = buttonOwner;
+            this.index = index;
+        }
+    }
     public class JLayoutRuntimeData
     {
         public JLayCanvas jLayCanvas;
@@ -289,14 +315,14 @@ namespace JLayout
                 child.Rect.SetParent(RectTransform);
             }
 
-            internal void AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, ChildAddParameters? param = null)
+            internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, ChildAddParameters? param = null)
             {
                 var commons = layoutRU.LayoutData.commons;
-                AddLayoutAsChild(layoutRU, commons, param);
+                return AddLayoutAsChild(layoutRU, commons, param);
             }
 
             // Some day you might have to fuse the buttonLayout commons with childData commons
-            internal void AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons, null);
+            internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons, null);
 
             internal void BindButton(JLayoutRuntimeUnit buttonLayout)
             {
