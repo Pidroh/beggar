@@ -12,13 +12,16 @@ namespace JLayout
     {
         public static void ManualUpdate(JLayoutRuntimeData data)
         {
+            var offset = 0f;
             foreach (var mainCanvasChild in data.jLayCanvas.ActiveChildren)
             {
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
                 // temporary code
-                parentLayout.RectTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                float newSize = 320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                parentLayout.RectTransform.SetWidth(newSize);
                 // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
-                parentLayout.RectTransform.SetLeftXToParent(0);
+                parentLayout.RectTransform.SetLeftXToParent(offset);
+                offset += newSize;
                 mainCanvasChild.RectTransform.gameObject.SetActive(mainCanvasChild.Children.Count > 0);
                 if (mainCanvasChild.Children.Count == 0) continue;
 
