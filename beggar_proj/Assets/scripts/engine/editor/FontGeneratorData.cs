@@ -37,7 +37,7 @@ public class FontGeneratorData : ScriptableObject
 
     private string CreateTextFromLocalization()
     {
-        var text = HeartGame.GetConfig().localizationData.text;
+        var text = HeartGame.GetConfig()?.localizationData == null ? string.Empty : HeartGame.GetConfig()?.localizationData?.text ?? string.Empty;
         foreach (var lta in localizedTextAssets)
         {
             text += lta.GetConcatenatedText();
