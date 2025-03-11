@@ -323,10 +323,23 @@ namespace JLayout
         public List<JLayoutChild> TextChildren = new();
         public List<(JLayoutRuntimeUnit, JLayoutChild)> ButtonChildren = new();
         public List<JLayoutChild> ImageChildren = new();
+        private bool _visibleSelf;
+        private bool _parentShowing = true;
+        private bool _visibleResult;
+
+        private void UpdateVisibility()
+        {
+            var newVisibility = _parentShowing && _visibleSelf;
+            if (newVisibility == _visibleResult) return;
+            _visibleResult = newVisibility;
+            RectTransform.gameObject.SetActive(_visibleResult);
+        }
 
         public JLayoutRuntimeUnit(RectTransform childRT2)
         {
             RectTransform = childRT2;
+            _visibleSelf = RectTransform.gameObject.activeSelf;
+            UpdateVisibility();
         }
 
         public RectTransform ContentTransformOverride { get; internal set; }
@@ -397,6 +410,18 @@ namespace JLayout
         public struct ChildAddParameters
         {
             public PositionMode[] PositionModeOverride;
+        }
+
+        internal void SetParentShowing(bool expanded)
+        {
+            _parentShowing = expanded;
+            UpdateVisibility();
+        }
+
+        internal void SetVisibleSelf(bool value)
+        {
+            _visibleSelf = value;
+            UpdateVisibility();
         }
     }
 

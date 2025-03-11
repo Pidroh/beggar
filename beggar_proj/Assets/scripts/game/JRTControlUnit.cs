@@ -131,6 +131,7 @@ public class JRTControlUnit
     public JButtonAccessor ExpandButton { get; internal set; }
     public JLayTextAccessor Description { get; internal set; }
     public AutoList<JResourceChangeGroup> ChangeGroups = new();
+    public List<JLayoutRuntimeUnit> InsideExpandable = new();
     public bool TaskClicked => MainExecuteButton.ButtonClicked;
 
     public RuntimeUnit Data { get; internal set; }

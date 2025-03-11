@@ -106,6 +106,12 @@ public class LayoutChild
         UpdateVisibility();
     }
 
+    internal void SetVisibleSelf(bool value)
+    {
+        _visibleSelf = value;
+        UpdateVisibility();
+    }
+
     private void UpdateVisibility()
     {
         var newVisibility = _parentShowing && _visibleSelf;
@@ -114,11 +120,7 @@ public class LayoutChild
         _gameObject.SetActive(_visibleResult);
     }
 
-    internal void SetVisibleSelf(bool value)
-    {
-        _visibleSelf = value;
-        UpdateVisibility();
-    }
+    
 }
 
 

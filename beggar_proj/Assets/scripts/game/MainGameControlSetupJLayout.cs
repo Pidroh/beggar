@@ -108,6 +108,7 @@ public class MainGameControlSetupJLayout
                         layoutRU.AddLayoutAsChild(descLayout);
                         descLayout.SetText(0, modelData.ConfigBasic.Desc);
                         jCU.Description = new JLayTextAccessor(descLayout, 0);
+                        jCU.InsideExpandable.Add(descLayout);
                     }
                     if (modelData.ConfigTask != null)
                     {
@@ -131,6 +132,7 @@ public class MainGameControlSetupJLayout
                             var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
                             miniHeader.SetText(0, textKey);
                             layoutRU.AddLayoutAsChild(miniHeader);
+                            jCU.InsideExpandable.Add(miniHeader);
                             foreach (var rcu in rcl)
                             {
                                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
@@ -139,6 +141,7 @@ public class MainGameControlSetupJLayout
                                 triple.SetText(1, "" + rcu.valueChange.min);
                                 triple.SetText(2, "0");
                                 jCU.ChangeGroups[rcgIndex].tripleTextViews.Add(triple);
+                                jCU.InsideExpandable.Add(triple);
                             }
 
                         }
