@@ -165,6 +165,8 @@ public class MainGameControl : MonoBehaviour
         JGameControlExecuter.ManualUpdate(this, this.JControlData, Time.deltaTime);
         #endregion
 
+        // temporary
+        return;
         dynamicCanvas.ManualUpdate();
         // hide lower menu if all the tabs are visible
         dynamicCanvas.LowerMenus[0].SelfChild.VisibleSelf = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;

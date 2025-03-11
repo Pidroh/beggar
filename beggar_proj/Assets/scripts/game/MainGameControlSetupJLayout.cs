@@ -93,6 +93,7 @@ public class MainGameControlSetupJLayout
                         buttonLayoutRU.ButtonChildren[0].Item1.SetText(0, modelData.Name);
                         jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                         jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
+                        jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
                     }
                     else if (hasResourceExpander)
                     {
@@ -100,6 +101,7 @@ public class MainGameControlSetupJLayout
                         layoutRU.AddLayoutAsChild(resourceLayoutRU);
                         resourceLayoutRU.SetText(0, modelData.Name);
                         jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
+                        jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
                     }
 
                     if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))

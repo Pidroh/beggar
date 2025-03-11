@@ -9,7 +9,20 @@ using TMPro;
 namespace JLayout
 {
 
-    public class JImageAccessor { }
+    public class JImageAccessor 
+    {
+        public JLayoutRuntimeUnit imageOwner;
+        public int index;
+
+        public JImageAccessor(JLayoutRuntimeUnit buttonOwner, int index)
+        {
+            this.imageOwner = buttonOwner;
+            this.index = index;
+        }
+
+        public RectTransform Rect => imageOwner.ImageChildren[index].Rect;
+
+    }
 
     public class JLayTextAccessor
     {
