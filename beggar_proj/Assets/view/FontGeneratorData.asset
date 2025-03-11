@@ -15,14 +15,13 @@ MonoBehaviour:
   font: {fileID: 12800000, guid: 4314358566f8af34fa1f915f14eda3c8, type: 3}
   useTextVariable: 0
   text: qwertyuiiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBM
-  sampleSize: 16
+  sampleSize: 24
   atlasPad: 1
-  renderMode: 4118
+  renderMode: 4169
   atlasW: 2048
   atlasH: 2048
   fontName: beggar_text
-  localizedTextAssets:
-  - {fileID: 0}
+  localizedTextAssets: []
   copyPreviousMaterial: 1
   filterMode: 0
   colorFont: 0
