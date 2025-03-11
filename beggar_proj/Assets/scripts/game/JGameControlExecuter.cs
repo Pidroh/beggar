@@ -73,6 +73,7 @@
             //var sep = ChangeGroupSeparators[i];
 
             var item = ChangeGroups[i];
+            if (item == null) continue;
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
             if (item == null || (Data.Skill != null && Data.Skill.Acquired && resourceChangeType == ResourceChangeType.COST))
             {
