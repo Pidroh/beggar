@@ -159,11 +159,14 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         // UI update
         // -----------------------------------------------------------
-        JLayoutRuntimeExecuter.ManualUpdate(this.LayoutRuntime);
+        
 
         #region J Control Update
         JGameControlExecuter.ManualUpdate(this, this.JControlData, Time.deltaTime);
         #endregion
+
+        // Layout is executed after so that it can fix things before rendering
+        JLayoutRuntimeExecuter.ManualUpdate(this.LayoutRuntime);
 
         // temporary
         return;

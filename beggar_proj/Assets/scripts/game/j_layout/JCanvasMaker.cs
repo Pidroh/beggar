@@ -87,6 +87,7 @@ namespace JLayout
                 childGO2.name = "Layout";
                 RectTransform childRT2 = childGO2.AddComponent<RectTransform>();
                 lp = new JLayoutRuntimeUnit(childRT2);
+                childRT2.SetAnchorsByIndex(1, 1f);
             }
 
             return lp;
