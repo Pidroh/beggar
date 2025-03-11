@@ -59,6 +59,7 @@ namespace JLayout
                 var accountForTotalSize = true;
 
                 var axisM = axisModes[yAxis];
+                float? height = null;
                 switch (axisM)
                 {
                     case AxisMode.PARENT_SIZE_PERCENT:
@@ -69,22 +70,31 @@ namespace JLayout
                         }
                         else
                         {
-                            childRect.SetHeight(contentRect.GetHeight());
+                            height = contentRect.GetHeight();
                         }
                         accountForTotalSize = false;
                         break;
                     case AxisMode.SELF_SIZE:
-                        childRect.SetHeight(child.Commons.Size[yAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                        height = child.Commons.Size[yAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
                         break;
                     case AxisMode.CONTAIN_CHILDREN:
                         break;
                     case AxisMode.FILL_REMAINING_SIZE:
                         break;
                     case AxisMode.TEXT_PREFERRED:
-                        child.UiUnit.ChangeHeightToFitTextPreferredHeight();
+                        height = child.UiUnit.text.preferredHeight;
                         break;
                     default:
                         break;
+                }
+                if (height.HasValue)
+                {
+                    height = Mathf.Max(height.Value, child.Commons.MinSize[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                    child.Rect.SetHeight(height.Value);
+                }
+                else 
+                {
+                    height = child.Rect.GetHeight();
                 }
 
 
@@ -99,11 +109,11 @@ namespace JLayout
                 {
                     if (positionModes[1] == PositionMode.SIBLING_DISTANCE)
                     {
-                        totalChildOccupiedHeight += childRect.GetHeight();
+                        totalChildOccupiedHeight += height.Value;
                     }
                     else
                     {
-                        totalChildOccupiedHeight = Mathf.Max(childRect.GetHeight(), totalChildOccupiedHeight);
+                        totalChildOccupiedHeight = Mathf.Max(height.Value, totalChildOccupiedHeight);
                     }
                 }
 
@@ -187,7 +197,9 @@ namespace JLayout
             Debug.Assert(heightAxis != null);
             if (heightAxis == AxisMode.CONTAIN_CHILDREN)
             {
-                parentLayout.ContentTransform.SetHeight(totalChildOccupiedHeight + padding.vertical * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                float height = totalChildOccupiedHeight + padding.vertical * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                height = Mathf.Max(height, parentLayout.LayoutData.commons.MinSize[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                parentLayout.ContentTransform.SetHeight(height);
             }
 
         }
