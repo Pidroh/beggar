@@ -42,6 +42,7 @@ namespace JLayout
             JLayoutChild previousChild = null;
             float totalChildOccupiedHeight = 0f;
             var padding = parentLayout.LayoutData.commons.Padding;
+
             foreach (var child in parentLayout.Children)
             {
                 if (child.LayoutRU != null)
@@ -54,6 +55,8 @@ namespace JLayout
                 #region size
                 var axisModes = child.Commons.AxisModes;
                 var yAxis = 1;
+
+                var accountForTotalSize = true;
 
                 var axisM = axisModes[yAxis];
                 switch (axisM)
@@ -68,6 +71,7 @@ namespace JLayout
                         {
                             childRect.SetHeight(contentRect.GetHeight());
                         }
+                        accountForTotalSize = false;
                         break;
                     case AxisMode.SELF_SIZE:
                         childRect.SetHeight(child.Commons.Size[yAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
@@ -84,21 +88,25 @@ namespace JLayout
                 }
 
 
-                
+
 
                 #endregion
 
                 var positionModes = child.PositionModes ?? defaultPositionModes;
 
                 #region total height calculation
-                if (positionModes[1] == PositionMode.SIBLING_DISTANCE)
+                if (accountForTotalSize)
                 {
-                    totalChildOccupiedHeight += childRect.GetHeight();
+                    if (positionModes[1] == PositionMode.SIBLING_DISTANCE)
+                    {
+                        totalChildOccupiedHeight += childRect.GetHeight();
+                    }
+                    else
+                    {
+                        totalChildOccupiedHeight = Mathf.Max(childRect.GetHeight(), totalChildOccupiedHeight);
+                    }
                 }
-                else 
-                {
-                    totalChildOccupiedHeight = Mathf.Max(childRect.GetHeight(), totalChildOccupiedHeight);
-                }
+
                 #endregion
 
                 #region position calculation
@@ -271,7 +279,7 @@ namespace JLayout
         public int V { get; }
     }
 
-    public class JButtonAccessor 
+    public class JButtonAccessor
     {
         public JLayoutRuntimeUnit buttonOwner;
         public int index;
@@ -292,7 +300,7 @@ namespace JLayout
 
         public KeyedSprites ImageSprites;
 
-        
+
     }
 
     public class JLayoutRuntimeUnit
