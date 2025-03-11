@@ -14,6 +14,14 @@ public static class JGameControlExecuter
                 foreach (var unit in pair.Value)
                 {
                     UpdateChangeGroups(unit);
+                    if (unit.ExpandButton?.ButtonClicked ?? false) 
+                    {
+                        unit.Expanded = !unit.Expanded;
+                        foreach (var item in unit.InsideExpandable)
+                        {
+                            item.SetParentShowing(unit.Expanded);
+                        }
+                    }
                     switch (pair.Key)
                     {
                         case UnitType.RESOURCE:
@@ -135,6 +143,7 @@ public class JRTControlUnit
     public bool TaskClicked => MainExecuteButton.ButtonClicked;
 
     public RuntimeUnit Data { get; internal set; }
+    public bool Expanded { get; internal set; }
 }
 
 public class JResourceChangeGroup 
