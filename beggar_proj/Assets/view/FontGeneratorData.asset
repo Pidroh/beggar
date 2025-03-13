@@ -16,14 +16,14 @@ MonoBehaviour:
   useTextVariable: 0
   text: qwertyuiiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBM
   sampleSize: 24
-  atlasPad: 1
+  atlasPad: 2
   renderMode: 4169
   atlasW: 2048
   atlasH: 2048
   fontName: beggar_text
   localizedTextAssets: []
   copyPreviousMaterial: 1
-  filterMode: 0
+  filterMode: 1
   colorFont: 0
   faceColor: {r: 1, g: 1, b: 1, a: 1}
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
