@@ -15,21 +15,21 @@ MonoBehaviour:
   versionNumber: 20
   gameTitle: beggar_incremental
   betaVersion: 0
-  musicList: {fileID: -1364661469213232964, guid: 9f9856be5965df645a15af0a23e0dc85, type: 3}
-  audioList: {fileID: -3544310644606591711, guid: 9f9856be5965df645a15af0a23e0dc85, type: 3}
+  musicList: {fileID: 0}
+  audioList: {fileID: 0}
   voiceLists: []
   SettingData: {fileID: 4900000, guid: 9cb5aa34b39063045a960350fb3cb469, type: 3}
   Credits: {fileID: 4900000, guid: ba89728bcdd97b042bda9ae5473d0516, type: 3}
   localizationData: {fileID: 0}
   blacklistedLanguages: []
   viewConfig:
-    cursorView: {fileID: 5385982237560384326, guid: 57de3a742334c8040b74205a87dc2e1c, type: 3}
-    mouseAsSprite: {fileID: -6368935874909666629, guid: e7876e02ec5003e4ab2a37f1b6ee5645, type: 3}
+    cursorView: {fileID: 0}
+    mouseAsSprite: {fileID: 0}
     bloomConfig:
       minValue: 0
       halfValue: 1.4
       maxValue: 8
-  inputPromptVisuals: {fileID: 11400000, guid: 0575a08959876ee49a07d46e75b85a75, type: 2}
+  inputPromptVisuals: {fileID: 0}
   PersistenceUnits:
   - ForcePrefs: 0
     Key: maindata

@@ -81,7 +81,8 @@ public class MainGameControlSetupJLayout
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
                     layoutRU.RectTransform.gameObject.name += " " + id;
                     layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
-                    taskParent.AddLayoutAsChild(layoutRU);
+                    
+                    var childOfParent = taskParent.AddLayoutAsChild(layoutRU);
 
                     var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
                     var hasResourceExpander = !hasTaskButton && modelData.ConfigBasic.UnitType == UnitType.RESOURCE;

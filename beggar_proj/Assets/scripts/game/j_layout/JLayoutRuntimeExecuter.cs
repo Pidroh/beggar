@@ -160,11 +160,11 @@ namespace JLayout
                             {
                                 if (axis == 0)
                                 {
-                                    childRect.SetLeftLocalX(prevRect.GetRightLocalX() + child.Commons.PositionOffsets[0]);
+                                    childRect.SetLeftLocalX(prevRect.GetRightLocalX() + child.Commons.PositionOffsets[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                                 }
                                 if (axis == 1)
                                 {
-                                    childRect.SetTopLocalY(prevRect.GetBottomLocalY() + child.Commons.PositionOffsets[1]);
+                                    childRect.SetTopLocalY(prevRect.GetBottomLocalY() - child.Commons.PositionOffsets[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                                 }
                             }
                             else
