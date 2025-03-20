@@ -9,6 +9,8 @@
             {
                 foreach (var unit in pair.Value)
                 {
+                    var visible = unit.Data?.Visible ?? false;
+                    unit.MainLayout.SetVisibleSelf(visible);
                     UpdateChangeGroups(unit);
                     if (unit.ExpandButton?.ButtonClicked ?? false) 
                     {

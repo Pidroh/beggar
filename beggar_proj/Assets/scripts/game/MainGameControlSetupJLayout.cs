@@ -79,6 +79,7 @@ public class MainGameControlSetupJLayout
                     var id = modelData.ConfigBasic.Id;
                     var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+                    jCU.MainLayout = layoutRU;
                     layoutRU.RectTransform.gameObject.name += " " + id;
                     layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
                     
