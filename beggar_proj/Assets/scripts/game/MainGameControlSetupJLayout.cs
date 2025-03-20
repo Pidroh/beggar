@@ -104,6 +104,7 @@ public class MainGameControlSetupJLayout
                         resourceLayoutRU.SetText(0, modelData.Name);
                         jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
                         jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
+                        jCU.ExpandWhenClickingLayout = resourceLayoutRU;
                     }
 
                     if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))

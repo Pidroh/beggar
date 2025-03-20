@@ -12,7 +12,9 @@
                     var visible = unit.Data?.Visible ?? false;
                     unit.MainLayout.SetVisibleSelf(visible);
                     UpdateChangeGroups(unit);
-                    if (unit.ExpandButton?.ButtonClicked ?? false) 
+                    bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
+                    expandClick = expandClick || unit.
+                    if (expandClick) 
                     {
                         var ls = unit.ExpandButtonImage.Rect.localScale;
                         ls.y *= -1;

@@ -34,6 +34,7 @@
             "comment": "Contains resource text with expandable button",
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
             "min_size": [-1, 40],
+            "clickable": true,
             "fixed_children": [
                 {
                     "type": "text",
@@ -120,7 +121,28 @@
                     "text_horizontal": "LEFT"
                 }
             ]
-        }
+        },
+        {
+            "id": "expandable_upper_header",
+            "comment": "Contains the header for stuff like ,,instant resources,,",
+            "axis_mode": ["PARENT_SIZE_PERCENT", "SELF_SIZE"],
+            "size": [100, 40],
+            "fixed_children": [
+                {
+                    "type": "button",
+                    "id": "task_button",
+                    "axis_mode": ["FILL_REMAINING_SIZE", "PARENT_SIZE_PERCENT"],
+                    "position_mode": ["LEFT_ZERO", "CENTER"]
+                },
+                {
+                    "type": "button",
+                    "id": "expander_arrow",
+                    "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
+                    "size": [42, 100],
+                    "position_mode": ["RIGHT_ZERO", "CENTER"]
+                }
+            ]
+        },
 
     ],
     "texts": [
