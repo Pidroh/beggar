@@ -231,20 +231,6 @@
                     "size": [36, 20]
                 }
             ]
-        },
-        {
-            "id": "expander_arrow_mini",
-            "padding": [0, 0, 0, 2],
-            "fixed_children": [
-                {
-                    "type": "image",
-                    "image": "arrow",
-                    "color_id": "mid_expander_arrow",
-                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
-                    "position_mode": ["CENTER", "CENTER"],
-                    "size": [8, 6]
-                }
-            ]
         }
     ],
     "colors": [

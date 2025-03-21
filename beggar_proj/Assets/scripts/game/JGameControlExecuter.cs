@@ -11,6 +11,10 @@
                 if (sep.SeparatorLayout.ClickedLayout) 
                 {
                     sep.Expanded = !sep.Expanded;
+                    var sepImage = sep.SeparatorLayout.ImageChildren[0];
+                    var ls = sepImage.Rect.localScale;
+                    ls.y *= -1;
+                    sepImage.Rect.localScale = ls;
                     process = true;
                 }
                 if (sep.Expanded) process = true;

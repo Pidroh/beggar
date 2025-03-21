@@ -88,6 +88,7 @@ public class MainGameControlSetupJLayout
                     taskParent.AddLayoutAsChild(layoutRU);
                     layoutRU.SetText(0, separatorControl.SepD.Name);
                     separatorControl.SeparatorLayout = layoutRU;
+                    layoutRU.ImageChildren[0].Rect.transform.localScale = new Vector3(1, -1, 1);
                 }
                 #endregion
 
