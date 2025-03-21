@@ -111,7 +111,7 @@ namespace JLayout
             }
             if (layoutEntry.HasKey("clickable"))
             {
-                ld.Clickable = layoutEntry["fixed_children"].AsBool;
+                ld.Clickable = layoutEntry["clickable"].AsBool;
                 
             }
 

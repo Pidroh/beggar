@@ -95,6 +95,8 @@ namespace JLayout
 
         public PositionMode[] DefaultPositionModes { get; internal set; }
         internal bool Visible { get => _visibleResult; }
+        public UIUnit SelfUIUnit { get; internal set; }
+        public bool ClickedLayout => SelfUIUnit?.Clicked ?? false;
 
         internal void AddChild(JLayoutChild child)
         {

@@ -96,17 +96,30 @@ namespace JLayout
         internal static JLayoutRuntimeUnit CreateLayout(LayoutData layoutD, JLayoutRuntimeData runtime)
         {
             JLayoutRuntimeUnit ru = CreateLayout();
-            if (layoutD.Clickable) 
-            { 
-                
-            }
-            ru.LayoutData = layoutD;
-            if (layoutD.commons.ColorReference != null) 
-            {
-                var color = layoutD.commons.ColorReference.data.Colors[0];
+            bool clickable = layoutD.Clickable;
+            bool hasColor = layoutD.commons.ColorReference != null;
+            var createImage = hasColor || clickable;
+            if (createImage) {
                 var img = ru.RectTransform.gameObject.AddComponent<Image>();
+                var color = Color.clear;
+                if (clickable)
+                {
+                    var button = ru.RectTransform.gameObject.AddComponent<Button>();
+                    button.targetGraphic = img;
+                    var uu = ru.RectTransform.gameObject.AddComponent<UIUnit>();
+                    ru.SelfUIUnit = uu;
+                }
+                if (hasColor)
+                {
+                    color = layoutD.commons.ColorReference.data.Colors[0];
+                }
                 img.color = color;
             }
+
+            
+            ru.LayoutData = layoutD;
+            
+            
             foreach (var childData in layoutD.Children)
             {
                 switch (childData)
