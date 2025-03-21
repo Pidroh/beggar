@@ -33,12 +33,24 @@ public class MainGameControlSetupJLayout
         }, 2);
 
         // -------------------------------------------------
-        // TAB BUTTON INSTANTIATING AND OTHER SMALL SETUP
+        // TAB BUTTON INSTANTIATING (not yet implemented button instantiation) AND OTHER SMALL SETUP
         // -------------------------------------------------
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
+            var taskParent = jCanvas.children[tabIndex];
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
+            
+            
             var tcu = new JTabControlUnit();
+            foreach (var sepD in item.Tab.Separators)
+            {
+                var layoutD = layoutMaster.LayoutDatas.GetData("expandable_upper_header");
+                JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+                taskParent.AddLayoutAsChild(layoutRU);
+                layoutRU.SetText(0, sepD.Name);
+                tcu.SeparatorControls.Add(new JTabControlUnit.JSeparatorControl(sepD));
+
+            }
             jCanvas.children[tabIndex].RectTransform.gameObject.name = $"tab_{item.Name}";
             jControlDataHolder.TabControlUnits.Add(tcu);
             foreach (var t in item.Tab.AcceptedUnitTypes)

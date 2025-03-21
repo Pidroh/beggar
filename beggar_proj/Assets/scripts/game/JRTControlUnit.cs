@@ -31,4 +31,17 @@ public class JGameControlDataHolder
 public class JTabControlUnit
 {
     public Dictionary<UnitType, List<JRTControlUnit>> UnitGroupControls = new();
+    public List<JSeparatorControl> SeparatorControls = new();
+    public class JSeparatorControl 
+    {
+        public List<JRTControlUnit> ControlUnits = new();
+
+        public JSeparatorControl(TabRuntime.Separator sepD)
+        {
+            SepD = sepD;
+        }
+
+        public TabRuntime.Separator SepD { get; }
+    }
 }
+

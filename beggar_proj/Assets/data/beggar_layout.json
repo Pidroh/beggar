@@ -132,13 +132,14 @@
                     "type": "text",
                     "id": "upper_header_text",
                     "axis_mode": ["PARENT_SIZE_PERCENT", "TEXT_PREFERRED"],
-                    "position_mode": ["LEFT_ZERO", "CENTER"]
+                    "position_mode": ["LEFT_ZERO", "CENTER"],
+                    "text_horizontal": "CENTER"
                 },
                 {
                     "type": "button",
                     "id": "expander_arrow_mini",
                     "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
-                    "size": [40, 100],
+                    "size": [21, 100],
                     "position_mode": ["RIGHT_ZERO", "CENTER"]
                 }
             ]
@@ -224,7 +225,20 @@
                     "size": [36, 20]
                 }
             ]
-            
+        },
+        {
+            "id": "expander_arrow_mini",
+            "padding": [0, 0, 0, 2],
+            "fixed_children": [
+                {
+                    "type": "image",
+                    "image": "arrow",
+                    "color_id": "mid_expander_arrow",
+                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+                    "position_mode": ["CENTER", "CENTER"],
+                    "size": [8, 6]
+                }
+            ]
         }
     ],
     "colors": [
