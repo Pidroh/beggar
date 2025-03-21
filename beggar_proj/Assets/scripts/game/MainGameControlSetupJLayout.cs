@@ -39,17 +39,12 @@ public class MainGameControlSetupJLayout
         {
             var taskParent = jCanvas.children[tabIndex];
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
-            
-            
+
+
             var tcu = new JTabControlUnit();
             foreach (var sepD in item.Tab.Separators)
             {
-                var layoutD = layoutMaster.LayoutDatas.GetData("expandable_upper_header");
-                JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
-                taskParent.AddLayoutAsChild(layoutRU);
-                layoutRU.SetText(0, sepD.Name);
                 tcu.SeparatorControls.Add(new JTabControlUnit.JSeparatorControl(sepD));
-
             }
             jCanvas.children[tabIndex].RectTransform.gameObject.name = $"tab_{item.Name}";
             jControlDataHolder.TabControlUnits.Add(tcu);
@@ -64,9 +59,14 @@ public class MainGameControlSetupJLayout
                     case UnitType.HOUSE:
                     case UnitType.FURNITURE:
                     case UnitType.LOCATION:
-                        tcu.UnitGroupControls[t] = new();
+                        foreach (var separator in tcu.SeparatorControls)
+                        {
+                            separator.UnitGroupControls[t] = new();
+                        }
+                        //tcu.UnitGroupControls[t] = new();
                         break;
                     case UnitType.TAB:
+                    // might have to do something with this if you ever create a "bestiary"
                     case UnitType.ENCOUNTER:
                     default:
                         break;
@@ -79,14 +79,24 @@ public class MainGameControlSetupJLayout
             var taskParent = jCanvas.children[tabIndex];
             var tabControl = jControlDataHolder.TabControlUnits[tabIndex];
             JTabControlUnit jTabControl = tabControl;
-            var unitGroupControls = tabControl.UnitGroupControls;
-            foreach (var pair in unitGroupControls)
+            foreach (var separatorControl in tabControl.SeparatorControls)
             {
-                foreach (var item in arcaniaDatas.datas[pair.Key])
+                #region Separator graphic instantiation
                 {
-                    var modelData = item;
+                    var layoutD = layoutMaster.LayoutDatas.GetData("expandable_upper_header");
+                    JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+                    taskParent.AddLayoutAsChild(layoutRU);
+                    layoutRU.SetText(0, separatorControl.SepD.Name);
+                }
+                #endregion
+
+
+                foreach (var modelData in separatorControl.SepD.BoundRuntimeUnits)
+                {
                     var jCU = new JRTControlUnit();
-                    pair.Value.Add(jCU);
+                    // special types that don't have unit group controls are handled in a special way
+                    if (!separatorControl.UnitGroupControls.TryGetValue(modelData.ConfigBasic.UnitType, out var list)) continue;
+                    list.Add(jCU);
                     jCU.Data = modelData;
                     var id = modelData.ConfigBasic.Id;
                     var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
@@ -94,7 +104,7 @@ public class MainGameControlSetupJLayout
                     jCU.MainLayout = layoutRU;
                     layoutRU.RectTransform.gameObject.name += " " + id;
                     layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
-                    
+
                     var childOfParent = taskParent.AddLayoutAsChild(layoutRU);
 
                     var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
@@ -170,7 +180,6 @@ public class MainGameControlSetupJLayout
                     }
                 }
             }
-
         }
     }
 }

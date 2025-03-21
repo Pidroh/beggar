@@ -167,6 +167,7 @@ public class JsonReader
             if (dataList.Key == UnitType.TAB) continue;
             foreach (var item in dataList.Value)
             {
+                bool added = false;
                 // this code doesn't handle well having multiple tabs accepting the same unit type
                 // EXAMPLE NON_SUPPORTED:
                 // - Tab 1: Holy Resources
@@ -182,10 +183,16 @@ public class JsonReader
                         unitSeparator = separatorCandidate;
                         if (!separatorCandidate.Default) break;
                     }
-                    if (unitSeparator == null && tabCandidates.Tab.Separators.Count > 0) continue;
+                    if (unitSeparator == null) continue;
                     unitSeparator.BoundRuntimeUnits.Add(item);
+                    added = true;
+                    break;
                 }
-
+                if (added) continue;
+                if (!added) 
+                {
+                    Debug.Log("NOT ADDED " + item.ConfigBasic.Id);
+                }
             }   
         }
         #endregion

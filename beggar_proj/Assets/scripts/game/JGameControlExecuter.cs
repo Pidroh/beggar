@@ -5,63 +5,67 @@
         var arcaniaModel = mgc.arcaniaModel;
         foreach (var tabControl in controlData.TabControlUnits)
         {
-            foreach (var pair in tabControl.UnitGroupControls)
+            foreach (var sep in tabControl.SeparatorControls)
             {
-                foreach (var unit in pair.Value)
+                foreach (var pair in sep.UnitGroupControls)
                 {
-                    var visible = unit.Data?.Visible ?? false;
-                    unit.MainLayout.SetVisibleSelf(visible);
-                    UpdateChangeGroups(unit);
-                    var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
-                    bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
-                    expandClick = expandClick || layoutClicked;
-                    if (expandClick) 
+                    foreach (var unit in pair.Value)
                     {
-                        var ls = unit.ExpandButtonImage.Rect.localScale;
-                        ls.y *= -1;
-                        unit.ExpandButtonImage.Rect.localScale = ls;
-                        unit.Expanded = !unit.Expanded;
-                        foreach (var item in unit.InsideExpandable)
+                        var visible = unit.Data?.Visible ?? false;
+                        unit.MainLayout.SetVisibleSelf(visible);
+                        UpdateChangeGroups(unit);
+                        var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
+                        bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
+                        expandClick = expandClick || layoutClicked;
+                        if (expandClick)
                         {
-                            item.SetParentShowing(unit.Expanded);
-                        }
-                    }
-                    switch (pair.Key)
-                    {
-                        case UnitType.RESOURCE:
-                            break;
-                        case UnitType.TASK:
+                            var ls = unit.ExpandButtonImage.Rect.localScale;
+                            ls.y *= -1;
+                            unit.ExpandButtonImage.Rect.localScale = ls;
+                            unit.Expanded = !unit.Expanded;
+                            foreach (var item in unit.InsideExpandable)
                             {
-                                // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                                // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
-                                if (unit.TaskClicked)
-                                {
-                                    arcaniaModel.Runner.StartActionExternally(unit.Data);
-                                }
+                                item.SetParentShowing(unit.Expanded);
                             }
-                            break;
-                        case UnitType.HOUSE:
-                            break;
-                        case UnitType.CLASS:
-                            break;
-                        case UnitType.SKILL:
-                            break;
-                        case UnitType.FURNITURE:
-                            break;
-                        case UnitType.TAB:
-                            break;
-                        case UnitType.DIALOG:
-                            break;
-                        case UnitType.LOCATION:
-                            break;
-                        case UnitType.ENCOUNTER:
-                            break;
-                        default:
-                            break;
-                    }
+                        }
+                        switch (pair.Key)
+                        {
+                            case UnitType.RESOURCE:
+                                break;
+                            case UnitType.TASK:
+                                {
+                                    // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                                    // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
+                                    if (unit.TaskClicked)
+                                    {
+                                        arcaniaModel.Runner.StartActionExternally(unit.Data);
+                                    }
+                                }
+                                break;
+                            case UnitType.HOUSE:
+                                break;
+                            case UnitType.CLASS:
+                                break;
+                            case UnitType.SKILL:
+                                break;
+                            case UnitType.FURNITURE:
+                                break;
+                            case UnitType.TAB:
+                                break;
+                            case UnitType.DIALOG:
+                                break;
+                            case UnitType.LOCATION:
+                                break;
+                            case UnitType.ENCOUNTER:
+                                break;
+                            default:
+                                break;
+                        }
 
+                    }
                 }
             }
+            
         }
     }
 
