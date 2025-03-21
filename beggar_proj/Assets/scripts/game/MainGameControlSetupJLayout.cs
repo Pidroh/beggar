@@ -87,6 +87,7 @@ public class MainGameControlSetupJLayout
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
                     taskParent.AddLayoutAsChild(layoutRU);
                     layoutRU.SetText(0, separatorControl.SepD.Name);
+                    separatorControl.SeparatorLayout = layoutRU;
                 }
                 #endregion
 

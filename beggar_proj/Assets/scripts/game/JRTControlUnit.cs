@@ -43,6 +43,8 @@ public class JTabControlUnit
         }
 
         public TabRuntime.Separator SepD { get; }
+        public JLayoutRuntimeUnit SeparatorLayout { get; internal set; }
+        public bool Expanded { get; internal set; } = true;
     }
 }
 

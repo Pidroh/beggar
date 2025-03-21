@@ -7,10 +7,19 @@
         {
             foreach (var sep in tabControl.SeparatorControls)
             {
+                var process = false;
+                if (sep.SeparatorLayout.ClickedLayout) 
+                {
+                    sep.Expanded = !sep.Expanded;
+                    process = true;
+                }
+                if (sep.Expanded) process = true;
+                if (!process) continue;
                 foreach (var pair in sep.UnitGroupControls)
                 {
                     foreach (var unit in pair.Value)
                     {
+                        unit.MainLayout.SetParentShowing(sep.Expanded);
                         var visible = unit.Data?.Visible ?? false;
                         unit.MainLayout.SetVisibleSelf(visible);
                         UpdateChangeGroups(unit);

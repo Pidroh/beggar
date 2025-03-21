@@ -64,6 +64,7 @@
             "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
             "size": [100, -1],
             "padding": [7, 0, 2, 0],
+            
             "fixed_children": [
                 {
                     "type": "text",
@@ -127,6 +128,8 @@
             "comment": "Contains the header for stuff like ,,instant resources,,",
             "axis_mode": ["PARENT_SIZE_PERCENT", "SELF_SIZE"],
             "size": [100, 21],
+            "clickable": true,
+            "color_id": "background_upper_header",
             "fixed_children": [
                 {
                     "type": "text",
@@ -242,9 +245,14 @@
         }
     ],
     "colors": [
+        
         {
             "id": "background_content",
             "colors": ["f1f1f1ff", "343a4aff"]
+        },
+        {
+            "id": "background_upper_header",
+            "colors": ["e0e1f1ff", "e0e1f1ff"]
         },
         {
             "id": "main_text",
