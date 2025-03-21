@@ -109,6 +109,11 @@ namespace JLayout
             {
                 ld.Children = ReadChildren(layoutEntry["fixed_children"].Children, layoutMaster);
             }
+            if (layoutEntry.HasKey("clickable"))
+            {
+                ld.Clickable = layoutEntry["fixed_children"].AsBool;
+                
+            }
 
             return ld;
         }
@@ -193,10 +198,10 @@ namespace JLayout
                         break;
                     case ChildType.image:
                         childData.ImageKey = childEntry["image"].AsString;
-                        if (childEntry.HasKey("color_id")) 
+                        if (childEntry.HasKey("color_id"))
                         {
                             childData.ImageColorRef = master.ColorDatas.GetOrCreatePointer(childEntry["color_id"].AsString);
-                    
+
                         }
                         break;
                     default:
@@ -323,7 +328,7 @@ namespace JLayout
     public enum PositionMode
     {
         LEFT_ZERO, RIGHT_ZERO, CENTER, CENTER_RAW, SIBLING_DISTANCE,
-        SIBLING_DISTANCE_REVERSE, 
+        SIBLING_DISTANCE_REVERSE,
     }
 
     public class PointerHolder<T>
@@ -362,7 +367,7 @@ namespace JLayout
         public string Id;
         public T data;
 
-        
+
     }
 
     public class LayoutCommons
@@ -385,6 +390,9 @@ namespace JLayout
     public class LayoutData
     {
         public string Id => commons.Id;
+
+        public bool Clickable { get; internal set; }
+
         public LayoutCommons commons;
         public List<LayoutChildData> Children = new();
     }

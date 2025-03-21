@@ -95,12 +95,16 @@ namespace JLayout
 
         internal static JLayoutRuntimeUnit CreateLayout(LayoutData layoutD, JLayoutRuntimeData runtime)
         {
-            JLayoutRuntimeUnit jLayoutRuntimeUnit = CreateLayout();
-            jLayoutRuntimeUnit.LayoutData = layoutD;
+            JLayoutRuntimeUnit ru = CreateLayout();
+            if (layoutD.Clickable) 
+            { 
+                
+            }
+            ru.LayoutData = layoutD;
             if (layoutD.commons.ColorReference != null) 
             {
                 var color = layoutD.commons.ColorReference.data.Colors[0];
-                var img = jLayoutRuntimeUnit.RectTransform.gameObject.AddComponent<Image>();
+                var img = ru.RectTransform.gameObject.AddComponent<Image>();
                 img.color = color;
             }
             foreach (var childData in layoutD.Children)
@@ -111,32 +115,32 @@ namespace JLayout
                         {
                             (JLayoutRuntimeUnit buttonLayout, UIUnit uiUnit) = CreateButton(childData.ButtonRef.data, runtime);
                             // will have to fuse commons data eventually
-                            var child = jLayoutRuntimeUnit.AddLayoutAsChild(buttonLayout, childData);
+                            var child = ru.AddLayoutAsChild(buttonLayout, childData);
                             child.UiUnit = uiUnit;
 
-                            jLayoutRuntimeUnit.BindButton(buttonLayout, child);
+                            ru.BindButton(buttonLayout, child);
                         }
                         break;
                     case { TextRef: not null }:
                         {
                             JLayoutChild textChild = CreateText(childData, childData.TextRef.data, runtime);
-                            jLayoutRuntimeUnit.AddChild(textChild);
-                            jLayoutRuntimeUnit.BindText(textChild);
+                            ru.AddChild(textChild);
+                            ru.BindText(textChild);
                         }
                         break;
                     case { ImageKey: not null }:
                         {
                             JLayoutChild imageChild = CreateImage(childData, runtime);
-                            jLayoutRuntimeUnit.AddChild(imageChild);
-                            jLayoutRuntimeUnit.BindImage(imageChild);
+                            ru.AddChild(imageChild);
+                            ru.BindImage(imageChild);
                         }
                         break;
                     default:
                         break;
                 }
             }
-            jLayoutRuntimeUnit.RectTransform.gameObject.name = "layout_" + layoutD.Id;
-            return jLayoutRuntimeUnit;
+            ru.RectTransform.gameObject.name = "layout_" + layoutD.Id;
+            return ru;
         }
 
         public static JLayoutChild CreateImage(LayoutChildData childData, JLayoutRuntimeData runtime) 
