@@ -119,22 +119,21 @@ namespace JLayout
 
                 #region position calculation
 
-
-
                 for (int axis = 0; axis < 2; axis++)
                 {
                     var pm = positionModes[axis];
+                    var pos = child.Commons.PositionOffsets;
                     switch (pm)
                     {
                         case PositionMode.LEFT_ZERO:
                             Debug.Assert(axis == 0);
                             // If this breaks because it's messing up with the anchors, you can create a variation where you take into account parent width
                             // that should allow you to write the code without changing the anchors? Pivot? etc
-                            childRect.SetLeftXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            childRect.SetLeftXToParent((padding.left + pos.x) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             break;
                         case PositionMode.RIGHT_ZERO:
                             Debug.Assert(axis == 0);
-                            childRect.SetRightXToParent(padding.right * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            childRect.SetRightXToParent((padding.right + pos.x) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             break;
                         case PositionMode.CENTER:
                             //childRect.SetPivotAndAnchors(new Vector2(0.5f, 0.5f));

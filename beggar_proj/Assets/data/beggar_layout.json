@@ -139,12 +139,15 @@
                     "text_horizontal": "CENTER"
                 },
                 {
-                    "type": "button",
-                    "id": "expander_arrow_mini",
-                    "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
-                    "size": [21, 100],
-                    "position_mode": ["RIGHT_ZERO", "CENTER"]
+                    "type": "image",
+                    "image": "arrow",
+                    "color_id": "mid_expander_arrow",
+                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+                    "position_mode": ["RIGHT_ZERO", "CENTER"],
+                    "position": [4, 0],
+                    "size": [8, 6]
                 }
+                
             ]
         }
 
