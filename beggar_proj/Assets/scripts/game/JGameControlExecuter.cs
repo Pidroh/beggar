@@ -8,6 +8,7 @@
             foreach (var sep in tabControl.SeparatorControls)
             {
                 var process = false;
+                var shouldShowSep = false;
                 if (sep.SeparatorLayout.ClickedLayout) 
                 {
                     sep.Expanded = !sep.Expanded;
@@ -26,6 +27,8 @@
                         unit.MainLayout.SetParentShowing(sep.Expanded);
                         var visible = unit.Data?.Visible ?? false;
                         unit.MainLayout.SetVisibleSelf(visible);
+                        if (!visible) continue;
+                        shouldShowSep = true;
                         UpdateChangeGroups(unit);
                         var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
                         bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
@@ -77,6 +80,7 @@
 
                     }
                 }
+                sep.SeparatorLayout.SetVisibleSelf(shouldShowSep);
             }
             
         }
