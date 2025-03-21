@@ -20,6 +20,7 @@ public class TabRuntime
 
     public class Separator {
         public List<UnitType> AcceptedUnitTypes = new();
+        public List<RuntimeUnit> BoundRuntimeUnits = new();
         public bool RequireMax;
         public bool RequireInstant;
         public bool Default;

@@ -63,7 +63,7 @@ public class JsonReader
                 }
                 return textKey;
             }
-            if(mod.ModType == ModType.Speed) 
+            if (mod.ModType == ModType.Speed)
             {
                 mod.HumanText = $"Speed % {Local.GetText(targetTextKey)}:";
             }
@@ -161,6 +161,34 @@ public class JsonReader
                 u.ConfigTask.Need.humanExpression = ConditionalExpressionParser.ToHumanLanguage(u.ConfigTask.Need.expression);
             }
         }
+        #region assign each runtime unit to a separator
+        foreach (var dataList in arcaniaDatas.datas)
+        {
+            if (dataList.Key == UnitType.TAB) continue;
+            foreach (var item in dataList.Value)
+            {
+                // this code doesn't handle well having multiple tabs accepting the same unit type
+                // EXAMPLE NON_SUPPORTED:
+                // - Tab 1: Holy Resources
+                // - Tab 2: Dark Resources
+                foreach (var tabCandidates in arcaniaDatas.datas[UnitType.TAB])
+                {
+                    if (tabCandidates.Tab.AcceptedUnitTypes.Count > 0 && !tabCandidates.Tab.AcceptedUnitTypes.Contains(dataList.Key)) continue;
+                    TabRuntime.Separator unitSeparator = null;
+                    foreach (var separatorCandidate in tabCandidates.Tab.Separators)
+                    {
+                        if (separatorCandidate.RequireMax && !item.HasMax) continue;
+                        if (separatorCandidate.RequireInstant && item.ConfigTask.Duration > 0) continue;
+                        unitSeparator = separatorCandidate;
+                        if (!separatorCandidate.Default) break;
+                    }
+                    if (unitSeparator == null && tabCandidates.Tab.Separators.Count > 0) continue;
+                    unitSeparator.BoundRuntimeUnits.Add(item);
+                }
+
+            }   
+        }
+        #endregion
         #region check broken pointers
         foreach (var item in arcaniaDatas.IdMapper.Values)
         {
