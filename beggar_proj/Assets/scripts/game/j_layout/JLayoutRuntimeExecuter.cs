@@ -24,7 +24,7 @@ namespace JLayout
 
                 // layout code
                 var contentRect = parentLayout.ContentTransform;
-
+                // width is solved first so you can know how wide text is
                 #region solve layout width
                 SolveLayoutWidth(parentLayout, contentRect);
                 #endregion
@@ -63,6 +63,7 @@ namespace JLayout
                     case AxisMode.PARENT_SIZE_PERCENT:
                     case AxisMode.PARENT_SIZE_PERCENT_RAW:
                         // var sizeRatio = 1f;
+                        // doing this in the code above, width is solved first (because of text reasons)
                         if (yAxis == 0)
                         {
                         }
@@ -78,6 +79,7 @@ namespace JLayout
                     case AxisMode.CONTAIN_CHILDREN:
                         break;
                     case AxisMode.FILL_REMAINING_SIZE:
+                        Debug.LogError("Not supported yet (will complicate the implementation)");
                         break;
                     case AxisMode.TEXT_PREFERRED:
                         height = child.UiUnit.text.preferredHeight;
@@ -223,7 +225,7 @@ namespace JLayout
                         widthOfContentForComsumptionPhysical -= actualWidth;
                         break;
                     case AxisMode.CONTAIN_CHILDREN:
-                        Debug.LogError("Not supported");
+                        Debug.LogError("Not supported for width. Will complicate the implementation.");
                         break;
                     case AxisMode.FILL_REMAINING_SIZE:
                         fillUpChildren.Add(child);

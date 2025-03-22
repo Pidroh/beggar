@@ -231,6 +231,29 @@
                     "size": [36, 20]
                 }
             ]
+        },
+        {
+            "id": "tab_button_desktop",
+            "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+            "size": [55, 55],
+            "position_mode": ["CENTER", "SIBLING_DISTANCE"],
+            "fixed_children": [
+                {
+                    "type": "image",
+                    "image": "circle",
+                    "color_id": "blue_selection_circle",
+                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+                    "position_mode": ["CENTER", "CENTER"],
+                    "size": [48, 48]
+                },
+                {
+                    "type": "image",
+                    "image": "circle",
+                    "comment": "this is for the little icon that changes",
+                    "position_mode": ["CENTER", "CENTER"],
+                    "size": [32, 32]
+                }
+            ]
         }
     ],
     "colors": [
