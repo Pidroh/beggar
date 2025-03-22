@@ -174,10 +174,11 @@ public class JsonReader
                 // - Tab 2: Dark Resources
                 foreach (var tabCandidates in arcaniaDatas.datas[UnitType.TAB])
                 {
-                    if (tabCandidates.Tab.AcceptedUnitTypes.Count > 0 && !tabCandidates.Tab.AcceptedUnitTypes.Contains(dataList.Key)) continue;
+                    
                     TabRuntime.Separator unitSeparator = null;
                     foreach (var separatorCandidate in tabCandidates.Tab.Separators)
                     {
+                        if (separatorCandidate.AcceptedUnitTypes.Count > 0 && !separatorCandidate.AcceptedUnitTypes.Contains(dataList.Key)) continue;
                         if (separatorCandidate.RequireMax && !item.HasMax) continue;
                         if (separatorCandidate.RequireInstant && item.ConfigTask.Duration > 0) continue;
                         unitSeparator = separatorCandidate;
