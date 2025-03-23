@@ -159,8 +159,31 @@
             "id": "left_tab_menu_desktop",
             "axis_mode":["SELF_SIZE", "PARENT_SIZE_PERCENT"],
             "size":[55, 100]
+        },
+        {
+            "id": "tab_button_desktop_as_layout",
+            "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+            "size": [55, 55],
+            "position_mode": ["CENTER", "SIBLING_DISTANCE"],
+            "fixed_children": [
+                {
+                    "type": "image",
+                    "image": "circle",
+                    "color_id": "blue_selection_circle",
+                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+                    "position_mode": ["CENTER", "CENTER"],
+                    "size": [48, 48]
+                },
+                {
+                    "type": "image",
+                    "image": "circle",
+                    "comment": "this is for the little icon that changes",
+                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
+                    "position_mode": ["CENTER", "CENTER"],
+                    "size": [32, 32]
+                }
+            ]
         }
-
     ],
     "texts": [
         {
@@ -241,30 +264,8 @@
                     "size": [36, 20]
                 }
             ]
-        },
-        {
-            "id": "tab_button_desktop",
-            "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
-            "size": [55, 55],
-            "position_mode": ["CENTER", "SIBLING_DISTANCE"],
-            "fixed_children": [
-                {
-                    "type": "image",
-                    "image": "circle",
-                    "color_id": "blue_selection_circle",
-                    "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
-                    "position_mode": ["CENTER", "CENTER"],
-                    "size": [48, 48]
-                },
-                {
-                    "type": "image",
-                    "image": "circle",
-                    "comment": "this is for the little icon that changes",
-                    "position_mode": ["CENTER", "CENTER"],
-                    "size": [32, 32]
-                }
-            ]
         }
+        
     ],
     "colors": [
         
@@ -311,7 +312,12 @@
         {
             "id": "mid_expander_arrow",
             "colors": ["686868ff", "686868ff"]
+        },
+        {
+            "id": "blue_selection_circle",
+            "colors": ["8fd8edff", "8fd8edff"]
         }
+
     ],
     "color_presets": ["light", "dark"]
 }

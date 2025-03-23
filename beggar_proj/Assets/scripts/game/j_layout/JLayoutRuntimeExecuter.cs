@@ -19,10 +19,11 @@ namespace JLayout
                 foreach (var item in menus)
                 {
                     item.RectTransform.FillParentHeight();
-                    float axisSize = item.LayoutData.commons.Size[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                    float axisSize = item.LayoutData.commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
                     item.RectTransform.SetWidth(axisSize);
-                    offset += axisSize;
                     item.RectTransform.SetLeftXToParent(offset);
+                    offset += axisSize;
+                    ProcessChildren(item);
                 }
             }
 
@@ -37,16 +38,20 @@ namespace JLayout
                 offset += newSize;
                 mainCanvasChild.RectTransform.gameObject.SetActive(mainCanvasChild.Children.Count > 0);
                 if (mainCanvasChild.Children.Count == 0) continue;
-
-                // layout code
-                var contentRect = parentLayout.ContentTransform;
-                // width is solved first so you can know how wide text is
-                #region solve layout width
-                SolveLayoutWidth(parentLayout, contentRect);
-                #endregion
-
-                TemporarySolveHeightAndPosition(parentLayout, contentRect);
+                ProcessChildren(parentLayout);
             }
+        }
+
+        private static void ProcessChildren(JLayoutRuntimeUnit parentLayout)
+        {
+            // layout code
+            var contentRect = parentLayout.ContentTransform;
+            // width is solved first so you can know how wide text is
+            #region solve layout width
+            SolveLayoutWidth(parentLayout, contentRect);
+            #endregion
+
+            TemporarySolveHeightAndPosition(parentLayout, contentRect);
         }
 
         private static void TemporarySolveHeightAndPosition(JLayoutRuntimeUnit parentLayout, RectTransform contentRect)

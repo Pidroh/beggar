@@ -49,6 +49,14 @@ public class MainGameControlSetupJLayout
         // -------------------------------------------------
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
+            {
+                var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
+                var d = Direction.WEST;
+                var buttonLayRU = JCanvasMaker.CreateLayout(buttonLD, runtime);
+                jControlDataHolder.tabMenu[d].AddLayoutAsChild(buttonLayRU);
+            }
+            
+
             var taskParent = jCanvas.children[tabIndex];
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
 

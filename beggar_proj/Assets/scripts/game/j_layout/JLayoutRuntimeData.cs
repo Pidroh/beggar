@@ -89,7 +89,7 @@ namespace JLayout
 
         public RectTransform ContentTransformOverride { get; internal set; }
         public LayoutData LayoutData { get; internal set; }
-        public RectTransform ContentTransform => ContentTransformOverride ?? RectTransform;
+        public RectTransform ContentTransform => ContentTransformOverride == null ? RectTransform : ContentTransformOverride;
         public AxisMode[] OverrideAxisMode { internal get; set; }
         public AxisMode[] AxisMode => OverrideAxisMode ?? LayoutData.commons?.AxisModes;
 
