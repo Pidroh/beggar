@@ -10,6 +10,22 @@ namespace JLayout
         public static void ManualUpdate(JLayoutRuntimeData data)
         {
             var offset = 0f;
+            using var _1 = DictionaryPool<Direction, float>.Get(out var offsetDirections);
+            // multi direction loop eventually
+            // foreach (var d in EnumHelper<Direction>.GetAllValues())
+            {
+                Direction d = Direction.WEST;
+                var menus = data.jLayCanvas.FixedMenus[d];
+                foreach (var item in menus)
+                {
+                    item.RectTransform.FillParentHeight();
+                    float axisSize = item.LayoutData.commons.Size[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                    item.RectTransform.SetWidth(axisSize);
+                    offset += axisSize;
+                    item.RectTransform.SetLeftXToParent(offset);
+                }
+            }
+
             foreach (var mainCanvasChild in data.jLayCanvas.childrenForLayouting)
             {
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
