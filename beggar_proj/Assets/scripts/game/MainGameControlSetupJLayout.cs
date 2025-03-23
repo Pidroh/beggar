@@ -31,7 +31,19 @@ public class MainGameControlSetupJLayout
             DisableAutoScaling = true
 
         }, 2);
-
+        #region tab menu layouts
+        jCanvas.FixedMenus[Direction.WEST] = new();
+        jCanvas.FixedMenus[Direction.SOUTH] = new();
+        for (int i = 0; i < 2; i++)
+        {
+            var layoutD = layoutMaster.LayoutDatas.GetData(i == 0 ? "lower_tab_menu_mobile" : "left_tab_menu_desktop");
+            JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+            Direction dir = i == 0 ? Direction.SOUTH : Direction.WEST;
+            JCanvasMaker.AddFixedMenu(jCanvas, dir, layoutRU);
+            // jCanvas.FixedMenus[dir].Add(layoutRU);
+            jControlDataHolder.tabMenu[dir] = layoutRU;
+        }
+        #endregion
         // -------------------------------------------------
         // TAB BUTTON INSTANTIATING (not yet implemented button instantiation) AND OTHER SMALL SETUP
         // -------------------------------------------------
@@ -39,7 +51,6 @@ public class MainGameControlSetupJLayout
         {
             var taskParent = jCanvas.children[tabIndex];
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
-
 
             var tcu = new JTabControlUnit();
             foreach (var sepD in item.Tab.Separators)

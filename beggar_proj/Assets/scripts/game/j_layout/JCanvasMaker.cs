@@ -77,6 +77,11 @@ namespace JLayout
             return dc;
         }
 
+        internal static void AddFixedMenu(JLayCanvas jCanvas, Direction dir, JLayoutRuntimeUnit layoutRU)
+        {
+            jCanvas.FixedMenus[dir].Add(layoutRU);
+            layoutRU.RectTransform.SetParent(jCanvas.RootRT);
+        }
 
         private static JLayoutRuntimeUnit CreateLayout()
         {

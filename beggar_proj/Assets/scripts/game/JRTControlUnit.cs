@@ -1,4 +1,5 @@
 ﻿using HeartUnity;
+using HeartUnity.View;
 using JLayout;
 using System.Collections.Generic;
 
@@ -26,6 +27,7 @@ public class JResourceChangeGroup
 public class JGameControlDataHolder
 {
     public List<JTabControlUnit> TabControlUnits = new();
+    public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
 }
 
 public class JTabControlUnit

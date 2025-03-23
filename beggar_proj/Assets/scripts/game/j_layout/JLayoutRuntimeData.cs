@@ -204,7 +204,7 @@ namespace JLayout
         public RectTransform RootRT { get; internal set; }
         public List<JLayoutRuntimeUnit> children = new List<JLayoutRuntimeUnit>();
         public List<JLayoutRuntimeUnit> childrenForLayouting = new List<JLayoutRuntimeUnit>();
-        public Dictionary<Direction, List<JLayoutRuntimeUnit>> FixedMenus = new();
+        internal Dictionary<Direction, List<JLayoutRuntimeUnit>> FixedMenus = new();
         public RectTransform OverlayRoot { get; internal set; }
         public Queue<JLayoutRuntimeUnit> ActiveChildren = new();
 
