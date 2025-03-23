@@ -149,6 +149,16 @@
                 }
                 
             ]
+        },
+        {
+            "id": "lower_tab_menu_mobile",
+            "axis_mode":["PARENT_SIZE_PERCENT", "SELF_SIZE"],
+            "size":[100, 55]
+        },
+        {
+            "id": "left_tab_menu_desktop",
+            "axis_mode":["SELF_SIZE", "PARENT_SIZE_PERCENT"],
+            "size":[55, 100]
         }
 
     ],
