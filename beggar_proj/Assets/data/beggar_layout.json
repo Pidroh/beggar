@@ -1,6 +1,34 @@
 {
     "layouts": [
         {
+            "id": "master",
+            "comment": "Whole game layout",
+            "color_id": "background",
+            "axis_mode": ["FULL_CANVAS", "FULL_CANVAS"],
+            "fixed_children": [
+                {
+                    "id": "left_tab_menu_desktop",
+                    "axis_mode": ["SELF_SIZE", "PARENT_SIZE_PERCENT"],
+                    "position_mode": ["LEFT_ZERO", "CENTER"]
+                },
+                {
+                    "id": "lower_tab_menu_mobile",
+                    "axis_mode": ["PARENT_SIZE_PERCENT", "SELF_SIZE"],
+                    "position_mode": ["CENTER", "BOTTOM_ZERO"]
+                },
+                {
+                    "id": "content_column_1",
+                    "axis_mode": ["FILL_REMAINING_SIZE", "FILL_REMAINING_SIZE"],
+                    "position_mode":["SIBLING_DISTANCE"]
+                },
+                {
+                    "id": "content_column_1",
+                    "axis_mode": ["FILL_REMAINING_SIZE", "FILL_REMAINING_SIZE"],
+                    "position_mode":["SIBLING_DISTANCE"]
+                }
+            ]
+        },
+        {
             "id": "content_holder_expandable",
             "comment": "Used for all the main parts of content in each scroll, like task buttons and resources",
             "color_id": "background_content",
