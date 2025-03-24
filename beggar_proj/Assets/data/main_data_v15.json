@@ -2287,7 +2287,7 @@
                     "TASK",
                     "CLASS"
                 ],
-                "icon" : "task",
+                "icon" : "tab_tasks",
                 "separator": [
                     {
                         "id": "action",
@@ -2328,7 +2328,7 @@
                 "unit_types": [
                     "RESOURCE"
                 ],
-                "icon" : "resource",
+                "icon" : "tab_resources",
                 "separator": [
                     {
                         "id": "resource",
@@ -2343,7 +2343,7 @@
                     "SKILL"
                 ],
                 "require": "t_job",
-                "icon" : "skill",
+                "icon" : "tab_skills",
                 "separator": [
                     {
                         "id": "skill",
@@ -2361,7 +2361,7 @@
                 "unit_types": [
                     "LOCATION"
                 ],
-                "icon" : "location",
+                "icon" : "tab_exploration_c",
                 "separator": [
                     {
                         "id": "location",
@@ -2376,7 +2376,7 @@
                     "HOUSE", "FURNITURE"
                 ],
                 "require": "t_job",
-                "icon" : "housing",
+                "icon" : "tab_housing",
                 "separator": [
                     {
                         "id": "housing",
@@ -2400,7 +2400,7 @@
                 "unit_types": [
                 ],
                 "contains_logs": true,
-                "icon" : "logs",
+                "icon" : "tab_log",
                 "separator": [
                     {
                         "id": "log",
@@ -2413,14 +2413,14 @@
                 "id": "settings",
                 "unit_types": [
                 ],
-                "icon" : "settings",
+                "icon" : "tab_config",
                 "open_settings": true
             },
             {
                 "id": "others",
                 "unit_types": [
                 ],
-                "icon" : "others",
+                "icon" : "tab_plus",
                 "open_other_tabs": true
             }
         ]
