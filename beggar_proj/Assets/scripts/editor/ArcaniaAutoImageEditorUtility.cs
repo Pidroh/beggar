@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using System.IO;
 
 public class ArcaniaAutoImageEditorUtility : EditorWindow
 {
@@ -25,14 +24,15 @@ public class ArcaniaAutoImageEditorUtility : EditorWindow
             return;
         }
 
-        // Get all sprites in the folder "Assets/view/images"
-        string folderPath = "Assets/view/images";
-        string[] spritePaths = Directory.GetFiles(folderPath, "*.png", SearchOption.AllDirectories);
+        // Use AssetDatabase.FindAssets to search for all Sprite assets in the "Assets/view/images" folder
+        string spriteFolder = "Assets/view/images";
+        string[] spriteGUIDs = AssetDatabase.FindAssets("t:Sprite", new[] { spriteFolder });
 
-        foreach (var spritePath in spritePaths)
+        foreach (var spriteGUID in spriteGUIDs)
         {
-            string relativePath = "Assets" + spritePath.Substring(Application.dataPath.Length);
-            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(relativePath);
+            // Convert GUID to asset path
+            string spritePath = AssetDatabase.GUIDToAssetPath(spriteGUID);
+            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
 
             if (sprite != null)
             {

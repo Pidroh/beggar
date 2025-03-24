@@ -20,10 +20,30 @@ MonoBehaviour:
   spritesForLayout:
     spritesList:
     - _key: 
+      sprite: {fileID: 21300000, guid: e6fc9b1fdbe083245bfcdcfc395cedbf, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 0abaf0baf7205dd4caa0fddb258875b7, type: 3}
+    - _key: 
       sprite: {fileID: 21300000, guid: f7abc5a21f192794bad0cd0a488e14ee, type: 3}
     - _key: 
       sprite: {fileID: 21300000, guid: 4f309ae56618f034aba5941066b6251c, type: 3}
     - _key: 
+      sprite: {fileID: 21300000, guid: ed79877e95af2fa4885ed5f07a17f8da, type: 3}
+    - _key: 
       sprite: {fileID: 21300000, guid: dd12cd71ce3b4fa4398375e969a6bc31, type: 3}
     - _key: 
-      sprite: {fileID: 21300000, guid: e6fc9b1fdbe083245bfcdcfc395cedbf, type: 3}
+      sprite: {fileID: 21300000, guid: ad0b853259f3b624db04964dea0b73a3, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: c2894ec2febe1f34b8707dcc46cd23d5, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: c09bc366d73f97440ab2be86033c04d2, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 7f0a638bc44405a4d8fbee25004a94b9, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: e40ac6583ef6220448ffba4f63b04001, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: 88dc784176b89bf458519438cf15ad33, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: e32f94f1e93e1b243926f3dbd7b44967, type: 3}
+    - _key: 
+      sprite: {fileID: 21300000, guid: b790c32ea34f79247ba7a2d9afcc6e70, type: 3}
