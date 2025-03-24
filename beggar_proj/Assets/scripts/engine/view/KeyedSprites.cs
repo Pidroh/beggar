@@ -51,5 +51,15 @@ namespace HeartUnity.View
             public Sprite sprite;
 
         }
+
+#if UNITY_EDITOR
+        public void Add(Sprite sprite)
+        {
+            spritesList.Add(new KeyedSprite() { 
+                _key = "",
+                sprite = sprite
+            });
+        }
+#endif
     }
 }
