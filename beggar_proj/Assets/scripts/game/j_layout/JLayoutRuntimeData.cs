@@ -285,5 +285,10 @@ namespace JLayout
         {
             return Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
         }
+
+        internal bool IsChildVisible(int tabIndex)
+        {
+            return ActiveChildren.Contains(children[tabIndex]);
+        }
     }
 }

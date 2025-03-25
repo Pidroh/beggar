@@ -8,10 +8,15 @@
             JTabControlUnit tabControl = controlData.TabControlUnits[tabIndex];
             // open other tabs currently just invisible for now
             bool tabEnabled = tabControl.TabData.Visible && !tabControl.TabData.Tab.OpenOtherTabs;
+            
             tabControl.DesktopButton.SetVisibleSelf(tabEnabled);
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
-            bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
+            if (!tabEnabled) continue;
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
+            bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
+            tabControl.DesktopButton.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
+            bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
+            
             if (clickedTabButton)
             {
                 if (tabControl.TabData.Tab.OpenSettings)
