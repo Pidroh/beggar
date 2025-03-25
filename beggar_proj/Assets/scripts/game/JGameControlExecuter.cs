@@ -5,6 +5,7 @@
         var arcaniaModel = mgc.arcaniaModel;
         foreach (var tabControl in controlData.TabControlUnits)
         {
+            tabControl.DesktopButton.SetVisibleSelf(tabControl.TabData.Visible);
             foreach (var sep in tabControl.SeparatorControls)
             {
                 var process = false;

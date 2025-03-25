@@ -50,6 +50,7 @@ public class MainGameControlSetupJLayout
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
+            var tcu = new JTabControlUnit();
             {
                 var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
                 var d = Direction.WEST;
@@ -65,14 +66,13 @@ public class MainGameControlSetupJLayout
                 {
                     buttonLayRU.ImageChildren[1].UiUnit.ChangeSprite(sprite);
                 }
-                
+                tcu.DesktopButton = buttonLayRU;
             }
             
 
             var taskParent = jCanvas.children[tabIndex];
-            
 
-            var tcu = new JTabControlUnit();
+            tcu.TabData = item;
             foreach (var sepD in item.Tab.Separators)
             {
                 tcu.SeparatorControls.Add(new JTabControlUnit.JSeparatorControl(sepD));

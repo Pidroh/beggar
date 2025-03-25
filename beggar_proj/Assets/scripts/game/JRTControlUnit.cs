@@ -34,6 +34,10 @@ public class JTabControlUnit
 {
     //public Dictionary<UnitType, List<JRTControlUnit>> UnitGroupControls = new();
     public List<JSeparatorControl> SeparatorControls = new();
+
+    public RuntimeUnit TabData { get; internal set; }
+    public JLayoutRuntimeUnit DesktopButton { get; internal set; }
+
     public class JSeparatorControl 
     {
         //public List<JRTControlUnit> ControlUnits = new();

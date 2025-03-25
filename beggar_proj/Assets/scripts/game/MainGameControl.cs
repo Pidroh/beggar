@@ -181,6 +181,8 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         // Dialog
         // -----------------------------------------------------------
+        #region dialog
+        
         if (arcaniaModel.Dialog.ShouldShow != dynamicCanvas.IsDialogActive)
         {
             var dialog = arcaniaModel.Dialog.ActiveDialog;
@@ -201,15 +203,19 @@ public class MainGameControl : MonoBehaviour
         {
             arcaniaModel.Dialog.DialogComplete(1);
         }
+        #endregion
         // -----------------------------------------------------------
         // Calculate how many tab buttons can be shown as small buttons
         // -----------------------------------------------------------
+        #region Calculate how many tab buttons can be shown as small buttons
         var widthMM = dynamicCanvas.LowerMenus[0].SelfChild.RectTransform.GetWidthMilimeters();
         var maxNumberOfLowerTabButtons = Mathf.FloorToInt(widthMM / 10f);
         // Count -1 because onf the tab control units is the one to show others
         var allTabButtonVisiblesInLowerMenu = (TabControlUnits.Count - 1) <= maxNumberOfLowerTabButtons;
         var actualMaxOfLowerTabButtonsWithoutOtherButton = maxNumberOfLowerTabButtons;
         if (!allTabButtonVisiblesInLowerMenu) actualMaxOfLowerTabButtonsWithoutOtherButton--;
+        #endregion
+
         // -----------------------------------------------------------
         // Main update loop
         // -----------------------------------------------------------

@@ -118,9 +118,6 @@ namespace JLayout
                     height = child.Rect.GetHeight();
                 }
 
-
-
-
                 #endregion
 
                 var positionModes = child.PositionModes ?? defaultPositionModes;
