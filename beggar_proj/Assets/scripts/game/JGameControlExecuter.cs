@@ -9,6 +9,33 @@
             bool tabVisible = tabControl.TabData.Visible;
             tabControl.DesktopButton.SetVisibleSelf(tabControl.TabData.Visible);
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
+            bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
+            var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
+            if (clickedTabButton)
+            {
+                if (tabControl.TabData.Tab.OpenSettings)
+                {
+                    // GoToSettings();
+                }
+                else if (tabControl.TabData.Tab.OpenOtherTabs)
+                {
+                    // dynamicCanvas.ShowOverlay(this.TabButtonOverlayLayout);
+
+                }
+                else if (dynamicCanvas.CanShowOnlyOneChild())
+                {
+                    dynamicCanvas.ShowChild(tabIndex);
+                }
+                else
+                {
+                    dynamicCanvas.ToggleChild(tabIndex);
+                }
+                /*if (tabControl.SelectionButtonLarge.Button.Clicked)
+                {
+                    dynamicCanvas.HideOverlay();
+                }
+                */
+            }
             foreach (var sep in tabControl.SeparatorControls)
             {
                 var process = false;

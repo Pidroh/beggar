@@ -208,6 +208,11 @@ namespace JLayout
         public RectTransform OverlayRoot { get; internal set; }
         public Queue<JLayoutRuntimeUnit> ActiveChildren = new();
 
+        private const int minimumDefaultTabPixelWidth = 320;
+
+        // Pixel size adjusted from fall back DPI to actual DPI
+        public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
+
         internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
 
         internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);
@@ -224,12 +229,34 @@ namespace JLayout
             }
         }
 
+        public void ToggleChild(int childIndex)
+        {
+            ToggleChild(children[childIndex]);
+        }
+
+        internal void ToggleChild(JLayoutRuntimeUnit layoutParent)
+        {
+            if (ActiveChildren.Contains(layoutParent))
+            {
+                HideChild(layoutParent);
+            }
+            else
+            {
+                ShowChild(layoutParent);
+            }
+        }
+
         internal void ShowChild(JLayoutRuntimeUnit layoutParent)
         {
             if (ActiveChildren.Contains(layoutParent)) return;
             while (childrenForLayouting.Remove(layoutParent)) { }
             childrenForLayouting.Insert(0, layoutParent);
             ActiveChildren.Enqueue(layoutParent);
+        }
+
+        public void ShowChild(int childIndex)
+        {
+            ShowChild(children[childIndex]);
         }
 
         internal void EnableChild(int tabIndex, bool enabled)
@@ -241,6 +268,22 @@ namespace JLayout
             {
                 HideChild(children[tabIndex]);
             }
+        }
+
+        internal bool CanShowOnlyOneChild()
+        {
+            return CalculateNumberOfVisibleHorizontalChildren() <= 1;
+        }
+
+        public int CalculateNumberOfVisibleHorizontalChildren()
+        {
+            var physicalTabPixelSize = GetAdjustedMinimumTabPixelWidth();
+            return Mathf.Max(Mathf.FloorToInt(Screen.width / physicalTabPixelSize), 1);
+        }
+
+        private float GetAdjustedMinimumTabPixelWidth()
+        {
+            return Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
         }
     }
 }
