@@ -6,9 +6,10 @@
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
             JTabControlUnit tabControl = controlData.TabControlUnits[tabIndex];
-            bool tabVisible = tabControl.TabData.Visible;
-            tabControl.DesktopButton.SetVisibleSelf(tabControl.TabData.Visible);
-            mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
+            // open other tabs currently just invisible for now
+            bool tabEnabled = tabControl.TabData.Visible && !tabControl.TabData.Tab.OpenOtherTabs;
+            tabControl.DesktopButton.SetVisibleSelf(tabEnabled);
+            mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
             bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
             if (clickedTabButton)
