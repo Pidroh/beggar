@@ -49,16 +49,28 @@ public class MainGameControlSetupJLayout
         // -------------------------------------------------
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
+            RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             {
                 var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
                 var d = Direction.WEST;
                 var buttonLayRU = JCanvasMaker.CreateLayout(buttonLD, runtime);
                 jControlDataHolder.tabMenu[d].AddLayoutAsChild(buttonLayRU);
+
+                var sprite = item.ConfigBasic.SpriteKey == null ? null : mgc.ResourceJson.spritesForLayout[item.ConfigBasic.SpriteKey];
+                if (sprite == null)
+                {
+                    Debug.Log("Sprite key not found "+ item.ConfigBasic.SpriteKey);
+                }
+                else 
+                {
+                    buttonLayRU.ImageChildren[1].UiUnit.ChangeSprite(sprite);
+                }
+                
             }
             
 
             var taskParent = jCanvas.children[tabIndex];
-            RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
+            
 
             var tcu = new JTabControlUnit();
             foreach (var sepD in item.Tab.Separators)

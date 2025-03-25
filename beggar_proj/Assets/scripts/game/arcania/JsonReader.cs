@@ -551,6 +551,7 @@ public class JsonReader
                 }
 
             }
+            if (pair.Key == "icon") bu.SpriteKey = pair.Value.AsString;
         }
         // default require for RESOURCE
         if (ru.ConfigBasic.UnitType == UnitType.RESOURCE && ru.ConfigBasic.Require == null)
@@ -596,6 +597,7 @@ public class ConfigBasic
     public ConditionalExpression Require { get; internal set; }
     public List<IDPointer> Tags { get; } = new();
     public UnitType UnitType { get; internal set; }
+    public string SpriteKey { get; internal set; }
 }
 
 public enum UnitType
