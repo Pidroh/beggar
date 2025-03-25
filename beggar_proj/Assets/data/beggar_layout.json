@@ -165,6 +165,7 @@
             "axis_mode": ["SELF_SIZE", "SELF_SIZE"],
             "size": [55, 55],
             "position_mode": ["CENTER", "SIBLING_DISTANCE"],
+            "clickable": true,
             "fixed_children": [
                 {
                     "type": "image",

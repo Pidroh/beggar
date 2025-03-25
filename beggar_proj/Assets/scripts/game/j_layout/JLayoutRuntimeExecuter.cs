@@ -30,14 +30,20 @@ namespace JLayout
             foreach (var mainCanvasChild in data.jLayCanvas.childrenForLayouting)
             {
                 JLayoutRuntimeUnit parentLayout = mainCanvasChild;
+                parentLayout.SetVisibleSelf(data.jLayCanvas.ActiveChildren.Contains(parentLayout) && mainCanvasChild.Children.Count > 0);
+                if (!parentLayout.Visible)
+                {
+                    continue;
+                }
+
                 // temporary code
                 float newSize = 320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
                 parentLayout.RectTransform.SetWidth(newSize);
                 // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.RectTransform.SetLeftXToParent(offset);
                 offset += newSize;
-                mainCanvasChild.RectTransform.gameObject.SetActive(mainCanvasChild.Children.Count > 0);
-                if (mainCanvasChild.Children.Count == 0) continue;
+                
+                
                 ProcessChildren(parentLayout);
             }
         }
@@ -113,7 +119,7 @@ namespace JLayout
                     height = Mathf.Max(height.Value, child.Commons.MinSize[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                     child.Rect.SetHeight(height.Value);
                 }
-                else 
+                else
                 {
                     height = child.Rect.GetHeight();
                 }
