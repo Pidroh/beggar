@@ -20,7 +20,7 @@ public class MainGameControlSetupJLayout
         runtime.ImageSprites = mgc.ResourceJson.spritesForLayout;
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         runtime.jLayCanvas = jCanvas;
-        mgc.LayoutRuntime = runtime;
+        mgc.JLayoutRuntime = runtime;
         JGameControlDataHolder jControlDataHolder = new();
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;

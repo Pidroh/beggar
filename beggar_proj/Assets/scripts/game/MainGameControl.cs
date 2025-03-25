@@ -39,7 +39,7 @@ public class MainGameControl : MonoBehaviour
     public ButtonWithProgressBar SettingButtonEnding { get; internal set; }
     public LayoutParent EndingOverlayLayout { get; internal set; }
     public LayoutParent TabButtonOverlayLayout { get; internal set; }
-    public JLayoutRuntimeData LayoutRuntime { get; internal set; }
+    public JLayoutRuntimeData JLayoutRuntime { get; internal set; }
     public JGameControlDataHolder JControlData { get; internal set; }
 
     public float lastSaveTime;
@@ -166,7 +166,7 @@ public class MainGameControl : MonoBehaviour
         #endregion
 
         // Layout is executed after so that it can fix things before rendering
-        JLayoutRuntimeExecuter.ManualUpdate(this.LayoutRuntime);
+        JLayoutRuntimeExecuter.ManualUpdate(this.JLayoutRuntime);
 
         // temporary
         return;

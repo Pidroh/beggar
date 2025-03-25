@@ -3,9 +3,12 @@
     public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt) 
     {
         var arcaniaModel = mgc.arcaniaModel;
-        foreach (var tabControl in controlData.TabControlUnits)
+        for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
+            JTabControlUnit tabControl = controlData.TabControlUnits[tabIndex];
+            bool tabVisible = tabControl.TabData.Visible;
             tabControl.DesktopButton.SetVisibleSelf(tabControl.TabData.Visible);
+            mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabControl.TabData.Visible);
             foreach (var sep in tabControl.SeparatorControls)
             {
                 var process = false;
