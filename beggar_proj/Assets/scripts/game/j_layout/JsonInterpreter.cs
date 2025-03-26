@@ -31,6 +31,17 @@ namespace JLayout
                         break;
                 }
             }
+            #region test data
+#if UNITY_EDITOR
+            foreach (var item in layoutMaster.ColorDatas.PointerMap)
+            {
+                if (item.Value.data == null) 
+                {
+                    Debug.LogError("MISSING ID for color "+ item.Key);
+                }
+            }
+#endif
+            #endregion
         }
 
         private static void ReadColors(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
@@ -218,10 +229,6 @@ namespace JLayout
                         break;
                     case ChildType.image:
                         childData.ImageKey = childEntry["image"].AsString;
-                        if (childEntry.HasKey("color_id"))
-                        {
-                            childData.ImageColorRef = master.ColorDatas.GetOrCreatePointer(childEntry["color_id"].AsString);
-                        }
                         break;
                     default:
                         break;
@@ -416,6 +423,7 @@ namespace JLayout
         public ColorSet ColorPointer { get; internal set; }
         public int Size { get; internal set; }
         public string Id { get; internal set; }
+        public Color NormalColor => ColorPointer.ColorDatas[ColorSetType.NORMAL].data.Colors[0];
     }
 
     public class LayoutChildData

@@ -12,7 +12,7 @@ namespace JLayout
         public PositionMode[] PositionModes { get; internal set; }
         public TextHorizontal TextHorizontalMode { get; internal set; } = TextHorizontal.LEFT;
         public Vector2Int PositionOffsets { get; internal set; }
-        public object ColorSet { get; internal set; }
+        public ColorSet ColorSet { get; internal set; }
 
         public Vector2Int Size;
         public Vector2Int MinSize;

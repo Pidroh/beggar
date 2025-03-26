@@ -326,6 +326,42 @@
             "colors": ["858585ff", "4d4d4d96"]
         },
         {
+            "id": "button_fill_click",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_active",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_selected",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_disabled",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_gauge",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_gauge_click",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_gauge_active",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_gauge_selected",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
+            "id": "button_fill_gauge_disabled",
+            "colors": ["8fd8edff", "8fd8edff"]
+        },
+        {
             "id": "mid_expander_arrow",
             "colors": ["686868ff", "686868ff"]
         },

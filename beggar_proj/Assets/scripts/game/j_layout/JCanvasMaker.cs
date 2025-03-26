@@ -102,7 +102,7 @@ namespace JLayout
         {
             JLayoutRuntimeUnit ru = CreateLayout();
             bool clickable = layoutD.Clickable;
-            bool hasColor = layoutD.commons.ColorReference != null;
+            bool hasColor = layoutD.commons.ColorSet != null;
             var createImage = hasColor || clickable;
             if (createImage) {
                 var img = ru.RectTransform.gameObject.AddComponent<Image>();
@@ -116,7 +116,7 @@ namespace JLayout
                 }
                 if (hasColor)
                 {
-                    color = layoutD.commons.ColorReference.data.Colors[0];
+                    color = layoutD.commons.ColorSet.ColorDatas[ColorSetType.NORMAL].data.Colors[0];
                 }
                 img.color = color;
             }
@@ -164,7 +164,7 @@ namespace JLayout
         public static JLayoutChild CreateImage(LayoutChildData childData, JLayoutRuntimeData runtime) 
         {
             var sprite = runtime.ImageSprites[childData.ImageKey];
-            var color = childData.ImageColorRef?.data.Colors[0] ?? Color.white;
+            var color = childData.Commons.ColorSet?.ColorDatas[ColorSetType.NORMAL].data.Colors[0] ?? Color.white;
             var unit = CanvasMaker.CreateSimpleImage(color);
             unit.Image.sprite = sprite;
             unit.Image.type = Image.Type.Sliced;
@@ -178,7 +178,7 @@ namespace JLayout
 
         private static JLayoutChild CreateText(LayoutChildData childData, TextData data, JLayoutRuntimeData runtime)
         {
-            var textColor = data.ColorPointer.data.Colors[0];
+            var textColor = data.NormalColor;
             var fontSize = data.Size;
             var uiUnit = CanvasMaker.CreateTextUnit(textColor, runtime.DefaultFont, fontSize);
             uiUnit.text.horizontalAlignment = childData.Commons.TextHorizontalMode switch
