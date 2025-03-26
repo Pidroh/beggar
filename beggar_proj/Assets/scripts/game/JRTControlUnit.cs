@@ -17,6 +17,7 @@ public class JRTControlUnit
     public JImageAccessor ExpandButtonImage { get; internal set; }
     public JLayoutRuntimeUnit MainLayout { get; internal set; }
     public JLayoutRuntimeUnit ExpandWhenClickingLayout { get; internal set; }
+    
 }
 
 public class JResourceChangeGroup 

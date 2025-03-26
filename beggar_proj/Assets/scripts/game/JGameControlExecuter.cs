@@ -87,6 +87,7 @@
                                 break;
                             case UnitType.TASK:
                                 {
+                                    unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
                                     // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
                                     // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
                                     if (unit.TaskClicked)
