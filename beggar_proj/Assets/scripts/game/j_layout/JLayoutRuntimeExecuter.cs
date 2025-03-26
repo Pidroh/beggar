@@ -58,6 +58,34 @@ namespace JLayout
             #endregion
 
             TemporarySolveHeightAndPosition(parentLayout, contentRect);
+
+            #region click color
+            ProcessColor(parentLayout);
+            void ProcessColor(JLayoutRuntimeUnit lay) 
+            {
+                foreach (var item in lay.Children)
+                {
+                    if (item.LayoutRU == null) continue;
+                    ProcessColor(item.LayoutRU);
+                }
+                foreach (var item in lay.ButtonChildren)
+                {
+                    ColorSetType color = ColorSetType.NORMAL;
+                    if (item.Item2.UiUnit.Clicked) 
+                    {
+                        color = ColorSetType.CLICKED;
+                    }
+                    foreach (var c in item.Item1.Children)
+                    {
+                        if (c.LayoutRU != null) 
+                        {
+                            ProcessColor(c.LayoutRU);
+                        }
+                        c.ApplyColor(color);
+                    }
+                }
+            }
+            #endregion
         }
 
         private static void TemporarySolveHeightAndPosition(JLayoutRuntimeUnit parentLayout, RectTransform contentRect)

@@ -195,6 +195,18 @@ namespace JLayout
         {
             return currentStep[v] == Commons.StepSizes[v].Count - 1;
         }
+
+        internal void ApplyColor(ColorSetType color)
+        {
+            if (Commons.ColorSet == null) return;
+            if (!Commons.ColorSet.ColorDatas.TryGetValue(color, out var cd)) return;
+            if (UiUnit == null) Debug.LogError("Has color but has no ui unit, what is this situation?");
+            var colorV = cd.data.Colors[0];
+            if (UiUnit.Image != null)
+                UiUnit.Image.color = colorV;
+            if (UiUnit.text != null)
+                UiUnit.text.color = colorV;
+        }
     }
 
     public class JLayCanvas

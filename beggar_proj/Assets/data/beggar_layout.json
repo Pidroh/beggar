@@ -327,7 +327,7 @@
         },
         {
             "id": "button_fill_click",
-            "colors": ["8fd8edff", "8fd8edff"]
+            "colors": ["ffd8edff", "8fd8edff"]
         },
         {
             "id": "button_fill_active",
@@ -347,7 +347,7 @@
         },
         {
             "id": "button_fill_gauge_click",
-            "colors": ["8fd8edff", "8fd8edff"]
+            "colors": ["ffd8edff", "8fd8edff"]
         },
         {
             "id": "button_fill_gauge_active",
