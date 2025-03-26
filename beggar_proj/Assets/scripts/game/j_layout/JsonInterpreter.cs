@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace JLayout
 {
@@ -75,9 +76,7 @@ namespace JLayout
                 var textData = new TextData();
                 textData.Id = textEntry["id"].AsString;
 
-
-                var colorId = textEntry["color_id"].AsString;
-                textData.ColorPointer = layoutMaster.ColorDatas.GetOrCreatePointer(colorId);
+                textData.ColorPointer = CreateColorSet(textEntry, layoutMaster.ColorDatas);
                 textData.Size = textEntry["size"].AsInt;
 
                 layoutMaster.TextDatas.Bind(textData.Id, textData);
@@ -90,6 +89,29 @@ namespace JLayout
                     }
                 }
             }
+        }
+
+        private static readonly Dictionary<string, ColorSetType> ColorBinders = new Dictionary<string, ColorSetType> 
+        {
+            { "color_id", ColorSetType.NORMAL },
+            { "color_id_clicked", ColorSetType.CLICKED },
+            { "color_id_selected", ColorSetType.SELECTED },
+            { "color_id_disabled", ColorSetType.DISABLED },
+            { "color_id_active", ColorSetType.ACTIVE },
+        };
+
+        private static ColorSet CreateColorSet(SimpleJSON.JSONNode textEntry, PointerHolder<ColorData> colorDatas)
+        {
+            ColorSet colorSet = null;
+            foreach (var item in ColorBinders)
+            {
+                if (textEntry.HasKey(item.Key))
+                {
+                    colorSet ??= new ColorSet();
+                    colorSet.ColorDatas[item.Value] = colorDatas.GetOrCreatePointer(textEntry[item.Key].AsString);
+                }
+            }
+            return colorSet;
         }
 
         private static void ReadLayouts(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
@@ -121,15 +143,13 @@ namespace JLayout
         private static LayoutCommons ReadCommons(LayoutDataMaster layoutMaster, SimpleJSON.JSONNode layoutEntry)
         {
             var ld = new LayoutCommons();
+            ld.ColorSet = CreateColorSet(layoutEntry, layoutMaster.ColorDatas);
             foreach (var pair in layoutEntry)
             {
                 switch (pair.Key)
                 {
                     case "id":
                         ld.Id = pair.Value.AsString;
-                        break;
-                    case "color_id":
-                        ld.ColorReference = layoutMaster.ColorDatas.GetOrCreatePointer(pair.Value.AsString);
                         break;
                     case "axis_mode":
                         ld.AxisModes = ReadAxis(pair.Value.Children);
@@ -201,7 +221,6 @@ namespace JLayout
                         if (childEntry.HasKey("color_id"))
                         {
                             childData.ImageColorRef = master.ColorDatas.GetOrCreatePointer(childEntry["color_id"].AsString);
-
                         }
                         break;
                     default:
@@ -280,10 +299,16 @@ namespace JLayout
         public PointerHolder<ColorData> ColorDatas = new();
         public PointerHolder<ButtonData> ButtonDatas = new();
         public PointerHolder<TextData> TextDatas = new();
+    }
 
+    public class ColorSet 
+    {
+        public Dictionary<ColorSetType, Pointer<ColorData>> ColorDatas = new();
+    }
 
-
-
+    public enum ColorSetType 
+    {
+        NORMAL, CLICKED, ACTIVE, DISABLED, SELECTED
     }
 
     public class ColorData
@@ -370,23 +395,6 @@ namespace JLayout
 
     }
 
-    public class LayoutCommons
-    {
-        public Pointer<ColorData> ColorReference { get; internal set; }
-        public static RectOffset ZeroOffset = new RectOffset(0, 0, 0, 0);
-        public RectOffset _padding;
-        public RectOffset Padding { get => _padding ?? ZeroOffset; set => _padding = value; }
-        public string Id { get; internal set; }
-        public PositionMode[] PositionModes { get; internal set; }
-        public TextHorizontal TextHorizontalMode { get; internal set; } = TextHorizontal.LEFT;
-        public Vector2Int PositionOffsets { get; internal set; }
-
-        public Vector2Int Size;
-        public Vector2Int MinSize;
-        public AxisMode[] AxisModes;
-        public List<List<int>> StepSizes;
-    }
-
     public class LayoutData
     {
         public string Id => commons.Id;
@@ -405,7 +413,7 @@ namespace JLayout
 
     public class TextData
     {
-        public Pointer<ColorData> ColorPointer { get; internal set; }
+        public ColorSet ColorPointer { get; internal set; }
         public int Size { get; internal set; }
         public string Id { get; internal set; }
     }
@@ -418,6 +426,5 @@ namespace JLayout
         public Pointer<TextData> TextRef { get; internal set; }
         public Pointer<ButtonData> ButtonRef { get; internal set; }
         public string ImageKey { get; internal set; }
-        public Pointer<ColorData> ImageColorRef { get; internal set; }
     }
 }
