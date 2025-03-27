@@ -71,9 +71,12 @@ namespace JLayout
                 foreach (var item in lay.ButtonChildren)
                 {
                     ColorSetType color = ColorSetType.NORMAL;
-                    if (item.Item2.UiUnit.Clicked) 
+                    if (item.Item2.UiUnit.Clicked)
                     {
                         color = ColorSetType.CLICKED;
+                    } else if (item.Item2.UiUnit.MouseDown) 
+                    {
+                        color = ColorSetType.PRESSED;
                     }
                     foreach (var c in item.Item1.Children)
                     {

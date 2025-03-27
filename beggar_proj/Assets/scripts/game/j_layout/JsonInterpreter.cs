@@ -106,6 +106,7 @@ namespace JLayout
         {
             { "color_id", ColorSetType.NORMAL },
             { "color_id_clicked", ColorSetType.CLICKED },
+            { "color_id_pressed", ColorSetType.PRESSED },
             { "color_id_selected", ColorSetType.SELECTED },
             { "color_id_disabled", ColorSetType.DISABLED },
             { "color_id_active", ColorSetType.ACTIVE },
@@ -122,6 +123,7 @@ namespace JLayout
                     colorSet.ColorDatas[item.Value] = colorDatas.GetOrCreatePointer(textEntry[item.Key].AsString);
                 }
             }
+            
             return colorSet;
         }
 
@@ -315,7 +317,7 @@ namespace JLayout
 
     public enum ColorSetType 
     {
-        NORMAL, CLICKED, ACTIVE, DISABLED, SELECTED
+        NORMAL, CLICKED, ACTIVE, DISABLED, SELECTED, PRESSED
     }
 
     public class ColorData
