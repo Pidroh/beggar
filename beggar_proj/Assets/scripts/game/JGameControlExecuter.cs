@@ -88,6 +88,7 @@
                             case UnitType.TASK:
                                 {
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
+                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
                                     // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
                                     // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
                                     if (unit.TaskClicked)

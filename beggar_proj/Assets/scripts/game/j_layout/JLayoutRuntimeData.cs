@@ -189,6 +189,9 @@ namespace JLayout
         public PositionMode[] PositionModeOverride;
 
         public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
+
+        public float SizeRatioAsGauge = 1f;
+
         public int[] currentStep = new int[2];
 
         internal void SetCurrentStep(int v, int preferredIndex)

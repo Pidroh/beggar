@@ -207,6 +207,12 @@ namespace JLayout
                             if (axis == 1)
                                 childRect.SetLocalY(0);
                             break;
+                        case PositionMode.RAW_FOR_GAUGE:
+                            if (axis == 0)
+                                childRect.SetLeftXToParent(pos.x * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            else
+                                Debug.LogError("Not supported yet");
+                            break;
                         case PositionMode.SIBLING_DISTANCE:
                             var prevRect = previousChild?.Rect;
                             if (prevRect != null)
@@ -265,7 +271,7 @@ namespace JLayout
                 switch (child.Commons.AxisModes[0])
                 {
                     case AxisMode.PARENT_SIZE_PERCENT_RAW:
-                        child.Rect.SetWidth(parentRect.GetWidth());
+                        child.Rect.SetWidth(parentRect.GetWidth() * child.SizeRatioAsGauge);
                         break;
                     case AxisMode.PARENT_SIZE_PERCENT:
                         child.Rect.SetWidth(widthOfContentPhysical);

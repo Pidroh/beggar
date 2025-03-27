@@ -138,12 +138,10 @@ namespace HeartUnity.View
         public static void SetLeftXToParent(this RectTransform trans, float distance)
         {
             var index = 0;
-            // make position relative to bottom of parent
             trans.SetAnchorsByIndex(index, 0);
             var deltaOffsetX = trans.offsetMax[index] - trans.offsetMin[index];
             trans.offsetMin = new Vector2(0 + distance, trans.offsetMin.y);
             trans.offsetMax = new Vector2(deltaOffsetX + distance, trans.offsetMax.y);
-            //trans.SetBottomLocalY(bottomY);
         }
 
         public static void SetRightXToParent(this RectTransform trans, float distance)
@@ -206,6 +204,13 @@ namespace HeartUnity.View
         public static void SetLeftLocalX(this RectTransform trans, float newPos)
         {
             trans.localPosition = new Vector3(newPos + (trans.pivot.x * trans.rect.width), trans.localPosition.y, trans.localPosition.z);
+        }
+
+        public static void SetCenterLocalAxis(this RectTransform trans, int axis, float newPos)
+        {
+            var lp = trans.localPosition;
+            lp[axis] = newPos + ((trans.pivot[axis] - 0.5f) * trans.GetSize()[axis]);
+            trans.localPosition = lp;
         }
 
         public static float GetRightLocalX(this RectTransform trans)

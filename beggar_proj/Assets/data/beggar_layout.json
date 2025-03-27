@@ -244,7 +244,7 @@
                     "color_id_selected": "button_fill_gauge_selected",
                     "color_id_disabled": "button_fill_gauge_disabled",
                     "axis_mode": ["PARENT_SIZE_PERCENT_RAW", "PARENT_SIZE_PERCENT_RAW"],
-                    "position_mode": ["CENTER_RAW", "CENTER_RAW"]
+                    "position_mode": ["RAW_FOR_GAUGE", "CENTER_RAW"]
                 },
                 {
                     "type": "image",
