@@ -60,16 +60,25 @@ namespace JLayout
             TemporarySolveHeightAndPosition(parentLayout, contentRect);
 
             #region click color
-            ProcessColor(parentLayout);
-            void ProcessColor(JLayoutRuntimeUnit lay) 
+            ProcessColor(parentLayout, null);
+            void ProcessColor(JLayoutRuntimeUnit lay, bool? active) 
             {
+                if (lay.Active.HasValue) 
+                {
+                    active = lay.Active;
+                }
                 foreach (var item in lay.Children)
                 {
                     if (item.LayoutRU == null) continue;
-                    ProcessColor(item.LayoutRU);
+                    ProcessColor(item.LayoutRU, active);
                 }
                 foreach (var item in lay.ButtonChildren)
                 {
+                    var thisActive = active;
+                    if (item.Item1.Active.HasValue) 
+                    {
+                        thisActive = item.Item1.Active;
+                    }
                     ColorSetType color = ColorSetType.NORMAL;
                     if (!item.Item2.UiUnit.ButtonEnabled)
                     {
@@ -83,16 +92,15 @@ namespace JLayout
                     {
                         color = ColorSetType.PRESSED;
                     }
-                    else if (item.Item2.UiUnit.HoveredWhileVisible) 
+                    else if (item.Item2.UiUnit.HoveredWhileVisible)
                     {
                         color = ColorSetType.HOVERED;
+                    } else if (thisActive.HasValue && thisActive.Value) 
+                    {
+                        color = ColorSetType.ACTIVE;
                     }
                     foreach (var c in item.Item1.Children)
                     {
-                        if (c.LayoutRU != null) 
-                        {
-                            ProcessColor(c.LayoutRU);
-                        }
                         c.ApplyColor(color);
                     }
                 }

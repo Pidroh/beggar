@@ -89,6 +89,7 @@
                                 {
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
+                                    unit.MainExecuteButton.SetActive(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
                                     unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
                                     // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
                                     // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));

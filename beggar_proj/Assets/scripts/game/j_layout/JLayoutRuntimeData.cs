@@ -58,6 +58,11 @@ namespace JLayout
         {
             buttonOwner.ButtonChildren[index].Item2.UiUnit.ButtonEnabled = v;
         }
+
+        internal void SetActive(bool v)
+        {
+            buttonOwner.ButtonChildren[index].Item1.Active = v;
+        }
     }
     public class JLayoutRuntimeData
     {
@@ -107,6 +112,7 @@ namespace JLayout
         internal bool Visible { get => _visibleResult; }
         public UIUnit SelfUIUnit { get; internal set; }
         public bool ClickedLayout => SelfUIUnit?.Clicked ?? false;
+        public bool? Active;
 
         internal void AddChild(JLayoutChild child)
         {
