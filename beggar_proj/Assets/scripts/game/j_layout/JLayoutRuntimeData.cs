@@ -53,6 +53,11 @@ namespace JLayout
         {
             buttonOwner.ButtonChildren[index].Item2.UiUnit.LongPressMulticlickEnabled = v;
         }
+
+        internal void SetButtonEnabled(bool v)
+        {
+            buttonOwner.ButtonChildren[index].Item2.UiUnit.ButtonEnabled = v;
+        }
     }
     public class JLayoutRuntimeData
     {
