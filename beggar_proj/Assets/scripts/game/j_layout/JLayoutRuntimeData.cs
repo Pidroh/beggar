@@ -201,6 +201,8 @@ namespace JLayout
 
         public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
 
+        public TextData TextData { get; internal set; }
+
         public float SizeRatioAsGauge = 1f;
 
         public int[] currentStep = new int[2];
@@ -217,8 +219,10 @@ namespace JLayout
 
         internal void ApplyColor(ColorSetType color)
         {
-            if (Commons.ColorSet == null) return;
-            if (!Commons.ColorSet.ColorDatas.TryGetValue(color, out var cd)) return;
+            ColorSet colorSet = Commons.ColorSet;
+            colorSet ??= TextData.ColorSet;
+            if (colorSet == null) return;
+            if (!colorSet.ColorDatas.TryGetValue(color, out var cd)) return;
             if (UiUnit == null) Debug.LogError("Has color but has no ui unit, what is this situation?");
             var colorV = cd.data.Colors[0];
             if (UiUnit.Image != null)

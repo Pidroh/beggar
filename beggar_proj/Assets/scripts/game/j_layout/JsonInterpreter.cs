@@ -87,7 +87,7 @@ namespace JLayout
                 var textData = new TextData();
                 textData.Id = textEntry["id"].AsString;
 
-                textData.ColorPointer = CreateColorSet(textEntry, layoutMaster.ColorDatas);
+                textData.ColorSet = CreateColorSet(textEntry, layoutMaster.ColorDatas);
                 textData.Size = textEntry["size"].AsInt;
 
                 layoutMaster.TextDatas.Bind(textData.Id, textData);
@@ -422,10 +422,10 @@ namespace JLayout
 
     public class TextData
     {
-        public ColorSet ColorPointer { get; internal set; }
+        public ColorSet ColorSet { get; internal set; }
         public int Size { get; internal set; }
         public string Id { get; internal set; }
-        public Color NormalColor => ColorPointer.ColorDatas[ColorSetType.NORMAL].data.Colors[0];
+        public Color NormalColor => ColorSet.ColorDatas[ColorSetType.NORMAL].data.Colors[0];
     }
 
     public class LayoutChildData

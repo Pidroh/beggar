@@ -193,6 +193,7 @@ namespace JLayout
             {
                 Commons = commons,
                 LayoutChild = childData,
+                TextData = data,
                 UiUnit = uiUnit
             };
         }
