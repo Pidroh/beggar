@@ -633,7 +633,7 @@
     {
       "id": "button_fill_pressed",
       "colors": [
-        "6fd6edff",
+        "e4f6f4ff",
         "8fd8edff"
       ]
     },
@@ -675,7 +675,7 @@
     {
       "id": "button_fill_gauge_pressed",
       "colors": [
-        "edd66fff",
+        "7cede2ff",
         "8fd8edff"
       ]
     },
