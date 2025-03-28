@@ -640,7 +640,7 @@
     {
       "id": "button_fill_hovered",
       "colors": [
-        "ff0000ff",
+        "f0f0f0ff",
         "8fd8edff"
       ]
     },
@@ -682,7 +682,7 @@
     {
       "id": "button_fill_gauge_hovered",
       "colors": [
-        "8fd8edff",
+        "a9f9dfff",
         "8fd8edff"
       ]
     },
@@ -717,7 +717,7 @@
     {
       "id": "button_border_hovered",
       "colors": [
-        "#859999ff",
+        "#7fd059ff",
         "#00FF00FF"
       ]
     },
