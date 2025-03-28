@@ -1,719 +1,743 @@
 {
-    "layouts": [
+  "layouts": [
+    {
+      "id": "content_holder_expandable",
+      "comment": "Used for all the main parts of content in each scroll, like task buttons and resources",
+      "color_id": "background_content",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "padding": [
+        4,
+        4,
+        7,
+        7
+      ],
+      "position": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "expandable_task_main_buttons",
+      "comment": "Contains the task execution button and the expander arrow",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        40
+      ],
+      "fixed_children": [
         {
-            "id": "content_holder_expandable",
-            "comment": "Used for all the main parts of content in each scroll, like task buttons and resources",
-            "color_id": "background_content",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "CONTAIN_CHILDREN"
-            ],
-            "padding": [
-                4,
-                4,
-                7,
-                7
-            ],
-            "position": [
-                0,
-                4
-            ]
+          "type": "button",
+          "id": "task_button",
+          "axis_mode": [
+            "FILL_REMAINING_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
         },
         {
-            "id": "expandable_task_main_buttons",
-            "comment": "Contains the task execution button and the expander arrow",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "SELF_SIZE"
-            ],
-            "size": [
-                100,
-                40
-            ],
-            "fixed_children": [
-                {
-                    "type": "button",
-                    "id": "task_button",
-                    "axis_mode": [
-                        "FILL_REMAINING_SIZE",
-                        "PARENT_SIZE_PERCENT"
-                    ],
-                    "position_mode": [
-                        "LEFT_ZERO",
-                        "CENTER"
-                    ]
-                },
-                {
-                    "type": "button",
-                    "id": "expander_arrow",
-                    "axis_mode": [
-                        "SELF_SIZE",
-                        "PARENT_SIZE_PERCENT"
-                    ],
-                    "size": [
-                        42,
-                        100
-                    ],
-                    "position_mode": [
-                        "RIGHT_ZERO",
-                        "CENTER"
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "expandable_resource_text",
-            "comment": "Contains resource text with expandable button",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "CONTAIN_CHILDREN"
-            ],
-            "min_size": [
-                -1,
-                40
-            ],
-            "clickable": true,
-            "fixed_children": [
-                {
-                    "type": "text",
-                    "id": "resource_text",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "position_mode": [
-                        "LEFT_ZERO",
-                        "CENTER"
-                    ]
-                },
-                {
-                    "type": "button",
-                    "id": "expander_arrow",
-                    "axis_mode": [
-                        "SELF_SIZE",
-                        "PARENT_SIZE_PERCENT"
-                    ],
-                    "size": [
-                        40,
-                        100
-                    ],
-                    "position_mode": [
-                        "RIGHT_ZERO",
-                        "CENTER"
-                    ]
-                },
-                {
-                    "type": "text",
-                    "id": "resource_text",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "position_mode": [
-                        "SIBLING_DISTANCE_REVERSE",
-                        "CENTER"
-                    ],
-                    "text_horizontal": "RIGHT"
-                }
-            ]
-        },
-        {
-            "id": "lore_text",
-            "comment": "Contains the lore text for tasks, resources, etc",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "CONTAIN_CHILDREN"
-            ],
-            "size": [
-                100,
-                -1
-            ],
-            "padding": [
-                7,
-                0,
-                2,
-                0
-            ],
-            "fixed_children": [
-                {
-                    "type": "text",
-                    "id": "lore_text",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "position_mode": [
-                        "CENTER",
-                        "CENTER"
-                    ],
-                    "text_horizontal": "CENTER"
-                }
-            ]
-        },
-        {
-            "id": "left_mini_header",
-            "comment": "Contains the mini header for cost, result, etc",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "CONTAIN_CHILDREN"
-            ],
-            "padding": [
-                8,
-                0,
-                3,
-                23
-            ],
-            "size": [
-                100,
-                -1
-            ],
-            "fixed_children": [
-                {
-                    "type": "text",
-                    "id": "mini_header_text",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "position_mode": [
-                        "LEFT_ZERO",
-                        "CENTER"
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "in_header_triple_statistic",
-            "comment": "Contains the content below each mini header for cost, result, etc",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "CONTAIN_CHILDREN"
-            ],
-            "padding": [
-                2,
-                0,
-                2,
-                30
-            ],
-            "size": [
-                100,
-                -1
-            ],
-            "fixed_children": [
-                {
-                    "type": "text",
-                    "id": "simple_text",
-                    "axis_mode": [
-                        "STEP_SIZE_TEXT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "step_sizes": [
-                        [
-                            93,
-                            113,
-                            133
-                        ],
-                        []
-                    ],
-                    "position_mode": [
-                        "LEFT_ZERO",
-                        "CENTER"
-                    ]
-                },
-                {
-                    "type": "text",
-                    "id": "simple_text",
-                    "axis_mode": [
-                        "STEP_SIZE_TEXT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "step_sizes": [
-                        [
-                            22,
-                            44,
-                            88
-                        ],
-                        []
-                    ],
-                    "position_mode": [
-                        "SIBLING_DISTANCE",
-                        "CENTER"
-                    ],
-                    "text_horizontal": "RIGHT"
-                },
-                {
-                    "type": "text",
-                    "id": "accessory_text",
-                    "axis_mode": [
-                        "STEP_SIZE_TEXT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "step_sizes": [
-                        [
-                            50,
-                            100
-                        ],
-                        []
-                    ],
-                    "position_mode": [
-                        "SIBLING_DISTANCE",
-                        "CENTER"
-                    ],
-                    "position": [
-                        10,
-                        0
-                    ],
-                    "text_horizontal": "LEFT"
-                }
-            ]
-        },
-        {
-            "id": "expandable_upper_header",
-            "comment": "Contains the header for stuff like ,,instant resources,,",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "SELF_SIZE"
-            ],
-            "size": [
-                100,
-                21
-            ],
-            "clickable": true,
-            "color_id": "background_upper_header",
-            "fixed_children": [
-                {
-                    "type": "text",
-                    "id": "upper_header_text",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "position_mode": [
-                        "LEFT_ZERO",
-                        "CENTER"
-                    ],
-                    "text_horizontal": "CENTER"
-                },
-                {
-                    "type": "image",
-                    "image": "arrow",
-                    "color_id": "mid_expander_arrow",
-                    "axis_mode": [
-                        "SELF_SIZE",
-                        "SELF_SIZE"
-                    ],
-                    "position_mode": [
-                        "RIGHT_ZERO",
-                        "CENTER"
-                    ],
-                    "position": [
-                        4,
-                        0
-                    ],
-                    "size": [
-                        8,
-                        6
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "lower_tab_menu_mobile",
-            "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "SELF_SIZE"
-            ],
-            "size": [
-                100,
-                55
-            ]
-        },
-        {
-            "id": "left_tab_menu_desktop",
-            "axis_mode": [
-                "SELF_SIZE",
-                "PARENT_SIZE_PERCENT"
-            ],
-            "size": [
-                55,
-                100
-            ]
-        },
-        {
-            "id": "tab_button_desktop_as_layout",
-            "axis_mode": [
-                "SELF_SIZE",
-                "SELF_SIZE"
-            ],
-            "size": [
-                55,
-                55
-            ],
-            "position_mode": [
-                "CENTER",
-                "SIBLING_DISTANCE"
-            ],
-            "clickable": true,
-            "fixed_children": [
-                {
-                    "type": "image",
-                    "image": "circle",
-                    "color_id": "blue_selection_circle",
-                    "axis_mode": [
-                        "SELF_SIZE",
-                        "SELF_SIZE"
-                    ],
-                    "position_mode": [
-                        "CENTER",
-                        "CENTER"
-                    ],
-                    "size": [
-                        48,
-                        48
-                    ]
-                },
-                {
-                    "type": "image",
-                    "image": "circle",
-                    "comment": "this is for the little icon that changes",
-                    "axis_mode": [
-                        "SELF_SIZE",
-                        "SELF_SIZE"
-                    ],
-                    "position_mode": [
-                        "CENTER",
-                        "CENTER"
-                    ],
-                    "size": [
-                        32,
-                        32
-                    ]
-                }
-            ]
+          "type": "button",
+          "id": "expander_arrow",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            42,
+            100
+          ],
+          "position_mode": [
+            "RIGHT_ZERO",
+            "CENTER"
+          ]
         }
-    ],
-    "texts": [
+      ]
+    },
+    {
+      "id": "expandable_resource_text",
+      "comment": "Contains resource text with expandable button",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "min_size": [
+        -1,
+        40
+      ],
+      "clickable": true,
+      "fixed_children": [
         {
-            "id": "button_text",
-            "alias_ids": [
-                "resource_text"
-            ],
-            "size": 12,
-            "color_id": "main_text",
-            "color_id_disabled": "button_text_disabled"
+          "type": "text",
+          "id": "resource_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
         },
         {
-            "id": "lore_text",
-            "size": 11,
-            "color_id": "lore_text"
+          "type": "button",
+          "id": "expander_arrow",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            40,
+            100
+          ],
+          "position_mode": [
+            "RIGHT_ZERO",
+            "CENTER"
+          ]
         },
         {
-            "id": "mini_header_text",
-            "size": 10,
-            "color_id": "mini_header_text"
-        },
-        {
-            "id": "upper_header_text",
-            "size": 11,
-            "color_id": "upper_header_text"
-        },
-        {
-            "id": "simple_text",
-            "size": 12,
-            "color_id": "simple_text"
-        },
-        {
-            "id": "accessory_text",
-            "size": 12,
-            "color_id": "accessory_text"
+          "type": "text",
+          "id": "resource_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "SIBLING_DISTANCE_REVERSE",
+            "CENTER"
+          ],
+          "text_horizontal": "RIGHT"
         }
-    ],
-    "buttons": [
+      ]
+    },
+    {
+      "id": "lore_text",
+      "comment": "Contains the lore text for tasks, resources, etc",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "size": [
+        100,
+        -1
+      ],
+      "padding": [
+        7,
+        0,
+        2,
+        0
+      ],
+      "fixed_children": [
         {
-            "id": "task_button",
-            "padding": [
-                0,
-                15,
-                0,
-                35
-            ],
-            "fixed_children": [
-                {
-                    "type": "image",
-                    "image": "button_fill",
-                    "color_id": "button_fill",
-                    "color_id_clicked": "button_fill_click",
-                    "color_id_pressed": "button_fill_pressed",
-                    "color_id_active": "button_fill_active",
-                    "color_id_hovered": "button_fill_hovered",
-                    "color_id_disabled": "button_fill_disabled",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT_RAW",
-                        "PARENT_SIZE_PERCENT_RAW"
-                    ],
-                    "position_mode": [
-                        "CENTER_RAW",
-                        "CENTER_RAW"
-                    ]
-                },
-                {
-                    "type": "image",
-                    "image": "button_fill",
-                    "color_id": "button_fill_gauge",
-                    "color_id_clicked": "button_fill_gauge_click",
-                    "color_id_active": "button_fill_gauge_active",
-                    "color_id_pressed": "button_fill_gauge_pressed",
-                    "color_id_hovered": "button_fill_gauge_hovered",
-                    "color_id_disabled": "button_fill_gauge_disabled",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT_RAW",
-                        "PARENT_SIZE_PERCENT_RAW"
-                    ],
-                    "position_mode": [
-                        "RAW_FOR_GAUGE",
-                        "CENTER_RAW"
-                    ]
-                },
-                {
-                    "type": "image",
-                    "image": "button_border",
-                    "color_id": "button_border",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT_RAW",
-                        "PARENT_SIZE_PERCENT_RAW"
-                    ],
-                    "position_mode": [
-                        "CENTER_RAW",
-                        "CENTER_RAW"
-                    ]
-                },
-                {
-                    "type": "text",
-                    "id": "button_text",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT",
-                        "TEXT_PREFERRED"
-                    ],
-                    "position_mode": [
-                        "CENTER",
-                        "CENTER"
-                    ]
-                },
-                {
-                    "type": "text",
-                    "id": "accessory_text",
-                    "axis_mode": [
-                        "PARENT_SIZE_PERCENT",
-                        "PARENT_SIZE_PERCENT"
-                    ],
-                    "position_mode": [
-                        "CENTER",
-                        "CENTER"
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "expander_arrow",
-            "padding": [
-                0,
-                0,
-                0,
-                2
-            ],
-            "fixed_children": [
-                {
-                    "type": "image",
-                    "image": "arrow",
-                    "color_id": "mid_expander_arrow",
-                    "axis_mode": [
-                        "SELF_SIZE",
-                        "SELF_SIZE"
-                    ],
-                    "position_mode": [
-                        "CENTER",
-                        "CENTER"
-                    ],
-                    "size": [
-                        36,
-                        20
-                    ]
-                }
-            ]
+          "type": "text",
+          "id": "lore_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "CENTER"
         }
-    ],
-    "colors": [
+      ]
+    },
+    {
+      "id": "left_mini_header",
+      "comment": "Contains the mini header for cost, result, etc",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "padding": [
+        8,
+        0,
+        3,
+        23
+      ],
+      "size": [
+        100,
+        -1
+      ],
+      "fixed_children": [
         {
-            "id": "background_content",
-            "colors": [
-                "f1f1f1ff",
-                "343a4aff"
-            ]
-        },
-        {
-            "id": "background_upper_header",
-            "colors": [
-                "e0e1f1ff",
-                "e0e1f1ff"
-            ]
-        },
-        {
-            "id": "main_text",
-            "colors": [
-                "212121ff",
-                "212121ff"
-            ]
-        },
-        {
-            "id": "lore_text",
-            "colors": [
-                "4d4d4dff",
-                "4d4d4dff"
-            ]
-        },
-        {
-            "id": "mini_header_text",
-            "colors": [
-                "969696ff",
-                "969696ff"
-            ]
-        },
-        {
-            "id": "upper_header_text",
-            "colors": [
-                "6c6c6cff",
-                "6c6c6cff"
-            ]
-        },
-        {
-            "id": "simple_text",
-            "colors": [
-                "4d4d4dff",
-                "4d4d4dff"
-            ]
-        },
-        {
-            "id": "accessory_text",
-            "colors": [
-                "4d4d4d96",
-                "4d4d4d96"
-            ]
-        },
-        {
-            "id": "button_fill",
-            "colors": [
-                "ffffffff",
-                "4d4d4d96"
-            ]
-        },
-        {
-            "id": "button_border",
-            "colors": [
-                "858585ff",
-                "4d4d4d96"
-            ]
-        },
-        {
-            "id": "button_fill_click",
-            "colors": [
-                "ffd8edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_active",
-            "colors": [
-                "d2f2f9ff",
-                "d2f2f9ff"
-            ]
-        },
-        {
-            "id": "button_fill_pressed",
-            "colors": [
-                "6fd6edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_hovered",
-            "colors": [
-                "ff0000ff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_disabled",
-            "colors": [
-                "ffd8edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_gauge",
-            "colors": [
-                "adf4daff",
-                "adf4daff"
-            ]
-        },
-        {
-            "id": "button_fill_gauge_click",
-            "colors": [
-                "ffd8edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_gauge_active",
-            "colors": [
-                "8ef0ccff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_gauge_pressed",
-            "colors": [
-                "6fd6edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_gauge_hovered",
-            "colors": [
-                "8fd8edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_fill_gauge_disabled",
-            "colors": [
-                "ffd8edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "mid_expander_arrow",
-            "colors": [
-                "686868ff",
-                "686868ff"
-            ]
-        },
-        {
-            "id": "blue_selection_circle",
-            "colors": [
-                "8fd8edff",
-                "8fd8edff"
-            ]
-        },
-        {
-            "id": "button_text_disabled",
-            "colors": [
-                "ff0000ff",
-                "00ff00ff"
-            ]
+          "type": "text",
+          "id": "mini_header_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
         }
-    ],
-    "color_presets": [
-        "light",
-        "dark"
-    ]
+      ]
+    },
+    {
+      "id": "in_header_triple_statistic",
+      "comment": "Contains the content below each mini header for cost, result, etc",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "padding": [
+        2,
+        0,
+        2,
+        30
+      ],
+      "size": [
+        100,
+        -1
+      ],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "simple_text",
+          "axis_mode": [
+            "STEP_SIZE_TEXT",
+            "TEXT_PREFERRED"
+          ],
+          "step_sizes": [
+            [
+              93,
+              113,
+              133
+            ],
+            []
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "simple_text",
+          "axis_mode": [
+            "STEP_SIZE_TEXT",
+            "TEXT_PREFERRED"
+          ],
+          "step_sizes": [
+            [
+              22,
+              44,
+              88
+            ],
+            []
+          ],
+          "position_mode": [
+            "SIBLING_DISTANCE",
+            "CENTER"
+          ],
+          "text_horizontal": "RIGHT"
+        },
+        {
+          "type": "text",
+          "id": "accessory_text",
+          "axis_mode": [
+            "STEP_SIZE_TEXT",
+            "TEXT_PREFERRED"
+          ],
+          "step_sizes": [
+            [
+              50,
+              100
+            ],
+            []
+          ],
+          "position_mode": [
+            "SIBLING_DISTANCE",
+            "CENTER"
+          ],
+          "position": [
+            10,
+            0
+          ],
+          "text_horizontal": "LEFT"
+        }
+      ]
+    },
+    {
+      "id": "expandable_upper_header",
+      "comment": "Contains the header for stuff like ,,instant resources,,",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        21
+      ],
+      "clickable": true,
+      "color_id": "background_upper_header",
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "upper_header_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ],
+          "text_horizontal": "CENTER"
+        },
+        {
+          "type": "image",
+          "image": "arrow",
+          "color_id": "mid_expander_arrow",
+          "axis_mode": [
+            "SELF_SIZE",
+            "SELF_SIZE"
+          ],
+          "position_mode": [
+            "RIGHT_ZERO",
+            "CENTER"
+          ],
+          "position": [
+            4,
+            0
+          ],
+          "size": [
+            8,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lower_tab_menu_mobile",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        55
+      ]
+    },
+    {
+      "id": "left_tab_menu_desktop",
+      "axis_mode": [
+        "SELF_SIZE",
+        "PARENT_SIZE_PERCENT"
+      ],
+      "size": [
+        55,
+        100
+      ]
+    },
+    {
+      "id": "tab_button_desktop_as_layout",
+      "axis_mode": [
+        "SELF_SIZE",
+        "SELF_SIZE"
+      ],
+      "size": [
+        55,
+        55
+      ],
+      "position_mode": [
+        "CENTER",
+        "SIBLING_DISTANCE"
+      ],
+      "clickable": true,
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "circle",
+          "color_id": "blue_selection_circle",
+          "axis_mode": [
+            "SELF_SIZE",
+            "SELF_SIZE"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "size": [
+            48,
+            48
+          ]
+        },
+        {
+          "type": "image",
+          "image": "circle",
+          "comment": "this is for the little icon that changes",
+          "axis_mode": [
+            "SELF_SIZE",
+            "SELF_SIZE"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "size": [
+            32,
+            32
+          ]
+        }
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "id": "button_text",
+      "alias_ids": [
+        "resource_text"
+      ],
+      "size": 12,
+      "color_id": "main_text",
+      "color_id_disabled": "button_text_disabled"
+    },
+    {
+      "id": "lore_text",
+      "size": 11,
+      "color_id": "lore_text"
+    },
+    {
+      "id": "mini_header_text",
+      "size": 10,
+      "color_id": "mini_header_text"
+    },
+    {
+      "id": "upper_header_text",
+      "size": 11,
+      "color_id": "upper_header_text"
+    },
+    {
+      "id": "simple_text",
+      "size": 12,
+      "color_id": "simple_text"
+    },
+    {
+      "id": "accessory_text",
+      "size": 12,
+      "color_id": "accessory_text"
+    }
+  ],
+  "buttons": [
+    {
+      "id": "task_button",
+      "padding": [
+        0,
+        15,
+        0,
+        35
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "color_id_clicked": "button_fill_click",
+          "color_id_pressed": "button_fill_pressed",
+          "color_id_active": "button_fill_active",
+          "color_id_hovered": "button_fill_hovered",
+          "color_id_disabled": "button_fill_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill_gauge",
+          "color_id_clicked": "button_fill_gauge_click",
+          "color_id_active": "button_fill_gauge_active",
+          "color_id_pressed": "button_fill_gauge_pressed",
+          "color_id_hovered": "button_fill_gauge_hovered",
+          "color_id_disabled": "button_fill_gauge_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "RAW_FOR_GAUGE",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_border",
+          "color_id": "button_border",
+          "color_id_hovered": "button_border_hovered",
+          "color_id_active": "button_border_active",
+          "color_id_disabled": "button_border_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "accessory_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expander_arrow",
+      "padding": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "arrow",
+          "color_id": "mid_expander_arrow",
+          "axis_mode": [
+            "SELF_SIZE",
+            "SELF_SIZE"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "size": [
+            36,
+            20
+          ]
+        }
+      ]
+    }
+  ],
+  "colors": [
+    {
+      "id": "background_content",
+      "colors": [
+        "f1f1f1ff",
+        "343a4aff"
+      ]
+    },
+    {
+      "id": "background_upper_header",
+      "colors": [
+        "e0e1f1ff",
+        "e0e1f1ff"
+      ]
+    },
+    {
+      "id": "main_text",
+      "colors": [
+        "212121ff",
+        "212121ff"
+      ]
+    },
+    {
+      "id": "lore_text",
+      "colors": [
+        "4d4d4dff",
+        "4d4d4dff"
+      ]
+    },
+    {
+      "id": "mini_header_text",
+      "colors": [
+        "969696ff",
+        "969696ff"
+      ]
+    },
+    {
+      "id": "upper_header_text",
+      "colors": [
+        "6c6c6cff",
+        "6c6c6cff"
+      ]
+    },
+    {
+      "id": "simple_text",
+      "colors": [
+        "4d4d4dff",
+        "4d4d4dff"
+      ]
+    },
+    {
+      "id": "accessory_text",
+      "colors": [
+        "4d4d4d96",
+        "4d4d4d96"
+      ]
+    },
+    {
+      "id": "button_fill",
+      "colors": [
+        "ffffffff",
+        "4d4d4d96"
+      ]
+    },
+    {
+      "id": "button_border",
+      "colors": [
+        "858585ff",
+        "4d4d4d96"
+      ]
+    },
+    {
+      "id": "button_fill_click",
+      "colors": [
+        "ffd8edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_active",
+      "colors": [
+        "d2f2f9ff",
+        "d2f2f9ff"
+      ]
+    },
+    {
+      "id": "button_fill_pressed",
+      "colors": [
+        "6fd6edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_hovered",
+      "colors": [
+        "ff0000ff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_disabled",
+      "colors": [
+        "ffd8edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge",
+      "colors": [
+        "adf4daff",
+        "adf4daff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_click",
+      "colors": [
+        "ffd8edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_active",
+      "colors": [
+        "8ef0ccff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_pressed",
+      "colors": [
+        "6fd6edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_hovered",
+      "colors": [
+        "8fd8edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_disabled",
+      "colors": [
+        "ffd8edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "mid_expander_arrow",
+      "colors": [
+        "686868ff",
+        "686868ff"
+      ]
+    },
+    {
+      "id": "blue_selection_circle",
+      "colors": [
+        "8fd8edff",
+        "8fd8edff"
+      ]
+    },
+    {
+      "id": "button_text_disabled",
+      "colors": [
+        "ff0000ff",
+        "00ff00ff"
+      ]
+    },
+    {
+      "id": "button_border_hovered",
+      "colors": [
+        "#859999ff",
+        "#00FF00FF"
+      ]
+    },
+    {
+      "id": "button_border_active",
+      "colors": [
+        "#859595ff",
+        "#00FF00FF"
+      ]
+    },
+    {
+      "id": "button_border_disabled",
+      "colors": [
+        "#858585ff",
+        "#00FF00FF"
+      ]
+    }
+  ],
+  "color_presets": [
+    "light",
+    "dark"
+  ]
 }
