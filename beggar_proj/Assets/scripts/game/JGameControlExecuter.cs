@@ -10,7 +10,8 @@ public static class JGameControlExecuter
     {
         var arcaniaModel = mgc.arcaniaModel;
         var desktopMode = false;
-        #region calculate if desktop or mobile
+        var availableActualWidthForContent = Screen.width;
+        #region calculate if desktop or mobile, also calculate available width
         {
             var necessaryDefaultPixelWidthForDesktop = 0f;
             // calculate full size of left side menus
@@ -28,15 +29,27 @@ public static class JGameControlExecuter
             // the "thin necessary" blabla field
             necessaryDefaultPixelWidthForDesktop += NormalThinWidth;
             desktopMode = Screen.width > necessaryDefaultPixelWidthForDesktop * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+            if (desktopMode) 
+            {
+                availableActualWidthForContent -= Mathf.CeilToInt((leftWidth + NormalThinWidth) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+            }
         }
-        
+
         #endregion
+        var maxNumberOfTabsVisible = Mathf.Max(Mathf.Floor(availableActualWidthForContent / (NormalMinTabWidth*RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize)), 1);
+        // temporary code, should calculate this based on which tabs are visible
+        var numberOfTabsVisible = maxNumberOfTabsVisible;
+        calculate actual pixel width of a content tab, apply that to the layout child below by setting the method
+            enforce actual pixel size in layout calculation
+        var width 
+
 
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
             JTabControlUnit tabControl = controlData.TabControlUnits[tabIndex];
             // open other tabs currently just invisible for now
             bool tabEnabled = tabControl.TabData.Visible && !tabControl.TabData.Tab.OpenOtherTabs;
+            var tabData = tabControl.TabData.Tab;
             
             tabControl.DesktopButton.SetVisibleSelf(tabEnabled);
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
@@ -80,6 +93,13 @@ public static class JGameControlExecuter
 
             // an invisible tab needs no processing
             if (!tabActive) continue;
+
+            #region thin tab attempt
+            if (tabData.NecessaryForDesktopAndThinnable && desktopMode) 
+            {
+                mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
+            }
+            #endregion
 
             #region logs with loop continue (will skip code below)
             if (tabControl.TabData.Tab.ContainsLogs)
