@@ -55,7 +55,7 @@ namespace JLayout
                 // Create N children
                 for (int i = 0; i < N; i++)
                 {
-                    dc.children.Add(CreateCanvasScrollChild(rootGO, i, canvasReq.ScrollStyle));
+                    dc.children.Add(new JLayCanvasChild(CreateCanvasScrollChild(rootGO, i, canvasReq.ScrollStyle)));
                 }
                 dc.childrenForLayouting.AddRange(dc.children);
                 dc.RootRT = rootRT;
@@ -79,7 +79,7 @@ namespace JLayout
 
         internal static void AddFixedMenu(JLayCanvas jCanvas, Direction dir, JLayoutRuntimeUnit layoutRU)
         {
-            jCanvas.FixedMenus[dir].Add(layoutRU);
+            jCanvas.FixedMenus[dir].Add(new JLayCanvasChild(layoutRU));
             layoutRU.RectTransform.SetParent(jCanvas.RootRT);
         }
 

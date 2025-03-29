@@ -16,8 +16,9 @@ namespace JLayout
             {
                 Direction d = Direction.WEST;
                 var menus = data.jLayCanvas.FixedMenus[d];
-                foreach (var item in menus)
+                foreach (var c in menus)
                 {
+                    var item = c.LayoutRuntimeUnit;
                     item.RectTransform.FillParentHeight();
                     float axisSize = item.LayoutData.commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
                     item.RectTransform.SetWidth(axisSize);
@@ -29,8 +30,8 @@ namespace JLayout
 
             foreach (var mainCanvasChild in data.jLayCanvas.childrenForLayouting)
             {
-                JLayoutRuntimeUnit parentLayout = mainCanvasChild;
-                parentLayout.SetVisibleSelf(data.jLayCanvas.ActiveChildren.Contains(parentLayout) && mainCanvasChild.Children.Count > 0);
+                JLayoutRuntimeUnit parentLayout = mainCanvasChild.LayoutRuntimeUnit;
+                parentLayout.SetVisibleSelf(data.jLayCanvas.ActiveChildren.Contains(mainCanvasChild) && parentLayout.Children.Count > 0);
                 if (!parentLayout.Visible)
                 {
                     continue;
@@ -42,8 +43,6 @@ namespace JLayout
                 // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.RectTransform.SetLeftXToParent(offset);
                 offset += newSize;
-                
-                
                 ProcessChildren(parentLayout);
             }
         }

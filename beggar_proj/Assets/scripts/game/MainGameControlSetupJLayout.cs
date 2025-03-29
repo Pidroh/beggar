@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class MainGameControlSetupJLayout
 {
-
-
     internal static void SetupCanvas(MainGameControl mgc)
     {
         LayoutDataMaster layoutMaster = new LayoutDataMaster();
@@ -78,7 +76,7 @@ public class MainGameControlSetupJLayout
             {
                 tcu.SeparatorControls.Add(new JTabControlUnit.JSeparatorControl(sepD));
             }
-            jCanvas.children[tabIndex].RectTransform.gameObject.name = $"tab_{item.Name}";
+            jCanvas.children[tabIndex].LayoutRuntimeUnit.RectTransform.gameObject.name = $"tab_{item.Name}";
             jControlDataHolder.TabControlUnits.Add(tcu);
             foreach (var t in item.Tab.AcceptedUnitTypes)
             {
@@ -108,7 +106,7 @@ public class MainGameControlSetupJLayout
         mgc.JControlData = jControlDataHolder;
         for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
         {
-            var parentOfTabContent = jCanvas.children[tabIndex];
+            var parentOfTabContent = jCanvas.children[tabIndex].LayoutRuntimeUnit;
             var tabControl = jControlDataHolder.TabControlUnits[tabIndex];
             JTabControlUnit jTabControl = tabControl;
             foreach (var separatorControl in tabControl.SeparatorControls)

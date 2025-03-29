@@ -1,8 +1,37 @@
-﻿public static class JGameControlExecuter 
+﻿using HeartUnity.View;
+using UnityEngine;
+
+public static class JGameControlExecuter 
 {
+    public const float NormalMinTabWidth = 320;
+    public const float NormalMaxTabWidth = 640;
+    public const float NormalThinWidth = 180;
     public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt) 
     {
         var arcaniaModel = mgc.arcaniaModel;
+        var desktopMode = false;
+        #region calculate if desktop or mobile
+        {
+            var necessaryDefaultPixelWidthForDesktop = 0f;
+            // calculate full size of left side menus
+            var leftWidth = 0f;
+            foreach (var item in mgc.JLayoutRuntime.jLayCanvas.FixedMenus[HeartUnity.View.Direction.WEST])
+            {
+                leftWidth += item.LayoutRuntimeUnit.LayoutData.commons.Size[0];
+            }
+            // add left side menu that is mandatory for desktop
+            necessaryDefaultPixelWidthForDesktop += leftWidth;
+            // a single tab size added as minimum width
+            necessaryDefaultPixelWidthForDesktop += NormalMinTabWidth;
+            // the thin tab equivalent to the log tab
+            // this is hard coded but could also be calculated based on the tab data in the model
+            // the "thin necessary" blabla field
+            necessaryDefaultPixelWidthForDesktop += NormalThinWidth;
+            desktopMode = Screen.width > necessaryDefaultPixelWidthForDesktop * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+        }
+        
+        #endregion
+
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
             JTabControlUnit tabControl = controlData.TabControlUnits[tabIndex];
@@ -59,7 +88,7 @@
                 while (tabControl.LogAmount < arcaniaModel.LogUnits.Count)
                 {
                     var lay = MainGameControlSetupJLayout.CreateLogLayout(mgc, arcaniaModel.LogUnits[tabControl.LogAmount]);
-                    dynamicCanvas.children[tabIndex].AddLayoutAsChild(lay);
+                    dynamicCanvas.children[tabIndex].LayoutRuntimeUnit.AddLayoutAsChild(lay);
                     tabControl.LogAmount++;
                 }
                 continue;

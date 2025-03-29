@@ -9,7 +9,7 @@ using TMPro;
 namespace JLayout
 {
 
-    public class JImageAccessor 
+    public class JImageAccessor
     {
         public JLayoutRuntimeUnit imageOwner;
         public int index;
@@ -32,7 +32,7 @@ namespace JLayout
             this.index = index;
         }
 
-        public void SetTextRaw(string text) 
+        public void SetTextRaw(string text)
         {
             OwnerLayout.SetTextRaw(index, text);
         }
@@ -243,11 +243,11 @@ namespace JLayout
         public GameObject canvasGO;
         public Canvas Canvas { get; internal set; }
         public RectTransform RootRT { get; internal set; }
-        public List<JLayoutRuntimeUnit> children = new List<JLayoutRuntimeUnit>();
-        public List<JLayoutRuntimeUnit> childrenForLayouting = new List<JLayoutRuntimeUnit>();
-        internal Dictionary<Direction, List<JLayoutRuntimeUnit>> FixedMenus = new();
+        public List<JLayCanvasChild> children = new List<JLayCanvasChild>();
+        public List<JLayCanvasChild> childrenForLayouting = new List<JLayCanvasChild>();
+        internal Dictionary<Direction, List<JLayCanvasChild>> FixedMenus = new();
         public RectTransform OverlayRoot { get; internal set; }
-        public Queue<JLayoutRuntimeUnit> ActiveChildren = new();
+        public Queue<JLayCanvasChild> ActiveChildren = new();
 
         private const int minimumDefaultTabPixelWidth = 320;
 
@@ -258,9 +258,9 @@ namespace JLayout
 
         internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);
 
-        private void HideChild(JLayoutRuntimeUnit layoutParent)
+        private void HideChild(JLayCanvasChild layoutParent)
         {
-            using var _1 = ListPool<JLayoutRuntimeUnit>.Get(out var list);
+            using var _1 = ListPool<JLayCanvasChild>.Get(out var list);
             list.AddRange(ActiveChildren);
             ActiveChildren.Clear();
             foreach (var item in list)
@@ -275,7 +275,7 @@ namespace JLayout
             ToggleChild(children[childIndex]);
         }
 
-        internal void ToggleChild(JLayoutRuntimeUnit layoutParent)
+        internal void ToggleChild(JLayCanvasChild layoutParent)
         {
             if (ActiveChildren.Contains(layoutParent))
             {
@@ -287,7 +287,7 @@ namespace JLayout
             }
         }
 
-        internal void ShowChild(JLayoutRuntimeUnit layoutParent)
+        internal void ShowChild(JLayCanvasChild layoutParent)
         {
             if (ActiveChildren.Contains(layoutParent)) return;
             while (childrenForLayouting.Remove(layoutParent)) { }
@@ -330,6 +330,16 @@ namespace JLayout
         internal bool IsChildVisible(int tabIndex)
         {
             return ActiveChildren.Contains(children[tabIndex]);
+        }
+    }
+
+    public class JLayCanvasChild
+    {
+        public JLayoutRuntimeUnit LayoutRuntimeUnit;
+
+        public JLayCanvasChild(JLayoutRuntimeUnit layoutRuntimeUnit)
+        {
+            LayoutRuntimeUnit = layoutRuntimeUnit;
         }
     }
 }
