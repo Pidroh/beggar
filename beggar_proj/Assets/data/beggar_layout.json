@@ -149,7 +149,19 @@
               "text_horizontal": "LEFT"
             },
             {
-                DEFINE IMAGE HERE
+                "type": "image",
+                "image": "white_rect",
+                "color_id": "soft_separator",
+                "axis_mode": [
+                  "PARENT_SIZE_PERCENT_RAW",
+                  "SELF_SIZE"
+                ],
+                "position":[0, 2],
+                "size":[100, 2],
+                "position_mode": [
+                  "CENTER_RAW",
+                  "SIBILING_DISTANCE"
+                ]
             }
           ]
     },
