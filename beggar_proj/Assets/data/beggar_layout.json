@@ -160,7 +160,7 @@
                 "size":[100, 2],
                 "position_mode": [
                   "CENTER_RAW",
-                  "SIBILING_DISTANCE"
+                  "SIBLING_DISTANCE"
                 ]
             }
           ]
@@ -456,6 +456,11 @@
       "color_id": "lore_text"
     },
     {
+      "id": "log_text",
+      "size": 11,
+      "color_id": "lore_text"
+    },
+    {
       "id": "mini_header_text",
       "size": 10,
       "color_id": "mini_header_text"
@@ -600,6 +605,13 @@
         "f1f1f1ff",
         "343a4aff"
       ]
+    },
+    {
+        "id": "soft_separator",
+        "colors":[
+            "#e8e8e8ff",
+            "#e8e8e8ff"
+        ]
     },
     {
       "id": "background_upper_header",

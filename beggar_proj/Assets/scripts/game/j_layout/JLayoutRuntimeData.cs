@@ -74,6 +74,7 @@ namespace JLayout
         public JLayCanvas jLayCanvas;
 
         public TMP_FontAsset DefaultFont { get; internal set; }
+        public LayoutDataMaster LayoutMaster { get; internal set; }
 
         public KeyedSprites ImageSprites;
 

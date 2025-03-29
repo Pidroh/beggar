@@ -13,20 +13,9 @@
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
             if (!tabEnabled) continue;
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
-            bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
-            tabControl.DesktopButton.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
+            
             bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
-            #region logs
-            if (tabControl.TabData.Tab.ContainsLogs) 
-            {
-                while(tabControl.LogAmount < arcaniaModel.LogUnits.Count)
-                {
-                    var lay = MainGameControlSetupJLayout.CreateLogLayout(mgc, arcaniaModel.LogUnits[tabControl.LogAmount]);
-                    dynamicCanvas.children[tabIndex].AddLayoutAsChild(lay);
-                    tabControl.LogAmount++;
-                }
-            }
-            #endregion
+            
             #region tab clicking
             if (clickedTabButton)
             {
@@ -52,6 +41,28 @@
                     dynamicCanvas.HideOverlay();
                 }
                 */
+            }
+            #endregion
+
+            #region calculate if tab is active
+            bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
+            tabControl.DesktopButton.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
+            #endregion
+
+            // an invisible tab needs no processing
+            if (!tabActive) continue;
+
+            #region logs with loop continue (will skip code below)
+            if (tabControl.TabData.Tab.ContainsLogs)
+            {
+                tabControl.SeparatorControls[0].SeparatorLayout.SetVisibleSelf(true);
+                while (tabControl.LogAmount < arcaniaModel.LogUnits.Count)
+                {
+                    var lay = MainGameControlSetupJLayout.CreateLogLayout(mgc, arcaniaModel.LogUnits[tabControl.LogAmount]);
+                    dynamicCanvas.children[tabIndex].AddLayoutAsChild(lay);
+                    tabControl.LogAmount++;
+                }
+                continue;
             }
             #endregion
             #region main unit loop by separator
