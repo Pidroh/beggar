@@ -55,7 +55,12 @@ public static class JGameControlExecuter
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
             
             bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
-            
+            bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
+            if (alwaysActive && !dynamicCanvas.IsChildVisible(tabIndex)) 
+            {
+                dynamicCanvas.ShowChild(tabIndex);
+            }
+
             #region tab clicking
             if (clickedTabButton)
             {
@@ -86,6 +91,8 @@ public static class JGameControlExecuter
 
             #region calculate if tab is active
             bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
+            
+            tabActive |= alwaysActive;
             tabControl.DesktopButton.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
             #endregion
 
@@ -95,6 +102,18 @@ public static class JGameControlExecuter
             #region thin tab attempt
             if (tabData.NecessaryForDesktopAndThinnable && desktopMode)
             {
+                JLayout.JLayCanvasChild child = dynamicCanvas.children[tabIndex];
+                int indexOfThinNecessary = mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.IndexOf(child);
+                var isLast = indexOfThinNecessary == mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Count -1;
+                if (!isLast) 
+                {
+                    if (indexOfThinNecessary < 0) 
+                    {
+                        dynamicCanvas.ShowChild(tabIndex);
+                    }
+                    mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Remove(child);
+                    mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Add(child);
+                }
                 mgc.JLayoutRuntime.jLayCanvas.SetChildSize(tabIndex, NormalThinWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
             }
             else {
