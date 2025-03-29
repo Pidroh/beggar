@@ -38,7 +38,7 @@ namespace JLayout
                 }
 
                 // temporary code
-                float newSize = 320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                float newSize = mainCanvasChild.DesiredSize;
                 parentLayout.RectTransform.SetWidth(newSize);
                 // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.RectTransform.SetLeftXToParent(offset);

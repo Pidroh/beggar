@@ -39,9 +39,7 @@ public static class JGameControlExecuter
         var maxNumberOfTabsVisible = Mathf.Max(Mathf.Floor(availableActualWidthForContent / (NormalMinTabWidth*RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize)), 1);
         // temporary code, should calculate this based on which tabs are visible
         var numberOfTabsVisible = maxNumberOfTabsVisible;
-        calculate actual pixel width of a content tab, apply that to the layout child below by setting the method
-            enforce actual pixel size in layout calculation
-        var width 
+        var widthOfContentTab = availableActualWidthForContent / numberOfTabsVisible;
 
 
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
@@ -95,9 +93,12 @@ public static class JGameControlExecuter
             if (!tabActive) continue;
 
             #region thin tab attempt
-            if (tabData.NecessaryForDesktopAndThinnable && desktopMode) 
+            if (tabData.NecessaryForDesktopAndThinnable && desktopMode)
             {
-                mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
+                mgc.JLayoutRuntime.jLayCanvas.SetChildSize(tabIndex, NormalThinWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+            }
+            else {
+                mgc.JLayoutRuntime.jLayCanvas.SetChildSize(tabIndex, widthOfContentTab);
             }
             #endregion
 

@@ -331,6 +331,11 @@ namespace JLayout
         {
             return ActiveChildren.Contains(children[tabIndex]);
         }
+
+        internal void SetChildSize(int tabIndex, float size)
+        {
+            children[tabIndex].DesiredSize = size;
+        }
     }
 
     public class JLayCanvasChild
@@ -341,5 +346,7 @@ namespace JLayout
         {
             LayoutRuntimeUnit = layoutRuntimeUnit;
         }
+
+        public float DesiredSize { get; internal set; } = 320;
     }
 }
