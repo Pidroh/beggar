@@ -113,6 +113,10 @@
             "SIBLING_DISTANCE_REVERSE",
             "CENTER"
           ],
+          "position": [
+            3,
+            0
+          ],
           "text_horizontal": "RIGHT"
         }
       ]

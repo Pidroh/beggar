@@ -218,9 +218,19 @@ namespace HeartUnity.View
             return trans.localPosition.x + trans.pivot.x * trans.rect.width;
         }
 
+        public static float GetLeftLocalX(this RectTransform trans)
+        {
+            return trans.localPosition.x - (1 - trans.pivot.x) * trans.rect.width;
+        }
+
         public static float GetBottomLocalY(this RectTransform trans)
         {
             return trans.localPosition.y - (1 - trans.pivot.y) * trans.rect.height;
+        }
+
+        public static float GetTopLocalY(this RectTransform trans)
+        {
+            return trans.localPosition.y + trans.pivot.y * trans.rect.height;
         }
 
         public static void SetRightLocalX(this RectTransform trans, float newPos)

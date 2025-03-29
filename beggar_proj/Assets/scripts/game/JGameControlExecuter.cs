@@ -81,9 +81,18 @@
                                 item.SetParentShowing(unit.Expanded);
                             }
                         }
+                        if (unit.ValueText != null) 
+                        {
+                            var Data = unit.Data;
+                            var valueT = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
+                            unit.ValueText.SetTextRaw(valueT + "");
+                        }
                         switch (pair.Key)
                         {
                             case UnitType.RESOURCE:
+                                {
+                                    
+                                }
                                 break;
                             case UnitType.TASK:
                                 {
@@ -187,13 +196,13 @@
 
                 if (Dirty > 0)
                 {
-                    ttv.SetText(0, targetName);
+                    ttv.SetTextRaw(0, targetName);
                 }
 
                 var valueText = min != max ? $"{min}~{max}" : $"{min}";
                 string secondText = bySecond ? $"{valueText}/s" : $"{valueText}";
-                ttv.SetText(1, secondText);
-                ttv.SetText(2, tertiaryText);
+                ttv.SetTextRaw(1, secondText);
+                ttv.SetTextRaw(2, tertiaryText);
                 //ttv.ManualUpdate();
             }
         }

@@ -26,14 +26,19 @@ namespace JLayout
 
     public class JLayTextAccessor
     {
-        public JLayTextAccessor(JLayoutRuntimeUnit descLayout, int v)
+        public JLayTextAccessor(JLayoutRuntimeUnit layout, int index)
         {
-            DescLayout = descLayout;
-            V = v;
+            OwnerLayout = layout;
+            this.index = index;
         }
 
-        public JLayoutRuntimeUnit DescLayout { get; }
-        public int V { get; }
+        public void SetTextRaw(string text) 
+        {
+            OwnerLayout.SetTextRaw(index, text);
+        }
+
+        public JLayoutRuntimeUnit OwnerLayout { get; }
+        public int index { get; }
     }
 
     public class JButtonAccessor
@@ -141,7 +146,7 @@ namespace JLayout
             TextChildren.Add(textChild);
         }
 
-        internal void SetText(int v, string textKey)
+        internal void SetTextRaw(int v, string textKey)
         {
             // localize this?
             TextChildren[v].UiUnit.rawText = textKey;

@@ -117,7 +117,7 @@ public class MainGameControlSetupJLayout
                     var layoutD = layoutMaster.LayoutDatas.GetData("expandable_upper_header");
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
                     taskParent.AddLayoutAsChild(layoutRU);
-                    layoutRU.SetText(0, separatorControl.SepD.Name);
+                    layoutRU.SetTextRaw(0, separatorControl.SepD.Name);
                     separatorControl.SeparatorLayout = layoutRU;
                     layoutRU.ImageChildren[0].Rect.transform.localScale = new Vector3(1, -1, 1);
                 }
@@ -147,7 +147,7 @@ public class MainGameControlSetupJLayout
                     {
                         var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
                         layoutRU.AddLayoutAsChild(buttonLayoutRU);
-                        buttonLayoutRU.ButtonChildren[0].Item1.SetText(0, modelData.Name);
+                        buttonLayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, modelData.Name);
                         jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                         jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
                         jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
@@ -156,7 +156,8 @@ public class MainGameControlSetupJLayout
                     {
                         var resourceLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
                         layoutRU.AddLayoutAsChild(resourceLayoutRU);
-                        resourceLayoutRU.SetText(0, modelData.Name);
+                        resourceLayoutRU.SetTextRaw(0, modelData.Name);
+                        jCU.ValueText = new JLayTextAccessor(resourceLayoutRU, 1);
                         jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
                         jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
                         jCU.ExpandWhenClickingLayout = resourceLayoutRU;
@@ -166,7 +167,7 @@ public class MainGameControlSetupJLayout
                     {
                         var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
 
-                        descLayout.SetText(0, modelData.ConfigBasic.Desc);
+                        descLayout.SetTextRaw(0, modelData.ConfigBasic.Desc);
                         jCU.Description = new JLayTextAccessor(descLayout, 0);
                         AddToExpand(descLayout);
                     }
@@ -190,14 +191,14 @@ public class MainGameControlSetupJLayout
                                 _ => null,
                             };
                             var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
-                            miniHeader.SetText(0, textKey);
+                            miniHeader.SetTextRaw(0, textKey);
                             AddToExpand(miniHeader);
                             foreach (var rcu in rcl)
                             {
                                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                                triple.SetText(0, rcu.IdPointer.RuntimeUnit?.Name);
-                                triple.SetText(1, "" + rcu.valueChange.min);
-                                triple.SetText(2, "0");
+                                triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
+                                triple.SetTextRaw(1, "" + rcu.valueChange.min);
+                                triple.SetTextRaw(2, "0");
                                 jCU.ChangeGroups[rcgIndex].tripleTextViews.Add(triple);
                                 AddToExpand(triple);
                             }

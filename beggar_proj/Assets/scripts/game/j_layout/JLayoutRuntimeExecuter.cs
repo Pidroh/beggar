@@ -233,28 +233,57 @@ namespace JLayout
                             else
                                 Debug.LogError("Not supported yet");
                             break;
-                        case PositionMode.SIBLING_DISTANCE:
-                            var prevRect = previousChild?.Rect;
-                            if (prevRect != null)
+                        case PositionMode.SIBLING_DISTANCE_REVERSE:
                             {
-                                if (axis == 0)
+                                var prevRect = previousChild?.Rect;
+                                if (prevRect != null)
                                 {
-                                    childRect.SetLeftLocalX(prevRect.GetRightLocalX() + child.Commons.PositionOffsets[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    if (axis == 0)
+                                    {
+                                        childRect.SetRightLocalX(prevRect.GetLeftLocalX() - child.Commons.PositionOffsets[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
+                                    if (axis == 1)
+                                    {
+                                        childRect.SetBottomLocalY(prevRect.GetTopLocalY() + child.Commons.PositionOffsets[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
                                 }
-                                if (axis == 1)
+                                else
                                 {
-                                    childRect.SetTopLocalY(prevRect.GetBottomLocalY() - child.Commons.PositionOffsets[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    if (axis == 0)
+                                    {
+                                        childRect.SetRightXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
+                                    if (axis == 1)
+                                    {
+                                        childRect.SetBottomYToParent(padding.top * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
                                 }
                             }
-                            else
+                            break;
+                        case PositionMode.SIBLING_DISTANCE:
                             {
-                                if (axis == 0)
+                                var prevRect = previousChild?.Rect;
+                                if (prevRect != null)
                                 {
-                                    childRect.SetLeftXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    if (axis == 0)
+                                    {
+                                        childRect.SetLeftLocalX(prevRect.GetRightLocalX() + child.Commons.PositionOffsets[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
+                                    if (axis == 1)
+                                    {
+                                        childRect.SetTopLocalY(prevRect.GetBottomLocalY() - child.Commons.PositionOffsets[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
                                 }
-                                if (axis == 1)
+                                else
                                 {
-                                    childRect.SetTopYToParent(padding.top * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    if (axis == 0)
+                                    {
+                                        childRect.SetLeftXToParent(padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
+                                    if (axis == 1)
+                                    {
+                                        childRect.SetTopYToParent(padding.top * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                    }
                                 }
                             }
                             break;
