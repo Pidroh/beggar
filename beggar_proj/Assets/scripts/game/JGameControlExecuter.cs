@@ -16,7 +16,18 @@
             bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
             tabControl.DesktopButton.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
             bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
-            
+            #region logs
+            if (tabControl.TabData.Tab.ContainsLogs) 
+            {
+                while(tabControl.LogAmount < arcaniaModel.LogUnits.Count)
+                {
+                    var lay = MainGameControlSetupJLayout.CreateLogLayout(mgc, arcaniaModel.LogUnits[tabControl.LogAmount]);
+                    dynamicCanvas.children[tabIndex].AddLayoutAsChild(lay);
+                    tabControl.LogAmount++;
+                }
+            }
+            #endregion
+            #region tab clicking
             if (clickedTabButton)
             {
                 if (tabControl.TabData.Tab.OpenSettings)
@@ -42,6 +53,8 @@
                 }
                 */
             }
+            #endregion
+            #region main unit loop by separator
             foreach (var sep in tabControl.SeparatorControls)
             {
                 var process = false;
@@ -132,9 +145,11 @@
                 }
                 sep.SeparatorLayout.SetVisibleSelf(shouldShowSep);
             }
-            
+            #endregion
         }
     }
+
+    
 
     public static void UpdateChangeGroups(JRTControlUnit unit)
     {

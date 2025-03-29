@@ -21,6 +21,7 @@ public class MainGameControlSetupJLayout
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         runtime.jLayCanvas = jCanvas;
         mgc.JLayoutRuntime = runtime;
+        runtime.LayoutMaster = layoutMaster;
         JGameControlDataHolder jControlDataHolder = new();
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;
@@ -107,7 +108,7 @@ public class MainGameControlSetupJLayout
         mgc.JControlData = jControlDataHolder;
         for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
         {
-            var taskParent = jCanvas.children[tabIndex];
+            var parentOfTabContent = jCanvas.children[tabIndex];
             var tabControl = jControlDataHolder.TabControlUnits[tabIndex];
             JTabControlUnit jTabControl = tabControl;
             foreach (var separatorControl in tabControl.SeparatorControls)
@@ -116,7 +117,7 @@ public class MainGameControlSetupJLayout
                 {
                     var layoutD = layoutMaster.LayoutDatas.GetData("expandable_upper_header");
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
-                    taskParent.AddLayoutAsChild(layoutRU);
+                    parentOfTabContent.AddLayoutAsChild(layoutRU);
                     layoutRU.SetTextRaw(0, separatorControl.SepD.Name);
                     separatorControl.SeparatorLayout = layoutRU;
                     layoutRU.ImageChildren[0].Rect.transform.localScale = new Vector3(1, -1, 1);
@@ -138,7 +139,7 @@ public class MainGameControlSetupJLayout
                     layoutRU.RectTransform.gameObject.name += " " + id;
                     layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
 
-                    var childOfParent = taskParent.AddLayoutAsChild(layoutRU);
+                    var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
 
                     var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
                     var hasResourceExpander = !hasTaskButton && modelData.ConfigBasic.UnitType == UnitType.RESOURCE;
@@ -215,5 +216,18 @@ public class MainGameControlSetupJLayout
                 }
             }
         }
+    }
+
+    internal static JLayoutRuntimeUnit CreateLogLayout(MainGameControl mgc, LogUnit logUnit)
+    {
+        var lay = mgc.JLayoutRuntime.LayoutMaster.LayoutDatas.GetData("log_lay");
+        var layout = JCanvasMaker.CreateLayout(lay, mgc.JLayoutRuntime);
+        var text = string.Empty;
+        if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED)
+        {
+            text = $"Unlocked {logUnit.Unit.ConfigBasic.name}";
+        }
+        layout.SetTextRaw(0, text);
+        return layout;
     }
 }
