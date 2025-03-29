@@ -122,6 +122,38 @@
       ]
     },
     {
+        "id": "log_lay",
+        "comment": "Log text for the log tab. Also contains a separator image in the bottom",
+        "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "CONTAIN_CHILDREN"
+        ],
+        "padding":[
+            3,
+            3,
+            3,
+            3
+        ],
+        "fixed_children": [
+            {
+              "type": "text",
+              "id": "log_text",
+              "axis_mode": [
+                "PARENT_SIZE_PERCENT",
+                "TEXT_PREFERRED"
+              ],
+              "position_mode": [
+                "CENTER",
+                "CENTER"
+              ],
+              "text_horizontal": "LEFT"
+            },
+            {
+                DEFINE IMAGE HERE
+            }
+          ]
+    },
+    {
       "id": "lore_text",
       "comment": "Contains the lore text for tasks, resources, etc",
       "axis_mode": [
