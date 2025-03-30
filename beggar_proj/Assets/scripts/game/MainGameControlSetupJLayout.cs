@@ -50,11 +50,14 @@ public class MainGameControlSetupJLayout
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             var tcu = new JTabControlUnit();
+            for (int buttonTypeIndex = 0; buttonTypeIndex < 2; buttonTypeIndex++)
             {
                 var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
-                var d = Direction.WEST;
+                var d = buttonTypeIndex == 0 ? Direction.WEST: Direction.SOUTH;
                 var buttonLayRU = JCanvasMaker.CreateLayout(buttonLD, runtime);
-                jControlDataHolder.tabMenu[d].AddLayoutAsChild(buttonLayRU);
+                var child = jControlDataHolder.tabMenu[d].AddLayoutAsChild(buttonLayRU);
+                if(buttonTypeIndex == 1)
+                    child.PositionModeOverride = new PositionMode[] { PositionMode.SIBLING_DISTANCE, PositionMode.CENTER };
 
                 var sprite = item.ConfigBasic.SpriteKey == null ? null : mgc.ResourceJson.spritesForLayout[item.ConfigBasic.SpriteKey];
                 if (sprite == null)
@@ -65,7 +68,11 @@ public class MainGameControlSetupJLayout
                 {
                     buttonLayRU.ImageChildren[1].UiUnit.ChangeSprite(sprite);
                 }
-                tcu.DesktopButton = buttonLayRU;
+                if (buttonTypeIndex == 0)
+                    tcu.DesktopButton = buttonLayRU;
+                else
+                    tcu.MobileButton = buttonLayRU;
+                tcu.TabToggleButtons.Add(buttonLayRU);
             }
             
 

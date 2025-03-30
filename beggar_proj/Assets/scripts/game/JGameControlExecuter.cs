@@ -41,7 +41,8 @@ public static class JGameControlExecuter
         var numberOfTabsVisible = maxNumberOfTabsVisible;
         var widthOfContentTab = availableActualWidthForContent / numberOfTabsVisible;
         controlData.tabMenu[Direction.WEST].SetVisibleSelf(desktopMode);
-        
+        controlData.tabMenu[Direction.SOUTH].SetVisibleSelf(!desktopMode);
+
 
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
@@ -50,14 +51,24 @@ public static class JGameControlExecuter
             bool tabEnabled = tabControl.TabData.Visible && !tabControl.TabData.Tab.OpenOtherTabs;
             var tabData = tabControl.TabData.Tab;
             bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
-            
-            
-            tabControl.DesktopButton.SetVisibleSelf(tabEnabled && !alwaysActive);
+
+            foreach (var tabB in tabControl.TabToggleButtons)
+            {
+                tabB.SetVisibleSelf(tabEnabled && !alwaysActive);
+            }
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
             if (!tabEnabled) continue;
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
+
+            bool clickedTabButton = false;
+            foreach (var tabB in tabControl.TabToggleButtons)
+            {
+                if (tabB.ClickedLayout) {
+                    clickedTabButton = true;
+                    break;
+                }
+            }
             
-            bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
             
             if (alwaysActive && !dynamicCanvas.IsChildVisible(tabIndex)) 
             {
@@ -96,7 +107,11 @@ public static class JGameControlExecuter
             bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
             
             tabActive |= alwaysActive;
-            tabControl.DesktopButton.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
+            foreach (var item in tabControl.TabToggleButtons)
+            {
+                item.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
+            }
+            
             #endregion
 
             // an invisible tab needs no processing

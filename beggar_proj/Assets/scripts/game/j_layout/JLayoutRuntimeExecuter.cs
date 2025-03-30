@@ -37,11 +37,12 @@ namespace JLayout
                 {
                     if (!c.LayoutRuntimeUnit.Visible) continue;
                     var item = c.LayoutRuntimeUnit;
-                    item.RectTransform.FillParentHeight();
+                    var nonFixedAxis = 0;
                     var fixedAxis = 1;
+                    item.RectTransform.FillParentByAxisIndex(nonFixedAxis);
                     float axisSize = item.LayoutData.commons.Size[fixedAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
                     item.RectTransform.SetHeight(axisSize);
-                    item.RectTransform.SetBottomYToParent(offsetLeftX);
+                    item.RectTransform.SetBottomYToParent(offsetBottomY);
                     offsetBottomY += axisSize;
                     // offset += axisSize;
                     ProcessChildren(item);
