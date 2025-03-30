@@ -18,6 +18,7 @@ namespace JLayout
                 var menus = data.jLayCanvas.FixedMenus[d];
                 foreach (var c in menus)
                 {
+                    if (!c.LayoutRuntimeUnit.Visible) continue;
                     var item = c.LayoutRuntimeUnit;
                     item.RectTransform.FillParentHeight();
                     float axisSize = item.LayoutData.commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;

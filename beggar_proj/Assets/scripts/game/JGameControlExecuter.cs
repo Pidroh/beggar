@@ -40,7 +40,8 @@ public static class JGameControlExecuter
         // temporary code, should calculate this based on which tabs are visible
         var numberOfTabsVisible = maxNumberOfTabsVisible;
         var widthOfContentTab = availableActualWidthForContent / numberOfTabsVisible;
-
+        controlData.tabMenu[Direction.WEST].SetVisibleSelf(desktopMode);
+        
 
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
@@ -48,14 +49,16 @@ public static class JGameControlExecuter
             // open other tabs currently just invisible for now
             bool tabEnabled = tabControl.TabData.Visible && !tabControl.TabData.Tab.OpenOtherTabs;
             var tabData = tabControl.TabData.Tab;
+            bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
             
-            tabControl.DesktopButton.SetVisibleSelf(tabEnabled);
+            
+            tabControl.DesktopButton.SetVisibleSelf(tabEnabled && !alwaysActive);
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
             if (!tabEnabled) continue;
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
             
             bool clickedTabButton = tabControl.DesktopButton.ClickedLayout;
-            bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
+            
             if (alwaysActive && !dynamicCanvas.IsChildVisible(tabIndex)) 
             {
                 dynamicCanvas.ShowChild(tabIndex);
