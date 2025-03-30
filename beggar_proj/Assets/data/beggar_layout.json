@@ -199,6 +199,52 @@
       ]
     },
     {
+        "id": "above_button_title_with_value",
+        "comment": "Contains the title for things like skills (and furniture?)",
+        "axis_mode": [
+          "PARENT_SIZE_PERCENT",
+          "CONTAIN_CHILDREN"
+        ],
+        "size": [
+          100,
+          -1
+        ],
+        "padding": [
+          7,
+          0,
+          2,
+          0
+        ],
+        "fixed_children": [
+          {
+            "type": "text",
+            "id": "above_button_title_text",
+            "axis_mode": [
+              "PARENT_SIZE_PERCENT",
+              "TEXT_PREFERRED"
+            ],
+            "position_mode": [
+              "CENTER",
+              "CENTER"
+            ],
+            "text_horizontal": "LEFT"
+          },
+          {
+            "type": "text",
+            "id": "above_button_title_text",
+            "axis_mode": [
+              "PARENT_SIZE_PERCENT",
+              "TEXT_PREFERRED"
+            ],
+            "position_mode": [
+              "CENTER",
+              "CENTER"
+            ],
+            "text_horizontal": "RIGHT"
+          }
+        ]
+      },
+    {
       "id": "left_mini_header",
       "comment": "Contains the mini header for cost, result, etc",
       "axis_mode": [
@@ -449,6 +495,11 @@
       "size": 12,
       "color_id": "main_text",
       "color_id_disabled": "button_text_disabled"
+    },
+    {
+      "id": "above_button_title_text",
+      "size": 14,
+      "color_id": "main_text"
     },
     {
       "id": "lore_text",
