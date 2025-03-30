@@ -6,7 +6,7 @@ public static class JGameControlExecuter
     public const float NormalMinTabWidth = 320;
     public const float NormalMaxTabWidth = 640;
     public const float NormalThinWidth = 180;
-    public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt) 
+    public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
     {
         var arcaniaModel = mgc.arcaniaModel;
         var desktopMode = false;
@@ -29,20 +29,24 @@ public static class JGameControlExecuter
             // the "thin necessary" blabla field
             necessaryDefaultPixelWidthForDesktop += NormalThinWidth;
             desktopMode = Screen.width > necessaryDefaultPixelWidthForDesktop * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
-            if (desktopMode) 
+            if (desktopMode)
             {
                 availableActualWidthForContent -= Mathf.CeilToInt((leftWidth + NormalThinWidth) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
             }
         }
 
         #endregion
-        var maxNumberOfTabsVisible = Mathf.Max(Mathf.Floor(availableActualWidthForContent / (NormalMinTabWidth*RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize)), 1);
+        var maxNumberOfOptionalContentTabsVisible = Mathf.Max(Mathf.Floor(availableActualWidthForContent / (NormalMinTabWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize)), 1);
+        var maxNumberOfTabsVisible = maxNumberOfOptionalContentTabsVisible;
+
+        // if on desktop mode, add log tab to the number
+        if (desktopMode) maxNumberOfTabsVisible++;
         // temporary code, should calculate this based on which tabs are visible
-        var numberOfTabsVisible = maxNumberOfTabsVisible;
+        var numberOfTabsVisible = maxNumberOfOptionalContentTabsVisible;
         var widthOfContentTab = availableActualWidthForContent / numberOfTabsVisible;
         controlData.tabMenu[Direction.WEST].SetVisibleSelf(desktopMode);
         controlData.tabMenu[Direction.SOUTH].SetVisibleSelf(!desktopMode);
-
+        CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
@@ -63,14 +67,15 @@ public static class JGameControlExecuter
             bool clickedTabButton = false;
             foreach (var tabB in tabControl.TabToggleButtons)
             {
-                if (tabB.ClickedLayout) {
+                if (tabB.ClickedLayout)
+                {
                     clickedTabButton = true;
                     break;
                 }
             }
-            
-            
-            if (alwaysActive && !dynamicCanvas.IsChildVisible(tabIndex)) 
+
+
+            if (alwaysActive && !dynamicCanvas.IsChildVisible(tabIndex))
             {
                 dynamicCanvas.ShowChild(tabIndex);
             }
@@ -105,37 +110,41 @@ public static class JGameControlExecuter
 
             #region calculate if tab is active
             bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
-            
+
             tabActive |= alwaysActive;
             foreach (var item in tabControl.TabToggleButtons)
             {
                 item.ImageChildren[0].UiUnit.ActiveSelf = tabActive;
             }
-            
+
             #endregion
 
             // an invisible tab needs no processing
             if (!tabActive) continue;
 
             #region thin tab attempt
+            JLayout.JLayCanvasChild child = dynamicCanvas.children[tabIndex];
             if (tabData.NecessaryForDesktopAndThinnable && desktopMode)
             {
-                JLayout.JLayCanvasChild child = dynamicCanvas.children[tabIndex];
+
                 int indexOfThinNecessary = mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.IndexOf(child);
-                var isLast = indexOfThinNecessary == mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Count -1;
-                if (!isLast) 
+                var isLast = indexOfThinNecessary == mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Count - 1;
+                if (!isLast)
                 {
-                    if (indexOfThinNecessary < 0) 
+                    if (indexOfThinNecessary < 0)
                     {
                         dynamicCanvas.ShowChild(tabIndex);
                     }
                     mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Remove(child);
                     mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Add(child);
                 }
-                mgc.JLayoutRuntime.jLayCanvas.SetChildSize(tabIndex, NormalThinWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                child.Mandatory = true;
+                child.DesiredSize = NormalThinWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
             }
-            else {
-                mgc.JLayoutRuntime.jLayCanvas.SetChildSize(tabIndex, widthOfContentTab);
+            else
+            {
+                child.Mandatory = false;
+                child.DesiredSize = widthOfContentTab;
             }
             #endregion
 
@@ -157,7 +166,7 @@ public static class JGameControlExecuter
             {
                 var process = false;
                 var shouldShowSep = false;
-                if (sep.SeparatorLayout.ClickedLayout) 
+                if (sep.SeparatorLayout.ClickedLayout)
                 {
                     sep.Expanded = !sep.Expanded;
                     var sepImage = sep.SeparatorLayout.ImageChildren[0];
@@ -192,7 +201,7 @@ public static class JGameControlExecuter
                                 item.SetParentShowing(unit.Expanded);
                             }
                         }
-                        if (unit.ValueText != null) 
+                        if (unit.ValueText != null)
                         {
                             var Data = unit.Data;
                             var valueT = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
@@ -202,7 +211,7 @@ public static class JGameControlExecuter
                         {
                             case UnitType.RESOURCE:
                                 {
-                                    
+
                                 }
                                 break;
                             case UnitType.TASK:
@@ -245,9 +254,24 @@ public static class JGameControlExecuter
             }
             #endregion
         }
+
+        // do it twice to make sure
+        CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
     }
 
-    
+    private static void CheckIfNeedsToHideTab(MainGameControl mgc, float maxNumberOfTabsVisible)
+    {
+        while (mgc.JLayoutRuntime.jLayCanvas.ActiveChildren.Count > maxNumberOfTabsVisible)
+        {
+            for (int i = mgc.JLayoutRuntime.jLayCanvas.ActiveChildren.Count - 1; i >= 0; i--)
+            {
+                if (mgc.JLayoutRuntime.jLayCanvas.ActiveChildren[i].Mandatory) continue;
+                mgc.JLayoutRuntime.jLayCanvas.ActiveChildren.RemoveAt(i);
+                break;
+            }
+        }
+    }
+
 
     public static void UpdateChangeGroups(JRTControlUnit unit)
     {

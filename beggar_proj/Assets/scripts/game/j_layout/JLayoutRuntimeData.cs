@@ -247,7 +247,7 @@ namespace JLayout
         public List<JLayCanvasChild> childrenForLayouting = new List<JLayCanvasChild>();
         internal Dictionary<Direction, List<JLayCanvasChild>> FixedMenus = new();
         public RectTransform OverlayRoot { get; internal set; }
-        public Queue<JLayCanvasChild> ActiveChildren = new();
+        public List<JLayCanvasChild> ActiveChildren = new();
 
         private const int minimumDefaultTabPixelWidth = 320;
 
@@ -266,7 +266,7 @@ namespace JLayout
             foreach (var item in list)
             {
                 if (item == layoutParent) continue;
-                ActiveChildren.Enqueue(item);
+                ActiveChildren.Insert(0, item);
             }
         }
 
@@ -292,7 +292,7 @@ namespace JLayout
             if (ActiveChildren.Contains(layoutParent)) return;
             while (childrenForLayouting.Remove(layoutParent)) { }
             childrenForLayouting.Insert(0, layoutParent);
-            ActiveChildren.Enqueue(layoutParent);
+            ActiveChildren.Insert(0, layoutParent);
         }
 
         public void ShowChild(int childIndex)
@@ -348,5 +348,6 @@ namespace JLayout
         }
 
         public float DesiredSize { get; internal set; } = 320;
+        public bool Mandatory { get; internal set; }
     }
 }
