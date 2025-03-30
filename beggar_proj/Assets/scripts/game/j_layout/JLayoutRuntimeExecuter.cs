@@ -9,8 +9,10 @@ namespace JLayout
     {
         public static void ManualUpdate(JLayoutRuntimeData data)
         {
-            var offset = 0f;
+            var offsetLeftX = 0f;
+            var offsetBottomY = 0f;
             using var _1 = DictionaryPool<Direction, float>.Get(out var offsetDirections);
+
             // multi direction loop eventually
             // foreach (var d in EnumHelper<Direction>.GetAllValues())
             {
@@ -23,8 +25,25 @@ namespace JLayout
                     item.RectTransform.FillParentHeight();
                     float axisSize = item.LayoutData.commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
                     item.RectTransform.SetWidth(axisSize);
-                    item.RectTransform.SetLeftXToParent(offset);
-                    offset += axisSize;
+                    item.RectTransform.SetLeftXToParent(offsetLeftX);
+                    offsetLeftX += axisSize;
+                    ProcessChildren(item);
+                }
+            }
+            {
+                Direction d = Direction.SOUTH;
+                var menus = data.jLayCanvas.FixedMenus[d];
+                foreach (var c in menus)
+                {
+                    if (!c.LayoutRuntimeUnit.Visible) continue;
+                    var item = c.LayoutRuntimeUnit;
+                    item.RectTransform.FillParentHeight();
+                    var fixedAxis = 1;
+                    float axisSize = item.LayoutData.commons.Size[fixedAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                    item.RectTransform.SetHeight(axisSize);
+                    item.RectTransform.SetBottomYToParent(offsetLeftX);
+                    offsetBottomY += axisSize;
+                    // offset += axisSize;
                     ProcessChildren(item);
                 }
             }
@@ -42,8 +61,8 @@ namespace JLayout
                 float newSize = mainCanvasChild.DesiredSize;
                 parentLayout.RectTransform.SetWidth(newSize);
                 // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
-                parentLayout.RectTransform.SetLeftXToParent(offset);
-                offset += newSize;
+                parentLayout.RectTransform.SetLeftXToParent(offsetLeftX);
+                offsetLeftX += newSize;
                 ProcessChildren(parentLayout);
             }
         }
