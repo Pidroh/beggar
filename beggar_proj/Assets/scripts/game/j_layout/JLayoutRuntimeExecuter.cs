@@ -62,6 +62,7 @@ namespace JLayout
                 parentLayout.RectTransform.SetWidth(newSize);
                 // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.RectTransform.SetLeftXToParent(offsetLeftX);
+                parentLayout.RectTransform.SetOffsetMinByIndex(1, offsetBottomY);
                 offsetLeftX += newSize;
                 ProcessChildren(parentLayout);
             }
