@@ -129,7 +129,6 @@ public class MainGameControlSetupJLayout
                 }
                 #endregion
 
-
                 foreach (var modelData in separatorControl.SepD.BoundRuntimeUnits)
                 {
                     var jCU = new JRTControlUnit();

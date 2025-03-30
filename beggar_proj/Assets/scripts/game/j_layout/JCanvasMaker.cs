@@ -264,7 +264,8 @@ namespace JLayout
 
             CanvasRenderer viewportCR = viewportGO.AddComponent<CanvasRenderer>();
             Image viewportImage = viewportGO.AddComponent<Image>();
-            viewportImage.color = new Color(0, 0, 0, 0f);
+            viewportImage.color = new Color(0, 0, 0, 1f);
+            viewportGO.AddComponent<Mask>().showMaskGraphic = false;
 
             scrollRect.viewport = viewportRT;
 
