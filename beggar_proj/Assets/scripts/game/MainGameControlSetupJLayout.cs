@@ -133,7 +133,8 @@ public class MainGameControlSetupJLayout
                 {
                     var jCU = new JRTControlUnit();
                     // special types that don't have unit group controls are handled in a special way
-                    if (!separatorControl.UnitGroupControls.TryGetValue(modelData.ConfigBasic.UnitType, out var list)) continue;
+                    UnitType unitType = modelData.ConfigBasic.UnitType;
+                    if (!separatorControl.UnitGroupControls.TryGetValue(unitType, out var list)) continue;
                     list.Add(jCU);
                     jCU.Data = modelData;
                     var id = modelData.ConfigBasic.Id;
@@ -145,8 +146,16 @@ public class MainGameControlSetupJLayout
 
                     var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
 
-                    var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK || modelData.ConfigBasic.UnitType == UnitType.CLASS;
-                    var hasResourceExpander = !hasTaskButton && modelData.ConfigBasic.UnitType == UnitType.RESOURCE;
+                    var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL;
+                    var hasTitleWithValue = unitType == UnitType.SKILL || unitType == UnitType.FURNITURE;
+                    var hasResourceExpander = !hasTaskButton && unitType == UnitType.RESOURCE;
+
+                    if (hasTitleWithValue) 
+                    {
+                        var titleRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
+                        var child = layoutRU.AddLayoutAsChild(titleRU);
+                        titleRU.SetTextRaw(0, modelData.ConfigBasic.name);
+                    }
 
                     if (hasTaskButton)
                     {
