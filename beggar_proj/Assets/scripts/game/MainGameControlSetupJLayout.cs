@@ -145,7 +145,7 @@ public class MainGameControlSetupJLayout
 
                     var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
 
-                    var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK;
+                    var hasTaskButton = modelData.ConfigBasic.UnitType == UnitType.TASK || modelData.ConfigBasic.UnitType == UnitType.CLASS;
                     var hasResourceExpander = !hasTaskButton && modelData.ConfigBasic.UnitType == UnitType.RESOURCE;
 
                     if (hasTaskButton)
