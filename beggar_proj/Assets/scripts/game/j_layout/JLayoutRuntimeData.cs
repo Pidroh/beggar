@@ -128,6 +128,8 @@ namespace JLayout
         public UIUnit SelfUIUnit { get; internal set; }
         public bool ClickedLayout => SelfUIUnit?.Clicked ?? false;
 
+        public JLayoutChild ChildSelf { get; private set; }
+        public bool? Disabled;
         public bool? Active;
 
         internal void AddChild(JLayoutChild child)
@@ -179,6 +181,7 @@ namespace JLayout
                 LayoutRU = layoutRU,
                 Commons = commons
             };
+            layoutRU.ChildSelf = item;
             Children.Add(item);
             layoutRU.RectTransform.SetParent(ContentTransform);
             if (!param.HasValue) return item;

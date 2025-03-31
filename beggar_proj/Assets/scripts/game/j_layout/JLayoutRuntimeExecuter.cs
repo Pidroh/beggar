@@ -101,7 +101,7 @@ namespace JLayout
                         thisActive = item.Item1.Active;
                     }
                     ColorSetType color = ColorSetType.NORMAL;
-                    if (!item.Item2.UiUnit.ButtonEnabled)
+                    if (!item.Item2.UiUnit.ButtonEnabled || lay.Disabled is true)
                     {
                         color = ColorSetType.DISABLED;
                     }

@@ -316,6 +316,7 @@ public static class JGameControlExecuter
             //if (sep != null) sep.ManualUpdate();
             //sep.LayoutChild.VisibleSelf = resourceChanges.Count > 0;
             var bySecond = i == (int)ResourceChangeType.EFFECT || i == (int)ResourceChangeType.RUN;
+            var disableAble = i == (int)ResourceChangeType.RUN || i == (int)ResourceChangeType.COST;
 
             for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
             {
@@ -333,10 +334,15 @@ public static class JGameControlExecuter
                 {
                     RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
                     targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
+                    int value = dataThatWillBeChanged.Value;
+                    if (disableAble) 
+                    {
+                        ttv.Disabled = value < max;
+                    }
                     if (dataThatWillBeChanged.HasMax)
-                        tertiaryText = $"({dataThatWillBeChanged.Value} / {dataThatWillBeChanged.Max})";
+                        tertiaryText = $"({value} / {dataThatWillBeChanged.Max})";
                     else
-                        tertiaryText = $"({dataThatWillBeChanged.Value})";
+                        tertiaryText = $"({value})";
                 }
                 else
                 {
