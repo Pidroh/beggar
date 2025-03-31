@@ -148,6 +148,7 @@ public class MainGameControlSetupJLayout
 
                     var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL;
                     var hasTitleWithValue = unitType == UnitType.SKILL || unitType == UnitType.FURNITURE;
+                    var hasXPBar = unitType == UnitType.SKILL;
                     var hasResourceExpander = !hasTaskButton && unitType == UnitType.RESOURCE;
 
                     if (hasTitleWithValue) 
@@ -155,6 +156,10 @@ public class MainGameControlSetupJLayout
                         var titleRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
                         var child = layoutRU.AddLayoutAsChild(titleRU);
                         titleRU.SetTextRaw(0, modelData.ConfigBasic.name);
+                    }
+                    if (hasXPBar) 
+                    {
+                        layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("xp_bar"), runtime));
                     }
 
                     if (hasTaskButton)

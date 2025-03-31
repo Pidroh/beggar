@@ -166,6 +166,44 @@
           ]
     },
     {
+        "id": "xp_bar",
+        "comment": "Xp bar for skills. Might be used for other things",
+        "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "SELF_SIZE"
+        ],
+        "size":[100, 11],
+        "padding":[1, 60, 5, 16],
+        "fixed_children":[
+            {
+                "type": "image",
+                "image": "white_rect",
+                "color_id": "mid_expander_arrow",
+                "axis_mode": [
+                  "PARENT_SIZE_PERCENT",
+                  "PARENT_SIZE_PERCENT"
+                ],
+                "position_mode": [
+                  "FOR_GAUGE",
+                  "CENTER"
+                ]
+              },
+              {
+                "type": "image",
+                "image": "white_rect",
+                "color_id": "xp_progress",
+                "axis_mode": [
+                  "PARENT_SIZE_PERCENT",
+                  "PARENT_SIZE_PERCENT"
+                ],
+                "position_mode": [
+                  "FOR_GAUGE",
+                  "CENTER"
+                ]
+              }
+        ]
+    },
+    {
       "id": "lore_text",
       "comment": "Contains the lore text for tasks, resources, etc",
       "axis_mode": [
@@ -818,6 +856,13 @@
         "8fd8edff"
       ]
     },
+    {
+        "id": "xp_progress",
+        "colors": [
+          "69edbdff",
+          "69edbdff"
+        ]
+      },
     {
       "id": "button_text_disabled",
       "colors": [

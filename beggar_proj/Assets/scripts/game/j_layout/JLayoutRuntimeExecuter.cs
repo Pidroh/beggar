@@ -157,6 +157,9 @@ namespace JLayout
                 switch (axisM)
                 {
                     case AxisMode.PARENT_SIZE_PERCENT:
+                        height = contentRect.GetHeight() - padding.vertical * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                        accountForTotalSize = false;
+                        break;
                     case AxisMode.PARENT_SIZE_PERCENT_RAW:
                         // var sizeRatio = 1f;
                         // doing this in the code above, width is solved first (because of text reasons)
@@ -251,6 +254,12 @@ namespace JLayout
                         case PositionMode.RAW_FOR_GAUGE:
                             if (axis == 0)
                                 childRect.SetLeftXToParent(pos.x * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            else
+                                Debug.LogError("Not supported yet");
+                            break;
+                        case PositionMode.FOR_GAUGE:
+                            if (axis == 0)
+                                childRect.SetLeftXToParent(pos.x * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize + padding.left *RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             else
                                 Debug.LogError("Not supported yet");
                             break;

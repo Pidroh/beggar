@@ -361,8 +361,22 @@ namespace JLayout
 
     public enum PositionMode
     {
-        LEFT_ZERO, RIGHT_ZERO, CENTER, CENTER_RAW, SIBLING_DISTANCE,
-        SIBLING_DISTANCE_REVERSE, RAW_FOR_GAUGE
+        // The origin is on the left, only for X
+        LEFT_ZERO, 
+        // origin on the right, so the right side aligns with right side of parent
+        RIGHT_ZERO, 
+        // center
+        CENTER, 
+        // center ignoring padding
+        CENTER_RAW, 
+        // aligns a side of the thing with the opposite side of the previous sibling (left with right or top with bottom)
+        SIBLING_DISTANCE,
+        // same as above, but the sides are inverted
+        SIBLING_DISTANCE_REVERSE, 
+        // positioning with a pivot that fits a gauge. Ignores padding
+        RAW_FOR_GAUGE, 
+        // same as above but does not ignore padding
+        FOR_GAUGE
     }
 
     public class PointerHolder<T>
