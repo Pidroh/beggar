@@ -122,86 +122,100 @@
       ]
     },
     {
-        "id": "log_lay",
-        "comment": "Log text for the log tab. Also contains a separator image in the bottom",
-        "axis_mode": [
+      "id": "log_lay",
+      "comment": "Log text for the log tab. Also contains a separator image in the bottom",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "padding": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "log_text",
+          "axis_mode": [
             "PARENT_SIZE_PERCENT",
-            "CONTAIN_CHILDREN"
-        ],
-        "padding":[
-            3,
-            3,
-            3,
-            3
-        ],
-        "fixed_children": [
-            {
-              "type": "text",
-              "id": "log_text",
-              "axis_mode": [
-                "PARENT_SIZE_PERCENT",
-                "TEXT_PREFERRED"
-              ],
-              "position_mode": [
-                "CENTER",
-                "CENTER"
-              ],
-              "text_horizontal": "LEFT"
-            },
-            {
-                "type": "image",
-                "image": "white_rect",
-                "color_id": "soft_separator",
-                "axis_mode": [
-                  "PARENT_SIZE_PERCENT_RAW",
-                  "SELF_SIZE"
-                ],
-                "position":[0, 2],
-                "size":[100, 2],
-                "position_mode": [
-                  "CENTER_RAW",
-                  "SIBLING_DISTANCE"
-                ]
-            }
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "LEFT"
+        },
+        {
+          "type": "image",
+          "image": "white_rect",
+          "color_id": "soft_separator",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "SELF_SIZE"
+          ],
+          "position": [
+            0,
+            2
+          ],
+          "size": [
+            100,
+            2
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "SIBLING_DISTANCE"
           ]
+        }
+      ]
     },
     {
-        "id": "xp_bar",
-        "comment": "Xp bar for skills. Might be used for other things",
-        "axis_mode": [
+      "id": "xp_bar",
+      "comment": "Xp bar for skills. Might be used for other things",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        11
+      ],
+      "padding": [
+        1,
+        60,
+        5,
+        16
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "white_rect",
+          "color_id": "mid_expander_arrow",
+          "axis_mode": [
             "PARENT_SIZE_PERCENT",
-            "SELF_SIZE"
-        ],
-        "size":[100, 11],
-        "padding":[1, 60, 5, 16],
-        "fixed_children":[
-            {
-                "type": "image",
-                "image": "white_rect",
-                "color_id": "mid_expander_arrow",
-                "axis_mode": [
-                  "PARENT_SIZE_PERCENT",
-                  "PARENT_SIZE_PERCENT"
-                ],
-                "position_mode": [
-                  "FOR_GAUGE",
-                  "CENTER"
-                ]
-              },
-              {
-                "type": "image",
-                "image": "white_rect",
-                "color_id": "xp_progress",
-                "axis_mode": [
-                  "PARENT_SIZE_PERCENT",
-                  "PARENT_SIZE_PERCENT"
-                ],
-                "position_mode": [
-                  "FOR_GAUGE",
-                  "CENTER"
-                ]
-              }
-        ]
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "FOR_GAUGE",
+            "CENTER"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "white_rect",
+          "color_id": "xp_progress",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "FOR_GAUGE",
+            "CENTER"
+          ]
+        }
+      ]
     },
     {
       "id": "lore_text",
@@ -237,51 +251,51 @@
       ]
     },
     {
-        "id": "above_button_title_with_value",
-        "comment": "Contains the title for things like skills (and furniture?)",
-        "axis_mode": [
-          "PARENT_SIZE_PERCENT",
-          "CONTAIN_CHILDREN"
-        ],
-        "size": [
-          100,
-          -1
-        ],
-        "padding": [
-          2,
-          0,
-          5,
-          0
-        ],
-        "fixed_children": [
-          {
-            "type": "text",
-            "id": "above_button_title_text",
-            "axis_mode": [
-              "PARENT_SIZE_PERCENT",
-              "TEXT_PREFERRED"
-            ],
-            "position_mode": [
-              "CENTER",
-              "CENTER"
-            ],
-            "text_horizontal": "LEFT"
-          },
-          {
-            "type": "text",
-            "id": "above_button_title_text",
-            "axis_mode": [
-              "PARENT_SIZE_PERCENT",
-              "TEXT_PREFERRED"
-            ],
-            "position_mode": [
-              "CENTER",
-              "CENTER"
-            ],
-            "text_horizontal": "RIGHT"
-          }
-        ]
-      },
+      "id": "above_button_title_with_value",
+      "comment": "Contains the title for things like skills (and furniture?)",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "size": [
+        100,
+        -1
+      ],
+      "padding": [
+        2,
+        0,
+        5,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "above_button_title_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "LEFT"
+        },
+        {
+          "type": "text",
+          "id": "above_button_title_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "RIGHT"
+        }
+      ]
+    },
     {
       "id": "left_mini_header",
       "comment": "Contains the mini header for cost, result, etc",
@@ -562,12 +576,14 @@
     {
       "id": "simple_text",
       "size": 12,
-      "color_id": "simple_text"
+      "color_id": "simple_text",
+      "color_id_disabled": "text_disabled_red"
     },
     {
       "id": "accessory_text",
       "size": 12,
-      "color_id": "accessory_text"
+      "color_id": "accessory_text",
+      "color_id_disabled": "text_accessory_disabled_red"
     }
   ],
   "buttons": [
@@ -696,11 +712,11 @@
       ]
     },
     {
-        "id": "soft_separator",
-        "colors":[
-            "#e8e8e8ff",
-            "#e8e8e8ff"
-        ]
+      "id": "soft_separator",
+      "colors": [
+        "#e8e8e8ff",
+        "#e8e8e8ff"
+      ]
     },
     {
       "id": "background_upper_header",
@@ -857,12 +873,12 @@
       ]
     },
     {
-        "id": "xp_progress",
-        "colors": [
-          "69edbdff",
-          "69edbdff"
-        ]
-      },
+      "id": "xp_progress",
+      "colors": [
+        "69edbdff",
+        "69edbdff"
+      ]
+    },
     {
       "id": "button_text_disabled",
       "colors": [
@@ -888,6 +904,20 @@
       "id": "button_border_disabled",
       "colors": [
         "#858585ff",
+        "#00FF00FF"
+      ]
+    },
+    {
+      "id": "text_disabled_red",
+      "colors": [
+        "b23636ff",
+        "#00FF00FF"
+      ]
+    },
+    {
+      "id": "text_accessory_disabled_red",
+      "colors": [
+        "#7e2626ff",
         "#00FF00FF"
       ]
     }
