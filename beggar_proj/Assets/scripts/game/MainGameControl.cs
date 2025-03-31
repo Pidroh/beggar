@@ -378,7 +378,6 @@ public class MainGameControl : MonoBehaviour
                                 {
                                     if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);
                                     else arcaniaModel.Runner.AcquireSkill(data);
-
                                 }
 
                             }

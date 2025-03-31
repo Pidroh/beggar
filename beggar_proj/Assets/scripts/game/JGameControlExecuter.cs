@@ -232,6 +232,18 @@ public static class JGameControlExecuter
                             case UnitType.HOUSE:
                                 break;
                             case UnitType.SKILL:
+                                {
+                                    var data = unit.Data;
+                                    unit.MainExecuteButton.SetButtonEnabled(data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data));
+                                    unit.MainExecuteButton.SetButtonTextRaw(data.Skill.Acquired ? "Practice skill" : "Acquire Skill");
+                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
+                                    if (unit.TaskClicked)
+                                    {
+                                        if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);
+                                        else arcaniaModel.Runner.AcquireSkill(data);
+                                    }
+                                }
+                                
                                 break;
                             case UnitType.FURNITURE:
                                 break;

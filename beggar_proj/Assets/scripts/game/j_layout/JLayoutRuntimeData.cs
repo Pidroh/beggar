@@ -68,6 +68,11 @@ namespace JLayout
         {
             buttonOwner.ButtonChildren[index].Item1.Active = v;
         }
+
+        internal void SetButtonTextRaw(string v)
+        {
+            buttonOwner.ButtonChildren[index].Item1.SetTextRaw(0, v);
+        }
     }
     public class JLayoutRuntimeData
     {
