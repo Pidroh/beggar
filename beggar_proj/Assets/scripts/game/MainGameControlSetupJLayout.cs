@@ -214,6 +214,7 @@ public class MainGameControlSetupJLayout
                             var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
                             miniHeader.SetTextRaw(0, textKey);
                             AddToExpand(miniHeader);
+                            jCU.ChangeGroups[rcgIndex].Header = miniHeader;
                             foreach (var rcu in rcl)
                             {
                                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);

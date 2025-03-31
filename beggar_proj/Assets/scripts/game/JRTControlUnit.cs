@@ -25,6 +25,8 @@ public class JRTControlUnit
 public class JResourceChangeGroup 
 {
     public AutoList<JLayoutRuntimeUnit> tripleTextViews = new();
+
+    public JLayoutRuntimeUnit Header { get; internal set; }
 }
 
 public class JGameControlDataHolder

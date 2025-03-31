@@ -296,18 +296,17 @@ public static class JGameControlExecuter
         for (int i = 0; i < ChangeGroups.Count; i++)
         {
             ResourceChangeType resourceChangeType = (ResourceChangeType)i;
-            //var sep = ChangeGroupSeparators[i];
-
             var item = ChangeGroups[i];
             if (item == null) continue;
+            var sep = item.Header;
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
             if (item == null || (Data.Skill != null && Data.Skill.Acquired && resourceChangeType == ResourceChangeType.COST))
             {
-                // if (sep != null) sep.LayoutChild.VisibleSelf = false;
+                if (sep != null) sep.SetVisibleSelf(false);
                 for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
                 {
                     var ttv = item.tripleTextViews[ttvIndex];
-                    
+                    ttv.SetVisibleSelf(false);
                     // ttv.LayoutChild.VisibleSelf = false;
                 }
                 continue;
