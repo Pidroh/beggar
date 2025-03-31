@@ -159,7 +159,9 @@ public class MainGameControlSetupJLayout
                     }
                     if (hasXPBar) 
                     {
-                        layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("xp_bar"), runtime));
+                        var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("xp_bar"), runtime));
+                        jCU.XPGaugeLayout = child.LayoutRU;
+                        jCU.XPGaugeProgressImage = new JImageAccessor(child.LayoutRU, 1);
                     }
 
                     if (hasTaskButton)

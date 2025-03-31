@@ -22,6 +22,10 @@ namespace JLayout
 
         public RectTransform Rect => imageOwner.ImageChildren[index].Rect;
 
+        internal void SetGaugeRatio(float xPRatio)
+        {
+            imageOwner.ImageChildren[index].SizeRatioAsGauge = xPRatio;
+        }
     }
 
     public class JLayTextAccessor
@@ -123,6 +127,7 @@ namespace JLayout
         internal bool Visible { get => _visibleResult; }
         public UIUnit SelfUIUnit { get; internal set; }
         public bool ClickedLayout => SelfUIUnit?.Clicked ?? false;
+
         public bool? Active;
 
         internal void AddChild(JLayoutChild child)

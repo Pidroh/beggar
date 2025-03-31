@@ -236,7 +236,9 @@ public static class JGameControlExecuter
                                     var data = unit.Data;
                                     unit.MainExecuteButton.SetButtonEnabled(data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data));
                                     unit.MainExecuteButton.SetButtonTextRaw(data.Skill.Acquired ? "Practice skill" : "Acquire Skill");
-                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
+                                    unit.XPGaugeLayout.SetVisibleSelf(data.Skill.Acquired);
+                                    unit.XPGaugeProgressImage.SetGaugeRatio(data.Skill.XPRatio);
+                                    unit.MainExecuteButton.buttonOwner.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
                                     if (unit.TaskClicked)
                                     {
                                         if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);

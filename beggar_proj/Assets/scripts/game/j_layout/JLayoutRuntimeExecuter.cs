@@ -353,7 +353,7 @@ namespace JLayout
                         child.Rect.SetWidth(parentRect.GetWidth() * child.SizeRatioAsGauge);
                         break;
                     case AxisMode.PARENT_SIZE_PERCENT:
-                        child.Rect.SetWidth(widthOfContentPhysical);
+                        child.Rect.SetWidth(widthOfContentPhysical * child.SizeRatioAsGauge);
                         widthOfContentForComsumptionPhysical = 0;
                         break;
                     case AxisMode.SELF_SIZE:

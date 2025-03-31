@@ -18,6 +18,8 @@ public class JRTControlUnit
     public JLayoutRuntimeUnit MainLayout { get; internal set; }
     public JLayoutRuntimeUnit ExpandWhenClickingLayout { get; internal set; }
     public JLayTextAccessor ValueText { get; internal set; }
+    public JLayoutRuntimeUnit XPGaugeLayout { get; internal set; }
+    public JImageAccessor XPGaugeProgressImage { get; internal set; }
 }
 
 public class JResourceChangeGroup 
