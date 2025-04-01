@@ -278,9 +278,9 @@ namespace JLayout
                             childRect.SetAnchorsByIndex(axis, 0.5f);
                             childRect.SetPivotByIndex(axis, 0.5f);
                             if (axis == 0)
-                                childRect.SetLocalX((padding.left - padding.right) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                childRect.SetLocalX((padding.left - padding.right + pos.x) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             if (axis == 1)
-                                childRect.SetLocalY((padding.bottom - padding.top) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                childRect.SetLocalY((padding.bottom - padding.top + pos.y) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
 
                             break;
                         case PositionMode.CENTER_RAW:
