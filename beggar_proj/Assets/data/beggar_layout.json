@@ -87,7 +87,7 @@
               "CENTER",
               "CENTER"
             ],
-            "position": [-60, 0]
+            "position": [-30, 0]
           },
           {
             "type": "button",
@@ -103,7 +103,7 @@
               "CENTER",
               "CENTER"
             ],
-            "position": [60, 0]
+            "position": [30, 0]
           }
         ]
       },
