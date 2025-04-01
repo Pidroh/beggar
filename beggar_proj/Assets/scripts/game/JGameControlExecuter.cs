@@ -248,6 +248,16 @@ public static class JGameControlExecuter
                                 
                                 break;
                             case UnitType.FURNITURE:
+                                {
+                                    if (unit.PlusMinusLayout.IsButtonClicked(0)) 
+                                    {
+                                        arcaniaModel.Housing.AcquireFurniture(unit.Data);
+                                    }
+                                    if (unit.PlusMinusLayout.IsButtonClicked(1))
+                                    {
+                                        arcaniaModel.Housing.RemoveFurniture(unit.Data);
+                                    }
+                                }
                                 break;
                             case UnitType.TAB:
                                 break;

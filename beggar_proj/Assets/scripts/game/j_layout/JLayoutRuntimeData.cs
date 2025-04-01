@@ -216,6 +216,11 @@ namespace JLayout
             _visibleSelf = value;
             UpdateVisibility();
         }
+
+        internal bool IsButtonClicked(int v)
+        {
+            return ButtonChildren[v].Item2.UiUnit.Clicked;
+        }
     }
 
     public class JLayoutChild
