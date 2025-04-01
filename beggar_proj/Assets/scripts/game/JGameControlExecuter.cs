@@ -192,7 +192,7 @@ public static class JGameControlExecuter
                             {
                                 
                                 JLayout.JLayoutRuntimeUnit ttv = unit.OwnedMods.tripleTextViews[modIndex];
-                                ttv.Disabled = !arcaniaModel.Housing.FurnitureNotMaxedButNotEnoughSpace(unit.Data);
+                                ttv.Disabled = arcaniaModel.Housing.FurnitureNotMaxedButNotEnoughSpace(unit.Data);
                                 ttv.SetTextRaw(2,$"({arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace})");
                             }
                         }
@@ -241,6 +241,17 @@ public static class JGameControlExecuter
                                 }
                                 break;
                             case UnitType.HOUSE:
+                                {
+                                    //unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data));
+                                    unit.MainExecuteButton.SetActive(arcaniaModel.Housing.IsLivingInHouse(unit.Data));
+                                    unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data) || arcaniaModel.Housing.IsLivingInHouse(unit.Data));
+                                    if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data)) 
+                                    {
+
+                                        arcaniaModel.Housing.ChangeHouse(unit.Data);
+                                    }
+                                }
+                                
                                 break;
                             case UnitType.SKILL:
                                 {

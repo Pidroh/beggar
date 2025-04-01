@@ -146,7 +146,7 @@ public class MainGameControlSetupJLayout
 
                     var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
 
-                    var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL;
+                    var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE;
                     var hasTitleWithValue = unitType == UnitType.SKILL || unitType == UnitType.FURNITURE;
                     var hasXPBar = unitType == UnitType.SKILL;
                     var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE);
@@ -173,6 +173,11 @@ public class MainGameControlSetupJLayout
                         jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                         jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
                         jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
+                        if (!modelData.ConfigTask.Duration.HasValue || modelData.ConfigTask.Duration <= 0) 
+                        {
+                            // buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = modelData.ConfigBasic.UnitType == UnitType.HOUSE;
+                            buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+                        }
                     }
                     else if (hasResourceExpander)
                     {
