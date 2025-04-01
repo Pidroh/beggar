@@ -149,7 +149,8 @@ public class MainGameControlSetupJLayout
                     var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL;
                     var hasTitleWithValue = unitType == UnitType.SKILL || unitType == UnitType.FURNITURE;
                     var hasXPBar = unitType == UnitType.SKILL;
-                    var hasResourceExpander = !hasTaskButton && unitType == UnitType.RESOURCE;
+                    var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE);
+                    var hasPlusMinusButton = unitType == UnitType.FURNITURE;
 
                     if (hasTitleWithValue) 
                     {
@@ -182,6 +183,14 @@ public class MainGameControlSetupJLayout
                         jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
                         jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
                         jCU.ExpandWhenClickingLayout = resourceLayoutRU;
+                    }
+
+                    if (hasPlusMinusButton) 
+                    {
+                        var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("furniture_buttons"), runtime));
+                        jCU.PlusMinusLayout = child.LayoutRU;
+                        child.LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, "+");
+                        child.LayoutRU.ButtonChildren[1].Item1.SetTextRaw(0, "-");
                     }
 
                     if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))

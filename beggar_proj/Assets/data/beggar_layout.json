@@ -62,6 +62,52 @@
       ]
     },
     {
+        "id": "furniture_buttons",
+        "comment": "Contains + - buttons for furniture",
+        "axis_mode": [
+          "PARENT_SIZE_PERCENT",
+          "SELF_SIZE"
+        ],
+        "size": [
+          100,
+          40
+        ],
+        "fixed_children": [
+          {
+            "type": "button",
+            "id": "task_button",
+            "axis_mode": [
+              "SELF_SIZE",
+              "PARENT_SIZE_PERCENT"
+            ],
+            "size": [
+                40, -1
+            ],
+            "position_mode": [
+              "CENTER",
+              "CENTER"
+            ],
+            "position": [-60, 0]
+          },
+          {
+            "type": "button",
+            "id": "task_button",
+            "axis_mode": [
+              "SELF_SIZE",
+              "PARENT_SIZE_PERCENT"
+            ],
+            "size": [
+                40, -1
+            ],
+            "position_mode": [
+              "CENTER",
+              "CENTER"
+            ],
+            "position": [60, 0]
+          }
+        ]
+      },
+    {
       "id": "expandable_resource_text",
       "comment": "Contains resource text with expandable button",
       "axis_mode": [
