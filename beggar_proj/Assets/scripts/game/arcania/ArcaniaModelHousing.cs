@@ -19,6 +19,13 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
         return true;
     }
 
+    public bool FurnitureNotMaxedButNotEnoughSpace(RuntimeUnit ru) 
+    {
+        if (ru.IsMaxed) return false;
+        if (CalculateMaxSpace() < ru.ConfigFurniture.SpaceConsumed + CalculateConsumedSpace()) return false;
+        return true;
+    }
+
     public void AcquireFurniture(RuntimeUnit ru)
     {
         _model.ApplyResourceChanges(ru, ResourceChangeType.COST);

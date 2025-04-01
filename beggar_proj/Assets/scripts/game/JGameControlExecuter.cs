@@ -185,6 +185,17 @@ public static class JGameControlExecuter
                         var visible = unit.Data?.Visible ?? false;
                         unit.MainLayout.SetVisibleSelf(visible);
                         if (!visible) continue;
+                        for (int modIndex = 0; modIndex < unit.OwnedMods.Mods.Count; modIndex++)
+                        {
+                            ModRuntime item = unit.OwnedMods.Mods[modIndex];
+                            if (item.ModType == ModType.SpaceConsumption) 
+                            {
+                                
+                                JLayout.JLayoutRuntimeUnit ttv = unit.OwnedMods.tripleTextViews[modIndex];
+                                ttv.Disabled = !arcaniaModel.Housing.FurnitureNotMaxedButNotEnoughSpace(unit.Data);
+                                ttv.SetTextRaw(2,$"({arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace})");
+                            }
+                        }
                         shouldShowSep = true;
                         UpdateChangeGroups(unit);
                         var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
