@@ -192,6 +192,7 @@ public class MainGameControlSetupJLayout
                         jCU.Description = new JLayTextAccessor(descLayout, 0);
                         AddToExpand(descLayout);
                     }
+                    #region change list instantiation
                     if (modelData.ConfigTask != null)
                     {
                         for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
@@ -211,9 +212,8 @@ public class MainGameControlSetupJLayout
                                 ResourceChangeType.RESULT_FAIL => "result failure",
                                 _ => null,
                             };
-                            var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
-                            miniHeader.SetTextRaw(0, textKey);
-                            AddToExpand(miniHeader);
+
+                            JLayoutRuntimeUnit miniHeader = CreateMiniHeader(runtime, jCU, layoutRU, textKey);
                             jCU.ChangeGroups[rcgIndex].Header = miniHeader;
                             foreach (var rcu in rcl)
                             {
@@ -227,6 +227,33 @@ public class MainGameControlSetupJLayout
 
                         }
                     }
+                    #endregion
+
+                    #region Mods
+                    var modList = modelData.ModsOwned;
+                    var header = "modifications";
+                    var modControl = jCU.OwnedMods;
+                    if (modList.Count > 0) 
+                    {
+                        modControl.Header = CreateMiniHeader(runtime, jCU, layoutRU, header);
+                        foreach (var mod in modList)
+                        {
+                            var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
+                            AddToExpand(triple);
+                            modControl.tripleTextViews.Add(triple);
+                            modControl.Mods.Add(mod);
+                            var value = mod.Value;
+                            triple.SetTextRaw(0, mod.HumanText);
+                            string secondaryText = null;
+                            if (value > 0 && mod.ModType != ModType.SpaceConsumption)
+                                secondaryText = $"+{value}";
+                            else
+                                secondaryText = $"{value}";
+                            triple.SetTextRaw(1, secondaryText);
+                        }
+                    }
+                    #endregion
+
 
                     void AddToExpand(JLayoutRuntimeUnit unit)
                     {
@@ -234,9 +261,20 @@ public class MainGameControlSetupJLayout
                         jCU.InsideExpandable.Add(unit);
                         unit.SetParentShowing(false);
                     }
+
+                    JLayoutRuntimeUnit CreateMiniHeader(JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, string textKey)
+                    {
+                        var layoutMaster = runtime.LayoutMaster;
+                        var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
+                        miniHeader.SetTextRaw(0, textKey);
+                        AddToExpand(miniHeader);
+                        return miniHeader;
+                    }
                 }
             }
         }
+
+        
     }
 
     internal static JLayoutRuntimeUnit CreateLogLayout(MainGameControl mgc, LogUnit logUnit)

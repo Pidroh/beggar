@@ -20,6 +20,16 @@ public class JRTControlUnit
     public JLayTextAccessor ValueText { get; internal set; }
     public JLayoutRuntimeUnit XPGaugeLayout { get; internal set; }
     public JImageAccessor XPGaugeProgressImage { get; internal set; }
+    public JRTControlUnitMods OwnedMods = new();
+    public JRTControlUnitMods IntermediaryMods = new();
+    public JRTControlUnitMods TargetingThisMods = new();
+}
+
+public class JRTControlUnitMods
+{
+    public JLayoutRuntimeUnit Header { get; internal set; }
+    public AutoList<JLayoutRuntimeUnit> tripleTextViews = new();
+    public List<ModRuntime> Mods = new();
 }
 
 public class JResourceChangeGroup 

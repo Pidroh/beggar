@@ -506,7 +506,6 @@ public class MainGameControlSetup
 
                 var ttv = CreateTripleTextView(layout, expandManager);
                 ttv.Mode = TripleTextView.TTVMode.PrimarySecondary;
-
                 modTTVs.Add(ttv);
             }
         }
