@@ -75,7 +75,7 @@
         "fixed_children": [
           {
             "type": "button",
-            "id": "task_button",
+            "id": "center_text_button",
             "axis_mode": [
               "SELF_SIZE",
               "PARENT_SIZE_PERCENT"
@@ -91,7 +91,7 @@
           },
           {
             "type": "button",
-            "id": "task_button",
+            "id": "center_text_button",
             "axis_mode": [
               "SELF_SIZE",
               "PARENT_SIZE_PERCENT"
@@ -595,6 +595,12 @@
       "color_id_disabled": "button_text_disabled"
     },
     {
+        "id": "button_text_single_char",
+        "size": 16,
+        "color_id": "main_text",
+        "color_id_disabled": "button_text_disabled"
+      },
+    {
       "id": "above_button_title_text",
       "size": 14,
       "color_id": "main_text"
@@ -720,6 +726,65 @@
         }
       ]
     },
+    {
+        "id": "center_text_button",
+        "padding": [
+          0,
+          0,
+          3,
+          0
+        ],
+        "fixed_children": [
+          {
+            "type": "image",
+            "image": "button_fill",
+            "color_id": "button_fill",
+            "color_id_clicked": "button_fill_click",
+            "color_id_pressed": "button_fill_pressed",
+            "color_id_active": "button_fill_active",
+            "color_id_hovered": "button_fill_hovered",
+            "color_id_disabled": "button_fill_disabled",
+            "axis_mode": [
+              "PARENT_SIZE_PERCENT_RAW",
+              "PARENT_SIZE_PERCENT_RAW"
+            ],
+            "position_mode": [
+              "CENTER_RAW",
+              "CENTER_RAW"
+            ]
+          },
+          {
+            "type": "image",
+            "image": "button_border",
+            "color_id": "button_border",
+            "color_id_hovered": "button_border_hovered",
+            "color_id_active": "button_border_active",
+            "color_id_disabled": "button_border_disabled",
+            "axis_mode": [
+              "PARENT_SIZE_PERCENT_RAW",
+              "PARENT_SIZE_PERCENT_RAW"
+            ],
+            "position_mode": [
+              "CENTER_RAW",
+              "CENTER_RAW"
+            ],
+            "text_horizontal": "CENTER"
+          },
+          {
+            "type": "text",
+            "id": "button_text_single_char",
+            "axis_mode": [
+              "PARENT_SIZE_PERCENT",
+              "TEXT_PREFERRED"
+            ],
+            "position_mode": [
+              "CENTER",
+              "CENTER"
+            ],
+            "text_horizontal": "CENTER"
+          }
+        ]
+      },
     {
       "id": "expander_arrow",
       "padding": [
