@@ -249,6 +249,8 @@ public static class JGameControlExecuter
                                 break;
                             case UnitType.FURNITURE:
                                 {
+                                    unit.PlusMinusLayout.ButtonChildren[0].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanAcquireFurniture(unit.Data);
+                                    unit.PlusMinusLayout.ButtonChildren[1].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanRemoveFurniture(unit.Data);
                                     if (unit.PlusMinusLayout.IsButtonClicked(0)) 
                                     {
                                         arcaniaModel.Housing.AcquireFurniture(unit.Data);
