@@ -246,6 +246,8 @@ namespace HeartUnity.View
         public bool HoveredWhileVisible => _hoveredWhileVisible && gameObject.activeSelf;
 
         public Image Image { get => _image; set => _image = value; }
+        public bool HasButton => _button != null;
+
         public int? FontSizePhysical;
 
         public bool CheckMouseInside()

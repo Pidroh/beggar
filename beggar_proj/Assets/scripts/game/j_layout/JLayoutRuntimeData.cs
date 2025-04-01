@@ -129,6 +129,16 @@ namespace JLayout
         public bool ClickedLayout => SelfUIUnit?.Clicked ?? false;
 
         public JLayoutChild ChildSelf { get; private set; }
+        public bool Hovered => (ChildSelf?.UiUnit) != null && ChildSelf.UiUnit.HoveredWhileVisible;
+
+        internal bool TryGetSelfButton(out UIUnit buttonUU)
+        {
+            buttonUU = null;
+            if (SelfUIUnit != null && SelfUIUnit.HasButton) buttonUU = SelfUIUnit;
+            if (ChildSelf?.UiUnit != null && ChildSelf.UiUnit.HasButton) buttonUU = ChildSelf.UiUnit;
+            return buttonUU != null;
+        }
+
         public bool? Disabled;
         public bool? Active;
 
@@ -239,10 +249,14 @@ namespace JLayout
         internal void ApplyColor(ColorSetType color)
         {
             ColorSet colorSet = Commons.ColorSet;
-            colorSet ??= TextData.ColorSet;
+            colorSet ??= TextData?.ColorSet;
             if (colorSet == null) return;
             if (!colorSet.ColorDatas.TryGetValue(color, out var cd)) return;
-            if (UiUnit == null) Debug.LogError("Has color but has no ui unit, what is this situation?");
+            if (UiUnit == null) 
+            {
+                return;
+                Debug.LogError("Has color but has no ui unit, what is this situation?"); 
+            }
             var colorV = cd.data.Colors[0];
             if (UiUnit.Image != null)
                 UiUnit.Image.color = colorV;

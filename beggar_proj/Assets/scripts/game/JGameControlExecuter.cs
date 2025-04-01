@@ -337,7 +337,8 @@ public static class JGameControlExecuter
                     int value = dataThatWillBeChanged.Value;
                     if (disableAble) 
                     {
-                        ttv.Disabled = value < max;
+                        // max is negative, so the sum needs to be above 0
+                        ttv.Disabled = (value + max) < 0;
                     }
                     if (dataThatWillBeChanged.HasMax)
                         tertiaryText = $"({value} / {dataThatWillBeChanged.Max})";

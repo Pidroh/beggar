@@ -82,9 +82,9 @@ namespace JLayout
 
             #region click color
             ProcessColor(parentLayout, null);
-            void ProcessColor(JLayoutRuntimeUnit lay, bool? active) 
+            void ProcessColor(JLayoutRuntimeUnit lay, bool? active)
             {
-                if (lay.Active.HasValue) 
+                if (lay.Active.HasValue)
                 {
                     active = lay.Active;
                 }
@@ -93,10 +93,43 @@ namespace JLayout
                     if (item.LayoutRU == null) continue;
                     ProcessColor(item.LayoutRU, active);
                 }
+                var hasButton = lay.TryGetSelfButton(out UIUnit buttonUU);
+
+                var thisActive = active;
+                ColorSetType color = ColorSetType.NORMAL;
+                if (lay.Disabled is true || (hasButton && !buttonUU.ButtonEnabled))
+                {
+                    color = ColorSetType.DISABLED;
+                } else if (hasButton && buttonUU.Clicked)
+                {
+                    color = ColorSetType.CLICKED;
+                } if (hasButton && buttonUU.MouseDown)
+                {
+                    color = ColorSetType.PRESSED;
+                }
+                else if (lay.Hovered)
+                {
+                    color = ColorSetType.HOVERED;
+                }
+                else if (thisActive is true) 
+                {
+                    color = ColorSetType.ACTIVE;
+                }
+                foreach (var c in lay.Children)
+                {
+                    if (c.LayoutRU != null && c.LayoutRU.Disabled is true)
+                    {
+                        c.ApplyColor(ColorSetType.DISABLED);
+                        continue;
+                    }
+                    c.ApplyColor(color);
+                }
+
+                /*
                 foreach (var item in lay.ButtonChildren)
                 {
                     var thisActive = active;
-                    if (item.Item1.Active.HasValue) 
+                    if (item.Item1.Active.HasValue)
                     {
                         thisActive = item.Item1.Active;
                     }
@@ -116,15 +149,22 @@ namespace JLayout
                     else if (item.Item2.UiUnit.HoveredWhileVisible)
                     {
                         color = ColorSetType.HOVERED;
-                    } else if (thisActive.HasValue && thisActive.Value) 
+                    }
+                    else if (thisActive.HasValue && thisActive.Value)
                     {
                         color = ColorSetType.ACTIVE;
                     }
                     foreach (var c in item.Item1.Children)
                     {
+                        if (c.LayoutRU != null && c.LayoutRU.Disabled is true)
+                        {
+                            c.ApplyColor(ColorSetType.DISABLED);
+                            continue;
+                        }
                         c.ApplyColor(color);
                     }
                 }
+                */
             }
             #endregion
         }
@@ -259,7 +299,7 @@ namespace JLayout
                             break;
                         case PositionMode.FOR_GAUGE:
                             if (axis == 0)
-                                childRect.SetLeftXToParent(pos.x * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize + padding.left *RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                                childRect.SetLeftXToParent(pos.x * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize + padding.left * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                             else
                                 Debug.LogError("Not supported yet");
                             break;
