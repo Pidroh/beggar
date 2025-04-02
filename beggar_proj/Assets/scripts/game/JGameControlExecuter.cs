@@ -122,6 +122,11 @@ public static class JGameControlExecuter
             // an invisible tab needs no processing
             if (!tabActive) continue;
 
+            if (tabControl.SpaceShowLayout != null) {
+                tabControl.SpaceShowLayout.SetTextRaw(0, "Space");
+                tabControl.SpaceShowLayout.SetTextRaw(1, $"{arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}");
+            }
+
             #region thin tab attempt
             JLayout.JLayCanvasChild child = dynamicCanvas.children[tabIndex];
             if (tabData.NecessaryForDesktopAndThinnable && desktopMode)

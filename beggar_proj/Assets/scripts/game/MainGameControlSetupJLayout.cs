@@ -128,6 +128,11 @@ public class MainGameControlSetupJLayout
                     layoutRU.ImageChildren[0].Rect.transform.localScale = new Vector3(1, -1, 1);
                 }
                 #endregion
+                if (separatorControl.SepD.ShowSpace) 
+                {
+                    var child = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
+                    tabControl.SpaceShowLayout = parentOfTabContent.AddLayoutAsChild(child).LayoutRU;
+                }
 
                 foreach (var modelData in separatorControl.SepD.BoundRuntimeUnits)
                 {

@@ -57,6 +57,7 @@ public class JTabControlUnit
     public List<JLayoutRuntimeUnit> TabToggleButtons = new();
     public int LogAmount { get; internal set; }
     public JLayoutRuntimeUnit MobileButton { get; internal set; }
+    public JLayoutRuntimeUnit SpaceShowLayout { get; internal set; }
 
     public class JSeparatorControl 
     {
