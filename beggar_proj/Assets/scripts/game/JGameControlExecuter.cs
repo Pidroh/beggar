@@ -261,14 +261,19 @@ public static class JGameControlExecuter
                             case UnitType.SKILL:
                                 {
                                     var data = unit.Data;
-                                    unit.MainExecuteButton.SetButtonEnabled(data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data));
-                                    unit.MainExecuteButton.SetButtonTextRaw(data.Skill.Acquired ? "Practice skill" : "Acquire Skill");
-                                    unit.XPGaugeLayout.SetVisibleSelf(data.Skill.Acquired);
+                                    bool acquired = data.Skill.Acquired;
+                                    unit.MainExecuteButton.SetButtonEnabled(acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data));
+                                    unit.MainExecuteButton.SetButtonTextRaw(acquired ? "Practice skill" : "Acquire Skill");
+                                    unit.XPGaugeLayout.SetVisibleSelf(acquired);
                                     unit.XPGaugeProgressImage.SetGaugeRatio(data.Skill.XPRatio);
                                     unit.MainExecuteButton.buttonOwner.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
+                                    if (acquired) 
+                                    {
+                                        unit.TitleWithValue.SetTextRaw(1, $"{unit.Data.Value} / {unit.Data.Max}");
+                                    }
                                     if (unit.TaskClicked)
                                     {
-                                        if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);
+                                        if (acquired) arcaniaModel.Runner.StudySkill(data);
                                         else arcaniaModel.Runner.AcquireSkill(data);
                                     }
                                 }

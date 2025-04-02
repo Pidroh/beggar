@@ -21,6 +21,7 @@ public class JRTControlUnit
     public JLayoutRuntimeUnit XPGaugeLayout { get; internal set; }
     public JImageAccessor XPGaugeProgressImage { get; internal set; }
     public JLayoutRuntimeUnit PlusMinusLayout { get; internal set; }
+    public JLayoutRuntimeUnit TitleWithValue { get; internal set; }
 
     public JRTControlUnitMods OwnedMods = new();
     public JRTControlUnitMods IntermediaryMods = new();
