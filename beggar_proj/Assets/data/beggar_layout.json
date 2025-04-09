@@ -101,7 +101,91 @@
         ]
     },
     {
-        
+        "id": "exploration_progress_bar",
+        "fixed_children":[
+            {
+                "type": "image",
+                "image": "button_fill",
+                "color_id": "button_fill",
+                "color_id_clicked": "button_fill_click",
+                "color_id_pressed": "button_fill_pressed",
+                "color_id_active": "button_fill_active",
+                "color_id_hovered": "button_fill_hovered",
+                "color_id_disabled": "button_fill_disabled",
+                "axis_mode": [
+                  "PARENT_SIZE_PERCENT_RAW",
+                  "PARENT_SIZE_PERCENT_RAW"
+                ],
+                "position_mode": [
+                  "CENTER_RAW",
+                  "CENTER_RAW"
+                ]
+              },
+              {
+                "type": "image",
+                "image": "button_fill",
+                "color_id": "button_fill_gauge",
+                "color_id_clicked": "button_fill_gauge_click",
+                "color_id_active": "button_fill_gauge_active",
+                "color_id_pressed": "button_fill_gauge_pressed",
+                "color_id_hovered": "button_fill_gauge_hovered",
+                "color_id_disabled": "button_fill_gauge_disabled",
+                "axis_mode": [
+                  "PARENT_SIZE_PERCENT_RAW",
+                  "PARENT_SIZE_PERCENT_RAW"
+                ],
+                "position_mode": [
+                  "RAW_FOR_GAUGE",
+                  "CENTER_RAW"
+                ]
+              },
+              {
+                "type": "image",
+                "image": "button_border",
+                "color_id": "button_border",
+                "color_id_hovered": "button_border_hovered",
+                "color_id_active": "button_border_active",
+                "color_id_disabled": "button_border_disabled",
+                "axis_mode": [
+                  "PARENT_SIZE_PERCENT_RAW",
+                  "PARENT_SIZE_PERCENT_RAW"
+                ],
+                "position_mode": [
+                  "CENTER_RAW",
+                  "CENTER_RAW"
+                ]
+              }
+        ]
+    },
+    {
+        "id": "exploration_progress_part_expandable",
+        "fixed_children":[
+            {
+                "type": "text",
+                "id": "button_text",
+                "axis_mode": [
+                    "PARENT_SIZE_PERCENT",
+                    "TEXT_PREFERRED"
+                ],
+                "position_mode": [
+                "CENTER",
+                "SIBLING_DISTANCE"
+                ]
+            },
+            {
+                "type": "layout",
+                "id": "exploration_progress_bar",
+                "axis_mode": [
+                    "PARENT_SIZE_PERCENT",
+                    "SELF_SIZE"
+                ],
+                "size":[100, 20],
+                "position_mode": [
+                "CENTER",
+                "SIBLING_DISTANCE"
+                ]
+            }
+        ]
     },
     {
         "id": "furniture_buttons",
