@@ -46,6 +46,7 @@ public class MainGameControlSetupJLayout
         // -------------------------------------------------
         // TAB BUTTON INSTANTIATING (not yet implemented button instantiation) AND OTHER SMALL SETUP
         // -------------------------------------------------
+        #region tab button and other things
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
@@ -110,7 +111,11 @@ public class MainGameControlSetupJLayout
                 }
             }
         }
+        #endregion
+
         mgc.JControlData = jControlDataHolder;
+
+        #region main default setup of runtime units and separators
         for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
         {
             var parentOfTabContent = jCanvas.children[tabIndex].LayoutRuntimeUnit;
@@ -133,7 +138,7 @@ public class MainGameControlSetupJLayout
                     var child = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
                     tabControl.SpaceShowLayout = parentOfTabContent.AddLayoutAsChild(child).LayoutRU;
                 }
-
+                #region instantiating each unit in a separator
                 foreach (var modelData in separatorControl.SepD.BoundRuntimeUnits)
                 {
                     var jCU = new JRTControlUnit();
@@ -157,14 +162,14 @@ public class MainGameControlSetupJLayout
                     var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE);
                     var hasPlusMinusButton = unitType == UnitType.FURNITURE;
 
-                    if (hasTitleWithValue) 
+                    if (hasTitleWithValue)
                     {
                         var titleRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
                         var child = layoutRU.AddLayoutAsChild(titleRU);
                         titleRU.SetTextRaw(0, modelData.ConfigBasic.name);
                         jCU.TitleWithValue = titleRU;
                     }
-                    if (hasXPBar) 
+                    if (hasXPBar)
                     {
                         var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("xp_bar"), runtime));
                         jCU.XPGaugeLayout = child.LayoutRU;
@@ -179,7 +184,7 @@ public class MainGameControlSetupJLayout
                         jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                         jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
                         jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
-                        if (!modelData.ConfigTask.Duration.HasValue || modelData.ConfigTask.Duration <= 0) 
+                        if (!modelData.ConfigTask.Duration.HasValue || modelData.ConfigTask.Duration <= 0)
                         {
                             // buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = modelData.ConfigBasic.UnitType == UnitType.HOUSE;
                             buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
@@ -196,7 +201,7 @@ public class MainGameControlSetupJLayout
                         jCU.ExpandWhenClickingLayout = resourceLayoutRU;
                     }
 
-                    if (hasPlusMinusButton) 
+                    if (hasPlusMinusButton)
                     {
                         var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("furniture_buttons"), runtime));
                         jCU.PlusMinusLayout = child.LayoutRU;
@@ -253,7 +258,7 @@ public class MainGameControlSetupJLayout
                     var modList = modelData.ModsOwned;
                     var header = "modifications";
                     var modControl = jCU.OwnedMods;
-                    if (modList.Count > 0) 
+                    if (modList.Count > 0)
                     {
                         modControl.Header = CreateMiniHeader(runtime, jCU, layoutRU, header);
                         foreach (var mod in modList)
@@ -291,10 +296,97 @@ public class MainGameControlSetupJLayout
                         return miniHeader;
                     }
                 }
+                #endregion
+
             }
         }
+        #endregion
 
-        
+
+        #region instantiating exploration graphics
+        /*
+        for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
+        {
+            TabControlUnit tab = mgc.TabControlUnits[tabIndex];
+            if (!tab.TabData.Tab.ExplorationActiveTab) continue;
+
+
+            for (int indexExplorationElement = 0; indexExplorationElement < 4; indexExplorationElement++)
+            {
+                int numberOfEles = 1;
+                bool isStressors = indexExplorationElement == 2;
+                var fleeButton = indexExplorationElement == 3;
+                if (isStressors)
+                {
+                    numberOfEles = mgc.arcaniaModel.Exploration.Stressors.Count;
+                }
+                for (int eleIndex = 0; eleIndex < numberOfEles; eleIndex++)
+                {
+                    var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
+                    jCanvas.children[tabIndex].LayoutRuntimeUnit.AddLayoutAsChild(layout);
+                    var hasBWE = fleeButton;
+                    var rcu = new RTControlUnit();
+                    rcu.MainLayout = layout;
+                    rcu.TabControl = tab;
+                    if (isStressors)
+                    {
+                        rcu.Data = mgc.arcaniaModel.Exploration.Stressors[eleIndex];
+                    }
+                    rcu.ParentTabSeparator = null;
+                    if (hasBWE)
+                    {
+                        var button = CanvasMaker.CreateButton("Flee", mgc.ButtonObjectRequest, mgc.ButtonRequest);
+                        var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
+                        var bwe = new ButtonWithExpandable(button, iconButton, mgc.ButtonRequest);
+                        rcu.bwe = bwe;
+                        layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
+                        bwe.LayoutChild.ObjectName = "WTF IS";
+                    }
+
+                    if (!hasBWE)
+                    {
+                        var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
+                        titleText.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                        var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
+                        var lwe = new LabelWithExpandable(iconButton, titleText);
+                        layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
+                        titleText.SetTextRaw("Location name");
+                        rcu.lwe = lwe;
+                        rcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
+                        layout.AddLayoutChildAndParentIt(rcu.XPGauge.layoutChild);
+                    }
+                    switch (indexExplorationElement)
+                    {
+                        case 0:
+                            mgc.controlExploration.dataHolder.LocationRCU = rcu;
+                            CreateReserveChangeViews(mgc, layout, rcu);
+                            break;
+                        case 1: // encounter
+                            mgc.controlExploration.dataHolder.EncounterRCU = rcu;
+                            AddDescription(mgc, layout, rcu, true);
+                            CreateReserveChangeViews(mgc, layout, rcu);
+                            break;
+                        case 2:
+                            mgc.controlExploration.dataHolder.StressorsRCU.Add(rcu);
+                            break;
+                        case 3:
+                            mgc.controlExploration.dataHolder.FleeRCU = rcu;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                // if it's the enemy encounter one
+
+            }
+            mgc.controlExploration.dataHolder.FinishSetup();
+
+        }
+        */
+        #endregion
+
+
     }
 
     internal static JLayoutRuntimeUnit CreateLogLayout(MainGameControl mgc, LogUnit logUnit)

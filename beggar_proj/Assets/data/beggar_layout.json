@@ -62,6 +62,48 @@
       ]
     },
     {
+        "id": "exploration_progress_part_expandable",
+        "comment": "exploration area (parent) and exploration enemy (the individual foes)",
+        "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "SELF_SIZE"
+        ],
+        "size":[100, 40],
+        "fixed_children": [
+            {
+                "type": "layout",
+                "id": "exploration_progress_label_bar",
+                "axis_mode": [
+                  "FILL_REMAINING_SIZE",
+                  "PARENT_SIZE_PERCENT"
+                ],
+                "position_mode": [
+                  "LEFT_ZERO",
+                  "CENTER"
+                ]
+              },
+              {
+                "type": "button",
+                "id": "expander_arrow",
+                "axis_mode": [
+                  "SELF_SIZE",
+                  "PARENT_SIZE_PERCENT"
+                ],
+                "size": [
+                  42,
+                  100
+                ],
+                "position_mode": [
+                  "RIGHT_ZERO",
+                  "CENTER"
+                ]
+              }
+        ]
+    },
+    {
+        
+    },
+    {
         "id": "furniture_buttons",
         "comment": "Contains + - buttons for furniture",
         "axis_mode": [
@@ -106,7 +148,7 @@
             "position": [30, 0]
           }
         ]
-      },
+    },
     {
       "id": "expandable_resource_text",
       "comment": "Contains resource text with expandable button",
