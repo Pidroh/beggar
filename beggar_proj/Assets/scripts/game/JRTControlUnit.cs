@@ -48,6 +48,11 @@ public class JGameControlDataHolder
     public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
 }
 
+public class JGameControlDataExploration 
+{ 
+    explora layouts and stuff
+}
+
 public class JTabControlUnit
 {
     //public Dictionary<UnitType, List<JRTControlUnit>> UnitGroupControls = new();
