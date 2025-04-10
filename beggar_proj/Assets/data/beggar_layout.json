@@ -72,7 +72,7 @@
         "fixed_children": [
             {
                 "type": "layout",
-                "id": "exploration_progress_label_bar",
+                "id": "exploration_progress_label_and_bar",
                 "axis_mode": [
                   "FILL_REMAINING_SIZE",
                   "PARENT_SIZE_PERCENT"
@@ -158,7 +158,7 @@
         ]
     },
     {
-        "id": "exploration_progress_part_expandable",
+        "id": "exploration_progress_label_and_bar",
         "fixed_children":[
             {
                 "type": "text",

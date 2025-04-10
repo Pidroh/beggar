@@ -132,7 +132,7 @@ namespace JLayout
             foreach (var layoutEntry in value.Children)
             {
                 LayoutData ld = ReadLayout(layoutMaster, layoutEntry);
-                layoutMaster.LayoutDatas.GetOrCreatePointer(ld.Id).data = ld;
+                layoutMaster.LayoutDatas.Bind(ld.Id, ld);
             }
         }
 
@@ -223,6 +223,9 @@ namespace JLayout
                 if (!EnumHelper<ChildType>.TryGetEnumFromName(childEntry["type"], out var cT)) Debug.LogError("");
                 switch (cT)
                 {
+                    case ChildType.layout:
+                        childData.LayoutRef = master.LayoutDatas.GetOrCreatePointer(childData.Id);
+                        break;
                     case ChildType.button:
                         childData.ButtonRef = master.ButtonDatas.GetOrCreatePointer(childData.Id);
                         break;
@@ -231,8 +234,6 @@ namespace JLayout
                         break;
                     case ChildType.image:
                         childData.ImageKey = childEntry["image"].AsString;
-                        break;
-                    default:
                         break;
                 }
 
@@ -333,7 +334,7 @@ namespace JLayout
 
     public enum ChildType
     {
-        button, text, image
+        button, text, image, layout
     }
 
     public enum TextHorizontal
@@ -401,6 +402,10 @@ namespace JLayout
         {
             var p = GetOrCreatePointer(id);
             p.Id = id;
+            if (p.data != null) 
+            {
+                Debug.LogError("data was bound twice, repeated id? "+id);
+            }
             p.data = buttonData;
         }
 
@@ -446,7 +451,7 @@ namespace JLayout
     {
         public LayoutCommons Commons { get; internal set; }
         public string Id => Commons.Id;
-
+        public Pointer<LayoutData> LayoutRef;
         public Pointer<TextData> TextRef { get; internal set; }
         public Pointer<ButtonData> ButtonRef { get; internal set; }
         public string ImageKey { get; internal set; }

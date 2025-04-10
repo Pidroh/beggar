@@ -105,7 +105,8 @@ public class JsonReader
             }
             if (mod.ModType == ModType.Lock)
             {
-                mod.HumanText = "Currently Invisible";
+                // if this gets visualized, it's an error
+                mod.HumanText = "(Currently Invisible: error)";
             }
             if (mod.HumanText == null)
             {

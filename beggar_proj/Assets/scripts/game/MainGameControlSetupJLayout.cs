@@ -54,18 +54,18 @@ public class MainGameControlSetupJLayout
             for (int buttonTypeIndex = 0; buttonTypeIndex < 2; buttonTypeIndex++)
             {
                 var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
-                var d = buttonTypeIndex == 0 ? Direction.WEST: Direction.SOUTH;
+                var d = buttonTypeIndex == 0 ? Direction.WEST : Direction.SOUTH;
                 var buttonLayRU = JCanvasMaker.CreateLayout(buttonLD, runtime);
                 var child = jControlDataHolder.tabMenu[d].AddLayoutAsChild(buttonLayRU);
-                if(buttonTypeIndex == 1)
+                if (buttonTypeIndex == 1)
                     child.PositionModeOverride = new PositionMode[] { PositionMode.SIBLING_DISTANCE, PositionMode.CENTER };
 
                 var sprite = item.ConfigBasic.SpriteKey == null ? null : mgc.ResourceJson.spritesForLayout[item.ConfigBasic.SpriteKey];
                 if (sprite == null)
                 {
-                    Debug.Log("Sprite key not found "+ item.ConfigBasic.SpriteKey);
+                    Debug.Log("Sprite key not found " + item.ConfigBasic.SpriteKey);
                 }
-                else 
+                else
                 {
                     buttonLayRU.ImageChildren[1].UiUnit.ChangeSprite(sprite);
                 }
@@ -75,7 +75,7 @@ public class MainGameControlSetupJLayout
                     tcu.MobileButton = buttonLayRU;
                 tcu.TabToggleButtons.Add(buttonLayRU);
             }
-            
+
 
             var taskParent = jCanvas.children[tabIndex];
 
@@ -133,7 +133,7 @@ public class MainGameControlSetupJLayout
                     layoutRU.ImageChildren[0].Rect.transform.localScale = new Vector3(1, -1, 1);
                 }
                 #endregion
-                if (separatorControl.SepD.ShowSpace) 
+                if (separatorControl.SepD.ShowSpace)
                 {
                     var child = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
                     tabControl.SpaceShowLayout = parentOfTabContent.AddLayoutAsChild(child).LayoutRU;
@@ -263,6 +263,7 @@ public class MainGameControlSetupJLayout
                         modControl.Header = CreateMiniHeader(runtime, jCU, layoutRU, header);
                         foreach (var mod in modList)
                         {
+                            if (mod.ModType == ModType.Lock) continue;
                             var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
                             AddToExpand(triple);
                             modControl.tripleTextViews.Add(triple);
@@ -304,15 +305,21 @@ public class MainGameControlSetupJLayout
 
 
         #region instantiating exploration graphics
-        /*
-        for (int tabIndex = 0; tabIndex < mgc.TabControlUnits.Count; tabIndex++)
+
+        for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
         {
-            TabControlUnit tab = mgc.TabControlUnits[tabIndex];
+            var tab = jControlDataHolder.TabControlUnits[tabIndex];
             if (!tab.TabData.Tab.ExplorationActiveTab) continue;
+            var tabHolder = jCanvas.children[tabIndex];
 
-
-            for (int indexExplorationElement = 0; indexExplorationElement < 4; indexExplorationElement++)
+            for (int indexExplorationElement = 0; indexExplorationElement < 2; indexExplorationElement++)
             {
+                var parent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
+                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(parent);
+                parent.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
+                parent.ChildSelf.Rect.gameObject.name += " " + (indexExplorationElement == 0 ? "area" : "encounter");
+                var expandableTextWithBar = parent.AddLayoutAsChild(JCanvasMaker.CreateLayout("exploration_progress_part_expandable", runtime));
+                /*
                 int numberOfEles = 1;
                 bool isStressors = indexExplorationElement == 2;
                 var fleeButton = indexExplorationElement == 3;
@@ -375,7 +382,9 @@ public class MainGameControlSetupJLayout
                         default:
                             break;
                     }
+                
                 }
+                */
 
                 // if it's the enemy encounter one
 
@@ -383,7 +392,7 @@ public class MainGameControlSetupJLayout
             mgc.controlExploration.dataHolder.FinishSetup();
 
         }
-        */
+
         #endregion
 
 

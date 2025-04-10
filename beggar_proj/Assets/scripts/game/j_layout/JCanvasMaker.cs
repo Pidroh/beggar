@@ -148,9 +148,16 @@ namespace JLayout
                         break;
                     case { ImageKey: not null }:
                         {
+                            
                             JLayoutChild imageChild = CreateImage(childData, runtime);
                             ru.AddChild(imageChild);
                             ru.BindImage(imageChild);
+                        }
+                        break;
+                    case { LayoutRef: not null }:
+                        {
+                            var childLayout = CreateLayout(childData.LayoutRef.data, runtime);
+                            ru.AddLayoutAsChild(childLayout, childData);
                         }
                         break;
                     default:
@@ -323,6 +330,11 @@ namespace JLayout
             lp.DefaultPositionModes = new PositionMode[2] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
 
             return lp;
+        }
+
+        internal static JLayoutRuntimeUnit CreateLayout(string layoutId, JLayoutRuntimeData runtime)
+        {
+            return CreateLayout(runtime.LayoutMaster.LayoutDatas.GetData(layoutId), runtime);
         }
     }
 }
