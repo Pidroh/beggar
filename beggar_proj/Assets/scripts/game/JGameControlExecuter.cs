@@ -48,6 +48,7 @@ public static class JGameControlExecuter
         controlData.tabMenu[Direction.SOUTH].SetVisibleSelf(!desktopMode);
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
+        #region Main loop that does tons of things (tabs, logs, each unit)
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
             JTabControlUnit tabControl = controlData.TabControlUnits[tabIndex];
@@ -311,9 +312,11 @@ public static class JGameControlExecuter
             }
             #endregion
         }
-
+        #endregion
         // do it twice to make sure
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
+
+        JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
     }
 
     private static void CheckIfNeedsToHideTab(MainGameControl mgc, float maxNumberOfTabsVisible)

@@ -1,6 +1,7 @@
 ﻿using HeartUnity;
 using HeartUnity.View;
 using JLayout;
+using System;
 using System.Collections.Generic;
 
 public class JRTControlUnit
@@ -49,8 +50,11 @@ public class JGameControlDataHolder
     public JGameControlDataExploration Exploration = new();
 }
 
-public class JGameControlDataExploration 
-{ 
+public class JGameControlDataExploration
+{
+    public JRTControlUnit AreaJCU { get; internal set; }
+    public JRTControlUnit EncounterJCU { get; internal set; }
+
     
 }
 
