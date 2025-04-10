@@ -237,7 +237,10 @@ public static class JGameControlExecuter
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
                                     unit.MainExecuteButton.SetActive(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
-                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
+                                    var progress = unit.Data.TaskProgressRatio;
+                                    if (pair.Key == UnitType.LOCATION)
+                                        progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
+                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = progress;
                                     // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
                                     // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
                                     if (unit.TaskClicked)
@@ -297,8 +300,6 @@ public static class JGameControlExecuter
                             case UnitType.TAB:
                                 break;
                             case UnitType.DIALOG:
-                                break;
-                            case UnitType.LOCATION:
                                 break;
                             case UnitType.ENCOUNTER:
                                 break;

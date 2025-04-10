@@ -8,6 +8,7 @@ public class JRTControlUnit
 {
     public JButtonAccessor MainExecuteButton { get; internal set; }
     public JButtonAccessor ExpandButton { get; internal set; }
+    public JLayTextAccessor Name { get; internal set; }
     public JLayTextAccessor Description { get; internal set; }
     public AutoList<JResourceChangeGroup> ChangeGroups = new();
     public List<JLayoutRuntimeUnit> InsideExpandable = new();
@@ -54,6 +55,7 @@ public class JGameControlDataExploration
 {
     public JRTControlUnit AreaJCU { get; internal set; }
     public JRTControlUnit EncounterJCU { get; internal set; }
+    public List<JLayoutRuntimeUnit> ExplorationModeLayouts = new();
 
     
 }

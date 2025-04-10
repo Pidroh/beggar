@@ -156,7 +156,7 @@ public class MainGameControlSetupJLayout
 
                     var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
 
-                    var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE;
+                    var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION;
                     var hasTitleWithValue = unitType == UnitType.SKILL || unitType == UnitType.FURNITURE;
                     var hasXPBar = unitType == UnitType.SKILL;
                     var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE);
@@ -314,14 +314,18 @@ public class MainGameControlSetupJLayout
 
             for (int indexExplorationElement = 0; indexExplorationElement < 2; indexExplorationElement++)
             {
+                
                 var parent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
+                jControlDataHolder.Exploration.ExplorationModeLayouts.Add(parent);
                 var layoutRU = parent;
                 tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(parent);
                 parent.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
                 parent.ChildSelf.Rect.gameObject.name += " " + (indexExplorationElement == 0 ? "area" : "encounter");
                 var expandableTextWithBar = parent.AddLayoutAsChild(JCanvasMaker.CreateLayout("exploration_progress_part_expandable", runtime));
-                expandableTextWithBar.LayoutRU.Children[0].LayoutRU.SetTextRaw(0, (indexExplorationElement == 0 ? "area" : "encounter"));
+                JLayoutRuntimeUnit layoutThatHasName = expandableTextWithBar.LayoutRU.Children[0].LayoutRU;
+                layoutThatHasName.SetTextRaw(0, (indexExplorationElement == 0 ? "area" : "encounter"));
                 JRTControlUnit jCU = new();
+                jCU.Name = new JLayTextAccessor(layoutThatHasName, 0);
                 jCU.MainLayout = parent;
                 {
                     var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
