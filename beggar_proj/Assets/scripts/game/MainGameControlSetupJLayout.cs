@@ -315,11 +315,29 @@ public class MainGameControlSetupJLayout
             for (int indexExplorationElement = 0; indexExplorationElement < 2; indexExplorationElement++)
             {
                 var parent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
+                var layoutRU = parent;
                 tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(parent);
                 parent.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
                 parent.ChildSelf.Rect.gameObject.name += " " + (indexExplorationElement == 0 ? "area" : "encounter");
                 var expandableTextWithBar = parent.AddLayoutAsChild(JCanvasMaker.CreateLayout("exploration_progress_part_expandable", runtime));
                 expandableTextWithBar.LayoutRU.Children[0].LayoutRU.SetTextRaw(0, (indexExplorationElement == 0 ? "area" : "encounter"));
+                JRTControlUnit jCU = new();
+                jCU.MainLayout = parent;
+                {
+                    var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
+                    jCU.Description = new JLayTextAccessor(descLayout, 0);
+                    AddToExpand(descLayout);
+                }
+                void AddToExpand(JLayoutRuntimeUnit unit)
+                {
+                    layoutRU.AddLayoutAsChild(unit);
+                    jCU.InsideExpandable.Add(unit);
+                    unit.SetParentShowing(false);
+                }
+                if (indexExplorationElement == 0)
+                    jControlDataHolder.Exploration.AreaJCU = jCU;
+                if (indexExplorationElement == 1)
+                    jControlDataHolder.Exploration.EncounterJCU = jCU;
                 /*
                 int numberOfEles = 1;
                 bool isStressors = indexExplorationElement == 2;
