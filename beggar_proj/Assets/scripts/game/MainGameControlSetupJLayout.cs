@@ -319,6 +319,7 @@ public class MainGameControlSetupJLayout
                 parent.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
                 parent.ChildSelf.Rect.gameObject.name += " " + (indexExplorationElement == 0 ? "area" : "encounter");
                 var expandableTextWithBar = parent.AddLayoutAsChild(JCanvasMaker.CreateLayout("exploration_progress_part_expandable", runtime));
+                expandableTextWithBar.LayoutRU.Children[0].LayoutRU.SetTextRaw(0, (indexExplorationElement == 0 ? "area" : "encounter"));
                 /*
                 int numberOfEles = 1;
                 bool isStressors = indexExplorationElement == 2;

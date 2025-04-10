@@ -68,6 +68,9 @@
             "PARENT_SIZE_PERCENT",
             "SELF_SIZE"
         ],
+        "position": [
+            
+        ],
         "size":[100, 40],
         "fixed_children": [
             {
@@ -163,6 +166,7 @@
             {
                 "type": "text",
                 "id": "button_text",
+                "text_horizontal": "CENTER",
                 "axis_mode": [
                     "PARENT_SIZE_PERCENT",
                     "TEXT_PREFERRED"
