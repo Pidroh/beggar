@@ -252,6 +252,32 @@
         ]
     },
     {
+        "id": "exploration_simple_button",
+        "comment": "Simple button for flee in exploration",
+        "axis_mode": [
+          "PARENT_SIZE_PERCENT",
+          "SELF_SIZE"
+        ],
+        "size": [
+          100,
+          40
+        ],
+        "fixed_children": [
+          {
+            "type": "button",
+            "id": "task_button",
+            "axis_mode": [
+              "PARENT_SIZE_PERCENT",
+              "PARENT_SIZE_PERCENT"
+            ],
+            "position_mode": [
+              "LEFT_ZERO",
+              "CENTER"
+            ]
+          }
+        ]
+      },
+    {
         "id": "furniture_buttons",
         "comment": "Contains + - buttons for furniture",
         "axis_mode": [
