@@ -15,6 +15,10 @@ public static class JGameControlExecuterExploration
             controlData.Exploration.EncounterJCU.GaugeProgressImage.SetGaugeRatio(mgc.arcaniaModel.Exploration.EncounterRatio);
             controlData.Exploration.AreaJCU.Name.SetTextRaw(mgc.arcaniaModel.Exploration.LastActiveLocation.Name);
             controlData.Exploration.EncounterJCU.Name.SetTextRaw(mgc.arcaniaModel.Exploration.ActiveEncounter.Name);
+            foreach (var item in controlData.Exploration.StressorJCUs)
+            {
+                item.GaugeProgressImage.SetGaugeRatio(item.Data.ValueRatio);
+            }
         }
     }
 }
