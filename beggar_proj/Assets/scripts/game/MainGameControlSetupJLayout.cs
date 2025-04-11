@@ -344,18 +344,20 @@ public class MainGameControlSetupJLayout
                 if (indexExplorationElement == 1)
                     jControlDataHolder.Exploration.EncounterJCU = jCU;
             }
+            var playerParent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
+            jControlDataHolder.Exploration.ExplorationModeLayouts.Add(playerParent);
+            tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(playerParent);
+            var label = playerParent.AddLayoutAsChild(JCanvasMaker.CreateLayout("exploration_player_upper_label", runtime));
+            label.LayoutRU.SetTextRaw(0, "Player");
             foreach (var item in mgc.arcaniaModel.Exploration.Stressors)
             {
-                // todo: change this so that it's the child of an outer layout that has a bit more right padding (might be unnecessary but probably is because of the bar?)
                 var labelWithBar = JCanvasMaker.CreateLayout("exploration_progress_player_stat", runtime);
-                jControlDataHolder.Exploration.ExplorationModeLayouts.Add(labelWithBar);
                 JRTControlUnit jCU = new();
                 jCU.GaugeProgressImage = new JImageAccessor(labelWithBar.Children[1].LayoutRU, 1);
                 labelWithBar.SetTextRaw(0, item.Name);
                 //jCU.Name = new JLayTextAccessor(labelWithBar, 0);
-                // todo: change this to the main layout
                 jCU.MainLayout = labelWithBar;
-                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(jCU.MainLayout);
+                playerParent.AddLayoutAsChild(jCU.MainLayout);
                 jControlDataHolder.Exploration.StressorJCUs.Add(jCU);
                 jCU.Data = item;
             }

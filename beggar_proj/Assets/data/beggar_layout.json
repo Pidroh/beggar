@@ -193,12 +193,34 @@
         ]
     },
     {
+        "id": "exploration_player_upper_label",
+        "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
+        "padding": [5, 30, 1, 4],
+        "position_mode": ["LEFT_ZERO", "SIBLING_DISTANCE"],
+        "fixed_children":[
+            {
+                "type": "text",
+                "id": "button_text",
+                "text_horizontal": "CENTER",
+                "axis_mode": [
+                    "PARENT_SIZE_PERCENT",
+                    "TEXT_PREFERRED"
+                ],
+                "position_mode": [
+                "CENTER",
+                "SIBLING_DISTANCE"
+                ]
+            }
+        ]
+    },
+    {
         "id": "exploration_progress_player_stat",
+        "position_mode": ["LEFT_ZERO", "SIBLING_DISTANCE"],
         "axis_mode": [
             "PARENT_SIZE_PERCENT",
             "CONTAIN_CHILDREN"
         ],
-        "padding":[4, 70, 4, 8],
+        "padding":[4, 40, 4, 0],
         "fixed_children":[
             {
                 "type": "text",
