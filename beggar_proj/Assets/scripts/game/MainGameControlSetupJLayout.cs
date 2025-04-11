@@ -172,8 +172,8 @@ public class MainGameControlSetupJLayout
                     if (hasXPBar)
                     {
                         var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("xp_bar"), runtime));
-                        jCU.XPGaugeLayout = child.LayoutRU;
-                        jCU.XPGaugeProgressImage = new JImageAccessor(child.LayoutRU, 1);
+                        jCU.GaugeLayout = child.LayoutRU;
+                        jCU.GaugeProgressImage = new JImageAccessor(child.LayoutRU, 1);
                     }
 
                     if (hasTaskButton)
@@ -325,6 +325,7 @@ public class MainGameControlSetupJLayout
                 JLayoutRuntimeUnit layoutThatHasName = expandableTextWithBar.LayoutRU.Children[0].LayoutRU;
                 layoutThatHasName.SetTextRaw(0, (indexExplorationElement == 0 ? "area" : "encounter"));
                 JRTControlUnit jCU = new();
+                jCU.GaugeProgressImage = new JImageAccessor(expandableTextWithBar.LayoutRU.Children[1].LayoutRU, 1);
                 jCU.Name = new JLayTextAccessor(layoutThatHasName, 0);
                 jCU.MainLayout = parent;
                 {
