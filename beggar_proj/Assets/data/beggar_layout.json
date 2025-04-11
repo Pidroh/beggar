@@ -209,7 +209,7 @@
                     "TEXT_PREFERRED"
                 ],
                 "position_mode": [
-                "LEFT",
+                "LEFT_ZERO",
                 "SIBLING_DISTANCE"
                 ]
             },
@@ -223,7 +223,7 @@
                 "position": [0, 5],
                 "size":[100, 20],
                 "position_mode": [
-                "LEFT",
+                "LEFT_ZERO",
                 "SIBLING_DISTANCE"
                 ]
             }
