@@ -233,6 +233,7 @@ public static class JGameControlExecuter
                                 break;
                             case UnitType.TASK:
                             case UnitType.CLASS:
+                            case UnitType.LOCATION:
                                 {
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());

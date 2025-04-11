@@ -325,7 +325,7 @@ public class MainGameControlSetupJLayout
                 JLayoutRuntimeUnit layoutThatHasName = expandableTextWithBar.LayoutRU.Children[0].LayoutRU;
                 layoutThatHasName.SetTextRaw(0, (indexExplorationElement == 0 ? "area" : "encounter"));
                 JRTControlUnit jCU = new();
-                jCU.GaugeProgressImage = new JImageAccessor(expandableTextWithBar.LayoutRU.Children[1].LayoutRU, 1);
+                jCU.GaugeProgressImage = new JImageAccessor(expandableTextWithBar.LayoutRU.Children[0].LayoutRU.Children[1].LayoutRU, 1);
                 jCU.Name = new JLayTextAccessor(layoutThatHasName, 0);
                 jCU.MainLayout = parent;
                 {
