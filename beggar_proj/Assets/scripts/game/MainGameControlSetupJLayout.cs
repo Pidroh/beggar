@@ -343,78 +343,22 @@ public class MainGameControlSetupJLayout
                     jControlDataHolder.Exploration.AreaJCU = jCU;
                 if (indexExplorationElement == 1)
                     jControlDataHolder.Exploration.EncounterJCU = jCU;
-                /*
-                int numberOfEles = 1;
-                bool isStressors = indexExplorationElement == 2;
-                var fleeButton = indexExplorationElement == 3;
-                if (isStressors)
-                {
-                    numberOfEles = mgc.arcaniaModel.Exploration.Stressors.Count;
-                }
-                for (int eleIndex = 0; eleIndex < numberOfEles; eleIndex++)
-                {
-                    var layout = CanvasMaker.CreateLayout().SetFitHeight(true);
-                    jCanvas.children[tabIndex].LayoutRuntimeUnit.AddLayoutAsChild(layout);
-                    var hasBWE = fleeButton;
-                    var rcu = new RTControlUnit();
-                    rcu.MainLayout = layout;
-                    rcu.TabControl = tab;
-                    if (isStressors)
-                    {
-                        rcu.Data = mgc.arcaniaModel.Exploration.Stressors[eleIndex];
-                    }
-                    rcu.ParentTabSeparator = null;
-                    if (hasBWE)
-                    {
-                        var button = CanvasMaker.CreateButton("Flee", mgc.ButtonObjectRequest, mgc.ButtonRequest);
-                        var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
-                        var bwe = new ButtonWithExpandable(button, iconButton, mgc.ButtonRequest);
-                        rcu.bwe = bwe;
-                        layout.AddLayoutChildAndParentIt(bwe.LayoutChild);
-                        bwe.LayoutChild.ObjectName = "WTF IS";
-                    }
-
-                    if (!hasBWE)
-                    {
-                        var titleText = CanvasMaker.CreateTextUnit(mgc.ButtonObjectRequest.SecondaryColor, mgc.ButtonObjectRequest.font, 16);
-                        titleText.text.horizontalAlignment = HorizontalAlignmentOptions.Left;
-                        var iconButton = CanvasMaker.CreateButtonWithIcon(mgc.ExpanderSprite);
-                        var lwe = new LabelWithExpandable(iconButton, titleText);
-                        layout.AddLayoutChildAndParentIt(lwe.LayoutChild);
-                        titleText.SetTextRaw("Location name");
-                        rcu.lwe = lwe;
-                        rcu.XPGauge = new Gauge(mgc.SkillXPGaugeRequest, 4);
-                        layout.AddLayoutChildAndParentIt(rcu.XPGauge.layoutChild);
-                    }
-                    switch (indexExplorationElement)
-                    {
-                        case 0:
-                            mgc.controlExploration.dataHolder.LocationRCU = rcu;
-                            CreateReserveChangeViews(mgc, layout, rcu);
-                            break;
-                        case 1: // encounter
-                            mgc.controlExploration.dataHolder.EncounterRCU = rcu;
-                            AddDescription(mgc, layout, rcu, true);
-                            CreateReserveChangeViews(mgc, layout, rcu);
-                            break;
-                        case 2:
-                            mgc.controlExploration.dataHolder.StressorsRCU.Add(rcu);
-                            break;
-                        case 3:
-                            mgc.controlExploration.dataHolder.FleeRCU = rcu;
-                            break;
-                        default:
-                            break;
-                    }
-                
-                }
-                */
-
-                // if it's the enemy encounter one
-
             }
-            mgc.controlExploration.dataHolder.FinishSetup();
-
+            foreach (var item in mgc.arcaniaModel.Exploration.Stressors)
+            {
+                // todo: change this so that it's the child of an outer layout that has a bit more right padding (might be unnecessary but probably is because of the bar?)
+                var labelWithBar = JCanvasMaker.CreateLayout("exploration_progress_player_stat", runtime);
+                jControlDataHolder.Exploration.ExplorationModeLayouts.Add(labelWithBar);
+                JRTControlUnit jCU = new();
+                jCU.GaugeProgressImage = new JImageAccessor(labelWithBar.Children[1].LayoutRU, 1);
+                labelWithBar.SetTextRaw(0, item.Name);
+                //jCU.Name = new JLayTextAccessor(labelWithBar, 0);
+                // todo: change this to the main layout
+                jCU.MainLayout = labelWithBar;
+                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(jCU.MainLayout);
+                jControlDataHolder.Exploration.StressorJCUs.Add(jCU);
+                jCU.Data = item;
+            }
         }
 
         #endregion

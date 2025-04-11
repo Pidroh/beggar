@@ -56,6 +56,7 @@ public class JGameControlDataExploration
     public JRTControlUnit AreaJCU { get; internal set; }
     public JRTControlUnit EncounterJCU { get; internal set; }
     public List<JLayoutRuntimeUnit> ExplorationModeLayouts = new();
+    public List<JRTControlUnit> StressorJCUs = new();
 
     
 }

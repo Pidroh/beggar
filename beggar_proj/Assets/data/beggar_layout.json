@@ -193,6 +193,43 @@
         ]
     },
     {
+        "id": "exploration_progress_player_stat",
+        "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "CONTAIN_CHILDREN"
+        ],
+        "padding":[4, 70, 4, 8],
+        "fixed_children":[
+            {
+                "type": "text",
+                "id": "button_text",
+                "text_horizontal": "LEFT",
+                "axis_mode": [
+                    "PARENT_SIZE_PERCENT",
+                    "TEXT_PREFERRED"
+                ],
+                "position_mode": [
+                "LEFT",
+                "SIBLING_DISTANCE"
+                ]
+            },
+            {
+                "type": "layout",
+                "id": "exploration_progress_bar",
+                "axis_mode": [
+                    "PARENT_SIZE_PERCENT",
+                    "SELF_SIZE"
+                ],
+                "position": [0, 5],
+                "size":[100, 20],
+                "position_mode": [
+                "LEFT",
+                "SIBLING_DISTANCE"
+                ]
+            }
+        ]
+    },
+    {
         "id": "furniture_buttons",
         "comment": "Contains + - buttons for furniture",
         "axis_mode": [
