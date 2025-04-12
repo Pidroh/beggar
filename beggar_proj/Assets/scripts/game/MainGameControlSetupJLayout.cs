@@ -361,6 +361,15 @@ public class MainGameControlSetupJLayout
                 jControlDataHolder.Exploration.StressorJCUs.Add(jCU);
                 jCU.Data = item;
             }
+            {
+                var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                playerParent.AddLayoutAsChild(fleeButtonLayout);
+                fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, "Flee");
+                JRTControlUnit jCU = new();
+                jCU.MainLayout = fleeButtonLayout;
+                jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
+                jControlDataHolder.FleeButtonJCU = jCU;
+            }
         }
 
         #endregion
