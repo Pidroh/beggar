@@ -368,7 +368,7 @@ public class MainGameControlSetupJLayout
                 JRTControlUnit jCU = new();
                 jCU.MainLayout = fleeButtonLayout;
                 jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
-                jControlDataHolder.FleeButtonJCU = jCU;
+                jControlDataHolder.Exploration.FleeButtonJCU = jCU;
             }
         }
 

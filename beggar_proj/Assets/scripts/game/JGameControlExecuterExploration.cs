@@ -19,6 +19,10 @@ public static class JGameControlExecuterExploration
             {
                 item.GaugeProgressImage.SetGaugeRatio(item.Data.ValueRatio);
             }
+            if (controlData.Exploration.FleeButtonJCU.TaskClicked) 
+            {
+                mgc.arcaniaModel.Exploration.Flee();
+            }
         }
     }
 }
