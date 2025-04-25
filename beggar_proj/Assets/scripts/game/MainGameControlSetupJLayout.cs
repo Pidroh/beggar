@@ -345,6 +345,10 @@ public class MainGameControlSetupJLayout
                     jControlDataHolder.Exploration.EncounterJCU = jCU;
             }
             var playerParent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
+            playerParent.DefaultPositionModes = new PositionMode[] { 
+                PositionMode.CENTER,
+                PositionMode.SIBLING_DISTANCE
+            };
             jControlDataHolder.Exploration.ExplorationModeLayouts.Add(playerParent);
             tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(playerParent);
             var label = playerParent.AddLayoutAsChild(JCanvasMaker.CreateLayout("exploration_player_upper_label", runtime));
@@ -363,7 +367,7 @@ public class MainGameControlSetupJLayout
             }
             {
                 var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
-                playerParent.AddLayoutAsChild(fleeButtonLayout);
+                var lc = playerParent.AddLayoutAsChild(fleeButtonLayout);
                 fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, "Flee");
                 JRTControlUnit jCU = new();
                 jCU.MainLayout = fleeButtonLayout;
