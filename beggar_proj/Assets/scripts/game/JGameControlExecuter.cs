@@ -189,6 +189,10 @@ public static class JGameControlExecuter
                     {
                         unit.MainLayout.SetParentShowing(sep.Expanded);
                         var visible = unit.Data?.Visible ?? false;
+                        if (visible && unit.Data.Location != null && mgc.arcaniaModel.Exploration.IsExplorationActive) 
+                        {
+                            visible = false;
+                        }
                         unit.MainLayout.SetVisibleSelf(visible);
                         if (!visible) continue;
                         for (int modIndex = 0; modIndex < unit.OwnedMods.Mods.Count; modIndex++)
