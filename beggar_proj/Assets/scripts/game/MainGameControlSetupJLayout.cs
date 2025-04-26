@@ -21,6 +21,7 @@ public class MainGameControlSetupJLayout
         mgc.JLayoutRuntime = runtime;
         runtime.LayoutMaster = layoutMaster;
         JGameControlDataHolder jControlDataHolder = new();
+        jControlDataHolder.LayoutRuntime = runtime;
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;
 
@@ -218,7 +219,7 @@ public class MainGameControlSetupJLayout
                         AddToExpand(layoutRU, descLayout, jCU);
                     }
                     #region change list instantiation
-                    CreateChangeLists(runtime, modelData, jCU, layoutRU);
+                    EnsureChangeListViewsAreCreated(runtime, modelData, jCU, layoutRU);
                     #endregion
 
                     #region Mods
@@ -267,7 +268,7 @@ public class MainGameControlSetupJLayout
 
             for (int indexExplorationElement = 0; indexExplorationElement < 2; indexExplorationElement++)
             {
-                
+
                 var parent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
                 jControlDataHolder.Exploration.ExplorationModeLayouts.Add(parent);
                 var layoutRU = parent;
@@ -298,7 +299,7 @@ public class MainGameControlSetupJLayout
                     jControlDataHolder.Exploration.EncounterJCU = jCU;
             }
             var playerParent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
-            playerParent.DefaultPositionModes = new PositionMode[] { 
+            playerParent.DefaultPositionModes = new PositionMode[] {
                 PositionMode.CENTER,
                 PositionMode.SIBLING_DISTANCE
             };
@@ -334,7 +335,11 @@ public class MainGameControlSetupJLayout
 
     }
 
-    private static void CreateChangeLists(JLayoutRuntimeData runtime, RuntimeUnit modelData, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU)
+    // this method has two uses, more or less
+    // 1) create change list views for the first time, for static elements
+    // 2) when model data changes for the same JCU, assure there are enough change lists in that JCU
+    // Case 2 is mainly for exploration elements, currently
+    public static void EnsureChangeListViewsAreCreated(JLayoutRuntimeData runtime, RuntimeUnit modelData, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU)
     {
         LayoutDataMaster layoutMaster = runtime.LayoutMaster;
         if (modelData.ConfigTask != null)
@@ -344,31 +349,48 @@ public class MainGameControlSetupJLayout
                 List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
                 if (rcl == null) continue;
                 if (rcl.Count == 0) continue;
-                jCU.ChangeGroups[rcgIndex] = new();
-                var changeType = (ResourceChangeType)rcgIndex;
-                string textKey = changeType switch
-                {
-                    ResourceChangeType.COST => "cost",
-                    ResourceChangeType.RESULT => "result",
-                    ResourceChangeType.RUN => "run",
-                    ResourceChangeType.EFFECT => "effect",
-                    ResourceChangeType.RESULT_ONCE => "first time",
-                    ResourceChangeType.RESULT_FAIL => "result failure",
-                    _ => null,
-                };
 
-                JLayoutRuntimeUnit miniHeader = CreateMiniHeader(runtime, jCU, layoutRU, textKey);
-                jCU.ChangeGroups[rcgIndex].Header = miniHeader;
-                foreach (var rcu in rcl)
+                // it might be already instantiated
+                jCU.ChangeGroups[rcgIndex] ??= new();
+                // create mini header if necessary
+                if (jCU.ChangeGroups[rcgIndex].Header == null)
                 {
-                    var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                    triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
-                    triple.SetTextRaw(1, "" + rcu.valueChange.min);
-                    triple.SetTextRaw(2, "0");
-                    jCU.ChangeGroups[rcgIndex].tripleTextViews.Add(triple);
-                    AddToExpand(layoutRU, triple, jCU);
+                    var changeType = (ResourceChangeType)rcgIndex;
+                    string textKey = changeType switch
+                    {
+                        ResourceChangeType.COST => "cost",
+                        ResourceChangeType.RESULT => "result",
+                        ResourceChangeType.RUN => "run",
+                        ResourceChangeType.EFFECT => "effect",
+                        ResourceChangeType.RESULT_ONCE => "first time",
+                        ResourceChangeType.RESULT_FAIL => "result failure",
+                        _ => null,
+                    };
+
+                    JLayoutRuntimeUnit miniHeader = CreateMiniHeader(runtime, jCU, layoutRU, textKey);
+                    jCU.ChangeGroups[rcgIndex].Header = miniHeader;
                 }
-
+                AutoList<JLayoutRuntimeUnit> tripleTextViews = jCU.ChangeGroups[rcgIndex].tripleTextViews;
+                for (int i = 0; i < rcl.Count; i++)
+                {
+                    if (i >= tripleTextViews.Count)
+                    {
+                        ResourceChange rcu = rcl[i];
+                        var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
+                        triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
+                        triple.SetTextRaw(1, "" + rcu.valueChange.min);
+                        triple.SetTextRaw(2, "0");
+                        tripleTextViews.Add(triple);
+                        AddToExpand(layoutRU, triple, jCU);
+                    } else {
+                        tripleTextViews[i].SetVisibleSelf(true);
+                    }
+                }
+                // if there are more than enough triple text views, hide the excessive ones
+                for (int i = rcl.Count; i < tripleTextViews.Count; i++)
+                {
+                    tripleTextViews[i].SetVisibleSelf(false);
+                }
             }
         }
     }

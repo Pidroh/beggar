@@ -68,9 +68,9 @@ namespace JLayout
             buttonOwner.ButtonChildren[index].Item2.UiUnit.ButtonEnabled = v;
         }
 
-        internal void SetActive(bool v)
+        internal void SetActivePowered(bool v)
         {
-            buttonOwner.ButtonChildren[index].Item1.Active = v;
+            buttonOwner.ButtonChildren[index].Item1.ActivePowered = v;
         }
 
         internal void SetButtonTextRaw(string v)
@@ -140,7 +140,10 @@ namespace JLayout
         }
 
         public bool? Disabled;
-        public bool? Active;
+
+        // this is different from unity game object active in the sense that it is a graphical state
+        // just because active is false does not mean it is invisible
+        public bool? ActivePowered;
 
         internal void AddChild(JLayoutChild child)
         {
@@ -211,9 +214,9 @@ namespace JLayout
             UpdateVisibility();
         }
 
-        internal void SetVisibleSelf(bool value)
+        internal void SetVisibleSelf(bool visibleSelf)
         {
-            _visibleSelf = value;
+            _visibleSelf = visibleSelf;
             UpdateVisibility();
         }
 

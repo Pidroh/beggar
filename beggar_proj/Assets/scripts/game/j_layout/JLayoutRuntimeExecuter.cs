@@ -84,9 +84,9 @@ namespace JLayout
             ProcessColor(parentLayout, null);
             void ProcessColor(JLayoutRuntimeUnit lay, bool? active)
             {
-                if (lay.Active.HasValue)
+                if (lay.ActivePowered.HasValue)
                 {
-                    active = lay.Active;
+                    active = lay.ActivePowered;
                 }
                 foreach (var item in lay.Children)
                 {

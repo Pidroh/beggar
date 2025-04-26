@@ -237,7 +237,7 @@ public static class JGameControlExecuter
                                 {
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
-                                    unit.MainExecuteButton.SetActive(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
+                                    unit.MainExecuteButton.SetActivePowered(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
                                     var progress = unit.Data.TaskProgressRatio;
                                     if (pair.Key == UnitType.LOCATION)
                                         progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
@@ -253,7 +253,7 @@ public static class JGameControlExecuter
                             case UnitType.HOUSE:
                                 {
                                     //unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data));
-                                    unit.MainExecuteButton.SetActive(arcaniaModel.Housing.IsLivingInHouse(unit.Data));
+                                    unit.MainExecuteButton.SetActivePowered(arcaniaModel.Housing.IsLivingInHouse(unit.Data));
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data) || arcaniaModel.Housing.IsLivingInHouse(unit.Data));
                                     if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data)) 
                                     {
@@ -365,13 +365,14 @@ public static class JGameControlExecuter
             //if (sep != null) sep.ManualUpdate();
             //sep.LayoutChild.VisibleSelf = resourceChanges.Count > 0;
             var bySecond = i == (int)ResourceChangeType.EFFECT || i == (int)ResourceChangeType.RUN;
-            var disableAble = i == (int)ResourceChangeType.RUN || i == (int)ResourceChangeType.COST;
+            var canBeDisabled = i == (int)ResourceChangeType.RUN || i == (int)ResourceChangeType.COST;
 
             for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
             {
                 var ttv = item.tripleTextViews[ttvIndex];
-                //ttv.Visible = resourceChanges.Count > ttvIndex;
-                //if (!ttv.Visible) continue;
+                bool visibleSelf = resourceChanges.Count > ttvIndex;
+                ttv.SetVisibleSelf(visibleSelf);
+                if (!visibleSelf) continue;
                 var rc = resourceChanges[ttvIndex];
 
                 var min = rc.valueChange.min;
@@ -384,7 +385,7 @@ public static class JGameControlExecuter
                     RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
                     targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
                     int value = dataThatWillBeChanged.Value;
-                    if (disableAble) 
+                    if (canBeDisabled) 
                     {
                         // max is negative, so the sum needs to be above 0
                         ttv.Disabled = (value + max) < 0;
