@@ -24,6 +24,7 @@ public static class JGameControlExecuterExploration
                 jCU.Data = data;
                 JGameControlExecuter.UpdateChangeGroups(jCU);
                 JGameControlExecuter.UpdateExpandLogicForUnit(jCU);
+                
             }
             
             // exploration.FleeButtonJCU.GaugeProgressImage.SetGaugeRatio(0);
