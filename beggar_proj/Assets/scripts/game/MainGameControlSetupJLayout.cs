@@ -215,43 +215,10 @@ public class MainGameControlSetupJLayout
 
                         descLayout.SetTextRaw(0, modelData.ConfigBasic.Desc);
                         jCU.Description = new JLayTextAccessor(descLayout, 0);
-                        AddToExpand(descLayout);
+                        AddToExpand(layoutRU, descLayout, jCU);
                     }
                     #region change list instantiation
-                    if (modelData.ConfigTask != null)
-                    {
-                        for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
-                        {
-                            List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
-                            if (rcl == null) continue;
-                            if (rcl.Count == 0) continue;
-                            jCU.ChangeGroups[rcgIndex] = new();
-                            var changeType = (ResourceChangeType)rcgIndex;
-                            string textKey = changeType switch
-                            {
-                                ResourceChangeType.COST => "cost",
-                                ResourceChangeType.RESULT => "result",
-                                ResourceChangeType.RUN => "run",
-                                ResourceChangeType.EFFECT => "effect",
-                                ResourceChangeType.RESULT_ONCE => "first time",
-                                ResourceChangeType.RESULT_FAIL => "result failure",
-                                _ => null,
-                            };
-
-                            JLayoutRuntimeUnit miniHeader = CreateMiniHeader(runtime, jCU, layoutRU, textKey);
-                            jCU.ChangeGroups[rcgIndex].Header = miniHeader;
-                            foreach (var rcu in rcl)
-                            {
-                                var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                                triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
-                                triple.SetTextRaw(1, "" + rcu.valueChange.min);
-                                triple.SetTextRaw(2, "0");
-                                jCU.ChangeGroups[rcgIndex].tripleTextViews.Add(triple);
-                                AddToExpand(triple);
-                            }
-
-                        }
-                    }
+                    CreateChangeLists(runtime, modelData, jCU, layoutRU);
                     #endregion
 
                     #region Mods
@@ -265,7 +232,7 @@ public class MainGameControlSetupJLayout
                         {
                             if (mod.ModType == ModType.Lock) continue;
                             var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                            AddToExpand(triple);
+                            AddToExpand(layoutRU, triple, jCU);
                             modControl.tripleTextViews.Add(triple);
                             modControl.Mods.Add(mod);
                             var value = mod.Value;
@@ -281,21 +248,7 @@ public class MainGameControlSetupJLayout
                     #endregion
 
 
-                    void AddToExpand(JLayoutRuntimeUnit unit)
-                    {
-                        layoutRU.AddLayoutAsChild(unit);
-                        jCU.InsideExpandable.Add(unit);
-                        unit.SetParentShowing(false);
-                    }
 
-                    JLayoutRuntimeUnit CreateMiniHeader(JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, string textKey)
-                    {
-                        var layoutMaster = runtime.LayoutMaster;
-                        var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
-                        miniHeader.SetTextRaw(0, textKey);
-                        AddToExpand(miniHeader);
-                        return miniHeader;
-                    }
                 }
                 #endregion
 
@@ -379,6 +332,61 @@ public class MainGameControlSetupJLayout
         #endregion
 
 
+    }
+
+    private static void CreateChangeLists(JLayoutRuntimeData runtime, RuntimeUnit modelData, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU)
+    {
+        LayoutDataMaster layoutMaster = runtime.LayoutMaster;
+        if (modelData.ConfigTask != null)
+        {
+            for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
+            {
+                List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
+                if (rcl == null) continue;
+                if (rcl.Count == 0) continue;
+                jCU.ChangeGroups[rcgIndex] = new();
+                var changeType = (ResourceChangeType)rcgIndex;
+                string textKey = changeType switch
+                {
+                    ResourceChangeType.COST => "cost",
+                    ResourceChangeType.RESULT => "result",
+                    ResourceChangeType.RUN => "run",
+                    ResourceChangeType.EFFECT => "effect",
+                    ResourceChangeType.RESULT_ONCE => "first time",
+                    ResourceChangeType.RESULT_FAIL => "result failure",
+                    _ => null,
+                };
+
+                JLayoutRuntimeUnit miniHeader = CreateMiniHeader(runtime, jCU, layoutRU, textKey);
+                jCU.ChangeGroups[rcgIndex].Header = miniHeader;
+                foreach (var rcu in rcl)
+                {
+                    var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
+                    triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
+                    triple.SetTextRaw(1, "" + rcu.valueChange.min);
+                    triple.SetTextRaw(2, "0");
+                    jCU.ChangeGroups[rcgIndex].tripleTextViews.Add(triple);
+                    AddToExpand(layoutRU, triple, jCU);
+                }
+
+            }
+        }
+    }
+
+    public static void AddToExpand(JLayoutRuntimeUnit layoutRU, JLayoutRuntimeUnit unit, JRTControlUnit jCU)
+    {
+        layoutRU.AddLayoutAsChild(unit);
+        jCU.InsideExpandable.Add(unit);
+        unit.SetParentShowing(false);
+    }
+
+    public static JLayoutRuntimeUnit CreateMiniHeader(JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, string textKey)
+    {
+        var layoutMaster = runtime.LayoutMaster;
+        var miniHeader = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("left_mini_header"), runtime);
+        miniHeader.SetTextRaw(0, textKey);
+        AddToExpand(layoutRU, miniHeader, jCU);
+        return miniHeader;
     }
 
     internal static JLayoutRuntimeUnit CreateLogLayout(MainGameControl mgc, LogUnit logUnit)
