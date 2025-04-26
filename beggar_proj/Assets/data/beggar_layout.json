@@ -68,6 +68,8 @@
             "PARENT_SIZE_PERCENT",
             "SELF_SIZE"
         ],
+        
+      "clickable": true, 
         "position": [
             
         ],

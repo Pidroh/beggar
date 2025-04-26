@@ -23,10 +23,10 @@ public static class JGameControlExecuterExploration
                 MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(controlData.LayoutRuntime, data, jCU, jCU.MainLayout);
                 jCU.Data = data;
                 JGameControlExecuter.UpdateChangeGroups(jCU);
+                JGameControlExecuter.UpdateExpandLogicForUnit(jCU);
             }
             
-
-            exploration.FleeButtonJCU.GaugeProgressImage.SetGaugeRatio(0);
+            // exploration.FleeButtonJCU.GaugeProgressImage.SetGaugeRatio(0);
             foreach (var item in exploration.StressorJCUs)
             {
                 item.GaugeProgressImage.SetGaugeRatio(item.Data.ValueRatio);

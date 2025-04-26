@@ -281,6 +281,7 @@ public class MainGameControlSetupJLayout
                 JRTControlUnit jCU = new();
                 jCU.GaugeProgressImage = new JImageAccessor(expandableTextWithBar.LayoutRU.Children[0].LayoutRU.Children[1].LayoutRU, 1);
                 jCU.Name = new JLayTextAccessor(layoutThatHasName, 0);
+                jCU.ExpandWhenClickingLayout = expandableTextWithBar.LayoutRU;
                 jCU.MainLayout = parent;
                 {
                     var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
@@ -326,6 +327,7 @@ public class MainGameControlSetupJLayout
                 JRTControlUnit jCU = new();
                 jCU.MainLayout = fleeButtonLayout;
                 jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
+                fleeButtonLayout.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
                 jControlDataHolder.Exploration.FleeButtonJCU = jCU;
             }
         }

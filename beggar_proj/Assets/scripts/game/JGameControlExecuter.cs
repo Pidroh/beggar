@@ -194,30 +194,17 @@ public static class JGameControlExecuter
                         for (int modIndex = 0; modIndex < unit.OwnedMods.Mods.Count; modIndex++)
                         {
                             ModRuntime item = unit.OwnedMods.Mods[modIndex];
-                            if (item.ModType == ModType.SpaceConsumption) 
+                            if (item.ModType == ModType.SpaceConsumption)
                             {
-                                
+
                                 JLayout.JLayoutRuntimeUnit ttv = unit.OwnedMods.tripleTextViews[modIndex];
                                 ttv.Disabled = arcaniaModel.Housing.FurnitureNotMaxedButNotEnoughSpace(unit.Data);
-                                ttv.SetTextRaw(2,$"({arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace})");
+                                ttv.SetTextRaw(2, $"({arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace})");
                             }
                         }
                         shouldShowSep = true;
                         UpdateChangeGroups(unit);
-                        var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
-                        bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
-                        expandClick = expandClick || layoutClicked;
-                        if (expandClick)
-                        {
-                            var ls = unit.ExpandButtonImage.Rect.localScale;
-                            ls.y *= -1;
-                            unit.ExpandButtonImage.Rect.localScale = ls;
-                            unit.Expanded = !unit.Expanded;
-                            foreach (var item in unit.InsideExpandable)
-                            {
-                                item.SetParentShowing(unit.Expanded);
-                            }
-                        }
+                        UpdateExpandLogicForUnit(unit);
                         if (unit.ValueText != null)
                         {
                             var Data = unit.Data;
@@ -255,13 +242,13 @@ public static class JGameControlExecuter
                                     //unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data));
                                     unit.MainExecuteButton.SetActivePowered(arcaniaModel.Housing.IsLivingInHouse(unit.Data));
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data) || arcaniaModel.Housing.IsLivingInHouse(unit.Data));
-                                    if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data)) 
+                                    if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data))
                                     {
 
                                         arcaniaModel.Housing.ChangeHouse(unit.Data);
                                     }
                                 }
-                                
+
                                 break;
                             case UnitType.SKILL:
                                 {
@@ -272,7 +259,7 @@ public static class JGameControlExecuter
                                     unit.GaugeLayout.SetVisibleSelf(acquired);
                                     unit.GaugeProgressImage.SetGaugeRatio(data.Skill.XPRatio);
                                     unit.MainExecuteButton.buttonOwner.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
-                                    if (acquired) 
+                                    if (acquired)
                                     {
                                         unit.TitleWithValue.SetTextRaw(1, $"{unit.Data.Value} / {unit.Data.Max}");
                                     }
@@ -282,13 +269,13 @@ public static class JGameControlExecuter
                                         else arcaniaModel.Runner.AcquireSkill(data);
                                     }
                                 }
-                                
+
                                 break;
                             case UnitType.FURNITURE:
                                 {
                                     unit.PlusMinusLayout.ButtonChildren[0].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanAcquireFurniture(unit.Data);
                                     unit.PlusMinusLayout.ButtonChildren[1].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanRemoveFurniture(unit.Data);
-                                    if (unit.PlusMinusLayout.IsButtonClicked(0)) 
+                                    if (unit.PlusMinusLayout.IsButtonClicked(0))
                                     {
                                         arcaniaModel.Housing.AcquireFurniture(unit.Data);
                                     }
@@ -319,6 +306,24 @@ public static class JGameControlExecuter
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
+    }
+
+    public static void UpdateExpandLogicForUnit(JRTControlUnit unit)
+    {
+        var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
+        bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
+        expandClick = expandClick || layoutClicked;
+        if (expandClick)
+        {
+            var ls = unit.ExpandButtonImage.Rect.localScale;
+            ls.y *= -1;
+            unit.ExpandButtonImage.Rect.localScale = ls;
+            unit.Expanded = !unit.Expanded;
+            foreach (var item in unit.InsideExpandable)
+            {
+                item.SetParentShowing(unit.Expanded);
+            }
+        }
     }
 
     private static void CheckIfNeedsToHideTab(MainGameControl mgc, float maxNumberOfTabsVisible)
