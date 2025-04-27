@@ -133,6 +133,19 @@
           ]
         },
         {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        },
+        {
           "type": "layout",
           "id": "exploration_progress_label_and_bar",
           "axis_mode": [
