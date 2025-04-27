@@ -110,13 +110,13 @@
       "comment": "Dialog with title ",
       "axis_mode": [
         "PARENT_SIZE_PERCENT",
-        "SELF_SIZE"
+        "CONTAIN_CHILDREN"
       ],
       "clickable": true,
       "position": [],
       "size": [
         100,
-        40
+        -1
       ],
       "fixed_children": [
         {
@@ -147,29 +147,13 @@
         },
         {
           "type": "layout",
-          "id": "exploration_progress_label_and_bar",
+          "id": "dialog_buttons",
           "axis_mode": [
             "FILL_REMAINING_SIZE",
             "PARENT_SIZE_PERCENT"
           ],
           "position_mode": [
             "LEFT_ZERO",
-            "CENTER"
-          ]
-        },
-        {
-          "type": "button",
-          "id": "expander_arrow",
-          "axis_mode": [
-            "SELF_SIZE",
-            "PARENT_SIZE_PERCENT"
-          ],
-          "size": [
-            42,
-            100
-          ],
-          "position_mode": [
-            "RIGHT_ZERO",
             "CENTER"
           ]
         }
