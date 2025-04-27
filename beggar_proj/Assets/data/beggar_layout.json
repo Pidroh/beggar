@@ -176,6 +176,60 @@
       ]
     },
     {
+      "id": "dialog_buttons",
+      "comment": "Contains 2 buttons for a dialog",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        40
+      ],
+      "fixed_children": [
+        {
+          "type": "button",
+          "id": "center_text_button",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            90,
+            -1
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "position": [
+            -58,
+            0
+          ]
+        },
+        {
+          "type": "button",
+          "id": "center_text_button",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            90,
+            -1
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "position": [
+            58,
+            0
+          ]
+        }
+      ]
+    },
+    {
       "id": "exploration_progress_bar",
       "fixed_children": [
         {
