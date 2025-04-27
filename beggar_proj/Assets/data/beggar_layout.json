@@ -62,274 +62,370 @@
       ]
     },
     {
-        "id": "exploration_progress_part_expandable",
-        "comment": "exploration area (parent) and exploration enemy (the individual foes)",
-        "axis_mode": [
+      "id": "exploration_progress_part_expandable",
+      "comment": "exploration area (parent) and exploration enemy (the individual foes)",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "clickable": true,
+      "position": [],
+      "size": [
+        100,
+        40
+      ],
+      "fixed_children": [
+        {
+          "type": "layout",
+          "id": "exploration_progress_label_and_bar",
+          "axis_mode": [
+            "FILL_REMAINING_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
+        },
+        {
+          "type": "button",
+          "id": "expander_arrow",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            42,
+            100
+          ],
+          "position_mode": [
+            "RIGHT_ZERO",
+            "CENTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialog_yes_no",
+      "comment": "Dialog with title ",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "clickable": true,
+      "position": [],
+      "size": [
+        100,
+        40
+      ],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        },
+        {
+          "type": "layout",
+          "id": "exploration_progress_label_and_bar",
+          "axis_mode": [
+            "FILL_REMAINING_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
+        },
+        {
+          "type": "button",
+          "id": "expander_arrow",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            42,
+            100
+          ],
+          "position_mode": [
+            "RIGHT_ZERO",
+            "CENTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exploration_progress_bar",
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "color_id_clicked": "button_fill_click",
+          "color_id_pressed": "button_fill_pressed",
+          "color_id_active": "button_fill_active",
+          "color_id_hovered": "button_fill_hovered",
+          "color_id_disabled": "button_fill_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill_gauge",
+          "color_id_clicked": "button_fill_gauge_click",
+          "color_id_active": "button_fill_gauge_active",
+          "color_id_pressed": "button_fill_gauge_pressed",
+          "color_id_hovered": "button_fill_gauge_hovered",
+          "color_id_disabled": "button_fill_gauge_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "RAW_FOR_GAUGE",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_border",
+          "color_id": "button_border",
+          "color_id_hovered": "button_border_hovered",
+          "color_id_active": "button_border_active",
+          "color_id_disabled": "button_border_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exploration_progress_label_and_bar",
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        },
+        {
+          "type": "layout",
+          "id": "exploration_progress_bar",
+          "axis_mode": [
             "PARENT_SIZE_PERCENT",
             "SELF_SIZE"
-        ],
-        
-      "clickable": true, 
-        "position": [
-            
-        ],
-        "size":[100, 40],
-        "fixed_children": [
-            {
-                "type": "layout",
-                "id": "exploration_progress_label_and_bar",
-                "axis_mode": [
-                  "FILL_REMAINING_SIZE",
-                  "PARENT_SIZE_PERCENT"
-                ],
-                "position_mode": [
-                  "LEFT_ZERO",
-                  "CENTER"
-                ]
-              },
-              {
-                "type": "button",
-                "id": "expander_arrow",
-                "axis_mode": [
-                  "SELF_SIZE",
-                  "PARENT_SIZE_PERCENT"
-                ],
-                "size": [
-                  42,
-                  100
-                ],
-                "position_mode": [
-                  "RIGHT_ZERO",
-                  "CENTER"
-                ]
-              }
-        ]
+          ],
+          "position": [
+            0,
+            5
+          ],
+          "size": [
+            100,
+            20
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        }
+      ]
     },
     {
-        "id": "exploration_progress_bar",
-        "fixed_children":[
-            {
-                "type": "image",
-                "image": "button_fill",
-                "color_id": "button_fill",
-                "color_id_clicked": "button_fill_click",
-                "color_id_pressed": "button_fill_pressed",
-                "color_id_active": "button_fill_active",
-                "color_id_hovered": "button_fill_hovered",
-                "color_id_disabled": "button_fill_disabled",
-                "axis_mode": [
-                  "PARENT_SIZE_PERCENT_RAW",
-                  "PARENT_SIZE_PERCENT_RAW"
-                ],
-                "position_mode": [
-                  "CENTER_RAW",
-                  "CENTER_RAW"
-                ]
-              },
-              {
-                "type": "image",
-                "image": "button_fill",
-                "color_id": "button_fill_gauge",
-                "color_id_clicked": "button_fill_gauge_click",
-                "color_id_active": "button_fill_gauge_active",
-                "color_id_pressed": "button_fill_gauge_pressed",
-                "color_id_hovered": "button_fill_gauge_hovered",
-                "color_id_disabled": "button_fill_gauge_disabled",
-                "axis_mode": [
-                  "PARENT_SIZE_PERCENT_RAW",
-                  "PARENT_SIZE_PERCENT_RAW"
-                ],
-                "position_mode": [
-                  "RAW_FOR_GAUGE",
-                  "CENTER_RAW"
-                ]
-              },
-              {
-                "type": "image",
-                "image": "button_border",
-                "color_id": "button_border",
-                "color_id_hovered": "button_border_hovered",
-                "color_id_active": "button_border_active",
-                "color_id_disabled": "button_border_disabled",
-                "axis_mode": [
-                  "PARENT_SIZE_PERCENT_RAW",
-                  "PARENT_SIZE_PERCENT_RAW"
-                ],
-                "position_mode": [
-                  "CENTER_RAW",
-                  "CENTER_RAW"
-                ]
-              }
-        ]
-    },
-    {
-        "id": "exploration_progress_label_and_bar",
-        "fixed_children":[
-            {
-                "type": "text",
-                "id": "button_text",
-                "text_horizontal": "CENTER",
-                "axis_mode": [
-                    "PARENT_SIZE_PERCENT",
-                    "TEXT_PREFERRED"
-                ],
-                "position_mode": [
-                "CENTER",
-                "SIBLING_DISTANCE"
-                ]
-            },
-            {
-                "type": "layout",
-                "id": "exploration_progress_bar",
-                "axis_mode": [
-                    "PARENT_SIZE_PERCENT",
-                    "SELF_SIZE"
-                ],
-                "position": [0, 5],
-                "size":[100, 20],
-                "position_mode": [
-                "CENTER",
-                "SIBLING_DISTANCE"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "exploration_player_upper_label",
-        "axis_mode": ["PARENT_SIZE_PERCENT", "CONTAIN_CHILDREN"],
-        "padding": [5, 30, 1, 4],
-        "position_mode": ["LEFT_ZERO", "SIBLING_DISTANCE"],
-        "fixed_children":[
-            {
-                "type": "text",
-                "id": "button_text",
-                "text_horizontal": "CENTER",
-                "axis_mode": [
-                    "PARENT_SIZE_PERCENT",
-                    "TEXT_PREFERRED"
-                ],
-                "position_mode": [
-                "CENTER",
-                "SIBLING_DISTANCE"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "exploration_progress_player_stat",
-        "position_mode": ["LEFT_ZERO", "SIBLING_DISTANCE"],
-        "axis_mode": [
+      "id": "exploration_player_upper_label",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "padding": [
+        5,
+        30,
+        1,
+        4
+      ],
+      "position_mode": [
+        "LEFT_ZERO",
+        "SIBLING_DISTANCE"
+      ],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
             "PARENT_SIZE_PERCENT",
-            "CONTAIN_CHILDREN"
-        ],
-        "padding":[4, 40, 4, 0],
-        "fixed_children":[
-            {
-                "type": "text",
-                "id": "button_text",
-                "text_horizontal": "LEFT",
-                "axis_mode": [
-                    "PARENT_SIZE_PERCENT",
-                    "TEXT_PREFERRED"
-                ],
-                "position_mode": [
-                "LEFT_ZERO",
-                "SIBLING_DISTANCE"
-                ]
-            },
-            {
-                "type": "layout",
-                "id": "exploration_progress_bar",
-                "axis_mode": [
-                    "PARENT_SIZE_PERCENT",
-                    "SELF_SIZE"
-                ],
-                "position": [0, 5],
-                "size":[100, 20],
-                "position_mode": [
-                "LEFT_ZERO",
-                "SIBLING_DISTANCE"
-                ]
-            }
-        ]
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        }
+      ]
     },
     {
-        "id": "exploration_simple_button",
-        "comment": "Simple button for flee in exploration",
-        "axis_mode": [
-          "PARENT_SIZE_PERCENT",
-          "SELF_SIZE"
-        ],
-        "size": [
-          100,
-          64
-        ],
-        "padding":[
-          16,
-          40,
-          8,
-          0
-        ],
-        "fixed_children": [
-          {
-            "type": "button",
-            "id": "task_button",
-            "axis_mode": [
-              "PARENT_SIZE_PERCENT",
-              "PARENT_SIZE_PERCENT"
-            ],
-            "position_mode": [
-              "LEFT_ZERO",
-              "CENTER"
-            ]
-          }
-        ]
-      },
+      "id": "exploration_progress_player_stat",
+      "position_mode": [
+        "LEFT_ZERO",
+        "SIBLING_DISTANCE"
+      ],
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "padding": [
+        4,
+        40,
+        4,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "LEFT",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "SIBLING_DISTANCE"
+          ]
+        },
+        {
+          "type": "layout",
+          "id": "exploration_progress_bar",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "SELF_SIZE"
+          ],
+          "position": [
+            0,
+            5
+          ],
+          "size": [
+            100,
+            20
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "SIBLING_DISTANCE"
+          ]
+        }
+      ]
+    },
     {
-        "id": "furniture_buttons",
-        "comment": "Contains + - buttons for furniture",
-        "axis_mode": [
-          "PARENT_SIZE_PERCENT",
-          "SELF_SIZE"
-        ],
-        "size": [
-          100,
-          40
-        ],
-        "fixed_children": [
-          {
-            "type": "button",
-            "id": "center_text_button",
-            "axis_mode": [
-              "SELF_SIZE",
-              "PARENT_SIZE_PERCENT"
-            ],
-            "size": [
-                40, -1
-            ],
-            "position_mode": [
-              "CENTER",
-              "CENTER"
-            ],
-            "position": [-30, 0]
-          },
-          {
-            "type": "button",
-            "id": "center_text_button",
-            "axis_mode": [
-              "SELF_SIZE",
-              "PARENT_SIZE_PERCENT"
-            ],
-            "size": [
-                40, -1
-            ],
-            "position_mode": [
-              "CENTER",
-              "CENTER"
-            ],
-            "position": [30, 0]
-          }
-        ]
+      "id": "exploration_simple_button",
+      "comment": "Simple button for flee in exploration",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        64
+      ],
+      "padding": [
+        16,
+        40,
+        8,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "button",
+          "id": "task_button",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_buttons",
+      "comment": "Contains + - buttons for furniture",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        40
+      ],
+      "fixed_children": [
+        {
+          "type": "button",
+          "id": "center_text_button",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            40,
+            -1
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "position": [
+            -30,
+            0
+          ]
+        },
+        {
+          "type": "button",
+          "id": "center_text_button",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            40,
+            -1
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "position": [
+            30,
+            0
+          ]
+        }
+      ]
     },
     {
       "id": "expandable_resource_text",
@@ -819,11 +915,11 @@
       "color_id_disabled": "button_text_disabled"
     },
     {
-        "id": "button_text_single_char",
-        "size": 16,
-        "color_id": "main_text",
-        "color_id_disabled": "button_text_disabled"
-      },
+      "id": "button_text_single_char",
+      "size": 16,
+      "color_id": "main_text",
+      "color_id_disabled": "button_text_disabled"
+    },
     {
       "id": "above_button_title_text",
       "size": 14,
@@ -951,64 +1047,64 @@
       ]
     },
     {
-        "id": "center_text_button",
-        "padding": [
-          0,
-          0,
-          3,
-          0
-        ],
-        "fixed_children": [
-          {
-            "type": "image",
-            "image": "button_fill",
-            "color_id": "button_fill",
-            "color_id_clicked": "button_fill_click",
-            "color_id_pressed": "button_fill_pressed",
-            "color_id_active": "button_fill_active",
-            "color_id_hovered": "button_fill_hovered",
-            "color_id_disabled": "button_fill_disabled",
-            "axis_mode": [
-              "PARENT_SIZE_PERCENT_RAW",
-              "PARENT_SIZE_PERCENT_RAW"
-            ],
-            "position_mode": [
-              "CENTER_RAW",
-              "CENTER_RAW"
-            ]
-          },
-          {
-            "type": "image",
-            "image": "button_border",
-            "color_id": "button_border",
-            "color_id_hovered": "button_border_hovered",
-            "color_id_active": "button_border_active",
-            "color_id_disabled": "button_border_disabled",
-            "axis_mode": [
-              "PARENT_SIZE_PERCENT_RAW",
-              "PARENT_SIZE_PERCENT_RAW"
-            ],
-            "position_mode": [
-              "CENTER_RAW",
-              "CENTER_RAW"
-            ],
-            "text_horizontal": "CENTER"
-          },
-          {
-            "type": "text",
-            "id": "button_text_single_char",
-            "axis_mode": [
-              "PARENT_SIZE_PERCENT",
-              "TEXT_PREFERRED"
-            ],
-            "position_mode": [
-              "CENTER",
-              "CENTER"
-            ],
-            "text_horizontal": "CENTER"
-          }
-        ]
-      },
+      "id": "center_text_button",
+      "padding": [
+        0,
+        0,
+        3,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "color_id_clicked": "button_fill_click",
+          "color_id_pressed": "button_fill_pressed",
+          "color_id_active": "button_fill_active",
+          "color_id_hovered": "button_fill_hovered",
+          "color_id_disabled": "button_fill_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_border",
+          "color_id": "button_border",
+          "color_id_hovered": "button_border_hovered",
+          "color_id_active": "button_border_active",
+          "color_id_disabled": "button_border_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ],
+          "text_horizontal": "CENTER"
+        },
+        {
+          "type": "text",
+          "id": "button_text_single_char",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "CENTER"
+        }
+      ]
+    },
     {
       "id": "expander_arrow",
       "padding": [
