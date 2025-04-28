@@ -148,10 +148,6 @@
         {
           "type": "layout",
           "id": "dialog_buttons",
-          "axis_mode": [
-            "FILL_REMAINING_SIZE",
-            "PARENT_SIZE_PERCENT"
-          ],
           "position_mode": [
             "LEFT_ZERO",
             "CENTER"

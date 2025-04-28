@@ -188,6 +188,7 @@ namespace JLayout
             {
                 layoutRU.OverrideAxisMode = commons.AxisModes;
             }
+            maybe override Position somehow?
             JLayoutChild item = new JLayoutChild()
             {
                 LayoutRU = layoutRU,

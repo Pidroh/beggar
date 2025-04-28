@@ -67,6 +67,13 @@ namespace JLayout
                 offsetLeftX += newSize;
                 ProcessChildren(parentLayout);
             }
+
+            // todo remove this?
+            data.jLayCanvas.ShowOverlay();
+            foreach (var overlay in data.jLayCanvas.Overlays)
+            {
+                ProcessChildren(overlay.LayoutRuntimeUnit);
+            }
         }
 
         private static void ProcessChildren(JLayoutRuntimeUnit parentLayout)

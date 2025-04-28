@@ -66,7 +66,7 @@ namespace JLayout
                     dc.HideOverlay();
                 }
                 {
-                    var canvasChild = CreateSimpleCanvasChild();
+                    var canvasChild = CreateSimpleCanvasChild(dc.OverlayRoot.gameObject);
                     dc.Overlays.Add(canvasChild);
                 }
                 // shows in the opposite order so that the bottoms ones are shown last
@@ -241,6 +241,7 @@ namespace JLayout
             ld.commons.AxisModes[0] = AxisMode.SELF_SIZE;
             ld.commons.AxisModes[1] = AxisMode.SELF_SIZE;
             lp.LayoutData = ld;
+            lp.RectTransform.SetParent(parent.transform);
             return new JLayCanvasChild(lp);
         }
         

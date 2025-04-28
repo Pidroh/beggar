@@ -336,7 +336,13 @@ public class MainGameControlSetupJLayout
 
         #endregion
 
+        #region instantiating dialog stuff
+        {
+            var overlay = jCanvas.Overlays[0];
+            overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
+        }
 
+        #endregion
     }
 
     // this method has two uses, more or less
