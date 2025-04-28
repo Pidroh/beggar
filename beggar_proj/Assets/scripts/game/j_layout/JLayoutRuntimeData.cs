@@ -188,12 +188,16 @@ namespace JLayout
             {
                 layoutRU.OverrideAxisMode = commons.AxisModes;
             }
-            maybe override Position somehow?
+            // maybe I need to add override AxisMode mode to the child? So I can use the layout axis modes in the child
             JLayoutChild item = new JLayoutChild()
             {
                 LayoutRU = layoutRU,
                 Commons = commons
             };
+            if (differingCommons && item.Commons.PositionOffsets == null) 
+            {
+                item.PositionModeOverride = layoutRU.LayoutData?.commons?.PositionModes;
+            }
             layoutRU.ChildSelf = item;
             Children.Add(item);
             layoutRU.RectTransform.SetParent(ContentTransform);
@@ -235,8 +239,10 @@ namespace JLayout
         public UIUnit UiUnit;
         public RectTransform Rect => LayoutRU?.RectTransform ?? UiUnit?.RectTransform;
         public PositionMode[] PositionModeOverride;
+        public AxisMode[] AxisModeOverride;
 
         public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
+        public AxisMode[] AxisModes => AxisModeOverride ?? Commons.AxisModes;
 
         public TextData TextData { get; internal set; }
 

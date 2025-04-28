@@ -194,7 +194,7 @@ namespace JLayout
 
 
                 #region size
-                var axisModes = child.Commons.AxisModes;
+                var axisModes = child.AxisModes;
                 var yAxis = 1;
 
                 var accountForTotalSize = true;
@@ -394,7 +394,7 @@ namespace JLayout
             using var _1 = ListPool<JLayoutChild>.Get(out var fillUpChildren);
             foreach (var child in parentLayout.Children)
             {
-                switch (child.Commons.AxisModes[0])
+                switch (child.AxisModes[0])
                 {
                     case AxisMode.PARENT_SIZE_PERCENT_RAW:
                         child.Rect.SetWidth(parentRect.GetWidth() * child.SizeRatioAsGauge);
