@@ -65,6 +65,10 @@ namespace JLayout
                     oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.99f);
                     dc.HideOverlay();
                 }
+                {
+                    var canvasChild = CreateSimpleCanvasChild();
+                    dc.Overlays.Add(canvasChild);
+                }
                 // shows in the opposite order so that the bottoms ones are shown last
                 // thus, prioritized
                 for (int i = N - 1; i >= 0; i--)
@@ -227,6 +231,19 @@ namespace JLayout
             return (layout, uiUnit);
         }
 
+        static JLayCanvasChild CreateSimpleCanvasChild(GameObject parent) 
+        {
+            JLayoutRuntimeUnit lp = CreateLayout();
+
+            var ld = new LayoutData();
+            ld.commons = new();
+            ld.commons.AxisModes = new AxisMode[2];
+            ld.commons.AxisModes[0] = AxisMode.SELF_SIZE;
+            ld.commons.AxisModes[1] = AxisMode.SELF_SIZE;
+            lp.LayoutData = ld;
+            return new JLayCanvasChild(lp);
+        }
+        
         static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)
         {
             JLayoutRuntimeUnit lp = null;
