@@ -161,7 +161,8 @@ namespace JLayout
                     case { LayoutRef: not null }:
                         {
                             var childLayout = CreateLayout(childData.LayoutRef.data, runtime);
-                            ru.AddLayoutAsChild(childLayout, childData);
+                            var c = ru.AddLayoutAsChild(childLayout, childData);
+                            ru.BindLayout(c);
                         }
                         break;
                     default:

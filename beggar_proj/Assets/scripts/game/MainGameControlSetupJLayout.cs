@@ -342,6 +342,8 @@ public class MainGameControlSetupJLayout
             var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
             dialogLay.LayoutRU.SetTextRaw(0, "Dialog title");
             dialogLay.LayoutRU.SetTextRaw(1, "Dialog text");
+            dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, "Yes");
+            dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[1].Item1.SetTextRaw(0, "No");
         }
 
         #endregion

@@ -97,6 +97,7 @@ namespace JLayout
         public List<JLayoutChild> TextChildren = new();
         public List<(JLayoutRuntimeUnit, JLayoutChild)> ButtonChildren = new();
         public List<JLayoutChild> ImageChildren = new();
+        public List<JLayoutChild> LayoutChildren = new();
         private bool _visibleSelf;
         private bool _parentShowing = true;
         private bool _visibleResult;
@@ -165,6 +166,8 @@ namespace JLayout
         }
 
         internal void BindImage(JLayoutChild im) => ImageChildren.Add(im);
+
+        internal void BindLayout(JLayoutChild l) => LayoutChildren.Add(l);
 
         internal void BindText(JLayoutChild textChild)
         {
