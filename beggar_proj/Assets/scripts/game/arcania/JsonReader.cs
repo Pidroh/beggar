@@ -217,7 +217,7 @@ public class JsonReader
             {
                 var dr = new DialogRuntime()
                 {
-                    Title = item["content"],
+                    Title = item["title"],
                     Content = item["content"],
                     Id = item["id"],
                 };
