@@ -51,6 +51,7 @@ public class JGameControlDataHolder
     public JGameControlDataExploration Exploration = new();
 
     public JLayoutRuntimeData LayoutRuntime { get; internal set; }
+    public JLayoutChild DialogLayout { get; internal set; }
 }
 
 public class JGameControlDataExploration

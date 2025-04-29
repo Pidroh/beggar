@@ -194,6 +194,7 @@ public class MainGameControl : MonoBehaviour
             {
                 dynamicCanvas.HideAllDialogs();
             }
+
         }
         if (dynamicCanvas.DialogViews[0].buttonConfirm.Button.Clicked)
         {

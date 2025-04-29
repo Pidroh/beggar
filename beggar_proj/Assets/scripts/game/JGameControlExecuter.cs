@@ -1,7 +1,7 @@
 ﻿using HeartUnity.View;
 using UnityEngine;
 
-public static class JGameControlExecuter 
+public static class JGameControlExecuter
 {
     public const float NormalMinTabWidth = 320;
     public const float NormalMaxTabWidth = 640;
@@ -123,7 +123,8 @@ public static class JGameControlExecuter
             // an invisible tab needs no processing
             if (!tabActive) continue;
 
-            if (tabControl.SpaceShowLayout != null) {
+            if (tabControl.SpaceShowLayout != null)
+            {
                 tabControl.SpaceShowLayout.SetTextRaw(0, "Space");
                 tabControl.SpaceShowLayout.SetTextRaw(1, $"{arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}");
             }
@@ -189,7 +190,7 @@ public static class JGameControlExecuter
                     {
                         unit.MainLayout.SetParentShowing(sep.Expanded);
                         var visible = unit.Data?.Visible ?? false;
-                        if (visible && unit.Data.Location != null && mgc.arcaniaModel.Exploration.IsExplorationActive) 
+                        if (visible && unit.Data.Location != null && mgc.arcaniaModel.Exploration.IsExplorationActive)
                         {
                             visible = false;
                         }
@@ -310,6 +311,38 @@ public static class JGameControlExecuter
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
+
+        #region dialog
+
+        var dialog = arcaniaModel.Dialog.ActiveDialog;
+        if (arcaniaModel.Dialog.ShouldShow != controlData.DialogLayout.LayoutRU.Visible)
+        {
+            if (arcaniaModel.Dialog.ShouldShow)
+            {
+                ShowDialog(dialog, controlData);
+            }
+            else
+            {
+                controlData.LayoutRuntime.jLayCanvas.HideOverlay();
+                controlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
+            }
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
+            {
+                arcaniaModel.Dialog.DialogComplete(i);
+            }
+        }
+        #endregion
+    }
+
+    private static void ShowDialog(DialogRuntime dialog, JGameControlDataHolder controlData)
+    {
+        controlData.DialogLayout.LayoutRU.SetTextRaw(0, dialog.Title);
+        controlData.DialogLayout.LayoutRU.SetTextRaw(1, dialog.Content);
+        controlData.LayoutRuntime.jLayCanvas.ShowOverlay();
+        controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
     }
 
     public static void UpdateExpandLogicForUnit(JRTControlUnit unit)
@@ -394,7 +427,7 @@ public static class JGameControlExecuter
                     RuntimeUnit dataThatWillBeChanged = rc.IdPointer.RuntimeUnit;
                     targetName = dataThatWillBeChanged.Visible ? dataThatWillBeChanged.Name : "???";
                     int value = dataThatWillBeChanged.Value;
-                    if (canBeDisabled) 
+                    if (canBeDisabled)
                     {
                         // max is negative, so the sum needs to be above 0
                         ttv.Disabled = (value + max) < 0;

@@ -68,8 +68,6 @@ namespace JLayout
                 ProcessChildren(parentLayout);
             }
 
-            // todo remove this?
-            data.jLayCanvas.ShowOverlay();
             foreach (var overlay in data.jLayCanvas.Overlays)
             {
                 overlay.LayoutRuntimeUnit.RectTransform.FillParent();
