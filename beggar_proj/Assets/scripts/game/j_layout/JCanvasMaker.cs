@@ -10,6 +10,8 @@ namespace JLayout
 {
     public class JCanvasMaker
     {
+        
+
         public static JLayCanvas CreateCanvas(int N, CanvasMaker.CreateCanvasRequest canvasReq, Canvas reusableCanvas)
         {
             JLayCanvas dc = new JLayCanvas();
@@ -62,7 +64,8 @@ namespace JLayout
                 dc.OverlayRoot = canvasGO.GetComponent<RectTransform>().CreateFullSizeChild("overlay_root");
                 {
                     var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
-                    oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.99f);
+                    dc.overlayImage = oi.gameObject.AddComponent<Image>();
+                    dc.overlayImage.color = new Color(0f, 0f, 0f, 0.99f);
                     dc.HideOverlay();
                 }
                 {

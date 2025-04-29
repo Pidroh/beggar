@@ -338,6 +338,7 @@ public class MainGameControlSetupJLayout
 
         #region instantiating dialog stuff
         {
+            jCanvas.overlayImage.color = runtime.LayoutMaster.General.OverlayColor.data.Colors[0];
             var overlay = jCanvas.Overlays[0];
             var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
             dialogLay.LayoutRU.SetTextRaw(0, "Dialog title");
