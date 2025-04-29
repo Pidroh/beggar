@@ -187,7 +187,9 @@ namespace JLayout
                         break;
                     case "text_horizontal":
                         ld.TextHorizontalMode = EnumHelper<TextHorizontal>.TryGetEnumFromName(pair.Value.AsString, out var mode) ? mode : mode;
-
+                        break;
+                    case "use_layout_commons":
+                        ld.UseLayoutCommons = pair.Value.AsBool;
                         break;
                     default:
                         break;
@@ -377,7 +379,11 @@ namespace JLayout
         // positioning with a pivot that fits a gauge. Ignores padding
         RAW_FOR_GAUGE, 
         // same as above but does not ignore padding
-        FOR_GAUGE
+        FOR_GAUGE,
+        // the origin is on the top, only for Y
+        TOP_ZERO,
+        // origin bottom, y only
+        BOTTOM_ZERO,
     }
 
     public class PointerHolder<T>

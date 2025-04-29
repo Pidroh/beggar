@@ -109,7 +109,7 @@
       "id": "dialog_yes_no",
       "comment": "Dialog with title ",
       "axis_mode": [
-        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE",
         "CONTAIN_CHILDREN"
       ],
       "position_mode": [
@@ -119,10 +119,23 @@
       "clickable": true,
       "position": [],
       "size": [
-        100,
+        300,
         -1
       ],
       "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
         {
           "type": "text",
           "id": "button_text",
@@ -133,7 +146,7 @@
           ],
           "position_mode": [
             "CENTER",
-            "SIBLING_DISTANCE"
+            "TOP_ZERO"
           ]
         },
         {
@@ -152,10 +165,8 @@
         {
           "type": "layout",
           "id": "dialog_buttons",
-          "position_mode": [
-            "LEFT_ZERO",
-            "CENTER"
-          ]
+          "use_layout_commons": true
+          
         }
       ]
     },
@@ -165,6 +176,10 @@
       "axis_mode": [
         "PARENT_SIZE_PERCENT",
         "SELF_SIZE"
+      ],
+      "position_mode": [
+        "LEFT_ZERO",
+        "SIBLING_DISTANCE"
       ],
       "size": [
         100,

@@ -157,7 +157,7 @@ namespace JLayout
         }
 
         // Some day you might have to fuse the buttonLayout commons with childData commons
-        internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons, null);
+        internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit buttonLayout, LayoutChildData childData) => AddLayoutAsChild(buttonLayout, childData.Commons.UseLayoutCommons ? buttonLayout.LayoutData.commons : childData.Commons, null);
 
         internal void BindButton(JLayoutRuntimeUnit buttonLayout, JLayoutChild buttonChildSelf)
         {

@@ -72,6 +72,7 @@ namespace JLayout
             data.jLayCanvas.ShowOverlay();
             foreach (var overlay in data.jLayCanvas.Overlays)
             {
+                overlay.LayoutRuntimeUnit.RectTransform.FillParent();
                 ProcessChildren(overlay.LayoutRuntimeUnit);
             }
         }
@@ -279,6 +280,18 @@ namespace JLayout
                         case PositionMode.RIGHT_ZERO:
                             Debug.Assert(axis == 0);
                             childRect.SetRightXToParent((padding.right + pos.x) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            break;
+                        case PositionMode.TOP_ZERO:
+                            {
+                                Debug.Assert(axis == 1);
+                                childRect.SetTopYToParent((padding.top + pos.y) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            }
+                            break;
+                        case PositionMode.BOTTOM_ZERO:
+                            {
+                                Debug.Assert(axis == 1);
+                                childRect.SetBottomYToParent((padding.bottom + pos.y) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
+                            }
                             break;
                         case PositionMode.CENTER:
                             //childRect.SetPivotAndAnchors(new Vector2(0.5f, 0.5f));
