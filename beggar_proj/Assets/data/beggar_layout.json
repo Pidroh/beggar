@@ -157,6 +157,9 @@
           "type": "text",
           "id": "button_text",
           "text_horizontal": "CENTER",
+          "position": [
+            0, 15
+          ],
           "axis_mode": [
             "PARENT_SIZE_PERCENT",
             "TEXT_PREFERRED"
@@ -185,6 +188,7 @@
         "LEFT_ZERO",
         "SIBLING_DISTANCE"
       ],
+      "position":[0, 13],
       "size": [
         100,
         40
