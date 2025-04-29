@@ -15,6 +15,9 @@ namespace JLayout
             {
                 switch (item.Key)
                 {
+                    case "general":
+                        ReadGeneral(item.Value, layoutMaster);
+                        break;
                     case "layouts":
                         ReadLayouts(item.Value, layoutMaster);
                         break;
@@ -42,6 +45,21 @@ namespace JLayout
             }
 #endif
             #endregion
+        }
+
+        private static void ReadGeneral(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
+        {
+            foreach (var pair in value)
+            {
+                switch (pair.Key)
+                {
+                    case "overlay_color":
+                        layoutMaster.General.OverlayColor = layoutMaster.ColorDatas.GetOrCreatePointer(pair.Value.ToString());
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private static void ReadColors(SimpleJSON.JSONNode value, LayoutDataMaster layoutMaster)
@@ -307,10 +325,16 @@ namespace JLayout
 
     public class LayoutDataMaster
     {
+        public GeneralData General = new();
         public PointerHolder<LayoutData> LayoutDatas = new();
         public PointerHolder<ColorData> ColorDatas = new();
         public PointerHolder<ButtonData> ButtonDatas = new();
         public PointerHolder<TextData> TextDatas = new();
+    }
+
+    public class GeneralData 
+    {
+        public Pointer<ColorData> OverlayColor;
     }
 
     public class ColorSet 
