@@ -53,8 +53,8 @@ namespace JLayout
             {
                 switch (pair.Key)
                 {
-                    case "overlay_color":
-                        layoutMaster.General.OverlayColor = layoutMaster.ColorDatas.GetOrCreatePointer(pair.Value.ToString());
+                    case "overlay_background_color":
+                        layoutMaster.General.OverlayColor = layoutMaster.ColorDatas.GetOrCreatePointer(pair.Value.AsString);
                         break;
                     default:
                         break;

@@ -125,6 +125,7 @@
         300,
         -1
       ],
+      "padding":[21, 35, 16, 35],
       "fixed_children": [
         {
           "type": "image",

@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 using HeartUnity.View;
+using UnityEngine.UI;
 
 namespace JLayout
 {
@@ -21,6 +22,8 @@ namespace JLayout
 
         // Pixel size adjusted from fall back DPI to actual DPI
         public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
+
+        public Image overlayImage { get; internal set; }
 
         internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
 
