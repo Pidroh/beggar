@@ -112,6 +112,10 @@
         "PARENT_SIZE_PERCENT",
         "CONTAIN_CHILDREN"
       ],
+      "position_mode": [
+        "CENTER",
+        "CENTER"
+      ],
       "clickable": true,
       "position": [],
       "size": [

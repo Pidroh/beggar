@@ -242,6 +242,7 @@ namespace JLayout
             ld.commons.AxisModes[1] = AxisMode.SELF_SIZE;
             lp.LayoutData = ld;
             lp.RectTransform.SetParent(parent.transform);
+            lp.DefaultPositionModes = new PositionMode[] { PositionMode.CENTER, PositionMode.CENTER };
             return new JLayCanvasChild(lp);
         }
         
