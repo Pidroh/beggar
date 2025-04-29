@@ -1,4 +1,7 @@
 {
+  "general": {
+    "overlay_background_color": "overlay_color"
+  },
   "layouts": [
     {
       "id": "content_holder_expandable",
@@ -1416,6 +1419,13 @@
       "colors": [
         "#7e2626ff",
         "#00FF00FF"
+      ]
+    },
+    {
+      "id": "overlay_color",
+      "colors": [
+        "#acafcdd9",
+        "#acafcdd9"
       ]
     }
   ],
