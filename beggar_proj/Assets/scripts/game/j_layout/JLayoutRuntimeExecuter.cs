@@ -361,6 +361,7 @@ namespace JLayout
                                     }
                                     if (axis == 1)
                                     {
+                                        totalChildOccupiedHeight += child.Commons.PositionOffsets[1];
                                         childRect.SetTopLocalY(prevRect.GetBottomLocalY() - child.Commons.PositionOffsets[1] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                                     }
                                 }
