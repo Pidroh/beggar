@@ -142,7 +142,7 @@
         },
         {
           "type": "text",
-          "id": "button_text",
+          "id": "big_title",
           "text_horizontal": "CENTER",
           "axis_mode": [
             "PARENT_SIZE_PERCENT",
@@ -998,6 +998,11 @@
       "id": "above_button_title_text",
       "size": 14,
       "color_id": "main_text"
+    },
+    {
+      "id": "big_title",
+      "size": 22,
+      "color_id": "lore_text"
     },
     {
       "id": "lore_text",
