@@ -186,7 +186,7 @@ namespace JLayout
             return new JLayoutChild
             {
                 Commons = childData.Commons,
-                LayoutChild = childData,
+                LayoutChildData = childData,
                 UiUnit = unit
             };
         }
@@ -207,7 +207,7 @@ namespace JLayout
             return new JLayoutChild
             {
                 Commons = commons,
-                LayoutChild = childData,
+                LayoutChildData = childData,
                 TextData = data,
                 UiUnit = uiUnit
             };

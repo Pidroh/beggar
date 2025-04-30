@@ -1,5 +1,7 @@
 ﻿using System;
 
+
+
 public static class JGameControlExecuterEnding
 {
     public const int ENDING_COUNT = 3;
@@ -11,7 +13,28 @@ public static class JGameControlExecuterEnding
     
     internal static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
     {
-        
+        TryShowEnding(mgc, controlData);
+    }
+
+    private static void TryShowEnding(MainGameControl mainGameControl, JGameControlDataHolder controlData)
+    {
+        var dynamicCanvas = controlData.LayoutRuntime.jLayCanvas;
+        if (dynamicCanvas == null) return;
+        if (dynamicCanvas.OverlayVisible) return;
+        for (int i = 0; i < controlData.EndingData.runtimeUnits.Length; i++)
+        {
+            RuntimeUnit ru = controlData.EndingData.runtimeUnits[i];
+            // older versions might not have all the endings
+            if (ru == null) continue;
+            if (ru.Value <= 0) continue;
+            dynamicCanvas.ShowOverlay();
+
+            var message = endingMessage;
+            message = message.Replace("$PART1$", endingPrefix[i]).Replace("$PART2$", endingMessageSnippet[i]);
+            controlData.EndingLayout.LayoutRU.SetTextRaw(0, "Intermediary Ending");
+            controlData.EndingLayout.LayoutRU.SetTextRaw(1, message);
+            return;
+        }
     }
 }
 

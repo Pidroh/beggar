@@ -239,7 +239,7 @@ namespace JLayout
 
     public class JLayoutChild
     {
-        public LayoutChildData LayoutChild;
+        public LayoutChildData LayoutChildData;
 
         public JLayoutRuntimeUnit LayoutRU { get; internal set; }
         public LayoutCommons Commons { get; internal set; }

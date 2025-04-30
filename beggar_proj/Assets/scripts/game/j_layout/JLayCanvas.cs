@@ -24,6 +24,7 @@ namespace JLayout
         public float DefaultPixelSizeToPhysicalPixelSize => RectTransformExtensions.PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
 
         public Image overlayImage { get; internal set; }
+        public bool OverlayVisible => overlayImage.IsActive();
 
         internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
 
