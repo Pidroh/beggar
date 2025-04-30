@@ -86,7 +86,7 @@ public static class JGameControlExecuter
             {
                 if (tabControl.TabData.Tab.OpenSettings)
                 {
-                    // GoToSettings();
+                    mgc.GoToSettings();
                 }
                 else if (tabControl.TabData.Tab.OpenOtherTabs)
                 {

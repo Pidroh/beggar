@@ -495,7 +495,7 @@ public class MainGameControl : MonoBehaviour
         }
     }
 
-    private void GoToSettings()
+    public void GoToSettings()
     {
         ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
         HeartGame.GoToSettings();
