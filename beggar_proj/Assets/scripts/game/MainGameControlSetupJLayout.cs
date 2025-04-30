@@ -325,6 +325,8 @@ public class MainGameControlSetupJLayout
 
         #endregion
 
+       
+
         #region instantiating dialog stuff
         var overlay = jCanvas.Overlays[0];
         {
@@ -337,8 +339,16 @@ public class MainGameControlSetupJLayout
             dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[1].Item1.SetTextRaw(0, "No");
             jControlDataHolder.DialogLayout = dialogLay;
         }
+        #endregion
+
+        #region setup ending stuff
+        for (int i = 0; i < JGameControlExecuterEnding.ENDING_COUNT; i++)
         {
-           
+            var unit = arcaniaModel.FindRuntimeUnit(JGameControlExecuterEnding.endingUnitIds[i]);
+            jControlDataHolder.EndingData.runtimeUnits[i] = unit;
+        }
+        {
+
             var endingLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("ending_text", runtime));
             endingLay.LayoutRU.SetTextRaw(0, "Ending title");
             endingLay.LayoutRU.SetTextRaw(1, "Ending normal");
