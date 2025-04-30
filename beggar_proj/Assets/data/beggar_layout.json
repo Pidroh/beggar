@@ -109,6 +109,69 @@
       ]
     },
     {
+      "id": "ending_text",
+      "comment": "Ending text",
+      "axis_mode": [
+        "SELF_SIZE",
+        "CONTAIN_CHILDREN"
+      ],
+      "position_mode": [
+        "CENTER",
+        "CENTER"
+      ],
+      "clickable": true,
+      "position": [],
+      "size": [
+        300,
+        -1
+      ],
+      "padding":[21, 35, 16, 35],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "big_title",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "TOP_ZERO"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "CENTER",
+          "position": [
+            0, 15
+          ],
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        }
+      ]
+    },
+    {
       "id": "dialog_yes_no",
       "comment": "Dialog with title ",
       "axis_mode": [
