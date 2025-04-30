@@ -196,15 +196,28 @@ public static class JGameControlExecuter
                         }
                         unit.MainLayout.SetVisibleSelf(visible);
                         if (!visible) continue;
-                        for (int modIndex = 0; modIndex < unit.OwnedMods.Mods.Count; modIndex++)
                         {
-                            ModRuntime item = unit.OwnedMods.Mods[modIndex];
-                            if (item.ModType == ModType.SpaceConsumption)
+                            JRTControlUnitMods modList = unit.OwnedMods;
+                            for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
                             {
+                                ModRuntime item = modList.Mods[modIndex];
+                                if (item.ModType == ModType.SpaceConsumption)
+                                {
 
-                                JLayout.JLayoutRuntimeUnit ttv = unit.OwnedMods.tripleTextViews[modIndex];
-                                ttv.Disabled = arcaniaModel.Housing.FurnitureNotMaxedButNotEnoughSpace(unit.Data);
-                                ttv.SetTextRaw(2, $"({arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace})");
+                                    JLayout.JLayoutRuntimeUnit ttv = modList.tripleTextViews[modIndex];
+                                    ttv.Disabled = arcaniaModel.Housing.FurnitureNotMaxedButNotEnoughSpace(unit.Data);
+                                    ttv.SetTextRaw(2, $"({arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace})");
+                                }
+                            }
+                        }
+                        {
+                            var modList = unit.IntermediaryMods;
+                            for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
+                            {
+                                ModRuntime item = modList.Mods[modIndex];
+                                var ttv = modList.tripleTextViews[modIndex];
+                                ttv.SetVisibleSelf(item.Source.Value != 0);
+                                ttv.SetTextRaw(1, (item.Source.Value * item.Value)+ "");
                             }
                         }
                         shouldShowSep = true;
@@ -230,7 +243,7 @@ public static class JGameControlExecuter
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
                                     unit.MainExecuteButton.SetActivePowered(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
-                                    if(unit.Expanded) unit.TaskQuantityText?.SetTextRaw(unit.Data.Value + "");
+                                    if (unit.Expanded) unit.TaskQuantityText?.SetTextRaw(unit.Data.Value + "");
                                     var progress = unit.Data.TaskProgressRatio;
                                     if (pair.Key == UnitType.LOCATION)
                                         progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;

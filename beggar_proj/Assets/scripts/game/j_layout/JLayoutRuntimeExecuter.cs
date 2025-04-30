@@ -434,11 +434,13 @@ namespace JLayout
                         {
                             var preferredWidth = child.UiUnit.text.preferredWidth;
                             var stepSizes = child.Commons.StepSizes;
-                            var preferredSize = stepSizes[0][0];
-                            int preferredIndex = 0;
+                            int maxStep = stepSizes[0].Count - 1;
+                            // start from the maximum
+                            var preferredSize = stepSizes[0][maxStep] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                            int preferredIndex = maxStep;
                             for (int i = 0; i < stepSizes[0].Count; i++)
                             {
-                                if (preferredSize < (stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize - 10))
+                                if (preferredWidth < (stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize - 10))
                                 {
                                     preferredSize = (int)(stepSizes[0][i] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                                     preferredIndex = i;
