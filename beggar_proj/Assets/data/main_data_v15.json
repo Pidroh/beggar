@@ -2357,7 +2357,7 @@
             {
                 "id": "exploration",
                 "exploration_active_tab": true,
-                "requiZre": "t_tier0",
+                "require": "t_tier0",
                 "unit_types": [
                     "LOCATION"
                 ],
