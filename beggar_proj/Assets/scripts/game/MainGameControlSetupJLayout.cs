@@ -326,9 +326,10 @@ public class MainGameControlSetupJLayout
         #endregion
 
         #region instantiating dialog stuff
+        var overlay = jCanvas.Overlays[0];
         {
             jCanvas.overlayImage.color = runtime.LayoutMaster.General.OverlayColor.data.Colors[0];
-            var overlay = jCanvas.Overlays[0];
+            
             var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
             dialogLay.LayoutRU.SetTextRaw(0, "Dialog title");
             dialogLay.LayoutRU.SetTextRaw(1, "Dialog text");
@@ -336,7 +337,13 @@ public class MainGameControlSetupJLayout
             dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[1].Item1.SetTextRaw(0, "No");
             jControlDataHolder.DialogLayout = dialogLay;
         }
-
+        {
+           
+            var endingLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("ending_text", runtime));
+            endingLay.LayoutRU.SetTextRaw(0, "Ending title");
+            endingLay.LayoutRU.SetTextRaw(1, "Ending normal");
+            jControlDataHolder.EndingLayout = endingLay;
+        }
         #endregion
     }
 
