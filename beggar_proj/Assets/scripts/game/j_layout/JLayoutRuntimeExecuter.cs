@@ -109,7 +109,7 @@ namespace JLayout
                 } else if (hasButton && buttonUU.Clicked)
                 {
                     color = ColorSetType.CLICKED;
-                } if (hasButton && buttonUU.MouseDown)
+                } else if (hasButton && buttonUU.MouseDown)
                 {
                     color = ColorSetType.PRESSED;
                 }
