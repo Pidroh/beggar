@@ -53,6 +53,7 @@ public class JGameControlDataHolder
 
     public JLayoutRuntimeData LayoutRuntime { get; internal set; }
     public JLayoutChild DialogLayout { get; internal set; }
+    public JLayoutChild EndingLayout { get; internal set; }
 }
 
 public class JGameControlDataExploration

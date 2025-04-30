@@ -325,6 +325,7 @@ public static class JGameControlExecuter
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
+        JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
 
         #region dialog
 
