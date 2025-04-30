@@ -232,26 +232,8 @@ public class MainGameControlSetupJLayout
                     var modList = modelData.ModsOwned;
                     var header = "modifications";
                     var modControl = jCU.OwnedMods;
-                    if (modList.Count > 0)
-                    {
-                        modControl.Header = CreateMiniHeader(runtime, jCU, layoutRU, header);
-                        foreach (var mod in modList)
-                        {
-                            if (mod.ModType == ModType.Lock) continue;
-                            var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                            AddToExpand(layoutRU, triple, jCU);
-                            modControl.tripleTextViews.Add(triple);
-                            modControl.Mods.Add(mod);
-                            var value = mod.Value;
-                            triple.SetTextRaw(0, mod.HumanText);
-                            string secondaryText = null;
-                            if (value > 0 && mod.ModType != ModType.SpaceConsumption)
-                                secondaryText = $"+{value}";
-                            else
-                                secondaryText = $"{value}";
-                            triple.SetTextRaw(1, secondaryText);
-                        }
-                    }
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, 0);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.ModsSelfAsIntermediary, "extra mods", jCU.IntermediaryMods, 1);
                     #endregion
 
 
@@ -356,6 +338,31 @@ public class MainGameControlSetupJLayout
         }
 
         #endregion
+    }
+
+    private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, int mode)
+    {
+        if (modList.Count > 0)
+        {
+            modControl.Header = CreateMiniHeader(runtime, jCU, layoutRU, header);
+            foreach (var mod in modList)
+            {
+                if (mod.ModType == ModType.Lock) continue;
+                var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
+                AddToExpand(layoutRU, triple, jCU);
+                modControl.tripleTextViews.Add(triple);
+                modControl.Mods.Add(mod);
+                var value = mod.Value;
+                var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : "");
+                triple.SetTextRaw(0, mainText);
+                string secondaryText = null;
+                if (value > 0 && mod.ModType != ModType.SpaceConsumption)
+                    secondaryText = $"+{value}";
+                else
+                    secondaryText = $"{value}";
+                triple.SetTextRaw(1, secondaryText);
+            }
+        }
     }
 
     // this method has two uses, more or less
