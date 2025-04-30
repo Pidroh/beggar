@@ -230,6 +230,7 @@ public static class JGameControlExecuter
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
                                     unit.MainExecuteButton.SetActivePowered(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
+                                    if(unit.Expanded) unit.TaskQuantityText?.SetTextRaw(unit.Data.Value + "");
                                     var progress = unit.Data.TaskProgressRatio;
                                     if (pair.Key == UnitType.LOCATION)
                                         progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;

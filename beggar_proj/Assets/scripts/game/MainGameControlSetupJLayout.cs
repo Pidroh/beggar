@@ -190,6 +190,12 @@ public class MainGameControlSetupJLayout
                             // buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = modelData.ConfigBasic.UnitType == UnitType.HOUSE;
                             buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
                         }
+                        {
+                            var quantityLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                            quantityLay.SetTextRaw(0, "0");
+                            jCU.TaskQuantityText = new JLayTextAccessor(quantityLay, 0);
+                            AddToExpand(layoutRU, quantityLay, jCU);
+                        }
                     }
                     else if (hasResourceExpander)
                     {
@@ -285,6 +291,7 @@ public class MainGameControlSetupJLayout
                 jCU.Name = new JLayTextAccessor(layoutThatHasName, 0);
                 jCU.ExpandWhenClickingLayout = expandableTextWithBar.LayoutRU;
                 jCU.MainLayout = parent;
+                
                 {
                     var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
                     jCU.Description = new JLayTextAccessor(descLayout, 0);

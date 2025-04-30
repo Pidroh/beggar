@@ -691,6 +691,39 @@
       ]
     },
     {
+      "id": "quantity_task_text",
+      "comment": "Contains the number of times a task was done",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "size": [
+        100,
+        -1
+      ],
+      "padding": [
+        4,
+        10,
+        2,
+        10
+      ],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "lore_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "RIGHT"
+        }
+      ]
+    },
+    {
       "id": "above_button_title_with_value",
       "comment": "Contains the title for things like skills (and furniture?)",
       "axis_mode": [
