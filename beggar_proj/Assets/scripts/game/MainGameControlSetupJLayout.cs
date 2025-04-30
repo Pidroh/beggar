@@ -343,6 +343,7 @@ public class MainGameControlSetupJLayout
             endingLay.LayoutRU.SetTextRaw(0, "Ending title");
             endingLay.LayoutRU.SetTextRaw(1, "Ending normal");
             jControlDataHolder.EndingLayout = endingLay;
+            endingLay.LayoutRU.SetVisibleSelf(false);
         }
         #endregion
     }
