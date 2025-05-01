@@ -355,6 +355,7 @@ public class MainGameControlSetupJLayout
             jControlDataHolder.EndingLayout = endingLay;
             endingLay.LayoutRU.SetVisibleSelf(false);
             endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, "Settings");
+            jControlDataHolder.EndingData.SettingsButton = endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0];
         }
         #endregion
     }
