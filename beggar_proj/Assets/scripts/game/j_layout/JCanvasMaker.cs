@@ -69,8 +69,8 @@ namespace JLayout
                     dc.HideOverlay();
                 }
                 {
-                    var canvasChild = CreateSimpleCanvasChild(dc.OverlayRoot.gameObject);
-                    dc.Overlays.Add(canvasChild);
+                    //var canvasChild = CreateSimpleCanvasChild(dc.OverlayRoot.gameObject);
+                    dc.Overlays.Add(new JLayCanvasChild(CreateCanvasScrollChild(dc.OverlayRoot.gameObject, 0, canvasReq.ScrollStyle)));
                 }
                 // shows in the opposite order so that the bottoms ones are shown last
                 // thus, prioritized

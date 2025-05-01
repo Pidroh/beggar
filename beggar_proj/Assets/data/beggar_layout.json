@@ -168,6 +168,18 @@
             "CENTER",
             "SIBLING_DISTANCE"
           ]
+        },
+        {
+          "type": "layout",
+          "id": "simple_button",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "SELF_SIZE"
+          ],
+          "position_mode":[
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
         }
       ]
     },
@@ -485,6 +497,35 @@
         "PARENT_SIZE_PERCENT",
         "SELF_SIZE"
       ],
+      "size": [
+        100,
+        64
+      ],
+      "padding": [
+        16,
+        40,
+        8,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "button",
+          "id": "task_button",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simple_button",
+      "comment": "Simple button",
+      
       "size": [
         100,
         64

@@ -33,6 +33,7 @@ public static class JGameControlExecuterEnding
             message = message.Replace("$PART1$", endingPrefix[i]).Replace("$PART2$", endingMessageSnippet[i]);
             controlData.EndingLayout.LayoutRU.SetTextRaw(0, "Intermediary Ending");
             controlData.EndingLayout.LayoutRU.SetTextRaw(1, message);
+            controlData.EndingLayout.LayoutRU.SetVisibleSelf(true);
             return;
         }
     }
