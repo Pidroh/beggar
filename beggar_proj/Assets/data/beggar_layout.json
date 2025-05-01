@@ -172,6 +172,10 @@
         {
           "type": "layout",
           "id": "simple_button",
+          "size": [
+            100,
+            64
+          ],
           "axis_mode": [
             "PARENT_SIZE_PERCENT",
             "SELF_SIZE"
@@ -525,14 +529,9 @@
     {
       "id": "simple_button",
       "comment": "Simple button",
-      
-      "size": [
-        100,
-        64
-      ],
       "padding": [
         16,
-        40,
+        0,
         8,
         0
       ],
