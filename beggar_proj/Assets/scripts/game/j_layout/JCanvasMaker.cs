@@ -70,7 +70,9 @@ namespace JLayout
                 }
                 {
                     //var canvasChild = CreateSimpleCanvasChild(dc.OverlayRoot.gameObject);
-                    dc.Overlays.Add(new JLayCanvasChild(CreateCanvasScrollChild(dc.OverlayRoot.gameObject, 0, canvasReq.ScrollStyle)));
+                    JLayoutRuntimeUnit layoutRuntimeUnit = CreateCanvasScrollChild(dc.OverlayRoot.gameObject, 0, canvasReq.ScrollStyle);
+                    layoutRuntimeUnit.ContentTransform.pivot = new Vector2(layoutRuntimeUnit.ContentTransform.pivot.x, 0.5f);
+                    dc.Overlays.Add(new JLayCanvasChild(layoutRuntimeUnit));
                 }
                 // shows in the opposite order so that the bottoms ones are shown last
                 // thus, prioritized
