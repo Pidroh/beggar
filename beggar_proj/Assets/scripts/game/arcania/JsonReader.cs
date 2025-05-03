@@ -191,11 +191,11 @@ public class JsonReader
                     break;
                 }
                 if (added) continue;
-                if (!added) 
+                if (!added)
                 {
                     Debug.Log("NOT ADDED " + item.ConfigBasic.Id);
                 }
-            }   
+            }
         }
         #endregion
         #region check broken pointers
@@ -389,6 +389,7 @@ public class JsonReader
             if (pair.Key == "slot") ct.SlotKey = pair.Value.AsString;
             if (pair.Key == "success_rate") ct.SuccessRatePercent = pair.Value.AsInt;
             if (pair.Key == "need") ct.Need = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
+            if (pair.Key == "dot") ReadDot(ru, pair.Value, arcaniaUnits);
         }
         if (!ct.Duration.HasValue)
         {
@@ -402,6 +403,37 @@ public class JsonReader
             ct.Perpetual = true;
         }
         return ct;
+    }
+
+    private static object ReadDot(RuntimeUnit owner, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits)
+    {
+        var ru = new RuntimeUnit();
+        var pointer = arcaniaUnits.GetOrCreateIdPointer(owner.ConfigBasic.Id + "_mod");
+        pointer.RuntimeUnit = ru;
+        owner.ModRU = pointer.RuntimeUnit;
+        arcaniaUnits.datas[UnitType.MOD].Add(ru);
+        var dc = new DotConfig();
+        ru.DotConfig = dc;
+        foreach (var c in value)
+        {
+            switch (c.Key)
+            {
+                case "duration":
+                    {
+                        dc.Duration = c.Value.AsInt;
+                    }
+                    break;
+                case "mods":
+                case "mod":
+                    {
+                        ReadMods(ru, c.Value, arcaniaUnits);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return dc;
     }
 
     private static void ReadChanges(List<ResourceChange> list, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits, int signalMultiplier)
@@ -443,7 +475,9 @@ public class JsonReader
         }
     }
 
-    private static void ReadMods(RuntimeUnit owner, SimpleJSON.JSONNode dataJsonMod, ArcaniaUnits arcaniaUnits)
+    private static void ReadMods(
+        RuntimeUnit owner, 
+        SimpleJSON.JSONNode dataJsonMod, ArcaniaUnits arcaniaUnits)
     {
         using var _1 = ListPool<string>.Get(out var strList);
 
@@ -515,7 +549,8 @@ public class JsonReader
             Target = targetId == null ? null : arcaniaUnits.GetOrCreateIdPointer(targetId),
             Intermediary = secondaryId == null ? null : arcaniaUnits.GetOrCreateIdPointer(secondaryId)
         };
-        arcaniaUnits.Mods.Add(md);
+        List<ModRuntime> mods = arcaniaUnits.Mods;
+        mods.Add(md);
         return md;
     }
 
@@ -606,6 +641,7 @@ public class ConfigBasic
 public enum UnitType
 {
     RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
+    MOD,
 }
 
 public class ModRuntime
@@ -620,6 +656,11 @@ public class ModRuntime
     public string SourceJsonKey { get; internal set; }
     public string HumanText { get; internal set; }
     public string HumanTextIntermediary { get; internal set; }
+}
+
+public class DotConfig
+{
+    public int Duration { get; internal set; }
 }
 
 public class ResourceChange
