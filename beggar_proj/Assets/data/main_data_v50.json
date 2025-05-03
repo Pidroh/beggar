@@ -22,6 +22,34 @@
                 "result":{
                     "firewood": 1
                 }
+            },
+            {
+                "id": "handdrill",
+                "name": "Hand drill",
+                "desc": "It will definitely catch fire this time. Maybe.",
+                "require": "woodstick",
+                "need": "woodstick&&firewood",
+                "buy": {
+                    "thoughts": 20,
+                    "supplication": 30,
+                    "foraging": 5
+                },
+                "duration": 8,
+                "success_rate": 1,
+                "result":{
+                    "firewood": -1,
+                    "kindling.xp": "1~3"
+                },
+                "dot": {
+                    "duration": 30,
+                    "mod": {
+                        "supplication.rate": 10,
+                        "fireaffinity.rate": 0.01
+                    }
+                },
+                "result_fail":{
+                    "kindling.xp": "3~10"
+                }
             }
         ]
     },
