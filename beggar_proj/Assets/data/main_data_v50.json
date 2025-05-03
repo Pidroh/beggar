@@ -6,6 +6,12 @@
                 "id": "firewood",
                 "max": 1,
                 "desc": "Wood for the bonfire. You need something to set it on fire though."
+            },
+            {
+                "id": "fireaffinity",
+                "name": "Fire Affinity",
+                "max": 5,
+                "desc": "Attraction to the flame"
             }
         ]
     },
