@@ -823,6 +823,19 @@
             "CENTER"
           ],
           "text_horizontal": "RIGHT"
+        },
+        {
+          "type": "text",
+          "id": "lore_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "LEFT"
         }
       ]
     },
