@@ -3,15 +3,27 @@
         "type": "RESOURCE",
         "items":[
             {
-                "id": "Firewood",
+                "id": "firewood",
                 "max": 1,
-                "desc": "Wood for the bonfire"
+                "desc": "Wood for the bonfire. You need something to set it on fire though."
             }
         ]
     },
     {
         "type": "TASK",
-        "items":[]
+        "items":[
+            {
+                "id": "collectfirewood",
+                "name": "Gather wood",
+                "require": "drywoodknowledge",
+                "cost": {
+                    "foraging": 10
+                },
+                "result":{
+                    "firewood": 1
+                }
+            }
+        ]
     },
     {
         "type": "HOUSE",
