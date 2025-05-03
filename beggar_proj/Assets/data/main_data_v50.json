@@ -45,8 +45,9 @@
                 "id": "handdrill",
                 "name": "Hand drill",
                 "desc": "It will definitely catch fire this time. Maybe.",
-                "require": "woodstick",
-                "need": "woodstick&&firewood",
+                "requirZZe": "woodstick",
+                "require": "supplication",
+                "neZZed": "woodstick&&firewood",
                 "buy": {
                     "thoughts": 20,
                     "supplication": 30,
