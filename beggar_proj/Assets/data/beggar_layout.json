@@ -1573,6 +1573,20 @@
         "#acafcdd9",
         "#acafcdd9"
       ]
+    },
+    {
+      "id": "task_button_buff",
+      "colors": [
+        "#f1b4e7ff",
+        "#f1b4e7ff"
+      ]
+    },
+    {
+      "id": "task_button_buff_bar",
+      "colors": [
+        "#f3e594ff",
+        "#f3e594ff"
+      ]
     }
   ],
   "color_presets": [
