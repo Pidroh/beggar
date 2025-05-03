@@ -470,6 +470,7 @@ public class JsonReader
                 if (last == "max") modType = ModType.MaxChange;
                 if (last == "rate") modType = ModType.RateChange;
                 if (last == "speed") modType = ModType.Speed;
+                if (last == "success_rate") modType = ModType.SuccessRate;
 
                 // EXAMPLES:
                 //   crakedvase.mod.clarity.max

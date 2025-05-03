@@ -6,5 +6,6 @@
     SpaceConsumption,
     Lock,
     ResourceChangeChanger,
-    Speed
+    Speed,
+    SuccessRate
 }

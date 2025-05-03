@@ -94,6 +94,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
     {
         data.TaskProgress = 0;
         int rangeValue = UnityEngine.Random.Range(0, 100);
+        var sucess = data.SuccessRatePercent > rangeValue;
         var success = data.ConfigTask.SuccessRatePercent.HasValue ? data.ConfigTask.SuccessRatePercent.Value > rangeValue : true;
         if (success)
         {

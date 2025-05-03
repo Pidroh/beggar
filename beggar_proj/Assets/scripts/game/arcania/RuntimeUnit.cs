@@ -272,4 +272,5 @@ public class RuntimeUnit
     public float ValueRatio => HasMax ? _value / Max : 0f;
 
     public bool Dirty { get; private set; }
+    public int SuccessRatePercent => ConfigTask?.SuccessRatePercent != null ? (int) (ConfigTask.SuccessRatePercent.Value + GetModSum(ModType.SuccessRate)) : 100;
 }
