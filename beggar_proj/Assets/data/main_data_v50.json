@@ -22,11 +22,23 @@
                 "id": "collectfirewood",
                 "name": "Gather wood",
                 "require": "drywoodknowledge",
+                "duration": 8,
                 "cost": {
                     "foraging": 10
                 },
                 "result":{
                     "firewood": 1
+                }
+            },
+            {
+                "id": "drywoodknowledge",
+                "name": "Tips on starting fires",
+                "desc": "Some fellow beggars seem to know a thing or two about flames",
+                "require": "beggarhood>0",
+                "duration": 8,
+                "max": 1,
+                "cost": {
+                    "supplication": 60
                 }
             },
             {
