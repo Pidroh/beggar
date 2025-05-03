@@ -251,7 +251,7 @@ public class RuntimeUnit
     private float CalculateTaskProgressRatio()
     {
         if (Skill != null) return TaskProgress;
-
+        if (DotConfig != null) return  1f - (TaskProgress / DotConfig.Duration);
         return (!ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value);
     }
 
@@ -273,4 +273,7 @@ public class RuntimeUnit
 
     public bool Dirty { get; private set; }
     public int SuccessRatePercent => ConfigTask?.SuccessRatePercent != null ? (int) (ConfigTask.SuccessRatePercent.Value + GetModSum(ModType.SuccessRate)) : 100;
+
+    public RuntimeUnit DotRU { get; internal set; }
+    public DotConfig DotConfig { get; internal set; }
 }

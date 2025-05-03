@@ -410,8 +410,8 @@ public class JsonReader
         var ru = new RuntimeUnit();
         var pointer = arcaniaUnits.GetOrCreateIdPointer(owner.ConfigBasic.Id + "_mod");
         pointer.RuntimeUnit = ru;
-        owner.ModRU = pointer.RuntimeUnit;
-        arcaniaUnits.datas[UnitType.MOD].Add(ru);
+        owner.DotRU = pointer.RuntimeUnit;
+        arcaniaUnits.datas[UnitType.DOT].Add(ru);
         var dc = new DotConfig();
         ru.DotConfig = dc;
         foreach (var c in value)
@@ -641,7 +641,7 @@ public class ConfigBasic
 public enum UnitType
 {
     RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
-    MOD,
+    DOT,
 }
 
 public class ModRuntime
