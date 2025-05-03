@@ -1,0 +1,211 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+            {
+                "id": "Firewood",
+                "max": 1,
+                "desc": "Wood for the bonfire"
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items":[]
+    },
+    {
+        "type": "HOUSE",
+        "items":[]
+    },
+    {
+        "type": "CLASS",
+        "items":[
+            {
+                "id" : "churchporter",
+                "name": "Church Porter",
+                "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&ordination_1&&jointhechurch",
+                "cost": {
+                    "churchrespect": 80,
+                    "gratitude": 150,
+                    "faith": 80,
+                    "nutrition": 100
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "gratitude.max": 20,
+                    "churchrespect.max": 40,
+                    "ecclesiology.max": 1,
+                    "guilt.max": -5
+                }
+            },
+            {
+                "id" : "lostphilosopher",
+                "name": "Lost Philosopher",
+                "desc" : "The one who stays in the streets. Thinking, mumbling. Trying to reach the answer.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&philosophy>=2",
+                "cost": {
+                    "thoughts": 200,
+                    "supplication": 400,
+                    "clarity": 25,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "philosophy.max": 1,
+                    "contemplation.max": 1,
+                    "beggarhood.max": 1
+                }
+            },
+            {
+                "id" : "acolyte",
+                "name": "Acolyte",
+                "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&ordination_2",
+                "cost": {
+                    "thoughts": 500,
+                    "gratitude": 150,
+                    "faith": 150,
+                    "nutrition": 80
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 80,
+                    "ecclesiology.max": 1
+                }
+            },
+            {
+                "id" : "lector",
+                "name": "Lector",
+                "desc" : "A member of the minor order of the church. In charge of reading and teaching sacred texts.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&ordination_2&&latin>1",
+                "cost": {
+                    "thoughts": 550,
+                    "gratitude": 400,
+                    "faith": 100,
+                    "nutrition": 70,
+                    "fundamentals": 2
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 50,
+                    "latin.max": 1,
+                    "ecclesiology.max": 1
+                }
+            },
+            {
+                "id" : "priest",
+                "name": "Priest",
+                "desc" : "The third major order of the Church. A religious leader capable of performing all sorts of rituals.",
+                "tags": "t_tier3",
+                "lock": "t_tier3",
+                "need": "theself_3&&holyscriptures>4&&deacon",
+                "require": "t_tier2&&priestduties&&ecclesiology>6",
+                "cost": {
+                    "thoughts": 1600,
+                    "gratitude": 1000,
+                    "faith": 350,
+                    "nutrition": 90
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 150,
+                    "holyscriptures.max": 1,
+                    "ecclesiology.max": 1
+                }
+            },
+            {
+                "id" : "expertbeggar",
+                "name": "Expert Beggar",
+                "desc" : "A master of the streets, the coinosseur of the begging arts.",
+                "tags": "t_tier3,beggary",
+                "lock": "t_tier3,beg_a",
+                "need": "theself_3&&begging>=4&&beggarhood>=5&&cityknowledge>=3",
+                "require": "t_tier2&&begging>2&&beggarhood>=3&&cityknowledge>=1",
+                "cost": {
+                    "supplication": 1000,
+                    "thoughts": 400,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "begging.max": 1,
+                    "beggarhood.max": 1,
+                    "innermind.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items":[
+            
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+            
+        ]
+    },
+    {
+         "type": "ENCOUNTER",
+        "items": [
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items":[
+            {
+                "id": "irreversible_church",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. You will no longer be able to beg on the streets, among other actions. But you will gain access to a whole new range of possibilities. Go ahead with this action?",
+                "tags": "joinchurch"
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+            {
+                "id": "woodstick",
+                "name": "Wood stick",
+                "desc": "A little stick. Very dry. Can be used to start fires?",
+                "require": "scavenging>0&&drywoodknowledge",
+                "max": 1,
+                "cost": {
+                    "foraging": 5
+                },
+                "mod": {
+                    "thoughts.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "tinder",
+                "name": "Tinder",
+                "desc": "A bunch of dry grass",
+                "require": "woodstick",
+                "max": 2,
+                "cost": {
+                    "foraging": 5
+                },
+                "mod": {
+                    "handdrill.success_rate": 10,
+                    "space": 1
+                }
+            }
+        ]
+    }
+]
