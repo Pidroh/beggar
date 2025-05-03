@@ -49,6 +49,7 @@ public class ArcaniaModel
         Runner = new(this);
         Housing = new(this);
         Exploration = new(this);
+        arcaniaUnits.datas[UnitType.DOT] = new();
     }
 
     internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)

@@ -408,7 +408,11 @@ public class JsonReader
     private static object ReadDot(RuntimeUnit owner, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits)
     {
         var ru = new RuntimeUnit();
-        var pointer = arcaniaUnits.GetOrCreateIdPointer(owner.ConfigBasic.Id + "_mod");
+        ru.ConfigBasic = new();
+        ru.ConfigBasic.name = owner.Name;
+        string id = owner.ConfigBasic.Id + "_mod";
+        var pointer = arcaniaUnits.GetOrCreateIdPointer(id);
+        ru.ConfigBasic.Id = id;
         pointer.RuntimeUnit = ru;
         owner.DotRU = pointer.RuntimeUnit;
         arcaniaUnits.datas[UnitType.DOT].Add(ru);
