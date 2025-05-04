@@ -398,7 +398,12 @@ public class JsonReader
                 ct.Duration = 1;
             }
         }
-        if (ct.Duration.HasValue && !ct.Perpetual && !explicitPerpetualDefinition && !ru.HasMax && ru.ConfigBasic.UnitType != UnitType.LOCATION)
+        if (ct.Duration.HasValue 
+            && !ct.Perpetual 
+            && !explicitPerpetualDefinition 
+            && !ru.HasMax
+            && ru.ConfigBasic.UnitType != UnitType.LOCATION 
+            && ru.DotRU == null)
         {
             ct.Perpetual = true;
         }
