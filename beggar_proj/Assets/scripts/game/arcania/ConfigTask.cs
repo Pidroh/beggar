@@ -10,6 +10,7 @@ public class ConfigTask
     public List<ResourceChange> ResultOnce => GetResourceChangeList(ResourceChangeType.RESULT_ONCE);
     public List<ResourceChange> ResultFail => GetResourceChangeList(ResourceChangeType.RESULT_FAIL);
     public List<ResourceChange> Run => GetResourceChangeList(ResourceChangeType.RUN);
+    public List<ResourceChange> Buy => GetResourceChangeList(ResourceChangeType.BUY);
     public List<ResourceChange> Effect => GetResourceChangeList(ResourceChangeType.EFFECT);
     public AutoNewList<List<ResourceChange>> ResourceChangeLists = new AutoNewList<List<ResourceChange>>();
 

@@ -420,6 +420,7 @@ public class MainGameControlSetupJLayout
                         ResourceChangeType.EFFECT => "effect",
                         ResourceChangeType.RESULT_ONCE => "first time",
                         ResourceChangeType.RESULT_FAIL => "result failure",
+                        ResourceChangeType.BUY => "acquisition",
                         _ => null,
                     };
 

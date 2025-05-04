@@ -15,6 +15,7 @@ public class JsonReader
         { "cost", ResourceChangeType.COST },
         { "run", ResourceChangeType.RUN },
         { "result_fail", ResourceChangeType.RESULT_FAIL },
+        { "buy", ResourceChangeType.BUY },
     };
     public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas)
     {
@@ -388,6 +389,7 @@ public class JsonReader
             if (pair.Key == "result_once") ReadChanges(ct.ResultOnce, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "run") ReadChanges(ct.Run, pair.Value, arcaniaUnits, -1);
+            if (pair.Key == "buy") ReadChanges(ct.Buy, pair.Value, arcaniaUnits, -1);
             if (pair.Key == "result_fail") ReadChanges(ct.ResultFail, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
             if (pair.Key == "perpetual") explicitPerpetualDefinition = true;
