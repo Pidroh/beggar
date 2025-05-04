@@ -191,17 +191,17 @@ namespace JLayout
             {
                 layoutRU.OverrideAxisMode = commons.AxisModes;
             }
-            
+
             JLayoutChild item = new JLayoutChild()
             {
                 LayoutRU = layoutRU,
                 Commons = commons
             };
-            if (differingCommons && item.Commons.AxisModes == null) 
+            if (differingCommons && item.Commons.AxisModes == null)
             {
                 item.AxisModeOverride = layoutRU.LayoutData?.commons?.AxisModes;
             }
-            if (differingCommons && item.Commons.PositionOffsets == null) 
+            if (differingCommons && item.Commons.PositionOffsets == null)
             {
                 item.PositionModeOverride = layoutRU.LayoutData?.commons?.PositionModes;
             }
@@ -234,55 +234,6 @@ namespace JLayout
         internal bool IsButtonClicked(int v)
         {
             return ButtonChildren[v].Item2.UiUnit.Clicked;
-        }
-    }
-
-    public class JLayoutChild
-    {
-        public LayoutChildData LayoutChildData;
-
-        public JLayoutRuntimeUnit LayoutRU { get; internal set; }
-        public LayoutCommons Commons { get; internal set; }
-        public UIUnit UiUnit;
-        public RectTransform Rect => LayoutRU?.RectTransform ?? UiUnit?.RectTransform;
-        public PositionMode[] PositionModeOverride;
-        public AxisMode[] AxisModeOverride;
-
-        public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
-        public AxisMode[] AxisModes => AxisModeOverride ?? Commons.AxisModes;
-
-        public TextData TextData { get; internal set; }
-
-        public float SizeRatioAsGauge = 1f;
-
-        public int[] currentStep = new int[2];
-
-        internal void SetCurrentStep(int v, int preferredIndex)
-        {
-            currentStep[v] = preferredIndex;
-        }
-
-        internal bool OnMaxStep(int v)
-        {
-            return currentStep[v] == Commons.StepSizes[v].Count - 1;
-        }
-
-        internal void ApplyColor(ColorSetType color)
-        {
-            ColorSet colorSet = Commons.ColorSet;
-            colorSet ??= TextData?.ColorSet;
-            if (colorSet == null) return;
-            if (!colorSet.ColorDatas.TryGetValue(color, out var cd)) return;
-            if (UiUnit == null) 
-            {
-                return;
-                Debug.LogError("Has color but has no ui unit, what is this situation?"); 
-            }
-            var colorV = cd.data.Colors[0];
-            if (UiUnit.Image != null)
-                UiUnit.Image.color = colorV;
-            if (UiUnit.text != null)
-                UiUnit.text.color = colorV;
         }
     }
 

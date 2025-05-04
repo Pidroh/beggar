@@ -86,7 +86,7 @@ namespace JLayout
 
             TemporarySolveHeightAndPosition(parentLayout, contentRect);
 
-            #region click color
+            #region color
             ProcessColor(parentLayout, null);
             void ProcessColor(JLayoutRuntimeUnit lay, bool? active)
             {
@@ -130,47 +130,6 @@ namespace JLayout
                     }
                     c.ApplyColor(color);
                 }
-
-                /*
-                foreach (var item in lay.ButtonChildren)
-                {
-                    var thisActive = active;
-                    if (item.Item1.Active.HasValue)
-                    {
-                        thisActive = item.Item1.Active;
-                    }
-                    ColorSetType color = ColorSetType.NORMAL;
-                    if (!item.Item2.UiUnit.ButtonEnabled || lay.Disabled is true)
-                    {
-                        color = ColorSetType.DISABLED;
-                    }
-                    else if (item.Item2.UiUnit.Clicked)
-                    {
-                        color = ColorSetType.CLICKED;
-                    }
-                    else if (item.Item2.UiUnit.MouseDown)
-                    {
-                        color = ColorSetType.PRESSED;
-                    }
-                    else if (item.Item2.UiUnit.HoveredWhileVisible)
-                    {
-                        color = ColorSetType.HOVERED;
-                    }
-                    else if (thisActive.HasValue && thisActive.Value)
-                    {
-                        color = ColorSetType.ACTIVE;
-                    }
-                    foreach (var c in item.Item1.Children)
-                    {
-                        if (c.LayoutRU != null && c.LayoutRU.Disabled is true)
-                        {
-                            c.ApplyColor(ColorSetType.DISABLED);
-                            continue;
-                        }
-                        c.ApplyColor(color);
-                    }
-                }
-                */
             }
             #endregion
         }
