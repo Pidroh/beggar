@@ -389,7 +389,10 @@ public class JsonReader
             if (pair.Key == "result_once") ReadChanges(ct.ResultOnce, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "run") ReadChanges(ct.Run, pair.Value, arcaniaUnits, -1);
-            if (pair.Key == "buy") ReadChanges(ct.Buy, pair.Value, arcaniaUnits, -1);
+            if (pair.Key == "buy") { 
+                ReadChanges(ct.Buy, pair.Value, arcaniaUnits, -1);
+                ru.BuyStatus = BuyStatus.NeedsBuy;
+            }
             if (pair.Key == "result_fail") ReadChanges(ct.ResultFail, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
             if (pair.Key == "perpetual") explicitPerpetualDefinition = true;
@@ -406,11 +409,11 @@ public class JsonReader
                 ct.Duration = 1;
             }
         }
-        if (ct.Duration.HasValue 
-            && !ct.Perpetual 
-            && !explicitPerpetualDefinition 
+        if (ct.Duration.HasValue
+            && !ct.Perpetual
+            && !explicitPerpetualDefinition
             && !ru.HasMax
-            && ru.ConfigBasic.UnitType != UnitType.LOCATION 
+            && ru.ConfigBasic.UnitType != UnitType.LOCATION
             && ru.DotRU == null)
         {
             ct.Perpetual = true;
@@ -494,7 +497,7 @@ public class JsonReader
     }
 
     private static void ReadMods(
-        RuntimeUnit owner, 
+        RuntimeUnit owner,
         SimpleJSON.JSONNode dataJsonMod, ArcaniaUnits arcaniaUnits)
     {
         using var _1 = ListPool<string>.Get(out var strList);

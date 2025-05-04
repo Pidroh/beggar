@@ -14,7 +14,14 @@ public class RuntimeUnit
     public List<ModRuntime> ModsTargetingSelf = new();
     public List<ModRuntime> ModsSelfAsIntermediary = new();
     public List<ModRuntime> ModsOwned = new();
+    public BuyStatus BuyStatus = BuyStatus.Free;
     public bool RequireMet = false;
+    public int Value => Mathf.FloorToInt(_value);
+    public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
+    public float _value;
+
+    public float TaskProgress { get; set; }
+    public float TaskProgressRatio => CalculateTaskProgressRatio();
 
     // Skills cannot drop below max
     public bool MaxCanLimitValue => Skill == null;
@@ -241,12 +248,7 @@ public class RuntimeUnit
         ModsTargetingSelf.Add(modData);
     }
 
-    public int Value => Mathf.FloorToInt(_value);
-    public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
-    public float _value;
 
-    public float TaskProgress { get; set; }
-    public float TaskProgressRatio => CalculateTaskProgressRatio();
 
     private float CalculateTaskProgressRatio()
     {
