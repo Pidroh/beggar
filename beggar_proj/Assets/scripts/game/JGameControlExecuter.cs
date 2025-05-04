@@ -240,21 +240,27 @@ public static class JGameControlExecuter
                             case UnitType.CLASS:
                             case UnitType.LOCATION:
                                 {
+                                    var progress = unit.Data.TaskProgressRatio;
+                                    bool running = arcaniaModel.Runner.RunningTasks.Contains(unit.Data);
                                     if (unit.Data.DotRU != null && unit.Data.DotRU.Dirty)
                                     {
                                         var dotActive = unit.Data.DotRU.Value > 0;
                                         if (dotActive) {
                                             unit.ButtonImageMain.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
-                                            unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
+                                            unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive_bar);
                                         } else {
                                             unit.ButtonImageMain.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
                                             unit.ButtonImageProgress.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
                                         }
-                                        
+                                    }
+                                    if(!running && unit.Data.DotRU != null && unit.Data.DotRU.Value != 0)
+                                    {
+                                        progress = unit.Data.DotRU.TaskProgressRatio;
                                     }
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
-                                    unit.MainExecuteButton.SetActivePowered(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
+                                    
+                                    unit.MainExecuteButton.SetActivePowered(running);
                                     if (unit.Expanded)
                                     {
                                         unit.TaskQuantityText?.SetTextRaw(unit.Data.Value + "");
@@ -276,7 +282,7 @@ public static class JGameControlExecuter
 
                                     }
 
-                                    var progress = unit.Data.TaskProgressRatio;
+                                    
                                     if (pair.Key == UnitType.LOCATION)
                                         progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
                                     unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = progress;
