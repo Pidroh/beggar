@@ -194,6 +194,7 @@ public class MainGameControlSetupJLayout
                             var quantityLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
                             quantityLay.SetTextRaw(0, "0");
                             jCU.TaskQuantityText = new JLayTextAccessor(quantityLay, 0);
+                            jCU.SuccessRateAndDurationText = new JLayTextAccessor(quantityLay, 1);
                             AddToExpand(layoutRU, quantityLay, jCU);
                         }
                     }

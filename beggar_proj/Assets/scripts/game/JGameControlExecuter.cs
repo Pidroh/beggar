@@ -217,7 +217,7 @@ public static class JGameControlExecuter
                                 ModRuntime item = modList.Mods[modIndex];
                                 var ttv = modList.tripleTextViews[modIndex];
                                 ttv.SetVisibleSelf(item.Source.Value != 0);
-                                ttv.SetTextRaw(1, (item.Source.Value * item.Value)+ "");
+                                ttv.SetTextRaw(1, (item.Source.Value * item.Value) + "");
                             }
                         }
                         shouldShowSep = true;
@@ -243,7 +243,27 @@ public static class JGameControlExecuter
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
                                     unit.MainExecuteButton.SetActivePowered(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
-                                    if (unit.Expanded) unit.TaskQuantityText?.SetTextRaw(unit.Data.Value + "");
+                                    if (unit.Expanded)
+                                    {
+                                        unit.TaskQuantityText?.SetTextRaw(unit.Data.Value + "");
+                                        if (unit.Data.ConfigTask != null)
+                                        {
+                                            bool hasDuration = unit.Data.ConfigTask.Duration.HasValue && unit.Data.ConfigTask.Duration.Value > 1;
+                                            var hasSuccessRate = unit.Data.ConfigTask.SuccessRatePercent.HasValue && unit.Data.ConfigTask.SuccessRatePercent.Value != 100;
+                                            if (hasDuration || hasSuccessRate)
+                                            {
+                                                var leftText = "";
+                                                if (hasDuration) leftText += $" Duration: {unit.Data.ConfigTask.Duration}s.";
+                                                if (hasSuccessRate) 
+                                                {
+                                                    leftText += $" Success rate: {unit.Data.ConfigTask.SuccessRatePercent.Value}%.";
+                                                }
+                                                unit.SuccessRateAndDurationText.SetTextRaw(leftText);
+                                            }
+                                        }
+
+                                    }
+
                                     var progress = unit.Data.TaskProgressRatio;
                                     if (pair.Key == UnitType.LOCATION)
                                         progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;

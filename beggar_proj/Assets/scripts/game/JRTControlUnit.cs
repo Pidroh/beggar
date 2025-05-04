@@ -25,6 +25,7 @@ public class JRTControlUnit
     public JLayoutRuntimeUnit PlusMinusLayout { get; internal set; }
     public JLayoutRuntimeUnit TitleWithValue { get; internal set; }
     public JLayTextAccessor TaskQuantityText { get; internal set; }
+    public JLayTextAccessor SuccessRateAndDurationText { get; internal set; }
 
     public JRTControlUnitMods OwnedMods = new();
     public JRTControlUnitMods IntermediaryMods = new();
