@@ -240,11 +240,17 @@ public static class JGameControlExecuter
                             case UnitType.CLASS:
                             case UnitType.LOCATION:
                                 {
-                                    if (unit.Data.DotRU != null && unit.Data.DotRU.Dirty) 
+                                    if (unit.Data.DotRU != null && unit.Data.DotRU.Dirty)
                                     {
-                                        unit.MainLayout.ChildSelf.OverwriteColorSet ??= new();
-                                        var overwriteC = unit.MainLayout.ChildSelf.OverwriteColorSet;
-                                        overwriteC.ColorDatas[JLayout.ColorSetType.NORMAL] = 
+                                        var dotActive = unit.Data.DotRU.Value > 0;
+                                        if (dotActive) {
+                                            unit.ButtonImageMain.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
+                                            unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
+                                        } else {
+                                            unit.ButtonImageMain.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
+                                            unit.ButtonImageProgress.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
+                                        }
+                                        
                                     }
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
@@ -260,7 +266,7 @@ public static class JGameControlExecuter
                                             {
                                                 var leftText = "";
                                                 if (hasDuration) leftText += $" Duration: {unit.Data.ConfigTask.Duration}s.";
-                                                if (hasSuccessRate) 
+                                                if (hasSuccessRate)
                                                 {
                                                     leftText += $" Success rate: {unit.Data.ConfigTask.SuccessRatePercent.Value}%.";
                                                 }

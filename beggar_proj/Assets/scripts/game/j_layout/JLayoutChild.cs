@@ -13,7 +13,7 @@ namespace JLayout
         public RectTransform Rect => LayoutRU?.RectTransform ?? UiUnit?.RectTransform;
         public PositionMode[] PositionModeOverride;
         public AxisMode[] AxisModeOverride;
-        public ColorSet OverwriteColorSet;
+        public ColorSetResolved OverwriteColorSet;
 
         public PositionMode[] PositionModes => PositionModeOverride ?? Commons.PositionModes;
         public AxisMode[] AxisModes => AxisModeOverride ?? Commons.AxisModes;

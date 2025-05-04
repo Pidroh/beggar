@@ -187,6 +187,8 @@ public class MainGameControlSetupJLayout
                         jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                         jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
                         jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
+                        jCU.ButtonImageMain = new JImageAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 0);
+                        jCU.ButtonImageProgress = new JImageAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 1);
                         if (!modelData.ConfigTask.Duration.HasValue || modelData.ConfigTask.Duration <= 0)
                         {
                             // buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = modelData.ConfigBasic.UnitType == UnitType.HOUSE;

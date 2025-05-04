@@ -25,6 +25,20 @@ namespace JLayout
         {
             imageOwner.ImageChildren[index].SizeRatioAsGauge = xPRatio;
         }
+
+        internal void OverwriteColor(ColorSetType type, ColorData color)
+        {
+            JLayoutChild jLayoutChild = imageOwner.ImageChildren[index];
+            jLayoutChild.OverwriteColorSet ??= new();
+            jLayoutChild.OverwriteColorSet.ColorDatas[type] = color;
+        }
+
+        internal void ReleaseOverwriteColor(ColorSetType color)
+        {
+            JLayoutChild jLayoutChild = imageOwner.ImageChildren[index];
+            if (jLayoutChild.OverwriteColorSet == null) return;
+            jLayoutChild.OverwriteColorSet.ColorDatas.Remove(color);
+        }
     }
 
     public class JLayTextAccessor

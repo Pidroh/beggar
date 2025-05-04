@@ -342,6 +342,11 @@ namespace JLayout
         public Dictionary<ColorSetType, Pointer<ColorData>> ColorDatas = new();
     }
 
+    public class ColorSetResolved
+    {
+        public Dictionary<ColorSetType, ColorData> ColorDatas = new();
+    }
+
     public enum ColorSetType 
     {
         NORMAL, CLICKED, ACTIVE, DISABLED, HOVERED, PRESSED
