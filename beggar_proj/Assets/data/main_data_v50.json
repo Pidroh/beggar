@@ -54,7 +54,7 @@
                     "foraging": 5
                 },
                 "duration": 8,
-                "success_rate": 1,
+                "success_rateZZ": 1,
                 "result":{
                     "firewood": -1,
                     "kindling.xp": "1~3"

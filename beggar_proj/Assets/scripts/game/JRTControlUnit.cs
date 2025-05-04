@@ -26,6 +26,8 @@ public class JRTControlUnit
     public JLayoutRuntimeUnit TitleWithValue { get; internal set; }
     public JLayTextAccessor TaskQuantityText { get; internal set; }
     public JLayTextAccessor SuccessRateAndDurationText { get; internal set; }
+    public JImageAccessor ButtonImageMain { get; internal set; }
+    public JImageAccessor ButtonImageProgress { get; internal set; }
 
     public JRTControlUnitMods OwnedMods = new();
     public JRTControlUnitMods IntermediaryMods = new();

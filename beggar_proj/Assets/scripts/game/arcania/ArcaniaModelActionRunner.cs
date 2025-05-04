@@ -102,7 +102,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             data.ChangeValue(1);
             if (data.DotRU != null) 
             {
-                ArcaniaModelModCode.DotActionSuccess(data);
+                ArcaniaModelDotCode.DotActionSuccess(data);
             }
             if (data.Skill != null)
             {

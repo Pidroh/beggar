@@ -1,4 +1,4 @@
-﻿public static class ArcaniaModelModCode
+﻿public static class ArcaniaModelDotCode
 {
     internal static void DotActionSuccess(RuntimeUnit data)
     {
