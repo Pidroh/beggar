@@ -98,6 +98,7 @@ public class ArcaniaModel
         Dialog.ManualUpdate();
         Runner.ManualUpdate(dt);
         Exploration.ManualUpdate(dt);
+        ArcaniaModelDotCode.Update(this, dt);
         _oneSecondCounter += dt;
         var applyRateNumber = 0;
         while (_oneSecondCounter > 1f)
