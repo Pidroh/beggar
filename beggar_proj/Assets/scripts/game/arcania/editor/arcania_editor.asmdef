@@ -1,13 +1,12 @@
 {
-    "name": "ArcaniaTest",
+    "name": "arcania_editor",
     "rootNamespace": "",
     "references": [
+        "GUID:d57890da5545ac8428d4030906635001",
         "GUID:e389b4c1c1feb034eb8478eebdfbd065",
-        "GUID:d57890da5545ac8428d4030906635001"
+        "GUID:e28062b3508215c40bc0a40f8fb8955d"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

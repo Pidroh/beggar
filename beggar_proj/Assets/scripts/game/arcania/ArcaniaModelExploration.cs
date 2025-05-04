@@ -75,12 +75,12 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         }
     }
 
-    internal void LoadLastActiveLocation(RuntimeUnit runtimeUnit)
+    public void LoadLastActiveLocation(RuntimeUnit runtimeUnit)
     {
         LastActiveLocation = runtimeUnit;
     }
 
-    internal void Flee()
+    public void Flee()
     {
         _model.Runner.StopAllOfType(UnitType.LOCATION);
     }
@@ -98,7 +98,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
         #endregion
     }
 
-    internal void FinishedSettingUpUnits()
+    public void FinishedSettingUpUnits()
     {
         foreach (var item in _model.arcaniaUnits.datas[UnitType.RESOURCE])
         {
@@ -111,7 +111,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
 
     }
 
-    internal void UpdateLoopProgressedSecond()
+    public void UpdateLoopProgressedSecond()
     {
         if (ActiveEncounter != null)
         {

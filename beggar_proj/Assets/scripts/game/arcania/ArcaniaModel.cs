@@ -12,7 +12,7 @@ public class ConfigResource
 
 public class ConfigEncounter
 {
-    public JSONNode Length { get; internal set; }
+    public JSONNode Length { get; set; }
 }
 
 public class ConfigLocation
@@ -52,7 +52,7 @@ public class ArcaniaModel
         arcaniaUnits.datas[UnitType.DOT] = new();
     }
 
-    internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
+    public void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
     {
         var changes = parent.ConfigTask.GetResourceChangeList(changeType);
         foreach (var mod in parent.ModsSelfAsIntermediary)
@@ -132,7 +132,7 @@ public class ArcaniaModel
 
     public class ArcaniaModelSubmodule
     {
-        internal ArcaniaModel _model;
+        public ArcaniaModel _model;
 
         public ArcaniaModelSubmodule(ArcaniaModel arcaniaModel)
         {
@@ -156,7 +156,7 @@ public class ArcaniaModel
 
 
 
-    internal bool DoChangesMakeADifference(RuntimeUnit ru, ResourceChangeType changeType)
+    public bool DoChangesMakeADifference(RuntimeUnit ru, ResourceChangeType changeType)
     {
         using var _1 = DictionaryPool<IDPointer, FloatRange>.Get(out var dict);
         // Account for total normal effect changes
@@ -229,7 +229,7 @@ public class ArcaniaModel
 
     }
 
-    internal RuntimeUnit FindRuntimeUnit(UnitType type, string v)
+    public RuntimeUnit FindRuntimeUnit(UnitType type, string v)
     {
         var ru = FindRuntimeUnitInternal(type, v);
         if (ru != null) return ru;
@@ -237,7 +237,7 @@ public class ArcaniaModel
         return null;
     }
 
-    internal void FinishedSettingUpUnits()
+    public void FinishedSettingUpUnits()
     {
         Exploration.FinishedSettingUpUnits();
     }
@@ -284,7 +284,7 @@ public class ArcaniaModel
             this.pickedOption = pickedOption;
         }
 
-        internal bool HasResult(out int option)
+        public bool HasResult(out int option)
         {
             option = pickedOption.HasValue ? pickedOption.Value : -1;
             return this.dialogState == DialogState.RESULT_HAPPENED_THIS_FRAME;

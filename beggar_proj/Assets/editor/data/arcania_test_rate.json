@@ -1,0 +1,73 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+            {
+                "id": "resource_a",
+                "max": 100,
+                "initial": 1,
+                "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy.",
+                "mod": {
+                    "resource_b.rate": 1
+                }
+            },
+            {
+                "id": "resource_b",
+                "max": 30,
+                "initial": 1,
+                "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items":[
+            {
+                "id": "action_a",
+                "name": "Beg for crumbs",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "locked": false,
+                "duration": 3,
+                "dot": {
+                    "duration": 30,
+                    "mod": {
+                        "resource_a.rate": 10
+                    }
+                }
+            }
+            
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items":[]
+    },
+    {
+        "type": "CLASS",
+        "items":[]
+    },
+    {
+        "type": "SKILL",
+        "items":[]
+    },
+    {
+        "type": "LOCATION",
+        "items": []
+    },
+    {
+         "type": "ENCOUNTER",
+        "items": []
+    },
+    {
+        "type": "DIALOG",
+        "items":[]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[]
+    },
+    {
+        "type": "TAB",
+        "items":[]
+    }
+]

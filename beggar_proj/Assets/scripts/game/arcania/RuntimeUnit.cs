@@ -8,7 +8,7 @@ public class RuntimeUnit
     public ConfigBasic ConfigBasic;
     public ConfigTask ConfigTask;
 
-    public LocationRuntime Location { get; internal set; }
+    public LocationRuntime Location { get; set; }
 
     public SkillRuntime Skill;
     public List<ModRuntime> ModsTargetingSelf = new();
@@ -37,7 +37,7 @@ public class RuntimeUnit
         return MeetsCondition(ConfigTask.Need?.expression);
     }
 
-    internal bool UpdateRequireStatus()
+    public bool UpdateRequireStatus()
     {
         if (!IsPossiblyVisibleRegardlessOfRequire()) return false;
         var requireMetBefore = RequireMet;
@@ -49,7 +49,7 @@ public class RuntimeUnit
     }
 
 
-    public TabRuntime Tab { get; internal set; }
+    public TabRuntime Tab { get;  set; }
 
     private bool MeetsCondition(ConditionalExpressionData expression)
     {
@@ -79,7 +79,7 @@ public class RuntimeUnit
         return Mathf.Max(ConfigBasic.Max + sum, 0);
     }
 
-    internal void ChangeValue(float valueChange)
+    public void ChangeValue(float valueChange)
     {
         var valueWasZero = Value == 0;
         if (MaxCanLimitValue)
@@ -131,12 +131,12 @@ public class RuntimeUnit
 
     public void ModifyValue(float valueChange) => ChangeValue(valueChange);
 
-    internal void SetValue(int v)
+    public void SetValue(int v)
     {
         ChangeValue(v - _value);
     }
 
-    internal void ChangeValueByResourceChange(RuntimeUnit parent, FloatRange valueChange, ResourceChangeType changeType)
+    public void ChangeValueByResourceChange(RuntimeUnit parent, FloatRange valueChange, ResourceChangeType changeType)
     {
         // var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
         ChangeValue(valueChange.getValue(Random.Range(0f, 1f)));
@@ -182,7 +182,7 @@ public class RuntimeUnit
         return v;
     }
 
-    internal bool IsTaskComplete()
+    public bool IsTaskComplete()
     {
         if (Location != null)
         {
@@ -197,27 +197,27 @@ public class RuntimeUnit
         return false;
     }
 
-    internal void ForceMeetRequire()
+    public void ForceMeetRequire()
     {
         RequireMet = true;
     }
 
-    internal void ApplyRate()
+    public void ApplyRate()
     {
         var rate = this.GetModSum(ModType.RateChange);
         ChangeValue(rate);
     }
 
-    internal bool IsInstant() => !ConfigTask.Duration.HasValue;
+    public bool IsInstant() => !ConfigTask.Duration.HasValue;
 
-    internal float GetSpeedMultiplier()
+    public float GetSpeedMultiplier()
     {
         var speedP = 100f;
         speedP += GetModSum(ModType.Speed);
         return speedP * 0.01f;
     }
 
-    internal bool CanFullyAcceptChange(FloatRange valueChange)
+    public bool CanFullyAcceptChange(FloatRange valueChange)
     {
         if (valueChange.SmallerThan(0f)) return valueChange.BiggerOrEqual(-Value); //return Mathf.Abs(valueChange) <= Value;
         // no max
@@ -231,12 +231,12 @@ public class RuntimeUnit
         return true;
     }
 
-    internal void RegisterModWithSelfAsIntermediary(ModRuntime mod)
+    public void RegisterModWithSelfAsIntermediary(ModRuntime mod)
     {
         ModsSelfAsIntermediary.Add(mod);
     }
 
-    internal void RegisterModTargetingSelf(ModRuntime modData)
+    public void RegisterModTargetingSelf(ModRuntime modData)
     {
         ModsTargetingSelf.Add(modData);
     }
@@ -245,7 +245,7 @@ public class RuntimeUnit
     public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
     public float _value;
 
-    public float TaskProgress { get; internal set; }
+    public float TaskProgress { get; set; }
     public float TaskProgressRatio => CalculateTaskProgressRatio();
 
     private float CalculateTaskProgressRatio()
@@ -259,21 +259,21 @@ public class RuntimeUnit
 
     public bool IsZero => Value == 0;
 
-    public ConfigHouse ConfigHouse { get; internal set; }
-    public ConfigFurniture ConfigFurniture { get; internal set; }
+    public ConfigHouse ConfigHouse { get; set; }
+    public ConfigFurniture ConfigFurniture { get; set; }
     public bool HasMax => CalculateMax() >= 0;
 
     public bool IsTaskHalfWay => !IsTaskComplete() && TaskProgress != 0;
 
     public bool NeedMet => IsNeedMet();
 
-    public ConfigResource ConfigResource { get; internal set; }
-    public ConfigEncounter ConfigEncounter { get; internal set; }
+    public ConfigResource ConfigResource { get; set; }
+    public ConfigEncounter ConfigEncounter { get; set; }
     public float ValueRatio => HasMax ? _value / Max : 0f;
 
     public bool Dirty { get; private set; }
     public int SuccessRatePercent => ConfigTask?.SuccessRatePercent != null ? (int) (ConfigTask.SuccessRatePercent.Value + GetModSum(ModType.SuccessRate)) : 100;
 
-    public RuntimeUnit DotRU { get; internal set; }
-    public DotConfig DotConfig { get; internal set; }
+    public RuntimeUnit DotRU { get; set; }
+    public DotConfig DotConfig { get; set; }
 }

@@ -48,7 +48,7 @@ public class ArcaniaPersistence
         saveUnit.Save(apd);
     }
 
-    internal void Load(ArcaniaUnits arcaniaUnits, ArcaniaModelExploration exploration)
+    public void Load(ArcaniaUnits arcaniaUnits, ArcaniaModelExploration exploration)
     {
         if (!saveUnit.TryLoad(out var persistence)) return;
         exploration.locationProgress = persistence.Exploration.locationProgress;

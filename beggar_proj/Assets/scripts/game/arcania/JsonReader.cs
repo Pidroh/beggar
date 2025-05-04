@@ -18,8 +18,14 @@ public class JsonReader
     };
     public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas)
     {
-        int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
         var jsonDatas = config.jsonDatas;
+        ReadJson(arcaniaDatas, jsonDatas);
+    }
+
+    public static void ReadJson(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas)
+    {
+        int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
+
         foreach (var item in jsonDatas)
         {
             var parentNode = SimpleJSON.JSON.Parse(item.text);
