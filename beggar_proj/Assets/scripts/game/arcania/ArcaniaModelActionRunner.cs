@@ -264,6 +264,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     private bool CheckIfActionIsMeaningful(RuntimeUnit run)
     {
+        if (run.DotConfig != null) return true;
+        if (run.DotRU != null) return true;
         if (run.HasMax) return true;
         if (run.ConfigBasic.UnitType == UnitType.LOCATION) return true;
         if (run.Value == 0 && _model.DoChangesMakeADifference(run, ResourceChangeType.RESULT_ONCE)) return true;
