@@ -22,6 +22,8 @@ public class MainGameControlSetupJLayout
         runtime.LayoutMaster = layoutMaster;
         JGameControlDataHolder jControlDataHolder = new();
         jControlDataHolder.LayoutRuntime = runtime;
+        jControlDataHolder.gameViewMiscData.ButtonColorDotActive = layoutMaster.ColorDatas.GetData("task_button_buff");
+        jControlDataHolder.gameViewMiscData.ButtonColorDotActive_bar = layoutMaster.ColorDatas.GetData("task_button_buff_bar");
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;
 

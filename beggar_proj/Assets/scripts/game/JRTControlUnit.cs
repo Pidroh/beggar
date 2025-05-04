@@ -51,11 +51,17 @@ public class JGameControlDataHolder
     public List<JTabControlUnit> TabControlUnits = new();
     public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
     public JGameControlDataExploration Exploration = new();
-
+    public JGameViewMiscData gameViewMiscData = new();
     public JLayoutRuntimeData LayoutRuntime { get; internal set; }
     public JLayoutChild DialogLayout { get; internal set; }
     public JLayoutChild EndingLayout { get; internal set; }
     public JEndingGameData EndingData { get; internal set; } = new();
+}
+
+public class JGameViewMiscData 
+{
+    public ColorData ButtonColorDotActive;
+    public ColorData ButtonColorDotActive_bar;
 }
 
 public class JGameControlDataExploration

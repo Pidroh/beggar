@@ -240,6 +240,12 @@ public static class JGameControlExecuter
                             case UnitType.CLASS:
                             case UnitType.LOCATION:
                                 {
+                                    if (unit.Data.DotRU != null && unit.Data.DotRU.Dirty) 
+                                    {
+                                        unit.MainLayout.ChildSelf.OverwriteColorSet ??= new();
+                                        var overwriteC = unit.MainLayout.ChildSelf.OverwriteColorSet;
+                                        overwriteC.ColorDatas[JLayout.ColorSetType.NORMAL] = 
+                                    }
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
                                     unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
                                     unit.MainExecuteButton.SetActivePowered(arcaniaModel.Runner.RunningTasks.Contains(unit.Data));
