@@ -424,6 +424,7 @@ public class JsonReader
         string id = owner.ConfigBasic.Id + "_mod";
         var pointer = arcaniaUnits.GetOrCreateIdPointer(id);
         ru.ConfigBasic.Id = id;
+        ru.ConfigBasic.Max = 1;
         pointer.RuntimeUnit = ru;
         owner.DotRU = pointer.RuntimeUnit;
         arcaniaUnits.datas[UnitType.DOT].Add(ru);
