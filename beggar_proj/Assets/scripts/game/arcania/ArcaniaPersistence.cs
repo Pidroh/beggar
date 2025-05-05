@@ -31,7 +31,8 @@ public class ArcaniaPersistence
                     apd.Tasks.Add(new ArcaniaTaskPersistence()
                     {
                         id = unit.ConfigBasic.Id,
-                        TaskProgress = unit.TaskProgress
+                        TaskProgress = unit.TaskProgress,
+                        Bought = unit.BuyStatus == BuyStatus.Bought
                     });
                 }
                 if (unit.Skill != null)
@@ -66,6 +67,13 @@ public class ArcaniaPersistence
             if (!arcaniaUnits.IdMapper.TryGetValue(task.id, out var v)) continue;
             if (v.RuntimeUnit.ConfigTask == null) continue;
             v.RuntimeUnit.TaskProgress = task.TaskProgress;
+            if (task.Bought) 
+            {
+                if (v.RuntimeUnit.BuyStatus == BuyStatus.NeedsBuy) 
+                {
+                    v.RuntimeUnit.BuyStatus = BuyStatus.Bought;
+                }
+            }
         }
         foreach (var skill in persistence.Skills)
         {
@@ -106,6 +114,7 @@ public class ArcaniaTaskPersistence
 {
     public string id;
     public float TaskProgress;
+    public bool Bought;
 }
 
 [Serializable]
