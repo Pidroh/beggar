@@ -78,6 +78,11 @@ public class RuntimeUnit
         return s.Length == 0;
     }
 
+    internal void MarkSelfDirty()
+    {
+        Dirty = true;
+    }
+
     private int CalculateMax()
     {
         // has no max from the get go

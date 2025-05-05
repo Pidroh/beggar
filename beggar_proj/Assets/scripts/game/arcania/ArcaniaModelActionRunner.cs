@@ -61,6 +61,13 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     private void StartAction(RuntimeUnit data)
     {
+        if (data.BuyStatus == BuyStatus.NeedsBuy) 
+        {
+            _model.ApplyResourceChanges(data, ResourceChangeType.BUY);
+            data.BuyStatus = BuyStatus.Bought;
+            data.MarkSelfDirty();
+            return;
+        }
         // only DONE or FRESH tasks need to pay the cost
         if (!data.IsTaskHalfWay) _model.ApplyResourceChanges(data, ResourceChangeType.COST);
         if (data.IsInstant()) CompleteTask(data);

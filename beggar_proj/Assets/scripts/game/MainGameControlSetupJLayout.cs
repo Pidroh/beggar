@@ -192,6 +192,7 @@ public class MainGameControlSetupJLayout
                         var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
                         layoutRU.AddLayoutAsChild(buttonLayoutRU);
                         buttonLayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, modelData.Name);
+                        jCU.TitleText = new JLayTextAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 0);
                         jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
                         jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
                         jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
