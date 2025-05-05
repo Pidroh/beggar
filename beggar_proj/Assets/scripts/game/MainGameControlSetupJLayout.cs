@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class MainGameControlSetupJLayout
 {
+    internal static void Setup(MainGameControl mgc) 
+    {
+        var arcaniaModel = mgc.arcaniaModel;
+        var arcaniaDatas = arcaniaModel.arcaniaUnits;
+        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas);
+
+        arcaniaModel.FinishedSettingUpUnits();
+    }
     internal static void SetupCanvas(MainGameControl mgc)
     {
         LayoutDataMaster layoutMaster = new LayoutDataMaster();
