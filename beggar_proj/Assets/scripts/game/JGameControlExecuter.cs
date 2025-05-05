@@ -458,7 +458,10 @@ public static class JGameControlExecuter
             if (item == null) continue;
             var sep = item.Header;
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
-            if (item == null || (Data.Skill != null && Data.Skill.Acquired && resourceChangeType == ResourceChangeType.COST))
+            
+            bool skip = (Data.Skill != null && Data.Skill.Acquired && resourceChangeType == ResourceChangeType.COST);
+            skip = skip || (Data.BuyStatus == BuyStatus.Bought && resourceChangeType == ResourceChangeType.BUY);
+            if (item == null || skip)
             {
                 if (sep != null) sep.SetVisibleSelf(false);
                 for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
