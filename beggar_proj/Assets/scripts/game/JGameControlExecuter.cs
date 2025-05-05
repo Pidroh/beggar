@@ -282,13 +282,18 @@ public static class JGameControlExecuter
                                         {
                                             bool hasDuration = unit.Data.ConfigTask.Duration.HasValue && unit.Data.ConfigTask.Duration.Value > 1;
                                             var hasSuccessRate = unit.Data.ConfigTask.SuccessRatePercent.HasValue && unit.Data.ConfigTask.SuccessRatePercent.Value != 100;
-                                            if (hasDuration || hasSuccessRate)
+                                            var dotDuration = unit.Data.DotRU?.DotConfig.Duration;
+                                            if (hasDuration || hasSuccessRate || dotDuration.HasValue)
                                             {
                                                 var leftText = "";
-                                                if (hasDuration) leftText += $" Duration: {unit.Data.ConfigTask.Duration}s.";
+                                                if (hasDuration) leftText += $" Duration: {unit.Data.ConfigTask.Duration}s ";
                                                 if (hasSuccessRate)
                                                 {
-                                                    leftText += $" Success rate: {unit.Data.ConfigTask.SuccessRatePercent.Value}%.";
+                                                    leftText += $" Success rate: {unit.Data.ConfigTask.SuccessRatePercent.Value}% ";
+                                                }
+                                                if (dotDuration.HasValue) 
+                                                {
+                                                    leftText += $" Effect Duration: {dotDuration.Value}s ";
                                                 }
                                                 unit.SuccessRateAndDurationText.SetTextRaw(leftText);
                                             }
