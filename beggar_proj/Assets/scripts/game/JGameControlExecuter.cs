@@ -242,7 +242,7 @@ public static class JGameControlExecuter
                                 {
                                     var progress = unit.Data.TaskProgressRatio;
                                     bool running = arcaniaModel.Runner.RunningTasks.Contains(unit.Data);
-                                    if (unit.Data.Dirty)
+                                    //if (unit.Data.Dirty)
                                     {
                                         if (unit.Data.BuyStatus == BuyStatus.NeedsBuy)
                                         {
@@ -477,7 +477,7 @@ public static class JGameControlExecuter
             //if (sep != null) sep.ManualUpdate();
             //sep.LayoutChild.VisibleSelf = resourceChanges.Count > 0;
             var bySecond = i == (int)ResourceChangeType.EFFECT || i == (int)ResourceChangeType.RUN;
-            var canBeDisabled = i == (int)ResourceChangeType.RUN || i == (int)ResourceChangeType.COST;
+            var canBeDisabled = i == (int)ResourceChangeType.RUN || i == (int)ResourceChangeType.COST || i == (int)ResourceChangeType.BUY;
 
             for (int ttvIndex = 0; ttvIndex < item.tripleTextViews.Count; ttvIndex++)
             {
