@@ -21,6 +21,15 @@
                 "mod":{
                     "gratitude": -1
                 }
+            },
+            {
+                "id": "captive",
+                "name": "Captive",
+                "max": 0,
+                "desc": "TODO",
+                "mod":{
+                    "dominance.max": 1
+                }
             }
         ]
     },
