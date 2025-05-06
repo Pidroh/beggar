@@ -71,14 +71,17 @@
                 }
             },
             {
-                "id": "drywoodknowledge",
-                "name": "Tips on starting fires",
-                "desc": "Some fellow beggars seem to know a thing or two about flames",
-                "require": "beggarhood>0",
+                "id": "antaccident",
+                "name": "An ant got burned",
+                "desc": "Realize an ant got burned in the fire you made",
+                "require": "handdrill_mod",
                 "duration": 8,
                 "max": 1,
                 "cost": {
-                    "supplication": 60
+                    "thoughts": 8
+                },
+                "result": {
+                    "dominance": 1
                 }
             }
         ]
@@ -129,7 +132,7 @@
             },
             {
                 "id": "sadism",
-                "require": "",
+                "require": "dominance",
                 "cost": {
                     "skillpoints": 100
                 },
