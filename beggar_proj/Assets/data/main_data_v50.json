@@ -187,6 +187,25 @@
                 }
             },
             {
+                "id": "burnperson_strong",
+                "name": "Burn a person",
+                "desc": "Completely burn a living person",
+                "require": "sadism>3",
+                "duration": 30,
+                "need": "handdrill_mod&&captive",
+                "max": 2,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "supplication": 80
+                },
+
+                "modification": {
+                    "dominance.max": 60,
+                    "dominance.rate": 0.03
+                }
+            },
+            {
                 "id": "capture_person",
                 "name": "Capture a person",
                 "desc": "TODO",
