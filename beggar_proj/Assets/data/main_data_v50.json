@@ -26,7 +26,7 @@
                 "id": "captive",
                 "name": "Captive",
                 "max": 0,
-                "desc": "TODO",
+                "desc": "A person who has been taken prisoner",
                 "mod":{
                     "dominance.max": 1
                 }
