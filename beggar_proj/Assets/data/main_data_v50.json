@@ -98,6 +98,63 @@
                 "modification": {
                     "dominance.max": 1
                 }
+            },
+            {
+                "id": "sadistictend_1",
+                "name": "Sadistic tendencies",
+                "desc": "",
+                "require": "burnant>1",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 90,
+                    "clarity": 5,
+                    "dominance": 8
+                },
+                "modification": {
+                    "sadism.max": 1,
+                    "dominance.max": 5,
+                    "gratitude.max": -30,
+                    "faith.max": -20
+                }
+            },
+            {
+                "id": "sadistictend_2",
+                "name": "Sadistic tendencies II",
+                "desc": "",
+                "require": "TODO",
+                "duration": 80,
+                "max": 1,
+                "cost": {
+                    "thoughts": 300,
+                    "clarity": 20,
+                    "dominance": 15
+                },
+                "modification": {
+                    "sadism.max": 1,
+                    "dominance.max": 10,
+                    "gratitude.max": -80,
+                    "faith.max": -60
+                }
+            },
+            {
+                "id": "sadistictend_3",
+                "name": "Sadistic tendencies III",
+                "desc": "",
+                "require": "TODO",
+                "duration": 120,
+                "max": 3,
+                "cost": {
+                    "thoughts": 400,
+                    "clarity": 50,
+                    "dominance": 25
+                },
+                "modification": {
+                    "sadism.max": 1,
+                    "dominance.max": 10,
+                    "gratitude.max": -80,
+                    "faith.max": -60
+                }
             }
         ]
     },
