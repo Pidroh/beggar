@@ -19,7 +19,7 @@
                 "max": 3,
                 "desc": "Feelings of control",
                 "mod":{
-                    ""
+                    "gratitude": -1
                 }
             }
         ]
