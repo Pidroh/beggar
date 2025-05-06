@@ -12,6 +12,15 @@
                 "name": "Fire Affinity",
                 "max": 5,
                 "desc": "Attraction to the flame"
+            },
+            {
+                "id": "dominance",
+                "name": "Dominance",
+                "max": 3,
+                "desc": "Feelings of control",
+                "mod":{
+                    ""
+                }
             }
         ]
     },
@@ -97,6 +106,39 @@
                 },
                 "modification": {
                     "dominance.max": 1
+                }
+            },
+            {
+                "id": "ratfire_ember",
+                "name": "Ember a rat",
+                "desc": "Throw a little ember at a rat and hear a cry of pain",
+                "require": "sadism>1",
+                "duration": 20,
+                "need": "rat",
+                "max": 2,
+                "cost": {
+                    "thoughts": 40,
+                    "dominance": 15
+                },
+                "modification": {
+                    "dominance.max": 5
+                }
+            },
+            {
+                "id": "burnrat",
+                "name": "Throw a rat into the fire",
+                "desc": "Throw a little ember at a rat and hear a cry of pain",
+                "require": "sadism>1&&ratfire_ember>1",
+                "duration": 20,
+                "need": "rat&&handdrill_mod",
+                "max": 3,
+                "cost": {
+                    "thoughts": 40,
+                    "dominance": 15,
+                    "rat": 1
+                },
+                "modification": {
+                    "dominance.max": 20
                 }
             },
             {
