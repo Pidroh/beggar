@@ -83,6 +83,21 @@
                 "result": {
                     "dominance": 1
                 }
+            },
+            {
+                "id": "burnant",
+                "name": "Burn ants",
+                "desc": "Group up a bunch of ants and throw them in the fire",
+                "require": "sadism",
+                "duration": 20,
+                "max": 3,
+                "cost": {
+                    "thoughts": 8,
+                    "dominance": 3
+                },
+                "modification": {
+                    "dominance.max": 1
+                }
             }
         ]
     },
