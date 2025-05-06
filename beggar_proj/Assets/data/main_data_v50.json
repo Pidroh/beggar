@@ -358,6 +358,20 @@
                     "handdrill.success_rate": 10,
                     "space": 1
                 }
+            },
+            {
+                "id": "rope",
+                "name": "Rope",
+                "desc": "Has various uses. Like tying people up",
+                "require": "TODO",
+                "max": 3,
+                "cost": {
+                    "foraging": 20
+                },
+                "mod": {
+                    "captive.max": 1,
+                    "space": 1
+                }
             }
         ]
     }
