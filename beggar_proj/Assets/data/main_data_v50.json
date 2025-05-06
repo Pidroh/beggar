@@ -133,6 +133,7 @@
             {
                 "id": "sadism",
                 "require": "dominance",
+                "max": 1,
                 "cost": {
                     "skillpoints": 100
                 },
