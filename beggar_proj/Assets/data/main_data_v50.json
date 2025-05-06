@@ -225,6 +225,26 @@
                     "handdrill.success_rate": 20,
                     "handdrill.speed": 30
                 }
+            },
+            {
+                "id" : "animalburner",
+                "name": "Animal burner",
+                "desc" : "Twisted desires to hear a creature cry",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "t_tier1&&fireaffinity>10",
+                "cost": {
+                    "dominance": 20,
+                    "fireaffinity": 15,
+                    "thoughts": 90,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "kindling.max": 1,
+                    "fireaffinity.max": 30,
+                    "handdrill.success_rate": 10,
+                    "handdrill.speed": 50
+                }
             }
         ]
     },
