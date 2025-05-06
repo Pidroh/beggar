@@ -130,7 +130,7 @@
                 "desc": "Throw a little ember at a rat and hear a cry of pain",
                 "require": "sadism>1&&ratfire_ember>1",
                 "duration": 20,
-                "need": "rat&&handdrill_mod",
+                "need": "handdrill_mod",
                 "max": 3,
                 "cost": {
                     "thoughts": 40,
@@ -139,6 +139,23 @@
                 },
                 "modification": {
                     "dominance.max": 20
+                }
+            },
+            {
+                "id": "burncat",
+                "name": "Throw a cat into the fire",
+                "desc": "The cat screams are a song to your ears",
+                "require": "animalburner",
+                "duration": 80,
+                "need": "handdrill_mod",
+                "max": 3,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "cat": 1
+                },
+                "modification": {
+                    "dominance.max": 25
                 }
             },
             {
