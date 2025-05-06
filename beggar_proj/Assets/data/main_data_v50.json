@@ -47,14 +47,14 @@
                 "desc": "It will definitely catch fire this time. Maybe.",
                 "requirZZe": "woodstick",
                 "require": "supplication",
-                "neZZed": "woodstick&&firewood",
+                "need": "woodstick&&firewood",
                 "buy": {
                     "thoughts": 20,
                     "supplication": 30,
                     "foraging": 5
                 },
                 "duration": 8,
-                "success_rateZZ": 1,
+                "success_rate": 1,
                 "result":{
                     "firewood": -1,
                     "kindling.xp": "1~3"
