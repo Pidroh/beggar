@@ -161,10 +161,29 @@
                 "cost": {
                     "thoughts": 80,
                     "dominance": 20,
+                    "supplication": 40,
                     "cat": 1
                 },
                 "modification": {
                     "dominance.max": 25
+                }
+            },
+            {
+                "id": "burnperson_weak",
+                "name": "Fire touch a person",
+                "desc": "Make your captives taste the fire",
+                "require": "sadism>2",
+                "duration": 30,
+                "need": "handdrill_mod&&captive",
+                "max": 2,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "supplication": 80
+                },
+
+                "modification": {
+                    "dominance.max": 40
                 }
             },
             {
@@ -289,7 +308,8 @@
                     "kindling.max": 1,
                     "fireaffinity.max": 30,
                     "handdrill.success_rate": 10,
-                    "handdrill.speed": 50
+                    "handdrill.speed": 50,
+                    "sadism.max": 1
                 }
             }
         ]
