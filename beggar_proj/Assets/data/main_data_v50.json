@@ -168,6 +168,26 @@
                 }
             },
             {
+                "id": "capture_person",
+                "name": "Capture a person",
+                "desc": "TIDI",
+                "require": "rope",
+                "duration": 10,
+                "success_rate": 25,
+                "need": "handdrill_mod",
+                "max": 3,
+                "cost": {
+                    "supplication": 6,
+                    "dominance": 20
+                },
+                "result": {
+                    "captive": 1
+                },
+                "result_fail": {
+                    "danger": "2~7"
+                }
+            },
+            {
                 "id": "sadistictend_1",
                 "name": "Sadistic tendencies",
                 "desc": "",
