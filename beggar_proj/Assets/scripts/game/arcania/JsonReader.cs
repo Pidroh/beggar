@@ -182,6 +182,8 @@ public class JsonReader
         foreach (var dataList in arcaniaDatas.datas)
         {
             if (dataList.Key == UnitType.TAB) continue;
+            if (dataList.Key == UnitType.ENCOUNTER) continue;
+            if (dataList.Key == UnitType.DOT) continue;
             foreach (var item in dataList.Value)
             {
                 bool added = false;
