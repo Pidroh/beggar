@@ -2140,23 +2140,7 @@
                     "space": 2
                 }
             },
-            {
-                "id": "firewood",
-                "name": "Firewood",
-                "desc": "Some firewood, keeps you warm at night",
-                "require": "coin>2",
-                "max": 1,
-                "cost": {
-                    "coin": 3
-                },
-                "mod": {
-                    "nutrition.max": 50,
-                    "supplication.max": 50,
-                    "supplication.rate": 1,
-                    "coin.rate": -0.05,
-                    "space": 2
-                }
-            },
+            
             {
                 "id": "ratstatue",
                 "name": "Rat Statue",

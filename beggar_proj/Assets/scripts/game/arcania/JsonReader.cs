@@ -435,7 +435,7 @@ public class JsonReader
         var ru = new RuntimeUnit();
         ru.ConfigBasic = new();
         ru.ConfigBasic.name = owner.Name;
-        string id = owner.ConfigBasic.Id + "_mod";
+        string id = owner.ConfigBasic.Id + "_dot";
         var pointer = arcaniaUnits.GetOrCreateIdPointer(id);
         ru.ConfigBasic.Id = id;
         ru.ConfigBasic.Max = 1;

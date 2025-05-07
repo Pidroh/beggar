@@ -92,7 +92,7 @@
                 "id": "antaccident",
                 "name": "An ant got burned",
                 "desc": "Realize an ant got burned in the fire you made",
-                "require": "handdrill_mod",
+                "require": "handdrill_dot",
                 "duration": 8,
                 "max": 1,
                 "cost": {
@@ -139,7 +139,7 @@
                 "desc": "Throw a little ember at a rat and hear a cry of pain",
                 "require": "sadism>1&&ratfire_ember>1",
                 "duration": 20,
-                "need": "handdrill_mod",
+                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "thoughts": 40,
@@ -156,7 +156,7 @@
                 "desc": "The cat screams are a song to your ears",
                 "require": "animalburner",
                 "duration": 80,
-                "need": "handdrill_mod",
+                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "thoughts": 80,
@@ -174,7 +174,7 @@
                 "desc": "Make your captives taste the fire",
                 "require": "sadism>2",
                 "duration": 30,
-                "need": "handdrill_mod&&captive",
+                "need": "handdrill_dot&&captive",
                 "max": 2,
                 "cost": {
                     "thoughts": 80,
@@ -192,7 +192,7 @@
                 "desc": "Completely burn a living person",
                 "require": "sadism>3",
                 "duration": 30,
-                "need": "handdrill_mod&&captive",
+                "need": "handdrill_dot&&captive",
                 "max": 2,
                 "cost": {
                     "thoughts": 80,
@@ -212,7 +212,7 @@
                 "require": "rope",
                 "duration": 10,
                 "success_rate": 25,
-                "need": "handdrill_mod",
+                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "supplication": 6,
