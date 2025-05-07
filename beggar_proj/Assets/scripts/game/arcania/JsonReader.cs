@@ -70,50 +70,59 @@ public class JsonReader
                 }
                 return textKey;
             }
-            if (mod.ModType == ModType.Speed)
+            switch (mod.ModType)
             {
-                mod.HumanText = $"Speed % {Local.GetText(targetTextKey)}:";
-            }
-            if (mod.ModType == ModType.MaxChange)
-            {
-                // space max increasing has no target
-                if (targetTextKey != null)
-                {
-                    if (intermediaryTextKey != null)
+                case ModType.Speed:
+                    mod.HumanText = $"Speed % {Local.GetText(targetTextKey)}:";
+                    break;
+
+                case ModType.MaxChange:
+                    if (targetTextKey != null)
                     {
-                        mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
-                        mod.HumanTextIntermediary = $" Mod Max {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)})";
+                        if (intermediaryTextKey != null)
+                        {
+                            mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
+                            mod.HumanTextIntermediary = $" Mod Max {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)})";
+                        }
+                        else
+                        {
+                            mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                        }
                     }
                     else
                     {
-                        mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                        mod.HumanText = "Max Space:";
                     }
+                    break;
 
-                }
-                else mod.HumanText = $"Max Space:";
-            }
-            if (mod.ModType == ModType.RateChange)
-            {
-                mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
-            }
-            if (mod.ModType == ModType.ResourceChangeChanger)
-            {
-                if (mod.ResourceChangeType == ResourceChangeType.EFFECT || mod.ResourceChangeType == ResourceChangeType.RESULT)
-                {
-                    mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
-                    mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
-                }
+                case ModType.RateChange:
+                    mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
+                    break;
 
-                else mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
-            }
-            if (mod.ModType == ModType.SpaceConsumption)
-            {
-                mod.HumanText = "Space Occupied:";
-            }
-            if (mod.ModType == ModType.Lock)
-            {
-                // if this gets visualized, it's an error
-                mod.HumanText = "(Currently Invisible: error)";
+                case ModType.ResourceChangeChanger:
+                    if (mod.ResourceChangeType == ResourceChangeType.EFFECT || mod.ResourceChangeType == ResourceChangeType.RESULT)
+                    {
+                        mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
+                        mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
+                    }
+                    else
+                    {
+                        mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
+                    }
+                    break;
+
+                case ModType.SpaceConsumption:
+                    mod.HumanText = "Space Occupied:";
+                    break;
+
+                case ModType.Lock:
+                    mod.HumanText = "(Currently Invisible: error)";
+                    break;
+                case ModType.SuccessRate:
+                    mod.HumanText = $"{Local.GetText(targetTextKey)} success rate:";
+                    break;
+                default:
+                    break;
             }
             if (mod.HumanText == null)
             {
