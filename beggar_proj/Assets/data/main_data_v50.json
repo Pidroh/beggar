@@ -8,7 +8,7 @@
                 "desc": "Wood for the bonfire. You need something to set it on fire though."
             },
             {
-                "id": "follower",
+                "id": "followers",
                 "max": 0,
                 "desc": "A person who supports you"
             },
@@ -414,6 +414,20 @@
                     "dominance.max": 1,
                     "guilt.max": -1,
                     "gratitude.max": -3
+                }
+            },
+            {
+                "id": "charisma",
+                "require": "empathy",
+                "max": 1,
+                "cost": {
+                    "skillpoints": 100
+                },
+                "desc": "A compeling smile and attractive confidence",
+                "mod": {
+                    "followers.max": 1,
+                    "dominance.max": 2,
+                    "supplication.max": 5
                 }
             }
         ]
