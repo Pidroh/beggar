@@ -417,6 +417,20 @@
                 }
             },
             {
+                "id": "empathy",
+                "require": "empathypath",
+                "max": 1,
+                "cost": {
+                    "thoughts": 100,
+                    "clarity": 10
+                },
+                "desc": "A compeling smile and attractive confidence",
+                "mod": {
+                    "supplication.max": 5,
+                    "charm.max": 3
+                }
+            },
+            {
                 "id": "charisma",
                 "require": "empathy",
                 "max": 1,
