@@ -44,7 +44,7 @@
             {
                 "id": "empathypath",
                 "name": "I want to understand others",
-                "desc": "Look at others, understand their feelings",
+                "desc": "Look at others, understand their feelings. Choosing this will stop any sociopathic tendencies.",
                 "require": "introspection>1&&gratitude>5&&clarity>2",
                 "tag": "irreversible",
                 "duration": 40,
@@ -56,13 +56,14 @@
                 },
                 "mods":{
                     "clarity.max": 15,
+                    "domination.max": -10,
                     "introspection.max": 1
                 }
             },
             {
                 "id": "psycho_path",
                 "name": "I cannot understand others",
-                "desc": "Other people, their expressions. They mean nothing to you",
+                "desc": "Other people, their expressions. They mean nothing to you. Choosing this will stop any empathic tendencies.",
                 "require": "introspection>1&&sorrow>15&&domination>5",
                 "tag": "irreversible",
                 "duration": 40,
@@ -74,6 +75,26 @@
                 },
                 "mods":{
                     "clarity.max": 15,
+                    "gratitude.max": -10,
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "fabricated_emotions",
+                "name": "Fabricated emotions",
+                "desc": "Mimic others, copy their ways. Fake emotions",
+                "require": "introspection>2&&domination>30",
+                "tag": "irreversible",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "domination": 60,
+                    "sorrow": 10,
+                    "clarity": 15
+                },
+                "mods":{
+                    "domination.max": 15,
+                    "charm.max": 5,
                     "introspection.max": 1
                 }
             },
@@ -404,7 +425,7 @@
             },
             {
                 "id": "sadism",
-                "require": "dominance",
+                "require": "psycho_path",
                 "max": 1,
                 "cost": {
                     "skillpoints": 100
@@ -421,18 +442,19 @@
                 "require": "empathypath",
                 "max": 1,
                 "cost": {
+                    "skillpoints": 100,
                     "thoughts": 100,
                     "clarity": 10
                 },
                 "desc": "A compeling smile and attractive confidence",
                 "mod": {
                     "supplication.max": 5,
-                    "charm.max": 3
+                    "charm.max": 1
                 }
             },
             {
                 "id": "charisma",
-                "require": "empathy",
+                "require": "empathy||fabricated_emotions",
                 "max": 1,
                 "cost": {
                     "skillpoints": 100
@@ -441,7 +463,8 @@
                 "mod": {
                     "followers.max": 1,
                     "dominance.max": 2,
-                    "supplication.max": 5
+                    "supplication.max": 5,
+                    "charm.max": 3
                 }
             }
         ]
