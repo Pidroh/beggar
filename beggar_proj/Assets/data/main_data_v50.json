@@ -8,6 +8,11 @@
                 "desc": "Wood for the bonfire. You need something to set it on fire though."
             },
             {
+                "id": "follower",
+                "max": 0,
+                "desc": "A person who supports you"
+            },
+            {
                 "id": "fireaffinity",
                 "name": "Fire Affinity",
                 "max": 5,
