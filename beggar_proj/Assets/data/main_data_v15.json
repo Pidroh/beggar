@@ -1927,7 +1927,7 @@
                 "id": "irreversible",
                 "title": "Irreversible Action",
                 "content": "Once done, this action cannot be undone. Are you sure?",
-                "tags": "max_decrease"
+                "tags": "max_decrease,irreversible"
             },
             {
                 "id": "exclusive_upgrade",
@@ -1940,6 +1940,7 @@
                 "content": "Performing this action will complete the game. Are you sure?",
                 "tags": "ending_game"
             }
+            
         ]
     },
     {

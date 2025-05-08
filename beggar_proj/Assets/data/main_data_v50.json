@@ -42,6 +42,54 @@
         "type": "TASK",
         "items":[
             {
+                "id": "empathypath",
+                "name": "I want to understand others",
+                "desc": "Look at others, understand their feelings",
+                "require": "introspection>1&&gratitude>5&&clarity>2",
+                "tag": "irreversible",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "supplication": 120,
+                    "gratitude": 40,
+                    "clarity": 15
+                },
+                "mods":{
+                    "clarity.max": 15,
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "psycho_path",
+                "name": "I cannot understand others",
+                "desc": "Other people, their expressions. They mean nothing to you",
+                "require": "introspection>1&&sorrow>15&&domination>5",
+                "tag": "irreversible",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "domination": 15,
+                    "sorrow": 10,
+                    "clarity": 15
+                },
+                "mods":{
+                    "clarity.max": 15,
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "collectfirewood",
+                "name": "Gather wood",
+                "require": "drywoodknowledge",
+                "duration": 8,
+                "cost": {
+                    "foraging": 10
+                },
+                "result":{
+                    "firewood": 1
+                }
+            },
+            {
                 "id": "collectfirewood",
                 "name": "Gather wood",
                 "require": "drywoodknowledge",
