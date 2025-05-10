@@ -45,6 +45,16 @@
                     "fireaffinity.max": 1,
                     "fireaffinity.rate": 0.05
                 }
+            },
+            {
+                "id": "animalfat",
+                "name": "Animal fat",
+                "max": 0,
+                "desc": "Oil extracted from animals",
+                "mod":{
+                    "handdrill.speed": 3,
+                    "handdrill.success_rate": 5
+                }
             }
         ]
     },
@@ -169,11 +179,41 @@
                     "mod": {
                         "supplication.rate": 10,
                         "fireaffinity.rate": 0.01,
-                        "fireaffinity.max": 3
+                        "fireaffinity.max": 3,
+                        "firepower.rate": 0.05
                     }
                 },
                 "result_fail":{
                     "kindling.xp": "3~10"
+                }
+            },
+            {
+                "id": "feedfire",
+                "name": "Feed the fire",
+                "desc": "Burn, baby, burn",
+                "require": "animalfat>1",
+                "need": "handdrill_dot",
+                "cost": {
+                    "animalfat": 3,
+                    "firepower": 2
+                },
+                "buy": {
+                    "thoughts": 50,
+                    "clarity": 5,
+                    "fireaffinity": 3
+                },
+                "duration": 2,
+                "result":{
+                    "kindling.xp": "1~5"
+                },
+                "dot": {
+                    "duration": 20,
+                    "mod": {
+                        "firepower.max": 15,
+                        "firepower.rate": 5,
+                        "fireaffinity.rate": 0.08,
+                        "fireaffinity.max": 5
+                    }
                 }
             },
             {
