@@ -563,7 +563,7 @@
                 "require": "scavenging>2&&kindling>0",
                 "max": 2,
                 "cost": {
-                    "foraging": 20,
+                    "foraging": 30,
                     "fireaffinity": 1
                 },
                 "mod": {
@@ -571,6 +571,21 @@
                     "handdrill.success_rate": 10,
                     "fireaffinity.max": 1,
                     "space": 2
+                }
+            },
+            {
+                "id": "pot_of_fat",
+                "name": "Oil pot",
+                "desc": "To store fat",
+                "require": "scavenging>2&&kindling>2&&coin>3",
+                "max": 2,
+                "cost": {
+                    "foraging": 30,
+                    "coin": 5
+                },
+                "mod": {
+                    "animalfat.max": 1,
+                    "space": 1
                 }
             },
             {
