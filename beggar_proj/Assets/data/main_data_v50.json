@@ -37,7 +37,7 @@
                 }
             },
             {
-                "id": "flamepower",
+                "id": "firepower",
                 "name": "Flame power",
                 "max": 3,
                 "desc": "The strength of the fire",
@@ -192,7 +192,7 @@
                         "supplication.rate": 10,
                         "fireaffinity.rate": 0.01,
                         "fireaffinity.max": 3,
-                        "firepower.rate": 0.05
+                        "firepower.rate": 0.3
                     }
                 },
                 "result_fail":{
@@ -247,6 +247,7 @@
                 "name": "Burn ants",
                 "desc": "Group up a bunch of ants and throw them in the fire",
                 "require": "sadism",
+                "need": "handdrill_dot",
                 "duration": 20,
                 "max": 3,
                 "cost": {
@@ -267,7 +268,8 @@
                 "max": 2,
                 "cost": {
                     "thoughts": 40,
-                    "dominance": 15
+                    "dominance": 12,
+                    "firepower": 2
                 },
                 "modification": {
                     "dominance.max": 5
@@ -284,6 +286,7 @@
                 "cost": {
                     "thoughts": 40,
                     "dominance": 15,
+                    "firepower": 4,
                     "rats": 1
                 },
                 "modification": {
@@ -302,6 +305,7 @@
                     "thoughts": 80,
                     "dominance": 20,
                     "supplication": 40,
+                    "firepower": 7,
                     "cat": 1
                 },
                 "modification": {
@@ -310,8 +314,8 @@
             },
             {
                 "id": "burnperson_weak",
-                "name": "Fire touch a person",
-                "desc": "Make your captives taste the fire",
+                "name": "Burn captive",
+                "desc": "Make your captives taste a bit of fire",
                 "require": "sadism>2",
                 "duration": 30,
                 "need": "handdrill_dot&&captive",
@@ -319,7 +323,8 @@
                 "cost": {
                     "thoughts": 80,
                     "dominance": 20,
-                    "supplication": 80
+                    "supplication": 80,
+                    "firepower": 4
                 },
 
                 "modification": {
@@ -328,7 +333,7 @@
             },
             {
                 "id": "burnperson_strong",
-                "name": "Burn a person",
+                "name": "Incinerate a person",
                 "desc": "Completely burn a living person",
                 "require": "sadism>3",
                 "duration": 30,
@@ -337,7 +342,8 @@
                 "cost": {
                     "thoughts": 80,
                     "dominance": 20,
-                    "supplication": 80
+                    "supplication": 80,
+                    "firepower": 9
                 },
 
                 "modification": {
