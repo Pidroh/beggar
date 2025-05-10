@@ -65,7 +65,7 @@
                 "id": "empathypath",
                 "name": "I want to understand others",
                 "desc": "Look at others, understand their feelings. Choosing this will stop any sociopathic tendencies.",
-                "require": "introspection>1&&gratitude>5&&clarity>2",
+                "require": "gratitude>5&&clarity>2&&benevolence",
                 "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
