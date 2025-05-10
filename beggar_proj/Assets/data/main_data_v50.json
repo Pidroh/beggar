@@ -393,6 +393,29 @@
                 }
             },
             {
+                "id": "fire_ending",
+                "name": "Answer in the fire",
+                "desc": "Stare into the carnage, into the flame",
+                "require": "sadism>4",
+                "duration": 30,
+                "need": "handdrill_dot",
+                "max": 1,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "firepower": 25,
+                    "fireaffinity": 30,
+                    "captive": 8
+                },
+
+                "modification": {
+                    "dominance.max": 40,
+                    "dominance.rate": 0.5,
+                    "fireaffinity.max": 10,
+                    "fireaffinity.rate": 0.5
+                }
+            },
+            {
                 "id": "capture_person",
                 "name": "Capture a person",
                 "desc": "TODO",
