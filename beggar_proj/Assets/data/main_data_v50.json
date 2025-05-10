@@ -139,11 +139,10 @@
             },
             {
                 "id": "handdrill",
-                "name": "Hand drill",
+                "name": "Start fire",
                 "desc": "It will definitely catch fire this time. Maybe.",
-                "requirZZe": "woodstick",
-                "require": "supplication",
-                "need": "woodstick&&firewood",
+                "require": "firetool",
+                "need": "firetool&&firewood",
                 "buy": {
                     "thoughts": 20,
                     "supplication": 30,
@@ -159,7 +158,8 @@
                     "duration": 30,
                     "mod": {
                         "supplication.rate": 10,
-                        "fireaffinity.rate": 0.01
+                        "fireaffinity.rate": 0.01,
+                        "fireaffinity.max": 3
                     }
                 },
                 "result_fail":{
@@ -502,13 +502,32 @@
                 "id": "woodstick",
                 "name": "Wood stick",
                 "desc": "A little stick. Very dry. Can be used to start fires?",
+                "tags": "firetool",
                 "require": "scavenging>0&&drywoodknowledge",
                 "max": 1,
                 "cost": {
                     "foraging": 5
                 },
                 "mod": {
-                    "thoughts.max": 1,
+                    "fireaffinity.max": 1,
+                    "handdrill.success_rate": 5,
+                    "space": 1
+                }
+            },
+            {
+                "id": "flint_and_steel",
+                "name": "Flint & Steel",
+                "desc": "Hit the two together and magic happens. Can be used to start fires",
+                "tags": "firetool",
+                "require": "scavenging>1&&kindling>1",
+                "max": 1,
+                "cost": {
+                    "foraging": 20,
+                    "fireaffinity": 1
+                },
+                "mod": {
+                    "handdrill.success_rate": 20,
+                    "handdrill.speed": 30,
                     "space": 1
                 }
             },
