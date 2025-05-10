@@ -158,6 +158,18 @@
                 }
             },
             {
+                "id": "buyanimalfat",
+                "name": "Buy animal fat",
+                "desc": "Gotta get some lard",
+                "require": "pot_of_fat",
+                "cost": {
+                    "coin": 1
+                },
+                "result":{
+                    "animalfat": 1
+                }
+            },
+            {
                 "id": "handdrill",
                 "name": "Start fire",
                 "desc": "It will definitely catch fire this time. Maybe.",
