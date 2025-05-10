@@ -294,11 +294,29 @@
                 }
             },
             {
-                "id": "burncat",
-                "name": "Throw a cat into the fire",
-                "desc": "The cat screams are a song to your ears",
+                "id": "burncat_little",
+                "name": "Burn cat",
+                "desc": "Have the felyne taste the flame",
                 "require": "animalburner",
-                "duration": 80,
+                "duration": 5,
+                "need": "handdrill_dot",
+                "max": 2,
+                "cost": {
+                    "thoughts": 40,
+                    "dominance": 10,
+                    "supplication": 20,
+                    "firepower": 2
+                },
+                "modification": {
+                    "dominance.max": 15
+                }
+            },
+            {
+                "id": "burncat",
+                "name": "Incinerate cat",
+                "desc": "The cat screams are a song to your ears",
+                "require": "burncat_little>1",
+                "duration": 25,
                 "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
@@ -317,7 +335,7 @@
                 "name": "Burn captive",
                 "desc": "Make your captives taste a bit of fire",
                 "require": "sadism>2",
-                "duration": 30,
+                "duration": 5,
                 "need": "handdrill_dot&&captive",
                 "max": 2,
                 "cost": {
