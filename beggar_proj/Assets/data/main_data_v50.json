@@ -35,6 +35,16 @@
                 "mod":{
                     "dominance.max": 1
                 }
+            },
+            {
+                "id": "flamepower",
+                "name": "Flame power",
+                "max": 3,
+                "desc": "The strength of the fire",
+                "mod":{
+                    "fireaffinity.max": 1,
+                    "fireaffinity.rate": 0.05
+                }
             }
         ]
     },
