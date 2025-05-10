@@ -111,15 +111,19 @@
                 }
             },
             {
-                "id": "collectfirewood",
-                "name": "Gather wood",
-                "require": "drywoodknowledge",
-                "duration": 8,
+                "id": "captive_watchers",
+                "name": "Captive watchers",
+                "require": "captive>2&&followers>1",
+                "desc": "Train and assign people to watch over your prisoners",
+                "duration": 20,
+                "max": 2,
                 "cost": {
-                    "foraging": 10
+                    "followers": 3,
+                    "dominance": 50,
+                    "supplication": 200
                 },
-                "result":{
-                    "firewood": 1
+                "mods":{
+                    "captives.max": 5
                 }
             },
             {
