@@ -355,18 +355,41 @@
                 "desc": "Completely burn a living person",
                 "require": "sadism>3",
                 "duration": 30,
-                "need": "handdrill_dot&&captive",
+                "need": "handdrill_dot",
                 "max": 2,
                 "cost": {
                     "thoughts": 80,
                     "dominance": 20,
                     "supplication": 80,
-                    "firepower": 9
+                    "firepower": 9,
+                    "captive": 1
                 },
 
                 "modification": {
                     "dominance.max": 60,
                     "dominance.rate": 0.03
+                }
+            },
+            {
+                "id": "burnperson_many",
+                "name": "Burn people",
+                "desc": "Create a big bonfire of people. They won't be lonely in the other world",
+                "require": "sadism>4",
+                "duration": 30,
+                "need": "handdrill_dot",
+                "max": 3,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "firepower": 25,
+                    "captive": 7
+                },
+
+                "modification": {
+                    "dominance.max": 40,
+                    "dominance.rate": 0.5,
+                    "fireaffinity.max": 10,
+                    "fireaffinity.rate": 0.5
                 }
             },
             {
