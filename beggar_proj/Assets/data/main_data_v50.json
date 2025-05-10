@@ -47,6 +47,14 @@
                 }
             },
             {
+                "id": "benevolence",
+                "max": 3,
+                "desc": "Meaning well, being kind",
+                "mod":{
+                    "gratitude.max": 1
+                }
+            },
+            {
                 "id": "animalfat",
                 "name": "Animal fat",
                 "max": 0,
