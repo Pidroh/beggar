@@ -552,7 +552,25 @@
                 },
                 "mod": {
                     "handdrill.success_rate": 10,
+                    "firepower.max": 1,
                     "space": 1
+                }
+            },
+            {
+                "id": "hay",
+                "name": "A pile of hay",
+                "desc": "Can be used to feed the fire",
+                "require": "scavenging>2&&kindling>0",
+                "max": 2,
+                "cost": {
+                    "foraging": 20,
+                    "fireaffinity": 1
+                },
+                "mod": {
+                    "firepower.max": 3,
+                    "handdrill.success_rate": 10,
+                    "fireaffinity.max": 1,
+                    "space": 2
                 }
             },
             {
