@@ -139,6 +139,23 @@
                 }
             },
             {
+                "id": "sharefood",
+                "name": "Share crumbs",
+                "desc": "It's not much, but you are welcome to have it",
+                "require": "sharingbowl&&gratitude>5",
+                "duration": 8,
+                "cost": {
+                    "breadcrumbs": 30,
+                    "gratitude": 10
+                },
+                "run": {
+                    "supplication": 2
+                },
+                "result":{
+                    "benevolence": 1
+                }
+            },
+            {
                 "id": "captive_watchers",
                 "name": "Captive watchers",
                 "require": "captive>2&&followers>1",
