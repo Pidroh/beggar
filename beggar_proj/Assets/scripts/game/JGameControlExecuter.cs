@@ -404,15 +404,15 @@ public static class JGameControlExecuter
         #endregion
     }
 
-    private static void FeedModToList(JRTControlUnitMods modList, bool showIfVisible)
+    private static void FeedModToList(JRTControlUnitMods modList, bool showEvenIfZero)
     {
         for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
         {
             ModRuntime item = modList.Mods[modIndex];
             var ttv = modList.tripleTextViews[modIndex];
-            if (showIfVisible)
+            if (showEvenIfZero)
             {
-                ttv.SetVisibleSelf(item.Source.Visible);
+                ttv.SetVisibleSelf(item.Source.Visible || item.Source.Value != 0);
             }
             else {
                 ttv.SetVisibleSelf(item.Source.Value != 0);
