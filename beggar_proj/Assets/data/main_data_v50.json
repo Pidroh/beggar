@@ -795,6 +795,22 @@
                     "captive.max": 1,
                     "space": 1
                 }
+            },
+            {
+                "id": "sharingbowl",
+                "name": "Sharing bowl",
+                "desc": "Use this to share food with those in need",
+                "require": "foraging>2&&beggarhood>2",
+                "cost": {
+                    "foraging": 20,
+                    "breadcrumbs": 25
+                },
+                "mod": {
+                    "breadcrumbs.max": 5,
+                    "supplication.max": 50,
+                    "benevolence.max": 5,
+                    "space": 1
+                }
             }
         ]
     }
