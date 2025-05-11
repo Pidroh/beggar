@@ -547,6 +547,27 @@
                 }
             },
             {
+                "id" : "peopleburner",
+                "name": "Sadistic Flamer",
+                "desc" : "A pyromaniac with affinity for burning people alive",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "t_tier1&&fireaffinity>10",
+                "cost": {
+                    "dominance": 20,
+                    "fireaffinity": 15,
+                    "thoughts": 90,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "kindling.max": 1,
+                    "fireaffinity.max": 40,
+                    "handdrill.speed": 60,
+                    "dominance.max": 60,
+                    "sadism.max": 2
+                }
+            },
+            {
                 "id" : "animalburner",
                 "name": "Animal burner",
                 "desc" : "Twisted desires to hear a creature cry",
