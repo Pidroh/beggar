@@ -311,7 +311,7 @@
                 "id": "burnrat",
                 "name": "Throw a rat into the fire",
                 "desc": "Throw a little ember at a rat and hear a cry of pain",
-                "require": "sadism>1&&ratfire_ember>1",
+                "require": "sadism>2&&ratfire_ember>1",
                 "duration": 20,
                 "need": "handdrill_dot",
                 "max": 3,
@@ -347,7 +347,7 @@
                 "id": "burncat",
                 "name": "Incinerate cat",
                 "desc": "The cat screams are a song to your ears",
-                "require": "burncat_little>1",
+                "require": "burncat_little>1&&sadism>2",
                 "duration": 25,
                 "need": "handdrill_dot",
                 "max": 3,
@@ -428,7 +428,7 @@
             {
                 "id": "capture_person",
                 "name": "Capture a person",
-                "desc": "TODO",
+                "desc": "Detain and restrain an individual",
                 "require": "rope",
                 "duration": 10,
                 "success_rate": 25,
@@ -448,7 +448,7 @@
             {
                 "id": "sadistictend_1",
                 "name": "Sadistic tendencies",
-                "desc": "",
+                "desc": "Shows a subtle enjoyment in causing others pain",
                 "require": "burnant>1",
                 "duration": 20,
                 "max": 1,
@@ -467,8 +467,8 @@
             {
                 "id": "sadistictend_2",
                 "name": "Sadistic tendencies II",
-                "desc": "",
-                "require": "TODO",
+                "desc": "Finds satisfaction in the suffering of others, often prolonging it unnecessarily.",
+                "require": "ratfire_ember",
                 "duration": 80,
                 "max": 1,
                 "cost": {
@@ -486,8 +486,27 @@
             {
                 "id": "sadistictend_3",
                 "name": "Sadistic tendencies III",
-                "desc": "",
-                "require": "TODO",
+                "desc": " Has a noticeable preference for causing pain when possible.",
+                "require": "burnrat",
+                "duration": 120,
+                "max": 3,
+                "cost": {
+                    "thoughts": 400,
+                    "clarity": 50,
+                    "dominance": 25
+                },
+                "modification": {
+                    "sadism.max": 1,
+                    "dominance.max": 10,
+                    "gratitude.max": -80,
+                    "faith.max": -60
+                }
+            },
+            {
+                "id": "sadistictend_4",
+                "name": "Sadistic tendencies IV",
+                "desc": " Hurts others without second thought.",
+                "require": "burnperson_weak",
                 "duration": 120,
                 "max": 3,
                 "cost": {
