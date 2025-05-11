@@ -28,6 +28,12 @@
                 }
             },
             {
+                "id": "charm",
+                "name": "Charm",
+                "max": 3,
+                "desc": "The power of attracting and delighting others"
+            },
+            {
                 "id": "captive",
                 "name": "Captive",
                 "max": 0,
@@ -85,7 +91,7 @@
                 "mods":{
                     "clarity.max": 15,
                     "benevolence.max": 10,
-                    "domination.max": -10,
+                    "dominance.max": -10,
                     "introspection.max": 1
                 }
             },
@@ -93,12 +99,12 @@
                 "id": "psycho_path",
                 "name": "I cannot understand others",
                 "desc": "Other people, their expressions. They mean nothing to you. Choosing this will stop any empathic tendencies.",
-                "require": "introspection>1&&sorrow>15&&domination>5",
+                "require": "introspection>1&&sorrow>15&&dominance>5",
                 "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
                 "cost": {
-                    "domination": 15,
+                    "dominance": 15,
                     "sorrow": 10,
                     "clarity": 15
                 },
@@ -112,17 +118,17 @@
                 "id": "fabricated_emotions",
                 "name": "Fabricated emotions",
                 "desc": "Mimic others, copy their ways. Fake emotions",
-                "require": "introspection>2&&domination>30",
+                "require": "introspection>2&&dominance>30",
                 "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
                 "cost": {
-                    "domination": 60,
+                    "dominance": 60,
                     "sorrow": 10,
                     "clarity": 15
                 },
                 "mods":{
-                    "domination.max": 15,
+                    "dominance.max": 15,
                     "charm.max": 5,
                     "introspection.max": 1
                 }
