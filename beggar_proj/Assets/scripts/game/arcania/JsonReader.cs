@@ -443,6 +443,7 @@ public class JsonReader
         ru.ConfigBasic = new();
         ru.ConfigBasic.name = owner.Name;
         string id = owner.ConfigBasic.Id + "_dot";
+        owner.ConfigBasic.name += " (effect)";
         var pointer = arcaniaUnits.GetOrCreateIdPointer(id);
         ru.ConfigBasic.Id = id;
         ru.ConfigBasic.Max = 1;

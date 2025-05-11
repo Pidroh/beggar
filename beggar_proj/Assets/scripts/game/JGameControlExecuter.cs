@@ -406,21 +406,25 @@ public static class JGameControlExecuter
 
     private static void FeedModToList(JRTControlUnitMods modList, bool showEvenIfZero)
     {
+        var hasAnyVisible = false;
         for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
         {
             ModRuntime item = modList.Mods[modIndex];
             var ttv = modList.tripleTextViews[modIndex];
             if (showEvenIfZero)
             {
-                ttv.SetVisibleSelf(item.Source.Visible || item.Source.Value != 0);
+                bool visibleSelf = item.Source.Visible || item.Source.Value != 0;
+                ttv.SetVisibleSelf(visibleSelf);
                 ttv.Disabled = item.Source.Value == 0;
             }
             else {
                 ttv.SetVisibleSelf(item.Source.Value != 0);
             }
-            
+            hasAnyVisible |= ttv.Visible;
             ttv.SetTextRaw(1, "+"+(item.Source.Value * item.Value));
         }
+        if (modList.Header == null) return;
+        modList.Header.SetVisibleSelf(hasAnyVisible);
     }
 
     private static void ShowDialog(DialogRuntime dialog, JGameControlDataHolder controlData)
