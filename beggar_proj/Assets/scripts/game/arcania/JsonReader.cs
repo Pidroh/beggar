@@ -83,10 +83,12 @@ public class JsonReader
                         {
                             mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
                             mod.HumanTextIntermediary = $" Mod Max {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)})";
+                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)} x {Local.GetText(sourceNameKey)}):";
                         }
                         else
                         {
                             mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)}):";
                         }
                     }
                     else
@@ -97,6 +99,7 @@ public class JsonReader
 
                 case ModType.RateChange:
                     mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
+                    mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)}):";
                     break;
 
                 case ModType.ResourceChangeChanger:
@@ -104,6 +107,7 @@ public class JsonReader
                     {
                         mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
                         mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
+                        mod.HumanTextTarget = null;
                     }
                     else
                     {
@@ -120,6 +124,7 @@ public class JsonReader
                     break;
                 case ModType.SuccessRate:
                     mod.HumanText = $"{Local.GetText(targetTextKey)} success rate:";
+                    mod.HumanTextTarget = $"Success rate ({Local.GetText(sourceNameKey)}):";
                     break;
                 default:
                     break;
@@ -688,6 +693,7 @@ public class ModRuntime
     public string SourceJsonKey { get; internal set; }
     public string HumanText { get; internal set; }
     public string HumanTextIntermediary { get; internal set; }
+    public string HumanTextTarget { get; internal set; }
 }
 
 public class DotConfig

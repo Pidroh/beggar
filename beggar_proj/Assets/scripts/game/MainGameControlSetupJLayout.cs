@@ -249,6 +249,7 @@ public class MainGameControlSetupJLayout
                     var modControl = jCU.OwnedMods;
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, 0);
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsSelfAsIntermediary, "extra mods", jCU.IntermediaryMods, 1);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
                     #endregion
 
 
@@ -383,12 +384,14 @@ public class MainGameControlSetupJLayout
             foreach (var mod in modList)
             {
                 if (mod.ModType == ModType.Lock) continue;
+                var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : mod.HumanTextTarget);
+                if (mainText == null) continue;
                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
                 AddToExpand(layoutRU, triple, jCU);
                 modControl.tripleTextViews.Add(triple);
                 modControl.Mods.Add(mod);
                 var value = mod.Value;
-                var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : "");
+                
                 triple.SetTextRaw(0, mainText);
                 string secondaryText = null;
                 if (value > 0 && mod.ModType != ModType.SpaceConsumption)

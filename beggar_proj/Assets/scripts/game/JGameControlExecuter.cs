@@ -212,13 +212,8 @@ public static class JGameControlExecuter
                         }
                         {
                             var modList = unit.IntermediaryMods;
-                            for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
-                            {
-                                ModRuntime item = modList.Mods[modIndex];
-                                var ttv = modList.tripleTextViews[modIndex];
-                                ttv.SetVisibleSelf(item.Source.Value != 0);
-                                ttv.SetTextRaw(1, (item.Source.Value * item.Value) + "");
-                            }
+                            FeedModToList(modList, false);
+                            FeedModToList(unit.TargetingThisMods, true);
                         }
                         shouldShowSep = true;
                         UpdateChangeGroups(unit);
@@ -407,6 +402,24 @@ public static class JGameControlExecuter
             }
         }
         #endregion
+    }
+
+    private static void FeedModToList(JRTControlUnitMods modList, bool showIfVisible)
+    {
+        for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
+        {
+            ModRuntime item = modList.Mods[modIndex];
+            var ttv = modList.tripleTextViews[modIndex];
+            if (showIfVisible)
+            {
+                ttv.SetVisibleSelf(item.Source.Visible);
+            }
+            else {
+                ttv.SetVisibleSelf(item.Source.Value != 0);
+            }
+            
+            ttv.SetTextRaw(1, "+"+(item.Source.Value * item.Value));
+        }
     }
 
     private static void ShowDialog(DialogRuntime dialog, JGameControlDataHolder controlData)
