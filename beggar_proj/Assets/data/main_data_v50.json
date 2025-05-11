@@ -547,6 +547,28 @@
                 }
             },
             {
+                "id" : "goodbeggar",
+                "name": "Good Beggar",
+                "desc" : "You live by the good will of others, yet you also have good will to give",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&introspection>3&&empathy",
+                "cost": {
+                    "sadness": 20,
+                    "sorrow": 2,
+                    "nutrition": 5,
+                    "benevolence": 5
+                },
+                "mod": {
+                    "thoughts.max": 50,
+                    "supplication.max": 90,
+                    "benevolence.max": 20,
+                    "benevolence.rate": 0.5,
+                    "supplication.rate": 0.8,
+                    "innermind.max": 2
+                }
+            },
+            {
                 "id" : "animalburner",
                 "name": "Animal burner",
                 "desc" : "Twisted desires to hear a creature cry",
