@@ -609,7 +609,28 @@
                     "holyscriptures.max": 1,
                     "ecclesiology.max": 1,
                     "empathy.max": 1,
-                    "benevolence.max": 1
+                    "benevolence.max": 100,
+                    "charity.max": 1
+                }
+            },
+            {
+                "id": "gracebeggar",
+                "name": "Open Hand",
+                "desc": "They gave you this name because they know that you are the true giver",
+                "need": "theself_3&&empathy>3&&charity>=4", 
+                "require": "t_tier2&&empathy>=3&&charity>=3",
+                "cost": {
+                    "benevolence": 300,
+                    "supplication": 1000,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "nutrition": 8
+                },
+                "mod":{
+                    "charity.max": 1,
+                    "innermind.max": 1,
+                    "benevolence.max": 100,
+                    "empathy.max": 1
                 }
             }
         ]
