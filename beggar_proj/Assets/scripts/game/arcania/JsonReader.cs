@@ -448,6 +448,7 @@ public class JsonReader
         ru.ConfigBasic.Max = 1;
         pointer.RuntimeUnit = ru;
         owner.DotRU = pointer.RuntimeUnit;
+        pointer.RuntimeUnit.ParentRU = owner;
         arcaniaUnits.datas[UnitType.DOT].Add(ru);
         var dc = new DotConfig();
         ru.DotConfig = dc;

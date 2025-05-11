@@ -30,7 +30,7 @@ public class RuntimeUnit
 
     public int Max => CalculateMax();
 
-    public bool Visible => RequireMet && IsPossiblyVisibleRegardlessOfRequire();
+    public bool Visible => ParentRU?.Visible ?? (RequireMet && IsPossiblyVisibleRegardlessOfRequire());
 
     public bool IsPossiblyVisibleRegardlessOfRequire()
     {
@@ -283,4 +283,5 @@ public class RuntimeUnit
 
     public RuntimeUnit DotRU { get; set; }
     public DotConfig DotConfig { get; set; }
+    public RuntimeUnit ParentRU { get; internal set; }
 }

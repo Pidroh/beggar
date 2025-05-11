@@ -413,6 +413,7 @@ public static class JGameControlExecuter
             if (showEvenIfZero)
             {
                 ttv.SetVisibleSelf(item.Source.Visible || item.Source.Value != 0);
+                ttv.Disabled = item.Source.Value == 0;
             }
             else {
                 ttv.SetVisibleSelf(item.Source.Value != 0);
