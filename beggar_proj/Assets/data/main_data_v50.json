@@ -363,7 +363,7 @@
                 "require": "sadism>2",
                 "duration": 5,
                 "need": "handdrill_dot&&captive",
-                "max": 2,
+                "max": 1,
                 "cost": {
                     "thoughts": 80,
                     "dominance": 20,
@@ -379,10 +379,10 @@
                 "id": "burnperson_strong",
                 "name": "Incinerate a person",
                 "desc": "Completely burn a living person",
-                "require": "sadism>3",
+                "require": "sadism>3&&burnperson_weak>2",
                 "duration": 30,
                 "need": "handdrill_dot",
-                "max": 2,
+                "max": 3,
                 "cost": {
                     "thoughts": 80,
                     "dominance": 20,
@@ -560,6 +560,7 @@
                     "nutrition": 5
                 },
                 "mod": {
+                    "burnperson_weak.max": 2,
                     "kindling.max": 1,
                     "fireaffinity.max": 40,
                     "handdrill.speed": 60,
