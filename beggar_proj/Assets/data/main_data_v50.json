@@ -175,7 +175,7 @@
                     "supplication": 200
                 },
                 "mods":{
-                    "captives.max": 5
+                    "captive.max": 5
                 }
             },
             {
@@ -684,6 +684,21 @@
                 "mod": {
                     "supplication.max": 5,
                     "benevolence.max": 1,
+                    "charm.max": 1
+                }
+            },
+            {
+                "id": "charity",
+                "require": "empathy>1",
+                "max": 1,
+                "cost": {
+                    "skillpoints": 50,
+                    "benevolence": 10
+                },
+                "desc": "Voluntary help",
+                "mod": {
+                    "supplication.max": 1,
+                    "benevolence.max": 3,
                     "charm.max": 1
                 }
             },
