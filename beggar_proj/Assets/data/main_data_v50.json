@@ -72,18 +72,19 @@
             {
                 "id": "empathypath",
                 "name": "I want to understand others",
-                "desc": "Look at others, understand their feelings. Choosing this will stop any sociopathic tendencies.",
+                "desc": "Look at them, understand their feelings. Choosing this will stop any sociopathic tendencies.",
                 "require": "gratitude>5&&clarity>2&&benevolence",
                 "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
                 "cost": {
-                    "supplication": 120,
+                    "benevolence": 3,
                     "gratitude": 40,
-                    "clarity": 15
+                    "clarity": 8
                 },
                 "mods":{
                     "clarity.max": 15,
+                    "benevolence.max": 10,
                     "domination.max": -10,
                     "introspection.max": 1
                 }
@@ -604,12 +605,13 @@
                 "max": 1,
                 "cost": {
                     "skillpoints": 100,
-                    "thoughts": 100,
+                    "benevolence": 10,
                     "clarity": 10
                 },
-                "desc": "A compeling smile and attractive confidence",
+                "desc": "Honing a keen eye on how others feel",
                 "mod": {
                     "supplication.max": 5,
+                    "benevolence.max": 1,
                     "charm.max": 1
                 }
             },
