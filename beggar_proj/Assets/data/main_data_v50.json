@@ -588,6 +588,29 @@
                     "handdrill.speed": 50,
                     "sadism.max": 1
                 }
+            },
+            {
+                "id" : "goodpriest",
+                "name": "Gracious Priest",
+                "desc" : "The third major order of the Church. Spreading love all around",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "theself_3&&holyscriptures>4&&deacon&&empathy>3",
+                "cost": {
+                    "thoughts": 1600,
+                    "gratitude": 1000,
+                    "faith": 320,
+                    "benevolence": 300,
+                    "nutrition": 90
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 150,
+                    "holyscriptures.max": 1,
+                    "ecclesiology.max": 1,
+                    "empathy.max": 1,
+                    "benevolence.max": 1
+                }
             }
         ]
     },
