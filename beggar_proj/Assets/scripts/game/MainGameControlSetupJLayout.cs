@@ -243,13 +243,14 @@ public class MainGameControlSetupJLayout
                     #endregion
 
                     #region Mods
-                    var unitForMods = modelData.DotRU == null ? modelData : modelData.DotRU;
-                    var modList = unitForMods.ModsOwned;
+                    var unitForOwnedMods = modelData.DotRU == null ? modelData : modelData.DotRU;
+                    var unitForOtherMods = modelData;
+                    var modList = unitForOwnedMods.ModsOwned;
                     var header = "modifications";
                     var modControl = jCU.OwnedMods;
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, 0);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsSelfAsIntermediary, "extra mods", jCU.IntermediaryMods, 1);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.TargetingThisMods, 2);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, "extra mods", jCU.IntermediaryMods, 1);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, "mods targeting this", jCU.TargetingThisMods, 2);
                     //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
                     #endregion
 

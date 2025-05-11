@@ -288,7 +288,7 @@ public static class JGameControlExecuter
                                                 }
                                                 if (dotDuration.HasValue) 
                                                 {
-                                                    leftText += $" Effect Duration: {dotDuration.Value}s ";
+                                                    leftText += $"\nEffect Duration: {dotDuration.Value}s ";
                                                 }
                                                 unit.SuccessRateAndDurationText.SetTextRaw(leftText);
                                             }

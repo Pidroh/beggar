@@ -667,7 +667,8 @@
                 "id": "kindling",
                 "require": "handdrill",
                 "cost": {
-                    "skillpoints": 30
+                    "fireaffinity": 5,
+                    "thoughts": 60
                 },
                 "desc": "Knowledge of starting fires",
                 "mod": {
