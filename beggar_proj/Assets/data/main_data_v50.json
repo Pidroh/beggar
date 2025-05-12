@@ -49,7 +49,8 @@
                 "desc": "The strength of the fire",
                 "mod":{
                     "fireaffinity.max": 1,
-                    "fireaffinity.rate": 0.05
+                    "fireaffinity.rate": 0.05,
+                    "firepower.rate": -0.2
                 }
             },
             {
@@ -99,14 +100,14 @@
                 "id": "psycho_path",
                 "name": "I cannot understand others",
                 "desc": "Other people, their expressions. They mean nothing to you. Choosing this will stop any empathic tendencies.",
-                "require": "introspection>1&&sorrow>15&&dominance>5",
+                "require": "introspection>1&&sorrow>3&&dominance>1",
                 "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
                 "cost": {
-                    "dominance": 15,
-                    "sorrow": 10,
-                    "clarity": 15
+                    "dominance": 3,
+                    "sorrow": 5,
+                    "clarity": 3
                 },
                 "mods":{
                     "clarity.max": 15,
@@ -278,29 +279,26 @@
                 "id": "burnant",
                 "name": "Burn ants",
                 "desc": "Group up a bunch of ants and throw them in the fire",
-                "require": "sadism",
-                "need": "handdrill_dot",
-                "duration": 20,
-                "max": 3,
+                "require": "antaccident",
+                "duration": 3,
                 "cost": {
-                    "thoughts": 8,
-                    "dominance": 3
+                    "firepower": 1
                 },
-                "modification": {
-                    "dominance.max": 1
+                "result": {
+                    "dominance": 1
                 }
             },
             {
                 "id": "ratfire_ember",
                 "name": "Ember a rat",
                 "desc": "Throw a little ember at a rat and hear a cry of pain",
-                "require": "sadism>1",
-                "duration": 20,
+                "require": "sadism",
+                "duration": 10,
                 "need": "rats",
                 "max": 2,
                 "cost": {
                     "thoughts": 40,
-                    "dominance": 12,
+                    "dominance": 2,
                     "firepower": 2
                 },
                 "modification": {
@@ -449,7 +447,7 @@
                 "id": "sadistictend_1",
                 "name": "Sadistic tendencies",
                 "desc": "Shows a subtle enjoyment in causing others pain",
-                "require": "burnant>1",
+                "require": "burnant>1&&sadism",
                 "duration": 20,
                 "max": 1,
                 "cost": {
