@@ -5,7 +5,10 @@
             {
                 "id": "firewood",
                 "max": 1,
-                "desc": "Wood for the bonfire. You need something to set it on fire though."
+                "desc": "Wood for the bonfire. You need something to set it on fire though.",
+                "mods":{
+                    "handdrill_dot.mod.firepower.rate": 0.1
+                }
             },
             {
                 "id": "followers",
