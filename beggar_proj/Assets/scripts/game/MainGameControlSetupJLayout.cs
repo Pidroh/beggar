@@ -251,6 +251,9 @@ public class MainGameControlSetupJLayout
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, 0);
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, "extra mods", jCU.IntermediaryMods, 1);
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, "mods targeting this", jCU.TargetingThisMods, 2);
+                    if (modelData.DotRU != null) {
+                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, "extra effect mods", jCU.TargetingThisEffectMods, 1);
+                    }
                     //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
 
                     #endregion

@@ -214,6 +214,7 @@ public static class JGameControlExecuter
                             var modList = unit.IntermediaryMods;
                             FeedModToList(modList, false);
                             FeedModToList(unit.TargetingThisMods, true);
+                            FeedModToList(unit.TargetingThisEffectMods, true);
                         }
                         shouldShowSep = true;
                         UpdateChangeGroups(unit);

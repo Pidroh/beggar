@@ -33,6 +33,7 @@ public class JRTControlUnit
     public JRTControlUnitMods OwnedMods = new();
     public JRTControlUnitMods IntermediaryMods = new();
     public JRTControlUnitMods TargetingThisMods = new();
+    public JRTControlUnitMods TargetingThisEffectMods = new();
 }
 
 public class JRTControlUnitMods
