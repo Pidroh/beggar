@@ -98,8 +98,16 @@ public class JsonReader
                     break;
 
                 case ModType.RateChange:
-                    mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
-                    mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)}):";
+                    if (intermediaryTextKey != null)
+                    {
+                        mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod {Local.GetText(targetTextKey)} Rate:";
+                    }
+                    else 
+                    {
+                        mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
+                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)}):";
+                    }
+                    
                     break;
 
                 case ModType.ResourceChangeChanger:

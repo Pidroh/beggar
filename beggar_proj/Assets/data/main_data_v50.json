@@ -180,6 +180,24 @@
                 }
             },
             {
+                "id": "feed_the_fire",
+                "name": "Control the flame",
+                "require": "kindling>1",
+                "desc": "Become better at keeping the flame strong",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 70,
+                    "fireaffinity": 5,
+                    "firepower": 1
+                },
+                "mods": {
+                    "handdrill_dot.mod.firepower.rate": 1.7,
+                    "handdrill_dot.mod.fireaffinity.rate": 0.5,
+                    "fireaffinity.max": 5
+                }
+            },
+            {
                 "id": "drywoodknowledge",
                 "name": "Tips on starting fires",
                 "desc": "Some fellow beggars seem to know a thing or two about flames",
@@ -204,7 +222,7 @@
             },
             {
                 "id": "handdrill",
-                "name": "Start fire",
+                "name": "Start a fire",
                 "desc": "It will definitely catch fire this time. Maybe.",
                 "require": "firetool",
                 "need": "firetool&&firewood",
@@ -236,7 +254,7 @@
                 "id": "feedfire",
                 "name": "Feed the fire",
                 "desc": "Burn, baby, burn",
-                "require": "animalfat>1",
+                "require": "animalfat>=1",
                 "need": "handdrill_dot",
                 "cost": {
                     "animalfat": 3,
@@ -403,7 +421,6 @@
                 "desc": "Create a big bonfire of people. They won't be lonely in the other world",
                 "require": "sadism>4",
                 "duration": 30,
-                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "thoughts": 80,
@@ -427,7 +444,6 @@
                 "require": "rope",
                 "duration": 10,
                 "success_rate": 25,
-                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "supplication": 6,
