@@ -323,6 +323,8 @@ public static class JGameControlExecuter
                                 break;
                             case UnitType.SKILL:
                                 {
+                                    var progress = unit.Data.TaskProgressRatio;
+                                    unit.ButtonImageProgress.SetGaugeRatio(progress);
                                     var data = unit.Data;
                                     bool acquired = data.Skill.Acquired;
                                     unit.MainExecuteButton.SetButtonEnabled(acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data));
