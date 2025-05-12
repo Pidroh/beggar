@@ -101,6 +101,8 @@ public class JsonReader
                     if (intermediaryTextKey != null)
                     {
                         mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod {Local.GetText(targetTextKey)} Rate:";
+                        mod.HumanTextIntermediary = $" Mod Rate {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
+                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)} x {Local.GetText(sourceNameKey)}):";
                     }
                     else 
                     {
