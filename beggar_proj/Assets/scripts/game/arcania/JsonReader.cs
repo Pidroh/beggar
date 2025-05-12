@@ -74,6 +74,7 @@ public class JsonReader
             {
                 case ModType.Speed:
                     mod.HumanText = $"Speed % {Local.GetText(targetTextKey)}:";
+                    mod.HumanTextTarget = $"Speed % ({Local.GetText(sourceNameKey)}):";
                     break;
 
                 case ModType.MaxChange:
@@ -83,7 +84,7 @@ public class JsonReader
                         {
                             mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
                             mod.HumanTextIntermediary = $" Mod Max {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)})";
-                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)} x {Local.GetText(sourceNameKey)}):";
+                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)} x {Local.GetText(intermediaryTextKey)}):";
                         }
                         else
                         {
@@ -102,7 +103,7 @@ public class JsonReader
                     {
                         mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod {Local.GetText(targetTextKey)} Rate:";
                         mod.HumanTextIntermediary = $" Mod Rate {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
-                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)} x {Local.GetText(sourceNameKey)}):";
+                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)} x {Local.GetText(intermediaryTextKey)}):";
                     }
                     else 
                     {
