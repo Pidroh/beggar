@@ -252,8 +252,17 @@ public class MainGameControlSetupJLayout
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, "extra mods", jCU.IntermediaryMods, 1);
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, "mods targeting this", jCU.TargetingThisMods, 2);
                     //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
-                    #endregion
 
+                    #endregion
+                    #region need
+                    arcania.ConditionalExpression need = modelData.ConfigTask?.Need;
+                    if (need != null)
+                    {
+                        var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                        needLay.SetTextRaw(0, "Needs: "+need.humanExpression);
+                        AddToExpand(layoutRU, needLay, jCU);
+                    }
+                    #endregion
 
 
                 }
