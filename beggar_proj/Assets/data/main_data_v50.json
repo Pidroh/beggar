@@ -418,7 +418,7 @@
             {
                 "id": "burnperson_many",
                 "name": "Burn people",
-                "desc": "Create a big bonfire of people. They won't be lonely in the other world",
+                "desc": "Create a big human bonfire. They won't be lonely in the other world",
                 "require": "sadism>4",
                 "duration": 30,
                 "max": 3,
@@ -436,7 +436,21 @@
                     "fireaffinity.rate": 0.5
                 }
             },
-            
+            {
+                "id": "firewoodstock",
+                "name": "Optimize firewood stockage",
+                "desc": "Yup, if I do it like this so much more fits",
+                "require": "kindling",
+                "duration": 30,
+                "max": 2,
+                "cost": {
+                    "thoughts": 80,
+                    "clarity": 3
+                },
+                "mods": {
+                    "firewood.max": 2
+                }
+            },
             {
                 "id": "capture_person",
                 "name": "Capture a person",
