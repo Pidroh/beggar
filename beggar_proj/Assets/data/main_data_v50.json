@@ -452,6 +452,38 @@
                 }
             },
             {
+                "id": "firewood_gathering",
+                "name": "Wood gathering",
+                "desc": "This is how to carry big pieces of wood",
+                "require": "collectfirewood>3",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "clarity": 3,
+                    "foraging": 20
+                },
+                "mods": {
+                    "collectfirewood.speed": 50,
+                    "collectfirewood.result.firewood": 1
+                }
+            },
+            {
+                "id": "firewood_gathering2",
+                "name": "Wood gathering II",
+                "desc": "This is how to REALLY carry big pieces of wood",
+                "require": "collectfirewood>12&&firewood_gathering",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "clarity": 3,
+                    "foraging": 20
+                },
+                "mods": {
+                    "collectfirewood.speed": 150,
+                    "collectfirewood.result.firewood": 1
+                }
+            },
+            {
                 "id": "capture_person",
                 "name": "Capture a person",
                 "desc": "Detain and restrain an individual",
