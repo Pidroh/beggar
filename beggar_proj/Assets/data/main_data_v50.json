@@ -301,7 +301,7 @@
                     "dominance": 2,
                     "firepower": 2
                 },
-                "modification": {
+                "mods": {
                     "dominance.max": 5
                 }
             },
@@ -311,7 +311,6 @@
                 "desc": "Throw a little ember at a rat and hear a cry of pain",
                 "require": "sadism>2&&ratfire_ember>1",
                 "duration": 20,
-                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "thoughts": 40,
@@ -319,7 +318,7 @@
                     "firepower": 4,
                     "rats": 1
                 },
-                "modification": {
+                "mods": {
                     "dominance.max": 20
                 }
             },
@@ -328,8 +327,8 @@
                 "name": "Burn cat",
                 "desc": "Have the felyne taste the flame",
                 "require": "animalburner",
+                "need": "cat",
                 "duration": 5,
-                "need": "handdrill_dot",
                 "max": 2,
                 "cost": {
                     "thoughts": 40,
@@ -337,7 +336,7 @@
                     "supplication": 20,
                     "firepower": 2
                 },
-                "modification": {
+                "mods": {
                     "dominance.max": 15
                 }
             },
@@ -347,7 +346,6 @@
                 "desc": "The cat screams are a song to your ears",
                 "require": "burncat_little>1&&sadism>2",
                 "duration": 25,
-                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "thoughts": 80,
@@ -356,7 +354,7 @@
                     "firepower": 7,
                     "cat": 1
                 },
-                "modification": {
+                "mods": {
                     "dominance.max": 25
                 }
             },
@@ -366,7 +364,7 @@
                 "desc": "Make your captives taste a bit of fire",
                 "require": "sadism>2",
                 "duration": 5,
-                "need": "handdrill_dot&&captive",
+                "need": "captive",
                 "max": 1,
                 "cost": {
                     "thoughts": 80,
@@ -375,7 +373,7 @@
                     "firepower": 4
                 },
 
-                "modification": {
+                "mods": {
                     "dominance.max": 40
                 }
             },
@@ -385,7 +383,6 @@
                 "desc": "Completely burn a living person",
                 "require": "sadism>3&&burnperson_weak>2",
                 "duration": 30,
-                "need": "handdrill_dot",
                 "max": 3,
                 "cost": {
                     "thoughts": 80,
@@ -395,7 +392,7 @@
                     "captive": 1
                 },
 
-                "modification": {
+                "mods": {
                     "dominance.max": 60,
                     "dominance.rate": 0.03
                 }
@@ -415,7 +412,7 @@
                     "captive": 7
                 },
 
-                "modification": {
+                "mods": {
                     "dominance.max": 40,
                     "dominance.rate": 0.5,
                     "fireaffinity.max": 10,
@@ -455,7 +452,7 @@
                     "clarity": 5,
                     "dominance": 8
                 },
-                "modification": {
+                "mods": {
                     "sadism.max": 1,
                     "dominance.max": 5,
                     "gratitude.max": -30,
@@ -474,7 +471,7 @@
                     "clarity": 20,
                     "dominance": 15
                 },
-                "modification": {
+                "mods": {
                     "sadism.max": 1,
                     "dominance.max": 10,
                     "gratitude.max": -80,
@@ -493,7 +490,7 @@
                     "clarity": 50,
                     "dominance": 25
                 },
-                "modification": {
+                "mods": {
                     "sadism.max": 1,
                     "dominance.max": 10,
                     "gratitude.max": -80,
@@ -512,7 +509,7 @@
                     "clarity": 50,
                     "dominance": 25
                 },
-                "modification": {
+                "mods": {
                     "sadism.max": 1,
                     "dominance.max": 10,
                     "gratitude.max": -80,
@@ -576,9 +573,10 @@
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "require": "t_tier1&&fireaffinity>10",
+                "need": "theself_2",
                 "cost": {
                     "dominance": 20,
-                    "fireaffinity": 15,
+                    "fireaffinity": 50,
                     "thoughts": 90,
                     "nutrition": 5
                 },
@@ -595,12 +593,12 @@
                 "id" : "animalburner",
                 "name": "Animal burner",
                 "desc" : "Twisted desires to hear a creature cry",
-                "tags": "t_tier2",
-                "lock": "t_tier2",
-                "require": "t_tier1&&fireaffinity>10",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&fireaffinity>10",
                 "cost": {
-                    "dominance": 20,
-                    "fireaffinity": 15,
+                    "dominance": 3,
+                    "fireaffinity": 20,
                     "thoughts": 90,
                     "nutrition": 5
                 },
