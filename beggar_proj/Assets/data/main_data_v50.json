@@ -216,7 +216,7 @@
                 "success_rate": 1,
                 "result":{
                     "firewood": -1,
-                    "kindling.xp": "1~3"
+                    "kindling.xp": "5~10"
                 },
                 "dot": {
                     "duration": 30,
@@ -228,7 +228,7 @@
                     }
                 },
                 "result_fail":{
-                    "kindling.xp": "3~10"
+                    "kindling.xp": "10~40"
                 }
             },
             {
@@ -667,13 +667,12 @@
                 "id": "kindling",
                 "require": "handdrill",
                 "cost": {
-                    "fireaffinity": 5,
-                    "thoughts": 60
+                    "thoughts": 50
                 },
                 "desc": "Knowledge of starting fires",
                 "mod": {
-                    "handdrill.speed": 5,
-                    "handdrill.success_rate": 5,
+                    "handdrill.speed": 10,
+                    "handdrill.success_rate": 10,
                     "fireaffinity.max": 1
                 }
             },
