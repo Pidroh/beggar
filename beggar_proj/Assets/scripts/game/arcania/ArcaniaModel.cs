@@ -117,11 +117,16 @@ public class ArcaniaModel
 
                 if (updateRequireStatusResult)
                 {
-                    LogUnits.Add(new LogUnit()
+                    var unlockLog = pair.Key != UnitType.DOT;
+                    if (unlockLog)
                     {
-                        logType = LogUnit.LogType.UNIT_UNLOCKED,
-                        Unit = item
-                    });
+                        LogUnits.Add(new LogUnit()
+                        {
+                            logType = LogUnit.LogType.UNIT_UNLOCKED,
+                            Unit = item
+                        });
+                    }
+
                 }
                 for (int i = 0; i < applyRateNumber; i++)
                 {
@@ -189,7 +194,7 @@ public class ArcaniaModel
                 dict[item.Target] = new FloatRange(totalValue, totalValue);
             }
         }
-        
+
         // do the final calculation to see if it is meaningful
         foreach (var item in dict)
         {
