@@ -202,6 +202,28 @@
                 }
             },
             {
+                "id": "benevolent_rats",
+                "name": "Benevolent rats",
+                "desc": "Have your rats gather and share food",
+                "require": "charity>2&&rodentology>3",
+                "buy":{
+                    "rats": 5,
+                    "ratbond": 100
+                },
+                "cost":{
+                    "rats": 2,
+                    "ratbond": 15
+                },
+                "dot": {
+                    "duration": 90,
+                    "mod":{
+                        "benevolence.rate": 0.5,
+                        "sharefood.speed": 200,
+                        "breadcrumbs.rate": 1
+                    }
+                }
+            },
+            {
                 "id": "collectfirewood",
                 "name": "Gather wood",
                 "require": "drywoodknowledge",
