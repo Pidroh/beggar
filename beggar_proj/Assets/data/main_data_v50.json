@@ -552,6 +552,7 @@
                 "require": "rope",
                 "duration": 10,
                 "success_rate": 25,
+                "need": "danger<15",
                 "max": 3,
                 "cost": {
                     "supplication": 6,
@@ -842,6 +843,22 @@
                 "mod": {
                     "supplication.max": 1,
                     "benevolence.max": 3,
+                    "charm.max": 1
+                }
+            },
+            {
+                "id": "kidnapping",
+                "require": "captive",
+                "max": 1,
+                "cost": {
+                    "skillpoints": 50,
+                    "dominance": 10
+                },
+                "desc": "The art of capturing people",
+                "mod": {
+                    "capture_person.result.dominance": 1,
+                    "capture_person.success_rate": 10,
+                    "capture_person.speed": 10,
                     "charm.max": 1
                 }
             },
