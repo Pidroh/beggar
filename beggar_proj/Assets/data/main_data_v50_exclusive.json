@@ -90,17 +90,19 @@
                 "name": "Answer in the fire",
                 "desc": "Stare into the carnage, into the flame",
                 "require": "sadism>4&&t_tier3",
-                "duration": 30,
-                "need": "handdrill_dot",
+                "duration": 90,
+                "need": "handdrill_dot&&burnperson_many>2",
                 "max": 1,
                 "cost": {
-                    "thoughts": 80,
-                    "dominance": 20,
-                    "firepower": 25,
-                    "fireaffinity": 30,
+                    "thoughts": 600,
+                    "dominance": 500,
+                    "firepower": 26,
+                    "fireaffinity": 100,
                     "captive": 8
                 },
-
+                "run": {
+                    "firepower": 1
+                },
                 "modification": {
                     "dominance.max": 40,
                     "dominance.rate": 0.5,

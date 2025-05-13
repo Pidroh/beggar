@@ -168,7 +168,7 @@
             {
                 "id": "captive_watchers",
                 "name": "Captive watchers",
-                "require": "captive>2&&followers>1",
+                "require": "captive&&followers>1",
                 "desc": "Train and assign people to watch over your prisoners",
                 "duration": 20,
                 "max": 2,
@@ -533,8 +533,8 @@
                 "duration": 30,
                 "max": 3,
                 "cost": {
-                    "thoughts": 80,
-                    "dominance": 20,
+                    "thoughts": 500,
+                    "dominance": 300,
                     "firepower": 25,
                     "captive": 7
                 },
