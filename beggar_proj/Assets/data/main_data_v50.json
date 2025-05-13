@@ -703,7 +703,7 @@
                 "desc": " Has a noticeable preference for causing pain when possible.",
                 "require": "burnrat&&sadism>2",
                 "duration": 120,
-                "max": 3,
+                "max": 1,
                 "cost": {
                     "thoughts": 400,
                     "clarity": 50,
@@ -722,7 +722,7 @@
                 "desc": " Hurts others without second thought.",
                 "require": "burnperson_weak",
                 "duration": 120,
-                "max": 3,
+                "max": 1,
                 "cost": {
                     "thoughts": 400,
                     "clarity": 50,

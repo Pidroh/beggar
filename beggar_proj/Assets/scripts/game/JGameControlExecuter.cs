@@ -273,7 +273,8 @@ public static class JGameControlExecuter
                                     unit.MainExecuteButton.SetActivePowered(running);
                                     if (unit.Expanded)
                                     {
-                                        unit.TaskQuantityText?.SetTextRaw(unit.Data.Value + "");
+                                        var data = unit.Data;
+                                        unit.TaskQuantityText?.SetTextRaw(data.HasMax ? $"{data.Value} / {data.Max}" : $"{data.Value}");
                                         if (unit.Data.ConfigTask != null)
                                         {
                                             bool hasDuration = unit.Data.ConfigTask.Duration.HasValue && unit.Data.ConfigTask.Duration.Value > 1;
