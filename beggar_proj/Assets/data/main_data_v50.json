@@ -380,7 +380,7 @@
                 "cost": {
                     "thoughts": 80,
                     "dominance": 20,
-                    "cats": 2
+                    "cat": 2
                 },
                 "mods": {
                     "causepain.result.dominance": 1
