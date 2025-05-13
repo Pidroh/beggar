@@ -165,8 +165,25 @@
                     "breadcrumbs": 100
                 },
                 "result":{
-                    "benevolence.max": 50,
+                    "benevolence.max": 10,
                     "benevolence.rate": 0.01
+                }
+            },
+            {
+                "id": "better_feasts_follower",
+                "name": "Group feasts",
+                "desc": "Have your followers help out with the feasts",
+                "require": "charity>1&&followers",
+                "max": 1,
+                "duration": 15,
+                "cost": {
+                    "benevolence": 15,
+                    "followers": 3
+                },
+                "result":{
+                    "poor_feast.max": 2,
+                    "poor_feast.mod.benevolence.max": 10,
+                    "poor_feast.mod.benevolence.rate": 0.01
                 }
             },
             {
