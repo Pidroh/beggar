@@ -479,9 +479,9 @@
             },
             {
                 "id": "burnperson_many",
-                "name": "Burn people",
+                "name": "Incinerate people",
                 "desc": "Create a big human bonfire. They won't be lonely in the other world",
-                "require": "sadism>4",
+                "require": "sadism>4&&burnperson_strong",
                 "duration": 30,
                 "max": 3,
                 "cost": {
@@ -496,6 +496,52 @@
                     "dominance.rate": 0.5,
                     "fireaffinity.max": 10,
                     "fireaffinity.rate": 0.5
+                }
+            },
+            {
+                "id": "kidnap_careful",
+                "name": "Cautious kidnapping",
+                "desc": "Be extra careful while kidnapping",
+                "require": "kidnapping>1",
+                "duration": 10,
+                "buy": {
+                    "thoughts": 60,
+                    "dominance": 20,
+                    "clarity": 3
+                },
+                "cost": {
+                    "thoughts": 20,
+                    "dominance": 3
+                },
+                "dot": {
+                    "duration": 50,
+                    "mod": {
+                        "capture_person.success_rate": 35,
+                        "danger.rate": -0.2
+                    }
+                }
+            },
+            {
+                "id": "kidnap_middle_class",
+                "name": "Middle class kidnapping",
+                "desc": "Focus on kidnapping people who have some money on them",
+                "require": "kidnapping>2",
+                "duration": 1,
+                "buy": {
+                    "thoughts": 100,
+                    "dominance": 20,
+                    "clarity": 3
+                },
+                "cost": {
+                    "thoughts": 30,
+                    "dominance": 5
+                },
+                "dot": {
+                    "duration": 50,
+                    "mod": {
+                        "capture_person.result.coin": 1,
+                        "capture_person.result.danger": 2
+                    }
                 }
             },
             {
@@ -550,10 +596,9 @@
                 "name": "Capture a person",
                 "desc": "Detain and restrain an individual",
                 "require": "rope",
-                "duration": 10,
+                "duration": 8,
                 "success_rate": 25,
                 "need": "danger<15",
-                "max": 3,
                 "cost": {
                     "supplication": 6,
                     "dominance": 20
@@ -849,7 +894,6 @@
             {
                 "id": "kidnapping",
                 "require": "captive",
-                "max": 1,
                 "cost": {
                     "skillpoints": 50,
                     "dominance": 10
@@ -858,7 +902,7 @@
                 "mod": {
                     "capture_person.result.dominance": 1,
                     "capture_person.success_rate": 10,
-                    "capture_person.speed": 10,
+                    "capture_person.speed": 30,
                     "charm.max": 1
                 }
             },
