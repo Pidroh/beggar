@@ -355,6 +355,54 @@
                 }
             },
             {
+                "id": "ratabuser",
+                "name": "Rat abuser",
+                "desc": "Hurt rats in your sadistic activities",
+                "require": "sadism>1&&causepain>4",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "thoughts": 40,
+                    "dominance": 8,
+                    "rats": 4
+                },
+                "mods": {
+                    "causepain.result.dominance": 1
+                }
+            },
+            {
+                "id": "catabuser",
+                "name": "Cat abuser",
+                "desc": "Hurt cats in your sadistic activities",
+                "require": "sadism>1&&causepain>10&&animalburner",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "cats": 2
+                },
+                "mods": {
+                    "causepain.result.dominance": 1
+                }
+            },
+            {
+                "id": "humanabuser",
+                "name": "Human abuser",
+                "desc": "Hurt humans in your sadistic activities",
+                "require": "sadism>2&&causepain>15",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "thoughts": 100,
+                    "dominance": 60,
+                    "captive": 1
+                },
+                "mods": {
+                    "causepain.result.dominance": 1
+                }
+            },
+            {
                 "id": "burncat_little",
                 "name": "Burn cat",
                 "desc": "Have the felyne taste the flame",
