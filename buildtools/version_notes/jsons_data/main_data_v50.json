@@ -311,16 +311,6 @@
                 }
             },
             {
-                "id": "causepain",
-                "name": "Cause pain",
-                "desc": "Inflict hurt upon living beings",
-                "require": "sadistictend_1",
-                "duration": 3,
-                "result": {
-                    "dominance": 1
-                }
-            },
-            {
                 "id": "ratfire_ember",
                 "name": "Ember a rat",
                 "desc": "Throw a little ember at a rat and hear a cry of pain",
@@ -521,7 +511,6 @@
                 "name": "Sadistic tendencies",
                 "desc": "Shows a subtle enjoyment in causing others pain",
                 "require": "burnant>1&&sadism",
-                "lock": "burnant",
                 "duration": 20,
                 "max": 1,
                 "cost": {

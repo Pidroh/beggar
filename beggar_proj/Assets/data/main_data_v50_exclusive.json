@@ -89,7 +89,7 @@
                 "id": "fire_ending",
                 "name": "Answer in the fire",
                 "desc": "Stare into the carnage, into the flame",
-                "require": "sadism>4",
+                "require": "sadism>4&&t_tier3",
                 "duration": 30,
                 "need": "handdrill_dot",
                 "max": 1,

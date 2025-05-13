@@ -1382,7 +1382,7 @@
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "need": "theself_2",
-                "require": "rodentology>=6&&ratbeggar",
+                "require": "rodentology>=6&&ratbeggar&&t_tier1",
                 "cost": {
                     "ratbond": 200,
                     "rats": 18
@@ -1927,7 +1927,7 @@
                 "id": "irreversible",
                 "title": "Irreversible Action",
                 "content": "Once done, this action cannot be undone. Are you sure?",
-                "tags": "max_decrease"
+                "tags": "max_decrease,irreversible"
             },
             {
                 "id": "exclusive_upgrade",
@@ -1940,6 +1940,7 @@
                 "content": "Performing this action will complete the game. Are you sure?",
                 "tags": "ending_game"
             }
+            
         ]
     },
     {
@@ -2140,23 +2141,7 @@
                     "space": 2
                 }
             },
-            {
-                "id": "firewood",
-                "name": "Firewood",
-                "desc": "Some firewood, keeps you warm at night",
-                "require": "coin>2",
-                "max": 1,
-                "cost": {
-                    "coin": 3
-                },
-                "mod": {
-                    "nutrition.max": 50,
-                    "supplication.max": 50,
-                    "supplication.rate": 1,
-                    "coin.rate": -0.05,
-                    "space": 2
-                }
-            },
+            
             {
                 "id": "ratstatue",
                 "name": "Rat Statue",
@@ -2287,7 +2272,7 @@
                     "TASK",
                     "CLASS"
                 ],
-                "icon" : "task",
+                "icon" : "tab_tasks",
                 "separator": [
                     {
                         "id": "action",
@@ -2328,7 +2313,7 @@
                 "unit_types": [
                     "RESOURCE"
                 ],
-                "icon" : "resource",
+                "icon" : "tab_resources",
                 "separator": [
                     {
                         "id": "resource",
@@ -2343,7 +2328,7 @@
                     "SKILL"
                 ],
                 "require": "t_job",
-                "icon" : "skill",
+                "icon" : "tab_skills",
                 "separator": [
                     {
                         "id": "skill",
@@ -2361,7 +2346,7 @@
                 "unit_types": [
                     "LOCATION"
                 ],
-                "icon" : "location",
+                "icon" : "tab_exploration_c",
                 "separator": [
                     {
                         "id": "location",
@@ -2376,7 +2361,7 @@
                     "HOUSE", "FURNITURE"
                 ],
                 "require": "t_job",
-                "icon" : "housing",
+                "icon" : "tab_housing",
                 "separator": [
                     {
                         "id": "housing",
@@ -2400,7 +2385,8 @@
                 "unit_types": [
                 ],
                 "contains_logs": true,
-                "icon" : "logs",
+                "necessary_for_desktop_and_thinnable": true,
+                "icon" : "tab_log",
                 "separator": [
                     {
                         "id": "log",
@@ -2413,14 +2399,14 @@
                 "id": "settings",
                 "unit_types": [
                 ],
-                "icon" : "settings",
+                "icon" : "tab_config",
                 "open_settings": true
             },
             {
                 "id": "others",
                 "unit_types": [
                 ],
-                "icon" : "others",
+                "icon" : "tab_plus",
                 "open_other_tabs": true
             }
         ]
