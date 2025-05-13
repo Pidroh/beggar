@@ -198,6 +198,24 @@
                 }
             },
             {
+                "id": "charm_follower",
+                "name": "Charm follower",
+                "require": "charm",
+                "desc": "Charm people into followers",
+                "success_rate": 20,
+                "duration": 5,
+                "cost": {
+                    "charm": 3
+                },
+                "result": {
+                    "followers": 1
+                },
+                "result_fail":{
+                    "charisma.xp": 8,
+                    "charm": 1
+                }
+            },
+            {
                 "id": "feed_the_fire",
                 "name": "Control the flame",
                 "require": "kindling>1",
@@ -929,7 +947,8 @@
                     "followers.max": 1,
                     "dominance.max": 2,
                     "supplication.max": 5,
-                    "charm.max": 3
+                    "charm.max": 3,
+                    "charm_follower.success_rate": 5
                 }
             }
         ]
