@@ -180,10 +180,25 @@
                     "benevolence": 15,
                     "followers": 3
                 },
-                "result":{
+                "mod":{
                     "poor_feast.max": 2,
                     "poor_feast.mod.benevolence.max": 10,
                     "poor_feast.mod.benevolence.rate": 0.01
+                }
+            },
+            {
+                "id": "better_foodsharing",
+                "name": "Sharing better food",
+                "desc": "Sharing more than crumbs",
+                "require": "charity>1&&food",
+                "max": 1,
+                "duration": 20,
+                "cost": {
+                    "food": 5,
+                    "benevolence": 80
+                },
+                "mod":{
+                    "share_food.result.benevolence": 9
                 }
             },
             {
