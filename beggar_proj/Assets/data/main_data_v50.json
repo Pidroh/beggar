@@ -216,6 +216,22 @@
                 }
             },
             {
+                "id": "better_charming",
+                "name": "Better charming",
+                "require": "charisma>1",
+                "desc": "Charm people into followers",
+                "duration": 10,
+                "max": 2,
+                "cost": {
+                    "thoughts": 150,
+                    "clarity": 5
+                },
+                "mod": {
+                    "charm_follower.success_rate": 15,
+                    "charm_follower.speed": 20
+                }
+            },
+            {
                 "id": "feed_the_fire",
                 "name": "Control the flame",
                 "require": "kindling>1",
