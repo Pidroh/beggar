@@ -779,7 +779,7 @@
                 "mod": {
                     "thoughts.max": 50,
                     "supplication.max": 90,
-                    "benevolence.max": 20,
+                    "charity.max": 1,
                     "benevolence.rate": 0.5,
                     "supplication.rate": 0.8,
                     "innermind.max": 2
