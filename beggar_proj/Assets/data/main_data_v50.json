@@ -124,18 +124,16 @@
                 "name": "Fabricated emotions",
                 "desc": "Mimic others, copy their ways. Fake emotions",
                 "require": "introspection>2&&dominance>30",
-                "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
                 "cost": {
                     "dominance": 60,
-                    "sorrow": 10,
-                    "clarity": 15
+                    "sorrow": 3,
+                    "clarity": 50
                 },
                 "mods":{
                     "dominance.max": 15,
-                    "charm.max": 5,
-                    "introspection.max": 1
+                    "charm.max": 5
                 }
             },
             {
@@ -184,6 +182,22 @@
                 }
             },
             {
+                "id": "rest_charm",
+                "name": "Focus on charms",
+                "require": "charisma",
+                "desc": "Honing attraction while resting",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "supplication": 80,
+                    "thoughts": 30,
+                    "clarity": 2
+                },
+                "mods":{
+                    "pleafocus.effect.charm": 1
+                }
+            },
+            {
                 "id": "feed_the_fire",
                 "name": "Control the flame",
                 "require": "kindling>1",
@@ -221,7 +235,7 @@
                     "coin": 1
                 },
                 "result":{
-                    "animalfat": 1
+                    "animalfat": 3
                 }
             },
             {
@@ -261,7 +275,7 @@
                 "require": "animalfat>=1",
                 "need": "handdrill_dot",
                 "cost": {
-                    "animalfat": 3,
+                    "animalfat": 1,
                     "firepower": 2
                 },
                 "buy": {
@@ -863,7 +877,6 @@
             {
                 "id": "empathy",
                 "require": "empathypath",
-                "max": 1,
                 "cost": {
                     "skillpoints": 100,
                     "benevolence": 10,
@@ -879,7 +892,6 @@
             {
                 "id": "charity",
                 "require": "empathy>1",
-                "max": 1,
                 "cost": {
                     "skillpoints": 50,
                     "benevolence": 10
@@ -909,7 +921,6 @@
             {
                 "id": "charisma",
                 "require": "empathy||fabricated_emotions",
-                "max": 1,
                 "cost": {
                     "skillpoints": 100
                 },
@@ -1024,7 +1035,7 @@
                     "coin": 5
                 },
                 "mod": {
-                    "animalfat.max": 1,
+                    "animalfat.max": 2,
                     "space": 1
                 }
             },
