@@ -1311,6 +1311,22 @@
                     "benevolence.max": 5,
                     "space": 1
                 }
+            },
+            {
+                "id": "bigbowl",
+                "name": "Big bowl",
+                "desc": "Use it to store all those crumbles",
+                "require": "sharingbowl",
+                "cost": {
+                    "foraging": 20,
+                    "breadcrumbs": 25
+                },
+                "mod": {
+                    "breadcrumbs.max": 120,
+                    "supplication.max": 10,
+                    "benevolence.max": 3,
+                    "space": 2
+                }
             }
         ]
     }
