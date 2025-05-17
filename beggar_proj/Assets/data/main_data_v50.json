@@ -276,6 +276,27 @@
                 }
             },
             {
+                "id": "warm_feline_hearts",
+                "name": "Warm feline heart",
+                "desc": "Have your rats gather and share food",
+                "require": "felinology>2&&empathy>2",
+                "buy":{
+                    "cat": 3,
+                    "catbond": 40
+                },
+                "cost":{
+                    "cat": 2,
+                    "catbond": 30
+                },
+                "dot": {
+                    "duration": 90,
+                    "mod":{
+                        "benevolence.rate": 2,
+                        "benevolence.max": 100
+                    }
+                }
+            },
+            {
                 "id": "flaming_rats",
                 "name": "Flaming rats",
                 "desc": "TODO",
