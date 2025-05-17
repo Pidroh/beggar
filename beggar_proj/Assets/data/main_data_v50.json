@@ -237,6 +237,23 @@
                 }
             },
             {
+                "id": "dominant_buff_exp",
+                "name": "Dominant high",
+                "desc": "Feel the pleasure of your feelings of control",
+                "require": "dominance>200",
+                "duration": 5,
+                "buy":{
+                    "dominance": 250
+                },
+                "cost": {
+                    "dominance": 250
+                },
+                "mod":{
+                    "boredom.max": 20,
+                    "irritation.max": 20
+                }
+            },
+            {
                 "id": "benevolent_rats",
                 "name": "Benevolent rats",
                 "desc": "Have your rats gather and share food",
