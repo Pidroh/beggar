@@ -242,6 +242,33 @@
                 }
             },
             {
+                "id": "flaming_rats",
+                "name": "Flaming rats",
+                "desc": "TODO",
+                "require": "rodentology>6&&sadism>2&&kindling>3",
+                "buy":{
+                    "rats": 12,
+                    "fireaffinity": 20,
+                    "flamepower": 5,
+                    "ratbond": 50
+                },
+                "cost":{
+                    "rats": 7,
+                    "flamepower": 5
+                },
+                "dot": {
+                    "duration": 50,
+                    "mod":{
+                        "dominance.max": 100,
+                        "dominance.rate": 1,
+                        "flamepower.max": 10,
+                        "flamepower.rate": 1,
+                        "rats.max": -15,
+                        "ratbond.max": -200
+                    }
+                }
+            },
+            {
                 "id": "collectfirewood",
                 "name": "Gather wood",
                 "require": "drywoodknowledge",
