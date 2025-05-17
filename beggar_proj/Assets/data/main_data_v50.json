@@ -88,9 +88,9 @@
                 "duration": 40,
                 "max": 1,
                 "cost": {
-                    "benevolence": 3,
-                    "gratitude": 40,
-                    "clarity": 8
+                    "benevolence": 2,
+                    "gratitude": 12,
+                    "clarity": 2
                 },
                 "mods":{
                     "clarity.max": 1,
@@ -357,10 +357,14 @@
                 "name": "Share crumbs",
                 "desc": "It's not much, but you are welcome to have it",
                 "require": "sharingbowl&&gratitude>5",
-                "duration": 8,
-                "cost": {
+                "duration": 5,
+                "buy": {
                     "breadcrumbs": 30,
                     "gratitude": 10
+                },
+                "cost":{
+                    "breadcrumbs": 15,
+                    "gratitude": 3
                 },
                 "run": {
                     "supplication": 2
@@ -1117,8 +1121,8 @@
                 "require": "empathypath",
                 "cost": {
                     "skillpoints": 100,
-                    "benevolence": 10,
-                    "clarity": 10
+                    "benevolence": 7,
+                    "clarity": 3
                 },
                 "desc": "Honing a keen eye on how others feel",
                 "mod": {
