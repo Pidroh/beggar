@@ -297,6 +297,23 @@
                 }
             },
             {
+                "id": "benevolence_buff_exp",
+                "name": "Benevolence high",
+                "desc": "Feel the pleasure of your feelings of control",
+                "require": "benevolence>200",
+                "duration": 5,
+                "buy":{
+                    "benevolence": 250
+                },
+                "cost": {
+                    "benevolence": 250
+                },
+                "mod":{
+                    "fatigue.max": 20,
+                    "irritation.max": 20
+                }
+            },
+            {
                 "id": "flaming_rats",
                 "name": "Flaming rats",
                 "desc": "TODO",
