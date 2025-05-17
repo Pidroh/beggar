@@ -220,6 +220,23 @@
                 }
             },
             {
+                "id": "multilateanimals",
+                "name": "Multilate animals",
+                "desc": "Kill rats and cats, making a mess out of it. This is really fun",
+                "require": "rats>8&&cat>2&&sadism>3",
+                "max": 1,
+                "duration": 20,
+                "cost": {
+                    "rats": 12,
+                    "cat": 3,
+                    "dominance": 50
+                },
+                "mod":{
+                    "dominance.rate": 0.4,
+                    "dominance.max": 100
+                }
+            },
+            {
                 "id": "benevolent_rats",
                 "name": "Benevolent rats",
                 "desc": "Have your rats gather and share food",
