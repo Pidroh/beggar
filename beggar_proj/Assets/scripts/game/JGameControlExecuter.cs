@@ -55,7 +55,7 @@ public static class JGameControlExecuter
                 if (!mgc.JLayoutRuntime.jLayCanvas.IsChildVisible(tabIndex)) continue;
                 numberOfTabsVisible++;
             }
-            numberOfTabsVisible = Mathf.Min(numberOfTabsVisible, maxNumberOfOptionalContentTabsVisible);
+            numberOfTabsVisible = Mathf.Clamp(numberOfTabsVisible, 1, maxNumberOfOptionalContentTabsVisible);
         }
 
         var widthOfContentTab = availableActualWidthForContent / numberOfTabsVisible;
