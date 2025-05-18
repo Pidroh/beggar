@@ -115,6 +115,7 @@ namespace JLayout
         private bool _visibleSelf;
         private bool _parentShowing = true;
         private bool _visibleResult;
+        public int[] Dirty = new int[2];
 
         private void UpdateVisibility()
         {
