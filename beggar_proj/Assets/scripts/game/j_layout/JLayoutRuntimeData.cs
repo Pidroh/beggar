@@ -123,9 +123,17 @@ namespace JLayout
             if (newVisibility == _visibleResult) return;
             _visibleResult = newVisibility;
             RectTransform.gameObject.SetActive(_visibleResult);
-            if (_visibleResult) 
+            if (_visibleResult)
             {
                 MarkDirtyWithChildren();
+            }
+            else 
+            {
+                // if not visible, has to let the parent know
+                if (ChildSelf != null)
+                {
+                    ChildSelf.PropagateDirtyUp();
+                }
             }
         }
 
