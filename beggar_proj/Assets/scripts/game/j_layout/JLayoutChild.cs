@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using HeartUnity.View;
+using System;
 
 namespace JLayout
 {
@@ -19,6 +20,7 @@ namespace JLayout
         public AxisMode[] AxisModes => AxisModeOverride ?? Commons.AxisModes;
 
         public TextData TextData { get; internal set; }
+        public JLayoutRuntimeUnit Parent { get; internal set; }
 
         public float SizeRatioAsGauge = 1f;
 
@@ -58,6 +60,12 @@ namespace JLayout
                 UiUnit.Image.color = colorV;
             if (UiUnit.text != null)
                 UiUnit.text.color = colorV;
+        }
+
+        internal void PropagateDirtyUp()
+        {
+            if (Parent == null) return;
+            Parent.PropagateDirtyUp();
         }
     }
 }

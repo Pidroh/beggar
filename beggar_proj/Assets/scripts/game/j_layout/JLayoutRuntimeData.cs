@@ -123,6 +123,26 @@ namespace JLayout
             if (newVisibility == _visibleResult) return;
             _visibleResult = newVisibility;
             RectTransform.gameObject.SetActive(_visibleResult);
+            if (_visibleResult) 
+            {
+                MarkDirtyWithChildren();
+            }
+        }
+
+        public void MarkDirtyWithChildren()
+        {
+            if (ChildSelf != null) 
+            {
+                ChildSelf.PropagateDirtyUp();
+            }
+            for (int i = 0; i < Dirty.Length; i++)
+            {
+                Dirty[i]++;
+            }
+            foreach (var child in LayoutChildren)
+            {
+                child.LayoutRU.MarkDirtyWithChildren();
+            }
         }
 
         public JLayoutRuntimeUnit(RectTransform childRT2)
@@ -168,6 +188,7 @@ namespace JLayout
         {
             Children.Add(child);
             child.Rect.SetParent(RectTransform);
+            child.Parent = this;
         }
 
         internal JLayoutChild AddLayoutAsChild(JLayoutRuntimeUnit layoutRU, ChildAddParameters? param = null)
@@ -226,6 +247,7 @@ namespace JLayout
             }
             layoutRU.ChildSelf = item;
             Children.Add(item);
+            item.Parent = this;
             layoutRU.RectTransform.SetParent(ContentTransform);
             if (!param.HasValue) return item;
             item.PositionModeOverride = param.Value.PositionModeOverride;
@@ -263,6 +285,16 @@ namespace JLayout
                 return true;
             }
             return false;
+        }
+
+        internal void PropagateDirtyUp()
+        {
+            for (int i = 0; i < Dirty.Length; i++)
+            {
+                Dirty[i]++;
+            }
+            if (ChildSelf == null) return;
+            ChildSelf.PropagateDirtyUp();
         }
     }
 
