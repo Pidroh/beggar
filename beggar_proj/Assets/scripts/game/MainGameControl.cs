@@ -11,7 +11,6 @@ public class MainGameControl : MonoBehaviour
 {
 
     public ArcaniaGameConfigurationUnit ResourceJson;
-    public DynamicCanvas dynamicCanvas;
 
     [SerializeField]
     public TMP_FontAsset Font;

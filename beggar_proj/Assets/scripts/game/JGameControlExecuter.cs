@@ -41,8 +41,23 @@ public static class JGameControlExecuter
 
         // if on desktop mode, add log tab to the number
         if (desktopMode) maxNumberOfTabsVisible++;
-        // temporary code, should calculate this based on which tabs are visible
+
+        // initialization for mobile
         var numberOfTabsVisible = maxNumberOfOptionalContentTabsVisible;
+        if (desktopMode)
+        {
+            numberOfTabsVisible = 0;
+            for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
+            {
+                if (controlData.TabControlUnits[tabIndex].TabData.Tab.NecessaryForDesktopAndThinnable) continue;
+                if (controlData.TabControlUnits[tabIndex].TabData.Tab.OpenOtherTabs) continue;
+                if (controlData.TabControlUnits[tabIndex].TabData.Tab.OpenSettings) continue;
+                if (!mgc.JLayoutRuntime.jLayCanvas.IsChildVisible(tabIndex)) continue;
+                numberOfTabsVisible++;
+            }
+            numberOfTabsVisible = Mathf.Min(numberOfTabsVisible, maxNumberOfOptionalContentTabsVisible);
+        }
+
         var widthOfContentTab = availableActualWidthForContent / numberOfTabsVisible;
         controlData.tabMenu[Direction.WEST].SetVisibleSelf(desktopMode);
         controlData.tabMenu[Direction.SOUTH].SetVisibleSelf(!desktopMode);
@@ -242,9 +257,9 @@ public static class JGameControlExecuter
                                     {
                                         if (unit.Data.BuyStatus == BuyStatus.NeedsBuy)
                                         {
-                                            unit.TitleText.SetTextRaw("Acquire "+ unit.Data.Name);
+                                            unit.TitleText.SetTextRaw("Acquire " + unit.Data.Name);
                                         }
-                                        else if (unit.Data.BuyStatus == BuyStatus.Bought) 
+                                        else if (unit.Data.BuyStatus == BuyStatus.Bought)
                                         {
                                             unit.TitleText.SetTextRaw(unit.Data.Name);
                                         }
@@ -288,7 +303,7 @@ public static class JGameControlExecuter
                                                 {
                                                     leftText += $" Success rate: {unit.Data.ConfigTask.SuccessRatePercent.Value}% ";
                                                 }
-                                                if (dotDuration.HasValue) 
+                                                if (dotDuration.HasValue)
                                                 {
                                                     leftText += $"\nEffect Duration: {dotDuration.Value}s ";
                                                 }
@@ -421,11 +436,12 @@ public static class JGameControlExecuter
                 ttv.SetVisibleSelf(visibleSelf);
                 ttv.Disabled = item.Source.Value == 0;
             }
-            else {
+            else
+            {
                 ttv.SetVisibleSelf(item.Source.Value != 0);
             }
             hasAnyVisible |= ttv.Visible;
-            ttv.SetTextRaw(1, "+"+(item.Source.Value * item.Value));
+            ttv.SetTextRaw(1, "+" + (item.Source.Value * item.Value));
         }
         if (modList.Header == null) return;
         modList.Header.SetVisibleSelf(hasAnyVisible);
@@ -485,7 +501,7 @@ public static class JGameControlExecuter
             if (item == null) continue;
             var sep = item.Header;
             var resourceChanges = Data.ConfigTask.GetResourceChangeList(i);
-            
+
             bool skip = (Data.Skill != null && Data.Skill.Acquired && resourceChangeType == ResourceChangeType.COST);
             skip = skip || (Data.BuyStatus == BuyStatus.Bought && resourceChangeType == ResourceChangeType.BUY);
             if (item == null || skip)
