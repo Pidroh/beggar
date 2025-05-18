@@ -130,6 +130,10 @@ namespace JLayout
             RectTransform = childRT2;
             _visibleSelf = RectTransform.gameObject.activeSelf;
             UpdateVisibility();
+            for (int i = 0; i < Dirty.Length; i++)
+            {
+                Dirty[i] = 2;
+            }
         }
 
         public RectTransform ContentTransformOverride { get; internal set; }
