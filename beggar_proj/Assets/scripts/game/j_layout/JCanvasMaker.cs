@@ -293,6 +293,7 @@ namespace JLayout
             viewportRT.anchorMax = Vector2.one;
             viewportRT.offsetMin = Vector2.zero;
             viewportRT.offsetMax = Vector2.zero;
+            viewportRT.SetPivotByIndex(0, 0);
 
             CanvasRenderer viewportCR = viewportGO.AddComponent<CanvasRenderer>();
             Image viewportImage = viewportGO.AddComponent<Image>();
@@ -314,7 +315,8 @@ namespace JLayout
 
             const int scrollBarWidth = 10;
 
-            contentRT.SetOffsetMaxByIndex(0, -scrollBarWidth);
+            // contentRT.SetOffsetMaxByIndex(0, -scrollBarWidth);
+            contentRT.SetOffsetMaxByIndex(0, -4);
 
 
             lp.ContentTransformOverride = contentRT;
