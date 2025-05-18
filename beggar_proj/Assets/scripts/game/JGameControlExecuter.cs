@@ -146,12 +146,12 @@ public static class JGameControlExecuter
                     mgc.JLayoutRuntime.jLayCanvas.childrenForLayouting.Add(child);
                 }
                 child.Mandatory = true;
-                child.DesiredSize = NormalThinWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                child.UpdateDesiredSize(NormalThinWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
             }
             else
             {
                 child.Mandatory = false;
-                child.DesiredSize = widthOfContentTab;
+                child.UpdateDesiredSize(widthOfContentTab);
             }
             #endregion
 

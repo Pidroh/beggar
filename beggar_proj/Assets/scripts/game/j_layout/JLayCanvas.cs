@@ -106,7 +106,7 @@ namespace JLayout
 
         internal void SetChildSize(int tabIndex, float size)
         {
-            children[tabIndex].DesiredSize = size;
+            children[tabIndex].UpdateDesiredSize(size);
         }
     }
 }
