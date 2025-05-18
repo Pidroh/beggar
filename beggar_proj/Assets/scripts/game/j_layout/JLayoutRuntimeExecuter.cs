@@ -137,7 +137,7 @@ namespace JLayout
 
         private static void TemporarySolveHeightAndPosition(JLayoutRuntimeUnit parentLayout, RectTransform contentRect)
         {
-            
+            if (!parentLayout.TryConsumeHeightDirty()) return;
             var defaultPositionModes = parentLayout.DefaultPositionModes;
             JLayoutChild previousChild = null;
             float totalChildOccupiedHeight = 0f;

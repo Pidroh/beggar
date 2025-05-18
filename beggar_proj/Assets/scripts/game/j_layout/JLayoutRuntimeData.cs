@@ -139,9 +139,9 @@ namespace JLayout
             {
                 Dirty[i]++;
             }
-            foreach (var child in LayoutChildren)
+            foreach (var child in Children)
             {
-                child.LayoutRU.MarkDirtyWithChildren();
+                child.LayoutRU?.MarkDirtyWithChildren();
             }
         }
 
@@ -152,7 +152,7 @@ namespace JLayout
             UpdateVisibility();
             for (int i = 0; i < Dirty.Length; i++)
             {
-                Dirty[i] = 2;
+                Dirty[i] = 3;
             }
         }
 
@@ -280,8 +280,20 @@ namespace JLayout
         internal bool TryConsumeWidthDirty()
         {
             int axis = 0;
-            if (Dirty[axis] > 0) {
-                Dirty[axis]--;
+            return TryConsumeDirtyIndex(axis);
+        }
+
+        internal bool TryConsumeHeightDirty()
+        {
+            int axis = 1;
+            return TryConsumeDirtyIndex(axis);
+        }
+
+        private bool TryConsumeDirtyIndex(int index)
+        {
+            if (Dirty[index] > 0)
+            {
+                Dirty[index]--;
                 return true;
             }
             return false;
