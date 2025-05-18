@@ -327,7 +327,13 @@ namespace JLayout
             LayoutRuntimeUnit = layoutRuntimeUnit;
         }
 
-        public float DesiredSize { get; internal set; } = 320;
+        public float DesiredSize { get; private set; } = 320;
+        public void UpdateDesiredSize(float width) 
+        {
+            if (DesiredSize == width) return;
+            DesiredSize = width;
+            LayoutRuntimeUnit.MarkDirtyWithChildren();
+        }
         public bool Mandatory { get; internal set; }
     }
 }
