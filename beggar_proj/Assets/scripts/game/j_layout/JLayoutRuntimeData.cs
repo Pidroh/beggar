@@ -335,5 +335,6 @@ namespace JLayout
             LayoutRuntimeUnit.MarkDirtyWithChildren();
         }
         public bool Mandatory { get; internal set; }
+        public float PreviousWidth { get; internal set; }
     }
 }

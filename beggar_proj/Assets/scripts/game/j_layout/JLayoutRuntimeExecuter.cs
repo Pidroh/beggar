@@ -58,6 +58,13 @@ namespace JLayout
                     continue;
                 }
 
+                float currentWidth = mainCanvasChild.LayoutRuntimeUnit.ContentTransform.GetWidth();
+                if(currentWidth != mainCanvasChild.PreviousWidth) 
+                {
+                    mainCanvasChild.PreviousWidth = currentWidth;
+                    mainCanvasChild.LayoutRuntimeUnit.MarkDirtyWithChildren();
+                }
+                
                 // temporary code
                 float newSize = mainCanvasChild.DesiredSize;
                 parentLayout.RectTransform.SetWidth(newSize);
@@ -65,6 +72,8 @@ namespace JLayout
                 parentLayout.RectTransform.SetLeftXToParent(offsetLeftX);
                 parentLayout.RectTransform.SetOffsetMinByIndex(1, offsetBottomY);
                 offsetLeftX += newSize;
+                
+                
                 ProcessChildren(parentLayout);
             }
 
