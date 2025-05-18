@@ -254,6 +254,16 @@ namespace JLayout
         {
             return ButtonChildren[v].Item2.UiUnit.Clicked;
         }
+
+        internal bool TryConsumeWidthDirty()
+        {
+            int axis = 0;
+            if (Dirty[axis] > 0) {
+                Dirty[axis]--;
+                return true;
+            }
+            return false;
+        }
     }
 
     public class JLayCanvasChild

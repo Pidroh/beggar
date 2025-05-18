@@ -363,6 +363,7 @@ namespace JLayout
         private static void SolveLayoutWidth(JLayoutRuntimeUnit parentLayout, RectTransform parentRect)
         {
             if (!parentLayout.Visible) return;
+            if (!parentLayout.TryConsumeWidthDirty()) return;
             var widthOfContentPhysical = parentRect.GetWidth() - (parentLayout.LayoutData.commons.Padding.left + parentLayout.LayoutData.commons.Padding.right) * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
             var widthOfContentForComsumptionPhysical = widthOfContentPhysical;
             using var _1 = ListPool<JLayoutChild>.Get(out var fillUpChildren);
