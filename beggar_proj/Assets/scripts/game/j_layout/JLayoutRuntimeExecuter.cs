@@ -90,6 +90,7 @@ namespace JLayout
             ProcessColor(parentLayout, null);
             void ProcessColor(JLayoutRuntimeUnit lay, bool? active)
             {
+                if (!lay.Visible) return;
                 if (lay.ActivePowered.HasValue)
                 {
                     active = lay.ActivePowered;
