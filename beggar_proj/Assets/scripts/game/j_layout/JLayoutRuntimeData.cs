@@ -23,7 +23,7 @@ namespace JLayout
 
         internal void SetGaugeRatio(float xPRatio)
         {
-            imageOwner.ImageChildren[index].SizeRatioAsGauge = xPRatio;
+            imageOwner.ImageChildren[index].UpdateSizeRatioAsGauge(xPRatio);
         }
 
         internal void OverwriteColor(ColorSetType type, ColorData color)

@@ -22,7 +22,14 @@ namespace JLayout
         public TextData TextData { get; internal set; }
         public JLayoutRuntimeUnit Parent { get; internal set; }
 
-        public float SizeRatioAsGauge = 1f;
+        private float _sizeRatioAsGauge = 1f;
+        public float SizeRatioAsGauge => _sizeRatioAsGauge;
+        public void UpdateSizeRatioAsGauge(float ratio)
+        {
+            if (_sizeRatioAsGauge == ratio) return;
+            _sizeRatioAsGauge = ratio;
+            PropagateDirtyUp();
+        }
 
         public int[] currentStep = new int[2];
 
@@ -39,10 +46,11 @@ namespace JLayout
         internal void ApplyColor(ColorSetType color)
         {
             Color colorV;
-            if (OverwriteColorSet != null && OverwriteColorSet.ColorDatas.TryGetValue(color, out var v)) 
+            if (OverwriteColorSet != null && OverwriteColorSet.ColorDatas.TryGetValue(color, out var v))
             {
                 colorV = v.Colors[0];
-            } else 
+            }
+            else
             {
                 ColorSet colorSet = Commons.ColorSet;
                 colorSet ??= TextData?.ColorSet;

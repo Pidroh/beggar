@@ -318,7 +318,7 @@ public static class JGameControlExecuter
 
                                     if (pair.Key == UnitType.LOCATION)
                                         progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
-                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = progress;
+                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(progress);
                                     // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
                                     // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
                                     if (unit.TaskClicked)
@@ -350,7 +350,7 @@ public static class JGameControlExecuter
                                     unit.MainExecuteButton.SetButtonTextRaw(acquired ? "Practice skill" : "Acquire Skill");
                                     unit.GaugeLayout.SetVisibleSelf(acquired);
                                     unit.GaugeProgressImage.SetGaugeRatio(data.Skill.XPRatio);
-                                    unit.MainExecuteButton.buttonOwner.ButtonChildren[0].Item1.ImageChildren[1].SizeRatioAsGauge = unit.Data.TaskProgressRatio;
+                                    unit.MainExecuteButton.buttonOwner.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(unit.Data.TaskProgressRatio);
                                     if (acquired)
                                     {
                                         unit.TitleWithValue.SetTextRaw(1, $"{unit.Data.Value} / {unit.Data.Max}");
