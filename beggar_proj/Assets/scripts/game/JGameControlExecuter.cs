@@ -59,6 +59,8 @@ public static class JGameControlExecuter
         }
 
         var widthOfContentTab = availableActualWidthForContent / numberOfTabsVisible;
+        float maxContentTabWidth = NormalMinTabWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize * 2;
+        widthOfContentTab = Mathf.Min(widthOfContentTab, maxContentTabWidth);
         controlData.tabMenu[Direction.WEST].SetVisibleSelf(desktopMode);
         controlData.tabMenu[Direction.SOUTH].SetVisibleSelf(!desktopMode);
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
