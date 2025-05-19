@@ -257,6 +257,10 @@ namespace JLayout
             Children.Add(item);
             item.Parent = this;
             layoutRU.RectTransform.SetParent(ContentTransform);
+            if (Dirty[0] <= 0) 
+            {
+                MarkDirtyWithChildren();
+            }
             if (!param.HasValue) return item;
             item.PositionModeOverride = param.Value.PositionModeOverride;
             return item;

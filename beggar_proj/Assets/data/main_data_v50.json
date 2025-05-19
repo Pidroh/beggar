@@ -1203,6 +1203,21 @@
         "type": "FURNITURE",
         "items":[
             {
+                "id": "symbolicspoon",
+                "name": "Symbolic spoon",
+                "desc": "An iron spoon that stands for a heart of empathy",
+                "require": "empathy>2&&t_tier2",
+                "max": 1,
+                "cost": {
+                    "foraging": 5
+                },
+                "mod": {
+                    "fireaffinity.max": 1,
+                    "handdrill.success_rate": 5,
+                    "space": 1
+                }
+            },
+            {
                 "id": "woodstick",
                 "name": "Wood stick",
                 "desc": "A little stick. Very dry. Can be used to start fires?",
