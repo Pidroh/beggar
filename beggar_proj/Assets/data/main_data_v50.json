@@ -185,6 +185,20 @@
                 }
             },
             {
+                "id": "helpelderly",
+                "name": "Help the elderly",
+                "desc": "They may be wise, yet also frail. You are weak, but so are them",
+                "require": "charity>1",
+                "max": 3,
+                "duration": 10,
+                "cost": {
+                    "benevolence": 30
+                },
+                "mod":{
+                    "benevolence.max": 5
+                }
+            },
+            {
                 "id": "better_feasts_follower",
                 "name": "Group feasts",
                 "desc": "Have your followers help out with the feasts",
