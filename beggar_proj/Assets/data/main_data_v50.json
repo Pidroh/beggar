@@ -199,6 +199,41 @@
                 }
             },
             {
+                "id": "sharesadness",
+                "name": "Talk about the sad times",
+                "desc": "Sit down with the poor and let everyone talk about their sad experiences",
+                "require": "empathy>1&&sadness>30",
+                "max": 2,
+                "duration": 40,
+                "cost": {
+                    "benevolence": 15,
+                    "sadness": 40
+                },
+                "mod":{
+                    "benevolence.max": 10,
+                    "sadness.max": 10,
+                    "benevolence.rate": 0.01
+                }
+            },
+            {
+                "id": "sharesorrow",
+                "name": "Cry together",
+                "desc": "Really listen, share, and let the emotions flow",
+                "require": "empathy>2&&sharesadness>1",
+                "max": 1,
+                "duration": 40,
+                "cost": {
+                    "benevolence": 60,
+                    "sadness": 50,
+                    "sorrow": 10
+                },
+                "mod":{
+                    "benevolence.max": 30,
+                    "sorrow.max": 30,
+                    "benevolence.rate": 0.05
+                }
+            },
+            {
                 "id": "better_feasts_follower",
                 "name": "Group feasts",
                 "desc": "Have your followers help out with the feasts",
