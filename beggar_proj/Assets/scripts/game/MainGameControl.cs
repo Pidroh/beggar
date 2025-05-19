@@ -1,16 +1,16 @@
 using HeartUnity;
 using HeartUnity.View;
+using JLayout;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
 public class MainGameControl : MonoBehaviour
 {
 
-    public TextAsset ResourceJson;
-    public DynamicCanvas dynamicCanvas;
-    public List<TabControlUnit> TabControlUnits = new();
+    public ArcaniaGameConfigurationUnit ResourceJson;
 
     [SerializeField]
     public TMP_FontAsset Font;
@@ -18,6 +18,7 @@ public class MainGameControl : MonoBehaviour
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
     public CanvasMaker.CreateObjectRequest DialogObjectRequest;
     public CanvasMaker.CreateButtonRequest ButtonRequest;
+    public CanvasMaker.CreateButtonRequest ButtonRequest_TabSelected;
     public CanvasMaker.CreateCanvasRequest CanvasRequest;
     public CanvasMaker.CreateGaugeRequest SkillXPGaugeRequest;
     public ArcaniaModel arcaniaModel = new();
@@ -26,29 +27,37 @@ public class MainGameControl : MonoBehaviour
 
     public EngineView EngineView { get; internal set; }
     public float TimeMultiplier { get; private set; } = 1;
-    public RuntimeUnit EndGameRuntimeUnit { get; internal set; }
-    public UIUnit EndGameMessage { get; internal set; }
     public LayoutParent TabButtonLayout { get; internal set; }
 
     public RobustDeltaTime RobustDeltaTime = new();
     public ArcaniaPersistence ArcaniaPersistence;
 
     public HeartGame HeartGame { get; private set; }
+    public ButtonWithProgressBar SettingButtonEnding { get; internal set; }
+    public LayoutParent EndingOverlayLayout { get; internal set; }
+    public LayoutParent TabButtonOverlayLayout { get; internal set; }
+    public JLayoutRuntimeData JLayoutRuntime { get; internal set; }
+    public JGameControlDataHolder JControlData { get; internal set; }
 
     public float lastSaveTime;
-    public ControlExploration controlExploration;
+    public int SkillFontSize;
+    private int _logCountPreProcessedByControl;
 
     // Start is called before the first frame update
     void Start()
     {
         HeartGame = HeartGame.Init();
         lastSaveTime = Time.unscaledTime;
-        controlExploration = new ControlExploration(this);
-        MainGameControlSetup.Setup(this);
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+        MainGameControlSetupJLayout.Setup(this);
+        MainGameControlSetupJLayout.SetupCanvas(this);
         RobustDeltaTime = new();
         ArcaniaPersistence = new(HeartGame);
-        ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits);
+        ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
         HeartGame.CommonDataLoad();
+        // Let the model run once so you can finish up setup with the latest info on visibility
+        arcaniaModel.ManualUpdate(0);
     }
 
     // Update is called once per frame
@@ -60,6 +69,7 @@ public class MainGameControl : MonoBehaviour
         HeartGame.ManualUpdate();
         EngineView.ManualUpdate();
 
+        #region save
         // -----------------------------------------------------------
         // Save data
         // -----------------------------------------------------------
@@ -67,9 +77,12 @@ public class MainGameControl : MonoBehaviour
         if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN)
         {
             lastSaveTime = Time.unscaledTime;
-            ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
+            ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
             HeartGame.SaveCommon();
         }
+        #endregion
+
+        #region debug command
         // -----------------------------------------------------------
         // Debug command
         // -----------------------------------------------------------
@@ -120,215 +133,33 @@ public class MainGameControl : MonoBehaviour
                 }
             }
         }
+        #endregion
 
-        // -----------------------------------------------------------
-        // Show end game
-        // -----------------------------------------------------------
-        if (EndGameRuntimeUnit != null && EndGameRuntimeUnit.Value > 0 && !dynamicCanvas.OverlayVisible)
-        {
-            dynamicCanvas.ShowOverlay();
-            this.EndGameMessage.rawText = this.EndGameMessage.rawText + $"\n\nThe total play time was {HeartGame.PlayTimeControl.PlayTimeToShowAsString}";
-        }
         // -----------------------------------------------------------
         // Time, game updating
         // -----------------------------------------------------------
         RobustDeltaTime.ManualUpdate();
+        RobustDeltaTime.MultiplyTime(TimeMultiplier);
         while (RobustDeltaTime.TryGetProcessedDeltaTime(out float dt))
         {
-            arcaniaModel.ManualUpdate(Time.deltaTime * TimeMultiplier);
+            arcaniaModel.ManualUpdate(dt);
         }
         // -----------------------------------------------------------
         // UI update
         // -----------------------------------------------------------
-        dynamicCanvas.ManualUpdate();
-        // hide lower menu if all the tabs are visible
-        dynamicCanvas.LowerMenus[0].SelfChild.Visible = dynamicCanvas.CalculateNumberOfVisibleHorizontalChildren() < arcaniaModel.arcaniaUnits.datas[UnitType.TAB].Count;
-        TabButtonLayout.SelfChild.RectTransform.SetHeightMilimeters(10);
-        // -----------------------------------------------------------
-        // Dialog
-        // -----------------------------------------------------------
-        if (arcaniaModel.Dialog.ShouldShow != dynamicCanvas.IsDialogActive)
-        {
-            var dialog = arcaniaModel.Dialog.ActiveDialog;
-            if (arcaniaModel.Dialog.ShouldShow)
-            {
-                dynamicCanvas.ShowDialog(dialog.Id, dialog.Title, dialog.Content);
-            }
-            else
-            {
-                dynamicCanvas.HideAllDialogs();
-            }
-        }
-        if (dynamicCanvas.DialogViews[0].buttonConfirm.Button.Clicked)
-        {
-            arcaniaModel.Dialog.DialogComplete(0);
-        }
-        if (dynamicCanvas.DialogViews[0].buttonCancel.Button.Clicked)
-        {
-            arcaniaModel.Dialog.DialogComplete(1);
-        }
-        // -----------------------------------------------------------
-        // Main update loop
-        // -----------------------------------------------------------
-        for (int tabIndex = 0; tabIndex < TabControlUnits.Count; tabIndex++)
-        {
-            TabControlUnit tabControl = TabControlUnits[tabIndex];
-            tabControl.SelectionButton.ManualUpdate();
+        
 
-            foreach (var sep in tabControl.Separators)
-            {
-                sep.Visible = false;
-                sep.SeparatorLC.RectTransform.SetHeightMilimeters(9);
-                sep.Text.text.SetFontSizePhysical(14);
-                if (sep.SpaceAmountText == null) continue;
-                sep.SpaceAmountText.RectTransform.SetHeightMilimeters(11);
-                sep.SpaceAmountText.text.SetFontSizePhysical(18);
-                sep.SpaceAmountText.rawText = $"Space: {arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}";
-            }
-            tabControl.SelectionButton.Visible = tabControl.TabData.Visible;
-            if (tabControl.SelectionButton.Button.Clicked)
-            {
-                if (tabControl.TabData.Tab.OpenSettings)
-                {
-                    ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits);
-                    HeartGame.GoToSettings();
-                }
-                else
-                {
-                    dynamicCanvas.ShowChild(tabIndex);
-                }
+        #region J Control Update
+        JGameControlExecuter.ManualUpdate(this, this.JControlData, Time.deltaTime);
+        #endregion
 
-            }
-            if (!dynamicCanvas.children[tabIndex].SelfChild.Visible) continue;
-            #region log updating
-            if (tabControl.TabData.Tab.ContainsLogs)
-            {
-                while (tabControl.LogControlUnits.Count < arcaniaModel.LogUnits.Count)
-                {
-                    MainGameControlSetup.CreateLogControlUnit(mgc: this, tabControl: tabControl, lp: dynamicCanvas.children[tabIndex], logUnit: arcaniaModel.LogUnits[tabControl.LogControlUnits.Count]);
-                }
-                foreach (var item in tabControl.LogControlUnits)
-                {
-                    item.Text.text.SetFontSizePhysical(15);
-                    item.Lc.RectTransform.SetHeightMilimeters(9);
-                }
-            }
-            #endregion
-            var UnitGroupControls = tabControl.UnitGroupControls;
+        // Layout is executed after so that it can fix things before rendering
+        JLayoutRuntimeExecuter.ManualUpdate(this.JLayoutRuntime);
+    }
 
-            // -----------------------------------------------------------
-            // Update per unit
-            // -----------------------------------------------------------
-            foreach (var pair in UnitGroupControls)
-            {
-                foreach (var tcu in pair.Value)
-                {
-                    var data = tcu.Data;
-                    tcu.ManualUpdate();
-                    bool visible = data.Visible;
-                    tcu.bwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
-                    tcu.lwe?.LayoutChild.RectTransform.parent.gameObject.SetActive(visible);
-                    if (!visible) continue;
-                    if (tcu.ParentTabSeparator != null) tcu.ParentTabSeparator.Visible = true;
-                    var modUnit = tcu.ModsUnit;
-                    FeedMods(data, modUnit);
-                    tcu.needConditionUnit?.TTV?.ManualUpdate();
-
-                    switch (pair.Key)
-                    {
-
-                        case UnitType.SKILL:
-                            {
-
-                                tcu.bwe.MainButton.ButtonEnabled = data.Skill.Acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data);
-                                if (tcu.TaskClicked)
-                                {
-                                    if (data.Skill.Acquired) arcaniaModel.Runner.StudySkill(data);
-                                    else arcaniaModel.Runner.AcquireSkill(data);
-
-                                }
-
-                            }
-                            break;
-                        case UnitType.HOUSE:
-                            tcu.bwe.MainButton.Image.color = !arcaniaModel.Housing.IsLivingInHouse(data) ? ButtonRequest.MainBody.NormalColor : ButtonRequest.MainBody.SelectedColor;
-                            tcu.bwe.MainButton.ButtonEnabled = arcaniaModel.Housing.CanChangeHouse(data);
-
-                            if (tcu.TaskClicked)
-                            {
-                                if (!arcaniaModel.Housing.IsLivingInHouse(data)) arcaniaModel.Housing.ChangeHouse(data);
-                            }
-
-                            break;
-                        case UnitType.FURNITURE:
-                            {
-                                tcu.ButtonAdd.Button.ButtonEnabled = arcaniaModel.Housing.CanAcquireFurniture(data);
-                                tcu.ButtonRemove.Button.ButtonEnabled = arcaniaModel.Housing.CanRemoveFurniture(data);
-
-                                if (tcu.ButtonAdd.Button.Clicked)
-                                {
-                                    arcaniaModel.Housing.AcquireFurniture(data);
-                                }
-                                if (tcu.ButtonRemove.Button.Clicked)
-                                {
-                                    arcaniaModel.Housing.RemoveFurniture(data);
-                                }
-
-                            }
-                            break;
-                        case UnitType.RESOURCE:
-                            break;
-                        case UnitType.TASK:
-                            {
-                                tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                                tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
-                                if (tcu.TaskClicked)
-                                {
-                                    arcaniaModel.Runner.StartActionExternally(data);
-                                }
-                            }
-                            break;
-                        case UnitType.LOCATION:
-                            {
-                                tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                                tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
-                                if (tcu.TaskClicked)
-                                {
-                                    arcaniaModel.Runner.StartActionExternally(data);
-                                }
-                            }
-                            break;
-                        case UnitType.CLASS:
-                            {
-                                tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                                if (tcu.TaskClicked)
-                                {
-                                    arcaniaModel.Runner.StartActionExternally(data);
-                                }
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-
-        }
-
-        static void FeedMods(RuntimeUnit data, ModsControlUnit modUnit)
-        {
-            for (int i = 0; i < data.ModsOwned.Count; i++)
-            {
-                ModRuntime md = data.ModsOwned[i];
-
-                var ttv = modUnit.ModTTVs[i];
-                ttv.LayoutChild.Visible = md.ModType != ModType.Lock && ttv.LayoutChild.Visible;
-
-                ttv.MainText.rawText = md.HumanText;
-                ttv.SecondaryText.rawText = $"{md.Value}";
-                ttv.TertiaryText.rawText = string.Empty;
-                ttv.ManualUpdate();
-            }
-        }
+    public void GoToSettings()
+    {
+        ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
+        HeartGame.GoToSettings();
     }
 }

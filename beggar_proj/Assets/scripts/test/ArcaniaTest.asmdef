@@ -1,0 +1,19 @@
+{
+    "name": "ArcaniaTest",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e389b4c1c1feb034eb8478eebdfbd065",
+        "GUID:d57890da5545ac8428d4030906635001"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

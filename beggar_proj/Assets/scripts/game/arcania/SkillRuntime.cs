@@ -17,7 +17,13 @@ public class SkillRuntime
 
     public bool Acquired => _acquired;
 
-    public float XPRatio => xp / (float) GetMaxXP();
+    public float XPRatio => GetXpRatio();
+
+    private float GetXpRatio()
+    {
+        int max = GetMaxXP();
+        return Mathf.Min(xp / (float)max, 1f);
+    }
 
     internal void Acquire()
     {

@@ -57,7 +57,9 @@ namespace HeartUnity.View
         private float longPressMultiClickCounter = 0f;
         private float currentLongPressClickPeriod = 0.4f;
         private bool _longPressClick = false;
-
+        public bool LongPressClickHappenedThisFrame => _longPressClick;
+        public Color? NormalColor;
+        public Color? ClickColor;
 
 
         public bool LongPress => MouseDownTime > 0.4f;
@@ -244,6 +246,8 @@ namespace HeartUnity.View
         public bool HoveredWhileVisible => _hoveredWhileVisible && gameObject.activeSelf;
 
         public Image Image { get => _image; set => _image = value; }
+        public bool HasButton => _button != null;
+
         public int? FontSizePhysical;
 
         public bool CheckMouseInside()
@@ -345,6 +349,15 @@ namespace HeartUnity.View
 
         private void LateUpdate()
         {
+            var clickedLastFrame = Clicked;
+            if (clickedLastFrame && this.ClickColor.HasValue) 
+            {
+                _image.color = ClickColor.Value;
+            }
+            if (!clickedLastFrame && this.NormalColor.HasValue) 
+            {
+                _image.color = NormalColor.Value;
+            }
             MouseDownThisFrame = false;
             MouseUpThisFrame = false;
             _clickedInternal = false;

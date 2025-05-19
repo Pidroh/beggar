@@ -15,6 +15,7 @@ namespace HeartUnity.View
         public const float MilimiterToPixelFallback = 96f / 25.4f;
         public const float PixelToMilimiterFallback = 25.4f / 96f;
         public static float DpiScaleFromDefault => EngineView.dpi / 96f;
+        public static float DefaultPixelSizeToPhysicalPixelSize => PixelToMilimiterFallback * RectTransformExtensions.MilimeterToPixel;
 
         public static float MilimeterToPixel => EngineView.dpi <= 0 ? MilimiterToPixelFallback : EngineView.dpi / 25.4f;
         public static float PixelToMilimeter => EngineView.dpi <= 0 ? PixelToMilimiterFallback : 25.4f / EngineView.dpi;
@@ -137,12 +138,10 @@ namespace HeartUnity.View
         public static void SetLeftXToParent(this RectTransform trans, float distance)
         {
             var index = 0;
-            // make position relative to bottom of parent
             trans.SetAnchorsByIndex(index, 0);
             var deltaOffsetX = trans.offsetMax[index] - trans.offsetMin[index];
             trans.offsetMin = new Vector2(0 + distance, trans.offsetMin.y);
             trans.offsetMax = new Vector2(deltaOffsetX + distance, trans.offsetMax.y);
-            //trans.SetBottomLocalY(bottomY);
         }
 
         public static void SetRightXToParent(this RectTransform trans, float distance)
@@ -157,7 +156,13 @@ namespace HeartUnity.View
             //trans.SetBottomLocalY(bottomY);
         }
 
-        private static void SetAnchorsByIndex(this RectTransform trans, int index, float value)
+        public static void SetPivotByIndex(this RectTransform trans, int index, float value) 
+        {
+            var pivot = trans.pivot;
+            pivot[index] = value;
+            trans.pivot = pivot;
+        }
+        public static void SetAnchorsByIndex(this RectTransform trans, int index, float value)
         {
             var am = trans.anchorMin;
             var amM = trans.anchorMax;
@@ -201,9 +206,46 @@ namespace HeartUnity.View
             trans.localPosition = new Vector3(newPos + (trans.pivot.x * trans.rect.width), trans.localPosition.y, trans.localPosition.z);
         }
 
+        public static void SetCenterLocalAxis(this RectTransform trans, int axis, float newPos)
+        {
+            var lp = trans.localPosition;
+            lp[axis] = newPos + ((trans.pivot[axis] - 0.5f) * trans.GetSize()[axis]);
+            trans.localPosition = lp;
+        }
+
+        public static float GetRightLocalX(this RectTransform trans)
+        {
+            return trans.localPosition.x + trans.pivot.x * trans.rect.width;
+        }
+
+        public static float GetLeftLocalX(this RectTransform trans)
+        {
+            return trans.localPosition.x - (1 - trans.pivot.x) * trans.rect.width;
+        }
+
+        public static float GetBottomLocalY(this RectTransform trans)
+        {
+            return trans.localPosition.y - (1 - trans.pivot.y) * trans.rect.height;
+        }
+
+        public static float GetTopLocalY(this RectTransform trans)
+        {
+            return trans.localPosition.y + trans.pivot.y * trans.rect.height;
+        }
+
+        public static void SetRightLocalX(this RectTransform trans, float newPos)
+        {
+            trans.localPosition = new Vector3(newPos - ((1f - trans.pivot.x) * trans.rect.width), trans.localPosition.y, trans.localPosition.z);
+        }
+
         public static void SetLocalX(this RectTransform trans, float newPos)
         {
             trans.localPosition = new Vector3(newPos, trans.localPosition.y, trans.localPosition.z);
+        }
+
+        public static void SetLocalY(this RectTransform trans, float newPos)
+        {
+            trans.localPosition = new Vector3(trans.localPosition.x, newPos, trans.localPosition.z);
         }
 
         public static void SetLocalXY(this RectTransform trans, float newPosX, float newPosY)

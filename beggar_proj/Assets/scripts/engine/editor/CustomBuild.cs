@@ -12,7 +12,7 @@ public class CustomBuild
     {
         // Access command-line arguments
         string[] args = System.Environment.GetCommandLineArgs();
-        string[] configurationPaths = AssetDatabase.FindAssets("t:FileBuildConfigurations");
+
 
         string buildConfigTag = null;
         for (int i = 0; i < args.Length; i++)
@@ -23,6 +23,13 @@ public class CustomBuild
             }
         }
 
+        BuildWithTag(buildConfigTag);
+
+    }
+
+    public static void BuildWithTag(string buildConfigTag)
+    {
+        string[] configurationPaths = AssetDatabase.FindAssets("t:FileBuildConfigurations");
         foreach (var configurationPath in configurationPaths)
         {
             string path = AssetDatabase.GUIDToAssetPath(configurationPath);
@@ -34,7 +41,6 @@ public class CustomBuild
                 return;
             }
         }
-
     }
 
     public static void BuildGameEntry(FileBuildConfigurations.Entry entry)

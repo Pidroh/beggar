@@ -19,10 +19,7 @@ public class LayoutParent
     public LayoutParent(RectTransform rT)
     {
 
-        SelfChild = new LayoutChild()
-        {
-            RectTransform = rT
-        };
+        SelfChild = new LayoutChild(rT, rT.gameObject);
     }
 
     public LayoutParent(LayoutChild lC)
@@ -66,7 +63,7 @@ public class LayoutParent
             Vector2 childPivot = childRectTransform.pivot;
             for (int i = 0; i < 2; i++)
             {
-                if (child.PreferredSizeMM[i].HasValue) 
+                if (child.PreferredSizeMM[i].HasValue)
                 {
                     child.RectTransform.SetSizeMilimeters(i, child.PreferredSizeMM[i].Value);
                 }
@@ -76,7 +73,26 @@ public class LayoutParent
             {
 
                 // Set the width of the child to fit the parent
-                float height = ForceSize.y > 0 ? ForceSize.y : childRectTransform.sizeDelta.y;
+                float height;
+                if (ForceSize.y > 0)
+                {
+                    height = ForceSize.y;
+                }
+                else
+                { 
+                    if(child.TextDrivenHeight.Count == 0) 
+                    {
+                        height = childRectTransform.sizeDelta.y;
+                    }
+                    else 
+                    {
+                        height = 0f;
+                        foreach (var textDriven in child.TextDrivenHeight)
+                        {
+                            height = Mathf.Max(textDriven.text.text.preferredHeight + textDriven.AdditionalHeight);
+                        }
+                    }
+                }
                 childRectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width, height);
 
                 // Update the total height needed
@@ -128,7 +144,7 @@ public class LayoutParent
                 }
                 // no support for UPPER yet
 
-                
+
                 // Position the child vertically, taking the pivot into account
                 childRectTransform.anchoredPosition = new Vector2(0, -offset + offsetY);
                 // Increment the offset by the height of the child
@@ -155,6 +171,7 @@ public class LayoutParent
 
         foreach (var lp in ChildrenLayoutParents)
         {
+            if (!lp.SelfChild.Visible) continue;
             lp.ManualUpdate();
         }
     }
@@ -210,10 +227,7 @@ public class LayoutParent
 
     internal void AddLayoutChildAndParentIt(UIUnit unit)
     {
-        AddLayoutChildAndParentIt(new LayoutChild()
-        {
-            RectTransform = unit.RectTransform
-        });
+        AddLayoutChildAndParentIt(new LayoutChild(unit.RectTransform, unit.gameObject));
     }
 
     public enum LayoutType

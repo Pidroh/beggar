@@ -11,7 +11,7 @@ using System;
 public class CanvasMaker
 {
     [Serializable]
-    public struct CreateButtonRequest 
+    public struct CreateButtonRequest
     {
         public ColorDefinitions MainBody;
         public ColorDefinitions Outline;
@@ -31,7 +31,7 @@ public class CanvasMaker
     }
 
     [Serializable]
-    public struct ColorDefinitions 
+    public struct ColorDefinitions
     {
         public Color NormalColor;
         public Color DisabledColor;
@@ -41,7 +41,8 @@ public class CanvasMaker
     }
 
     [Serializable]
-    public struct CreateObjectRequest {
+    public struct CreateObjectRequest
+    {
         public Color MainColor;
         public Color SecondaryColor;
         public Sprite MainSprite;
@@ -56,7 +57,8 @@ public class CanvasMaker
     }
 
     [Serializable]
-    public struct ScrollStyle {
+    public struct ScrollStyle
+    {
         public Color ScrollBarBG;
         public Color ScrollHandleColor;
         public Color ScrollHandleColorFocused;
@@ -87,7 +89,7 @@ public class CanvasMaker
         return buttonObject;
     }
 
-    public static UIUnit CreateSimpleImage(Color c) 
+    public static UIUnit CreateSimpleImage(Color c)
     {
         GameObject iconObject = new GameObject("Icon");
 
@@ -137,7 +139,7 @@ public class CanvasMaker
     {
         GameObject buttonObject = CreateButtonObject(buttonRequest.MainBody.NormalColor, request.MainSprite);
         var image = CreateSimpleImage(buttonRequest.GaugeFill.NormalColor);
-        
+
         image.gameObject.transform.SetParent(buttonObject.transform);
         image.RectTransform.FillParent();
         // Add Text component
@@ -159,6 +161,8 @@ public class CanvasMaker
             textRectTransform.offsetMax = Vector2.zero;
         }
         var uiUnit = buttonObject.AddComponent<UIUnit>();
+        uiUnit.NormalColor = buttonRequest.MainBody.NormalColor;
+        uiUnit.ClickColor = buttonRequest.MainBody.ClickColor;
         uiUnit.text = textUiUnit.text;
         var bbb = new ButtonWithProgressBar()
         {
@@ -177,7 +181,7 @@ public class CanvasMaker
         // Add RectTransform component for text
         RectTransform textRectTransform = textObject.GetComponent<RectTransform>();
         textRectTransform.SetWidth(40);
-        
+
         text.alignment = TextAlignmentOptions.Center;
         text.color = textColor; // Set text color
         text.fontSize = fontSize;
@@ -189,57 +193,80 @@ public class CanvasMaker
         return textUiUnit;
     }
 
-    public static DynamicCanvas CreateCanvas(int N, CreateCanvasRequest canvasReq)
+    public static UIUnit CreateTextUnitClickable(Color textColor, TMP_FontAsset font, int fontSize)
+    {
+        var textUiUnit = CreateTextUnit(textColor, font, fontSize);
+        
+        GameObject buttonObject = CreateButtonObject(new Color(0, 0, 0, 0));
+        var uiUnit = buttonObject.AddComponent<UIUnit>();
+        uiUnit.text = textUiUnit.text;
+        textUiUnit.transform.SetParent(buttonObject.transform);
+        textUiUnit.RectTransform.FillParent();
+        return uiUnit;
+    }
+
+    public static DynamicCanvas CreateCanvas(int N, CreateCanvasRequest canvasReq, Canvas reusableCanvas)
     {
         DynamicCanvas dc = new DynamicCanvas();
         // Create Canvas GameObject
-        dc.canvasGO = new GameObject("Canvas");
-        var canvasGO = dc.canvasGO;
-        Canvas canvas = canvasGO.AddComponent<Canvas>();
-        dc.Canvas = canvas;
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
-        scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
-        scaler.referenceResolution = new Vector2(1920, 1080);
-        canvasGO.AddComponent<GraphicRaycaster>();
-
-        // Create Root GameObject
-        GameObject rootGO = new GameObject("Root");
-        rootGO.transform.SetParent(canvasGO.transform, false);
-
-        RectTransform rootRT = rootGO.AddComponent<RectTransform>();
-        rootRT.FillParent();
-
-        // Create N children
-        for (int i = 0; i < N; i++)
+        if (reusableCanvas == null)
         {
-            dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
+            dc.canvasGO = new GameObject("Canvas");
+            // Create EventSystem GameObject
+            GameObject eventSystemGO = new GameObject("EventSystem");
+            eventSystemGO.AddComponent<EventSystem>();
+            eventSystemGO.AddComponent<InputSystemUIInputModule>();
+            // Set the EventSystem as a sibling of the Canvas
+            eventSystemGO.transform.SetParent(dc.canvasGO.transform, false);
+
+            Canvas canvas = dc.canvasGO.AddComponent<Canvas>();
+            dc.canvasGO.AddComponent<GraphicRaycaster>();
+            dc.Canvas = canvas;
+            dc.canvasGO.AddComponent<CanvasScaler>();
         }
-        dc.RootRT = rootRT;
-        dc.OverlayRoot = canvasGO.GetComponent<RectTransform>().CreateFullSizeChild("overlay_root");
+        else
         {
-            var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
-            oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.99f);
-            dc.OverlayMainLayout = CreateLayout().SetLayoutChildAlignment(LayoutParent.LayoutChildAlignment.MIDDLE);
-            dc.OverlayMainLayout.SelfChild.RectTransform.SetParent(dc.OverlayRoot);
-            dc.OverlayMainLayout.SelfChild.RectTransform.FillParent();
-            dc.HideOverlay();
+            var cnvs = GameObject.Instantiate(reusableCanvas);
+            dc.canvasGO = cnvs.gameObject;
+            dc.Canvas = cnvs;
         }
 
-
-        // Create EventSystem GameObject
-        GameObject eventSystemGO = new GameObject("EventSystem");
-        eventSystemGO.AddComponent<EventSystem>();
-        eventSystemGO.AddComponent<InputSystemUIInputModule>();
-
-        // Set the EventSystem as a sibling of the Canvas
-        eventSystemGO.transform.SetParent(dc.canvasGO.transform, false);
-
-        // shows in the opposite order so that the bottoms ones are shown last
-        // thus, prioritized
-        for (int i = N - 1; i >= 0; i--)
         {
-            dc.ShowChild(dc.children[i]);
+            var canvas = dc.Canvas;
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            var canvasGO = dc.canvasGO;
+            var scaler = canvasGO.GetComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
+            scaler.referenceResolution = new Vector2(1920, 1080);
+            
+
+            // Create Root GameObject
+            GameObject rootGO = new GameObject("Root");
+            rootGO.transform.SetParent(canvasGO.transform, false);
+
+            RectTransform rootRT = rootGO.AddComponent<RectTransform>();
+            rootRT.FillParent();
+
+            // Create N children
+            for (int i = 0; i < N; i++)
+            {
+                dc.children.Add(CreateChild(rootGO, i, canvasReq.ScrollStyle));
+            }
+            dc.childrenForLayouting.AddRange(dc.children);
+            dc.RootRT = rootRT;
+            dc.OverlayRoot = canvasGO.GetComponent<RectTransform>().CreateFullSizeChild("overlay_root");
+            {
+                var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
+                oi.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.99f);
+                dc.HideOverlay();
+            }
+            // shows in the opposite order so that the bottoms ones are shown last
+            // thus, prioritized
+            for (int i = N - 1; i >= 0; i--)
+            //for (int i = 0; i < N; i++)
+            {
+                dc.ShowChild(dc.children[i]);
+            }
         }
 
         return dc;
@@ -257,13 +284,13 @@ public class CanvasMaker
         var dialogText = CreateTextUnit(dialogBody.SecondaryColor, buttonObjReq.font, 18);
         dialogText.SetParent(bg);
         dialogText.rawText = "HEY TWITCH WOHOO";
-        var dv = new DialogView() 
-        { 
-           dialogText = dialogText,
-           buttonConfirm = yesB,
-           buttonCancel = noB,
-           parentTransform = bg,
-           fullScreenOverlay = overlay
+        var dv = new DialogView()
+        {
+            dialogText = dialogText,
+            buttonConfirm = yesB,
+            buttonCancel = noB,
+            parentTransform = bg,
+            fullScreenOverlay = overlay
         };
         return dv;
     }
@@ -286,6 +313,12 @@ public class CanvasMaker
         // Add ScrollView
         ScrollRect scrollRect = childGO.AddComponent<ScrollRect>();
         scrollRect.horizontal = false;
+#if !UNITY_EDITOR
+        scrollRect.scrollSensitivity *= 0.1f;
+#endif
+#if UNITY_EDITOR
+        scrollRect.scrollSensitivity *= 2f;
+#endif 
 
         // Add Viewport
         GameObject viewportGO = new GameObject("Viewport");
@@ -313,7 +346,7 @@ public class CanvasMaker
         contentRT.pivot = new Vector2(0.5f, 1);
         contentRT.anchoredPosition = new Vector2(0, 0);
         contentRT.sizeDelta = new Vector2(0, 0);
-        
+
         const int scrollBarWidth = 10;
 
         contentRT.SetOffsetMaxByIndex(0, -scrollBarWidth);
@@ -331,7 +364,7 @@ public class CanvasMaker
         scrollbarRT.anchorMin = new Vector2(1, 0);
         scrollbarRT.anchorMax = new Vector2(1, 1);
         scrollbarRT.pivot = new Vector2(1, 0.5f);
-        
+
         scrollbarRT.sizeDelta = new Vector2(scrollBarWidth, 0);
 
         Scrollbar scrollbar = scrollbarGO.AddComponent<Scrollbar>();
@@ -354,12 +387,6 @@ public class CanvasMaker
         handleImage.color = scrollStyle.ScrollHandleColor;
         scrollbar.targetGraphic = handleImage;
         scrollbar.handleRect = handleRT;
-
-        // Hide Child if Canvas width is less than required
-        if (Screen.width < 320 * (index + 1))
-        {
-            childGO.SetActive(false);
-        }
 
         return lp;
     }
@@ -393,16 +420,13 @@ public class CanvasMaker
         var ttv = new TripleTextView();
         GameObject parentGo = new GameObject();
         RectTransform parentRectTransform = parentGo.AddComponent<RectTransform>();
-        ttv.LayoutChild = new LayoutChild()
-        {
-            RectTransform = parentRectTransform
-        };
-        
+        ttv.LayoutChild = new LayoutChild(parentRectTransform, parentGo);
+
         ttv.MainText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
         ttv.SecondaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Left).SetParent(parentRectTransform);
         ttv.TertiaryText = CreateTextUnit(buttonObjectRequest.SecondaryColor, font, 16).SetTextAlignment(TextAlignmentOptions.Right).SetParent(parentRectTransform);
         parentRectTransform.SetHeight(ttv.MainText.RectTransform.GetHeight());
-        
+
         return ttv;
     }
 

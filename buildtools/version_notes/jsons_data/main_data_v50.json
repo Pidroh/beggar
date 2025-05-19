@@ -1,0 +1,943 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+            {
+                "id": "firewood",
+                "max": 1,
+                "desc": "Wood for the bonfire. You need something to set it on fire though.",
+                "mods":{
+                    "handdrill_dot.mod.firepower.rate": 0.1
+                }
+            },
+            {
+                "id": "followers",
+                "max": 0,
+                "desc": "A person who supports you"
+            },
+            {
+                "id": "fireaffinity",
+                "name": "Fire Affinity",
+                "max": 5,
+                "desc": "Attraction to the flame"
+            },
+            {
+                "id": "dominance",
+                "name": "Dominance",
+                "max": 3,
+                "desc": "Feelings of control",
+                "mod":{
+                    "gratitude.max": -1
+                }
+            },
+            {
+                "id": "charm",
+                "name": "Charm",
+                "max": 3,
+                "desc": "The power of attracting and delighting others"
+            },
+            {
+                "id": "captive",
+                "name": "Captive",
+                "max": 0,
+                "desc": "A person who has been taken prisoner",
+                "mod":{
+                    "dominance.max": 1
+                }
+            },
+            {
+                "id": "firepower",
+                "name": "Flame power",
+                "max": 3,
+                "desc": "The strength of the fire",
+                "mod":{
+                    "fireaffinity.max": 1,
+                    "fireaffinity.rate": 0.05,
+                    "firepower.rate": -0.2
+                }
+            },
+            {
+                "id": "benevolence",
+                "max": 3,
+                "desc": "Meaning well, being kind",
+                "mod":{
+                    "gratitude.max": 1
+                }
+            },
+            {
+                "id": "animalfat",
+                "name": "Animal fat",
+                "max": 0,
+                "desc": "Oil extracted from animals",
+                "mod":{
+                    "handdrill.speed": 3,
+                    "handdrill.success_rate": 5
+                }
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items":[
+            {
+                "id": "empathypath",
+                "name": "I want to understand others",
+                "desc": "Look at them, understand their feelings. Choosing this will stop any sociopathic tendencies.",
+                "require": "gratitude>5&&clarity>2&&benevolence",
+                "tag": "irreversible",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "benevolence": 3,
+                    "gratitude": 40,
+                    "clarity": 8
+                },
+                "mods":{
+                    "clarity.max": 1,
+                    "benevolence.max": 10,
+                    "dominance.max": -10,
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "psycho_path",
+                "name": "I cannot understand others",
+                "desc": "Other people, their expressions. They mean nothing to you. Choosing this will stop any empathic tendencies.",
+                "require": "introspection>1&&sorrow>3&&dominance>1",
+                "tag": "irreversible",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "dominance": 3,
+                    "sorrow": 5,
+                    "clarity": 3
+                },
+                "mods":{
+                    "clarity.max": 1,
+                    "gratitude.max": -10,
+                    "dominance.max": 10,
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "fabricated_emotions",
+                "name": "Fabricated emotions",
+                "desc": "Mimic others, copy their ways. Fake emotions",
+                "require": "introspection>2&&dominance>30",
+                "tag": "irreversible",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "dominance": 60,
+                    "sorrow": 10,
+                    "clarity": 15
+                },
+                "mods":{
+                    "dominance.max": 15,
+                    "charm.max": 5,
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "collectfirewood",
+                "name": "Gather wood",
+                "require": "drywoodknowledge",
+                "duration": 8,
+                "cost": {
+                    "foraging": 10
+                },
+                "result":{
+                    "firewood": 1
+                }
+            },
+            {
+                "id": "sharefood",
+                "name": "Share crumbs",
+                "desc": "It's not much, but you are welcome to have it",
+                "require": "sharingbowl&&gratitude>5",
+                "duration": 8,
+                "cost": {
+                    "breadcrumbs": 30,
+                    "gratitude": 10
+                },
+                "run": {
+                    "supplication": 2
+                },
+                "result":{
+                    "benevolence": 1
+                }
+            },
+            {
+                "id": "captive_watchers",
+                "name": "Captive watchers",
+                "require": "captive>2&&followers>1",
+                "desc": "Train and assign people to watch over your prisoners",
+                "duration": 20,
+                "max": 2,
+                "cost": {
+                    "followers": 3,
+                    "dominance": 50,
+                    "supplication": 200
+                },
+                "mods":{
+                    "captive.max": 5
+                }
+            },
+            {
+                "id": "feed_the_fire",
+                "name": "Control the flame",
+                "require": "kindling>1",
+                "desc": "Become better at keeping the flame strong",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 70,
+                    "fireaffinity": 5,
+                    "firepower": 1
+                },
+                "mods": {
+                    "handdrill_dot.mod.firepower.rate": 1.7,
+                    "handdrill_dot.mod.fireaffinity.rate": 0.5,
+                    "fireaffinity.max": 5
+                }
+            },
+            {
+                "id": "drywoodknowledge",
+                "name": "Tips on starting fires",
+                "desc": "Some fellow beggars seem to know a thing or two about flames",
+                "require": "beggarhood>0",
+                "duration": 8,
+                "max": 1,
+                "cost": {
+                    "supplication": 60
+                }
+            },
+            {
+                "id": "buyanimalfat",
+                "name": "Buy animal fat",
+                "desc": "Gotta get some lard",
+                "require": "pot_of_fat",
+                "cost": {
+                    "coin": 1
+                },
+                "result":{
+                    "animalfat": 1
+                }
+            },
+            {
+                "id": "handdrill",
+                "name": "Start a fire",
+                "desc": "It will definitely catch fire this time. Maybe.",
+                "require": "firetool",
+                "need": "firetool&&firewood",
+                "buy": {
+                    "thoughts": 20,
+                    "supplication": 30,
+                    "foraging": 5
+                },
+                "duration": 8,
+                "success_rate": 1,
+                "result":{
+                    "firewood": -1,
+                    "kindling.xp": "5~10"
+                },
+                "dot": {
+                    "duration": 30,
+                    "mod": {
+                        "supplication.rate": 10,
+                        "fireaffinity.rate": 0.01,
+                        "fireaffinity.max": 3,
+                        "firepower.rate": 0.3
+                    }
+                },
+                "result_fail":{
+                    "kindling.xp": "10~40"
+                }
+            },
+            {
+                "id": "feedfire",
+                "name": "Feed the fire",
+                "desc": "Burn, baby, burn",
+                "require": "animalfat>=1",
+                "need": "handdrill_dot",
+                "cost": {
+                    "animalfat": 3,
+                    "firepower": 2
+                },
+                "buy": {
+                    "thoughts": 50,
+                    "clarity": 5,
+                    "fireaffinity": 3
+                },
+                "duration": 2,
+                "result":{
+                    "kindling.xp": "1~5"
+                },
+                "dot": {
+                    "duration": 20,
+                    "mod": {
+                        "firepower.max": 15,
+                        "firepower.rate": 5,
+                        "fireaffinity.rate": 0.08,
+                        "fireaffinity.max": 5
+                    }
+                }
+            },
+            {
+                "id": "antaccident",
+                "name": "An ant got burned",
+                "desc": "Realize an ant got burned in the fire you made",
+                "require": "handdrill_dot",
+                "duration": 8,
+                "max": 1,
+                "cost": {
+                    "thoughts": 8
+                },
+                "result": {
+                    "dominance": 1
+                }
+            },
+            {
+                "id": "burnant",
+                "name": "Burn ants",
+                "desc": "Group up a bunch of ants and throw them in the fire",
+                "require": "antaccident",
+                "duration": 3,
+                "cost": {
+                    "firepower": 1
+                },
+                "result": {
+                    "dominance": 1
+                }
+            },
+            {
+                "id": "ratfire_ember",
+                "name": "Ember a rat",
+                "desc": "Throw a little ember at a rat and hear a cry of pain",
+                "require": "sadism",
+                "duration": 10,
+                "need": "rats",
+                "max": 2,
+                "cost": {
+                    "thoughts": 40,
+                    "dominance": 2,
+                    "firepower": 2
+                },
+                "mods": {
+                    "dominance.max": 5
+                }
+            },
+            {
+                "id": "burnrat",
+                "name": "Throw a rat into the fire",
+                "desc": "Throw a little ember at a rat and hear a cry of pain",
+                "require": "sadism>2&&ratfire_ember>1",
+                "duration": 20,
+                "max": 3,
+                "cost": {
+                    "thoughts": 40,
+                    "dominance": 15,
+                    "firepower": 4,
+                    "rats": 1
+                },
+                "mods": {
+                    "dominance.max": 20
+                }
+            },
+            {
+                "id": "burncat_little",
+                "name": "Burn cat",
+                "desc": "Have the felyne taste the flame",
+                "require": "animalburner",
+                "need": "cat",
+                "duration": 5,
+                "max": 2,
+                "cost": {
+                    "thoughts": 40,
+                    "dominance": 10,
+                    "supplication": 20,
+                    "firepower": 2
+                },
+                "mods": {
+                    "dominance.max": 15
+                }
+            },
+            {
+                "id": "burncat",
+                "name": "Incinerate cat",
+                "desc": "The cat screams are a song to your ears",
+                "require": "burncat_little>1&&sadism>2",
+                "duration": 25,
+                "max": 3,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "supplication": 40,
+                    "firepower": 7,
+                    "cat": 1
+                },
+                "mods": {
+                    "dominance.max": 25
+                }
+            },
+            {
+                "id": "burnperson_weak",
+                "name": "Burn captive",
+                "desc": "Make your captives taste a bit of fire",
+                "require": "sadism>2",
+                "duration": 5,
+                "need": "captive",
+                "max": 1,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "supplication": 80,
+                    "firepower": 4
+                },
+
+                "mods": {
+                    "dominance.max": 40
+                }
+            },
+            {
+                "id": "burnperson_strong",
+                "name": "Incinerate a person",
+                "desc": "Completely burn a living person",
+                "require": "sadism>3&&burnperson_weak>2",
+                "duration": 30,
+                "max": 3,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "supplication": 80,
+                    "firepower": 9,
+                    "captive": 1
+                },
+
+                "mods": {
+                    "dominance.max": 60,
+                    "dominance.rate": 0.03
+                }
+            },
+            {
+                "id": "burnperson_many",
+                "name": "Burn people",
+                "desc": "Create a big human bonfire. They won't be lonely in the other world",
+                "require": "sadism>4",
+                "duration": 30,
+                "max": 3,
+                "cost": {
+                    "thoughts": 80,
+                    "dominance": 20,
+                    "firepower": 25,
+                    "captive": 7
+                },
+
+                "mods": {
+                    "dominance.max": 40,
+                    "dominance.rate": 0.5,
+                    "fireaffinity.max": 10,
+                    "fireaffinity.rate": 0.5
+                }
+            },
+            {
+                "id": "firewoodstock",
+                "name": "Optimize firewood stockage",
+                "desc": "Yup, if I do it like this so much more fits",
+                "require": "kindling",
+                "duration": 30,
+                "max": 2,
+                "cost": {
+                    "thoughts": 80,
+                    "clarity": 3
+                },
+                "mods": {
+                    "firewood.max": 2
+                }
+            },
+            {
+                "id": "firewood_gathering",
+                "name": "Wood gathering",
+                "desc": "This is how to carry big pieces of wood",
+                "require": "collectfirewood>3",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "clarity": 3,
+                    "foraging": 20
+                },
+                "mods": {
+                    "collectfirewood.speed": 50,
+                    "collectfirewood.result.firewood": 1
+                }
+            },
+            {
+                "id": "firewood_gathering2",
+                "name": "Wood gathering II",
+                "desc": "This is how to REALLY carry big pieces of wood",
+                "require": "collectfirewood>12&&firewood_gathering",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "clarity": 3,
+                    "foraging": 20
+                },
+                "mods": {
+                    "collectfirewood.speed": 150,
+                    "collectfirewood.result.firewood": 1
+                }
+            },
+            {
+                "id": "capture_person",
+                "name": "Capture a person",
+                "desc": "Detain and restrain an individual",
+                "require": "rope",
+                "duration": 10,
+                "success_rate": 25,
+                "max": 3,
+                "cost": {
+                    "supplication": 6,
+                    "dominance": 20
+                },
+                "result": {
+                    "captive": 1
+                },
+                "result_fail": {
+                    "danger": "2~7"
+                }
+            },
+            {
+                "id": "sadistictend_1",
+                "name": "Sadistic tendencies",
+                "desc": "Shows a subtle enjoyment in causing others pain",
+                "require": "burnant>1&&sadism",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 90,
+                    "clarity": 5,
+                    "dominance": 8
+                },
+                "mods": {
+                    "sadism.max": 1,
+                    "dominance.max": 5,
+                    "gratitude.max": -30,
+                    "faith.max": -20
+                }
+            },
+            {
+                "id": "sadistictend_2",
+                "name": "Sadistic tendencies II",
+                "desc": "Finds satisfaction in the suffering of others, often prolonging it unnecessarily.",
+                "require": "ratfire_ember&&sadism>1",
+                "duration": 80,
+                "max": 1,
+                "cost": {
+                    "thoughts": 300,
+                    "clarity": 20,
+                    "dominance": 15
+                },
+                "mods": {
+                    "sadism.max": 1,
+                    "dominance.max": 10,
+                    "gratitude.max": -80,
+                    "faith.max": -60
+                }
+            },
+            {
+                "id": "sadistictend_3",
+                "name": "Sadistic tendencies III",
+                "desc": " Has a noticeable preference for causing pain when possible.",
+                "require": "burnrat&&sadism>2",
+                "duration": 120,
+                "max": 3,
+                "cost": {
+                    "thoughts": 400,
+                    "clarity": 50,
+                    "dominance": 25
+                },
+                "mods": {
+                    "sadism.max": 1,
+                    "dominance.max": 10,
+                    "gratitude.max": -80,
+                    "faith.max": -60
+                }
+            },
+            {
+                "id": "sadistictend_4",
+                "name": "Sadistic tendencies IV",
+                "desc": " Hurts others without second thought.",
+                "require": "burnperson_weak",
+                "duration": 120,
+                "max": 3,
+                "cost": {
+                    "thoughts": 400,
+                    "clarity": 50,
+                    "dominance": 25
+                },
+                "mods": {
+                    "sadism.max": 1,
+                    "dominance.max": 10,
+                    "gratitude.max": -80,
+                    "faith.max": -60
+                }
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items":[]
+    },
+    {
+        "type": "CLASS",
+        "items":[
+            {
+                "id" : "bonfirevagabond",
+                "name": "Bonfire Vagabond",
+                "desc" : "Sitting by the fire, staring at the flame.",
+                "tags": "t_tier0",
+                "lock": "t_tier0",
+                "require": "t_job&&fireaffinity",
+                "cost": {
+                    "fireaffinity": 2,
+                    "thoughts": 40,
+                    "nutrition": 3
+                },
+                "mod": {
+                    "kindling.max": 1,
+                    "fireaffinity.max": 30,
+                    "handdrill.success_rate": 20,
+                    "handdrill.speed": 30
+                }
+            },
+            {
+                "id" : "goodbeggar",
+                "name": "Good Beggar",
+                "desc" : "You live by the good will of others, yet you also have good will to give",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&introspection>3&&empathy",
+                "cost": {
+                    "sadness": 20,
+                    "sorrow": 2,
+                    "nutrition": 5,
+                    "benevolence": 5
+                },
+                "mod": {
+                    "thoughts.max": 50,
+                    "supplication.max": 90,
+                    "benevolence.max": 20,
+                    "benevolence.rate": 0.5,
+                    "supplication.rate": 0.8,
+                    "innermind.max": 2
+                }
+            },
+            {
+                "id" : "peopleburner",
+                "name": "Sadistic Flamer",
+                "desc" : "A pyromaniac with affinity for burning people alive",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "require": "t_tier1&&fireaffinity>15&&sadism>2",
+                "need": "theself_2",
+                "cost": {
+                    "dominance": 20,
+                    "fireaffinity": 50,
+                    "thoughts": 90,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "burnperson_weak.max": 2,
+                    "kindling.max": 1,
+                    "fireaffinity.max": 40,
+                    "handdrill.speed": 60,
+                    "dominance.max": 60,
+                    "sadism.max": 2
+                }
+            },
+            {
+                "id" : "animalburner",
+                "name": "Animal burner",
+                "desc" : "Twisted desires to hear a creature cry",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&fireaffinity>10",
+                "cost": {
+                    "dominance": 3,
+                    "fireaffinity": 20,
+                    "thoughts": 90,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "kindling.max": 1,
+                    "fireaffinity.max": 30,
+                    "handdrill.success_rate": 10,
+                    "handdrill.speed": 50,
+                    "sadism.max": 1
+                }
+            },
+            {
+                "id" : "goodpriest",
+                "name": "Gracious Priest",
+                "desc" : "The third major order of the Church. Spreading love all around",
+                "tags": "t_tier3",
+                "lock": "t_tier3",
+                "need": "theself_3&&holyscriptures>4&&deacon",
+                "require": "t_tier2&&priestduties&&ecclesiology>6&&empathy>3",
+                "cost": {
+                    "thoughts": 1600,
+                    "gratitude": 1000,
+                    "faith": 320,
+                    "benevolence": 300,
+                    "nutrition": 90
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 150,
+                    "holyscriptures.max": 1,
+                    "ecclesiology.max": 1,
+                    "empathy.max": 1,
+                    "benevolence.max": 100,
+                    "charity.max": 1
+                }
+            },
+            {
+                "id": "gracebeggar",
+                "name": "Open Hand",
+                "desc": "They gave you this name because they know that you are the true giver",
+                "tags": "t_tier3",
+                "lock": "t_tier3",
+                "need": "theself_3&&empathy>3&&charity>=4", 
+                "require": "t_tier2&&empathy>=3&&charity>=3",
+                "cost": {
+                    "benevolence": 300,
+                    "supplication": 1000,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "nutrition": 8
+                },
+                "mod":{
+                    "charity.max": 1,
+                    "innermind.max": 1,
+                    "benevolence.max": 100,
+                    "empathy.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items":[
+            {
+                "id": "kindling",
+                "require": "handdrill",
+                "cost": {
+                    "thoughts": 50
+                },
+                "desc": "Knowledge of starting fires",
+                "mod": {
+                    "handdrill.speed": 10,
+                    "handdrill.success_rate": 10,
+                    "fireaffinity.max": 1
+                }
+            },
+            {
+                "id": "sadism",
+                "require": "psycho_path",
+                "max": 1,
+                "cost": {
+                    "skillpoints": 100
+                },
+                "desc": "Deriving joy from inflicting pain",
+                "mod": {
+                    "dominance.max": 1,
+                    "guilt.max": -1,
+                    "gratitude.max": -3
+                }
+            },
+            {
+                "id": "empathy",
+                "require": "empathypath",
+                "max": 1,
+                "cost": {
+                    "skillpoints": 100,
+                    "benevolence": 10,
+                    "clarity": 10
+                },
+                "desc": "Honing a keen eye on how others feel",
+                "mod": {
+                    "supplication.max": 5,
+                    "benevolence.max": 1,
+                    "charm.max": 1
+                }
+            },
+            {
+                "id": "charity",
+                "require": "empathy>1",
+                "max": 1,
+                "cost": {
+                    "skillpoints": 50,
+                    "benevolence": 10
+                },
+                "desc": "Voluntary help",
+                "mod": {
+                    "supplication.max": 1,
+                    "benevolence.max": 3,
+                    "charm.max": 1
+                }
+            },
+            {
+                "id": "charisma",
+                "require": "empathy||fabricated_emotions",
+                "max": 1,
+                "cost": {
+                    "skillpoints": 100
+                },
+                "desc": "A compeling smile and attractive confidence",
+                "mod": {
+                    "followers.max": 1,
+                    "dominance.max": 2,
+                    "supplication.max": 5,
+                    "charm.max": 3
+                }
+            }
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+            
+        ]
+    },
+    {
+         "type": "ENCOUNTER",
+        "items": [
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items":[
+            {
+                "id": "irreversible_church",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. You will no longer be able to beg on the streets, among other actions. But you will gain access to a whole new range of possibilities. Go ahead with this action?",
+                "tags": "joinchurch"
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+            {
+                "id": "woodstick",
+                "name": "Wood stick",
+                "desc": "A little stick. Very dry. Can be used to start fires?",
+                "tags": "firetool",
+                "require": "scavenging>0&&drywoodknowledge",
+                "max": 1,
+                "cost": {
+                    "foraging": 5
+                },
+                "mod": {
+                    "fireaffinity.max": 1,
+                    "handdrill.success_rate": 5,
+                    "space": 1
+                }
+            },
+            {
+                "id": "flint_and_steel",
+                "name": "Flint & Steel",
+                "desc": "Hit the two together and magic happens. Can be used to start fires",
+                "tags": "firetool",
+                "require": "scavenging>1&&kindling>1",
+                "max": 1,
+                "cost": {
+                    "foraging": 20,
+                    "fireaffinity": 1
+                },
+                "mod": {
+                    "handdrill.success_rate": 20,
+                    "handdrill.speed": 30,
+                    "space": 1
+                }
+            },
+            {
+                "id": "tinder",
+                "name": "Tinder",
+                "desc": "A bunch of dry grass",
+                "require": "woodstick",
+                "max": 2,
+                "cost": {
+                    "foraging": 5
+                },
+                "mod": {
+                    "handdrill.success_rate": 10,
+                    "firepower.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "hay",
+                "name": "A pile of hay",
+                "desc": "Can be used to feed the fire",
+                "require": "scavenging>2&&kindling>0",
+                "max": 2,
+                "cost": {
+                    "foraging": 30,
+                    "fireaffinity": 1
+                },
+                "mod": {
+                    "firepower.max": 3,
+                    "handdrill.success_rate": 10,
+                    "fireaffinity.max": 1,
+                    "space": 2
+                }
+            },
+            {
+                "id": "pot_of_fat",
+                "name": "Oil pot",
+                "desc": "To store fat",
+                "require": "scavenging>2&&kindling>2&&coin>3",
+                "max": 2,
+                "cost": {
+                    "foraging": 30,
+                    "coin": 5
+                },
+                "mod": {
+                    "animalfat.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "rope",
+                "name": "Rope",
+                "desc": "Has various uses. Like tying people up",
+                "require": "sadism>1",
+                "max": 3,
+                "cost": {
+                    "foraging": 20
+                },
+                "mod": {
+                    "captive.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "sharingbowl",
+                "name": "Sharing bowl",
+                "desc": "Use this to share food with those in need",
+                "require": "foraging>2&&beggarhood>2",
+                "cost": {
+                    "foraging": 20,
+                    "breadcrumbs": 25
+                },
+                "mod": {
+                    "breadcrumbs.max": 5,
+                    "supplication.max": 50,
+                    "benevolence.max": 5,
+                    "space": 1
+                }
+            }
+        ]
+    }
+]

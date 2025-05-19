@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace HeartUnity.View
@@ -10,6 +9,7 @@ namespace HeartUnity.View
         public struct EngineViewInitializationParameter
         {
             public Canvas canvas;
+            public bool DisableAutoScaling;
         }
 
         // access this through an instance of heart game
@@ -17,13 +17,13 @@ namespace HeartUnity.View
         {
             var go = new GameObject();
             var ev = go.AddComponent<EngineView>();
+            ev.DisabledAutoScaling = param.DisableAutoScaling;
             ev.canvas = param.canvas;
             ev.canvasScaler = ev.canvas.GetComponent<CanvasScaler>();
             return ev;
         }
 
         public CanvasScaler canvasScaler;
-        public PixelPerfectCamera pixelCamera;
         public UIUnitManager unitManager;
         public UICreationHelper creationHelper;
         private DebugMenuManager debugMenuManager;
@@ -38,6 +38,10 @@ namespace HeartUnity.View
 
         public static float dpi => overwrittenDpi.HasValue ? overwrittenDpi.Value : Screen.dpi;
         private static float? overwrittenDpi;
+        private static float? previousDpi;
+        public static bool DpiChanged;
+        private bool pixelPerfectScale;
+        public bool DisabledAutoScaling;
 
         internal void Init(int initialLayer)
         {
@@ -167,10 +171,10 @@ namespace HeartUnity.View
 
         private void RefreshScale()
         {
-            if (pixelCamera == null) return;
+            if (pixelPerfectScale || DisabledAutoScaling) return;
             var maxScale = 1;
-            int scaleX = Mathf.FloorToInt(Screen.width / pixelCamera.refResolutionX);
-            int scaleY = Mathf.FloorToInt(Screen.height / pixelCamera.refResolutionY);
+            int scaleX = Mathf.FloorToInt(Screen.width / 640);
+            int scaleY = Mathf.FloorToInt(Screen.height / 360);
             if (scaleX > maxScale)
             {
                 maxScale = scaleX;
@@ -297,6 +301,12 @@ namespace HeartUnity.View
         public static void ClearOverwriteDPI() 
         {
             overwrittenDpi = null;
+        }
+
+        public static void ManualUpdateStatic() 
+        {
+            DpiChanged = previousDpi.HasValue && previousDpi != dpi;
+            previousDpi = dpi;
         }
     }
 }

@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -172,9 +168,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203844586}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -224,8 +219,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &203844589
 Transform:
   m_ObjectHideFlags: 0
@@ -322,7 +321,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.077347115, g: 0.12154546, b: 0.191, a: 1}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -407,8 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5411f622cd8317c4d84735bfd2e1468c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceJson: {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-  Font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ResourceJson: {fileID: 11400000, guid: 5838a758d2e4b8d449cd508dbad7e1a6, type: 2}
+  Font: {fileID: 11400000, guid: c0a0d9c74c034ae43964b994d6e361b4, type: 2}
   ExpanderSprite: {fileID: 21300000, guid: a685aa7ba5f7a074f8a84237bbab1032, type: 3}
   ButtonObjectRequest:
     MainColor: {r: 0.30980393, g: 0.45490196, b: 0.8392157, a: 1}
@@ -426,6 +425,31 @@ MonoBehaviour:
     MainBody:
       NormalColor: {r: 0.30980393, g: 0.454902, b: 0.83921576, a: 1}
       DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0.6892157, g: 0.8392157, b: 0.3098039, a: 1}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0.20683932, g: 0.6111161, b: 0.70199996, a: 1}
+    Outline:
+      NormalColor: {r: 0, g: 0, b: 0, a: 0}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+    GaugeFill:
+      NormalColor: {r: 0.21176468, g: 0.7176471, b: 0.53475225, a: 1}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+    TextColor:
+      NormalColor: {r: 0.9921569, g: 0.97647065, b: 0.89019614, a: 1}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
+      ClickColor: {r: 0, g: 0, b: 0, a: 0}
+      HoverColor: {r: 0, g: 0, b: 0, a: 0}
+      SelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  ButtonRequest_TabSelected:
+    MainBody:
+      NormalColor: {r: 0.4117647, g: 0.6117647, b: 0.59607846, a: 1}
+      DisabledColor: {r: 0, g: 0, b: 0, a: 0}
       ClickColor: {r: 0, g: 0, b: 0, a: 0}
       HoverColor: {r: 0, g: 0, b: 0, a: 0}
       SelectedColor: {r: 0, g: 0, b: 0, a: 0}
@@ -436,13 +460,13 @@ MonoBehaviour:
       HoverColor: {r: 0, g: 0, b: 0, a: 0}
       SelectedColor: {r: 0, g: 0, b: 0, a: 0}
     GaugeFill:
-      NormalColor: {r: 0.2734941, g: 0.53546333, b: 0.73800004, a: 1}
+      NormalColor: {r: 0, g: 0, b: 0, a: 0}
       DisabledColor: {r: 0, g: 0, b: 0, a: 0}
       ClickColor: {r: 0, g: 0, b: 0, a: 0}
       HoverColor: {r: 0, g: 0, b: 0, a: 0}
       SelectedColor: {r: 0, g: 0, b: 0, a: 0}
     TextColor:
-      NormalColor: {r: 0.9921569, g: 0.97647065, b: 0.89019614, a: 1}
+      NormalColor: {r: 0, g: 0, b: 0, a: 0}
       DisabledColor: {r: 0, g: 0, b: 0, a: 0}
       ClickColor: {r: 0, g: 0, b: 0, a: 0}
       HoverColor: {r: 0, g: 0, b: 0, a: 0}
@@ -465,6 +489,7 @@ MonoBehaviour:
       m_Bottom: 5
   MainTextColor: {r: 0.6603774, g: 0.65318894, b: 0.6136526, a: 1}
   lastSaveTime: 0
+  SkillFontSize: 25
 --- !u!4 &2118819688
 Transform:
   m_ObjectHideFlags: 0

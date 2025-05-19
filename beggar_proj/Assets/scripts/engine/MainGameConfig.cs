@@ -12,6 +12,7 @@ namespace HeartUnity
     public class MainGameConfig : ScriptableObject
     {
         public int versionNumber;
+        public string gameTitle;
         public bool betaVersion;
         public MusicDataList musicList;
         public AudioDataList audioList;
@@ -24,6 +25,7 @@ namespace HeartUnity
         public InputPromptVisuals inputPromptVisuals;
         public List<PersistenceUnit> PersistenceUnits;
         public URLs urls;
+        public Canvas reusableCanvas;
 
         [Serializable]
         public class View

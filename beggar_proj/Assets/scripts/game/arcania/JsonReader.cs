@@ -8,29 +8,49 @@ using UnityEngine.Pool;
 
 public class JsonReader
 {
-
-    public static void ReadJson(string json, ArcaniaUnits arcaniaDatas)
+    private static readonly Dictionary<string, ResourceChangeType> DictionaryOfChanges = new()
     {
-        var parentNode = SimpleJSON.JSON.Parse(json);
-        int currentModAmount = arcaniaDatas.Mods.Count;
-        if (parentNode.IsArray)
+        { "result", ResourceChangeType.RESULT },
+        { "effect", ResourceChangeType.EFFECT },
+        { "cost", ResourceChangeType.COST },
+        { "run", ResourceChangeType.RUN },
+        { "result_fail", ResourceChangeType.RESULT_FAIL },
+        { "buy", ResourceChangeType.BUY },
+    };
+    public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas)
+    {
+        var jsonDatas = config.jsonDatas;
+        ReadJson(arcaniaDatas, jsonDatas);
+    }
+
+    public static void ReadJson(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas)
+    {
+        int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
+
+        foreach (var item in jsonDatas)
         {
-            foreach (var c in parentNode.Children)
+            var parentNode = SimpleJSON.JSON.Parse(item.text);
+            if (parentNode.IsArray)
             {
-                ReadArrayOwner(arcaniaDatas, c);
+                foreach (var c in parentNode.Children)
+                {
+                    ReadArrayOwner(arcaniaDatas, c);
+                }
+            }
+            else
+            {
+                ReadArrayOwner(arcaniaDatas, parentNode);
             }
         }
-        else
-        {
-            ReadArrayOwner(arcaniaDatas, parentNode);
-        }
+
+
         //--------------------------------------------------------------
         // POST PROCESSING #post-processing
         //--------------------------------------------------------------
         // MODS #mods #post-processing
         //--------------------------------------------------------------
         #region mods post processing
-        for (int i = currentModAmount; i < arcaniaDatas.Mods.Count; i++)
+        for (int i = modAmountBeforeReadingData; i < arcaniaDatas.Mods.Count; i++)
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
             mod.Source.ModsOwned.Add(mod);
@@ -39,6 +59,7 @@ public class JsonReader
             //--------------------------------------------------------------
             string targetTextKey = GetPointerTextKey(mod.Target);
             string intermediaryTextKey = GetPointerTextKey(mod.Intermediary);
+            string sourceNameKey = mod.Source.Name;
             string GetPointerTextKey(IDPointer pointer)
             {
                 string textKey = null;
@@ -49,25 +70,75 @@ public class JsonReader
                 }
                 return textKey;
             }
-            if (mod.ModType == ModType.MaxChange)
+            switch (mod.ModType)
             {
-                // space max increasing has no target
-                if (targetTextKey != null) mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
-                else mod.HumanText = $"Max Space:";
-            }
-            if (mod.ModType == ModType.RateChange)
-            {
-                mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
-            }
-            if (mod.ModType == ModType.ResourceChangeChanger)
-            {
-                if (mod.ResourceChangeType == ResourceChangeType.EFFECT)
-                    mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
-                else mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
-            }
-            if (mod.ModType == ModType.SpaceConsumption)
-            {
-                mod.HumanText = "House Space:";
+                case ModType.Speed:
+                    mod.HumanText = $"Speed % {Local.GetText(targetTextKey)}:";
+                    mod.HumanTextTarget = $"Speed % ({Local.GetText(sourceNameKey)}):";
+                    break;
+
+                case ModType.MaxChange:
+                    if (targetTextKey != null)
+                    {
+                        if (intermediaryTextKey != null)
+                        {
+                            mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
+                            mod.HumanTextIntermediary = $" Mod Max {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)})";
+                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)} x {Local.GetText(intermediaryTextKey)}):";
+                        }
+                        else
+                        {
+                            mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
+                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)}):";
+                        }
+                    }
+                    else
+                    {
+                        mod.HumanText = "Max Space:";
+                    }
+                    break;
+
+                case ModType.RateChange:
+                    if (intermediaryTextKey != null)
+                    {
+                        mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod {Local.GetText(targetTextKey)} Rate:";
+                        mod.HumanTextIntermediary = $" Mod Rate {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
+                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)} x {Local.GetText(intermediaryTextKey)}):";
+                    }
+                    else 
+                    {
+                        mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
+                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)}):";
+                    }
+                    
+                    break;
+
+                case ModType.ResourceChangeChanger:
+                    if (mod.ResourceChangeType == ResourceChangeType.EFFECT || mod.ResourceChangeType == ResourceChangeType.RESULT)
+                    {
+                        mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
+                        mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
+                        mod.HumanTextTarget = null;
+                    }
+                    else
+                    {
+                        mod.HumanText = "RESOURCE CHANGE TYPE NOT SUPPORTED YET";
+                    }
+                    break;
+
+                case ModType.SpaceConsumption:
+                    mod.HumanText = "Space Occupied:";
+                    break;
+
+                case ModType.Lock:
+                    mod.HumanText = "(Currently Invisible: error)";
+                    break;
+                case ModType.SuccessRate:
+                    mod.HumanText = $"{Local.GetText(targetTextKey)} success rate:";
+                    mod.HumanTextTarget = $"Success rate ({Local.GetText(sourceNameKey)}):";
+                    break;
+                default:
+                    break;
             }
             if (mod.HumanText == null)
             {
@@ -77,6 +148,10 @@ public class JsonReader
             //--------------------------------------------------------------
             // MODS human text END
             //--------------------------------------------------------------
+            //--------------------------------------------------------------
+            // MODS misc
+            //--------------------------------------------------------------
+
             if (mod.ModType == ModType.SpaceConsumption)
             {
                 mod.Source.ConfigFurniture.SpaceConsumed = Mathf.FloorToInt(mod.Value);
@@ -94,20 +169,18 @@ public class JsonReader
                 continue;
             }
 
-            if (mod.Target.Tag != null)
+            if (mod.Intermediary != null)
             {
-                foreach (var item in mod.Target.Tag.UnitsWithTag)
+                foreach (var ru in mod.Intermediary.RuntimeUnits)
                 {
-                    item.RegisterModTargetingSelf(mod);
+                    ru.RegisterModWithSelfAsIntermediary(mod);
                 }
-                continue;
-            }
-            if (mod.Target.RuntimeUnit == null)
-            {
-                Debug.Log($"Target not found {mod.Target.id}");
             }
 
-            mod.Target.RuntimeUnit.RegisterModTargetingSelf(mod);
+            foreach (var ru in mod.Target.RuntimeUnits)
+            {
+                ru.RegisterModTargetingSelf(mod);
+            }
         }
         #endregion
         //--------------------------------------------------------------
@@ -121,6 +194,50 @@ public class JsonReader
                 u.ConfigTask.Need.humanExpression = ConditionalExpressionParser.ToHumanLanguage(u.ConfigTask.Need.expression);
             }
         }
+        #region assign each runtime unit to a separator
+        foreach (var dataList in arcaniaDatas.datas)
+        {
+            if (dataList.Key == UnitType.TAB) continue;
+            if (dataList.Key == UnitType.ENCOUNTER) continue;
+            if (dataList.Key == UnitType.DOT) continue;
+            foreach (var item in dataList.Value)
+            {
+                bool added = false;
+                // this code doesn't handle well having multiple tabs accepting the same unit type
+                // EXAMPLE NON_SUPPORTED:
+                // - Tab 1: Holy Resources
+                // - Tab 2: Dark Resources
+                foreach (var tabCandidates in arcaniaDatas.datas[UnitType.TAB])
+                {
+                    if (!tabCandidates.Tab.AcceptedUnitTypes.Contains(dataList.Key)) continue;
+                    TabRuntime.Separator unitSeparator = null;
+                    foreach (var separatorCandidate in tabCandidates.Tab.Separators)
+                    {
+                        if (separatorCandidate.AcceptedUnitTypes.Count > 0 && !separatorCandidate.AcceptedUnitTypes.Contains(dataList.Key)) continue;
+                        if (separatorCandidate.RequireMax && !item.HasMax) continue;
+                        if (separatorCandidate.RequireInstant && item.ConfigTask.Duration > 0) continue;
+                        unitSeparator = separatorCandidate;
+                        if (!separatorCandidate.Default) break;
+                    }
+                    if (unitSeparator == null) continue;
+                    unitSeparator.BoundRuntimeUnits.Add(item);
+                    added = true;
+                    break;
+                }
+                if (added) continue;
+                if (!added)
+                {
+                    Debug.Log("NOT ADDED " + item.ConfigBasic.Id);
+                }
+            }
+        }
+        #endregion
+        #region check broken pointers
+        foreach (var item in arcaniaDatas.IdMapper.Values)
+        {
+            item.CheckValidity();
+        }
+        #endregion
     }
 
     private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode)
@@ -134,7 +251,7 @@ public class JsonReader
             {
                 var dr = new DialogRuntime()
                 {
-                    Title = item["content"],
+                    Title = item["title"],
                     Content = item["content"],
                     Id = item["id"],
                 };
@@ -163,7 +280,7 @@ public class JsonReader
                 Debug.LogError($"Potential ID duplication: {iDPointer.id}");
             }
             iDPointer.RuntimeUnit = ru;
-            if (type == UnitType.RESOURCE) 
+            if (type == UnitType.RESOURCE)
             {
                 ru.ConfigResource = new ConfigResource()
                 {
@@ -180,7 +297,9 @@ public class JsonReader
                 {
                     if (pair.Key == "exploration_active_tab") tr.ExplorationActiveTab = pair.Value.AsBool;
                     if (pair.Key == "contains_logs") tr.ContainsLogs = pair.Value.AsBool;
+                    if (pair.Key == "necessary_for_desktop_and_thinnable") tr.NecessaryForDesktopAndThinnable = pair.Value.AsBool;
                     if (pair.Key == "open_settings") tr.OpenSettings = pair.Value.AsBool;
+                    if (pair.Key == "open_other_tabs") tr.OpenOtherTabs = pair.Value.AsBool;
                 }
 
                 SimpleJSON.JSONNode separatorNode = item.GetValueOrDefault("separator", null);
@@ -204,7 +323,7 @@ public class JsonReader
                 }
 
             }
-            if (type == UnitType.ENCOUNTER) 
+            if (type == UnitType.ENCOUNTER)
             {
                 ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
                 ru.ConfigEncounter = new ConfigEncounter()
@@ -294,13 +413,21 @@ public class JsonReader
         {
             if (pair.Key == "cost") ReadChanges(ct.Cost, pair.Value, arcaniaUnits, -1);
             if (pair.Key == "result") ReadChanges(ct.Result, pair.Value, arcaniaUnits, 1);
+            if (pair.Key == "result_once") ReadChanges(ct.ResultOnce, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "run") ReadChanges(ct.Run, pair.Value, arcaniaUnits, -1);
+            if (pair.Key == "buy") { 
+                ReadChanges(ct.Buy, pair.Value, arcaniaUnits, -1);
+                ru.BuyStatus = BuyStatus.NeedsBuy;
+            }
+            if (pair.Key == "result_fail") ReadChanges(ct.ResultFail, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "perpetual") ct.Perpetual = pair.Value.AsBool;
             if (pair.Key == "perpetual") explicitPerpetualDefinition = true;
             if (pair.Key == "duration") ct.Duration = pair.Value.AsInt;
             if (pair.Key == "slot") ct.SlotKey = pair.Value.AsString;
+            if (pair.Key == "success_rate") ct.SuccessRatePercent = pair.Value.AsInt;
             if (pair.Key == "need") ct.Need = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
+            if (pair.Key == "dot") ReadDot(ru, pair.Value, arcaniaUnits);
         }
         if (!ct.Duration.HasValue)
         {
@@ -309,11 +436,54 @@ public class JsonReader
                 ct.Duration = 1;
             }
         }
-        if (ct.Duration.HasValue && !ct.Perpetual && !explicitPerpetualDefinition && !ru.HasMax && ru.ConfigBasic.UnitType != UnitType.LOCATION)
+        if (ct.Duration.HasValue
+            && !ct.Perpetual
+            && !explicitPerpetualDefinition
+            && !ru.HasMax
+            && ru.ConfigBasic.UnitType != UnitType.LOCATION
+            && ru.DotRU == null)
         {
             ct.Perpetual = true;
         }
         return ct;
+    }
+
+    private static object ReadDot(RuntimeUnit owner, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits)
+    {
+        var ru = new RuntimeUnit();
+        ru.ConfigBasic = new();
+        ru.ConfigBasic.name = owner.Name;
+        string id = owner.ConfigBasic.Id + "_dot";
+        ru.ConfigBasic.name += " (effect)";
+        var pointer = arcaniaUnits.GetOrCreateIdPointer(id);
+        ru.ConfigBasic.Id = id;
+        ru.ConfigBasic.Max = 1;
+        pointer.RuntimeUnit = ru;
+        owner.DotRU = pointer.RuntimeUnit;
+        pointer.RuntimeUnit.ParentRU = owner;
+        arcaniaUnits.datas[UnitType.DOT].Add(ru);
+        var dc = new DotConfig();
+        ru.DotConfig = dc;
+        foreach (var c in value)
+        {
+            switch (c.Key)
+            {
+                case "duration":
+                    {
+                        dc.Duration = c.Value.AsInt;
+                    }
+                    break;
+                case "mods":
+                case "mod":
+                    {
+                        ReadMods(ru, c.Value, arcaniaUnits);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return dc;
     }
 
     private static void ReadChanges(List<ResourceChange> list, SimpleJSON.JSONNode value, ArcaniaUnits arcaniaUnits, int signalMultiplier)
@@ -328,25 +498,36 @@ public class JsonReader
                 min = number;
                 max = number;
             }
-            else 
+            else
             {
-                if (c.Value.IsString) 
+                if (c.Value.IsString)
                 {
                     var values = c.Value.AsString.Split("~");
                     min = float.Parse(values[0]);
                     max = float.Parse(values[1]);
                 }
             }
+
+            string header = c.Key;
+            var changeType = ResourceChange.ResourceChangeModificationType.NormalChange;
+            if (header.Contains(".xp"))
+            {
+                header = header.Replace(".xp", "");
+                changeType = ResourceChange.ResourceChangeModificationType.XpChange;
+            }
             var rc = new ResourceChange()
             {
-                IdPointer = arcaniaUnits.GetOrCreateIdPointer(c.Key),
-                valueChange = new FloatRange(min * signalMultiplier, max * signalMultiplier)
+                IdPointer = arcaniaUnits.GetOrCreateIdPointer(header),
+                valueChange = new FloatRange(min * signalMultiplier, max * signalMultiplier),
+                ModificationType = changeType
             };
             list.Add(rc);
         }
     }
 
-    private static void ReadMods(RuntimeUnit owner, SimpleJSON.JSONNode dataJsonMod, ArcaniaUnits arcaniaUnits)
+    private static void ReadMods(
+        RuntimeUnit owner,
+        SimpleJSON.JSONNode dataJsonMod, ArcaniaUnits arcaniaUnits)
     {
         using var _1 = ListPool<string>.Get(out var strList);
 
@@ -368,20 +549,32 @@ public class JsonReader
             }
             else
             {
-                var oneBeforeLast = splittedValues[splittedValues.Length - 2];
+                var oneBeforeLast = splittedValues.Length >= 2 ? splittedValues[splittedValues.Length - 2] : null;
 
                 if (last == "max") modType = ModType.MaxChange;
                 if (last == "rate") modType = ModType.RateChange;
+                if (last == "speed") modType = ModType.Speed;
+                if (last == "success_rate") modType = ModType.SuccessRate;
+
+                // EXAMPLES:
+                //   crakedvase.mod.clarity.max
+                if (splittedValues.Length == 4)
+                {
+                    secondary = splittedValues[splittedValues.Length - 4];
+                }
+
                 // if still undecided
                 if (modType == ModType.Invalid)
                 {
                     // TODO make this be an dictionary between string and ResourceChangeType, so you can handle every case without hard coding
-                    if (oneBeforeLast == "effect")
+                    // EXAMPLE: pleafocus.effect.supplication
+                    if (oneBeforeLast != null && JsonReader.DictionaryOfChanges.TryGetValue(oneBeforeLast, out var v))
                     {
                         target = last;
                         modType = ModType.ResourceChangeChanger;
-                        changeType = ResourceChangeType.EFFECT;
+                        changeType = v;
                         secondary = splittedValues[splittedValues.Length - 3];
+
                     }
                 }
                 else
@@ -406,7 +599,8 @@ public class JsonReader
             Target = targetId == null ? null : arcaniaUnits.GetOrCreateIdPointer(targetId),
             Intermediary = secondaryId == null ? null : arcaniaUnits.GetOrCreateIdPointer(secondaryId)
         };
-        arcaniaUnits.Mods.Add(md);
+        List<ModRuntime> mods = arcaniaUnits.Mods;
+        mods.Add(md);
         return md;
     }
 
@@ -425,13 +619,27 @@ public class JsonReader
         {
             if (pair.Key == "initial") ru.SetValue(pair.Value.AsInt);
             if (pair.Key == "name") bu.name = pair.Value;
-            if (pair.Key == "mod") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
+            if (pair.Key == "mod" || pair.Key == "mods") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "lock")
             {
-                CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.AsString, null);
+                var lockTargetString = pair.Value.AsString;
+                if (lockTargetString.Contains(","))
+                {
+                    var values = lockTargetString.Split(",");
+                    foreach (var v in values)
+                    {
+                        CreateMod(ru, arcaniaUnits, 1, ModType.Lock, v, null);
+                    }
+                }
+                else
+                {
+                    CreateMod(ru, arcaniaUnits, 1, ModType.Lock, pair.Value.AsString, null);
+                }
+
             }
+            if (pair.Key == "icon") bu.SpriteKey = pair.Value.AsString;
         }
         // default require for RESOURCE
         if (ru.ConfigBasic.UnitType == UnitType.RESOURCE && ru.ConfigBasic.Require == null)
@@ -477,21 +685,13 @@ public class ConfigBasic
     public ConditionalExpression Require { get; internal set; }
     public List<IDPointer> Tags { get; } = new();
     public UnitType UnitType { get; internal set; }
+    public string SpriteKey { get; internal set; }
 }
 
 public enum UnitType
 {
     RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
-}
-
-public enum ModType
-{
-    Invalid,
-    MaxChange,
-    RateChange,
-    SpaceConsumption,
-    Lock,
-    ResourceChangeChanger
+    DOT,
 }
 
 public class ModRuntime
@@ -505,13 +705,27 @@ public class ModRuntime
     public ResourceChangeType? ResourceChangeType { get; internal set; }
     public string SourceJsonKey { get; internal set; }
     public string HumanText { get; internal set; }
+    public string HumanTextIntermediary { get; internal set; }
+    public string HumanTextTarget { get; internal set; }
+}
+
+public class DotConfig
+{
+    public int Duration { get; internal set; }
 }
 
 public class ResourceChange
 {
     public IDPointer IdPointer;
     public FloatRange valueChange;
+    public ResourceChangeModificationType ModificationType = ResourceChangeModificationType.NormalChange;
+    public enum ResourceChangeModificationType
+    {
+        NormalChange,
+        XpChange
+    }
 }
+
 
 
 public class DialogRuntime
@@ -526,6 +740,7 @@ public class TagRuntime
 {
     public string tagName;
     public List<RuntimeUnit> UnitsWithTag = new();
+
     public List<DialogRuntime> Dialogs = new();
 
     public TagRuntime(string tagName)

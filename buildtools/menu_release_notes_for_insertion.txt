@@ -1,0 +1,19 @@
+
+      <div class="version">
+        <h2>Version 0.20 (Patreon Early Access)</h2>
+        <p>Faith, reason, and the power of literacy await (Contains all content of version 0.15)</p>
+        <p>4 new resource(s)<br>51 new task(s)<br>1 new house(s)<br>6 new class(s)<br>7 new skill(s)<br>5 new location(s)<br>25 new encounter(s)<br>1 new dialog(s)<br>3 new furniture(s)</p>
+      </div>
+    
+      <div class="version">
+        <h2>Version 0.15 (Stable)</h2>
+        <p>Rat companions, feline friendships, and a life of crime</p>
+        <p>16 new resource(s)<br>36 new task(s)<br>3 new house(s)<br>4 new class(s)<br>6 new skill(s)<br>5 new location(s)<br>16 new encounter(s)<br>2 new dialog(s)<br>11 new furniture(s)</p>
+      </div>
+    
+      <div class="version">
+        <h2>Version 0.11 </h2>
+        <p>Saving added!</p>
+        <p>16 resource(s)<br>28 task(s)<br>1 house(s)<br>5 class(s)<br>5 skill(s)<br>2 dialog(s)<br>10 furniture(s)</p>
+      </div>
+    

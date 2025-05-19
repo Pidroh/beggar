@@ -38,5 +38,16 @@ namespace HeartUnity
         public bool BiggerThan(float v) => max > v && min > v;
         public bool BiggerOrEqual(float v) => max >= v && min >= v;
         public bool SmallerOrEqual(float v) => max <= v && min <= v;
+
+        public static FloatRange operator +(FloatRange range, float v)
+        {
+            return new FloatRange(range.value1 + v, range.value2 + v);
+        }
+
+        public static FloatRange operator +(FloatRange range, FloatRange v)
+        {
+            return new FloatRange(range.value1 + v.value1, range.value2 + v.value2);
+        }
+
     }
 }

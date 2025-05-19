@@ -14,7 +14,13 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
     {
     }
 
-    public void ManualUpdate()
+    public RuntimeUnit LastActiveLocation { get; private set; }
+    public bool IsExplorationActive => ActiveEncounter != null;
+
+    public float ExplorationRatio => ((float)locationProgress) / LastActiveLocation.Location.configLocation.Length;
+    public float EncounterRatio => ActiveEncounter == null ? 0f : ((float)encounterProgress) / ActiveEncounter.ConfigEncounter.Length;
+
+    public void ManualUpdate(float dt)
     {
         RuntimeUnit runningLocation = null;
         foreach (var task in _model.Runner.RunningTasks)
@@ -23,32 +29,33 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             runningLocation = task;
             break;
         }
+        if (runningLocation == null) ActiveEncounter = null;
         if (runningLocation == null) return;
         var activeLocation = runningLocation;
-        #region Spawn encounter
-        if (ActiveEncounter == null) {
-
-            var ele = activeLocation.Location.Encounters.RandomElement();
-            ActiveEncounter = ele.RuntimeUnit;
-            encounterProgress = 0f;
+        if (LastActiveLocation != activeLocation)
+        {
+            locationProgress = 0;
+            LastActiveLocation = activeLocation;
         }
-        #endregion
-        encounterProgress += Time.deltaTime;
+
+        EnsureEncounter(activeLocation);
+        encounterProgress += dt;
         if (encounterProgress >= ActiveEncounter.ConfigEncounter.Length)
         {
             #region encounter won
             _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.RESULT);
+            // RESULT_ONCE should not be applied here because currently the encounter itself doesn't have a value
             ActiveEncounter = null;
             locationProgress++;
             #endregion
         }
-        else 
+        else
         {
             #region encounter progress
-            _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
+
             foreach (var str in Stressors)
             {
-                if (str.IsMaxed) 
+                if (str.IsMaxed)
                 {
                     _model.Runner.InterruptTask(activeLocation);
                     return;
@@ -56,14 +63,42 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
             }
             #endregion 
         }
-        if (locationProgress >= activeLocation.Location.configLocation.Length) 
+
+        if (locationProgress >= activeLocation.Location.configLocation.Length)
         {
             locationProgress = 0;
             _model.Runner.CompleteTask(activeLocation);
         }
+        else
+        {
+            EnsureEncounter(activeLocation);
+        }
     }
 
-    internal void FinishedSettingUpUnits()
+    public void LoadLastActiveLocation(RuntimeUnit runtimeUnit)
+    {
+        LastActiveLocation = runtimeUnit;
+    }
+
+    public void Flee()
+    {
+        _model.Runner.StopAllOfType(UnitType.LOCATION);
+    }
+
+    private void EnsureEncounter(RuntimeUnit activeLocation)
+    {
+        #region Spawn encounter
+        if (ActiveEncounter == null)
+        {
+
+            var ele = activeLocation.Location.Encounters.RandomElement();
+            ActiveEncounter = ele.RuntimeUnit;
+            encounterProgress = 0f;
+        }
+        #endregion
+    }
+
+    public void FinishedSettingUpUnits()
     {
         foreach (var item in _model.arcaniaUnits.datas[UnitType.RESOURCE])
         {
@@ -73,6 +108,15 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
                 Stressors.Add(item);
             }
         }
-        
+
+    }
+
+    public void UpdateLoopProgressedSecond()
+    {
+        if (ActiveEncounter != null)
+        {
+            _model.ApplyResourceChanges(ActiveEncounter, ResourceChangeType.EFFECT);
+        }
+
     }
 }

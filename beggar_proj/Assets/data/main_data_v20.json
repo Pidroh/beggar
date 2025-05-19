@@ -1,0 +1,1804 @@
+[
+    {
+        "type": "RESOURCE",
+        "items":[
+            
+            {
+                "id": "churchrespect",
+                "name": "Church Respect",
+                "max": 5,
+                "desc": "How well seen you are by members of the church"
+            },
+            {
+                "id": "reflection",
+                "name": "Reflection",
+                "max": 3,
+                "desc": "Thought applied to the self, to the past",
+                "flavor": "The mirror of the mind",
+                "mod": {
+                    "clarity.max": 1,
+                    "thoughts.max": 5
+                }
+            },
+            {
+                "id": "fundamentals",
+                "name": "Fundamentals",
+                "max": 0,
+                "desc": "The basics of knowledge"
+            },
+            {
+                "id": "academics",
+                "name": "Academics",
+                "max": 1,
+                "desc": "Crystalized fundamentals"
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items":[
+            {
+                "id": "baptism",
+                "name": "Baptism",
+                "require": "ecclesiology>0",
+                "duration": 90,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 5
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 10,
+                    "churchrespect.max": 20
+                }
+            },
+            {
+                "id": "tabularasa",
+                "name": "Tabula rasa",
+                "desc": "The idea that every mind starts blank",
+                "require": "philosophy>0",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "thoughts": 100
+                },
+                "mod":{
+                    "thoughts.max": 100,
+                    "contemplation.max": 1
+                }
+            },
+            {
+                "id": "corgito",
+                "name": "Corgito ergo sum",
+                "desc": "I think, therefore I am",
+                "require": "philosophy>1",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "thoughts": 300,
+                    "clarity": 10,
+                    "reflection": 1
+                },
+                "mod":{
+                    "reflection.max": 3,
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "socraticmethod",
+                "name": "Socratic Method",
+                "desc": "Ask the right questions. The goal is not the answer, but the thought.",
+                "require": "philosophy>2",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 300,
+                    "clarity": 15,
+                    "reflection": 2
+                },
+                "mod":{
+                    "think.effect.thoughts": 2,
+                    "organizethoughts.effect.clarity": 1
+                }
+            },
+            {
+                "id": "latinbasics",
+                "name": "Basic phrases",
+                "desc": "Salve, delicatus in occursum adventus tui, ego sum in amore cum te",
+                "require": "latin>0",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 50,
+                    "clarity": 5
+                },
+                "mod":{
+                    "supplication.max": 50,
+                    "supplication.rate": 0.5,
+                    "churchrespect.max": 10
+                }
+            },
+            {
+                "id": "latinreading",
+                "name": "Elementary reading",
+                "desc": "Legere aliqua potes.",
+                "require": "latin>1",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "thoughts": 150
+                },
+                "mod":{
+                    "thoughts.max": 100,
+                    "fundamentals.max": 3 
+                }
+            },
+            {
+                "id": "widowmite",
+                "name": "Widow's Mite",
+                "desc": "The story of a faithful woman who gave herself to the divine",
+                "require": "holyscriptures>0",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "faith": 30,
+                    "fundamentals": 1
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod":{
+                    "gratitude.max": 30,
+                    "faith.max": 15
+                }
+            },
+            {
+                "id": "sheepgoat",
+                "name": "The Sheep and the Goats",
+                "desc": "A sheep on a hand, a goat on another, such is the depth of thought",
+                "require": "holyscriptures>1",
+                "duration": 15,
+                "max": 1,
+                "cost": {
+                    "faith": 45,
+                    "fundamentals": 2
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod":{
+                    "churchrespect.max": 15,
+                    "faith.max": 15
+                }
+            },
+            {
+                "id": "specklog",
+                "name": "The Speck and the Log",
+                "desc": "First, look at your own flaws",
+                "require": "holyscriptures>2",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "faith": 55,
+                    "fundamentals": 2
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod":{
+                    "churchrespect.max": 20,
+                    "clarity.max": 5,
+                    "reflection.max": 2
+                }
+            },
+            
+            {
+                "id": "sharethebegging",
+                "name": "Share the begging",
+                "desc": "Tell your fellow beggars about your beg skills",
+                "require": "begging>1",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "supplication": 450,
+                    "thoughts": 50
+                },
+                "run": {
+                    "supplication": 5
+                },
+                "mod":{
+                    "beggarhood.max": 1,
+                    "supplication.max": 20
+                }
+            },
+            {
+                "id": "optimizebegging",
+                "name": "Advanced begging",
+                "desc": "Pour the knowledge you accumulated in your begging",
+                "require": "begging>0",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "clarity": 5,
+                    "thoughts": 50
+                },
+                "run": {
+                    "thoughts": 3
+                },
+                "mod":{
+                    "beg_a.result.breadcrumbs": 2,
+                    "beg_b.result.breadcrumbs": 2
+                }
+            },
+            {
+                "id": "begginingmeaning",
+                "name": "The meaning of begging",
+                "desc": "What it means to ask people for things",
+                "require": "begging>2",
+                "duration": 100,
+                "max": 1,
+                "cost": {
+                    "supplication": 700,
+                    "clarity": 5,
+                    "thoughts": 300
+                },
+                "run": {
+                    "supplication": 5
+                },
+                "mod":{
+                    "supplication.max": 100,
+                    "pleafocus.effect.supplication": 2,
+                    "clarity.max": 3
+                }
+            },
+            {
+                "id": "beggingspots",
+                "name": "Begging spots",
+                "desc": "Use your knowledge of the streets to find the best places for begging",
+                "require": "cityknowledge>0",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "supplication": 100,
+                    "foraging": 30
+                },
+                "run": {
+                    "supplication": 5
+                },
+                "mod":{
+                    "begging.max": 1,
+                    "beg_a.result.breadcrumbs": 1
+                }
+            },
+            {
+                "id": "tier3reach",
+                "name": "Growth III",
+                "desc": "You seem to have reached a new stage in life?",
+                "require": "t_tier3",
+                "duration": 25,
+                "max": 1,
+                "mod": {
+                    "skilled.max": 1,
+                    "clarity.max": 25
+                }
+            },
+            {
+                "id": "foodchurch",
+                "name": "Church meals",
+                "desc": "Meal given by the church",
+                "require": "jointhechurch",
+                "duration": 10,
+                "cost": {
+                    "churchrespect": 15,
+                    "faith": 15
+                },
+                "result": {
+                    "food": 1,
+                    "gratitude": 10
+                }
+            },
+            {
+                "id": "thankfulthoughts",
+                "name": "Thankful thoughts",
+                "desc": "Always being thankful",
+                "require": "jointhechurch",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "thoughts": 120
+                },
+                "result": {
+                    "gratitude": 100
+                },
+                "mod": {
+                    "think.effect.gratitude": 1
+                }
+            },
+            {
+                "id": "study",
+                "name": "Study",
+                "desc": "Get down on the fundamentals",
+                "require": "latinreading",
+                "duration": 15,
+                "run": {
+                    "thoughts": 5
+                },
+                "result": {
+                    "fundamentals": 1
+                }
+            },
+            {
+                "id": "pray",
+                "name": "Pray",
+                "desc": "May your words reach the Divine",
+                "require": "baptism",
+                "duration": 5,
+                "run": {
+                    "thoughts": 1,
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 2,
+                    "gratitude": 1
+                }
+            },
+            {
+                "id": "studystudy",
+                "name": "Study studying?",
+                "desc": "How to get better at studying?",
+                "require": "basicsknowledge",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4
+                },
+                "run": {
+                    "thoughts": 5
+                },
+                "mod": {
+                    "fundamentals.max": 1
+                },
+                "result": {
+                    "clarity": 80
+                }
+            },
+            {
+                "id": "mass",
+                "name": "Knowledge of the Mass",
+                "desc": "The celebration of the eucharist",
+                "require": "basicschurch",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "faith.max": 10,
+                    "churchrespect.max": 10
+                }
+            },
+            {
+                "id": "altarservices",
+                "name": "Services of the Altar",
+                "desc": "Preparation and executions of all matters concerning the altar",
+                "require": "mass",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 2,
+                    "churchrespect.max": 15
+                }
+            },
+            {
+                "id": "maternostra",
+                "name": "Memorize Mater Nostra",
+                "desc": "Memorize every verse of the Mater Nostra",
+                "require": "basicschurch",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "clarity": 3
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "thoughts.max": 50,
+                    "churchrespect.max": 10
+                }
+            },
+            {
+                "id": "aveluna",
+                "name": "Memorize Ave Luna",
+                "desc": "Memorize every verse of the Ave Luna",
+                "require": "maternostra",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "clarity": 3
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "thoughts.max": 50,
+                    "churchrespect.max": 10
+                }
+            },
+            {
+                "id": "baptismknowledge",
+                "name": "Knowledge of the Baptism",
+                "desc": "Learn all details and procedures of baptizing new souls",
+                "require": "intermediarychurch&&jointhechurch",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 8
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "thoughts.max": 50,
+                    "churchrespect.max": 30
+                }
+            },
+            {
+                "id": "eucharistknowledge",
+                "name": "Knowledge of the Eucharist",
+                "desc": "Learn all details and procedures of the central religious act",
+                "require": "intermediarychurch&&jointhechurch",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 5,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "thoughts.max": 30,
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "sevensacraments",
+                "name": "The Sevent Sacraments",
+                "desc": "Learn every single one of the seven sacraments",
+                "require": "baptismknowledge||eucharistknowledge",
+                "need": "baptismknowledge&&eucharistknowledge",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 6,
+                    "clarity": 10
+                },
+                "run": {
+                    "thoughts": 20
+                },
+                "mod": {
+                    "fundamentals.max": 2,
+                    "thoughts.max": 60,
+                    "churchrespect.max": 80
+                }
+            },
+            
+            {
+                "id": "subdeaconduties",
+                "name": "Subdeacon duties",
+                "desc": "Learn every duty of the subdeacon",
+                "require": "celibacy&&basicschurch",
+                "need": "aveluna&&altarservices",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 3,
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "deaconduties",
+                "name": "Deacon duties",
+                "desc": "Learn every duty of the deacon",
+                "require": "subdeaconduties",
+                "need": "sevensacraments",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 3,
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "priestduties",
+                "name": "Priest duties",
+                "desc": "Learn every duty of the priest",
+                "require": "deaconduties",
+                "need": "confessions&&advancedconsecration",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.max": 50,
+                    "faith.max":30
+                }
+            },
+            {
+                "id": "advancedsermons",
+                "name": "Advanced Sermons",
+                "desc": "Learn how to add real depth to your talks",
+                "require": "sevensacraments",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 4,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.max": 30
+                }
+            },
+            {
+                "id": "transubstation",
+                "name": "Transubstation",
+                "desc": "The art of consegrating bread and wine",
+                "require": "sevensacraments",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.rate": 0.1,
+                    "faith.rate": 0.1
+                }
+            },
+            {
+                "id": "confessions",
+                "name": "Confessions",
+                "desc": "Learn to hear and absolve",
+                "require": "advancedsermons",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "churchrespect.rate": 0.1,
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "advancedconsecration",
+                "name": "Advanced Consecration",
+                "desc": "Become able to consecrate the altar",
+                "require": "transubstation",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fundamentals.max": 1,
+                    "faith.rate": 0.1,
+                    "faith.max": 50
+                }
+            },
+            {
+                "id": "convincejohn",
+                "name": "Convince John to help with letters",
+                "desc": "Legend says that John can read and write. Maybe he can help you do the same.",
+                "require": "john_home&&ecclesiology<3",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "clarity": 20,
+                    "reflection": 10
+                },
+                "run": {
+                    "thoughts": 3,
+                    "supplication": 5
+                },
+                "mod":{
+                    "thoughts.max": 10,
+                    "clarity.max": 5
+                }
+            },
+            {
+                "id": "tonsure",
+                "name": "Tonsure",
+                "desc": "The act of shaving one's head, as proof of devotion.",
+                "require": "ecclesiology>1&&baptism",
+                "duration": 120,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 5
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 5,
+                    "churchrespect.max": 30
+                }
+            },
+            {
+                "id": "celibacy",
+                "name": "Vow of Celibacy",
+                "desc": "A holy promise to turn away from physical connection, surrendering to a higher calling.",
+                "require": "jointhechurch&&t_tier2",
+                "duration": 120,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 50,
+                    "thoughts": 200,
+                    "supplication": 200
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 5,
+                    "churchrespect.max": 50,
+                    "churchrespect.rate": 0.1
+                }
+            },
+            {
+                "id": "theself_3",
+                "name": "Who am I?",
+                "desc": "Reflect on thyself.",
+                "require": "t_tier2",
+                "duration": 140,
+                "max": 1,
+                "cost": {
+                    "clarity": 60,
+                    "reflection": 10
+                },
+                "run": {
+                    "thoughts": 3
+                },
+                "mod":{
+                    "reflection.max": 5,
+                    "clarity.max": 10,
+                    "organizethoughts.effect.clarity": 1
+                }
+            },
+            {
+                "id": "jointhechurch",
+                "name": "Join the Church",
+                "desc": "Officially join the church",
+                "tag": "joinchurch",
+                "require": "ecclesiology>2&&tonsure",
+                "duration": 120,
+                "lock": "beggary",
+                "max": 1,
+                "cost": {
+                    "churchrespect": 20,
+                    "faith": 10,
+                    "clarity": 1,
+                    "thoughts": 80
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "faith.max": 50,
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "beg_b",
+                "name": "Beg for food",
+                "desc": "Your pleading eyes can get all sorts of food",
+                "require": "expertbeggar",
+                "cost":{
+                    "supplication": 15
+                },
+                "success_rate": 60,
+                "result": {
+                    "coin": "0~1",
+                    "food": "0~2",
+                    "breadcrumbs": "15~30"
+                },
+                "result_fail": {
+                    "breadcrumbs": "15~30"
+                }
+            },
+            {
+                "id": "firsteucharist",
+                "name": "First eucharist assistance",
+                "desc": "You have completed your first eucharist assistance. May the Mother bless you!",
+                "require": "eucharist_assistance",
+                "duration": 5,
+                "max": 1,
+                "cost": {
+                    "churchrespect": 20,
+                    "faith": 10,
+                    "clarity": 5,
+                    "thoughts": 80
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "churchrespect.max": 100
+                }
+            },
+            {
+                "id": "subdeacon",
+                "name": "Subdeacon",
+                "desc": "Be appointed a Subdeacon, the first major order in the Church",
+                "require": "subdeaconduties||eucharist_assistance&&celibacy",
+                "duration": 90,
+                "max": 1,
+                "need": "eucharist_assistance&&holyscriptures&&subdeaconduties",
+                "cost": {
+                    "churchrespect": 250,
+                    "faith": 10,
+                    "thoughts": 80
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "churchrespect.max": 100,
+                    "ecclesiology.max": 1,
+                    "holyscriptures.max": 1
+                }
+            },
+            {
+                "id": "deacon",
+                "name": "Deacon",
+                "desc": "Be appointed a Deacon, the next major order in the Church",
+                "require": "subdeacon",
+                "duration": 200,
+                "max": 1,
+                "need": "holyscriptures>2&&ecclesiology>5",
+                "cost": {
+                    "churchrespect": 250,
+                    "faith": 10,
+                    "thoughts": 80
+                },
+                "run": {
+                    "faith": 1
+                },
+                "mod":{
+                    "churchrespect.max": 100,
+                    "ecclesiology.max": 1,
+                    "holyscriptures.max": 1
+                }
+            },
+            {
+                "id": "reflectgatherer",
+                "name": "Reflections of the Gatherer",
+                "desc": "Look back on how you have gathered so far. Find a path to improve.",
+                "duration": 50,
+                "max": 1,
+                "require": "scavenging>=3&&reflection",
+                "run": {
+                    "thoughts": 3,
+                    "clarity": 1
+                },
+                "mod":{
+                    "scavenging.max": 1
+                },
+                "cost": {
+                    "reflection": 1
+                }
+            },
+            {
+                "id": "helpchurch",
+                "name": "Religious Volunteering",
+                "desc": "Help out with small tasks in the church",
+                "require": "ecclesiology>0",
+                "duration": 5,
+                "run": {
+                    "gratitude": 1,
+                    "supplication": 1
+                },
+                "effect": {
+                    "ecclesiology.xp": 1
+                },
+                "result": {
+                    "churchrespect": 1,
+                    "faith": 1
+                }
+            },
+            {
+                "id": "basicsknowledge",
+                "name": "Learn the basics",
+                "desc": "The very basic bricks of knowledge",
+                "require": "fundamentals>0",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 1
+                },
+                "mod": {
+                    "fundamentals.max": 2,
+                    "study.speed": 10,
+                    "clarity.max" : 5
+                }
+            },
+            {
+                "id": "betterreading",
+                "name": "Better reading",
+                "desc": "Learn how to focus more on your reading",
+                "require": "fundamentals>0",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2
+                },
+                "mod": {
+                    "study.speed": 25,
+                    "study.effect.fundamentals": 0.25
+                }
+            },
+            {
+                "id": "firstverse",
+                "name": "First divine verse",
+                "desc": "Read out a verse from the scripture out loud, for your fellows at the church",
+                "require": "latinreading&&ecclesiology>2&&jointhechurch",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "thoughts": 80
+                },
+                "mod": {
+                    "churchrespect.max":20
+                }
+            },
+            {
+                "id": "basicschurch",
+                "name": "Basics of the Church",
+                "desc": "Formarly study the basic principles of the church",
+                "require": "ecclesiology>1&&fundamentals>1",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 2,
+                    "faith": 15
+                },
+                "mod": {
+                    "churchrespect.max":20,
+                    "faith.max": 10,
+                    "fundamentals.max": 1
+                }
+            },
+            {
+                "id": "intermediarychurch",
+                "name": "Essentials of the Church",
+                "desc": "Go beyond the basic principles of the church into core aspects",
+                "require": "ecclesiology>2&&basicschurch",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 5,
+                    "faith": 20
+                },
+                "run": {
+                    "thoughts": 15
+                },
+                "mod": {
+                    "churchrespect.max":30,
+                    "faith.max": 15,
+                    "fundamentals.max": 2
+                }
+            },
+            {
+                "id": "revisit_thoughts",
+                "name": "Revisit thoughts",
+                "require": "thinkbreakthrough",
+                "duration": 10,
+                "cost": {
+                    "clarity": 10
+                },
+                "run": {
+                    "supplication": 10,
+                    "thoughts": 5
+                },
+                "result":{
+                    "reflection": 1
+                }
+            },
+            {
+                "id": "thinkbreakthrough",
+                "name": "Time of reflection",
+                "need": "contemplation>3",
+                "require": "introspection>5&&contemplation>0",
+                "max": 2,
+                "duration": 55,
+                "cost": {
+                    "thoughts": 200
+                },
+                "run": {
+                    "clarity": 1
+                },
+                "mod": {
+                    "clarity.max": 5,
+                    "thoughts.max": 50,
+                    "reflection.max": 1
+
+                }
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items":[
+            {
+                "id": "churchbasic",
+                "name": "Church dormitory",
+                "require": "jointhechurch",
+                "cost": {
+                    "churchrespect": 30,
+                    "faith": 10
+                },
+                "desc": "Not too far from the Church of Our Lady, close to the divine",
+                "mod": {
+                    "space.max": 9,
+                    "faith.max": 50,
+                    "pray.effect.faith": 2,
+                    "churchrespect.max": 50
+
+                }
+            }
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items":[
+            {
+                "id" : "churchporter",
+                "name": "Church Porter",
+                "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
+                "tags": "t_tier1",
+                "lock": "t_tier1",
+                "require": "t_tier0&&ordination_1&&jointhechurch",
+                "cost": {
+                    "churchrespect": 80,
+                    "gratitude": 150,
+                    "faith": 80,
+                    "nutrition": 100
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "gratitude.max": 20,
+                    "churchrespect.max": 40,
+                    "ecclesiology.max": 1,
+                    "guilt.max": -5
+                }
+            },
+            {
+                "id" : "lostphilosopher",
+                "name": "Lost Philosopher",
+                "desc" : "The one who stays in the streets. Thinking, mumbling. Trying to reach the answer.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&philosophy>=2",
+                "cost": {
+                    "thoughts": 200,
+                    "supplication": 400,
+                    "clarity": 25,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "philosophy.max": 1,
+                    "contemplation.max": 1,
+                    "beggarhood.max": 1
+                }
+            },
+            {
+                "id" : "acolyte",
+                "name": "Acolyte",
+                "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&ordination_2",
+                "cost": {
+                    "thoughts": 500,
+                    "gratitude": 150,
+                    "faith": 150,
+                    "nutrition": 80
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 80,
+                    "ecclesiology.max": 1
+                }
+            },
+            {
+                "id" : "lector",
+                "name": "Lector",
+                "desc" : "A member of the minor order of the church. In charge of reading and teaching sacred texts.",
+                "tags": "t_tier2",
+                "lock": "t_tier2",
+                "need": "theself_2",
+                "require": "t_tier1&&ordination_2&&latin>1",
+                "cost": {
+                    "thoughts": 550,
+                    "gratitude": 400,
+                    "faith": 100,
+                    "nutrition": 70,
+                    "fundamentals": 2
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 50,
+                    "latin.max": 1,
+                    "ecclesiology.max": 1
+                }
+            },
+            {
+                "id" : "priest",
+                "name": "Priest",
+                "desc" : "The third major order of the Church. A religious leader capable of performing all sorts of rituals.",
+                "tags": "t_tier3",
+                "lock": "t_tier3",
+                "need": "theself_3&&holyscriptures>4&&deacon",
+                "require": "t_tier2&&priestduties&&ecclesiology>6",
+                "cost": {
+                    "thoughts": 1600,
+                    "gratitude": 1000,
+                    "faith": 350,
+                    "nutrition": 90
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 150,
+                    "holyscriptures.max": 1,
+                    "ecclesiology.max": 1
+                }
+            },
+            {
+                "id" : "expertbeggar",
+                "name": "Expert Beggar",
+                "desc" : "A master of the streets, the coinosseur of the begging arts.",
+                "tags": "t_tier3,beggary",
+                "lock": "t_tier3,beg_a",
+                "need": "theself_3&&begging>=4&&beggarhood>=5&&cityknowledge>=3",
+                "require": "t_tier2&&begging>2&&beggarhood>=3&&cityknowledge>=1",
+                "cost": {
+                    "supplication": 1000,
+                    "thoughts": 400,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "begging.max": 1,
+                    "beggarhood.max": 1,
+                    "innermind.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items":[
+            {
+                "id": "ecclesiology",
+                "require": "faith>0&&churchbeggar>0||churchfront>0&&faith>0",
+                "cost": {
+                    "skillpoints": 75
+                },
+                "desc": "Knowledge of the church and religious cerimonies",
+                "mod": {
+                    "faith.max": 5,
+                    "gratitude.max": 1,
+                    "guilt.max": -5
+                }
+            },
+            {
+                "id": "academia",
+                "require": "studystudy",
+                "cost": {
+                    "fundamentals": 5,
+                    "thoughts": 300,
+                    "clarity": 25
+                },
+                "desc": "The pursuit of knowledge",
+                "mod": {
+                    "fundamentals.max": 3,
+                    "study.speed": 3
+                }
+            },
+            {
+                "id": "philosophy",
+                "require": "introspection>=4&&john_conversation",
+                "need": "contemplation>=3",
+                "cost": {
+                    "thoughts": 80,
+                    "clarity": 10
+                },
+                "desc": "The study of the fundamental questions",
+                "mod": {
+                    "thoughts.max": 5,
+                    "clarity.max": 3,
+                    "reflection.max": 1
+                }
+            },
+            {
+                "id": "latin",
+                "require": "ecclesiology>3||convincejohn",
+                "cost": {
+                    "thoughts": 250,
+                    "clarity": 10
+                },
+                "desc": "The languaged used in the Roman Empire. Necessary to read scriptures.",
+                "mod": {
+                    "thoughts.max": 10,
+                    "clarity.max": 2
+                }
+            },
+            {
+                "id": "begging",
+                "require": "beggarhood>=3",
+                "cost": {
+                    "thoughts": 290,
+                    "supplication": 600,
+                    "clarity": 5
+                },
+                "desc": "The subtle craft of making others see their role as saviors",
+                "mod": {
+                    "supplication.max": 100,
+                    "supplication.rate": 0.5
+                }
+            },
+            {
+                "id": "cityknowledge",
+                "name": "Street knowledge",
+                "desc": "You know what lies in most corners",
+                "require": "beggarhood>=4&&begging>0",
+                "cost": {
+                    "supplication": 600,
+                    "thoughts": 200,
+                    "clarity": 15
+                },
+                "mod": {
+                    "foraging.max": 5
+                }
+            },
+            {
+                "id": "holyscriptures",
+                "name": "Holy Scriptures",
+                "require": "ecclesiology>4&&latin>2",
+                "cost": {
+                    "fundamentals": 3,
+                    "thoughts": 500
+                },
+                "desc": "Knowledge of the religious scriptures.",
+                "mod": {
+                    "faith.max": 5
+                }
+            }
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+            {
+                "id": "ordination_1",
+                "name": "First Ordination",
+                "desc": "Join the minor orders of the church, on the path of serving the divine",
+                "require": "jointhechurch",
+                "length": 20,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 40
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["eyesfaithful", "bishopglare", "joinedprayer", "wordsbishop", "chant", "voicesgossip", "divinepictures", "silenceperiod", "keyschurch"]
+            },
+            {
+                "id": "ordination_2",
+                "name": "Second Ordination",
+                "desc": "Advance in the minor orders of the church, getting closer and closer to the divine",
+                "require": "ordination_1&&ecclesiology>3&&jointhechurch",
+                "length": 25,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 50,
+                    "churchrespect": 20
+                },
+                "result_once": {
+                    "skillpoints": 30
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["eyesfaithful", "bishopglare", "joinedprayer", "wordsbishop", "chant", "voicesgossip", "divinepictures", "silenceperiod", "holdcandle"]
+            },
+            {
+                "id": "eucharist_assistance",
+                "name": "Assisting the eucharist",
+                "desc": "Prepare the altar, candles, and help out with other things during the eucharist",
+                "require": "jointhechurch&&acolyte||lector&&jointhechurch",
+                "length": 8,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 50,
+                    "churchrespect": 20
+                },
+                "result_once": {
+                    "skillpoints": 30
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["preparealtar", "carrycandles", "liturgicalbooks", "cruetswine", "lavabo", "voicesgossip", "divinepictures", "silenceperiod"]
+            },
+            {
+                "id": "john_conversation",
+                "name": "A walk with John the Wise",
+                "desc": "The sage of the streets, strolling in town",
+                "require": "beggarhood>=3",
+                "length": 15,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 20,
+                    "thoughts": 30,
+                    "clarity": 5
+                },
+                "result_once": {
+                    "skillpoints": 30
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose"]
+            },
+            {
+                "id": "john_home",
+                "name": "House of the Wise",
+                "desc": "The home of John the Wise. A tent filled with strange trinkets.",
+                "require": "beggarhood>=4&&lostphilosopher",
+                "length": 20,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 20,
+                    "thoughts": 30,
+                    "clarity": 5
+                },
+                "result_once": {
+                    "skillpoints": 35
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose", "sadpainting", "deadflowers_enc", "johnnap"]
+            }
+        ]
+    },
+    {
+         "type": "ENCOUNTER",
+        "items": [
+            {
+                "id": "blueeyes",
+                "name": "Blue eyes",
+                "desc": "John's blue eyes stare deeply at you, trying to pierce into your soul",
+                "effect": {
+                    "supplication": -1,
+                    "fear": "0~2",
+                    "perplexion": "1~3"
+                },
+                "result": {
+                    "supplication": 5,
+                    "clarity": 1,
+                    "sadness": 1
+                }
+            },
+            {
+                "id": "intriguingquestion",
+                "name": "Intriguing question",
+                "desc": "You are posed a challenging question",
+                "effect": {
+                    "thoughts": -1,
+                    "perplexion": "1~2",
+                    "irritation": "0~2",
+                    "sadness": 1
+                },
+                "result": {
+                    "supplication": 5,
+                    "clarity": 2,
+                    "thoughts": 15,
+                    "fundamentals": 3,
+                    "academia.xp": 1
+                }
+            },
+            {
+                "id": "johncharade",
+                "name": "A charade",
+                "desc": "A mysterious problem looms over you",
+                "effect": {
+                    "thoughts": "-1~1",
+                    "perplexion": "1~2",
+                    "irritation": "0~2"
+                },
+                "result": {
+                    "thoughts": 30,
+                    "clarity": 5,
+                    "fundamentals": 2,
+                    "academia.xp": 1
+                }
+            },
+            {
+                "id": "johnchildhood",
+                "name": "John's childhood",
+                "desc": "John tells you one of his many adventures as a child",
+                "effect": {
+                    "thoughts": 1,
+                    "perplexion": "-1~1",
+                    "supplication": "1~3"
+                },
+                "result": {
+                    "clarity": 2,
+                    "thoughts": 20
+                }
+            },
+            {
+                "id": "johnlaughter",
+                "name": "Laughter",
+                "desc": "John's laughter echoes through your ears",
+                "effect": {
+                    "perplexion": "0~2",
+                    "irritation": "0~3"
+                },
+                "result": {
+                    "thoughts": 10,
+                    "happiness": 1,
+                    "sadness": -20
+                }
+            },
+            {
+                "id": "mockingwords",
+                "name": "Mocking words",
+                "desc": "Words pierce your ears, belittling you",
+                "effect": {
+                    "perplexion": "0~2",
+                    "irritation": "0~3",
+                    "sadness": "0~2"
+                },
+                "result": {
+                    "thoughts": 10,
+                    "sorrow": 2,
+                    "sadness": 20
+                }
+            },
+            {
+                "id": "johnprose",
+                "name": "Prose",
+                "desc": "John's prose entices your brain",
+                "effect": {
+                    "perplexion": "0~2",
+                    "irritation": "-2~2",
+                    "thoughts": 1,
+                    "sadness": "0~2",
+                    "thinking.xp": 1
+                },
+                "result": {
+                    "thoughts": 50,
+                    "clarity": 5,
+                    "fundamentals": 2,
+                    "academia.xp": 1
+                }
+            },
+            {
+                "id": "sadpainting",
+                "name": "Sad painting",
+                "desc": "A painting that inspires deep emotions",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "irritation": "-2~2",
+                    "sorrow": "0~1",
+                    "sadness": "0~2"
+                },
+                "result": {
+                    "clarity": 5,
+                    "sorrow": 10,
+                    "sadness": 30
+                }
+            },
+            {
+                "id": "deadflowers_enc",
+                "name": "Dead flowers",
+                "desc": "A bouquet of dead flowers left in the ground",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "thoughts": "-1~5",
+                    "sorrow": "0~1",
+                    "sadness": "0~3"
+                },
+                "result": {
+                    "clarity": 5,
+                    "sorrow": 5
+                }
+            },
+            {
+                "id": "johnnap",
+                "name": "John's nap",
+                "desc": "He takes time to sleep. You can hear him sleep talking...",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "irritation": "0~3",
+                    "sadness": "-2~2"
+                },
+                "result": {
+                    "clarity": 5,
+                    "thoughts": 5
+                }
+            },
+            {
+                "id": "preparealtar",
+                "name": "Preparing the altar",
+                "desc": "You help prepare the altar for the eucharist",
+                "effect": {
+                    "perplexion": "-2~-1",
+                    "fatigue": "0~3",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "faith": 20,
+                    "churchrespect": 5,
+                    "holyscriptures.xp": 5
+                }
+            },
+            {
+                "id": "carrycandles",
+                "name": "Carry candles",
+                "desc": "Transport the sacred lights to their place of honor, illuminating the ritual with care",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~2",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "ecclesiology.xp": 10
+                }
+            },
+            {
+                "id": "liturgicalbooks",
+                "name": "Liturgical books",
+                "desc": "Prepare the books to be used in the ceremony",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~2",
+                    "churchrespect": 1,
+                    "holyscriptures.xp": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "holyscriptures.xp": 5
+                }
+            },
+            {
+                "id": "cruetswine",
+                "name": "Cruets of wine",
+                "desc": "Deliver the vessels of wine to the altar, preparing them for the sacred rite",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~3",
+                    "churchrespect": 1,
+                    "ecclesiology.xp": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "ecclesiology.xp": 3
+                }
+            },
+            {
+                "id": "lavabo",
+                "name": "The lavabo",
+                "desc": "Bring the water and bowl to the altar for the ceremonial hand washing",
+                "effect": {
+                    "fear": "0~1",
+                    "fatigue": "0~3",
+                    "nutrition": "0~1",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "faith": 10,
+                    "churchrespect": 5,
+                    "ecclesiology.xp": 3
+                }
+            },
+            {
+                "id": "eyesfaithful",
+                "name": "The eyes of the faithful",
+                "desc": "They all stare at you",
+                "effect": {
+                    "fear": "1~2",
+                    "fatigue": "0~2",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "clarity": 3,
+                    "faith": 10
+                }
+            },
+            {
+                "id": "bishopglare",
+                "name": "Bishop's glare",
+                "desc": "His old, warm eyes stare at you",
+                "effect": {
+                    "fear": "0~2",
+                    "fatigue": "0~2",
+                    "churchrespect": 1
+                },
+                "result": {
+                    "clarity": 5,
+                    "faith": 15
+                }
+            },
+            {
+                "id": "joinedprayer",
+                "name": "Joined prayer",
+                "desc": "Pray together in communion",
+                "effect": {
+                    "faith": "0~1",
+                    "gratitude": 1,
+                    "churchrespect": 1
+                },
+                "result": {
+                    "clarity": 5,
+                    "faith": 25,
+                    "gratitude": 25,
+                    "holyscriptures.xp": 3
+                }
+            },
+            {
+                "id": "wordsbishop",
+                "name": "Sermon of the Bishop",
+                "desc": "Another tale meant to impart knowledge",
+                "effect": {
+                    "faith": "0~1",
+                    "perplexion": "-1~3",
+                    "boredom": 1
+                },
+                "result": {
+                    "faith": 25,
+                    "gratitude": 25,
+                    "holyscriptures.xp": 3
+                }
+            },
+            {
+                "id": "chant",
+                "name": "Chant",
+                "desc": "Repeat the divine words with through faith",
+                "effect": {
+                    "faith": "0~1",
+                    "gratitude": 1,
+                    "churchrespect": 1
+                },
+                "result": {
+                    "faith": 25,
+                    "gratitude": 25,
+                    "holyscriptures.xp": 2
+                }
+            },
+            {
+                "id": "voicesgossip",
+                "name": "Voices of gossip",
+                "desc": "You can hear the whispering, mean voices of the people",
+                "effect": {
+                    "faith": "-2~0",
+                    "gratitude": -1,
+                    "irritation": "0~2",
+                    "beggarhood.xp": 1
+                },
+                "result": {
+                    "sadness": 5,
+                    "introspection.xp": 10
+                }
+            },
+            {
+                "id": "divinepictures",
+                "name": "Divine pictures",
+                "desc": "Beautiful paintings on the church walls",
+                "effect": {
+                    "faith": "0~1",
+                    "perplexion": 1,
+                    "gratitude": 1
+                },
+                "result": {
+                    "clarity": 10,
+                    "ecclesiology.xp": 5,
+                    "holyscriptures.xp": 5
+                }
+            },
+            {
+                "id": "silenceperiod",
+                "name": "Stay in silence",
+                "desc": "Real talking needs no words",
+                "effect": {
+                    "thoughts": "1~3",
+                    "clarity": "0~1",
+                    "introspection.xp": 1
+                },
+                "result": {
+                    "clarity": 10,
+                    "reflection": "0~2"
+                }
+            },
+            {
+                "id": "keyschurch",
+                "name": "Keys of the Church",
+                "desc": "The Bishop holds the keys towards you",
+                "effect": {
+                    "faith": "0~1",
+                    "clarity": "-2~-1",
+                    "fear": "0~1",
+                    "perplexion": "0~1"
+                },
+                "result": {
+                    "faith": 5,
+                    "churchrespect": 20
+                }
+            },
+            {
+                "id": "holdcandle",
+                "name": "The Candlestick",
+                "desc": "The Bishop holds the symbolic Candlestick towards you",
+                "effect": {
+                    "faith": "0~1",
+                    "clarity": "-2~-1",
+                    "fear": "0~3",
+                    "perplexion": "0~3",
+                    "ecclesiology.xp": 1
+                },
+                "result": {
+                    "faith": 50,
+                    "churchrespect": 50
+                }
+            }
+            
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items":[
+            {
+                "id": "irreversible_church",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. You will no longer be able to beg on the streets, among other actions. But you will gain access to a whole new range of possibilities. Go ahead with this action?",
+                "tags": "joinchurch"
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items":[
+            {
+                "id": "rosario",
+                "name": "Rosario",
+                "desc": "A beautiful rosario, brand new",
+                "require": "ecclesiology>2&&churchbeggar||ecclesiology>2&&churchporter",
+                "tag": "pray_tool",
+                "max": 1,
+                "cost": {
+                    "faith": 15,
+                    "gratitude": 10,
+                    "churchrespect": 10
+                },
+                "mod": {
+                    "ecclesiology.max": 1,
+                    "churchrespect.max": 10,
+                    "faith.max": 10,
+                    "guilt.max": -15,
+                    "space": 1
+                }
+            },
+            {
+                "id": "childdrawing",
+                "name": "Wood drawing",
+                "desc": "A piece of wood with a carved drawing. Was it a child who made it?",
+                "require": "reflection>2&&scavenging>3",
+                "max": 3,
+                "cost": {
+                    "foraging": 50
+                },
+                "mod": {
+                    "reflection.max": 5,
+                    "space": 1
+                }
+            },
+            {
+                "id": "storytellingdolls",
+                "name": "Storytelling dolls",
+                "desc": "You use these to narrate wonderful stories to your fellow beggars",
+                "require": "cityknowledge>1",
+                "max": 1,
+                "cost": {
+                    "foraging": 50
+                },
+                "mod": {
+                    "beggarhood.max": 1,
+                    "supplication.max": 100,
+                    "space": 3
+                }
+            }
+        ]
+    }
+]

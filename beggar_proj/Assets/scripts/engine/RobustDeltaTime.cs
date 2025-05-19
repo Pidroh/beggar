@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace HeartUnity
 {
@@ -29,5 +30,10 @@ namespace HeartUnity
 			_dt = -1;
 			return true;
 		}
-	}
+
+        public void MultiplyTime(float timeMultiplier)
+        {
+			_dt *= timeMultiplier;
+        }
+    }
 }

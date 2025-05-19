@@ -2,7 +2,8 @@
 
 public class LocationRuntime
 {
-    public int progress;
+
+    
     public ConfigLocation configLocation;
     public RuntimeUnit RuntimeUnit;
     public List<IDPointer> Encounters = new();
@@ -14,7 +15,9 @@ public class LocationRuntime
         configLocation = cl;
     }
 
-    public float ProgressRatio => progress / configLocation.Length;
+    // Managed in ArcaniaModelExploration
+    // public int progress;
+    // public float ProgressRatio => progress / configLocation.Length;
 
 
     /*

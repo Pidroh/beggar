@@ -1,9 +1,30 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class IDPointer
+public class IDPointer : IEnumerable<RuntimeUnit>
 {
+    public IEnumerable<RuntimeUnit> RuntimeUnits => GetEnumerable();
+
+    private IEnumerable<RuntimeUnit> GetEnumerable()
+    {
+        if (Tag != null) return Tag.UnitsWithTag;
+        if (RuntimeUnit == null) 
+        {
+            Debug.LogError($"ERROR: ID Pointer {id} seems to be invalid");
+        }
+        if (_listOfRunTimeForEnumeration == null) 
+        {
+            
+            _listOfRunTimeForEnumeration = new();
+            _listOfRunTimeForEnumeration.Add(RuntimeUnit);
+        }
+        return _listOfRunTimeForEnumeration;
+    }
+
     public RuntimeUnit RuntimeUnit;
+    private List<RuntimeUnit> _listOfRunTimeForEnumeration;
     public string id;
 
     public TagRuntime Tag { get; internal set; }
@@ -53,5 +74,25 @@ public class IDPointer
             if (item.Value > 0) return false;
         }
         return true;
+    }
+
+    public IEnumerator<RuntimeUnit> GetEnumerator()
+    {
+        return RuntimeUnits.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return ((IEnumerable)RuntimeUnits).GetEnumerator();
+    }
+
+    internal void CheckValidity()
+    {
+        if (Tag != null) return;
+        if (RuntimeUnit != null) return;
+        if (id == "space") return;
+#if UNITY_EDITOR
+        Debug.LogError($"ID Pointer {id} is invalid");
+#endif
     }
 }

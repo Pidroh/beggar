@@ -1,16 +1,18 @@
-﻿using SimpleJSON;
+﻿using HeartUnity;
+using SimpleJSON;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class ConfigResource 
+public class ConfigResource
 {
     public bool Stressor;
 }
 
 public class ConfigEncounter
 {
-    public JSONNode Length { get; internal set; }
+    public JSONNode Length { get; set; }
 }
 
 public class ConfigLocation
@@ -47,22 +49,42 @@ public class ArcaniaModel
         Runner = new(this);
         Housing = new(this);
         Exploration = new(this);
+        arcaniaUnits.datas[UnitType.DOT] = new();
     }
 
-    internal void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
+    public void ApplyResourceChanges(RuntimeUnit parent, ResourceChangeType changeType)
     {
         var changes = parent.ConfigTask.GetResourceChangeList(changeType);
+        foreach (var mod in parent.ModsSelfAsIntermediary)
+        {
+            if (mod.ModType != ModType.ResourceChangeChanger) continue;
+            if (mod.ResourceChangeType != changeType) continue;
+            if (mod.Source.Value == 0) continue;
+            foreach (var item in mod.Target.RuntimeUnits)
+            {
+                item.ChangeValue(mod.Source.Value * mod.Value);
+            }
+            //mod.Target.
+
+        }
         foreach (var c in changes)
         {
-            if(c.IdPointer.Tag != null)
+            foreach (var ru in c.IdPointer)
             {
-                foreach (var item in c.IdPointer.Tag.UnitsWithTag)
+                switch (c.ModificationType)
                 {
-                    item.ChangeValueByResourceChange(parent, c.valueChange, changeType);
+                    case ResourceChange.ResourceChangeModificationType.NormalChange:
+                        ru.ChangeValueByResourceChange(parent, c.valueChange, changeType);
+                        break;
+                    case ResourceChange.ResourceChangeModificationType.XpChange:
+                        // Mods not supported for now
+                        ru.Skill.xp += (int)c.valueChange.getValue(UnityEngine.Random.Range(0f, 1f));
+                        break;
+                    default:
+                        break;
                 }
-                continue;
+
             }
-            c.IdPointer.RuntimeUnit.ChangeValueByResourceChange(parent, c.valueChange, changeType);
         }
     }
 
@@ -75,7 +97,8 @@ public class ArcaniaModel
     {
         Dialog.ManualUpdate();
         Runner.ManualUpdate(dt);
-        Exploration.ManualUpdate();
+        Exploration.ManualUpdate(dt);
+        ArcaniaModelDotCode.Update(this, dt);
         _oneSecondCounter += dt;
         var applyRateNumber = 0;
         while (_oneSecondCounter > 1f)
@@ -85,15 +108,25 @@ public class ArcaniaModel
         }
         foreach (var pair in arcaniaUnits.datas)
         {
+
             foreach (var item in pair.Value)
             {
-                if (item.UpdateRequireStatus() && item.ConfigBasic.UnitType != UnitType.TAB)
+                bool updateRequireStatusResult = item.UpdateRequireStatus();
+                if (pair.Key == UnitType.ENCOUNTER) continue;
+                if (pair.Key == UnitType.TAB) continue;
+
+                if (updateRequireStatusResult)
                 {
-                    LogUnits.Add(new LogUnit()
+                    var unlockLog = pair.Key != UnitType.DOT;
+                    if (unlockLog)
                     {
-                        logType = LogUnit.LogType.UNIT_UNLOCKED,
-                        Unit = item
-                    });
+                        LogUnits.Add(new LogUnit()
+                        {
+                            logType = LogUnit.LogType.UNIT_UNLOCKED,
+                            Unit = item
+                        });
+                    }
+
                 }
                 for (int i = 0; i < applyRateNumber; i++)
                 {
@@ -105,7 +138,7 @@ public class ArcaniaModel
 
     public class ArcaniaModelSubmodule
     {
-        internal ArcaniaModel _model;
+        public ArcaniaModel _model;
 
         public ArcaniaModelSubmodule(ArcaniaModel arcaniaModel)
         {
@@ -119,23 +152,62 @@ public class ArcaniaModel
         foreach (var rc in changes)
         {
             if (rc.valueChange.BothEqual(0f)) continue;
+            rc.IdPointer.CheckValidity();
             if (rc.IdPointer.RuntimeUnit.CanFullyAcceptChange(rc.valueChange)) continue;
             return false;
         }
         return true;
     }
 
-    public bool DoChangesMakeADifference(List<ResourceChange> changes)
+
+
+
+    public bool DoChangesMakeADifference(RuntimeUnit ru, ResourceChangeType changeType)
     {
-        foreach (var rc in changes)
+        using var _1 = DictionaryPool<IDPointer, FloatRange>.Get(out var dict);
+        // Account for total normal effect changes
+        foreach (var rc in ru.ConfigTask.GetResourceChangeList(changeType))
         {
             if (rc.valueChange.BothEqual(0f)) continue;
-            if (rc.valueChange.BiggerThan(0f) && rc.IdPointer.IsAllMaxed()) continue;
-            if (rc.valueChange.SmallerThan(0f) && rc.IdPointer.IsAllZero()) continue;
+            if (dict.TryGetValue(rc.IdPointer, out var amt))
+            {
+                dict[rc.IdPointer] = amt + rc.valueChange;
+            }
+            else
+            {
+                dict[rc.IdPointer] = rc.valueChange;
+            }
+        }
+        // Account for mods where parent is the intermediary
+        foreach (var item in ru.ModsSelfAsIntermediary)
+        {
+            if (item.ResourceChangeType != changeType) continue;
+            if (item.Source.Value == 0) continue;
+            var totalValue = item.Value * item.Source.Value;
+            if (totalValue == 0) continue;
+            if (dict.TryGetValue(item.Target, out var amt))
+            {
+                dict[item.Target] = amt + totalValue;
+            }
+            else
+            {
+                dict[item.Target] = new FloatRange(totalValue, totalValue);
+            }
+        }
+
+        // do the final calculation to see if it is meaningful
+        foreach (var item in dict)
+        {
+            var IdPointer = item.Key;
+            var valueChange = item.Value;
+            if (valueChange.BothEqual(0f)) continue;
+            if (valueChange.BiggerThan(0f) && IdPointer.IsAllMaxed()) continue;
+            if (valueChange.SmallerThan(0f) && IdPointer.IsAllZero()) continue;
+            // only 1 thing needs to be meaningful
             return true;
+
         }
         return false;
-
     }
 
     private RuntimeUnit FindRuntimeUnitInternal(UnitType type, string v)
@@ -163,7 +235,7 @@ public class ArcaniaModel
 
     }
 
-    internal RuntimeUnit FindRuntimeUnit(UnitType type, string v)
+    public RuntimeUnit FindRuntimeUnit(UnitType type, string v)
     {
         var ru = FindRuntimeUnitInternal(type, v);
         if (ru != null) return ru;
@@ -171,7 +243,7 @@ public class ArcaniaModel
         return null;
     }
 
-    internal void FinishedSettingUpUnits()
+    public void FinishedSettingUpUnits()
     {
         Exploration.FinishedSettingUpUnits();
     }
@@ -218,7 +290,7 @@ public class ArcaniaModel
             this.pickedOption = pickedOption;
         }
 
-        internal bool HasResult(out int option)
+        public bool HasResult(out int option)
         {
             option = pickedOption.HasValue ? pickedOption.Value : -1;
             return this.dialogState == DialogState.RESULT_HAPPENED_THIS_FRAME;
@@ -231,4 +303,6 @@ public class ArcaniaModel
             RESULT_HAPPENED_THIS_FRAME,
         }
     }
+
+
 }

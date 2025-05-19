@@ -6,14 +6,16 @@ public class ArcaniaPersistence
 {
     public SaveDataUnit<ArcaniaPersistenceData> saveUnit;
 
-    public ArcaniaPersistence(HeartGame hg) 
+    public ArcaniaPersistence(HeartGame hg)
     {
         saveUnit = new SaveDataUnit<ArcaniaPersistenceData>("maindata", hg);
     }
 
-    public void Save(ArcaniaUnits units) 
+    public void Save(ArcaniaUnits units, ArcaniaModelExploration exploration)
     {
         ArcaniaPersistenceData apd = new();
+        apd.Exploration.locationProgress = exploration.locationProgress;
+        apd.Exploration.lastLocationID = exploration.LastActiveLocation?.ConfigBasic.Id;
         foreach (var u in units.datas)
         {
             foreach (var unit in u.Value)
@@ -24,15 +26,19 @@ public class ArcaniaPersistence
                     requireMet = unit.RequireMet,
                     value = unit._value
                 });
-                if (unit.ConfigTask != null) {
-                    apd.Tasks.Add(new ArcaniaTaskPersistence() {
+                if (unit.ConfigTask != null)
+                {
+                    apd.Tasks.Add(new ArcaniaTaskPersistence()
+                    {
                         id = unit.ConfigBasic.Id,
-                        TaskProgress = unit.TaskProgress
+                        TaskProgress = unit.TaskProgress,
+                        Bought = unit.BuyStatus == BuyStatus.Bought
                     });
                 }
-                if (unit.Skill != null) 
+                if (unit.Skill != null)
                 {
-                    apd.Skills.Add(new ArcaniaSkillPersistence() {
+                    apd.Skills.Add(new ArcaniaSkillPersistence()
+                    {
                         id = unit.ConfigBasic.Id,
                         xp = unit.Skill.xp,
                         acquired = unit.Skill.Acquired
@@ -43,9 +49,13 @@ public class ArcaniaPersistence
         saveUnit.Save(apd);
     }
 
-    internal void Load(ArcaniaUnits arcaniaUnits)
+    public void Load(ArcaniaUnits arcaniaUnits, ArcaniaModelExploration exploration)
     {
         if (!saveUnit.TryLoad(out var persistence)) return;
+        exploration.locationProgress = persistence.Exploration.locationProgress;
+        if (!string.IsNullOrWhiteSpace(persistence.Exploration.lastLocationID)) 
+            exploration.LoadLastActiveLocation(arcaniaUnits.GetOrCreateIdPointer(persistence.Exploration.lastLocationID)?.RuntimeUnit);
+
         foreach (var basic in persistence.Basics)
         {
             if (!arcaniaUnits.IdMapper.TryGetValue(basic.id, out var v)) continue;
@@ -57,6 +67,13 @@ public class ArcaniaPersistence
             if (!arcaniaUnits.IdMapper.TryGetValue(task.id, out var v)) continue;
             if (v.RuntimeUnit.ConfigTask == null) continue;
             v.RuntimeUnit.TaskProgress = task.TaskProgress;
+            if (task.Bought) 
+            {
+                if (v.RuntimeUnit.BuyStatus == BuyStatus.NeedsBuy) 
+                {
+                    v.RuntimeUnit.BuyStatus = BuyStatus.Bought;
+                }
+            }
         }
         foreach (var skill in persistence.Skills)
         {
@@ -69,11 +86,19 @@ public class ArcaniaPersistence
 }
 
 [Serializable]
-public class ArcaniaPersistenceData 
+public class ArcaniaPersistenceData
 {
     public List<ArcaniaBasicPersistence> Basics = new();
     public List<ArcaniaTaskPersistence> Tasks = new();
     public List<ArcaniaSkillPersistence> Skills = new();
+    public ArcaniaExplorationPersistence Exploration = new();
+}
+
+[Serializable]
+public class ArcaniaExplorationPersistence
+{
+    public int locationProgress;
+    public string lastLocationID;
 }
 
 [Serializable]
@@ -89,6 +114,7 @@ public class ArcaniaTaskPersistence
 {
     public string id;
     public float TaskProgress;
+    public bool Bought;
 }
 
 [Serializable]

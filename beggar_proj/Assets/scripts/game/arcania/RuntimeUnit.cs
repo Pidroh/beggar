@@ -8,22 +8,33 @@ public class RuntimeUnit
     public ConfigBasic ConfigBasic;
     public ConfigTask ConfigTask;
 
-    public LocationRuntime Location { get; internal set; }
+    public LocationRuntime Location { get; set; }
 
     public SkillRuntime Skill;
     public List<ModRuntime> ModsTargetingSelf = new();
+    public List<ModRuntime> ModsSelfAsIntermediary = new();
     public List<ModRuntime> ModsOwned = new();
+    public BuyStatus BuyStatus = BuyStatus.Free;
     public bool RequireMet = false;
+    public int Value => Mathf.FloorToInt(_value);
+    public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
+    public float _value;
+
+    public float TaskProgress { get; set; }
+    public float TaskProgressRatio => CalculateTaskProgressRatio();
+
+    // Skills cannot drop below max
+    public bool MaxCanLimitValue => Skill == null;
 
     public string Name => ConfigBasic.name;
 
     public int Max => CalculateMax();
 
-    public bool Visible => RequireMet && IsPossiblyVisibleRegardlessOfRequire();
+    public bool Visible => ParentRU?.Visible ?? (RequireMet && IsPossiblyVisibleRegardlessOfRequire());
 
-    public bool IsPossiblyVisibleRegardlessOfRequire() 
+    public bool IsPossiblyVisibleRegardlessOfRequire()
     {
-        if (this.GetModSum(ModType.Lock) > 0) return false;
+        if (this.HasModActive(ModType.Lock)) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
         return true;
     }
@@ -33,7 +44,7 @@ public class RuntimeUnit
         return MeetsCondition(ConfigTask.Need?.expression);
     }
 
-    internal bool UpdateRequireStatus()
+    public bool UpdateRequireStatus()
     {
         if (!IsPossiblyVisibleRegardlessOfRequire()) return false;
         var requireMetBefore = RequireMet;
@@ -45,7 +56,7 @@ public class RuntimeUnit
     }
 
 
-    public TabRuntime Tab { get; internal set; }
+    public TabRuntime Tab { get;  set; }
 
     private bool MeetsCondition(ConditionalExpressionData expression)
     {
@@ -67,6 +78,11 @@ public class RuntimeUnit
         return s.Length == 0;
     }
 
+    internal void MarkSelfDirty()
+    {
+        Dirty = true;
+    }
+
     private int CalculateMax()
     {
         // has no max from the get go
@@ -75,22 +91,67 @@ public class RuntimeUnit
         return Mathf.Max(ConfigBasic.Max + sum, 0);
     }
 
-    internal void ChangeValue(float valueChange)
+    public void ChangeValue(float valueChange)
     {
-        _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
+        var valueWasZero = Value == 0;
+        if (MaxCanLimitValue)
+            _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
+        else
+            _value = Mathf.Max(_value + valueChange, 0);
+        if (valueWasZero && Value != 0) 
+        {
+            DirtyThingsWhenNotZero();
+        }
+
+    }
+
+    private void DirtyThingsWhenNotZero()
+    {
+        if (Dirty) return;
+        Dirty = true;
+        foreach (var mod in this.ModsOwned)
+        {
+            if (mod.Intermediary != null)
+            {
+                foreach (var ru in mod.Intermediary.RuntimeUnits)
+                {
+                    ru.DirtyThingsWhenNotZero();
+                }
+            }
+            // targets will be done above if there is an intermediary
+            else if (mod.Target != null)
+            {
+                foreach (var ru in mod.Target.RuntimeUnits)
+                {
+                    ru.DirtyThingsWhenNotZero();
+                }
+
+            }
+
+        }
+        foreach (var mod in this.ModsSelfAsIntermediary)
+        {
+            if (mod.Target != null)
+            {
+                foreach (var ru in mod.Target.RuntimeUnits)
+                {
+                    ru.DirtyThingsWhenNotZero();
+                }
+            }
+        }
     }
 
     public void ModifyValue(float valueChange) => ChangeValue(valueChange);
 
-    internal void SetValue(int v)
+    public void SetValue(int v)
     {
         ChangeValue(v - _value);
     }
 
-    internal void ChangeValueByResourceChange(RuntimeUnit parent, FloatRange valueChange, ResourceChangeType changeType)
+    public void ChangeValueByResourceChange(RuntimeUnit parent, FloatRange valueChange, ResourceChangeType changeType)
     {
-        var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
-        ChangeValue(valueChange.getValue(Random.Range(0f, 1f)) + modV);
+        // var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
+        ChangeValue(valueChange.getValue(Random.Range(0f, 1f)));
     }
 
     public float GetModSumWithIntermediaryCheck(RuntimeUnit intermediary, ModType modType, ResourceChangeType changeType)
@@ -107,20 +168,35 @@ public class RuntimeUnit
         return v;
     }
 
+    public bool HasModActive(ModType modType) 
+    {
+        foreach (var mod in ModsTargetingSelf)
+        {
+            if (mod.ModType != modType) continue;
+            if (mod.Source.Value > 0) return true;
+        }
+        return false;
+    }
+
     private float GetModSum(ModType modType)
     {
         var v = 0f;
         foreach (var mod in ModsTargetingSelf)
         {
             if (mod.ModType != modType) continue;
-            v += mod.Source.Value * mod.Value;
+            float value = mod.Source.Value * mod.Value;
+            if (mod.Intermediary != null) 
+            {
+                value *= mod.Intermediary.GetValue();
+            }
+            v += value;
         }
         return v;
     }
 
-    internal bool IsTaskComplete()
+    public bool IsTaskComplete()
     {
-        if (Location != null) 
+        if (Location != null)
         {
             // Location completition is done through Arcania model Exploration
             return false;
@@ -129,24 +205,31 @@ public class RuntimeUnit
         {
             return Skill.HasEnoughXPToLevelUp();
         }
-        if (ConfigTask.Duration.HasValue) return TaskProgress > ConfigTask.Duration.Value;
+        if (ConfigTask.Duration.HasValue) return TaskProgress >= ConfigTask.Duration.Value;
         return false;
     }
 
-    internal void ForceMeetRequire()
+    public void ForceMeetRequire()
     {
         RequireMet = true;
     }
 
-    internal void ApplyRate()
+    public void ApplyRate()
     {
         var rate = this.GetModSum(ModType.RateChange);
         ChangeValue(rate);
     }
 
-    internal bool IsInstant() => !ConfigTask.Duration.HasValue;
+    public bool IsInstant() => !ConfigTask.Duration.HasValue;
 
-    internal bool CanFullyAcceptChange(FloatRange valueChange)
+    public float GetSpeedMultiplier()
+    {
+        var speedP = 100f;
+        speedP += GetModSum(ModType.Speed);
+        return speedP * 0.01f;
+    }
+
+    public bool CanFullyAcceptChange(FloatRange valueChange)
     {
         if (valueChange.SmallerThan(0f)) return valueChange.BiggerOrEqual(-Value); //return Mathf.Abs(valueChange) <= Value;
         // no max
@@ -160,29 +243,45 @@ public class RuntimeUnit
         return true;
     }
 
-    internal void RegisterModTargetingSelf(ModRuntime modData)
+    public void RegisterModWithSelfAsIntermediary(ModRuntime mod)
+    {
+        ModsSelfAsIntermediary.Add(mod);
+    }
+
+    public void RegisterModTargetingSelf(ModRuntime modData)
     {
         ModsTargetingSelf.Add(modData);
     }
 
-    public int Value => Mathf.FloorToInt(_value);
-    public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
-    public float _value;
 
-    public float TaskProgress { get; internal set; }
-    public float TaskProgressRatio => Skill != null ? TaskProgress : (!ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value);
+
+    private float CalculateTaskProgressRatio()
+    {
+        if (Skill != null) return TaskProgress;
+        if (DotConfig != null) return  1f - (TaskProgress / DotConfig.Duration);
+        return (!ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value);
+    }
+
     public bool IsMaxed => Value >= MaxForCeiling;
 
     public bool IsZero => Value == 0;
 
-    public ConfigHouse ConfigHouse { get; internal set; }
-    public ConfigFurniture ConfigFurniture { get; internal set; }
+    public ConfigHouse ConfigHouse { get; set; }
+    public ConfigFurniture ConfigFurniture { get; set; }
     public bool HasMax => CalculateMax() >= 0;
 
     public bool IsTaskHalfWay => !IsTaskComplete() && TaskProgress != 0;
 
     public bool NeedMet => IsNeedMet();
 
-    public ConfigResource ConfigResource { get; internal set; }
-    public ConfigEncounter ConfigEncounter { get; internal set; }
+    public ConfigResource ConfigResource { get; set; }
+    public ConfigEncounter ConfigEncounter { get; set; }
+    public float ValueRatio => HasMax ? _value / Max : 0f;
+
+    public bool Dirty { get; private set; }
+    public int SuccessRatePercent => ConfigTask?.SuccessRatePercent != null ? (int) (ConfigTask.SuccessRatePercent.Value + GetModSum(ModType.SuccessRate)) : 100;
+
+    public RuntimeUnit DotRU { get; set; }
+    public DotConfig DotConfig { get; set; }
+    public RuntimeUnit ParentRU { get; internal set; }
 }

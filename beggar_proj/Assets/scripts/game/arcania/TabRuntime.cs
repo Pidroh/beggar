@@ -15,10 +15,13 @@ public class TabRuntime
     public RuntimeUnit RuntimeUnit { get; }
     public bool ContainsLogs { get; internal set; }
     public bool OpenSettings { get; internal set; }
+    public bool OpenOtherTabs { get; internal set; }
     public bool ExplorationActiveTab { get; internal set; }
+    public bool NecessaryForDesktopAndThinnable { get; internal set; }
 
     public class Separator {
         public List<UnitType> AcceptedUnitTypes = new();
+        public List<RuntimeUnit> BoundRuntimeUnits = new();
         public bool RequireMax;
         public bool RequireInstant;
         public bool Default;
