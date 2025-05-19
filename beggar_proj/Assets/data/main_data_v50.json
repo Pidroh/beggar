@@ -156,7 +156,7 @@
             {
                 "id": "poor_feast",
                 "name": "Humble feast",
-                "desc": "Use your charity connections to get access to food",
+                "desc": "Organize a small feast for your fellow beggars",
                 "require": "charity>0",
                 "max": 2,
                 "duration": 20,
@@ -167,6 +167,21 @@
                 "mod":{
                     "benevolence.max": 10,
                     "benevolence.rate": 0.01
+                }
+            },
+            {
+                "id": "giveblanket",
+                "name": "Donate blanket",
+                "desc": "Make sure everyone is warmer",
+                "require": "charity>1",
+                "max": 2,
+                "duration": 10,
+                "cost": {
+                    "benevolence": 5,
+                    "mothblanket": 1
+                },
+                "mod":{
+                    "benevolence.max": 5
                 }
             },
             {
