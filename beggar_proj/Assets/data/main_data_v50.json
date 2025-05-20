@@ -252,8 +252,8 @@
             },
             {
                 "id": "better_feasts_follower",
-                "name": "Group feasts",
-                "desc": "Have your followers help out with the feasts",
+                "name": "Group humble feasts",
+                "desc": "Have your followers help out with the humble feasts",
                 "require": "charity>1&&followers",
                 "max": 1,
                 "duration": 15,
@@ -265,6 +265,48 @@
                     "poor_feast.max": 2,
                     "poor_feast.mod.benevolence.max": 10,
                     "poor_feast.mod.benevolence.rate": 0.01
+                }
+            },
+            {
+                "id": "better_feasts_follower_2",
+                "name": "Group small feasts",
+                "desc": "Have your followers help out with the small feasts",
+                "require": "charity>2&&followers>2&&better_feasts_follower&&food",
+                "max": 1,
+                "duration": 15,
+                "cost": {
+                    "benevolence": 280,
+                    "followers": 5
+                },
+                "mod":{
+                    "small_feast.max": 2,
+                    "small_feast.mod.benevolence.max": 20,
+                    "small_feast.mod.benevolence.rate": 0.01
+                }
+            },
+            {
+                "id": "nice_speech",
+                "name": "Nice speech",
+                "desc": "Put your charisma into words",
+                "require": "charisma>2&&charm_follower>2",
+                "buy": {
+                    "thoughts": 300,
+                    "clarity": 4,
+                    "charm": 5
+
+                },
+                "duration": 20,
+                "cost": {
+                    "charm": 5,
+                    "clarity": 3,
+                    "thoughts": 50
+                },
+                "dot": {
+                    "duration": 120,
+                    "mod":{
+                        "followers.rate": 0.2,
+                        "followers.max": 5
+                    }
                 }
             },
             {
