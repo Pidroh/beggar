@@ -140,11 +140,11 @@
                 "id": "charity_food_connection",
                 "name": "Food for charity",
                 "desc": "Use your charity connections to get access to food",
-                "require": "charity>3&&benevolence>300&&t_tier1",
+                "require": "charity>3&&benevolence>200&&t_tier1",
                 "duration": 20,
                 "buy":{
                     "clarity": 3,
-                    "benevolence": 350
+                    "benevolence": 280
                 },
                 "cost": {
                     "benevolence": 50
@@ -167,6 +167,23 @@
                 "mod":{
                     "benevolence.max": 10,
                     "benevolence.rate": 0.01
+                }
+            },
+            {
+                "id": "small_feast",
+                "name": "Small feast",
+                "desc": "Organize a feast for your fellow beggars. ",
+                "require": "charity>0&&food>0&&poor_feast>0",
+                "max": 2,
+                "duration": 20,
+                "cost": {
+                    "benevolence": 120,
+                    "breadcrumbs": 40,
+                    "food": 5
+                },
+                "mod":{
+                    "benevolence.max": 100,
+                    "benevolence.rate": 0.03
                 }
             },
             {
@@ -258,7 +275,7 @@
                 "max": 1,
                 "duration": 20,
                 "cost": {
-                    "food": 5,
+                    "food": 3,
                     "benevolence": 80
                 },
                 "mod":{
