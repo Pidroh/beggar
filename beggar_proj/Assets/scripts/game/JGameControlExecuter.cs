@@ -358,7 +358,10 @@ public static class JGameControlExecuter
                                     if (unit.TaskClicked)
                                     {
                                         if (acquired) arcaniaModel.Runner.StudySkill(data);
-                                        else arcaniaModel.Runner.AcquireSkill(data);
+                                        else { 
+                                            arcaniaModel.Runner.AcquireSkill(data);
+                                            unit.MainLayout.MarkDirtyWithChildren();
+                                        }
                                     }
                                 }
 
@@ -453,7 +456,7 @@ public static class JGameControlExecuter
             {
                 modT = $"{item.Intermediary.RuntimeUnit.Value} * {modT}";
             }
-            if (!noShowSourceNumber) 
+            if (!noShowSourceNumber)
             {
                 modT = $"{item.Source.Value} * {modT}";
             }
@@ -461,9 +464,9 @@ public static class JGameControlExecuter
             {
                 modT = $"{(negativeValue ? "-" : "+")}({modT})";
             }
-            else 
+            else
             {
-                if (!negativeValue) 
+                if (!negativeValue)
                 {
                     modT = "+" + modT;
                 }
