@@ -305,7 +305,8 @@
                     "duration": 120,
                     "mod":{
                         "followers.rate": 0.2,
-                        "followers.max": 5
+                        "followers.max": 5,
+                        "charm.max": 10
                     }
                 }
             },
@@ -512,6 +513,33 @@
                 },
                 "mods":{
                     "captive.max": 5
+                }
+            },
+            {
+                "id": "benevolent_followers",
+                "name": "Extra help",
+                "require": "followers>1&&charity>2&&charisma>1",
+                "desc": "Tell your followers to help people",
+                "duration": 15,
+                "max": 2,
+                "buy": {
+                    "benevolence": 80,
+                    "followers": 5,
+                    "charm": 15,
+                    "clarity": 3
+                },
+                "cost": {
+                    "followers": 3,
+                    "charm": 5,
+                    "supplication": 200
+                },
+                "dot": {
+                    "duration": 90,
+                    "mod":{
+                        "benevolence.max": 80,
+                        "benevolence.rate": 1,
+                        "followers.max": -3
+                    }
                 }
             },
             {
