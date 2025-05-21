@@ -443,7 +443,44 @@ public static class JGameControlExecuter
                 ttv.SetVisibleSelf(item.Source.Value != 0);
             }
             hasAnyVisible |= ttv.Visible;
-            ttv.SetTextRaw(1, "+" + (item.Source.Value * item.Value));
+            var noShowSourceNumber = item.Source.Value == 1;
+            var noShowIntermediaryNumber = (item.Intermediary?.RuntimeUnit?.Value ?? 1) == 1;
+            var needsParenthesis = !noShowSourceNumber || !noShowIntermediaryNumber;
+            var negativeValue = item.Value < 0;
+            var sourceValueToUse = negativeValue ? item.Value * -1 : item.Value;
+            var modT = $"{sourceValueToUse}";
+            if (!noShowIntermediaryNumber)
+            {
+                modT = $"{item.Intermediary.RuntimeUnit.Value} * {modT}";
+            }
+            if (!noShowSourceNumber) 
+            {
+                modT = $"{item.Source.Value} * {modT}";
+            }
+            if (needsParenthesis)
+            {
+                modT = $"{(negativeValue ? "-" : "+")}({modT})";
+            }
+            else 
+            {
+                if (!negativeValue) 
+                {
+                    modT = "+" + modT;
+                }
+            }
+            ttv.SetTextRaw(1, modT);
+            /*
+            if (item.Value > 0)
+            {
+                ttv.SetTextRaw(1, $"+({item.Source.Value} * {item.Value})");
+            }
+            else 
+            {
+                ttv.SetTextRaw(1, $"-({item.Source.Value} * {item.Value*-1})");
+            }
+            */
+
+            // ttv.SetTextRaw(1, "+" + (item.Source.Value * item.Value));
         }
         if (modList.Header == null) return;
         modList.Header.SetVisibleSelf(hasAnyVisible);
