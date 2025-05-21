@@ -74,8 +74,8 @@
                 "duration": 90,
                 "tags": "ending_game",
                 "cost":{    
-                    "supplication": 2000,
-                    "thoughts": 1500,
+                    "supplication": 1300,
+                    "thoughts": 1000,
                     "clarity": 100,
                     "benevolence": 400
                 },
