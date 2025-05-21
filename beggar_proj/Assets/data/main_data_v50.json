@@ -516,6 +516,24 @@
                 }
             },
             {
+                "id": "help_followers",
+                "name": "Help followers",
+                "require": "charity>1followers>1",
+                "desc": "Extend a helping hand to those who look up to you",
+                "duration": 20,
+                "max": 2,
+                "cost": {
+                    "followers": 3,
+                    "benevolence": 150,
+                    "supplication": 200
+                },
+                "mods":{
+                    "benevolence.max": 5,
+                    "follower.mod.bevolence.max": 5,
+                    "follower.max": 2
+                }
+            },
+            {
                 "id": "benevolent_followers",
                 "name": "Extra help",
                 "require": "followers>1&&charity>2&&charisma>1",
