@@ -242,11 +242,11 @@
                 "cost": {
                     "benevolence": 60,
                     "sadness": 50,
-                    "sorrow": 10
+                    "sorrow": 5
                 },
                 "mod":{
                     "benevolence.max": 30,
-                    "sorrow.max": 30,
+                    "sorrow.max": 5,
                     "benevolence.rate": 0.05
                 }
             },
@@ -518,7 +518,7 @@
             {
                 "id": "help_followers",
                 "name": "Help followers",
-                "require": "charity>1followers>1",
+                "require": "charity>1&&followers>1",
                 "desc": "Extend a helping hand to those who look up to you",
                 "duration": 20,
                 "max": 2,
@@ -529,8 +529,8 @@
                 },
                 "mods":{
                     "benevolence.max": 5,
-                    "follower.mod.bevolence.max": 5,
-                    "follower.max": 2
+                    "followers.mod.benevolence.max": 5,
+                    "followers.max": 2
                 }
             },
             {
@@ -539,7 +539,6 @@
                 "require": "followers>1&&charity>2&&charisma>1",
                 "desc": "Tell your followers to help people",
                 "duration": 15,
-                "max": 2,
                 "buy": {
                     "benevolence": 80,
                     "followers": 5,

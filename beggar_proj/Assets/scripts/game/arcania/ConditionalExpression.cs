@@ -189,7 +189,11 @@ namespace arcania
                     {
                         i++;
                         op = opGotten;
-                        value = int.Parse(tokens[++i]);
+                        if (!int.TryParse(tokens[++i], out var number)) 
+                        {
+                            Debug.LogError($"Parsing problem, tokens is not a number: |{tokens[i+1]}|. First is |{tokens[0]}|");
+                        }
+                        value = number;
                     }
                     else
                     {
