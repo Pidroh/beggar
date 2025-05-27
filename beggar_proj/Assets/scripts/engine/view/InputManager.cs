@@ -199,8 +199,6 @@ namespace HeartUnity.View
                     LatestInputDevice = InputDevice.MOUSE;
                 }
 
-                Input
-
 #if ENABLE_LEGACY_INPUT_MANAGER
 
                 var keyCodes = EnumHelper<KeyCode>.GetAllValues();
@@ -254,12 +252,10 @@ namespace HeartUnity.View
                 }
 #endif
             }
-
-            if (Mathf.Abs(Input.mouseScrollDelta.y) > 0.2f)
+            if (Mouse.current != null && Mathf.Abs(Mouse.current.scroll.ReadValue().y) > 0.2f)
             {
                 LatestInputDevice = InputDevice.MOUSE;
             }
-
 
 
         }

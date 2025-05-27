@@ -145,7 +145,7 @@ namespace HeartUnity.View
             selectableManager.ManualUpdate();
             if (mouseView != null)
             {
-                Vector3 mousePosition = Input.mousePosition;
+                Vector3 mousePosition = InputWrapper.mousePosition;
 
                 
                 var mouseInsideScreen =  mousePosition.x >= 0 && mousePosition.x <= Screen.width &&
@@ -161,8 +161,8 @@ namespace HeartUnity.View
 
         public Vector3 GetCanvasMousePosition()
         {
-            if (mouseView == null) return Input.mousePosition;
-            Vector3 mousePosition = Input.mousePosition;
+            if (mouseView == null) return InputWrapper.mousePosition;
+            Vector3 mousePosition = InputWrapper.mousePosition;
             mousePosition.z = mouseView.transform.parent.position.z - Camera.main.transform.position.z;
             var pos = Camera.main.ScreenToWorldPoint(mousePosition);
             pos.z = mouseView.transform.parent.position.z;

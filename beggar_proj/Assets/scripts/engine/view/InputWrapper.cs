@@ -110,7 +110,7 @@ namespace HeartUnity.View
                 return Mouse.current.rightButton.isPressed;
             }
             if (Touchscreen.current == null) return false;
-
+            return Touchscreen.current.primaryTouch.IsPressed();
         }
 
         private static bool ShouldAndCanUseMouse()
