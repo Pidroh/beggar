@@ -69,7 +69,7 @@ namespace HeartUnity.View
                     //draggingElement = null;
                 }
             }
-            if (!Input.GetMouseButton(0))
+            if (!InputWrapper.GetMouseButton(0))
             {
                 DraggingActive = false;
                 draggingElement = null;

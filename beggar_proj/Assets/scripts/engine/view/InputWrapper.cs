@@ -1,5 +1,6 @@
 ﻿//using UnityEngine.U2D;
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -8,13 +9,32 @@ namespace HeartUnity.View
 {
     public class InputWrapper
     {
+        internal static Vector2 mousePosition => GetCursorPosition();
+
+        private static Vector2 GetCursorPosition()
+        {
+            var mouseExists = Mouse.current != null;
+            var touchExists = Touchscreen.current != null;
+            if (!mouseExists && !touchExists) return Vector2.zero;
+            if (mouseExists && touchExists)
+            {
+                if (Mouse.current.lastUpdateTime > Touchscreen.current.lastUpdateTime)
+                {
+                    return Mouse.current.position.ReadValue();
+                }
+                return Touchscreen.current.position.ReadValue();
+            }
+            if (mouseExists) return Mouse.current.position.ReadValue();
+            return Touchscreen.current.position.ReadValue();
+        }
+
         public static bool GetKey(KeyCode p)
         {
             if (Keyboard.current == null) return false;
             KeyControl key = GetKeyControl(p);
             return key != null && key.isPressed;
         }
-        public static bool GetKeyDown(KeyCode p) 
+        public static bool GetKeyDown(KeyCode p)
         {
             if (Keyboard.current == null) return false;
             KeyControl key = GetKeyControl(p);
@@ -80,6 +100,31 @@ namespace HeartUnity.View
 
                 _ => null
             };
+        }
+
+        internal static bool GetMouseButton(int v)
+        {
+            if (ShouldAndCanUseMouse()) 
+            {
+                if (v == 0) return Mouse.current.leftButton.isPressed;
+                return Mouse.current.rightButton.isPressed;
+            }
+            if (Touchscreen.current == null) return false;
+
+        }
+
+        private static bool ShouldAndCanUseMouse()
+        {
+            if (Touchscreen.current == null) { return Mouse.current != null; }
+            if (Mouse.current == null || Mouse.current.lastUpdateTime < Touchscreen.current.lastUpdateTime) return false;
+            return true;
+        }
+
+        private static Pointer GetPointer()
+        {
+            if (Touchscreen.current == null) { return Mouse.current; }
+            if (Mouse.current == null || Mouse.current.lastUpdateTime < Touchscreen.current.lastUpdateTime) return Touchscreen.current;
+            return Mouse.current;
         }
     }
 }

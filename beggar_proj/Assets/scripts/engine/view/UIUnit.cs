@@ -252,7 +252,7 @@ namespace HeartUnity.View
 
         public bool CheckMouseInside()
         {
-            return RectTransformUtility.RectangleContainsScreenPoint(RectTransform, Input.mousePosition, Camera.main);
+            return RectTransformUtility.RectangleContainsScreenPoint(RectTransform, InputWrapper.mousePosition, Camera.main);
             var yourRect = RectTransform;
             var position = yourRect.transform.position;
             var size = yourRect.sizeDelta;

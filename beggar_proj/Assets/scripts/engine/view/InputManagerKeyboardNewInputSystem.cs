@@ -23,14 +23,14 @@ namespace HeartUnity.View
             (Key.RightShift, HeartKeys.KEY_SHIFT),
         };
 
-        public static void UpdateKeyboard(List<int> keysDown, List<int> keysPressed, List<int> keysUp, ref bool deviceKeyboard)
+        public static void UpdateKeyboard(List<int> keysDown, List<int> keysPressed, List<int> keysUp, List<int> config_keysThatDontSwapBetweenKeyboardAndMouse, ref bool deviceKeyboard)
         {
             // Letters A-Z
             for (char c = 'A'; c <= 'Z'; c++)
             {
                 var key = Key.A + (c - 'A');
                 var keyControl = Keyboard.current[key];
-                UpdateKeyboard(keysDown, keysPressed, keysUp, c, keyControl, ref deviceKeyboard);
+                UpdateKeyboard(keysDown, keysPressed, keysUp, config_keysThatDontSwapBetweenKeyboardAndMouse, c, keyControl, ref deviceKeyboard);
             }
 
             // Numbers 0-9
@@ -38,21 +38,25 @@ namespace HeartUnity.View
             {
                 var key = Key.Digit0 + (c - '0');
                 var keyControl = Keyboard.current[key];
-                UpdateKeyboard(keysDown, keysPressed, keysUp, c, keyControl, ref deviceKeyboard);
+                UpdateKeyboard(keysDown, keysPressed, keysUp, config_keysThatDontSwapBetweenKeyboardAndMouse, c, keyControl, ref deviceKeyboard);
             }
             foreach (var pair in KeyToHeart)
             {
                 var keyControl = Keyboard.current[pair.Item1];
-                UpdateKeyboard(keysDown, keysPressed, keysUp, pair.Item2, keyControl, ref deviceKeyboard);
+                UpdateKeyboard(keysDown, keysPressed, keysUp, config_keysThatDontSwapBetweenKeyboardAndMouse, pair.Item2, keyControl, ref deviceKeyboard);
             }
         }
 
-        private static void UpdateKeyboard(List<int> keysDown, List<int> keysPressed, List<int> keysUp, int v, KeyControl aKey, ref bool deviceKeyboard)
+        private static void UpdateKeyboard(List<int> keysDown, List<int> keysPressed, List<int> keysUp, List<int> config_keysThatDontSwapBetweenKeyboardAndMouse, int v, KeyControl aKey, ref bool deviceKeyboard)
         {
             if (aKey.isPressed)
             {
+                if (!config_keysThatDontSwapBetweenKeyboardAndMouse.Contains(v))
+                {
+                    keysPressed.Add(v);
+                }
                 deviceKeyboard = true;
-                keysPressed.Add(v);
+
             }
             if (aKey.wasReleasedThisFrame)
             {
@@ -60,7 +64,10 @@ namespace HeartUnity.View
             }
             if (aKey.wasPressedThisFrame)
             {
-                deviceKeyboard = true;
+                if (!config_keysThatDontSwapBetweenKeyboardAndMouse.Contains(v))
+                {
+                    keysPressed.Add(v);
+                }
                 keysDown.Add(v);
             }
         }

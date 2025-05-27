@@ -188,6 +188,18 @@ namespace HeartUnity.View
                     GamepadToHeartKey(Gamepad.current.startButton, HeartKeys.JOY_BUTTON_START);
                     GamepadToHeartKey(Gamepad.current.selectButton, HeartKeys.JOY_BUTTON_SELECT);
                 }
+                var shouldBeKeyboard = false;
+                InputManagerKeyboardNewInputSystem.UpdateKeyboard(keysDown, keysPressed, keysUp, config_keysThatDontSwapBetweenKeyboardAndMouse, ref shouldBeKeyboard);
+                if (shouldBeKeyboard) 
+                {
+                    LatestInputDevice = InputDevice.KEYBOARD;
+                }
+                if (Mouse.current.leftButton.IsPressed() || Mouse.current.rightButton.IsPressed())
+                {
+                    LatestInputDevice = InputDevice.MOUSE;
+                }
+
+                Input
 
 #if ENABLE_LEGACY_INPUT_MANAGER
 
