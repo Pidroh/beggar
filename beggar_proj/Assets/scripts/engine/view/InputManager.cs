@@ -104,13 +104,7 @@ namespace HeartUnity.View
             public int previousDirection;
         }
 
-        public KeyCode joystickStartKeyCode = KeyCode.JoystickButton0;
-        public KeyCode joystickEndKeyCode = KeyCode.JoystickButton19;
-
         int[] joystickKeys = { HeartKeys.JOY_BUTTON_WEST, HeartKeys.JOY_BUTTON_SOUTH, HeartKeys.JOY_BUTTON_EAST, HeartKeys.JOY_BUTTON_NORTH, HeartKeys.JOY_BUTTON_L, HeartKeys.JOY_BUTTON_R, HeartKeys.JOY_BUTTON_L2, HeartKeys.JOY_BUTTON_R2, HeartKeys.JOY_BUTTON_SELECT, HeartKeys.JOY_BUTTON_START };
-
-
-        public Dictionary<HeartKeys, ContinuousStateKey> continuousStateKeys = new();
 
         private bool _inputEnabled;
         private bool _inputDisableRequest;
@@ -195,6 +189,8 @@ namespace HeartUnity.View
                     GamepadToHeartKey(Gamepad.current.selectButton, HeartKeys.JOY_BUTTON_SELECT);
                 }
 
+#if ENABLE_LEGACY_INPUT_MANAGER
+
                 var keyCodes = EnumHelper<KeyCode>.GetAllValues();
                 foreach (var kc in keyCodes)
                 {
@@ -220,6 +216,7 @@ namespace HeartUnity.View
 
                     }
                 }
+
                 int TranslateKeyCode(KeyCode kc, Dictionary<KeyCode, int> overwriteKeys)
                 {
                     if (overwriteKeys.TryGetValue(kc, out int value))
@@ -243,7 +240,7 @@ namespace HeartUnity.View
                     */
                     return (int)kc;
                 }
-
+#endif
             }
 
             if (Mathf.Abs(Input.mouseScrollDelta.y) > 0.2f)
@@ -820,36 +817,6 @@ namespace HeartUnity.View
             this.latestInputDeviceKeyboardOrMouse = latestInputDeviceKeyboardOrMouse;
             LatestInputDevice = latestInputDevice;
         }
-    }
-
-    public class HeartKeys
-    {
-        public const int KEY_UP = 100000;
-        public const int KEY_LEFT = 100001;
-        public const int KEY_DOWN = 100002;
-        public const int KEY_RIGHT = 100003;
-        public const int KEY_ENTER = 100004;
-        public const int KEY_SPACE = 100005;
-        public const int KEY_ESCAPE = 100006;
-        public const int KEY_TAB = 100007;
-        public const int KEY_SHIFT = 100008;
-        public const int JOY_BUTTON_SOUTH = 100051; // X
-        public const int JOY_BUTTON_EAST = 100052; // O
-        public const int JOY_BUTTON_WEST = 100053; // ■
-        public const int JOY_BUTTON_NORTH = 100054; // ▲
-        public const int JOY_BUTTON_L = 100055;
-        public const int JOY_BUTTON_R = 100056;
-        public const int JOY_BUTTON_R2 = 100057;
-        public const int JOY_BUTTON_L2 = 100058;
-        public const int JOY_BUTTON_D_UP = 100059;
-        public const int JOY_BUTTON_D_LEFT = 100060;
-        public const int JOY_BUTTON_D_DOWN = 100061;
-        public const int JOY_BUTTON_D_RIGHT = 100062;
-        public const int JOY_BUTTON_START = 100063;
-        public const int JOY_BUTTON_SELECT = 100064;
-        public const int MOUSE_BUTTON_LEFT = 101001;
-        public const int MOUSE_BUTTON_RIGHT = 101002;
-
     }
 
     // maybe will use this for stick

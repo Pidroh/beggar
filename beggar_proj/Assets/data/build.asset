@@ -25,3 +25,7 @@ MonoBehaviour:
     copyFileTag: 
     outputPath: ../builds/patreon/webtest%V%%BETA%/
     buildTarget: 20
+  - tag: android
+    copyFileTag: 
+    outputPath: ../builds/android/beggar_life%V%%BETA%.apk
+    buildTarget: 13

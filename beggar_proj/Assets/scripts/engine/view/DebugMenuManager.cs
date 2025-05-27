@@ -82,7 +82,8 @@ namespace HeartUnity.View
             }
             
 #endif
-            if (Input.GetKey(KeyCode.P) && Input.GetKey(KeyCode.O) && Input.GetKeyDown(KeyCode.J))
+            
+            if (InputWrapper.GetKey(KeyCode.P) && InputWrapper.GetKey(KeyCode.O) && InputWrapper.GetKeyDown(KeyCode.J))
             {
                 InitDebugMenu();
                 debugMenu.Show(true);
@@ -91,7 +92,7 @@ namespace HeartUnity.View
             if (debugMenu != null && debugMenu.IsShowing)
             {
                 var leavingGamepad = Gamepad.current == null ? false : Gamepad.current.buttonEast.wasPressedThisFrame;
-                if (Input.GetKey(KeyCode.Escape) || leavingGamepad)
+                if (InputWrapper.GetKey(KeyCode.Escape) || leavingGamepad)
                 {
                     debugMenu.Show(false);
                     gamepadCommands.Clear();
