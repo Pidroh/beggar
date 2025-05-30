@@ -1,6 +1,16 @@
-- Version 20
+- Version 25
 Patreon: true
-Dev notes: Faith, reason, and the power of literacy await (Contains all content of version 0.15)
+Dev notes: Sadism VS Empathy, and the warmth of fire
+# CHANGES
+9 new resource(s)
+57 new task(s)
+6 new class(s)
+6 new skill(s)
+9 new furniture(s)
+
+- Version 22
+Latest: true
+Dev notes: Faith, reason, and the power of literacy await 
 # CHANGES
 4 new resource(s)
 51 new task(s)
@@ -13,7 +23,6 @@ Dev notes: Faith, reason, and the power of literacy await (Contains all content 
 3 new furniture(s)
 
 - Version 15
-Latest: true
 Dev notes: Rat companions, feline friendships, and a life of crime
 # CHANGES
 16 new resource(s)
