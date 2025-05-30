@@ -1,0 +1,5 @@
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/5r6x6t4e/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/5r6x6t4e/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/5r6x6t4e/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/5r6x6t4e/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/5r6x6t4e/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

@@ -194,7 +194,11 @@ namespace HeartUnity.View
                 {
                     LatestInputDevice = InputDevice.KEYBOARD;
                 }
-                if (Mouse.current.leftButton.IsPressed() || Mouse.current.rightButton.IsPressed())
+                if (Mouse.current != null && (Mouse.current.leftButton.IsPressed() || Mouse.current.rightButton.IsPressed()))
+                {
+                    LatestInputDevice = InputDevice.MOUSE;
+                }
+                if (Mouse.current != null && Mathf.Abs(Mouse.current.scroll.ReadValue().y) > 0.2f)
                 {
                     LatestInputDevice = InputDevice.MOUSE;
                 }
@@ -252,10 +256,7 @@ namespace HeartUnity.View
                 }
 #endif
             }
-            if (Mouse.current != null && Mathf.Abs(Mouse.current.scroll.ReadValue().y) > 0.2f)
-            {
-                LatestInputDevice = InputDevice.MOUSE;
-            }
+            
 
 
         }

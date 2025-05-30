@@ -27,5 +27,5 @@ MonoBehaviour:
     buildTarget: 20
   - tag: android
     copyFileTag: 
-    outputPath: ../builds/android/beggar_life%V%%BETA%.apk
+    outputPath: ../builds/android/beggar_life%V%%BETA%.aab
     buildTarget: 13

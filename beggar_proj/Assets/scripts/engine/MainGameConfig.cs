@@ -11,7 +11,9 @@ namespace HeartUnity
     [CreateAssetMenu(fileName = "MainGameConfig", menuName = "Custom/Main Game Config", order = 1)]
     public class MainGameConfig : ScriptableObject
     {
+        public int majorVersion;
         public int versionNumber;
+        public int patchVersion;
         public string gameTitle;
         public bool betaVersion;
         public MusicDataList musicList;

@@ -1,5 +1,5 @@
 ﻿
-#if !UNITY_SWITCH
+#if !UNITY_SWITCH && !UNITY_ANDROID
 using SFB;
 using System.Collections;
 using System.IO;

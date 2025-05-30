@@ -47,17 +47,17 @@ public class CustomBuild
     {
         var copyFileConfig = entry.copyFileTag;
         var outputPath = entry.outputPath;
+        var config = HeartGame.GetConfig();
+        PlayerSettings.bundleVersion = $"{config.majorVersion}.{config.versionNumber.ToString("D2")}.{config.patchVersion.ToString("D2")}";
+        PlayerSettings.Android.bundleVersionCode = config.majorVersion * 10000 + config.versionNumber * 100 + config.patchVersion;
         if (outputPath.Contains("%V%")) 
-        {
-            var config = HeartGame.GetConfig();
-            outputPath = outputPath.Replace("%V%", config.versionNumber.ToString("D4"));
+        {   
+            var versionText = $"{config.majorVersion}_{config.versionNumber.ToString("D2")}_{config.patchVersion.ToString("D2")}";
+            outputPath = outputPath.Replace("%V%", versionText);
         }
         if (outputPath.Contains("%BETA%"))
         {
-            var config = HeartGame.GetConfig();
             outputPath = outputPath.Replace("%BETA%", config.betaVersion ? "_beta" : "");
-            
-            
         }
 
         if (!string.IsNullOrWhiteSpace(copyFileConfig))
@@ -69,6 +69,10 @@ public class CustomBuild
         else
         {
             Debug.Log("COPY FILE CONFIG IS NULL");
+        }
+        if(entry.buildTarget == BuildTarget.Android)
+        {
+            EditorUserBuildSettings.buildAppBundle = true;
         }
         // Define the build options
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
@@ -86,7 +90,7 @@ public class CustomBuild
         if (summary.result == BuildResult.Succeeded)
         {
             Debug.Log("Build succeeded: " + summary.totalSize + " bytes");
-            if (entry.buildTarget != BuildTarget.WebGL)
+            if (entry.buildTarget != BuildTarget.WebGL && entry.buildTarget != BuildTarget.Android)
             {
                 ExecuteCommand($"7z a -r -tzip \"../{entry.tag}.zip\" ./{Path.GetDirectoryName(outputPath)}/*");
             }

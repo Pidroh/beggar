@@ -35,10 +35,19 @@ public class ArcaniaGameConfigurationEditor : Editor
                 {
                     config.configurationReference.jsonDatas.Clear();
                     config.configurationReference.jsonDatas.AddRange(entry.jsonDatas);
-                    if (entry.versionOverride > 0) 
+                    if (entry.majorVersionOverride >= 0) 
+                    {
+                        gameConfigEngine.majorVersion = entry.majorVersionOverride;
+                    }
+                    // needs to allow 0 because 1.0.0 is a valid version (major.version.patch)
+                    if (entry.versionOverride >= 0) 
                     {
                         gameConfigEngine.versionNumber = entry.versionOverride;
                         EditorUtility.SetDirty(gameConfigEngine);
+                    }
+                    if (entry.majorVersionOverride >= 0)
+                    {
+                        gameConfigEngine.patchVersion = entry.patchOverride;
                     }
                     EditorUtility.SetDirty(config.configurationReference); // Marks the object as dirty
                     AssetDatabase.SaveAssets(); // Saves the asset to disk

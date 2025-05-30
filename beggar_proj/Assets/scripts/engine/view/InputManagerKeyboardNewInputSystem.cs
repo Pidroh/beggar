@@ -25,6 +25,7 @@ namespace HeartUnity.View
 
         public static void UpdateKeyboard(List<int> keysDown, List<int> keysPressed, List<int> keysUp, List<int> config_keysThatDontSwapBetweenKeyboardAndMouse, ref bool deviceKeyboard)
         {
+            if (Keyboard.current == null) return;
             // Letters A-Z
             for (char c = 'A'; c <= 'Z'; c++)
             {

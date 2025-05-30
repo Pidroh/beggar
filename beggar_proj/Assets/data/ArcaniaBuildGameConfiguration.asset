@@ -14,39 +14,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configurationReference: {fileID: 11400000, guid: 5838a758d2e4b8d449cd508dbad7e1a6, type: 2}
   entries:
-  - jsonDatas:
+  - id: normal
+    jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
     - {fileID: 4900000, guid: 7a9fa94f04cbd3f41baa847d4443b463, type: 3}
-    id: normal
     buildConfigId: web
+    majorVersionOverride: 0
     versionOverride: 22
-  - jsonDatas:
+    patchOverride: 1
+  - id: android
+    jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
     - {fileID: 4900000, guid: 7a9fa94f04cbd3f41baa847d4443b463, type: 3}
-    id: android
     buildConfigId: android
+    majorVersionOverride: 0
     versionOverride: 22
-  - jsonDatas:
+    patchOverride: 1
+  - id: test
+    jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: 5a6549694f1e18c4ebc3ba05d452cec1, type: 3}
-    id: test
     buildConfigId: webtest
+    majorVersionOverride: 0
     versionOverride: 15
-  - jsonDatas:
+    patchOverride: 0
+  - id: patreon
+    jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
     - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
     - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
-    id: patreon
     buildConfigId: web_patreon
-    versionOverride: 51
-  - jsonDatas:
+    majorVersionOverride: 0
+    versionOverride: 25
+    patchOverride: 0
+  - id: patreon_dev
+    jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
     - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
     - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
-    id: patreon_dev
     buildConfigId: web_patreon_dev
+    majorVersionOverride: 0
     versionOverride: 50
+    patchOverride: 0
