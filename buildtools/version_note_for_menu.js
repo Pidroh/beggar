@@ -4,7 +4,7 @@ const fs = require('fs');
 fs.readFile('version_notes.txt', 'utf8', (err, data) => {
   if (err) throw err;
 
-  const versions = data.split('\n\n'); // Split the data into version blocks
+  const versions = data.replace(/\r/g, '').split('\n\n'); // Split the data into version blocks
   let htmlContent = '';
 
   versions.forEach(version => {
@@ -26,7 +26,7 @@ fs.readFile('version_notes.txt', 'utf8', (err, data) => {
     lines.forEach(line => {
       if (line.toLowerCase().includes('patreon: true')) {
         extraVersionText = "(Patreon Early Access)";
-      } else if (line.toLowerCase().startsWith('dev notes:')) {
+      } else if (line.toLowerCase().startsWith('dev notes:')) { 
         devNotes = line.replace('Dev notes:', '').trim();
       } else if (line.toLowerCase().includes('latest: true')){
         extraVersionText = "(Stable)";

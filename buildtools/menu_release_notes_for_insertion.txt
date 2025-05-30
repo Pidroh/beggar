@@ -1,7 +1,25 @@
 
       <div class="version">
-        <h2>Version 0.25 (Stable)</h2>
+        <h2>Version 0.25 (Patreon Early Access)</h2>
+        <p>Sadism VS Empathy, and the warmth of fire</p>
+        <p>9 new resource(s)<br>57 new task(s)<br>6 new class(s)<br>6 new skill(s)<br>9 new furniture(s)</p>
+      </div>
+    
+      <div class="version">
+        <h2>Version 0.22 (Stable)</h2>
+        <p>Faith, reason, and the power of literacy await</p>
+        <p>4 new resource(s)<br>51 new task(s)<br>1 new house(s)<br>6 new class(s)<br>7 new skill(s)<br>5 new location(s)<br>25 new encounter(s)<br>1 new dialog(s)<br>3 new furniture(s)</p>
+      </div>
+    
+      <div class="version">
+        <h2>Version 0.15 </h2>
+        <p>Rat companions, feline friendships, and a life of crime</p>
+        <p>16 new resource(s)<br>36 new task(s)<br>3 new house(s)<br>4 new class(s)<br>6 new skill(s)<br>5 new location(s)<br>16 new encounter(s)<br>2 new dialog(s)<br>11 new furniture(s)</p>
+      </div>
+    
+      <div class="version">
+        <h2>Version 0.11 </h2>
         <p>Saving added!</p>
-        <p>- Version 25<br>Patreon: true<br>Dev notes: Sadism VS Empathy, and the warmth of fire<br># CHANGES<br>9 new resource(s)<br>57 new task(s)<br>6 new class(s)<br>6 new skill(s)<br>9 new furniture(s)<br><br>- Version 22<br>Latest: true<br>Dev notes: Faith, reason, and the power of literacy await <br># CHANGES<br>4 new resource(s)<br>51 new task(s)<br>1 new house(s)<br>6 new class(s)<br>7 new skill(s)<br>5 new location(s)<br>25 new encounter(s)<br>1 new dialog(s)<br>3 new furniture(s)<br><br>- Version 15<br>Dev notes: Rat companions, feline friendships, and a life of crime<br># CHANGES<br>16 new resource(s)<br>36 new task(s)<br>3 new house(s)<br>4 new class(s)<br>6 new skill(s)<br>5 new location(s)<br>16 new encounter(s)<br>2 new dialog(s)<br>11 new furniture(s)<br><br>- Version 11<br>Dev notes: Saving added!<br># CHANGES<br>16 resource(s)<br>28 task(s)<br>1 house(s)<br>5 class(s)<br>5 skill(s)<br>2 dialog(s)<br>10 furniture(s)</p>
+        <p>16 resource(s)<br>28 task(s)<br>1 house(s)<br>5 class(s)<br>5 skill(s)<br>2 dialog(s)<br>10 furniture(s)</p>
       </div>
     
