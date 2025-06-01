@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   majorVersion: 0
   versionNumber: 25
-  patchVersion: 0
+  patchVersion: 1
   gameTitle: beggar_incremental
   betaVersion: 0
   musicList: {fileID: 0}

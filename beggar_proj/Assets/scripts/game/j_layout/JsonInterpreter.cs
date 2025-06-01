@@ -454,8 +454,6 @@ namespace JLayout
     {
         public string Id;
         public T data;
-
-
     }
 
     public class LayoutData

@@ -22,7 +22,7 @@ MonoBehaviour:
     buildConfigId: web
     majorVersionOverride: 0
     versionOverride: 22
-    patchOverride: 1
+    patchOverride: 2
   - id: android
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -31,7 +31,7 @@ MonoBehaviour:
     buildConfigId: android
     majorVersionOverride: 0
     versionOverride: 22
-    patchOverride: 1
+    patchOverride: 2
   - id: test
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -49,7 +49,7 @@ MonoBehaviour:
     buildConfigId: web_patreon
     majorVersionOverride: 0
     versionOverride: 25
-    patchOverride: 0
+    patchOverride: 1
   - id: patreon_dev
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
