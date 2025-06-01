@@ -963,6 +963,20 @@
                 }
             },
             {
+                "id": "churchcalling",
+                "name": "Calling of the Church",
+                "require": "t_tier2&&ecclesiology>2&&jointhechurch",
+                "duration": 120,
+                "max": 1,
+                "run": {
+                    "supplication": 10,
+                    "thoughts": 5
+                },
+                "mod":{
+                    "ecclesiology.max": 2
+                }
+            },
+            {
                 "id": "thinkbreakthrough",
                 "name": "Time of reflection",
                 "need": "contemplation>3",
