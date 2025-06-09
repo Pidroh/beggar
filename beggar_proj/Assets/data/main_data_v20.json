@@ -973,7 +973,8 @@
                     "thoughts": 5
                 },
                 "mod":{
-                    "ecclesiology.max": 2
+                    "ecclesiology.max": 2,
+                    "faith.max": 80
                 }
             },
             {
