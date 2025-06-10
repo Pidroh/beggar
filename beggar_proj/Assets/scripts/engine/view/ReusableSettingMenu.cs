@@ -32,14 +32,12 @@ namespace HeartUnity.View
                 case SettingSceneMode.SETTINGS:
                     ToPreviousScene();
                     break;
-                case SettingSceneMode.LANGUAGE_IN_SETTINGS:
-                    ReusableSettingMenu.BeforeGoToSettings(CloseScene);
-                    heartGame.ChangeScene(SettingSceneName);
-                    break;
                 case SettingSceneMode.LANGUAGE_EXTERNAL:
                     ToPreviousScene();
                     break;
                 case SettingSceneMode.CREDITS:
+                case SettingSceneMode.LANGUAGE_IN_SETTINGS:
+                case SettingSceneMode.CUSTOM_CHOICE:
                     ReusableSettingMenu.BeforeGoToSettings(CloseScene);
                     heartGame.ChangeScene(SettingSceneName);
                     break;
@@ -131,6 +129,9 @@ namespace HeartUnity.View
                 case SettingSceneMode.LANGUAGE_IN_SETTINGS:
                 case SettingSceneMode.LANGUAGE_EXTERNAL:
                     LanguageSelecMode();
+                    break;
+                case SettingSceneMode.CUSTOM_CHOICE:
+                    CustomChoiceMode();
                     break;
                 case SettingSceneMode.CREDITS:
                     ShowCreditsMode();
@@ -271,6 +272,45 @@ namespace HeartUnity.View
             }
         }
 
+        private void CustomChoiceMode()
+        {
+            var config = HeartGame.GetConfig();
+            // TODO get data from an ID sent through cross scene
+            var choiceD = config.SettingCustomChoices[0];
+            for (int i = 0; i < choiceD.choiceKeys.Count; i++)
+            {
+                SettingUnitUI suu = new SettingUnitUI();
+                suu.ChoicePosition = i;
+                unitUIs.Add(suu);
+
+                var buttonLabel = choiceD.choiceKeys[i];
+                var buttonHolder = Instantiate(reusablePrefabs.button, reusableMenuCanvas.menuContent.transform);
+                var button = buttonHolder.buttonManager;
+                suu.button = buttonHolder;
+                button.buttonText = Local.GetText(buttonLabel);
+                button.UpdateUI();
+                button.onClick.AddListener(() =>
+                {
+                    var choiceP = i;
+                    CustomChoiceChosen(choiceP);
+                });
+            }
+            if (settingSceneMode == SettingSceneMode.LANGUAGE_IN_SETTINGS)
+            {
+                var buttonHolder = Instantiate(reusablePrefabs.button, reusableMenuCanvas.menuContent.transform);
+                var button = buttonHolder.buttonManager;
+                button.buttonText = Local.GetText("Return");
+                button.UpdateUI();
+                SettingUnitUI item = new SettingUnitUI();
+                item.button = buttonHolder;
+                item.leaveLanguage = true;
+                this.unitUIs.Add(item);
+                button.onClick.AddListener(() =>
+                {
+                    LeaveLanguageButton();
+                });
+            }
+        }
 
         public void LeaveLanguageButton()
         {
@@ -350,6 +390,12 @@ namespace HeartUnity.View
             model.SetString(SettingUnitData.StandardSettingType.LANGUAGE_SELECTION, langu.languageName);
             AudioPlayer.PlaySFX("click");
             RequestReturn();
+        }
+
+        private void CustomChoiceChosen(int choiceP)
+        {
+            // TODO support for multiple choices, not just 1
+            model.SetInt(SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1, choiceP);
         }
 
         public void ToogleUpdated(bool b, SettingUnitRealTime uc)
@@ -504,6 +550,8 @@ namespace HeartUnity.View
             internal Local.LanguageSet language;
             internal bool leaveLanguage;
             internal bool? dialogConfirm;
+
+            public int? ChoicePosition { get; internal set; }
         }
 
         public class SettingDialog
@@ -527,6 +575,7 @@ namespace HeartUnity.View
             LANGUAGE_EXTERNAL,
             DIALOG,
             CREDITS,
+            CUSTOM_CHOICE
         }
     }
 }

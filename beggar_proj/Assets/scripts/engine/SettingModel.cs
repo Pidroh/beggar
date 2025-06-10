@@ -239,7 +239,7 @@ namespace HeartUnity
     public class SettingCustomChoice 
     {
         public string id;
-        public string buttonText;
+        public string upperText;
         public List<string> choiceKeys;
         
     }
