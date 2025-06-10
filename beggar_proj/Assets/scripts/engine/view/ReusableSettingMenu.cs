@@ -396,6 +396,8 @@ namespace HeartUnity.View
         {
             // TODO support for multiple choices, not just 1
             model.SetInt(SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1, choiceP);
+            AudioPlayer.PlaySFX("click");
+            RequestReturn();
         }
 
         public void ToogleUpdated(bool b, SettingUnitRealTime uc)
