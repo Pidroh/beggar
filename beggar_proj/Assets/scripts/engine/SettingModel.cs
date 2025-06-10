@@ -225,7 +225,7 @@ namespace HeartUnity
                 FULLSCREEN, EXIT_GAME, EXIT_MENU, MASTER_VOLUME, MUSIC_VOLUME, SFX_VOLUME, VOICE_VOLUME,
                 LANGUAGE_SELECTION, DELETE_DATA, 
                 PP_COLOR_CORRECTION, PP_BLOOM, PP_TONE, PP_SCANLINE, PP_VIGNETTE,
-                SHOW_CREDITS, EXPORT_SAVE, IMPORT_SAVE, DISCORD_SERVER
+                SHOW_CREDITS, EXPORT_SAVE, IMPORT_SAVE, DISCORD_SERVER, CUSTOM_CHOICE_1
             }
 
             public enum SettingType
@@ -233,5 +233,14 @@ namespace HeartUnity
                 BUTTON, SWITCH, SLIDER
             }
         }
+    }
+
+    [Serializable]
+    public class SettingCustomChoice 
+    {
+        public string id;
+        public string buttonText;
+        public List<string> choiceKeys;
+        
     }
 }

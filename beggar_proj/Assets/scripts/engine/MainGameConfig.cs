@@ -28,6 +28,7 @@ namespace HeartUnity
         public List<PersistenceUnit> PersistenceUnits;
         public URLs urls;
         public Canvas reusableCanvas;
+        public List<SettingCustomChoice> SettingCustomChoices = new();
 
         [Serializable]
         public class View
