@@ -516,6 +516,11 @@ namespace HeartUnity.View
                     ReusableSettingMenu.BeforeGoToLanguageSelection(false);
                     heartGame.ChangeScene(ReusableSettingMenu.SettingSceneName);
                     break;
+                case SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1:
+                    engineView.inputManager.RecordSceneLatestDevice();
+                    crossSceneData.settingSceneMode = SettingSceneMode.CUSTOM_CHOICE;
+                    heartGame.ChangeScene(ReusableSettingMenu.SettingSceneName);
+                    break;
                 case SettingUnitData.StandardSettingType.SHOW_CREDITS:
                     crossSceneData.settingSceneMode = SettingSceneMode.CREDITS;
                     engineView.inputManager.RecordSceneLatestDevice();
