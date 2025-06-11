@@ -1,6 +1,7 @@
 {
   "general": {
-    "overlay_background_color": "overlay_color"
+    "overlay_background_color": "overlay_color",
+    "background_color": "background_color"
   },
   "layouts": [
     {
@@ -1487,42 +1488,42 @@
       "id": "button_fill_gauge",
       "colors": [
         "adf4daff",
-        "adf4daff"
+        "3e9c7aff"
       ]
     },
     {
       "id": "button_fill_gauge_click",
       "colors": [
         "fff8fdff",
-        "8fd8edff"
+        "4e9c7aff"
       ]
     },
     {
       "id": "button_fill_gauge_active",
       "colors": [
         "8ef0ccff",
-        "8fd8edff"
+        "3f9f7fff"
       ]
     },
     {
       "id": "button_fill_gauge_pressed",
       "colors": [
         "7cede2ff",
-        "8fd8edff"
+        "3e9c8aff"
       ]
     },
     {
       "id": "button_fill_gauge_hovered",
       "colors": [
         "a9f9dfff",
-        "8fd8edff"
+        "2e9c7aff"
       ]
     },
     {
       "id": "button_fill_gauge_disabled",
       "colors": [
         "ccccccff",
-        "8fd8edff"
+        "2e7c5aff"
       ]
     },
     {
@@ -1550,42 +1551,42 @@
       "id": "button_text_disabled",
       "colors": [
         "656565ff",
-        "00ff00ff"
+        "9f9f9fff"
       ]
     },
     {
       "id": "button_border_hovered",
       "colors": [
         "#959595ff",
-        "#00FF00FF"
+        "#959595ff"
       ]
     },
     {
       "id": "button_border_active",
       "colors": [
         "#859595ff",
-        "#00FF00FF"
+        "#859595ff"
       ]
     },
     {
       "id": "button_border_disabled",
       "colors": [
         "#858585ff",
-        "#00FF00FF"
+        "#858585ff"
       ]
     },
     {
       "id": "text_disabled_red",
       "colors": [
         "b23636ff",
-        "#00FF00FF"
+        "b23636ff"
       ]
     },
     {
       "id": "text_accessory_disabled_red",
       "colors": [
         "#7e2626ff",
-        "#00FF00FF"
+        "#7e2626ff"
       ]
     },
     {
@@ -1593,6 +1594,13 @@
       "colors": [
         "#acafcdd9",
         "#acafcdd9"
+      ]
+    },
+    {
+      "id": "background_color",
+      "colors": [
+        "#ffffffff",
+        "#3c4356ff"
       ]
     },
     {

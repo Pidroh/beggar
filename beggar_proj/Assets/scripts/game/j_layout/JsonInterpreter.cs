@@ -56,6 +56,9 @@ namespace JLayout
                     case "overlay_background_color":
                         layoutMaster.General.OverlayColor = layoutMaster.ColorDatas.GetOrCreatePointer(pair.Value.AsString);
                         break;
+                    case "background_color":
+                        layoutMaster.General.BackgroundColor = layoutMaster.ColorDatas.GetOrCreatePointer(pair.Value.AsString);
+                        break;
                     default:
                         break;
                 }
@@ -335,6 +338,7 @@ namespace JLayout
     public class GeneralData 
     {
         public Pointer<ColorData> OverlayColor;
+        public Pointer<ColorData> BackgroundColor;
     }
 
     public class ColorSet 

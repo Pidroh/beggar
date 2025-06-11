@@ -23,6 +23,7 @@ public class MainGameControlSetupJLayout
         JLayoutRuntimeData runtime = new();
         runtime.DefaultFont = mgc.Font;
         runtime.ImageSprites = mgc.ResourceJson.spritesForLayout;
+        #region identify color scheme
         for (int i = 0; i < mgc.HeartGame.config.SettingCustomChoices.Count; i++)
         {
             SettingCustomChoice item = mgc.HeartGame.config.SettingCustomChoices[i];
@@ -42,12 +43,14 @@ public class MainGameControlSetupJLayout
                 }
             }
         }
+        #endregion
+
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas, runtime);
         
         mgc.JLayoutRuntime = runtime;
         runtime.LayoutMaster = layoutMaster;
 
-
+        Camera.main.backgroundColor = runtime.LayoutMaster.General.BackgroundColor.data.Colors[runtime.CurrentColorSchemeId];
         
 
         JGameControlDataHolder jControlDataHolder = new();
