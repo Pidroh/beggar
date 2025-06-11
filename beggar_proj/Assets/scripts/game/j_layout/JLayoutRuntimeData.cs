@@ -97,6 +97,7 @@ namespace JLayout
 
         public TMP_FontAsset DefaultFont { get; internal set; }
         public LayoutDataMaster LayoutMaster { get; internal set; }
+        public int CurrentColorSchemeId { get; internal set; }
 
         public KeyedSprites ImageSprites;
 
@@ -127,7 +128,7 @@ namespace JLayout
             {
                 MarkDirtyWithChildren();
             }
-            else 
+            else
             {
                 // if not visible, has to let the parent know
                 if (ChildSelf != null)
@@ -139,7 +140,7 @@ namespace JLayout
 
         public void MarkDirtyWithChildren()
         {
-            if (ChildSelf != null) 
+            if (ChildSelf != null)
             {
                 ChildSelf.PropagateDirtyUp();
             }
@@ -243,7 +244,8 @@ namespace JLayout
             JLayoutChild item = new JLayoutChild()
             {
                 LayoutRU = layoutRU,
-                Commons = commons
+                Commons = commons,
+                ColorSchemeId = layoutRU.ChildSelf.ColorSchemeId
             };
             if (differingCommons && item.Commons.AxisModes == null)
             {
@@ -257,7 +259,7 @@ namespace JLayout
             Children.Add(item);
             item.Parent = this;
             layoutRU.RectTransform.SetParent(ContentTransform);
-            if (Dirty[0] <= 0) 
+            if (Dirty[0] <= 0)
             {
                 MarkDirtyWithChildren();
             }
@@ -332,7 +334,7 @@ namespace JLayout
         }
 
         public float DesiredSize { get; private set; } = 320;
-        public void UpdateDesiredSize(float width) 
+        public void UpdateDesiredSize(float width)
         {
             if (DesiredSize == width) return;
             DesiredSize = width;

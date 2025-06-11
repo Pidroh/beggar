@@ -125,7 +125,7 @@ namespace JLayout
                 }
                 if (hasColor)
                 {
-                    color = layoutD.commons.ColorSet.ColorDatas[ColorSetType.NORMAL].data.Colors[0];
+                    color = layoutD.commons.ColorSet.ColorDatas[ColorSetType.NORMAL].data.Colors[runtime.CurrentColorSchemeId];
                 }
                 img.color = color;
             }
@@ -181,7 +181,7 @@ namespace JLayout
         public static JLayoutChild CreateImage(LayoutChildData childData, JLayoutRuntimeData runtime) 
         {
             var sprite = runtime.ImageSprites[childData.ImageKey];
-            var color = childData.Commons.ColorSet?.ColorDatas[ColorSetType.NORMAL].data.Colors[0] ?? Color.white;
+            var color = childData.Commons.ColorSet?.ColorDatas[ColorSetType.NORMAL].data.Colors[runtime.CurrentColorSchemeId] ?? Color.white;
             var unit = CanvasMaker.CreateSimpleImage(color);
             unit.Image.sprite = sprite;
             unit.Image.type = Image.Type.Sliced;
@@ -189,7 +189,8 @@ namespace JLayout
             {
                 Commons = childData.Commons,
                 LayoutChildData = childData,
-                UiUnit = unit
+                UiUnit = unit,
+                ColorSchemeId = runtime.CurrentColorSchemeId
             };
         }
 
@@ -211,7 +212,8 @@ namespace JLayout
                 Commons = commons,
                 LayoutChildData = childData,
                 TextData = data,
-                UiUnit = uiUnit
+                UiUnit = uiUnit,
+                ColorSchemeId = runtime.CurrentColorSchemeId
             };
         }
 
@@ -235,21 +237,6 @@ namespace JLayout
             buttonImage.color = new Color(0, 0, 0, 0); // Set button background color
             button.targetGraphic = buttonImage;
             return (layout, uiUnit);
-        }
-
-        static JLayCanvasChild CreateSimpleCanvasChild(GameObject parent) 
-        {
-            JLayoutRuntimeUnit lp = CreateLayout();
-
-            var ld = new LayoutData();
-            ld.commons = new();
-            ld.commons.AxisModes = new AxisMode[2];
-            ld.commons.AxisModes[0] = AxisMode.SELF_SIZE;
-            ld.commons.AxisModes[1] = AxisMode.SELF_SIZE;
-            lp.LayoutData = ld;
-            lp.RectTransform.SetParent(parent.transform);
-            lp.DefaultPositionModes = new PositionMode[] { PositionMode.CENTER, PositionMode.CENTER };
-            return new JLayCanvasChild(lp);
         }
         
         static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)

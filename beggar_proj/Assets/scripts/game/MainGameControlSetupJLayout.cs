@@ -11,7 +11,6 @@ public class MainGameControlSetupJLayout
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas);
-
         arcaniaModel.FinishedSettingUpUnits();
     }
     internal static void SetupCanvas(MainGameControl mgc)
@@ -28,6 +27,27 @@ public class MainGameControlSetupJLayout
         runtime.jLayCanvas = jCanvas;
         mgc.JLayoutRuntime = runtime;
         runtime.LayoutMaster = layoutMaster;
+
+
+        for (int i = 0; i < mgc.HeartGame.config.SettingCustomChoices.Count; i++)
+        {
+            SettingCustomChoice item = mgc.HeartGame.config.SettingCustomChoices[i];
+            if (item.id == "LAYOUT_COLOR_SCHEME")
+            {
+                var positionOfChoice = i;
+                // for now, has to be the first choice
+                Debug.Assert(positionOfChoice == 0);
+                foreach (var unit in mgc.HeartGame.settingModel.unitControls)
+                {
+                    if (unit.settingData.standardSettingType == SettingModel.SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1)
+                    {
+                        var chosenScheme = unit.rtInt;
+                        runtime.CurrentColorSchemeId = chosenScheme;
+                    }
+                }
+            }
+        }
+
         JGameControlDataHolder jControlDataHolder = new();
         jControlDataHolder.LayoutRuntime = runtime;
         jControlDataHolder.gameViewMiscData.ButtonColorDotActive = layoutMaster.ColorDatas.GetData("task_button_buff");

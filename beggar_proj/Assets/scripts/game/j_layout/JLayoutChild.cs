@@ -24,6 +24,9 @@ namespace JLayout
 
         private float _sizeRatioAsGauge = 1f;
         public float SizeRatioAsGauge => _sizeRatioAsGauge;
+
+        public int ColorSchemeId { get; internal set; }
+
         public void UpdateSizeRatioAsGauge(float ratio)
         {
             if (_sizeRatioAsGauge == ratio) return;

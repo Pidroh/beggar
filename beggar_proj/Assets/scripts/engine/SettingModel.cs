@@ -16,10 +16,10 @@ namespace HeartUnity
         public class SettingUnitRealTime
         {
             public SettingUnitData settingData;
-            internal bool rtBool;
-            internal int rtInt;
-            internal float rtFloat;
-            internal string rtString;
+            public bool rtBool;
+            public int rtInt;
+            public float rtFloat;
+            public string rtString;
 
             internal void ReadDefaultData()
             {

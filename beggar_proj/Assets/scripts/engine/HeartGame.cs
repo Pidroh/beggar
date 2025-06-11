@@ -22,6 +22,7 @@ namespace HeartUnity
 
         public PlayTimeControl PlayTimeControl = new PlayTimeControl();
         private CommonPlayerSaveDataPersistence _commonSaveDataPersistence;
+        public MainGameConfig config;
 
         public static HeartGame Init()
         {
@@ -30,6 +31,7 @@ namespace HeartUnity
 
             AudioPlayer.Init(config.musicList, config.audioList, config.voiceLists);
             var heartGame = new HeartGame();
+            heartGame.config = config;
             heartGame.crossSceneData = crossSceneDataStatic;
             crossSceneDataStatic = default;
 #if UNITY_SWITCH && !UNITY_EDITOR
@@ -37,9 +39,6 @@ namespace HeartUnity
 #endif
             heartGame.settingModel = new SettingModel();
             heartGame.settingModel.Init(config.SettingData, heartGame);
-            
-
-            
             return heartGame;
         }
 
