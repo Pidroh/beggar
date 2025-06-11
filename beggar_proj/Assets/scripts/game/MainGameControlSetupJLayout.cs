@@ -42,6 +42,7 @@ public class MainGameControlSetupJLayout
                     if (unit.settingData.standardSettingType == SettingModel.SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1)
                     {
                         var chosenScheme = unit.rtInt;
+                        chosenScheme = Mathf.Clamp(chosenScheme, 0, item.choiceKeys.Count -1);
                         runtime.CurrentColorSchemeId = chosenScheme;
                     }
                 }

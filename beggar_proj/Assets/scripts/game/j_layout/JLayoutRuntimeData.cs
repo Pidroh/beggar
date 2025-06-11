@@ -245,7 +245,7 @@ namespace JLayout
             {
                 LayoutRU = layoutRU,
                 Commons = commons,
-                ColorSchemeId = layoutRU.ChildSelf.ColorSchemeId
+                ColorSchemeId = layoutRU.ChildSelf?.ColorSchemeId ?? 0
             };
             if (differingCommons && item.Commons.AxisModes == null)
             {

@@ -289,9 +289,10 @@ namespace HeartUnity.View
                 suu.button = buttonHolder;
                 button.buttonText = Local.GetText(buttonLabel);
                 button.UpdateUI();
+                var choiceP = i;
                 button.onClick.AddListener(() =>
                 {
-                    var choiceP = i;
+                    
                     CustomChoiceChosen(choiceP);
                 });
             }
