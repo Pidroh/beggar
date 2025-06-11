@@ -1069,6 +1069,7 @@
         "SELF_SIZE",
         "PARENT_SIZE_PERCENT"
       ],
+      "color_id": "background_tab_menu",
       "size": [
         55,
         100
@@ -1381,21 +1382,21 @@
       "id": "background_upper_header",
       "colors": [
         "e0e1f1ff",
-        "e0e1f1ff"
+        "2d3446ff"
       ]
     },
     {
       "id": "main_text",
       "colors": [
         "212121ff",
-        "212121ff"
+        "f1f1f1ff"
       ]
     },
     {
       "id": "lore_text",
       "colors": [
         "4d4d4dff",
-        "4d4d4dff"
+        "8e8e8eff"
       ]
     },
     {
@@ -1416,28 +1417,35 @@
       "id": "simple_text",
       "colors": [
         "4d4d4dff",
-        "4d4d4dff"
+        "f1f1f1ff"
       ]
     },
     {
       "id": "accessory_text",
       "colors": [
-        "4d4d4d96",
-        "4d4d4d96"
+        "969696ff",
+        "969696ff"
       ]
     },
+    {
+      "id": "background_tab_menu",
+      "colors": [
+        "f1f1f1ff",
+        "2e3649ff"
+      ]
+    },,
     {
       "id": "button_fill",
       "colors": [
         "ffffffff",
-        "4d4d4d96"
+        "636a7cff"
       ]
     },
     {
       "id": "button_border",
       "colors": [
         "858585ff",
-        "4d4d4d96"
+        "858585ff"
       ]
     },
     {
@@ -1528,7 +1536,7 @@
       "id": "blue_selection_circle",
       "colors": [
         "8fd8edff",
-        "8fd8edff"
+        "388297ff"
       ]
     },
     {

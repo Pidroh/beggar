@@ -477,7 +477,8 @@ namespace JLayout
         public ColorSet ColorSet { get; internal set; }
         public int Size { get; internal set; }
         public string Id { get; internal set; }
-        public Color NormalColor => ColorSet.ColorDatas[ColorSetType.NORMAL].data.Colors[0];
+
+        internal Color GetNormalColor(int currentColorSchemeId) => ColorSet.ColorDatas[ColorSetType.NORMAL].data.Colors[currentColorSchemeId];
     }
 
     public class LayoutChildData

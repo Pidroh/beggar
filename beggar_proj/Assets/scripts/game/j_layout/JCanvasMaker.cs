@@ -197,7 +197,7 @@ namespace JLayout
 
         private static JLayoutChild CreateText(LayoutChildData childData, TextData data, JLayoutRuntimeData runtime)
         {
-            var textColor = data.NormalColor;
+            var textColor = data.GetNormalColor(runtime.CurrentColorSchemeId);
             var fontSize = data.Size;
             var uiUnit = CanvasMaker.CreateTextUnit(textColor, runtime.DefaultFont, fontSize);
             uiUnit.text.horizontalAlignment = childData.Commons.TextHorizontalMode switch

@@ -43,7 +43,7 @@ public class MainGameControlSetupJLayout
             }
         }
         var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas, runtime);
-        runtime.jLayCanvas = jCanvas;
+        
         mgc.JLayoutRuntime = runtime;
         runtime.LayoutMaster = layoutMaster;
 
@@ -382,7 +382,7 @@ public class MainGameControlSetupJLayout
         #region instantiating dialog stuff
         var overlay = jCanvas.Overlays[0];
         {
-            jCanvas.overlayImage.color = runtime.LayoutMaster.General.OverlayColor.data.Colors[0];
+            jCanvas.overlayImage.color = runtime.LayoutMaster.General.OverlayColor.data.Colors[runtime.CurrentColorSchemeId];
             
             var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
             dialogLay.LayoutRU.SetTextRaw(0, "Dialog title");

@@ -51,7 +51,7 @@ namespace JLayout
             Color colorV;
             if (OverwriteColorSet != null && OverwriteColorSet.ColorDatas.TryGetValue(color, out var v))
             {
-                colorV = v.Colors[0];
+                colorV = v.Colors[ColorSchemeId];
             }
             else
             {
@@ -65,7 +65,7 @@ namespace JLayout
                     // maybe there are some acceptable situations for this...?
                     Debug.LogError("Has color but has no ui unit, what is this situation?");
                 }
-                colorV = cd.data.Colors[0];
+                colorV = cd.data.Colors[ColorSchemeId];
             }
             if (UiUnit.Image != null)
                 UiUnit.Image.color = colorV;
