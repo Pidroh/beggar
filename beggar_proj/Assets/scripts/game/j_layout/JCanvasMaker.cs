@@ -12,9 +12,10 @@ namespace JLayout
     {
         
 
-        public static JLayCanvas CreateCanvas(int N, CanvasMaker.CreateCanvasRequest canvasReq, Canvas reusableCanvas)
+        public static JLayCanvas CreateCanvas(int N, CanvasMaker.CreateCanvasRequest canvasReq, Canvas reusableCanvas, JLayoutRuntimeData runtime)
         {
             JLayCanvas dc = new JLayCanvas();
+            runtime.jLayCanvas = dc;
             // Create Canvas GameObject
             if (reusableCanvas == null)
             {
@@ -57,7 +58,7 @@ namespace JLayout
                 // Create N children
                 for (int i = 0; i < N; i++)
                 {
-                    dc.children.Add(new JLayCanvasChild(CreateCanvasScrollChild(rootGO, i, canvasReq.ScrollStyle)));
+                    dc.children.Add(new JLayCanvasChild(CreateCanvasScrollChild(rootGO, i, canvasReq.ScrollStyle, runtime)));
                 }
                 dc.childrenForLayouting.AddRange(dc.children);
                 dc.RootRT = rootRT;
@@ -70,7 +71,7 @@ namespace JLayout
                 }
                 {
                     //var canvasChild = CreateSimpleCanvasChild(dc.OverlayRoot.gameObject);
-                    JLayoutRuntimeUnit layoutRuntimeUnit = CreateCanvasScrollChild(dc.OverlayRoot.gameObject, 0, canvasReq.ScrollStyle);
+                    JLayoutRuntimeUnit layoutRuntimeUnit = CreateCanvasScrollChild(dc.OverlayRoot.gameObject, 0, canvasReq.ScrollStyle, runtime);
                     layoutRuntimeUnit.ContentTransform.pivot = new Vector2(layoutRuntimeUnit.ContentTransform.pivot.x, 0.5f);
                     dc.Overlays.Add(new JLayCanvasChild(layoutRuntimeUnit));
                 }
@@ -92,7 +93,7 @@ namespace JLayout
             layoutRU.RectTransform.SetParent(jCanvas.RootRT);
         }
 
-        private static JLayoutRuntimeUnit CreateLayout()
+        private static JLayoutRuntimeUnit CreateLayout(JLayoutRuntimeData runtime)
         {
             JLayoutRuntimeUnit lp;
             {
@@ -100,7 +101,7 @@ namespace JLayout
                 GameObject childGO2 = new GameObject();
                 childGO2.name = "Layout";
                 RectTransform childRT2 = childGO2.AddComponent<RectTransform>();
-                lp = new JLayoutRuntimeUnit(childRT2);
+                lp = new JLayoutRuntimeUnit(childRT2, runtime.CurrentColorSchemeId);
                 childRT2.SetAnchorsByIndex(1, 1f);
             }
 
@@ -109,7 +110,7 @@ namespace JLayout
 
         internal static JLayoutRuntimeUnit CreateLayout(LayoutData layoutD, JLayoutRuntimeData runtime)
         {
-            JLayoutRuntimeUnit ru = CreateLayout();
+            JLayoutRuntimeUnit ru = CreateLayout(runtime);
             bool clickable = layoutD.Clickable;
             bool hasColor = layoutD.commons.ColorSet != null;
             var createImage = hasColor || clickable;
@@ -239,11 +240,11 @@ namespace JLayout
             return (layout, uiUnit);
         }
         
-        static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle)
+        static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle, JLayoutRuntimeData runtime)
         {
             JLayoutRuntimeUnit lp = null;
 
-            lp = CreateLayout();
+            lp = CreateLayout(runtime);
             var ld = new LayoutData();
             ld.commons = new();
             ld.commons.AxisModes = new AxisMode[2];

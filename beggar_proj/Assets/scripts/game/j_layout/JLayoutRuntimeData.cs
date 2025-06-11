@@ -106,6 +106,8 @@ namespace JLayout
 
     public class JLayoutRuntimeUnit
     {
+        public int ColorScheme { get; }
+
         public RectTransform RectTransform;
         //public List<JLayoutRuntimeUnit> Sublayouts = new();
         public List<JLayoutChild> Children = new();
@@ -154,8 +156,9 @@ namespace JLayout
             }
         }
 
-        public JLayoutRuntimeUnit(RectTransform childRT2)
+        public JLayoutRuntimeUnit(RectTransform childRT2, int currentColorSchemeId)
         {
+            ColorScheme = currentColorSchemeId;
             RectTransform = childRT2;
             _visibleSelf = RectTransform.gameObject.activeSelf;
             UpdateVisibility();
@@ -245,7 +248,7 @@ namespace JLayout
             {
                 LayoutRU = layoutRU,
                 Commons = commons,
-                ColorSchemeId = layoutRU.ChildSelf?.ColorSchemeId ?? 0
+                ColorSchemeId = layoutRU.ColorScheme
             };
             if (differingCommons && item.Commons.AxisModes == null)
             {

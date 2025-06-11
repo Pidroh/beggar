@@ -23,12 +23,6 @@ public class MainGameControlSetupJLayout
         JLayoutRuntimeData runtime = new();
         runtime.DefaultFont = mgc.Font;
         runtime.ImageSprites = mgc.ResourceJson.spritesForLayout;
-        var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
-        runtime.jLayCanvas = jCanvas;
-        mgc.JLayoutRuntime = runtime;
-        runtime.LayoutMaster = layoutMaster;
-
-
         for (int i = 0; i < mgc.HeartGame.config.SettingCustomChoices.Count; i++)
         {
             SettingCustomChoice item = mgc.HeartGame.config.SettingCustomChoices[i];
@@ -42,12 +36,19 @@ public class MainGameControlSetupJLayout
                     if (unit.settingData.standardSettingType == SettingModel.SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1)
                     {
                         var chosenScheme = unit.rtInt;
-                        chosenScheme = Mathf.Clamp(chosenScheme, 0, item.choiceKeys.Count -1);
+                        chosenScheme = Mathf.Clamp(chosenScheme, 0, item.choiceKeys.Count - 1);
                         runtime.CurrentColorSchemeId = chosenScheme;
                     }
                 }
             }
         }
+        var jCanvas = JCanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas, runtime);
+        runtime.jLayCanvas = jCanvas;
+        mgc.JLayoutRuntime = runtime;
+        runtime.LayoutMaster = layoutMaster;
+
+
+        
 
         JGameControlDataHolder jControlDataHolder = new();
         jControlDataHolder.LayoutRuntime = runtime;
