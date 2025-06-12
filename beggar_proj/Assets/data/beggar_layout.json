@@ -1376,7 +1376,7 @@
       "id": "soft_separator",
       "colors": [
         "#e8e8e8ff",
-        "#e8e8e8ff"
+        "#383838ff"
       ]
     },
     {
@@ -1453,35 +1453,35 @@
       "id": "button_fill_click",
       "colors": [
         "ffd8edff",
-        "8fd8edff"
+        "666489ff"
       ]
     },
     {
       "id": "button_fill_active",
       "colors": [
         "d2f2f9ff",
-        "d2f2f9ff"
+        "566489ff"
       ]
     },
     {
       "id": "button_fill_pressed",
       "colors": [
         "e4f6f4ff",
-        "8fd8edff"
+        "466489ff"
       ]
     },
     {
       "id": "button_fill_hovered",
       "colors": [
         "f0f0f0ff",
-        "8fd8edff"
+        "536a7cff"
       ]
     },
     {
       "id": "button_fill_disabled",
       "colors": [
         "ddddddff",
-        "8fd8edff"
+        "414551ff"
       ]
     },
     {
