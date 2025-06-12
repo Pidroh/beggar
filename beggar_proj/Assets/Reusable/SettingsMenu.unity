@@ -400,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reusableMenuCanvas: {fileID: 1941000848}
   reusablePrefabs: {fileID: 4118438735607210649, guid: 9f9b15ee86af2994f9a13d2eef207e46, type: 3}
+  inputSystem: {fileID: 1331832608}
   settingSceneMode: 0
   engineView: {fileID: 2013214882}
   scroll: {fileID: 1070109905500344202}

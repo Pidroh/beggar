@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 #endif
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using static HeartUnity.SettingModel;
@@ -24,6 +25,8 @@ namespace HeartUnity.View
         private FileUtilities _fileUtilities;
 #endif
         public SettingDialog settingDialog;
+
+        public InputSystemUIInputModule inputSystem;
 
         internal void RequestReturn()
         {
@@ -47,6 +50,7 @@ namespace HeartUnity.View
         }
 
         public List<SettingUnitUI> unitUIs = new List<SettingUnitUI>();
+        private int skipInput;
         private HeartGame heartGame;
         private SettingModel model;
         public SettingSceneMode settingSceneMode = SettingSceneMode.SETTINGS;
@@ -109,6 +113,8 @@ namespace HeartUnity.View
 
         public void Awake()
         {
+            inputSystem.gameObject.SetActive(false);
+            skipInput = 2;
             heartGame = HeartGame.Init();
             model = heartGame.settingModel;
             Cursor.visible = true;
@@ -410,6 +416,15 @@ namespace HeartUnity.View
 
         public void Update()
         {
+            if (skipInput <= 0)
+            {
+                inputSystem.gameObject.SetActive(true);
+            }
+            else 
+            {
+                skipInput--;
+            }
+
             heartGame.ManualUpdate();
             engineView.ManualUpdate();
             engineView.inputManager.UpdateWithButtonBindings(bindings);
