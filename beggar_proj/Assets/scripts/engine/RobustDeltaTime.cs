@@ -5,14 +5,22 @@ namespace HeartUnity
 {
     public class RobustDeltaTime 
 	{
-		public float lastTimeSinceUpdate;
+		public float? lastTimeSinceUpdate;
         private float _dt;
 		private float _dtUnit = 0.2f;
 		private float _dtFixThreeshold = 1f;
 
 		public void ManualUpdate() 
 		{
-			_dt = Time.realtimeSinceStartup - lastTimeSinceUpdate;
+			if (lastTimeSinceUpdate.HasValue)
+			{
+				_dt = Time.realtimeSinceStartup - lastTimeSinceUpdate.Value;
+			}
+			else
+			{
+				_dt = 0;
+			}
+			
 			lastTimeSinceUpdate = Time.realtimeSinceStartup;
 		}
 
