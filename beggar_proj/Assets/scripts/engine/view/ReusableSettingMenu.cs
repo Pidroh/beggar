@@ -399,7 +399,7 @@ namespace HeartUnity.View
             RequestReturn();
         }
 
-        private void CustomChoiceChosen(int choiceP)
+        public void CustomChoiceChosen(int choiceP)
         {
             // TODO support for multiple choices, not just 1
             model.SetInt(SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1, choiceP);

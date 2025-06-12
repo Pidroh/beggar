@@ -83,6 +83,10 @@ namespace HeartUnity.View
                     if (selectedSU.dialogConfirm.HasValue) {
                         menu.PressDialogButton(selectedSU.dialogConfirm.Value);
                     }
+                    if (selectedSU.ChoicePosition.HasValue) 
+                    {
+                        menu.CustomChoiceChosen(selectedSU.ChoicePosition.Value);
+                    }
                     if (selectedSU.leaveLanguage) {
                         menu.LeaveLanguageButton();
                     }
