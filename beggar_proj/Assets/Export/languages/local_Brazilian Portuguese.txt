@@ -1,0 +1,5 @@
+key$description$Brazilian Portuguese
+supplication_name$$súplica
+supplication_desc$$Súplicas desesperadas que um personagem utiliza para realizar ações de súplica e solicitar ajuda ou misericórdia.
+loneliness_name$$solidão
+loneliness_desc$$Você está sozinho.

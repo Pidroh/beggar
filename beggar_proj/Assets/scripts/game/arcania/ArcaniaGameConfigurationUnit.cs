@@ -8,5 +8,5 @@ public class ArcaniaGameConfigurationUnit : ScriptableObject
     public List<TextAsset> jsonDatas;
     public TextAsset layoutJson;
     public KeyedSprites spritesForLayout;
-
 }
+

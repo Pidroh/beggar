@@ -1,0 +1,5 @@
+key$description$Japanese
+supplication_name$$嘆願
+supplication_desc$$キャラクターが使用する嘆願の必死の懇願。乞う行為を行い、援助や慈悲を求めるために使用されます。
+loneliness_name$$孤独
+loneliness_desc$$あなたは一人です。

@@ -1,0 +1,5 @@
+key$description$German
+supplication_name$$Flehen
+supplication_desc$$Verzweifeltes Flehen, das ein Charakter verwendet, um bettelnde Handlungen auszuführen und um Hilfe oder Gnade zu bitten.
+loneliness_name$$Einsamkeit
+loneliness_desc$$Du bist allein.

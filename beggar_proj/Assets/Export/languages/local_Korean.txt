@@ -1,0 +1,5 @@
+key$description$Korean
+supplication_name$$간청
+supplication_desc$$절박한 부탁으로 캐릭터가 구걸 행동을 하고 도움이나 자비를 요청하는 간청입니다.
+loneliness_name$$고독함
+loneliness_desc$$당신은 홀로 있습니다.

@@ -1,0 +1,5 @@
+key$description$French
+supplication_name$$supplication
+supplication_desc$$Des prières désespérées qu'un personnage utilise pour effectuer des actions de mendicité et demander de l'aide ou de la clémence.
+loneliness_name$$Solitude
+loneliness_desc$$Vous êtes seul.

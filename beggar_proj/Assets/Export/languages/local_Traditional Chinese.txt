@@ -1,0 +1,5 @@
+key$description$Traditional Chinese
+supplication_name$$乞求
+supplication_desc$$絕望的懇求，角色用來進行乞討行為並請求幫助或憐憫。
+loneliness_name$$孤獨
+loneliness_desc$$你是孤獨的。
