@@ -46,6 +46,18 @@
                 "mod": {
                     "guilt.max": 5
                 }
+            },
+            {
+                "id": "stealth",
+                "desc": "That which cannot be detected",
+                "require": "cunning>2&&exercise>2",
+                "cost": {
+                    "skillpoints": 50
+                },
+                "mod": {
+                    "fatigue.max": 0.3,
+                    "foraging.max": 1
+                }
             }
         ]
     },
