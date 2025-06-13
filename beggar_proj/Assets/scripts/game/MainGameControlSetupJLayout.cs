@@ -385,7 +385,14 @@ public class MainGameControlSetupJLayout
 
         #endregion
 
-       
+        #region localized strings
+        jControlDataHolder.LabelDuration = Local.GetText("Duration");
+        jControlDataHolder.LabelEffectDuration = Local.GetText("Effect duration");
+        jControlDataHolder.LabelModifications = Local.GetText("modifications");
+        jControlDataHolder.LabelModificationsExtra = Local.GetText("extra mods");
+        jControlDataHolder.LabelModificationsTargeting = Local.GetText("mods targeting this");
+        jControlDataHolder.LabelSuccessRate = Local.GetText("Success rate");
+        #endregion
 
         #region instantiating dialog stuff
         var overlay = jCanvas.Overlays[0];

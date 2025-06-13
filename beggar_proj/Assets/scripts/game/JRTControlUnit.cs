@@ -60,6 +60,12 @@ public class JGameControlDataHolder
     public JLayoutChild DialogLayout { get; internal set; }
     public JLayoutChild EndingLayout { get; internal set; }
     public JEndingGameData EndingData { get; internal set; } = new();
+    public string LabelDuration { get; internal set; }
+    public string LabelEffectDuration { get; internal set; }
+    public string LabelSuccessRate { get; internal set; }
+    public string LabelModifications { get; internal set; }
+    public string LabelModificationsExtra { get; internal set; }
+    public string LabelModificationsTargeting { get; internal set; }
 }
 
 public class JGameViewMiscData 

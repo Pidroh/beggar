@@ -6,8 +6,12 @@ public static class JGameControlExecuter
     public const float NormalMinTabWidth = 320;
     public const float NormalMaxTabWidth = 640;
     public const float NormalThinWidth = 180;
+
     public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
     {
+        var labelDuration = controlData.LabelDuration;
+        var labelEffectDuration = controlData.LabelEffectDuration;
+        var labelSuccessRate = controlData.LabelSuccessRate;
         var arcaniaModel = mgc.arcaniaModel;
         var desktopMode = false;
         var availableActualWidthForContent = Screen.width;
@@ -300,14 +304,14 @@ public static class JGameControlExecuter
                                             if (hasDuration || hasSuccessRate || dotDuration.HasValue)
                                             {
                                                 var leftText = "";
-                                                if (hasDuration) leftText += $" Duration: {unit.Data.ConfigTask.Duration}s ";
+                                                if (hasDuration) leftText += $" {labelDuration}: {unit.Data.ConfigTask.Duration}s ";
                                                 if (hasSuccessRate)
                                                 {
-                                                    leftText += $" Success rate: {unit.Data.ConfigTask.SuccessRatePercent.Value}% ";
+                                                    leftText += $" {labelSuccessRate}: {unit.Data.ConfigTask.SuccessRatePercent.Value}% ";
                                                 }
                                                 if (dotDuration.HasValue)
                                                 {
-                                                    leftText += $"\nEffect Duration: {dotDuration.Value}s ";
+                                                    leftText += $"\n{labelEffectDuration}: {dotDuration.Value}s ";
                                                 }
                                                 unit.SuccessRateAndDurationText.SetTextRaw(leftText);
                                             }
