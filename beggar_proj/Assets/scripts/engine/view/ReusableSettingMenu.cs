@@ -67,7 +67,8 @@ namespace HeartUnity.View
             { "traditionalchinese", "繁體中文" },
             { "simplifiedchinese", "简体中文" },
             { "korean", "한국어" },
-
+            { "french", "Français" },
+            { "german", "Deutsch" },
         };
         private List<ButtonBinding> bindings;
         private bool _importingSave;

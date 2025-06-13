@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3b51ebdb1833441bf6e8612938e568, type: 3}
+  m_Name: Beggar_Arcania_Translations
+  m_EditorClassIdentifier: 
+  textAssetHolders:
+  - textAsset: {fileID: 4900000, guid: 81c258babe7a66e4e9091a8ffdba9cfa, type: 3}
+    languageName: Brazilian Portuguese
+  - textAsset: {fileID: 4900000, guid: eae9b1e8abfb1d24d95840f73ee4c9f2, type: 3}
+    languageName: French
+  - textAsset: {fileID: 4900000, guid: dc67f61e5e188ff479948a510186504c, type: 3}
+    languageName: German
+  - textAsset: {fileID: 4900000, guid: 66c77396b195af543b0b33d57df22ef6, type: 3}
+    languageName: Japanese
+  - textAsset: {fileID: 4900000, guid: 002757ad3976eda4d9558ef48062860d, type: 3}
+    languageName: Korean
+  - textAsset: {fileID: 4900000, guid: fd29fe6091c46904192ec113607a52b0, type: 3}
+    languageName: Simplified Chinese
+  - textAsset: {fileID: 4900000, guid: b6bf5e752f30c1d45b04daa783043743, type: 3}
+    languageName: Traditional Chinese

@@ -1,0 +1,2 @@
+key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
+resources$$Resources$Recursos#$$$$$$
