@@ -19,7 +19,7 @@ public static class JGameControlExecuterExploration
                 var jCU = i == 0 ? exploration.AreaJCU : exploration.EncounterJCU;
 
                 jCU.Name.SetTextRaw(data.Name);
-                MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(controlData.LayoutRuntime, data, jCU, jCU.MainLayout);
+                MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(controlData.LayoutRuntime, data, jCU, jCU.MainLayout, controlData);
                 jCU.Data = data;
                 JGameControlExecuter.UpdateChangeGroups(jCU);
                 JGameControlExecuter.UpdateExpandLogicForUnit(jCU);

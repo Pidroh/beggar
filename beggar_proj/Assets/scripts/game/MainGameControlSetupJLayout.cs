@@ -73,6 +73,13 @@ public class MainGameControlSetupJLayout
         jControlDataHolder.LabelModificationsTargeting = Local.GetText("mods targeting this");
         jControlDataHolder.LabelModificationsExtraEffect = Local.GetText("extra effect mods");
         jControlDataHolder.LabelSuccessRate = Local.GetText("Success rate");
+        jControlDataHolder.LabelCost = Local.GetText("cost");
+        jControlDataHolder.LabelResult = Local.GetText("result");
+        jControlDataHolder.LabelRun = Local.GetText("run");
+        jControlDataHolder.LabelEffect = Local.GetText("effect");
+        jControlDataHolder.LabelResultOnce = Local.GetText("first time");
+        jControlDataHolder.LabelResultFail = Local.GetText("result failure");
+        jControlDataHolder.LabelBuy = Local.GetText("acquisition");
         #endregion
 
         mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
@@ -279,7 +286,7 @@ public class MainGameControlSetupJLayout
                         AddToExpand(layoutRU, descLayout, jCU);
                     }
                     #region change list instantiation
-                    EnsureChangeListViewsAreCreated(runtime, modelData, jCU, layoutRU);
+                    EnsureChangeListViewsAreCreated(runtime, modelData, jCU, layoutRU, jControlDataHolder);
                     #endregion
 
                     #region Mods
@@ -461,7 +468,7 @@ public class MainGameControlSetupJLayout
     // 1) create change list views for the first time, for static elements
     // 2) when model data changes for the same JCU, assure there are enough change lists in that JCU
     // Case 2 is mainly for exploration elements, currently
-    public static void EnsureChangeListViewsAreCreated(JLayoutRuntimeData runtime, RuntimeUnit modelData, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU)
+    public static void EnsureChangeListViewsAreCreated(JLayoutRuntimeData runtime, RuntimeUnit modelData, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, JGameControlDataHolder controlData)
     {
         LayoutDataMaster layoutMaster = runtime.LayoutMaster;
         if (modelData.ConfigTask != null)
@@ -480,13 +487,13 @@ public class MainGameControlSetupJLayout
                     var changeType = (ResourceChangeType)rcgIndex;
                     string textKey = changeType switch
                     {
-                        ResourceChangeType.COST => "cost",
-                        ResourceChangeType.RESULT => "result",
-                        ResourceChangeType.RUN => "run",
-                        ResourceChangeType.EFFECT => "effect",
-                        ResourceChangeType.RESULT_ONCE => "first time",
-                        ResourceChangeType.RESULT_FAIL => "result failure",
-                        ResourceChangeType.BUY => "acquisition",
+                        ResourceChangeType.COST => controlData.LabelCost,
+                        ResourceChangeType.RESULT => controlData.LabelResult,
+                        ResourceChangeType.RUN => controlData.LabelRun,
+                        ResourceChangeType.EFFECT => controlData.LabelEffect,
+                        ResourceChangeType.RESULT_ONCE => controlData.LabelResultOnce,
+                        ResourceChangeType.RESULT_FAIL => controlData.LabelResultFail,
+                        ResourceChangeType.BUY => controlData.LabelBuy,
                         _ => null,
                     };
 

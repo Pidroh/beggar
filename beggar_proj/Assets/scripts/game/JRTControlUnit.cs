@@ -67,6 +67,13 @@ public class JGameControlDataHolder
     public string LabelModificationsExtra { get; internal set; }
     public string LabelModificationsTargeting { get; internal set; }
     public string LabelModificationsExtraEffect { get; internal set; }
+    public string LabelCost { get; internal set; }
+    public string LabelResult { get; internal set; }
+    public string LabelRun { get; internal set; }
+    public string LabelEffect { get; internal set; }
+    public string LabelResultOnce { get; internal set; }
+    public string LabelResultFail { get; internal set; }
+    public string LabelBuy { get; internal set; }
 }
 
 public class JGameViewMiscData 
