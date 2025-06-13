@@ -65,6 +65,16 @@ public class MainGameControlSetupJLayout
         // var dynamicCanvas = CanvasMaker.CreateCanvas(Mathf.Max(arcaniaDatas.datas[UnitType.TAB].Count, 1), mgc.CanvasRequest, config.reusableCanvas);
         //mgc.dynamicCanvas = dynamicCanvas;
 
+        #region localized strings
+        jControlDataHolder.LabelDuration = Local.GetText("Duration");
+        jControlDataHolder.LabelEffectDuration = Local.GetText("Effect duration");
+        jControlDataHolder.LabelModifications = Local.GetText("modifications");
+        jControlDataHolder.LabelModificationsExtra = Local.GetText("extra mods");
+        jControlDataHolder.LabelModificationsTargeting = Local.GetText("mods targeting this");
+        jControlDataHolder.LabelModificationsExtraEffect = Local.GetText("extra effect mods");
+        jControlDataHolder.LabelSuccessRate = Local.GetText("Success rate");
+        #endregion
+
         mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
         {
             canvas = jCanvas.Canvas,
@@ -276,13 +286,13 @@ public class MainGameControlSetupJLayout
                     var unitForOwnedMods = modelData.DotRU == null ? modelData : modelData.DotRU;
                     var unitForOtherMods = modelData;
                     var modList = unitForOwnedMods.ModsOwned;
-                    var header = "modifications";
+                    var header = jControlDataHolder.LabelModifications;
                     var modControl = jCU.OwnedMods;
                     CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, 0);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, "extra mods", jCU.IntermediaryMods, 1);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, "mods targeting this", jCU.TargetingThisMods, 2);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtra, jCU.IntermediaryMods, 1);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, jControlDataHolder.LabelModificationsTargeting, jCU.TargetingThisMods, 2);
                     if (modelData.DotRU != null) {
-                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, "extra effect mods", jCU.TargetingThisEffectMods, 1);
+                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtraEffect, jCU.TargetingThisEffectMods, 1);
                     }
                     //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
 
@@ -385,14 +395,7 @@ public class MainGameControlSetupJLayout
 
         #endregion
 
-        #region localized strings
-        jControlDataHolder.LabelDuration = Local.GetText("Duration");
-        jControlDataHolder.LabelEffectDuration = Local.GetText("Effect duration");
-        jControlDataHolder.LabelModifications = Local.GetText("modifications");
-        jControlDataHolder.LabelModificationsExtra = Local.GetText("extra mods");
-        jControlDataHolder.LabelModificationsTargeting = Local.GetText("mods targeting this");
-        jControlDataHolder.LabelSuccessRate = Local.GetText("Success rate");
-        #endregion
+
 
         #region instantiating dialog stuff
         var overlay = jCanvas.Overlays[0];
