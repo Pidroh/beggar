@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace HeartUnity
 {
@@ -51,6 +52,8 @@ namespace HeartUnity
                 }
             }
         }
+
+        
 
         public void AddLanguages(string localiData, bool replaceSpaceWithUnderscoreInKey)
         {
@@ -128,6 +131,75 @@ namespace HeartUnity
                         }
                     }
                 }
+            }
+        }
+
+        public void AppendLocalizationData(string localiData, bool replaceSpaceWithUnderscoreInKey)
+        {
+            var lines = localiData.Split('\n');
+            var headerLine = lines[0];
+            var headers = headerLine.Split("$");
+            int keyIndex = -1;
+            int descriptionIndex = -1;
+            using var _1 = DictionaryPool<int, int>.Get(out var indexRedirector);
+            for (int i = 0; i < headers.Length; i++)
+            {
+                string head = headers[i];
+                var header = head.Trim();
+                headers[i] = header;
+                if (header.ToLower() == "key")
+                {
+                    keyIndex = i;
+                    continue;
+                }
+                if (header.ToLower() == "description")
+                {
+                    descriptionIndex = i;
+                    continue;
+                }
+                LanguageSet ls = null;
+                bool found = false;
+                for (int lIndex = 0; lIndex < languages.Count; lIndex++)
+                {
+                    if (languages[lIndex].languageName == header)
+                    {
+                        ls = languages[lIndex];
+                        found = true;
+                        indexRedirector[i] = lIndex;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    Debug.LogError("Trying to append but language not found "+header);
+                }
+            }
+            // actual data
+            for (int lineIndex = 1; lineIndex < lines.Length; lineIndex++)
+            {
+                var line = lines[lineIndex].Trim();
+                if (string.IsNullOrWhiteSpace(line)) continue;
+                var lineElements = lines[lineIndex].Split("$");
+                if (keyIndex < 0 || lineElements[keyIndex] == null)
+                {
+                    Debug.LogError("something is wrong");
+                }
+                var keyEle = lineElements[keyIndex].Trim();
+                if (replaceSpaceWithUnderscoreInKey) keyEle = keyEle.Replace(' ', '_');
+                keys.Add(keyEle);
+                if (descriptionIndex >= 0)
+                    descriptions.Add(lineElements[descriptionIndex]);
+                else if(descriptions.Count > 0)
+                    descriptions.Add("");
+                for (int col = 0; col < lineElements.Length; col++) 
+                {
+                    if (col == keyIndex) continue;
+                    if (col == descriptionIndex) continue;
+                    var langIndex = indexRedirector[col];
+                    var lang = languages[langIndex];
+                    var le = lineElements[col].Trim();
+                    lang.textSet[keyEle] = le;
+                }                
             }
         }
 

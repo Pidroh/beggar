@@ -27,7 +27,7 @@ public class ArcaniaTests
     {
         ArcaniaModel arcaniaModel = new();
         var testConfig = LoadConfig();
-        JsonReader.ReadJson(arcaniaModel.arcaniaUnits, testConfig.testDatas);
+        JsonReader.ReadJson(arcaniaModel.arcaniaUnits, testConfig.testDatas, false);
         arcaniaModel.FinishedSettingUpUnits();
         var ruA = arcaniaModel.FindRuntimeUnit("resource_a");
         var ruB = arcaniaModel.FindRuntimeUnit("resource_b");

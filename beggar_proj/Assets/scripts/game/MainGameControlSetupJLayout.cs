@@ -10,7 +10,12 @@ public class MainGameControlSetupJLayout
     {
         var arcaniaModel = mgc.arcaniaModel;
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
-        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas);
+        bool hasLocalizationFileArcania = mgc.ResourceJson.arcaniaTranslationFile.TryGetText(out var localizedText);
+        if (hasLocalizationFileArcania) 
+        {
+            Local.Instance.AppendLocalizationData(localizedText, false);
+        }
+        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas, hasLocalizationFileArcania);
         arcaniaModel.FinishedSettingUpUnits();
     }
     internal static void SetupCanvas(MainGameControl mgc)

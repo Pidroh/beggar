@@ -1,4 +1,5 @@
-﻿using HeartUnity.View;
+﻿using HeartUnity;
+using HeartUnity.View;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,5 +9,6 @@ public class ArcaniaGameConfigurationUnit : ScriptableObject
     public List<TextAsset> jsonDatas;
     public TextAsset layoutJson;
     public KeyedSprites spritesForLayout;
+    public LocalizedTextAsset arcaniaTranslationFile;
 }
 

@@ -17,13 +17,13 @@ public class JsonReader
         { "result_fail", ResourceChangeType.RESULT_FAIL },
         { "buy", ResourceChangeType.BUY },
     };
-    public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas)
+    public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription)
     {
         var jsonDatas = config.jsonDatas;
-        ReadJson(arcaniaDatas, jsonDatas);
+        ReadJson(arcaniaDatas, jsonDatas, localizeNameDescription);
     }
 
-    public static void ReadJson(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas)
+    public static void ReadJson(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription)
     {
         int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
 
@@ -34,12 +34,12 @@ public class JsonReader
             {
                 foreach (var c in parentNode.Children)
                 {
-                    ReadArrayOwner(arcaniaDatas, c);
+                    ReadArrayOwner(arcaniaDatas, c, localizeNameDescription);
                 }
             }
             else
             {
-                ReadArrayOwner(arcaniaDatas, parentNode);
+                ReadArrayOwner(arcaniaDatas, parentNode, localizeNameDescription);
             }
         }
 
@@ -240,7 +240,7 @@ public class JsonReader
         #endregion
     }
 
-    private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode)
+    private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode, bool localizeNameDescription)
     {
         var items = parentNode["items"];
         string typeS = parentNode["type"];
@@ -272,7 +272,7 @@ public class JsonReader
         foreach (var item in items.AsArray.Children)
         {
             var ru = new RuntimeUnit();
-            ReadBasicUnit(ru, item, arcaniaUnits, type);
+            ReadBasicUnit(ru, item, arcaniaUnits, type, localizeNameDescription);
 
             IDPointer iDPointer = arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id);
             if (iDPointer.RuntimeUnit != null)
@@ -604,12 +604,16 @@ public class JsonReader
         return md;
     }
 
-    private static ConfigBasic ReadBasicUnit(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits, UnitType type)
+    private static ConfigBasic ReadBasicUnit(RuntimeUnit ru, SimpleJSON.JSONNode item, ArcaniaUnits arcaniaUnits, UnitType type, bool localizeNameDescription)
     {
         string id = item["id"];
-        string desc = item.GetValueOrDefault("desc", null);
+        string desc = localizeNameDescription ? Local.GetText(id + "_desc") : item.GetValueOrDefault("desc", null);
         int max = item.GetValueOrDefault("max", -1);
         var bu = new ConfigBasic();
+        if (localizeNameDescription)
+        {
+            bu.name = Local.GetText(id+"_name");
+        }
         ru.ConfigBasic = bu;
         bu.Id = id;
         bu.Desc = desc;
@@ -618,7 +622,7 @@ public class JsonReader
         foreach (var pair in item)
         {
             if (pair.Key == "initial") ru.SetValue(pair.Value.AsInt);
-            if (pair.Key == "name") bu.name = pair.Value;
+            if (pair.Key == "name" && localizeNameDescription) bu.name = pair.Value;
             if (pair.Key == "mod" || pair.Key == "mods") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);

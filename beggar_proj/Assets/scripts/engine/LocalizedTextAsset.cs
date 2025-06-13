@@ -35,6 +35,20 @@ namespace HeartUnity
             return null;
         }
 
+        public bool TryGetText(out string content)
+        {
+            content = null;
+            foreach (var tah in textAssetHolders)
+            {
+                if (tah.languageName == Local.Instance.Lang.languageName)
+                {
+                    content = tah.textAsset.text;
+                    return true;
+                }
+            }
+            return false;
+        }
+
 #if UNITY_EDITOR
         // Static method to create a LocalizedTextAsset based on a TextAsset
         [MenuItem("Tools/Localization/LocalizedTextAsset From Selected TextAsset", false, 101)]
