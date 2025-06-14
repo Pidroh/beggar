@@ -16,6 +16,7 @@ namespace HeartUnity
         public static bool WantToChooseLanguage => !Instance.languageChosen && Instance.languages.Count > 1;
 
         public static bool HasMoreThaOneLanguage => Instance.languages.Count > 1;
+        public static bool IsFirstLanguage => Instance.currentLangIndex == 0;
 
         public List<LanguageSet> languages = new List<LanguageSet>();
         public static Local Instance = new Local();

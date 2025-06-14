@@ -15,7 +15,7 @@ public class MainGameControlSetupJLayout
         {
             Local.Instance.AppendLocalizationData(localizedText, false);
         }
-        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas, hasLocalizationFileArcania);
+        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas, hasLocalizationFileArcania && !Local.IsFirstLanguage);
         arcaniaModel.FinishedSettingUpUnits();
     }
     internal static void SetupCanvas(MainGameControl mgc)

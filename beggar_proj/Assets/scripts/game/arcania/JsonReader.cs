@@ -23,6 +23,11 @@ public class JsonReader
         ReadJson(arcaniaDatas, jsonDatas, localizeNameDescription);
     }
 
+    public static void ReadJson(ArcaniaGameConfigurationUnit resourceJson, ArcaniaUnits arcaniaDatas, object p)
+    {
+        throw new NotImplementedException();
+    }
+
     public static void ReadJson(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription)
     {
         int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
@@ -73,8 +78,8 @@ public class JsonReader
             switch (mod.ModType)
             {
                 case ModType.Speed:
-                    mod.HumanText = $"Speed % {Local.GetText(targetTextKey)}:";
-                    mod.HumanTextTarget = $"Speed % ({Local.GetText(sourceNameKey)}):";
+                    mod.HumanText = $"Speed % {targetTextKey}:";
+                    mod.HumanTextTarget = $"Speed % ({sourceNameKey}):";
                     break;
 
                 case ModType.MaxChange:
@@ -82,14 +87,14 @@ public class JsonReader
                     {
                         if (intermediaryTextKey != null)
                         {
-                            mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod Max {Local.GetText(targetTextKey)}:";
-                            mod.HumanTextIntermediary = $" Mod Max {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)})";
-                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)} x {Local.GetText(intermediaryTextKey)}):";
+                            mod.HumanText = $"{intermediaryTextKey} Mod Max {targetTextKey}:";
+                            mod.HumanTextIntermediary = $" Mod Max {targetTextKey} ({sourceNameKey})";
+                            mod.HumanTextTarget = $"Max ({sourceNameKey} x {intermediaryTextKey}):";
                         }
                         else
                         {
-                            mod.HumanText = $"Max {Local.GetText(targetTextKey)}:";
-                            mod.HumanTextTarget = $"Max ({Local.GetText(sourceNameKey)}):";
+                            mod.HumanText = $"Max {targetTextKey}:";
+                            mod.HumanTextTarget = $"Max ({sourceNameKey}):";
                         }
                     }
                     else
@@ -101,14 +106,14 @@ public class JsonReader
                 case ModType.RateChange:
                     if (intermediaryTextKey != null)
                     {
-                        mod.HumanText = $"{Local.GetText(intermediaryTextKey)} Mod {Local.GetText(targetTextKey)} Rate:";
-                        mod.HumanTextIntermediary = $" Mod Rate {Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
-                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)} x {Local.GetText(intermediaryTextKey)}):";
+                        mod.HumanText = $"{intermediaryTextKey} Mod {targetTextKey} Rate:";
+                        mod.HumanTextIntermediary = $" Mod Rate {targetTextKey} ({sourceNameKey}):";
+                        mod.HumanTextTarget = $"Rate ({sourceNameKey} x {intermediaryTextKey}):";
                     }
                     else 
                     {
-                        mod.HumanText = $"{Local.GetText(targetTextKey)} Rate:";
-                        mod.HumanTextTarget = $"Rate ({Local.GetText(sourceNameKey)}):";
+                        mod.HumanText = $"{targetTextKey} Rate:";
+                        mod.HumanTextTarget = $"Rate ({sourceNameKey}):";
                     }
                     
                     break;
@@ -116,8 +121,8 @@ public class JsonReader
                 case ModType.ResourceChangeChanger:
                     if (mod.ResourceChangeType == ResourceChangeType.EFFECT || mod.ResourceChangeType == ResourceChangeType.RESULT)
                     {
-                        mod.HumanText = $"{Local.GetText(targetTextKey)} {Local.GetText(intermediaryTextKey)}:";
-                        mod.HumanTextIntermediary = $"{Local.GetText(targetTextKey)} ({Local.GetText(sourceNameKey)}):";
+                        mod.HumanText = $"{targetTextKey} {intermediaryTextKey}:";
+                        mod.HumanTextIntermediary = $"{targetTextKey} ({sourceNameKey}):";
                         mod.HumanTextTarget = null;
                     }
                     else
@@ -134,8 +139,8 @@ public class JsonReader
                     mod.HumanText = "(Currently Invisible: error)";
                     break;
                 case ModType.SuccessRate:
-                    mod.HumanText = $"{Local.GetText(targetTextKey)} success rate:";
-                    mod.HumanTextTarget = $"Success rate ({Local.GetText(sourceNameKey)}):";
+                    mod.HumanText = $"{targetTextKey} success rate:";
+                    mod.HumanTextTarget = $"Success rate ({sourceNameKey}):";
                     break;
                 default:
                     break;
@@ -622,7 +627,7 @@ public class JsonReader
         foreach (var pair in item)
         {
             if (pair.Key == "initial") ru.SetValue(pair.Value.AsInt);
-            if (pair.Key == "name" && localizeNameDescription) bu.name = pair.Value;
+            if (pair.Key == "name" && !localizeNameDescription) bu.name = pair.Value;
             if (pair.Key == "mod" || pair.Key == "mods") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
