@@ -394,7 +394,7 @@ public class MainGameControlSetupJLayout
             {
                 var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
                 var lc = playerParent.AddLayoutAsChild(fleeButtonLayout);
-                fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, "Flee");
+                fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Flee"));
                 JRTControlUnit jCU = new();
                 jCU.MainLayout = fleeButtonLayout;
                 jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
