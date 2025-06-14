@@ -111,9 +111,9 @@ namespace arcania
                 if ((condition.Value == 0 && condition.Operator == ComparisonOperator.GreaterThan) ||
                      condition.Value == 1 && condition.Operator == ComparisonOperator.GreaterThanOrEqual) 
                 {
-                    return $"{Local.GetText(nameOfThing)}";
+                    return $"{nameOfThing}";
                 }
-                return $"{Local.GetText(nameOfThing)} {op} {condition.Value}";
+                return $"{nameOfThing} {op} {condition.Value}";
             }
             else if (expression is LogicalExpression logical)
             {

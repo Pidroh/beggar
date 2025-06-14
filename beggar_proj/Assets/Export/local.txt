@@ -1,2 +1,27 @@
-key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
+﻿key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
 resources$$Resources$Recursos#$$$$$$
+Duration$$Duration$$$$$$$
+Effect_duration$$Effect duration$$$$$$$
+modifications$$modifications$$$$$$$
+extra_mods$$extra mods$$$$$$$
+mods_targeting_this$$mods targeting this$$$$$$$
+extra_effect_mods$$extra effect mods$$$$$$$
+Success_rate$$Success rate$$$$$$$
+cost$$cost$$$$$$$
+result$$result$$$$$$$
+run$$run$$$$$$$
+effect$$effect$$$$$$$
+first_time$$first time$$$$$$$
+result_failure$$result failure$$$$$$$
+acquisition$$acquisition$$$$$$$
+Fullscreen$$Fullscreen$$$$$$$
+Master_volume$$Master volume$$$$$$$
+Music_volume$$Music volume$$$$$$$
+Sfx_volume$$Sfx volume$$$$$$$
+Language$$Language$$$$$$$
+Color_scheme$$Color scheme$$$$$$$
+Exit_game$$Exit game$$$$$$$
+Export_save$$Export save$$$$$$$
+Import_save$$Import save$$$$$$$
+Delete_data$$Delete data$$$$$$$
+Close_menu$$Close menu$$$$$$$
