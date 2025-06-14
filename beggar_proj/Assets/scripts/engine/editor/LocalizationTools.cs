@@ -1,13 +1,14 @@
-﻿using UnityEditor;
-using System.IO;
-using HeartUnity;
+﻿using HeartUnity;
 using static HeartUnity.Local;
-using System.Collections.Generic;
-using UnityEngine;
 using System.Text;
 
 namespace HeartUnity.Tools
 {
+    using UnityEditor;
+    using UnityEngine;
+    using System.Collections.Generic;
+    using System.IO;
+
     public static class LocalizationTools
     {
         [MenuItem("Tools/Localization/Export current language file")]
