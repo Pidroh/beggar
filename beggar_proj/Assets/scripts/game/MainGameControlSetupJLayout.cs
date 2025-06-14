@@ -80,6 +80,9 @@ public class MainGameControlSetupJLayout
         jControlDataHolder.LabelResultOnce = Local.GetText("first time");
         jControlDataHolder.LabelResultFail = Local.GetText("result failure");
         jControlDataHolder.LabelBuy = Local.GetText("acquisition");
+        jControlDataHolder.LabelAcquireSkill = Local.GetText("Acquire Skill");
+        jControlDataHolder.LabelPracticeSkill = Local.GetText("Practice Skill");
+
         #endregion
 
         mgc.EngineView = mgc.HeartGame.CreateEngineView(new EngineView.EngineViewInitializationParameter()
