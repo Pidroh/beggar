@@ -1,4 +1,5 @@
-﻿using HeartUnity.View;
+﻿using HeartUnity;
+using HeartUnity.View;
 using UnityEngine;
 
 public static class JGameControlExecuter
@@ -146,7 +147,7 @@ public static class JGameControlExecuter
 
             if (tabControl.SpaceShowLayout != null)
             {
-                tabControl.SpaceShowLayout.SetTextRaw(0, "Space");
+                tabControl.SpaceShowLayout.SetTextRaw(0, Local.GetText("Space", "In the sense of a table taking up too much space"));
                 tabControl.SpaceShowLayout.SetTextRaw(1, $"{arcaniaModel.Housing.SpaceConsumed} / {arcaniaModel.Housing.TotalSpace}");
             }
 

@@ -229,7 +229,12 @@ namespace HeartUnity
             return Instance.GetTextInstance(key);
         }
 
-        public string GetTextInstance(string key)
+        public static string GetText(string key, string desc)
+        {
+            return Instance.GetTextInstance(key, desc);
+        }
+
+        public string GetTextInstance(string key, string desc = null)
         {
 
             if (key.Contains(' '))
@@ -238,7 +243,7 @@ namespace HeartUnity
             }
             if (languages.Count == 0 || !Lang.textSet.TryGetValue(key, out string value))
             {
-                return FallBack(key);
+                return FallBack(key, desc);
             }
             if (value == "")
             {
@@ -247,7 +252,7 @@ namespace HeartUnity
             return value;
         }
 
-        private string FallBack(string key)
+        private string FallBack(string key, string desc)
         {
             var value = key.Replace('_', ' '); //.Replace("\n", "<br>");
             if (languages.Count == 0) return value;
@@ -257,7 +262,7 @@ namespace HeartUnity
                 if (FirstLang != lang) lang.textSet[key] = "";
             }
             keys.Add(key);
-            descriptions.Add("");
+            descriptions.Add(desc ?? "");
             return value;
         }
 

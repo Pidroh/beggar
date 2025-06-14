@@ -132,7 +132,7 @@ public class JsonReader
                     break;
 
                 case ModType.SpaceConsumption:
-                    mod.HumanText = "Space Occupied:";
+                    mod.HumanText = Local.GetText("Space Occupied", "In the sense of a table taking up too much space")+":";
                     break;
 
                 case ModType.Lock:
