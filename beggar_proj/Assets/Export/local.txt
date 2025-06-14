@@ -1,4 +1,4 @@
-﻿﻿key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
+﻿key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
 resources$$Resources$Recursos#$Ressources$Ressourcen$資源$자원$资源$資源
 Duration$$Duration$Duração$Durée$Dauer$期間$지속시간$持续时间$持續時間
 Effect_duration$$Effect duration$Duração do efeito$Durée de l'effet$Effektdauer$効果の継続$효과 지속시간$效果持续时间$效果持續時間

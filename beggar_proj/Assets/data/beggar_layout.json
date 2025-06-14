@@ -1607,14 +1607,14 @@
       "id": "task_button_buff",
       "colors": [
         "#d374c3ff",
-        "#d374c3ff"
+        "#8f4b80ff"
       ]
     },
     {
       "id": "task_button_buff_bar",
       "colors": [
         "#f3e594ff",
-        "#f3e594ff"
+        "#3e7e9cff"
       ]
     }
   ],
