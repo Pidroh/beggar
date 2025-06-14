@@ -1,4 +1,4 @@
-key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
+﻿﻿key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
 resources$$Resources$Recursos#$Ressources$Ressourcen$資源$자원$资源$資源
 Duration$$Duration$Duração$Durée$Dauer$期間$지속시간$持续时间$持續時間
 Effect_duration$$Effect duration$Duração do efeito$Durée de l'effet$Effektdauer$効果の継続$효과 지속시간$效果持续时间$效果持續時間
@@ -47,7 +47,7 @@ No_need$$No need$Sem necessidade$Pas besoin$Nicht nötig$必要ない$필요 없
 Sure$$Sure$Claro$D'accord$Klar$もちろん$확실히$当然$當然
 Tutorial$$Tutorial$Tutorial$Tutoriel$Anleitung$チュートリアル$튜토리얼$教程$教學
 Advance$$Advance$Avançar$Avancer$Vorrücken$進む$전진$前进$前進
-YOU_LOSE$$YOU LOSE$VOCÊ PERDEU$VOUS PERDEZ$"DU VERLIERST"$あなたは負けました$당신이 졌습니다$你输了$你輸了
+YOU_LOSE$$YOU LOSE$VOCÊ PERDEU$VOUS PERDEZ$DU VERLIERST$あなたは負けました$당신이 졌습니다$你输了$你輸了
 YOU_WIN$$YOU WIN$VOCÊ VENCEU$VOUS AVEZ GAGNÉ$DU GEWINNST$勝利$당신이 이겼습니다$你赢了$你贏了
 Booster_Packs$$Booster Packs$Pacotes de Reforço$Paquets de renforcement.$Booster Packs$ブースターパック$부스터 팩$助推包$助推器包
 Runes$a power up that can be engraved into a monster$Runes$Runas$Runes$Runen$ルーン$룬$符文$符文
@@ -86,3 +86,11 @@ Go_wishlist$$Go wishlist$Adicionar à lista de desejos.$Ajouter à la liste de s
 Discord_Server$$Discord Server$Servidor do Discord$Serveur Discord$Discord Server$ディスコードサーバー$디스코드 서버$Discord$Discord
 Wishlist_the_sequel!$$Wishlist the sequel!$Wishlist a sequel!$Ajoutez-le sur votre liste de souhaits !$Wünsch dir die Fortsetzung!$続編をウィッシュリストに追加！$후속작을 위시리스트에!$愿望单上加续集！$願望單上加續集！
 In_development$$In development$Em desenvolvimento$En développement.$In Entwicklung.$開発中$개발 중$开发中$開發中EnglishPortuguêsPortuguês BR日本語繁體中文简体中文한국어
+success_rate$In the sense of a probability of success$success rate$Taxa de sucesso$taux de réussite$Erfolgsquote$成功率$성공률$成功率$成功率
+Speed$$Speed$Velocidade$Vitesse$Geschwindigkeit$速度$속력$速度$速度
+Rate$in the sense of something gained over time (translate as a single word if possible though)$Rate$Taxa$Taux$Bewertung$レート$비율$费率$評分
+Max_Space$In the sense of how much space you have in your room to house things$Max Space$Espaço Máximo$Espace Max$Max Raum$最大空間$최대 공간$最大空间$最大空間
+Space_Occupied$In the sense of a table taking up too much space$Space Occupied$Espaço Ocupado$Espace Occupé$Besetzter Raum$占有スペース$공간이 차있습니다$占用空间$佔領空間
+Acquire_Skill$$Acquire Skill$Adquirir habilidade$Acquérir compétence$Fähigkeit erwerben$スキルを習得$기술 습득$获得技能$獲得技能
+Practice_Skill$$Practice Skill$Prática de Habilidade$Pratiquez votre compétence$Übungsfähigkeit$練習スキル$실력 향상$练习技能$練習技能
+Flee$$Flee$Fugir$Fuir$Fliehen$逃げる$도망치세요$逃走$逃跑
