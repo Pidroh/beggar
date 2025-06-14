@@ -463,8 +463,7 @@ helpchurch_name$$宗教ボランティア
 helpchurch_desc$$教会での小さな仕事の手伝い
 basicsknowledge_name$$基本を学ぶ
 basicsknowledge_desc$$基本の知識の基礎
-betterreading_name$$Better reading
-読書上達
+betterreading_name$$Better reading 読書上達
 betterreading_desc$$読書中の集中力を向上させる方法を学びます。
 firstverse_name$$最初の神聖な詩
 firstverse_desc$$聖典から詩を大声で読み上げ、教会の仲間たちに伝える。

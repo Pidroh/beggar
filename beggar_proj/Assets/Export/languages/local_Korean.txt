@@ -724,8 +724,7 @@ animalburner_desc$$동물이 울음소리를 듣고 싶어하는 비뚤어진 �
 goodpriest_name$$은혜로운 사제
 goodpriest_desc$$교회의 세 번째 주요 직책. 사랑을 퍼뜨리는 중.
 gracebeggar_name$$열린 손
-gracebeggar_desc$$이름 (Korean): 열린 손
-설명: 당신이 진정한 베푸는 사람이라고 알고 있기 때문에 이 이름을 줬습니다
+gracebeggar_desc$$이름 (Korean): 열린 손 설명: 당신이 진정한 베푸는 사람이라고 알고 있기 때문에 이 이름을 줬습니다
 kindling_name$$불붙이기
 kindling_desc$$불붙이기: 불을 피우는 지식
 sadism_name$$고통조의

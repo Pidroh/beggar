@@ -250,8 +250,7 @@ lostbeggar_desc$$Un mendiant compagnon perdu dans la vie
 meancat_name$$Chat méchant
 meancat_desc$$Un chat errant crache et tente de griffer les passants
 ratpack_name$$Gang de rats
-ratpack_desc$$Rats running through the streets, threatening to climb on folks
-Les rats courent dans les rues, menaçant de grimper sur les gens
+ratpack_desc$$Rats running through the streets, threatening to climb on folks Les rats courent dans les rues, menaçant de grimper sur les gens
 drawing_wall_name$$Dessin mural
 drawing_wall_desc$$Motifs inquiétants dessinés sur le mur
 sick_man_name$$Homme malade

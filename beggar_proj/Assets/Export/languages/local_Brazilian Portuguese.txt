@@ -27,11 +27,11 @@ metathought_name$$Pensamento Meta
 metathought_desc$$A capacidade de pensar sobre nosso passado.
 sadness_name$$Tristeza
 sadness_desc$$O peso de nossas emoções reflete a profundidade de nossas experiências.
-sorrow_name$$Infelicidade
+sorrow_name$$Tristeza
 sorrow_desc$$Uma emoção profunda que aprofunda a empatia e a compreensão. Ela nos conecta aos outros por meio de experiências compartilhadas de perda e reflexão.
 gratitude_name$$gratidão
 gratitude_desc$$Prontidão para retribuir gentileza
-faith_name$$Pequena Fé
+faith_name$$Fé Fraca
 faith_desc$$O início da crença no divino.
 guilt_name$$culpa
 guilt_desc$$Um sussurro persistente de escolhas passadas.
@@ -69,7 +69,7 @@ eatcat_name$$Comer cadáver de gato
 eatcat_desc$$Comer cadáver de gato cru
 relax_thoughts_name$$Revitalizar
 relax_thoughts_desc$$Limpe sua mente, trocando pensamentos dispersos por uma onda de energia renovada.
-organizethoughts_name$$Organizar pensamentos
+organizethoughts_name$$Organize thoughts
 organizethoughts_desc$$Organize seus pensamentos.
 theself_1_name$$O Eu
 theself_1_desc$$A própria essência do jogador, representando sua identidade única no jogo.
@@ -195,7 +195,7 @@ underbridge_name$$Debaixo da ponte
 underbridge_desc$$Um lugar seguro para dormir, protegido da chuva.
 sewer_home_name$$Esgoto
 sewer_home_desc$$Nojento, mas espaçoso.
-gutterborn_name$$Nascido do nada
+gutterborn_name$$Nascido do esgoto
 gutterborn_desc$$Reconheça suas origens nas ruas, abraçando a dura realidade de sua criação.
 churchbeggar_name$$Coletor de Esmolas
 churchbeggar_desc$$Alimenta-se da misericórdia da igreja, transformando adversidades em resiliência e misturando-se ao sagrado em busca de refúgio.
@@ -223,7 +223,7 @@ exercise_name$$Exercício
 exercise_desc$$A prontidão do seu corpo para fazer exercícios.
 rodentology_name$$Ratkinship
 rodentology_desc$$Se deseja entender os homens, estude os ratos.
-felinology_name$$Estudo de felinos
+felinology_name$$Parentes de Gatinho
 felinology_desc$$Serem misteriosos, porém fofos e fascinantes.
 bestiality_name$$Bestialidade
 bestiality_desc$$Humanos são animais.
