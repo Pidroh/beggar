@@ -1,4 +1,4 @@
-﻿key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
+key$description$English$Brazilian Portuguese$French$German$Japanese$Korean$Simplified Chinese$Traditional Chinese
 resources$$Resources$Recursos#$$$$$$
 Duration$$Duration$$$$$$$
 Effect_duration$$Effect duration$$$$$$$
@@ -14,14 +14,75 @@ effect$$effect$$$$$$$
 first_time$$first time$$$$$$$
 result_failure$$result failure$$$$$$$
 acquisition$$acquisition$$$$$$$
-Fullscreen$$Fullscreen$$$$$$$
-Master_volume$$Master volume$$$$$$$
-Music_volume$$Music volume$$$$$$$
-Sfx_volume$$Sfx volume$$$$$$$
-Language$$Language$$$$$$$
+Fullscreen$$Fullscreen$Tela Cheia$$$フルスクリーン$전체 화면$全屏$全屏
+Master_volume$$Master volume$Volume Mestre$$$マスターボリューム$마스터 볼륨$主音量$主音量
+Music_volume$$Music volume$Volume de Música$$$音楽のボリューム$음악 볼륨$音乐音量$音樂音量
+Sfx_volume$$Sfx volume$Volume de Efeitos Sonoros$$$効果音のボリューム$효과음 볼륨$音效音量$音效音量
+Language$$Language$Idioma$$$言語$언어$语言$語言
 Color_scheme$$Color scheme$$$$$$$
-Exit_game$$Exit game$$$$$$$
+Exit_game$$Exit game$Sair do Jogo$$$ゲームを終了$게임 종료$退出游戏$退出遊戲
 Export_save$$Export save$$$$$$$
 Import_save$$Import save$$$$$$$
-Delete_data$$Delete data$$$$$$$
-Close_menu$$Close menu$$$$$$$
+Delete_data$$Delete data$Excluir dados.$$$データを削除します。$데이터 삭제$删除数据$刪除數據
+Close_menu$$Close menu$Fechar Menu$$$メニューを閉じる$메뉴 닫기$关闭菜单$關閉選單
+Ok$  Okay$OK$Ok$$$はい$확인$确定$確定
+Confirm$  This is used for confirmation buttons such as closing a dialog$Confirm$Confirmar$$$確認$확인$确认$確認
+Battle$  This is the label on a button to start a battle$Battle$Batalha$$$バトル$전투$战斗$戰鬥
+Level_Up$  This is a button to level up a character or feature$Level Up$Nível Acima$$$レベルアップ$레벨 업$升级$升級
+Voice_volume$$Voice volume$Volume de Voz$$$ボイスのボリューム$음성 볼륨$语音音量$語音音量
+Evolution$$Evolution$Evolução$$$進化$진화$进化$進化
+Awakening$$Awakening$Despertar$$$覚醒$각성$觉醒$覺醒
+Rune$$Rune$Runa$$$ルーン$룬$符文$符文
+Freeby$$Freeby$Gratis$$$フリーカード$무료 카드$免费卡$免費卡
+Return$$Return$Retorno$$$戻る$돌아가기$返回$返回
+Scene$$Scene$Cena$$$シーン$장면$场景$場景
+Go_on$$Go on$Continuar$$$続ける$계속$继续$繼續
+Go_back$$Go back$Voltar$$$戻る$뒤로 가기$返回$返回
+You_received$$You received$Você recebeu$$$ゲット$받았습니다$你收到了$你收到了
+Cannot_afford$$Cannot afford$Não pode pagar$$$支払うことができません$지불할 수 없습니다$支付不起$無法支付
+Object$$Object$Objeto$$$オブジェクト$물체$物体$物體
+Monster$$Monster$Monstro$$$モンスター$몬스터$怪物$怪物
+End_Turn$$End Turn$Encerrar Turno$$$ターン終了$턴 종료$结束回合$結束回合
+No_need$$No need$Sem necessidade$$$必要ない$필요 없음$不需要$不需要
+Sure$$Sure$Claro$$$もちろん$확실히$当然$當然
+Tutorial$$Tutorial$Tutorial$$$チュートリアル$튜토리얼$教程$教學
+Advance$$Advance$Avançar$$$進む$전진$前进$前進
+YOU_LOSE$$YOU LOSE$VOCÊ PERDEU$$$あなたは負けました$당신이 졌습니다$你输了$你輸了
+YOU_WIN$$YOU WIN$VOCÊ VENCEU$$$勝利$당신이 이겼습니다$你赢了$你贏了
+Booster_Packs$$Booster Packs$Pacotes de Reforço$$$ブースターパック$부스터 팩$助推包$助推器包
+Runes$a power up that can be engraved into a monster$Runes$Runas$$$ルーン$룬$符文$符文
+Level$Level of the monster$Level$Nível$$$レベル$레벨$等级$等級
+Attack$attack stat label$Attack$Ataque$$$攻撃$공격$攻击$攻擊
+Press_any_button$$Press any button$Aperte qualquer botão$$$どのボタンでも押してください$아무 버튼이나 눌러주세요.$按任意按钮.$按任意按鈕
+Demo_End$$Demo End$Fim da Demonstração$$$デモ終了$데모 종료$演示结束$遊戲結束
+Wishlist_now!$$Wishlist now!$Lista de desejos agora!$$$今すぐウィッシュリストに入れてください！$위시리스트에 추가하세요!$立即添加到愿望清单！$心願單現在就來！
+Card_Nova_Hyper$$Card Nova Hyper$Card Nova Hiper$$$カードノヴァハイパー$Card Nova Hyper$Card Nova Hyper$Card Nova Hyper
+Launch_news$$Launch news$Novidades de lançamento$$$新作発売情報$출시 소식$推出消息$發行新聞
+Subscribe$$Subscribe$Inscrever-se$$$申込む$구독$订阅$訂閱
+Effect$$Effect$Efeito$$$効果$효과$效果$效果
+Self$$Self$Auto$$$自己$자아$自己$自我
+Sell$$Sell$Vender$$$売る$판매$出售$販售
+Color_correction$$Color correction$Correção de cor.$$$カラー補正$색상 보정$色彩校正$顏色校正
+Tone_correction$$Tone correction$Correção de tom$$$トーン補正$톤 보정$色调校正$色調校正
+Scanline$$Scanline$Scanline$$$スキャンライン$스캔라인$扫描线$掃描線
+Vignette$$Vignette$Cena$$$ビネット$비네티트$小插曲$小插曲
+Bloom$$Bloom$Brilho$$$ブルーム$블룸 효과$光晕效果$光暈效果
+Evolve$$Evolve$Evoluir$$$進化$진화$进化$進化
+Thank_you_for_playing_the_demo$$Thank you for playing the demo$Obrigado por jogar a demonstração.$$$デモをプレイしていただき、ありがとうございます。$데모를 플레이해 주셔서 감사합니다$感谢您试玩演示版本。$感謝您玩遊戲試玩版。
+Edit$$Edit$Editar$$$編集$편집$编辑$編輯
+Are_you_sure_you_want_to_sell?$$Are you sure you want to sell?$Você tem certeza que deseja vender?$$$売却してもよろしいですか？$판매하시겠습니까?$你确定要出售吗？$你確定要出售嗎？
+Yes$$Yes$Sim$$$はい$네$是$是的
+No$$No$Não$$$いいえ$아니요.$不$不
+Permanently_delete_all_saved_data?$$Permanently delete all saved data?$Excluir permanentemente todos os dados salvos?$$$全ての保存データを永久に削除しますか？$영구적으로 모든 저장된 데이터를 삭제하시겠습니까?$永久删除所有已保存的数据？$永久刪除所有已保存的數據？
+Close$$Close$Fechar$$$クローズ$가깝게$关闭$結束
+Show_Credits$$Show Credits$Mostrar Créditos$$$クレジットを表示$크레딧 보이기.$显示制作人员$顯示製作人员
+Play_Time$$Play Time$Tempo de jogo$$$プレイタイム$플레이 타임$游戏时间$遊戲時間
+Difficulty$$Difficulty$Dificuldade$$$難易度$난이도$难度$困難
+Game_Stats$$Game Stats$Estatísticas do Jogo$$$ゲームの統計$게임 통계$游戏数据$遊戲數據
+It's_not_over_yet!$$It's not over yet!$Ainda não acabou!$$$まだ終わっていません！$아직 끝나지 않았어요!$还没结束呢！$還沒結束呢！
+New_game_in_development$$New game in development$Novo jogo em desenvolvimento$$$開発中の新しいゲーム$개발 중인 새로운 게임$新游戏开发中.$開發中的新遊戲
+Start_Game$$Start Game$Iniciar Jogo.$$$ゲームを開始$게임 시작$开始游戏$開始遊戲
+Go_wishlist$$Go wishlist$Adicionar à lista de desejos.$$$ウィッシュリストに追加$위시리스트에 추가하기$加入愿望清单$加入願望清單
+Discord_Server$$Discord Server$Servidor do Discord$$$ディスコードサーバー$디스코드 서버$Discord$Discord
+Wishlist_the_sequel!$$Wishlist the sequel!$Wishlist a sequel!$$$続編をウィッシュリストに追加！$후속작을 위시리스트에!$愿望单上加续集！$願望單上加續集！
+In_development$$In development$Em desenvolvimento$$$開発中$개발 중$开发中$開發中EnglishPortuguêsPortuguês BR日本語繁體中文简体中文한국어
