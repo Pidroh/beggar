@@ -323,14 +323,17 @@ public class JsonReader
                         var sep = new TabRuntime.Separator();
                         ru.Tab.Separators.Add(sep);
                         ReadUnitTypesToArray(c, sep.AcceptedUnitTypes, key);
+                        
                         foreach (var pair in c)
                         {
-                            if (pair.Key == "name") sep.Name = pair.Value.AsString;
+                            if (!localizeNameDescription && pair.Key == "name") sep.Name = pair.Value.AsString;
+                            if (pair.Key == "id") sep.Id = pair.Value.AsString;
                             if (pair.Key == "default") sep.Default = pair.Value.AsBool;
                             if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
                             if (pair.Key == "show_space") sep.ShowSpace = pair.Value.AsBool;
                             if (pair.Key == "require_instant") sep.RequireInstant = pair.Value.AsBool;
                         }
+                        if (localizeNameDescription) sep.Name = Local.GetText(sep.Id + "_name");
                     }
                 }
 
