@@ -232,20 +232,24 @@ public static class JGameControlExecuter
                                 }
                             }
                         }
-                        {
-                            var modList = unit.IntermediaryMods;
-                            FeedModToList(modList, false);
-                            FeedModToList(unit.TargetingThisMods, true);
-                            FeedModToList(unit.TargetingThisEffectMods, true);
-                        }
+                        
                         shouldShowSep = true;
-                        UpdateChangeGroups(unit);
                         UpdateExpandLogicForUnit(unit);
                         if (unit.ValueText != null)
                         {
                             var Data = unit.Data;
                             var valueT = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
                             unit.ValueText.SetTextRaw(valueT + "");
+                        }
+                        if (unit.Expanded) 
+                        {
+                            {
+                                var modList = unit.IntermediaryMods;
+                                FeedModToList(modList, false);
+                                FeedModToList(unit.TargetingThisMods, true);
+                                FeedModToList(unit.TargetingThisEffectMods, true);
+                            }
+                            UpdateChangeGroups(unit);
                         }
                         switch (pair.Key)
                         {
@@ -451,6 +455,7 @@ public static class JGameControlExecuter
                 ttv.SetVisibleSelf(item.Source.Value != 0);
             }
             hasAnyVisible |= ttv.Visible;
+            if (!ttv.Visible) continue;
             var noShowSourceNumber = item.Source.Value == 1;
             var noShowIntermediaryNumber = (item.Intermediary?.RuntimeUnit?.Value ?? 1) == 1;
             var needsParenthesis = !noShowSourceNumber || !noShowIntermediaryNumber;
@@ -474,6 +479,11 @@ public static class JGameControlExecuter
                 if (!negativeValue)
                 {
                     modT = "+" + modT;
+                }
+                else 
+                {
+                    // negative + no parenthesis needs to add a - because the value became positive forcefully
+                    modT = "-" + modT;
                 }
             }
             ttv.SetTextRaw(1, modT);
