@@ -55,6 +55,11 @@ public class JsonReader
         // MODS #mods #post-processing
         //--------------------------------------------------------------
         #region mods post processing
+        string SuccessRateLabel = Local.GetText("success rate", "In the sense of a probability of success");
+        string SpeedLabel = Local.GetText("Speed");
+        string RateLabel = Local.GetText("Rate", "in the sense of something gained over time (translate as a single word if possible though)");
+        string LabelMaxSpace = Local.GetText("Max Space", "In the sense of how much space you have in your room to house things");
+        string spaceOccuppiedLabel = Local.GetText("Space Occupied", "In the sense of a table taking up too much space");
         for (int i = modAmountBeforeReadingData; i < arcaniaDatas.Mods.Count; i++)
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
@@ -78,8 +83,8 @@ public class JsonReader
             switch (mod.ModType)
             {
                 case ModType.Speed:
-                    mod.HumanText = $"Speed % {targetTextKey}:";
-                    mod.HumanTextTarget = $"Speed % ({sourceNameKey}):";
+                    mod.HumanText = $"{SpeedLabel} % {targetTextKey}:";
+                    mod.HumanTextTarget = $"{SpeedLabel} % ({sourceNameKey}):";
                     break;
 
                 case ModType.MaxChange:
@@ -99,21 +104,21 @@ public class JsonReader
                     }
                     else
                     {
-                        mod.HumanText = "Max Space:";
+                        mod.HumanText = $"{LabelMaxSpace}:";
                     }
                     break;
 
                 case ModType.RateChange:
                     if (intermediaryTextKey != null)
                     {
-                        mod.HumanText = $"{intermediaryTextKey} Mod {targetTextKey} Rate:";
-                        mod.HumanTextIntermediary = $" Mod Rate {targetTextKey} ({sourceNameKey}):";
-                        mod.HumanTextTarget = $"Rate ({sourceNameKey} x {intermediaryTextKey}):";
+                        mod.HumanText = $"{intermediaryTextKey} Mod {targetTextKey} {RateLabel}:";
+                        mod.HumanTextIntermediary = $" Mod {RateLabel} {targetTextKey} ({sourceNameKey}):";
+                        mod.HumanTextTarget = $"{RateLabel} ({sourceNameKey} x {intermediaryTextKey}):";
                     }
                     else 
                     {
-                        mod.HumanText = $"{targetTextKey} Rate:";
-                        mod.HumanTextTarget = $"Rate ({sourceNameKey}):";
+                        mod.HumanText = $"{targetTextKey} {RateLabel}:";
+                        mod.HumanTextTarget = $"{RateLabel} ({sourceNameKey}):";
                     }
                     
                     break;
@@ -132,15 +137,17 @@ public class JsonReader
                     break;
 
                 case ModType.SpaceConsumption:
-                    mod.HumanText = Local.GetText("Space Occupied", "In the sense of a table taking up too much space")+":";
+                    
+                    mod.HumanText = spaceOccuppiedLabel + ":";
                     break;
 
                 case ModType.Lock:
                     mod.HumanText = "(Currently Invisible: error)";
                     break;
                 case ModType.SuccessRate:
-                    mod.HumanText = $"{targetTextKey} success rate:";
-                    mod.HumanTextTarget = $"Success rate ({sourceNameKey}):";
+                    
+                    mod.HumanText = $"{targetTextKey} {SuccessRateLabel}:";
+                    mod.HumanTextTarget = $"{SuccessRateLabel} ({sourceNameKey}):";
                     break;
                 default:
                     break;
