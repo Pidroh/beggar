@@ -1,7 +1,14 @@
 [
     {
         "type": "RESOURCE",
-        "items":[]
+        "items":[
+            {
+                "id": "breakinlogistics",
+                "name": "Break-in Setup",
+                "max": 5,
+                "desc": "Intel, resources, tools, and the mindset required for breaking into a place and stealing something"
+            }
+        ]
     },
     {
         "type": "TASK",
@@ -28,7 +35,8 @@
                 "mod": {
                     "crime.max": 1,
                     "stealth.max": 1,
-                    "dominance.max": 40
+                    "dominance.max": 40,
+                    "cunning.max": 1
                 }
             },
             {
@@ -44,12 +52,13 @@
                     "thoughts": 400,
                     "clarity": 80,
                     "reflection": 10,
-                    "nutrition": 8
+                    "breakinlogistics": 10
                 },
                 "mod": {
                     "crime.max": 1,
                     "stealth.max": 1,
-                    "housebreaking.max": 1
+                    "housebreaking.max": 1,
+                    "breakinlogistics.max": 30
                 }
             }
         ]
@@ -78,6 +87,19 @@
                 "mod": {
                     "fatigue.max": 0.3,
                     "foraging.max": 1
+                }
+            },
+            {
+                "id": "housebreaking",
+                "name": "Housebreaking",
+                "desc": "The art of entering into a building when you're not supposed to do so.",
+                "require": "cunning>2&&guilt>10&&crime>2",
+                "cost": {
+                    "skillpoints": 50
+                },
+                "mod": {
+                    "guilt.max": 5,
+                    "breakinlogistics.max": 10
                 }
             }
         ]
