@@ -186,6 +186,27 @@
                     "housebreaking.max": 1,
                     "breakinlogistics.max": 30
                 }
+            },
+            {
+                "id" : "urbansage",
+                "name": "Urban sage",
+                "desc" : "The old man people look up to advice, adored and respected",
+                "tags": "t_tier4",
+                "lock": "t_tier4",
+                "need": "theself_4",
+                "require": "t_tier3&&philosophy>=4",
+                "cost": {
+                    "thoughts": 200,
+                    "clarity": 25,
+                    "realization": 1,
+                    "musing": 100,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "philosophy.max": 1,
+                    "contemplation.max": 1,
+                    "beggarhood.max": 1
+                }
             }
         ]
     },
