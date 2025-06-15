@@ -151,16 +151,30 @@
     {
         "type": "DIALOG",
         "items":[
-            {
-                "id": "irreversible_church",
-                "title": "Irreversible Action",
-                "content": "Once done, this action cannot be undone. You will no longer be able to beg on the streets, among other actions. But you will gain access to a whole new range of possibilities. Go ahead with this action?",
-                "tags": "joinchurch"
-            }
         ]
     },
     {
         "type": "FURNITURE",
-        "items":[]
+        "items":[
+            {
+                "id": "musingswood",
+                "name": "Wood art",
+                "desc": "Deeply express yourself in a piece of wood",
+                "require": "thinklife",
+                "max": 1,
+                "cost": {
+                    "reflection": 10,
+                    "firewood": 1,
+                    "childdrawing": 2
+                },
+                "mod": {
+                    "reflection.max": 3,
+                    "childdrawing.mod.reflection.max": 2,
+                    "clarity.rate": 0.3,
+                    "reflectivemood.speed": 100,
+                    "space": 1
+                }
+            }
+        ]
     }
 ]
