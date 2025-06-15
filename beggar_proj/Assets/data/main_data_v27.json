@@ -44,6 +44,31 @@
                     "thoughts.rate": 1,
                     "clarity.rate": 0.2
                 }
+            },
+            {
+                "id": "reflectivemood",
+                "name": "Reflective mood",
+                "desc": "A state of mind conducive to deep thought",
+                "require": "musingswood",
+                "buy": {
+                    "reflection": 15,
+                    "clarity": 100,
+                    "thoughts": 400
+                },
+                "duration": 40,
+                "cost": {
+                    "reflection": 5,
+                    "clarity": 40,
+                    "thoughts": 200
+                },
+                "dot": {
+                    "duration": 300,
+                    "mod":{
+                        ".rate": 0.2,
+                        ".max": 5,
+                        ".max": 10
+                    }
+                }
             }
         ]
     },
