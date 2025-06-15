@@ -62,7 +62,7 @@
                     "thoughts": 200
                 },
                 "dot": {
-                    "duration": 300,
+                    "duration": 400,
                     "mod":{
                         "revisit_thoughts.result.reflection": 2
                     }
