@@ -1049,7 +1049,7 @@
                 "id" : "lostphilosopher",
                 "name": "Lost Philosopher",
                 "desc" : "The one who stays in the streets. Thinking, mumbling. Trying to reach the answer.",
-                "tags": "t_tier2",
+                "tags": "t_tier2,beggary",
                 "lock": "t_tier2",
                 "need": "theself_2",
                 "require": "t_tier1&&philosophy>=2",
