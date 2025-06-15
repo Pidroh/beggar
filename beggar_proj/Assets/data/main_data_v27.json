@@ -3,6 +3,18 @@
         "type": "RESOURCE",
         "items":[
             {
+                "id": "realization",
+                "name": "Realization",
+                "max": 1,
+                "desc": "New understanding that comes from deep thought"
+            },
+            {
+                "id": "musing",
+                "name": "Musing",
+                "max": 30,
+                "desc": "Random thoughts dancing around"
+            },
+            {
                 "id": "breakinlogistics",
                 "name": "Break-in Setup",
                 "max": 5,
@@ -12,7 +24,28 @@
     },
     {
         "type": "TASK",
-        "items":[]
+        "items":[
+            {
+                "id": "thinklife",
+                "name": "Think about life",
+                "desc": "What I have done and what I will do",
+                "require": "t_tier3&&reflection>=15",
+                "duration": 50,
+                "max": 2,
+                "cost": {
+                    "reflection": 10
+                },
+                "run": {
+                    "clarity": 2,
+                    "thoughts": 10
+                },
+                "mod": {
+                    "reflection.max": 2,
+                    "thoughts.rate": 1,
+                    "clarity.rate": 0.2
+                }
+            }
+        ]
     },
     {
         "type": "HOUSE",
