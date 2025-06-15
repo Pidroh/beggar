@@ -23,12 +23,33 @@
                 "require": "t_tier1&&crime>0&&stealth>0",
                 "need": "theself_2",
                 "cost": {
-                    "guilt": 20
+                    "guilt": 30
                 },
                 "mod": {
                     "crime.max": 1,
                     "stealth.max": 1,
                     "dominance.max": 40
+                }
+            },
+            {
+                "id" : "burglar",
+                "name": "Burglar",
+                "desc" : "Keep your door's closed. Not that it will help you.",
+                "tags": "t_tier3",
+                "lock": "t_tier3",
+                "require": "theself_3&&crime>2&&housebreaking>2",
+                "need": "theself_3&&housebreaking>3",
+                "cost": {
+                    "guilt": 100,
+                    "thoughts": 400,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "crime.max": 1,
+                    "stealth.max": 1,
+                    "housebreaking.max": 1
                 }
             }
         ]
