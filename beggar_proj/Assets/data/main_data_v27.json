@@ -166,7 +166,28 @@
     {
         "type": "LOCATION",
         "items": [
-            
+            {
+                "id": "emotions_loc_b",
+                "name": "Hidden feelings",
+                "desc": "Things inside of you, that you would rather not face",
+                "require": "theself_3&&thinklife>3",
+                "length": 30,
+                "run": {
+                    "supplication": 1
+                },
+                "result_once": {
+                    "skillpoints": 40
+                },
+                "result": {
+                    "supplication": 80,
+                    "clarity": 8,
+                    "reflection": 3
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": ["boredom_weak_emotion", "sad_weak_emotion", "frustration_weak_emotion", "joy_weak_emotion", "anxiety_weak_emotion"]
+            }
         ]
     },
     {
