@@ -190,11 +190,11 @@
             {
                 "id" : "urbansage",
                 "name": "Urban sage",
-                "desc" : "The old man people look up to advice, adored and respected",
+                "desc" : "The first and greatest victory is to conquer yourself",
                 "tags": "t_tier4",
                 "lock": "t_tier4",
                 "need": "theself_4",
-                "require": "t_tier3&&philosophy>=4",
+                "require": "t_tier3&&philosophy>4",
                 "cost": {
                     "thoughts": 200,
                     "clarity": 25,
