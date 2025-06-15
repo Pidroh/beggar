@@ -55,7 +55,7 @@
                     "clarity": 100,
                     "thoughts": 400
                 },
-                "duration": 40,
+                "duration": 30,
                 "cost": {
                     "reflection": 5,
                     "clarity": 40,
@@ -64,9 +64,7 @@
                 "dot": {
                     "duration": 300,
                     "mod":{
-                        ".rate": 0.2,
-                        ".max": 5,
-                        ".max": 10
+                        "revisit_thoughts.result.reflection": 2
                     }
                 }
             }
