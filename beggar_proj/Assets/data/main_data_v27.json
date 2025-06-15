@@ -94,6 +94,25 @@
                         "thoughts.rate": 10
                     }
                 }
+            },
+            {
+                "id": "musemax",
+                "name": "Amusement memory",
+                "desc": "Think up ways to organize memory and clean up space for your musings",
+                "require": "musing>20",
+                "duration": 35,
+                "max": 10,
+                "cost": {
+                    "musing": 25,
+                    "reflection": 5
+                },
+                "run": {
+                    "musing": 1
+                },
+                "mod":{
+                    "musing.max": 100,
+                    "reflection.max": 1
+                }
             }
         ]
     },
