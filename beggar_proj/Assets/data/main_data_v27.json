@@ -48,7 +48,7 @@
             {
                 "id": "reflectivemood",
                 "name": "Reflective mood",
-                "desc": "A state of mind conducive to deep thought",
+                "desc": "A state of mind conducive to deep thought (some actions and power ups can only be done while the effect is active)",
                 "require": "musingswood",
                 "buy": {
                     "reflection": 15,
@@ -64,7 +64,10 @@
                 "dot": {
                     "duration": 400,
                     "mod":{
-                        "revisit_thoughts.result.reflection": 2
+                        "organizethoughts.speed": 200,
+                        "thoughts.rate": 10,
+                        "revisit_thoughts.result.reflection": 2,
+                        "thinklife.max": 3
                     }
                 }
             }
