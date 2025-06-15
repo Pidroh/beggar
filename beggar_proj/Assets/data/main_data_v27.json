@@ -70,6 +70,30 @@
                         "thinklife.max": 3
                     }
                 }
+            },
+            {
+                "id": "museaway",
+                "name": "Muse away",
+                "desc": "Think away, give your musings space to breath",
+                "require": "emotions_loc_b",
+                "buy": {
+                    "realization": 1,
+                    "reflection": 15
+                },
+                "duration": 30,
+                "cost": {
+                    "reflection": 5,
+                    "clarity": 30,
+                    "realization": 1,
+                    "thoughts": 120
+                },
+                "dot": {
+                    "duration": 100,
+                    "mod":{
+                        "musing.rate": 1,
+                        "thoughts.rate": 10
+                    }
+                }
             }
         ]
     },
