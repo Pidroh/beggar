@@ -32,14 +32,6 @@ MonoBehaviour:
     majorVersionOverride: 0
     versionOverride: 22
     patchOverride: 2
-  - id: test
-    jsonDatas:
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: 5a6549694f1e18c4ebc3ba05d452cec1, type: 3}
-    buildConfigId: webtest
-    majorVersionOverride: 0
-    versionOverride: 15
-    patchOverride: 0
   - id: patreon
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -59,4 +51,12 @@ MonoBehaviour:
     buildConfigId: web_patreon_dev
     majorVersionOverride: 0
     versionOverride: 50
+    patchOverride: 0
+  - id: test
+    jsonDatas:
+    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
+    - {fileID: 4900000, guid: 5a6549694f1e18c4ebc3ba05d452cec1, type: 3}
+    buildConfigId: webtest
+    majorVersionOverride: 0
+    versionOverride: 15
     patchOverride: 0
