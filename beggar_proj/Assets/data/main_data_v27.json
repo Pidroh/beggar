@@ -217,6 +217,7 @@
                 "id": "crime",
                 "desc": "How much you know about breaking the law",
                 "require": "cunning>2&&guilt>10",
+                "tags": "cunning",
                 "cost": {
                     "skillpoints": 50
                 },
@@ -228,6 +229,7 @@
                 "id": "stealth",
                 "desc": "That which cannot be detected",
                 "require": "cunning>2&&exercise>2",
+                "tags": "cunning",
                 "cost": {
                     "skillpoints": 50
                 },
@@ -241,6 +243,21 @@
                 "name": "Housebreaking",
                 "desc": "The art of entering into a building when you're not supposed to do so.",
                 "require": "cunning>2&&guilt>10&&crime>2",
+                "tags": "cunning",
+                "cost": {
+                    "skillpoints": 50
+                },
+                "mod": {
+                    "guilt.max": 5,
+                    "breakinlogistics.max": 10
+                }
+            },
+            {
+                "id": "scribing",
+                "name": "Scribing",
+                "desc": "The art of copying words. Preservation and sharing of information.",
+                "require": "latin>2&&t_tier2",
+                "tags": "academics",
                 "cost": {
                     "skillpoints": 50
                 },
