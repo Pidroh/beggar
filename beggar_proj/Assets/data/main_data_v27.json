@@ -274,13 +274,47 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["boredom_weak_emotion", "sad_weak_emotion", "frustration_weak_emotion", "joy_weak_emotion", "anxiety_weak_emotion"]
+                "encs": ["boredom_weak_emotion", "sad_weak_emotion", "frustration_weak_emotion", "joy_weak_emotion", "anxiety_weak_emotion", "hidden_sadness", "bad_memories"]
             }
         ]
     },
     {
          "type": "ENCOUNTER",
         "items": [
+            {
+                "id": "bad_memories",
+                "name": "Bad memories",
+                "desc": "When you wish you could forget all you do is remember",
+                "effect": {
+                    "contemplation.xp": 1,
+                    "perplexion": "0~3",
+                    "irritation": "0~3",
+                    "sadness": "1~2",
+                    "sorrow": "0~1",
+                    "thoughts": "-2~0"
+                },
+                "result": {
+                    "thoughts": 5,
+                    "clarity": "3~5"
+                }
+            },
+            {
+                "id": "hidden_sadness",
+                "name": "Hidden sadness",
+                "desc": "There are feelings you can barely process. Your mind becomes a hideout.",
+                "effect": {
+                    "introspection.xp": 1,
+                    "perplexion": "0~4",
+                    "irritation": "0~2",
+                    "sadness": "1~4",
+                    "sorrow": "1~3",
+                    "thoughts": "-4~0"
+                },
+                "result": {
+                    "thoughts": 30,
+                    "clarity": "8~15"
+                }
+            }
         ]
     },
     {
