@@ -96,6 +96,27 @@
                 }
             },
             {
+                "id": "scribe_church",
+                "name": "Scribe holy scriptures",
+                "desc": "Copy the holy documents to spread the word",
+                "require": "scribing>2&&ecclesiology>2",
+                "buy": {
+                    "fundamentals": 10
+                },
+                "duration": 15,
+                "result": {
+                    "coin": 3,
+                    "scribing.xp": 1,
+                    "fundamentals": 1
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "cost": {
+                    "clarity": 1
+                }
+            },
+            {
                 "id": "musemax",
                 "name": "Amusement memory",
                 "desc": "Think up ways to organize memory and clean up space for your musings",
