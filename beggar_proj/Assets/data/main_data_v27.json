@@ -178,7 +178,7 @@
             {
                 "id": "debatesmallchurch",
                 "name": "Debate with acolytes",
-                "desc": "Are the taxes just? Should we support the church? Is it really a sin?",
+                "desc": "What is free will? What does this scripture say? Which of us will become priest?",
                 "require": "debatefolks>1&&ecclesiology>1",
                 "duration": 30,
                 "max": 3,
@@ -196,6 +196,29 @@
                     "fundamentals.max": 2,
                     "think.speed": 25,
                     "gratitude.max": 5
+                }
+            },
+            {
+                "id": "debateuniversitystudents",
+                "name": "Debate with university students",
+                "desc": "How to prove the divine is real? Is the soul immortal? Should the academy be involved in politics?",
+                "require": "debatefolks>1&&debating>1",
+                "duration": 30,
+                "max": 3,
+                "cost": {
+                    "fundamentals": 10
+                },
+                "run": {
+                    "thoughts": 20,
+                    "clarity": 3
+                },
+                "effect": {
+                    "academia.xp": 2
+                },
+                "mod":{
+                    "fundamentals.max": 2,
+                    "organizethoughts.speed": 30,
+                    "clarity.max": 5
                 }
             },
             {
