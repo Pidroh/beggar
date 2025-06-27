@@ -176,6 +176,48 @@
                 }
             },
             {
+                "id": "debatebreakthrough",
+                "name": "Dialect Breakthrough",
+                "desc": "All your experience debating will guide you to new knowledge",
+                "require": "debatefolks>2",
+                "duration": 80,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 8,
+                    "reflection": 1
+                },
+                "run": {
+                    "thoughts": 3,
+                    "clarity": 1
+                },
+                "mod":{
+                    "debating.max": 1,
+                    "fundamentals.max": 3,
+                    "study.speed": 5
+                }
+            },
+            {
+                "id": "debatebreakthrough2",
+                "name": "Dialect Breakthrough II",
+                "desc": "All your experience debating will guide you even higher",
+                "require": "guidance_master>1",
+                "duration": 80,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 8,
+                    "realization": 1
+                },
+                "run": {
+                    "thoughts": 20,
+                    "clarity": 1
+                },
+                "mod":{
+                    "debating.max": 1,
+                    "fundamentals.max": 5,
+                    "study.speed": 10
+                }
+            },
+            {
                 "id": "debatesmallchurch",
                 "name": "Debate with acolytes",
                 "desc": "What is free will? What does this scripture say? Which of us will become priest?",
@@ -249,7 +291,7 @@
                 "id": "guidance_master",
                 "name": "Consult with the masters",
                 "desc": "Ask the university masters for guidance on various intellectual matters",
-                "require": "debateuniversity>1",
+                "require": "debateuniversitystudents>1",
                 "duration": 30,
                 "max": 2,
                 "cost": {
@@ -481,6 +523,7 @@
                 "desc": "Discussion is an exchange of knowledge; an argument an exchange of ignorance",
                 "require": "philosophy>2&&academia>2",
                 "tags": "academics",
+                "max": 1,
                 "cost": {
                     "reflection": 5,
                     "clarity": 50
