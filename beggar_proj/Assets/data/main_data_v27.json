@@ -136,6 +136,42 @@
                 }
             },
             {
+                "id": "copy_study_book",
+                "name": "Copy The Art of Studying",
+                "desc": "Scribe a short essay on how to optimize studying",
+                "require": "scribing>0",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod":{
+                    "study.speed": 80,
+                    "fundamentals.max": 3
+                }
+            },
+            {
+                "id": "copy_philosophy_meno",
+                "name": "Copy Meno",
+                "desc": "A work from Plato, it mentions anamnesis",
+                "require": "scribing>1",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "fundamentals": 5
+                },
+                "run": {
+                    "thoughts": 10
+                },
+                "mod":{
+                    "philosophy.max": 1,
+                    "reflection.max": 1
+                }
+            },
+            {
                 "id": "debatebeggars",
                 "name": "Debate with beggars",
                 "desc": "Where to beg, how to live, fairness of the world",
