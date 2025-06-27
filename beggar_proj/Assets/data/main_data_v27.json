@@ -136,6 +136,46 @@
                 }
             },
             {
+                "id": "debatebeggars",
+                "name": "Debate with beggars",
+                "desc": "Discuss various matters with your fellow beggars",
+                "require": "debating>0",
+                "duration": 30,
+                "max": 2,
+                "cost": {
+                    "fundamentals": 3
+                },
+                "run": {
+                    "thoughts": 5,
+                    "clarity": 1
+                },
+                "mod":{
+                    "fundamentals.max": 2,
+                    "think.speed": 30,
+                    "clarity.max": 2
+                }
+            },
+            {
+                "id": "debatebeggars",
+                "name": "Debate with beggars",
+                "desc": "Discuss various matters with your fellow beggars",
+                "require": "debating>0",
+                "duration": 30,
+                "max": 2,
+                "cost": {
+                    "fundamentals": 3
+                },
+                "run": {
+                    "thoughts": 5,
+                    "clarity": 1
+                },
+                "mod":{
+                    "fundamentals.max": 2,
+                    "think.speed": 30,
+                    "clarity.max": 2
+                }
+            },
+            {
                 "id": "theself_4",
                 "name": "The self II",
                 "desc": "Revisit thyself.",
@@ -283,7 +323,7 @@
                     "skillpoints": 50
                 },
                 "mod": {
-                    "fundamentals.max": 1
+                    "fundamentals.max": 3
                 }
             },
             {
@@ -297,7 +337,9 @@
                     "clarity": 50
                 },
                 "mod": {
-                    "fundamentals.max": 1
+                    "fundamentals.max": 2,
+                    "clarity.max": 3,
+                    "reflection.max": 1
                 }
             }
         ]
