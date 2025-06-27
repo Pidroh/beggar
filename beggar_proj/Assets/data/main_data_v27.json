@@ -222,6 +222,30 @@
                 }
             },
             {
+                "id": "debatepriests",
+                "name": "Debate with priests",
+                "desc": "Are there unforgivable sins? What to do with a sinful bishop?",
+                "require": "debatesmallchurch>1&&debating>1",
+                "duration": 30,
+                "max": 3,
+                "cost": {
+                    "fundamentals": 12
+                },
+                "run": {
+                    "thoughts": 20,
+                    "clarity": 3
+                },
+                "effect": {
+                    "ecclesiology.xp": 2
+                },
+                "mod":{
+                    "fundamentals.max": 2,
+                    "organizethoughts.speed": 30,
+                    "clarity.max": 5,
+                    "gratitude.max": 50
+                }
+            },
+            {
                 "id": "guidance_master",
                 "name": "Consult with the masters",
                 "desc": "Ask the university masters for guidance on various intellectual matters",
@@ -270,6 +294,34 @@
                     "study.speed": 50,
                     "think.speed": 100,
                     "clarity.max": 5
+                }
+            },
+            {
+                "id": "discussion_with_bishop",
+                "name": "Discussion with a bishop",
+                "desc": "A certain bishop desires to discuss philosophy with you ",
+                "require": "debatepriests>2&&debating>2&&academia>3",
+                "duration": 90,
+                "max": 2,
+                "cost": {
+                    "fundamentals": 15,
+                    "academics": 1,
+                    "realization": 1
+                },
+                "run": {
+                    "thoughts": 30,
+                    "clarity": 3
+                },
+                "effect": {
+                    "ecclesiology.xp": 3,
+                    "academia.xp": 1
+                },
+                "mod":{
+                    "churchrespect.max": 100,
+                    "gratitude.max": 100,
+                    "organizethoughts.speed": 30,
+                    "study.speed": 40,
+                    "think.speed": 50
                 }
             },
             {
