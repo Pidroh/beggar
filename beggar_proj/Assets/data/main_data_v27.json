@@ -138,10 +138,10 @@
             {
                 "id": "debatebeggars",
                 "name": "Debate with beggars",
-                "desc": "Discuss various matters with your fellow beggars",
+                "desc": "Where to beg, how to live, fairness of the world",
                 "require": "debating>0",
                 "duration": 30,
-                "max": 2,
+                "max": 3,
                 "cost": {
                     "fundamentals": 3
                 },
@@ -150,29 +150,29 @@
                     "clarity": 1
                 },
                 "mod":{
-                    "fundamentals.max": 2,
-                    "think.speed": 30,
-                    "clarity.max": 2
+                    "fundamentals.max": 1,
+                    "think.speed": 20,
+                    "clarity.max": 3
                 }
             },
             {
-                "id": "debatebeggars",
-                "name": "Debate with beggars",
-                "desc": "Discuss various matters with your fellow beggars",
-                "require": "debating>0",
+                "id": "debatefolks",
+                "name": "Debate with the townsfolk",
+                "desc": "Are the taxes just? Should we support the church? Is it really a sin?",
+                "require": "debatebeggars>1",
                 "duration": 30,
-                "max": 2,
+                "max": 3,
                 "cost": {
-                    "fundamentals": 3
+                    "fundamentals": 4
                 },
                 "run": {
-                    "thoughts": 5,
+                    "thoughts": 7,
                     "clarity": 1
                 },
                 "mod":{
                     "fundamentals.max": 2,
-                    "think.speed": 30,
-                    "clarity.max": 2
+                    "think.speed": 25,
+                    "clarity.max": 3
                 }
             },
             {
