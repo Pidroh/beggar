@@ -283,8 +283,21 @@
                     "skillpoints": 50
                 },
                 "mod": {
-                    "guilt.max": 5,
-                    "breakinlogistics.max": 10
+                    "fundamentals.max": 1
+                }
+            },
+            {
+                "id": "debating",
+                "name": "Debating",
+                "desc": "Discussion is an exchange of knowledge; an argument an exchange of ignorance",
+                "require": "philosophy>2&&academia>2",
+                "tags": "academics",
+                "cost": {
+                    "reflection": 5,
+                    "clarity": 50
+                },
+                "mod": {
+                    "fundamentals.max": 1
                 }
             }
         ]
