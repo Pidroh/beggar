@@ -176,6 +176,29 @@
                 }
             },
             {
+                "id": "debatesmallchurch",
+                "name": "Debate with acolytes",
+                "desc": "Are the taxes just? Should we support the church? Is it really a sin?",
+                "require": "debatefolks>1&&ecclesiology>1",
+                "duration": 30,
+                "max": 3,
+                "cost": {
+                    "fundamentals": 4
+                },
+                "run": {
+                    "thoughts": 7,
+                    "clarity": 1
+                },
+                "effect": {
+                    "ecclesiology.xp": 2
+                },
+                "mod":{
+                    "fundamentals.max": 2,
+                    "think.speed": 25,
+                    "gratitude.max": 5
+                }
+            },
+            {
                 "id": "theself_4",
                 "name": "The self II",
                 "desc": "Revisit thyself.",
