@@ -425,6 +425,21 @@
                     "musing.max": 50,
                     "revisit_thoughts.result.reflection": 1
                 }
+            },
+            {
+                "id": "normal_house_access",
+                "name": "Falsify access to a house",
+                "desc": "Use your forged document to obtain access to the house",
+                "require": "create_house_document||order_house_document",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "clarity": 30,
+                    "guilt": 5
+                },
+                "result": {
+                    "danger": 10
+                }
             }
         ]
     },
@@ -442,10 +457,7 @@
                 },
                 "desc": "Living quarters on top of a shop. A safe place.",
                 "mod": {
-                    "space.max": 16,
-                    "pray.effect.faith": 2,
-                    "churchrespect.max": 50
-
+                    "space.max": 16
                 }
             }
         ]
