@@ -430,7 +430,25 @@
     },
     {
         "type": "HOUSE",
-        "items":[]
+        "items":[
+            {
+                "id": "normal_house",
+                "name": "Living quarters",
+                "require": "normal_house_access",
+                "tag": "safe_house",
+                "cost": {
+                    "churchrespect": 30,
+                    "faith": 10
+                },
+                "desc": "Living quarters on top of a shop. A safe place.",
+                "mod": {
+                    "space.max": 16,
+                    "pray.effect.faith": 2,
+                    "churchrespect.max": 50
+
+                }
+            }
+        ]
     },
     {
         "type": "CLASS",
