@@ -90,7 +90,7 @@
                 "dot": {
                     "duration": 400,
                     "mod":{
-                        "coin.max": 80,
+                        "coin.max": 40,
                         "guilt.rate": 0.5,
                         "guilt.max": 50
                     }
