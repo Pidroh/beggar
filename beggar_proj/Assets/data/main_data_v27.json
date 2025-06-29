@@ -784,6 +784,21 @@
                 "mod": {
                     "coin.max": 60
                 }
+            },
+            {
+                "id": "nice_clothes",
+                "name": "Nice clothes",
+                "desc": "Looking presentable",
+                "max": 1,
+                "require": "safe_house",
+                "cost": {
+                    "coin": 15
+                },
+                "mod": {
+                    "supplication.rate": 2,
+                    "thoughts.rate": 1,
+                    "nutrition.max": 30
+                }
             }
         ]
     }
