@@ -57,7 +57,7 @@
                 },
                 "duration": 30,
                 "cost": {
-                    "reflection": 5,
+                    "reflection": 3,
                     "clarity": 40,
                     "thoughts": 200
                 },
@@ -68,6 +68,31 @@
                         "thoughts.rate": 10,
                         "revisit_thoughts.result.reflection": 2,
                         "thinklife.max": 3
+                    }
+                }
+            },
+            {
+                "id": "hidden_stash",
+                "name": "Hidden stash",
+                "desc": "Set up a momentary stash of money. Not the safest thing in the world so can't keep it forever.",
+                "require": "hidden_stash_furniture",
+                "buy": {
+                    "guilt": 15,
+                    "clarity": 20,
+                    "thoughts": 120
+                },
+                "duration": 30,
+                "cost": {
+                    "guilt": 10,
+                    "clarity": 10,
+                    "thoughts": 50
+                },
+                "dot": {
+                    "duration": 400,
+                    "mod":{
+                        "coin.max": 80,
+                        "guilt.rate": 0.5,
+                        "guilt.max": 50
                     }
                 }
             },
