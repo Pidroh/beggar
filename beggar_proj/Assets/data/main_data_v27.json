@@ -764,8 +764,25 @@
                 "desc": "You can hide a little bit of money here. Maybe more if you setup a hidden stash",
                 "require": "crime>1&&coin>15",
                 "max": 1,
+                "cost": {
+                    "thoughts": 120,
+                    "clarity": 10
+                },
                 "mod": {
                     "coin.max": 5
+                }
+            },
+            {
+                "id": "simple_chest",
+                "name": "Simple chest",
+                "desc": "A spot to keep money",
+                "require": "safe_house&&coin>40",
+                "max": 1,
+                "cost": {
+                    "coin": 30
+                },
+                "mod": {
+                    "coin.max": 60
                 }
             }
         ]
