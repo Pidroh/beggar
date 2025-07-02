@@ -19,6 +19,12 @@
                 "name": "Break-in Setup",
                 "max": 5,
                 "desc": "Intel, resources, tools, and the mindset required for breaking into a place and stealing something"
+            },
+            {
+                "id": "looks",
+                "name": "Looks",
+                "max": 30,
+                "desc": "Who knew you would come to improve your appearance"
             }
         ]
     },
@@ -675,6 +681,7 @@
                     "clarity": 50
                 },
                 "mod": {
+                    "looks.max": 5,
                     "charm.max": 5,
                     "charm.rate": 0.05,
                     "supplication.max": 5
