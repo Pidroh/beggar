@@ -662,6 +662,23 @@
                     "clarity.max": 3,
                     "reflection.max": 1
                 }
+            },
+            {
+                "id": "appearances",
+                "name": "Appearances",
+                "desc": "Sometimes what is outside matters as much as what is inside",
+                "require": "safe_house",
+                "tags": "social",
+                "max": 1,
+                "cost": {
+                    "nutrition": 90,
+                    "clarity": 50
+                },
+                "mod": {
+                    "charm.max": 5,
+                    "charm.rate": 0.05,
+                    "supplication.max": 5
+                }
             }
         ]
     },
