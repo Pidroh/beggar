@@ -667,7 +667,7 @@
                 "id": "appearances",
                 "name": "Appearances",
                 "desc": "Sometimes what is outside matters as much as what is inside",
-                "require": "safe_house",
+                "require": "safe_house&&nice_clothes",
                 "tags": "social",
                 "max": 1,
                 "cost": {
