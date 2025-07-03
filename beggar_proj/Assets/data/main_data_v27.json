@@ -15,6 +15,15 @@
                 "desc": "Random thoughts dancing around"
             },
             {
+                "id": "luxury",
+                "name": "Luxury",
+                "max": 3,
+                "desc": "A state of comfort and elegance",
+                "mod":{
+                    "luxury.rate": -0.3
+                }
+            },
+            {
                 "id": "breakinlogistics",
                 "name": "Break-in Setup",
                 "max": 5,
