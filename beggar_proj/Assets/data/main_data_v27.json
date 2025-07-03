@@ -124,6 +124,55 @@
                 }
             },
             {
+                "id": "steallikethief",
+                "name": "Steal like a thief",
+                "require": "thief",
+                "desc": "Be true to what you are",
+                "duration": 60,
+                "cost": {
+                    "thoughts": 80,
+                    "clarity": 3,
+                    "guilt": 30
+                },
+                "run": {
+                    "guilt": 3
+                },
+                "mod":{
+                    "steal.success_rate": 15,
+                    "steal.result.coin": 3
+                }
+            },
+            {
+                "id": "shadowhand",
+                "name": "Shadow Hand",
+                "require": "thief&&stealth>=4",
+                "desc": "The invisible hand of theft",
+                "duration": 5,
+                "buy": {
+                    "thoughts": 15,
+                    "clarity": 15,
+                    "guilt": 40
+                },
+                "cost": {
+                    "thoughts": 20,
+                    "clarity": 1,
+                    "guilt": 30
+                },
+                "dot": {
+                    "duration": 90,
+                    "mod": {
+                        "guilt.rate": 1,
+                        "steal.success_rate": 55,
+                        "steal.speed": 50,
+                        "steal.result.coin": 2
+                   }
+                },
+                "mod":{
+                    "steal.success_rate": 15,
+                    "steal.result.coin": 3
+                }
+            },
+            {
                 "id": "rest_looks",
                 "name": "Focus on looks",
                 "require": "appearance",
