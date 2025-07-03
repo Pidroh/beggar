@@ -138,7 +138,7 @@
                     "guilt": 3
                 },
                 "mod":{
-                    "steal.success_rate": 15,
+                    "steal.success_rate": 25,
                     "steal.result.coin": 3
                 }
             },
@@ -162,9 +162,39 @@
                     "duration": 90,
                     "mod": {
                         "guilt.rate": 1,
-                        "steal.success_rate": 55,
+                        "steal.success_rate": 45,
                         "steal.speed": 50,
                         "steal.result.coin": 2
+                   }
+                },
+                "mod":{
+                    "steal.success_rate": 15,
+                    "steal.result.coin": 3
+                }
+            },
+            {
+                "id": "grandtheft",
+                "name": "Grand Theft",
+                "require": "thief&&crime>=4",
+                "desc": "Why steal less if you can steal more?",
+                "duration": 10,
+                "buy": {
+                    "thoughts": 15,
+                    "clarity": 15,
+                    "guilt": 40
+                },
+                "cost": {
+                    "thoughts": 20,
+                    "clarity": 1,
+                    "guilt": 15
+                },
+                "dot": {
+                    "duration": 90,
+                    "mod": {
+                        "guilt.rate": 1,
+                        "steal.success_rate": -20,
+                        "steal.speed": -75,
+                        "steal.result.coin": 70
                    }
                 },
                 "mod":{
