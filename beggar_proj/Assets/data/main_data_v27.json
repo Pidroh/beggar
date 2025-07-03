@@ -157,6 +157,7 @@
                 "require": "appearance>0&&crime>0",
                 "desc": "A smile that hides true intentions",
                 "duration": 25,
+                "max": 1,
                 "cost": {
                     "looks": 5,
                     "clarity": 3,
@@ -172,6 +173,7 @@
                 "name": "Criminal smile II",
                 "require": "appearance>1&&crime>1",
                 "desc": "A sly smile that hides true intentions",
+                "max": 1,
                 "duration": 25,
                 "cost": {
                     "looks": 15,
@@ -190,6 +192,7 @@
                 "require": "appearance>2&&crime>2",
                 "desc": "A radiant smile that hides true intentions",
                 "duration": 25,
+                "max": 1,
                 "cost": {
                     "looks": 25,
                     "clarity": 15,
@@ -226,10 +229,6 @@
                         "steal.speed": 50,
                         "steal.result.coin": 2
                    }
-                },
-                "mod":{
-                    "steal.success_rate": 15,
-                    "steal.result.coin": 3
                 }
             },
             {
@@ -256,10 +255,30 @@
                         "steal.speed": -75,
                         "steal.result.coin": 70
                    }
+                }
+            },
+            {
+                "id": "extravagantlife",
+                "name": "Extravagant life",
+                "require": "extravagance>0",
+                "desc": "Live the good life",
+                "duration": 10,
+                "buy": {
+                    "thoughts": 30,
+                    "clarity": 30,
+                    "guilt": 50
                 },
-                "mod":{
-                    "steal.success_rate": 15,
-                    "steal.result.coin": 3
+                "cost": {
+                    "coin": 3,
+                    "guilt": 10
+                },
+                "dot": {
+                    "duration": 90,
+                    "mod": {
+                        "luxury.rate": 1,
+                        "luxury.max": 3,
+                        "coin.rate": -0.3
+                   }
                 }
             },
             {
