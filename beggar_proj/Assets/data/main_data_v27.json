@@ -802,6 +802,7 @@
                     "foraging.max": 1
                 }
             },
+            
             {
                 "id": "housebreaking",
                 "name": "Housebreaking",
@@ -862,6 +863,20 @@
                     "charm.max": 5,
                     "charm.rate": 0.05,
                     "supplication.max": 5
+                }
+            },
+            {
+                "id": "extravagance",
+                "desc": "Some things in life require quite a bit of money",
+                "require": "apparance>1",
+                "tags": "social",
+                "cost": {
+                    "looks": 10,
+                    "guilt": 80
+                },
+                "mod": {
+                    "luxury.max": 3,
+                    "looks.max": 1
                 }
             }
         ]
