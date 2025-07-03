@@ -103,6 +103,23 @@
                 }
             },
             {
+                "id": "rest_looks",
+                "name": "Focus on looks",
+                "require": "appearance",
+                "desc": "Honing attraction while resting",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "supplication": 80,
+                    "thoughts": 30,
+                    "clarity": 10,
+                    "reflection": 3
+                },
+                "mods":{
+                    "pleafocus.effect.looks": 1
+                }
+            },
+            {
                 "id": "museaway",
                 "name": "Muse away",
                 "desc": "Think away, give your musings space to breath",
