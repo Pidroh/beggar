@@ -752,6 +752,27 @@
                 }
             },
             {
+                "id" : "underboss",
+                "name": "Underboss",
+                "desc" : "The sub-leader of a small crime organization in the city",
+                "tags": "t_tier4",
+                "lock": "t_tier4",
+                "require": "t_tier3&&followers>0&&crime>2",
+                "need": "theself_4&&crime>3",
+                "cost": {
+                    "clarity": 25,
+                    "realization": 1,
+                    "musing": 100,
+                    "nutrition": 8,
+                    "luxury": 15
+                },
+                "mod": {
+                    "crime.max": 1,
+                    "charisma.max": 1,
+                    "breakinlogistics.max": 20
+                }
+            },
+            {
                 "id" : "urbansage",
                 "name": "Urban sage",
                 "desc" : "The first and greatest victory is to conquer yourself",
