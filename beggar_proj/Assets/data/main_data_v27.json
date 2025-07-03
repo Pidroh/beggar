@@ -103,6 +103,27 @@
                 }
             },
             {
+                "id": "steal",
+                "name": "Steal",
+                "require": "crime>0",
+                "desc": "Take what you want",
+                "duration": 20,
+                "success_rate": 25,
+                "need": "danger<10",
+                "cost": {
+                    "thoughts": 30,
+                    "clarity": 3
+                },
+                "result":{
+                    "coin": "2~6",
+                    "danger": "0~3"
+                },
+                "result_fail":{
+                    "coin": "0~2",
+                    "danger": "7~30"
+                }
+            },
+            {
                 "id": "rest_looks",
                 "name": "Focus on looks",
                 "require": "appearance",
