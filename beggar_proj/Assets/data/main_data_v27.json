@@ -910,7 +910,24 @@
                     "clarity": 10
                 },
                 "mod": {
-                    "coin.max": 5
+                    "coin.max": 5,
+                    "space": 2
+                }
+            },
+            {
+                "id": "thief_gloves",
+                "name": "Thief gloves",
+                "desc": "Very high quality gloves best suited for... Better not to say it",
+                "require": "crime>1&&thief",
+                "max": 1,
+                "cost": {
+                    "coin": 50
+                },
+                "mod": {
+                    "steal.success_rate": 10,
+                    "steal.result.coin": 2,
+                    "crime.max": 1,
+                    "space": 1
                 }
             },
             {
