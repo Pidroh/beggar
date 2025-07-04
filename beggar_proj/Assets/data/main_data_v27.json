@@ -299,6 +299,31 @@
                 }
             },
             {
+                "id": "preparebreakin",
+                "name": "Prepare for breaking in",
+                "require": "housebreaking",
+                "desc": "Prepare yourself and your tools for commiting buglary",
+                "duration": 10,
+                "max": 1,
+                "buy": {
+                    "clarity": 10
+                },
+                "cost": {
+                    "supplication": 80,
+                    "thoughts": 30,
+                    "clarity": 10,
+                    "reflection": 3
+                },
+                "dot": {
+                    "duration": 50,
+                    "mod":{
+                        "breakinlogistics.rate": 0.1,
+                        "breakinlogistics.max": 5,
+                        "thoughts.rate": -1
+                    }
+                }
+            },
+            {
                 "id": "museaway",
                 "name": "Muse away",
                 "desc": "Think away, give your musings space to breath",
@@ -754,8 +779,8 @@
                 "desc" : "Keep your door's closed. Not that it will help you.",
                 "tags": "t_tier3",
                 "lock": "t_tier3",
-                "require": "theself_3&&crime>2&&housebreaking>2",
-                "need": "theself_3&&housebreaking>3",
+                "require": "theself_3&&crime>2&&housebreaking>0",
+                "need": "theself_3&&housebreaking>2",
                 "cost": {
                     "guilt": 100,
                     "thoughts": 400,
@@ -767,7 +792,9 @@
                     "crime.max": 1,
                     "stealth.max": 1,
                     "housebreaking.max": 1,
-                    "breakinlogistics.max": 30
+                    "breakinlogistics.max": 30,
+                    "breakinlogistics.rate": 0.2
+
                 }
             },
             {
