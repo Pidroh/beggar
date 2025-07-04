@@ -133,6 +133,28 @@
                 }
             },
             {
+                "id": "breakinsteal",
+                "name": "Breaking and taking",
+                "require": "housebreaking>0",
+                "desc": "Enter into an unguarded house and take what you can",
+                "duration": 25,
+                "success_rate": 95,
+                "need": "danger<10",
+                "cost": {
+                    "breakinlogistics": 1
+                },
+                "result":{
+                    "coin": "0~10",
+                    "breadcrumbs": "0~30",
+                    "food": "0~3",
+                    "guilt": "10~20",
+                    "danger": "15~30"
+                },
+                "result_fail":{
+                    "guilt": "10~20"
+                }
+            },
+            {
                 "id": "steallikethief",
                 "name": "Steal like a thief",
                 "require": "thief",
@@ -794,7 +816,6 @@
                     "housebreaking.max": 1,
                     "breakinlogistics.max": 30,
                     "breakinlogistics.rate": 0.2
-
                 }
             },
             {
@@ -866,7 +887,8 @@
                 },
                 "mod": {
                     "fatigue.max": 0.3,
-                    "foraging.max": 1
+                    "foraging.max": 1,
+                    "danger.rate": -0.1
                 }
             },
             
