@@ -26,7 +26,7 @@
             {
                 "id": "breakinlogistics",
                 "name": "Break-in Setup",
-                "max": 5,
+                "max": 0,
                 "desc": "Intel, resources, tools, and the mindset required for breaking into a place and stealing something"
             },
             {
@@ -138,20 +138,16 @@
                 "require": "housebreaking>0",
                 "desc": "Enter into an unguarded house and take what you can",
                 "duration": 25,
-                "success_rate": 95,
                 "need": "danger<10",
                 "cost": {
-                    "breakinlogistics": 1
+                    "breakinlogistics": 5
                 },
                 "result":{
                     "coin": "0~10",
                     "breadcrumbs": "0~30",
                     "food": "0~3",
                     "guilt": "10~20",
-                    "danger": "15~30"
-                },
-                "result_fail":{
-                    "guilt": "10~20"
+                    "danger": "0~3"
                 }
             },
             {
@@ -903,7 +899,7 @@
                 },
                 "mod": {
                     "guilt.max": 5,
-                    "breakinlogistics.max": 10
+                    "breakinlogistics.max": 5
                 }
             },
             {
@@ -1076,6 +1072,27 @@
                 "mod": {
                     "coin.max": 5,
                     "space": 2
+                }
+            },
+            {
+                "id": "stolen_mirror",
+                "name": "Stolen mirror",
+                "desc": "Your reflection gives you time to think",
+                "require": "housebreaking>1",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "breakinlogistics": 8
+                },
+                "mod": {
+                    "thoughts.rate": 10,
+                    "clarity.max": 50,
+                    "clarity.rate": 1,
+                    "reflection.rate": 0.01,
+                    "reflection.max": 40,
+                    "introspection.max": 1,
+                    "contemplation.max": 1,
+                    "space": 3
                 }
             },
             {
