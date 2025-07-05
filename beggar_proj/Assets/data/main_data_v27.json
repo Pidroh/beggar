@@ -353,13 +353,12 @@
                 "cost": {
                     "supplication": 80,
                     "thoughts": 30,
-                    "clarity": 10,
-                    "reflection": 3
+                    "clarity": 10
                 },
                 "dot": {
-                    "duration": 50,
+                    "duration": 250,
                     "mod":{
-                        "breakinlogistics.rate": 0.1,
+                        "breakinlogistics.rate": 0.05,
                         "breakinlogistics.max": 5,
                         "thoughts.rate": -1
                     }
@@ -834,8 +833,8 @@
                     "crime.max": 1,
                     "stealth.max": 1,
                     "housebreaking.max": 1,
-                    "breakinlogistics.max": 30,
-                    "breakinlogistics.rate": 0.2
+                    "breakinlogistics.max": 10,
+                    "breakinlogistics.rate": 0.02
                 }
             },
             {
@@ -1166,9 +1165,8 @@
                     "coin": 15
                 },
                 "mod": {
-                    DO THIS
-                    "luxury.max": 3,
-                    "luxury.rate": 1,
+                    "breakinlogistics.max": 10,
+                    "preparebreakin.mod.breakinlogistics.rate": 0.05,
                     "space": 1
                 }
             },
