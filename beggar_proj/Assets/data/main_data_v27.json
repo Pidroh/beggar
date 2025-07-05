@@ -1120,6 +1120,24 @@
                 }
             },
             {
+                "id": "stolen_clothes",
+                "name": "Stolen clothes",
+                "desc": "Quite the fancy clothes hidden in a merchant's house",
+                "require": "housebreaking>2",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "breakinlogistics": 10
+                },
+                "mod": {
+                    "looks.max": 10,
+                    "looks.rate": 0.1,
+                    "luxury.max": 3,
+                    "luxury.rate": 1,
+                    "space": 1
+                }
+            },
+            {
                 "id": "stolen_rare_book",
                 "name": "The Guide of the Perplexed",
                 "desc": "A fairly rare book written by Maimonides",
