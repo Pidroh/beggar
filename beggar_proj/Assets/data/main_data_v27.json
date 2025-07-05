@@ -139,7 +139,7 @@
                 "id": "breakinsteal",
                 "name": "Breaking and taking",
                 "require": "housebreaking>0",
-                "desc": "Enter into an unguarded house and take what you can",
+                "desc": "Enter into a building and take what you can",
                 "duration": 25,
                 "need": "danger<10",
                 "cost": {
@@ -151,6 +151,23 @@
                     "food": "0~3",
                     "guilt": "10~20",
                     "danger": "0~3"
+                }
+            },
+            {
+                "id": "breakinsteal_rich",
+                "name": "Mansion hoist",
+                "require": "crime_higher",
+                "desc": "Finally time to steal from the rich",
+                "duration": 100,
+                "need": "danger<5",
+                "cost": {
+                    "supplication": 1200,
+                    "realization": 1,
+                    "breakinlogistics": 100
+                },
+                "result": {
+                    "coin": "400~1500",
+                    "guilt": 100
                 }
             },
             {
