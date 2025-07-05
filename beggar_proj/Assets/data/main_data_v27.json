@@ -341,6 +341,27 @@
                 }
             },
             {
+                "id": "periodic_house_report",
+                "name": "Periodic house reports",
+                "require": "organized_crime",
+                "desc": "Make your followers gather intel on various houses and schedules",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "thoughts": 300,
+                    "clarity": 50,
+                    "followers": 3,
+                    "breakinlogistics": 3
+                },
+                "run": {
+                    "thoughts": 10,
+                    "clarity": 2
+                },
+                "mods":{
+                    "followers.mod.breakinlogistics.rate": 0.001
+                }
+            },
+            {
                 "id": "preparebreakin",
                 "name": "Prepare for breaking in",
                 "require": "housebreaking",
@@ -827,7 +848,7 @@
                     "thoughts": 400,
                     "clarity": 80,
                     "reflection": 10,
-                    "breakinlogistics": 10
+                    "breakinlogistics": 3
                 },
                 "mod": {
                     "crime.max": 1,
