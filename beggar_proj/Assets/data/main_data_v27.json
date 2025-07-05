@@ -1156,7 +1156,7 @@
             },
             {
                 "id": "lockpick_tools",
-                "name": "Lockpick tools",
+                "name": "Lockpick Tools",
                 "desc": "Very useful for opening up doors",
                 "require": "housebreaking>=2",
                 "max": 1,
@@ -1167,6 +1167,22 @@
                 "mod": {
                     "breakinlogistics.max": 10,
                     "preparebreakin.mod.breakinlogistics.rate": 0.05,
+                    "space": 1
+                }
+            },
+            {
+                "id": "expert_lockpick_tools",
+                "name": "Expert Lockpick Tools",
+                "desc": "Very useful for opening up doors",
+                "require": "housebreaking>=4",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "coin": 150
+                },
+                "mod": {
+                    "breakinlogistics.max": 10,
+                    "preparebreakin.mod.breakinlogistics.rate": 0.1,
                     "space": 1
                 }
             },
