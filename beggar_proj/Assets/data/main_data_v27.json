@@ -897,6 +897,21 @@
                 }
             },
             {
+                "id": "organized_crime",
+                "name": "Organized crime",
+                "desc": "Breaking the law with a big group",
+                "require": "crime_leader",
+                "tags": "cunning",
+                "cost": {
+                    "skillpoints": 50,
+                    "followers": 3
+                },
+                "mod": {
+                    "breakinlogistics.max": 2,
+                    "charm.max": 2
+                }
+            },
+            {
                 "id": "stealth",
                 "desc": "That which cannot be detected",
                 "require": "cunning>2&&exercise>2",
