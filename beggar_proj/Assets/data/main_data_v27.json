@@ -351,7 +351,8 @@
                     "charm": 25,
                     "clarity": 50,
                     "followers": 3,
-                    "breakinlogistics": 3
+                    "breakinlogistics": 3,
+                    "coin": 100
                 },
                 "run": {
                     "charm": 1,
@@ -371,7 +372,8 @@
                 "cost": {
                     "charm": 25,
                     "clarity": 50,
-                    "followers": 3
+                    "followers": 3,
+                    "coin": 40
                 },
                 "run": {
                     "charm": 1,
@@ -391,7 +393,8 @@
                 "cost": {
                     "charm": 25,
                     "clarity": 50,
-                    "followers": 3
+                    "followers": 3,
+                    "coin": 90
                 },
                 "run": {
                     "charm": 1,
@@ -399,6 +402,28 @@
                 },
                 "mods":{
                     "followers.mod.coin.max": 10
+                }
+            },
+            {
+                "id": "money_guard",
+                "name": "Money guards",
+                "require": "organized_crime>=3",
+                "desc": "Train some of your henchmen as thugs to keep your home safe. That way you can finally store larger amounts of money in peace",
+                "tag": "security",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "charm": 50,
+                    "followers": 10,
+                    "coin": 120
+                },
+                "run": {
+                    "charm": 1,
+                    "clarity": 1
+                },
+                "mods":{
+                    "simple_chest.mod.coin.max": 750,
+                    "stolen_chest.mod.coin.max": 850
                 }
             },
             {
