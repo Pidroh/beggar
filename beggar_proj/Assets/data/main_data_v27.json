@@ -1106,7 +1106,8 @@
                 "max": 1,
                 "cost": {
                     "foraging": 30,
-                    "breakinlogistics": 8
+                    "breakinlogistics": 8,
+                    "followers": 2
                 },
                 "mod": {
                     "thoughts.rate": 10,
@@ -1135,6 +1136,23 @@
                     "luxury.max": 3,
                     "luxury.rate": 1,
                     "space": 1
+                }
+            },
+            {
+                "id": "fancy_painting",
+                "name": "Stolen painting",
+                "desc": "This one is a bit hard to steal, but it looks great",
+                "require": "housebreaking>3",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "breakinlogistics": 10,
+                    "followers": 2
+                },
+                "mod": {
+                    "luxury.max": 3,
+                    "luxury.rate": 1,
+                    "space": 3
                 }
             },
             {
