@@ -335,7 +335,7 @@
                 },
                 "mods":{
                     "thoughts.max": 150,
-                    "thoughts.speed": 80,
+                    "think.speed": 80,
                     "philosophy.max": 1,
                     "fundamentals.max": 15
                 }
@@ -1171,14 +1171,31 @@
             {
                 "id": "simple_chest",
                 "name": "Simple chest",
-                "desc": "A spot to keep money",
+                "desc": "A spot to keep money. It can actually hold way more, but you are afraid of thieves",
                 "require": "safe_house&&coin>40",
                 "max": 1,
                 "cost": {
                     "coin": 30
                 },
                 "mod": {
-                    "coin.max": 60
+                    "coin.max": 80,
+                    "space": 3
+                }
+            },
+            {
+                "id": "stolen_chest",
+                "name": "Stolen antique chest",
+                "desc": "A nice antique chest that can hold quite a bit of gold. Also looks really fancy",
+                "require": "housebreaking",
+                "max": 1,
+                "cost": {
+                    "coin": 30
+                },
+                "mod": {
+                    "coin.max": 80,
+                    "luxury.max": 20,
+                    "luxury.rate": 0.5,
+                    "space": 2
                 }
             },
             {
