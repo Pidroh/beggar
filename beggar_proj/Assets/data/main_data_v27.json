@@ -343,22 +343,42 @@
             {
                 "id": "periodic_house_report",
                 "name": "Periodic house reports",
-                "require": "organized_crime",
+                "require": "organized_crime>=2",
                 "desc": "Make your followers gather intel on various houses and schedules",
                 "duration": 50,
                 "max": 1,
                 "cost": {
-                    "thoughts": 300,
+                    "charm": 25,
                     "clarity": 50,
                     "followers": 3,
                     "breakinlogistics": 3
                 },
                 "run": {
-                    "thoughts": 10,
-                    "clarity": 2
+                    "charm": 1,
+                    "clarity": 1
                 },
                 "mods":{
                     "followers.mod.breakinlogistics.rate": 0.001
+                }
+            },
+            {
+                "id": "crime_tax",
+                "name": "Crime tax",
+                "require": "organized_crime>=1",
+                "desc": "Retain some of the revenue from the criminal activities of your followers",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "charm": 25,
+                    "clarity": 50,
+                    "followers": 3
+                },
+                "run": {
+                    "charm": 1,
+                    "clarity": 1
+                },
+                "mods":{
+                    "followers.mod.coin.rate": 0.1
                 }
             },
             {
