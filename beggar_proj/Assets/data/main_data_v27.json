@@ -382,6 +382,26 @@
                 }
             },
             {
+                "id": "distributed_wallet",
+                "name": "Distributed wallet",
+                "require": "crime_tax",
+                "desc": "Ask your followers to hold on to some of your coins",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "charm": 25,
+                    "clarity": 50,
+                    "followers": 3
+                },
+                "run": {
+                    "charm": 1,
+                    "clarity": 1
+                },
+                "mods":{
+                    "followers.mod.coin.max": 10
+                }
+            },
+            {
                 "id": "preparebreakin",
                 "name": "Prepare for breaking in",
                 "require": "housebreaking",
