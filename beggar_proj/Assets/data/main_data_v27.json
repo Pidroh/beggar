@@ -6,7 +6,10 @@
                 "id": "realization",
                 "name": "Realization",
                 "max": 1,
-                "desc": "New understanding that comes from deep thought"
+                "desc": "New understanding that comes from deep thought",
+                "mod": {
+
+                }
             },
             {
                 "id": "musing",
@@ -424,6 +427,24 @@
                 "mods":{
                     "simple_chest.mod.coin.max": 750,
                     "stolen_chest.mod.coin.max": 850
+                }
+            },
+            {
+                "id": "crime_higher",
+                "name": "Crime groundwork",
+                "require": "crime>=4&&security",
+                "desc": "Now that you have the criminal know-how and a safe place to store things, you can aim higher",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "realization": 3,
+                    "guilt": 100
+                },
+                "run": {
+                    "reflection": 1
+                },
+                "mods":{
+                    "guilt.max": 100
                 }
             },
             {
