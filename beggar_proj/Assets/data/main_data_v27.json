@@ -157,7 +157,7 @@
                 "id": "breakinsteal_rich",
                 "name": "Mansion hoist",
                 "require": "crime_higher",
-                "desc": "Finally time to steal from the rich",
+                "desc": "Finally time to steal big from those rich bastards",
                 "duration": 100,
                 "need": "danger<5",
                 "cost": {
@@ -166,7 +166,7 @@
                     "breakinlogistics": 100
                 },
                 "result": {
-                    "coin": "400~1500",
+                    "coin": "450~1500",
                     "guilt": 100
                 }
             },
@@ -266,6 +266,29 @@
                         "steal.success_rate": 45,
                         "steal.speed": 50,
                         "steal.result.coin": 2
+                   }
+                }
+            },
+            {
+                "id": "incentivized_crime",
+                "name": "Incentived crime",
+                "require": "organized_crime>=3",
+                "desc": "Offer luxuries and a good life to motivate your followers",
+                "duration": 5,
+                "buy": {
+                    "luxury": 70,
+                    "reflection": 5
+                },
+                "cost": {
+                    "luxury": 30,
+                    "followers": 5,
+                    "guilt": 30,
+                    "coin": 30
+                },
+                "dot": {
+                    "duration": 50,
+                    "mod": {
+                        "coin.rate": 8
                    }
                 }
             },
