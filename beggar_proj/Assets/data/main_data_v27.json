@@ -922,6 +922,45 @@
                 }
             },
             {
+                "id": "meat_sometimes",
+                "name": "Access to the eventual piece meat",
+                "desc": "Gain access to some meat for when you want to live the good life",
+                "require": "extravagance>=3",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "coin": 10,
+                    "luxury": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "coin": 1
+                },
+                "mod": {
+                    "nutrition.max": 20,
+                    "extravagantlife.dot.mod.luxury.rate": 1
+                }
+            },
+            {
+                "id": "meat_everyday",
+                "name": "Access to meat everyday",
+                "desc": "When you wanna the red stuff every day, we got you",
+                "require": "meat_sometimes",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "coin": 60,
+                    "luxury": 10,
+                    "clarity": 5
+                },
+                "run": {
+                    "coin": 2
+                },
+                "mod": {
+                    "extravagantlife.dot.mod.luxury.rate": 1
+                }
+            },
+            {
                 "id": "order_house_document",
                 "name": "Order fake housing contract",
                 "desc": "Illegaly forge a right to a small house in the city",
