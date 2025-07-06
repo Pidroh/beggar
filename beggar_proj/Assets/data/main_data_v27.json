@@ -961,6 +961,25 @@
                 }
             },
             {
+                "id": "spices_sugar",
+                "name": "Spices and sugar",
+                "desc": "Access to an assortment of various spices and sugars",
+                "require": "meat_sometimes",
+                "duration": 60,
+                "max": 1,
+                "cost": {
+                    "coin": 200,
+                    "luxury": 10,
+                    "clarity": 5
+                },
+                "run": {
+                    "coin": 2
+                },
+                "mod": {
+                    "extravagantlife.dot.mod.luxury.rate": 2
+                }
+            },
+            {
                 "id": "order_house_document",
                 "name": "Order fake housing contract",
                 "desc": "Illegaly forge a right to a small house in the city",
