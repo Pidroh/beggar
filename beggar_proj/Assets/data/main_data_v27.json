@@ -902,6 +902,26 @@
                 }
             },
             {
+                "id": "shower_everyday",
+                "name": "Shower every day",
+                "desc": "Wash yourself every single day. Smells better, cleaner, and healthier",
+                "require": "extravagance>=2",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "coin": 50,
+                    "luxury": 3,
+                    "clarity": 5
+                },
+                "run": {
+                    "coin": 1
+                },
+                "mod": {
+                    "nutrition.max": 10,
+                    "extravagantlife.dot.mod.luxury.rate": 1
+                }
+            },
+            {
                 "id": "order_house_document",
                 "name": "Order fake housing contract",
                 "desc": "Illegaly forge a right to a small house in the city",
