@@ -980,6 +980,25 @@
                 }
             },
             {
+                "id": "personal_musician",
+                "name": "Private musician",
+                "desc": "A musician to play for you, as necessary",
+                "require": "extravagance>=3",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "coin": 80,
+                    "luxury": 10,
+                    "clarity": 5
+                },
+                "run": {
+                    "coin": 3
+                },
+                "mod": {
+                    "extravagantlife.dot.mod.luxury.rate": 1
+                }
+            },
+            {
                 "id": "order_house_document",
                 "name": "Order fake housing contract",
                 "desc": "Illegaly forge a right to a small house in the city",
