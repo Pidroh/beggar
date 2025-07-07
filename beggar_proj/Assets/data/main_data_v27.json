@@ -193,7 +193,7 @@
             {
                 "id": "lookcrime_1",
                 "name": "Criminal smile",
-                "require": "appearance>0&&crime>0",
+                "require": "appearances>0&&crime>0",
                 "desc": "A smile that hides true intentions",
                 "duration": 25,
                 "max": 1,
@@ -210,7 +210,7 @@
             {
                 "id": "lookcrime_2",
                 "name": "Criminal smile II",
-                "require": "appearance>1&&crime>1",
+                "require": "appearances>1&&crime>1",
                 "desc": "A sly smile that hides true intentions",
                 "max": 1,
                 "duration": 25,
@@ -228,7 +228,7 @@
             {
                 "id": "lookcrime_3",
                 "name": "Criminal smile III",
-                "require": "appearance>2&&crime>2",
+                "require": "appearances>2&&crime>2",
                 "desc": "A radiant smile that hides true intentions",
                 "duration": 25,
                 "max": 1,
@@ -346,7 +346,7 @@
             {
                 "id": "rest_looks",
                 "name": "Focus on looks",
-                "require": "appearance",
+                "require": "appearances",
                 "desc": "Honing attraction while resting",
                 "duration": 50,
                 "max": 1,
@@ -1508,7 +1508,7 @@
                 "mod": {
                     "looks.rate": 0.5,
                     "looks.max": 20,
-                    "appearance.max": 1,
+                    "appearances.max": 1,
                     "crime.rate": -0.1,
                     "space": 1
                 }

@@ -76,7 +76,7 @@ function DisplayResults(currentResults) {
 }
 
 // Example usage: ../Assets/data/
-const fileNames = ['main_data_v15.json', 'main_data_v20.json', 'main_data_v50.json'];
+const fileNames = ['main_data_v15.json', 'main_data_v20.json', 'main_data_v25.json', 'main_data_v27.json'];
 const finalResults = processJsonFiles(fileNames);
 DisplayResults(finalResults);
 //console.log(finalResults);
