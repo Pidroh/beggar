@@ -29,6 +29,33 @@
                 }
             },
             {
+                "id": "pondercrime",
+                "name": "What does it mean to be rich?",
+                "desc": "Embask in luxury as you ponder what it all means",
+                "require": "t_tier4&&luxury>10",
+                "max": 1,
+                "duration": 90,
+                "tags": "ending_game",
+                "cost":{
+                    "coin": 1200,
+                    "clarity": 90,
+                    "supplication": 1100,
+                    "reflection": 18,
+                    "realization": 1,
+                    "luxury": 30
+                },
+                "run":{
+                    "luxury": 1,
+                    "coin": 15,
+                    "thoughts": 10,
+                    "supplication": 10,
+                    "musing": 1
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            },
+            {
                 "id": "ponderhappiness",
                 "name": "What is happiness?",
                 "desc": "Ask your cat about the nature of happiness",
@@ -52,7 +79,7 @@
                 "id": "ponderreligion",
                 "name": "What are the teachings?",
                 "desc": "Ponder with all your might on the meaning of religion",
-                "require": "t_tier4&&jointhechurch&&churchrespect>100",
+                "require": "t_tier3&&jointhechurch&&churchrespect>100",
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
