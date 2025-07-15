@@ -1035,6 +1035,38 @@
                 "mod": {
                     "space.max": 16
                 }
+            },
+            {
+                "id": "modest_house",
+                "name": "Modest house",
+                "require": "coin>100&&luxury>10",
+                "tag": "safe_house",
+                "cost": {
+                    "coin": 550,
+                    "luxury": 30
+                },
+                "desc": "Your own house, with two floors. A bit cramped, but it's yours",
+                "mod": {
+                    "luxury.max": 5,
+                    "luxury.rate": 0.1,
+                    "space.max": 25
+                }
+            },
+            {
+                "id": "three_floor_house",
+                "name": "Three floor house",
+                "require": "coin>1000&&luxury>30",
+                "tag": "safe_house",
+                "cost": {
+                    "coin": 1400,
+                    "luxury": 30
+                },
+                "desc": "A fancy place, three floors, very spaceful",
+                "mod": {
+                    "luxury.max": 5,
+                    "luxury.rate": 1,
+                    "space.max": 40
+                }
             }
         ]
     },
