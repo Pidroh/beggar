@@ -385,6 +385,19 @@
                 }
             },
             {
+                "id": "tier4reach",
+                "name": "Growth IV",
+                "desc": "You seem to have reached yet a new stage in life?",
+                "require": "t_tier4",
+                "duration": 100,
+                "max": 1,
+                "mod": {
+                    "skilled.max": 1,
+                    "clarity.max": 50,
+                    "reflection.max": 3
+                }
+            },
+            {
                 "id": "periodic_house_report",
                 "name": "Periodic house reports",
                 "require": "organized_crime>=2",
@@ -1118,7 +1131,7 @@
                 "id" : "underboss",
                 "name": "Underboss",
                 "desc" : "The sub-leader of a small crime organization in the city",
-                "tags": "t_tier4",
+                "tags": "t_tier4,crime_leader",
                 "lock": "t_tier4",
                 "require": "t_tier3&&followers>0&&crime>2",
                 "need": "theself_4&&crime>3",
@@ -1268,7 +1281,7 @@
             {
                 "id": "extravagance",
                 "desc": "Some things in life require quite a bit of money",
-                "require": "apparance>1",
+                "require": "appearances>1",
                 "tags": "social",
                 "cost": {
                     "looks": 10,

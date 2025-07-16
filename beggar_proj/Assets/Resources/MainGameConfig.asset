@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MainGameConfig
   m_EditorClassIdentifier: 
   majorVersion: 0
-  versionNumber: 25
+  versionNumber: 27
   patchVersion: 1
   gameTitle: beggar_incremental
   betaVersion: 0

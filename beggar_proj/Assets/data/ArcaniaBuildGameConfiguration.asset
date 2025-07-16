@@ -37,10 +37,11 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
     - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
+    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
     - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
     buildConfigId: web_patreon
     majorVersionOverride: 0
-    versionOverride: 25
+    versionOverride: 27
     patchOverride: 1
   - id: patreon_dev
     jsonDatas:
