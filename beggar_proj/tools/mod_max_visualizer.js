@@ -1,4 +1,5 @@
 const fs = require('fs');
+const readline = require('readline');
 
 function processJsonFilesMods(fileNames, id) {
     const targetSuffix = `${id}.max`;
@@ -38,10 +39,7 @@ function processJsonFilesMods(fileNames, id) {
 
 function displayModResults(results, id) {
     for (const type in results) {
-        
-        if (results[type].length === 0) {
-            continue;
-        }
+        if (results[type].length === 0) continue;
         console.log(type);
         results[type].sort((a, b) => b.value - a.value);
         for (const item of results[type]) {
@@ -53,8 +51,15 @@ function displayModResults(results, id) {
     }
 }
 
-// Example usage
-const fileNames = ['main_data_v15.json', 'main_data_v20.json', 'main_data_v25.json', 'main_data_v27.json'];
-const targetModId = 'luxury'; // change to whatever mod you're tracking
-const results = processJsonFilesMods(fileNames, targetModId);
-displayModResults(results, targetModId);
+// Read input from user
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question('Enter target mod ID (e.g., luxury): ', (targetModId) => {
+    const fileNames = ['main_data_v15.json', 'main_data_v20.json', 'main_data_v25.json', 'main_data_v27.json'];
+    const results = processJsonFilesMods(fileNames, targetModId);
+    displayModResults(results, targetModId);
+    rl.close();
+});
