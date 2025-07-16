@@ -6,18 +6,27 @@ using UnityEngine;
 public class IDPointer : IEnumerable<RuntimeUnit>
 {
     public IEnumerable<RuntimeUnit> RuntimeUnits => GetEnumerable();
+    public bool noRuntimeUnit;
 
     private IEnumerable<RuntimeUnit> GetEnumerable()
     {
+        
         if (Tag != null) return Tag.UnitsWithTag;
+        _listOfRunTimeForEnumeration ??= new();
         if (RuntimeUnit == null) 
         {
+            if (!noRuntimeUnit && id == "space")
+            {
+                noRuntimeUnit = true;
+            }
+            if (noRuntimeUnit)
+            {
+                return _listOfRunTimeForEnumeration;
+            }
             Debug.LogError($"ERROR: ID Pointer {id} seems to be invalid");
         }
-        if (_listOfRunTimeForEnumeration == null) 
+        if (_listOfRunTimeForEnumeration.Count == 0) 
         {
-            
-            _listOfRunTimeForEnumeration = new();
             _listOfRunTimeForEnumeration.Add(RuntimeUnit);
         }
         return _listOfRunTimeForEnumeration;
