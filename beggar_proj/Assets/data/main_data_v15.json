@@ -371,7 +371,7 @@
                 },
                 "mod":{
                     "clarity.max": 5,
-                    "organizethoughts.effect.clarity": 1
+                    "organizethoughts.result.clarity": 1
                 }
             },
             {
@@ -2229,7 +2229,7 @@
                 "mod": {
                     "contemplation.max": 1,
                     "clarity.max": 3,
-                    "organizethoughts.effect.clarity": 1,
+                    "organizethoughts.result.clarity": 1,
                     "space": 1
                 }
             },

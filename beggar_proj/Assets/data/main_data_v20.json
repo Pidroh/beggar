@@ -100,7 +100,7 @@
                 },
                 "mod":{
                     "think.effect.thoughts": 2,
-                    "organizethoughts.effect.clarity": 1
+                    "organizethoughts.result.clarity": 1
                 }
             },
             {
@@ -719,7 +719,7 @@
                 "mod":{
                     "reflection.max": 5,
                     "clarity.max": 10,
-                    "organizethoughts.effect.clarity": 1
+                    "organizethoughts.result.clarity": 1
                 }
             },
             {

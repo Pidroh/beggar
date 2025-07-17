@@ -456,8 +456,9 @@ public static class JGameControlExecuter
             }
             hasAnyVisible |= ttv.Visible;
             if (!ttv.Visible) continue;
+            var resourceChangeChanger = item.ModType == ModType.ResourceChangeChanger;
             var noShowSourceNumber = item.Source.Value == 1;
-            var noShowIntermediaryNumber = (item.Intermediary?.RuntimeUnit?.Value ?? 1) == 1;
+            var noShowIntermediaryNumber = (item.Intermediary?.RuntimeUnit?.Value ?? 1) == 1 || resourceChangeChanger;
             var needsParenthesis = !noShowSourceNumber || !noShowIntermediaryNumber;
             var negativeValue = item.Value < 0;
             var sourceValueToUse = negativeValue ? item.Value * -1 : item.Value;

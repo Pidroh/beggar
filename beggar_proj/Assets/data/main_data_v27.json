@@ -177,6 +177,7 @@
                 "require": "thief",
                 "desc": "Be true to what you are",
                 "duration": 60,
+                "max": 1,
                 "cost": {
                     "thoughts": 80,
                     "clarity": 3,
@@ -507,7 +508,6 @@
                 "require": "housebreaking",
                 "desc": "Prepare yourself and your tools for commiting buglary",
                 "duration": 10,
-                "max": 1,
                 "buy": {
                     "clarity": 10
                 },
@@ -1108,7 +1108,7 @@
                 "id" : "burglar",
                 "name": "Burglar",
                 "desc" : "Keep your door's closed. Not that it will help you.",
-                "tags": "t_tier3",
+                "tags": "t_tier3,tier_3_crime",
                 "lock": "t_tier3",
                 "require": "theself_3&&crime>2&&housebreaking>0",
                 "need": "theself_3&&housebreaking>2",
@@ -1131,7 +1131,7 @@
                 "id" : "underboss",
                 "name": "Underboss",
                 "desc" : "The sub-leader of a small crime organization in the city",
-                "tags": "t_tier4,crime_leader",
+                "tags": "t_tier4,crime_leader,tier_3_crime",
                 "lock": "t_tier4",
                 "require": "t_tier3&&followers>0&&crime>2",
                 "need": "theself_4&&crime>3",
@@ -1178,7 +1178,7 @@
                 "id": "crime",
                 "desc": "How much you know about breaking the law",
                 "require": "cunning>2&&guilt>10",
-                "tags": "cunning",
+                "tags": "cunning_tag",
                 "cost": {
                     "skillpoints": 50
                 },
@@ -1191,7 +1191,7 @@
                 "name": "Organized crime",
                 "desc": "Breaking the law with a big group",
                 "require": "crime_leader",
-                "tags": "cunning",
+                "tags": "cunning_tag",
                 "cost": {
                     "skillpoints": 50,
                     "followers": 3
@@ -1205,7 +1205,7 @@
                 "id": "stealth",
                 "desc": "That which cannot be detected",
                 "require": "cunning>2&&exercise>2",
-                "tags": "cunning",
+                "tags": "cunning_tag",
                 "cost": {
                     "skillpoints": 50
                 },
@@ -1221,7 +1221,7 @@
                 "name": "Housebreaking",
                 "desc": "The art of entering into a building when you're not supposed to do so.",
                 "require": "cunning>2&&guilt>10&&crime>2",
-                "tags": "cunning",
+                "tags": "cunning_tag",
                 "cost": {
                     "skillpoints": 50
                 },
