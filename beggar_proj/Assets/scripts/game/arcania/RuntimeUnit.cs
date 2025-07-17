@@ -32,10 +32,12 @@ public class RuntimeUnit
 
     public bool Visible => ParentRU?.Visible ?? (RequireMet && IsPossiblyVisibleRegardlessOfRequire());
 
+
     public bool IsPossiblyVisibleRegardlessOfRequire()
     {
         if (this.HasModActive(ModType.Lock)) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
+        if (Activatable && !HasModActive(ModType.Activate)) return false;
         return true;
     }
 
