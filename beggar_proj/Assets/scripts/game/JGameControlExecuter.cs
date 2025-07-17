@@ -456,6 +456,7 @@ public static class JGameControlExecuter
             }
             hasAnyVisible |= ttv.Visible;
             if (!ttv.Visible) continue;
+            if (item.ModType == ModType.Activate) continue;
             var resourceChangeChanger = item.ModType == ModType.ResourceChangeChanger;
             var noShowSourceNumber = item.Source.Value == 1;
             var noShowIntermediaryNumber = (item.Intermediary?.RuntimeUnit?.Value ?? 1) == 1 || resourceChangeChanger;

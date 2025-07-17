@@ -150,8 +150,8 @@ public class JsonReader
                     mod.HumanTextTarget = $"{SuccessRateLabel} ({sourceNameKey}):";
                     break;
                 case ModType.Activate:
-                    mod.HumanText = "Required for other tasks";
-                    mod.HumanTextTarget = $"Requires {sourceNameKey}";
+                    mod.HumanText = Local.GetText("Enables other tasks", "Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)");
+                    mod.HumanTextTarget = Local.GetText($"Enabled by an effect", "describing something that is enabled by another effect") + $" ({sourceNameKey})";
                     break;
                 default:
                     break;

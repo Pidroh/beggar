@@ -5,6 +5,10 @@
         data.DotRU.TaskProgress = 0;
         data.DotRU.SetValue(1);
     }
+    internal static void DotActionStopExternally(RuntimeUnit data)
+    {
+        data.DotRU.SetValue(0);
+    }
 
     public static void Update(ArcaniaModel model, float dt) 
     {

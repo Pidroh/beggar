@@ -44,6 +44,11 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
 
     public void StartActionExternally(RuntimeUnit data)
     {
+        if (data.DotRU != null && data.DotRU.DotConfig.Toggle && data.DotRU.Value > 0) 
+        {
+            ArcaniaModelDotCode.DotActionStopExternally(data);
+            return;
+        }
         if (!RunningTasks.Contains(data))
         {
             foreach (var tag in data.ConfigBasic.Tags)
