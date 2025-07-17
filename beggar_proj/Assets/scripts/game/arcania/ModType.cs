@@ -7,5 +7,6 @@
     Lock,
     ResourceChangeChanger,
     Speed,
-    SuccessRate
+    SuccessRate,
+    Activate
 }

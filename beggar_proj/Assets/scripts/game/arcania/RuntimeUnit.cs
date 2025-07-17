@@ -284,4 +284,5 @@ public class RuntimeUnit
     public RuntimeUnit DotRU { get; set; }
     public DotConfig DotConfig { get; set; }
     public RuntimeUnit ParentRU { get; internal set; }
+    public bool Activatable { get; internal set; }
 }

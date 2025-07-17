@@ -192,6 +192,10 @@ public class JsonReader
             foreach (var ru in mod.Target.RuntimeUnits)
             {
                 ru.RegisterModTargetingSelf(mod);
+                if (mod.ModType == ModType.Activate) 
+                {
+                    ru.Activatable = true;
+                }
             }
         }
         #endregion
@@ -570,6 +574,7 @@ public class JsonReader
                 if (last == "rate") modType = ModType.RateChange;
                 if (last == "speed") modType = ModType.Speed;
                 if (last == "success_rate") modType = ModType.SuccessRate;
+                if (last == "activate") modType = ModType.Activate;
 
                 // EXAMPLES:
                 //   crakedvase.mod.clarity.max
@@ -581,8 +586,6 @@ public class JsonReader
                 // if still undecided
                 if (modType == ModType.Invalid)
                 {
-                    // TODO make this be an dictionary between string and ResourceChangeType, so you can handle every case without hard coding
-                    // EXAMPLE: pleafocus.effect.supplication
                     if (oneBeforeLast != null && JsonReader.DictionaryOfChanges.TryGetValue(oneBeforeLast, out var v))
                     {
                         target = last;
