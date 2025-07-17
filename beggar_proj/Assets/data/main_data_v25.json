@@ -124,16 +124,18 @@
                 "name": "Cunning mind",
                 "desc": "Become able of performing cunning, often criminal activities",
                 "require": "cunning>0",
-                "duration": 1,
+                "duration": 2,
                 "buy": {
-
+                    "thoughts": 40
                 },
                 "cost": {
                     "supplication": 5
                 },
                 "dot":{
+                    "duration": 240,
+                    "toggle": true,
                     "mods":{
-                        "guilt.max": 5,
+                        "guilt.max": 15,
                         "cunning_style.activate": 1
                     }
                 }

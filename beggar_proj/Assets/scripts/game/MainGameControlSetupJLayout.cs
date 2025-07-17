@@ -457,7 +457,13 @@ public class MainGameControlSetupJLayout
                 var value = mod.Value;
                 
                 triple.SetTextRaw(0, mainText);
-                string secondaryText = null;
+                // activate mod has no number
+                if (mod.ModType == ModType.Activate) 
+                {
+                    triple.SetTextRaw(1, "");
+                    continue;
+                }
+                string secondaryText;
                 if (value > 0 && mod.ModType != ModType.SpaceConsumption)
                     secondaryText = $"+{value}";
                 else

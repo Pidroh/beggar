@@ -149,6 +149,10 @@ public class JsonReader
                     mod.HumanText = $"{targetTextKey} {SuccessRateLabel}:";
                     mod.HumanTextTarget = $"{SuccessRateLabel} ({sourceNameKey}):";
                     break;
+                case ModType.Activate:
+                    mod.HumanText = "Required for other tasks";
+                    mod.HumanTextTarget = $"Requires {sourceNameKey}";
+                    break;
                 default:
                     break;
             }
@@ -492,6 +496,11 @@ public class JsonReader
                         dc.Duration = c.Value.AsInt;
                     }
                     break;
+                case "toggle":
+                    {
+                        dc.Toggle = c.Value.AsBool;
+                    }
+                    break;
                 case "mods":
                 case "mod":
                     {
@@ -734,6 +743,7 @@ public class ModRuntime
 public class DotConfig
 {
     public int Duration { get; internal set; }
+    public bool Toggle { get; internal set; }
 }
 
 public class ResourceChange
