@@ -120,6 +120,25 @@
                 }
             },
             {
+                "id": "cunning_mind",
+                "name": "Cunning mind",
+                "desc": "Become able of performing cunning, often criminal activities",
+                "require": "cunning>0",
+                "duration": 1,
+                "buy": {
+
+                },
+                "cost": {
+                    "supplication": 5
+                },
+                "dot":{
+                    "mods":{
+                        "guilt.max": 5,
+                        "cunning_style.activate": 1
+                    }
+                }
+            },
+            {
                 "id": "fabricated_emotions",
                 "name": "Fabricated emotions",
                 "desc": "Mimic others, copy their ways. Fake emotions",

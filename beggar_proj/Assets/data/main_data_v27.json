@@ -95,6 +95,7 @@
                 "name": "Hidden stash",
                 "desc": "Set up a momentary stash of money. Not the safest thing in the world so can't keep it forever.",
                 "require": "hidden_stash_furniture",
+                "tag": "cunning_style",
                 "buy": {
                     "guilt": 15,
                     "clarity": 20,
@@ -121,6 +122,7 @@
                 "require": "crime>0",
                 "desc": "Take what you want",
                 "duration": 20,
+                "tag": "cunning_style",
                 "success_rate": 25,
                 "need": "danger<10",
                 "cost": {
@@ -141,6 +143,7 @@
                 "name": "Breaking and taking",
                 "require": "housebreaking>0",
                 "desc": "Enter into a building and take what you can",
+                "tag": "cunning_style",
                 "duration": 25,
                 "need": "danger<10",
                 "cost": {
@@ -176,6 +179,7 @@
                 "name": "Steal like a thief",
                 "require": "thief",
                 "desc": "Be true to what you are",
+                "tag": "cunning_style",
                 "duration": 60,
                 "max": 1,
                 "cost": {
@@ -196,6 +200,7 @@
                 "name": "Criminal smile",
                 "require": "appearances>0&&crime>0",
                 "desc": "A smile that hides true intentions",
+                "tag": "cunning_style",
                 "duration": 25,
                 "max": 1,
                 "cost": {
@@ -213,6 +218,7 @@
                 "name": "Criminal smile II",
                 "require": "appearances>1&&crime>1",
                 "desc": "A sly smile that hides true intentions",
+                "tag": "cunning_style",
                 "max": 1,
                 "duration": 25,
                 "cost": {
@@ -231,6 +237,7 @@
                 "name": "Criminal smile III",
                 "require": "appearances>2&&crime>2",
                 "desc": "A radiant smile that hides true intentions",
+                "tag": "cunning_style",
                 "duration": 25,
                 "max": 1,
                 "cost": {
@@ -250,6 +257,7 @@
                 "name": "Shadow Hand",
                 "require": "thief&&stealth>=4",
                 "desc": "The invisible hand of theft",
+                "tag": "cunning_style",
                 "duration": 5,
                 "buy": {
                     "thoughts": 15,
@@ -275,6 +283,7 @@
                 "id": "incentivized_crime",
                 "name": "Incentived crime",
                 "require": "organized_crime>=3",
+                "tag": "cunning_style",
                 "desc": "Offer luxuries and a good life to motivate your followers",
                 "duration": 5,
                 "buy": {
@@ -300,6 +309,7 @@
                 "require": "thief&&crime>=4",
                 "desc": "Why steal less if you can steal more?",
                 "duration": 10,
+                "tag": "cunning_style",
                 "buy": {
                     "thoughts": 15,
                     "clarity": 15,
@@ -403,6 +413,7 @@
                 "name": "Periodic house reports",
                 "require": "organized_crime>=2",
                 "desc": "Make your followers gather intel on various houses and schedules",
+                "tag": "cunning_style",
                 "duration": 50,
                 "max": 1,
                 "cost": {
@@ -425,6 +436,7 @@
                 "name": "Crime tax",
                 "require": "organized_crime>=1",
                 "desc": "Retain some of the revenue from the criminal activities of your followers",
+                "tag": "cunning_style",
                 "duration": 40,
                 "max": 1,
                 "cost": {
@@ -489,6 +501,7 @@
                 "name": "Crime groundwork",
                 "require": "crime>=4&&security",
                 "desc": "Now that you have the criminal know-how and a safe place to store things, you can aim higher",
+                "tag": "cunning_style",
                 "duration": 40,
                 "max": 1,
                 "cost": {
@@ -507,6 +520,7 @@
                 "name": "Prepare for breaking in",
                 "require": "housebreaking",
                 "desc": "Prepare yourself and your tools for commiting buglary",
+                "tag": "cunning_style",
                 "duration": 10,
                 "buy": {
                     "clarity": 10

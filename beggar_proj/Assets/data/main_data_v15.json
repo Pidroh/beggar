@@ -438,7 +438,7 @@
                 "name": "Steal breadcrumbs",
                 "desc": "Casually pilfer scraps from unsuspecting neighbors",
                 "require": "cunning>0",
-                "tag": "thievery,beggary",
+                "tag": "thievery,beggary,cunning_style",
                 "duration": 3,
                 "result": {
                     "breadcrumbs": 10,
@@ -757,7 +757,7 @@
                 "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
                 "require": "pickpocketer",
                 "need": "danger<10",
-                "tag": "thievery",
+                "tag": "thievery,cunning_style",
                 "success_rate": 50,
                 "result": {
                     "danger": "0~2",
@@ -850,6 +850,7 @@
                 "duration": 10,
                 "require": "streetrat",
                 "max": 1,
+                "tag": "cunning_style",
                 "cost": {
                     "ratbond": 100,
                     "rats": 8
@@ -920,7 +921,7 @@
                 "id": "pickpocketrat",
                 "name": "Pickpocketing Rats",
                 "desc": "Coordinate stealing feats with your rats",
-                "tag": "pickpockter",
+                "tag": "pickpockter,cunning_style",
                 "require": "streetrat&&!pickpocket",
                 "duration": 15,
                 "max": 1,
@@ -938,10 +939,10 @@
                 "desc": "I'm hungry and no is gonna take care of me",
                 "duration": 8,
                 "max": 1,
-                "tag": "max_decrease",
+                "tag": "max_decrease,cunning_style",
                 "require": "stealbread>=3",
                 "mod":{
-                    "guilt.max": 20,
+                    "guilt.max": 25,
                     "gratitude.max": -5
                 },
                 "cost": {
