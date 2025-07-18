@@ -2281,6 +2281,7 @@
                         "unit_types": [
                             "TASK"
                         ],
+                        "priority": 1,
                         "require_instant": true
                     },
                     {
@@ -2289,7 +2290,7 @@
                         "unit_types": [
                             "TASK"
                         ],
-                        "default": true
+                        "priority": 0
                     },
                     {
                         "id": "crime",
@@ -2297,6 +2298,7 @@
                         "unit_types": [
                             "TASK"
                         ],
+                        "priority": 2,
                         "tags": "thievery,cunning_style"
                     },
                     {
@@ -2305,6 +2307,7 @@
                         "unit_types": [
                             "TASK"
                         ],
+                        "priority": 10,
                         "require_max": true
                     },
                     {
@@ -2312,7 +2315,8 @@
                         "name": "Classes",
                         "unit_types": [
                             "CLASS"
-                        ]
+                        ],
+                        "priority": 100
                     }
                 ]
             },
