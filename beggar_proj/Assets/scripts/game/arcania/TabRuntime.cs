@@ -24,11 +24,11 @@ public class TabRuntime
         public List<RuntimeUnit> BoundRuntimeUnits = new();
         public bool RequireMax;
         public bool RequireInstant;
-        public bool Default;
 
         public string Name { get; internal set; }
         public bool ShowSpace { get; internal set; }
         public string Id { get; internal set; }
         public List<IDPointer> Tags { get; internal set; }
+        public int Priority { get; internal set; }
     }
 }

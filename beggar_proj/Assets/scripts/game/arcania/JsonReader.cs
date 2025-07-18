@@ -234,6 +234,8 @@ public class JsonReader
                     TabRuntime.Separator unitSeparator = null;
                     foreach (var separatorCandidate in tabCandidates.Tab.Separators)
                     {
+                        // don't try to look at lower priority separators
+                        if (unitSeparator != null && unitSeparator.Priority >= separatorCandidate.Priority) continue;
                         if (separatorCandidate.AcceptedUnitTypes.Count > 0 && !separatorCandidate.AcceptedUnitTypes.Contains(dataList.Key)) continue;
                         
                         if (separatorCandidate.RequireMax && !item.HasMax) continue;
@@ -252,9 +254,6 @@ public class JsonReader
                         }
                         if (separatorCandidate.RequireInstant && item.ConfigTask.Duration > 0) continue;
                         unitSeparator = separatorCandidate;
-                        // this just makes it so the default one is the lowest priority one
-                        // TODO change this to a priority system
-                        if (!separatorCandidate.Default) break;
                     }
                     if (unitSeparator == null) continue;
                     unitSeparator.BoundRuntimeUnits.Add(item);
@@ -353,7 +352,7 @@ public class JsonReader
                         {
                             if (!localizeNameDescription && pair.Key == "name") sep.Name = pair.Value.AsString;
                             if (pair.Key == "id") sep.Id = pair.Value.AsString;
-                            if (pair.Key == "default") sep.Default = pair.Value.AsBool;
+                            if (pair.Key == "priority") sep.Priority = pair.Value.AsInt;
                             if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
                             if (pair.Key == "show_space") sep.ShowSpace = pair.Value.AsBool;
                             if (pair.Key == "require_instant") sep.RequireInstant = pair.Value.AsBool;
