@@ -2292,6 +2292,14 @@
                         "default": true
                     },
                     {
+                        "id": "crime",
+                        "name": "Criminal Activities",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "tags": "thievery,cunning_style"
+                    },
+                    {
                         "id": "power_up",
                         "name": "Power Ups",
                         "unit_types": [

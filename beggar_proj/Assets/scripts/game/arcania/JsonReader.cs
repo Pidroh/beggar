@@ -3,6 +3,7 @@ using HeartUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -234,9 +235,25 @@ public class JsonReader
                     foreach (var separatorCandidate in tabCandidates.Tab.Separators)
                     {
                         if (separatorCandidate.AcceptedUnitTypes.Count > 0 && !separatorCandidate.AcceptedUnitTypes.Contains(dataList.Key)) continue;
+                        
                         if (separatorCandidate.RequireMax && !item.HasMax) continue;
+                        if (separatorCandidate.Tags != null && separatorCandidate.Tags.Count > 0)
+                        {
+                            var hasTag = false;
+                            foreach (var tag in separatorCandidate.Tags)
+                            {
+                                if (tag.RuntimeUnits.Contains(item)) 
+                                {
+                                    hasTag = true;
+                                    break;
+                                }
+                            }
+                            if (!hasTag) continue;
+                        }
                         if (separatorCandidate.RequireInstant && item.ConfigTask.Duration > 0) continue;
                         unitSeparator = separatorCandidate;
+                        // this just makes it so the default one is the lowest priority one
+                        // TODO change this to a priority system
                         if (!separatorCandidate.Default) break;
                     }
                     if (unitSeparator == null) continue;
@@ -340,6 +357,10 @@ public class JsonReader
                             if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
                             if (pair.Key == "show_space") sep.ShowSpace = pair.Value.AsBool;
                             if (pair.Key == "require_instant") sep.RequireInstant = pair.Value.AsBool;
+                            if (pair.Key == "tags" || pair.Key == "tag") {
+                                sep.Tags ??= new();
+                                ReadTags(sep.Tags, pair.Value.AsString, arcaniaUnits); 
+                            }
                         }
                         if (localizeNameDescription) sep.Name = Local.GetText(sep.Id + "_name");
                     }

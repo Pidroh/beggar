@@ -29,5 +29,6 @@ public class TabRuntime
         public string Name { get; internal set; }
         public bool ShowSpace { get; internal set; }
         public string Id { get; internal set; }
+        public List<IDPointer> Tags { get; internal set; }
     }
 }
