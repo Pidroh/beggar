@@ -97,7 +97,7 @@
                 "desc": "Way beyond surface thought",
                 "require": "reflectivemood_dot",
                 "tag": "reflective_style",
-                "duration": 25,
+                "duration": 100,
                 "cost": {
                     "clarity": 75,
                     "realization": 10
