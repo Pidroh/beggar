@@ -92,6 +92,25 @@
                 }
             },
             {
+                "id": "deep_think",
+                "name": "Deep thinking",
+                "desc": "Way beyond surface thought",
+                "require": "reflectivemood_dot",
+                "tag": "reflective_style",
+                "duration": 25,
+                "cost": {
+                    "clarity": 75,
+                    "realization": 10
+                },
+                "run": {
+                    "supplication": 15,
+                    "thoughts": 15
+                },
+                "result":{
+                    "realization": 1
+                }
+            },
+            {
                 "id": "hidden_stash",
                 "name": "Hidden stash",
                 "desc": "Set up a momentary stash of money. Not the safest thing in the world so can't keep it forever.",
@@ -545,6 +564,7 @@
                 "name": "Muse away",
                 "desc": "Think away, give your musings space to breath",
                 "require": "emotions_loc_b",
+                "tag": "reflective_style",
                 "buy": {
                     "realization": 1,
                     "reflection": 15
@@ -589,6 +609,7 @@
                 "id": "musemax",
                 "name": "Amusement memory",
                 "desc": "Think up ways to organize memory and clean up space for your musings",
+                "tag": "reflective_style",
                 "require": "musing>20",
                 "duration": 35,
                 "max": 10,
