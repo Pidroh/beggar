@@ -950,7 +950,7 @@
             },
             {
                 "id": "meat_sometimes",
-                "name": "Access to the eventual piece meat",
+                "name": "Access to the eventual piece of meat",
                 "desc": "Gain access to some meat for when you want to live the good life",
                 "require": "extravagance>=3",
                 "duration": 50,

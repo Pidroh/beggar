@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ArcaniaConfig
   m_EditorClassIdentifier: 
   jsonDatas:
+  - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
   - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
   - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
   - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
