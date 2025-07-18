@@ -268,7 +268,7 @@ public static class JGameControlExecuter
                                     {
                                         if (unit.Data.BuyStatus == BuyStatus.NeedsBuy)
                                         {
-                                            unit.TitleText.SetTextRaw("Acquire " + unit.Data.Name);
+                                            unit.TitleText.SetTextRaw($"{ArcaniaCommonStrings.AcquireLocalLocalized} ({unit.Data.Name})");
                                         }
                                         else if (unit.Data.BuyStatus == BuyStatus.Bought)
                                         {
@@ -282,11 +282,19 @@ public static class JGameControlExecuter
                                         {
                                             unit.ButtonImageMain.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
                                             unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive_bar);
+                                            if(unit.Data.DotRU.DotConfig.Toggle) 
+                                            {
+                                                unit.TitleText.SetTextRaw($"{ArcaniaCommonStrings.DeactivateLocalLocalized} ({unit.Data.Name})");
+                                            }
                                         }
                                         else
                                         {
                                             unit.ButtonImageMain.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
                                             unit.ButtonImageProgress.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
+                                            if (unit.Data.DotRU.DotConfig.Toggle)
+                                            {
+                                                unit.TitleText.SetTextRaw(unit.Data.Name);
+                                            }
                                         }
                                     }
                                     if (!running && unit.Data.DotRU != null && unit.Data.DotRU.Value != 0)

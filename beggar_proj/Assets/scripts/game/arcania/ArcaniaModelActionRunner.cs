@@ -259,7 +259,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             bool restActionStarted = TryStartRestAction();
             if (!restActionStarted) return;
             // if it is resting after doing an action that has an active dot, do not make the action an interruption target
-            if (InterruptedAction.DotRU != null && InterruptedAction.DotRU.Value > 0) return;
+            if (run != null && run.DotRU != null && run.DotRU.Value > 0) return;
             InterruptedAction = run;
 
         }

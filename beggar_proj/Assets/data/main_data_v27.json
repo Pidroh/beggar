@@ -24,7 +24,7 @@
                 "desc": "A state of comfort and elegance",
                 "mod":{
                     "luxury.rate": -0.3,
-                    "coin.rate": -0.05
+                    "coin.rate": -0.001
                 }
             },
             {
@@ -86,7 +86,8 @@
                         "organizethoughts.speed": 200,
                         "thoughts.rate": 10,
                         "revisit_thoughts.result.reflection": 2,
-                        "thinklife.max": 3
+                        "thinklife.max": 3,
+                        "reflective_style.activate": 1
                     }
                 }
             },
