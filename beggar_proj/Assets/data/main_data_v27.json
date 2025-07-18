@@ -1055,8 +1055,8 @@
                 "require": "normal_house_access",
                 "tag": "safe_house",
                 "cost": {
-                    "churchrespect": 30,
-                    "faith": 10
+                    "thoughts": 200,
+                    "clarity": 30
                 },
                 "desc": "Living quarters on top of a shop. A safe place.",
                 "mod": {
@@ -1568,7 +1568,7 @@
                     "looks.rate": 0.5,
                     "looks.max": 20,
                     "appearances.max": 1,
-                    "crime.rate": -0.1,
+                    "coin.rate": -0.1,
                     "space": 1
                 }
             },

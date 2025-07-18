@@ -218,7 +218,7 @@ public class MainGameControlSetupJLayout
                     var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
 
                     var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION;
-                    var hasTitleWithValue = unitType == UnitType.SKILL || unitType == UnitType.FURNITURE;
+                    var hasTitleWithValue = unitType == UnitType.SKILL;
                     var hasXPBar = unitType == UnitType.SKILL;
                     var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE);
                     var hasPlusMinusButton = unitType == UnitType.FURNITURE;
