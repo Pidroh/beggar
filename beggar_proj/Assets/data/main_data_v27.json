@@ -1582,7 +1582,7 @@
                 },
                 "mod": {
                     "breakinlogistics.max": 10,
-                    "preparebreakin.mod.breakinlogistics.rate": 0.05,
+                    "preparebreakin_dot.mod.breakinlogistics.rate": 0.05,
                     "space": 1
                 }
             },
@@ -1598,7 +1598,7 @@
                 },
                 "mod": {
                     "breakinlogistics.max": 10,
-                    "preparebreakin.mod.breakinlogistics.rate": 0.1,
+                    "preparebreakin_dot.mod.breakinlogistics.rate": 0.1,
                     "space": 1
                 }
             },
