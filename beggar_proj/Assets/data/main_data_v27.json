@@ -8,7 +8,9 @@
                 "max": 1,
                 "desc": "New understanding that comes from deep thought",
                 "mod": {
-
+                    "reflection.max": 1,
+                    "clarity.max": 10,
+                    "thoughts.max": 50
                 }
             },
             {
@@ -55,8 +57,8 @@
                     "reflection": 10
                 },
                 "run": {
-                    "clarity": 2,
-                    "thoughts": 10
+                    "clarity": 5,
+                    "thoughts": 30
                 },
                 "mod": {
                     "reflection.max": 2,
@@ -99,12 +101,12 @@
                 "tag": "reflective_style",
                 "duration": 100,
                 "cost": {
-                    "clarity": 75,
-                    "realization": 10
+                    "clarity": 80,
+                    "reflection": 10
                 },
                 "run": {
-                    "supplication": 15,
-                    "thoughts": 15
+                    "supplication": 30,
+                    "thoughts": 30
                 },
                 "result":{
                     "realization": 1
@@ -971,6 +973,40 @@
                 }
             },
             {
+                "id": "forager_realization",
+                "name": "Deep foraging",
+                "desc": "Throughly rethink how you search for lost goods",
+                "require": "realization",
+                "duration": 15,
+                "max": 1,
+                "cost": {
+                    "realization": 1
+                },
+                "run": {
+                    "thoughts": 40
+                },
+                "mod": {
+                    "foraging.max": 150,
+                    "pleafocus.effect.foraging": 5
+                }
+            },
+            {
+                "id": "charismatic_leader_weak",
+                "name": "Charismatic leadership",
+                "desc": "Lead and charm, come followers!",
+                "require": "charisma>=4",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "charm": 20,
+                    "looks": 15
+                },
+                "mod": {
+                    "followers.max": 7,
+                    "charm.max": 25
+                }
+            },
+            {
                 "id": "meat_sometimes",
                 "name": "Access to the eventual piece of meat",
                 "desc": "Gain access to some meat for when you want to live the good life",
@@ -1419,6 +1455,25 @@
                     "reflection.max": 3,
                     "childdrawing.mod.reflection.max": 2,
                     "clarity.rate": 0.3,
+                    "reflectivemood.speed": 100,
+                    "space": 1
+                }
+            },
+            {
+                "id": "musingswood2",
+                "name": "Wood art II",
+                "desc": "Break the current expression and bring out something new",
+                "require": "deep_think>0",
+                "max": 5,
+                "cost": {
+                    "reflection": 15,
+                    "musingswood": 1
+                },
+                "mod": {
+                    "realization.max": 1,
+                    "childdrawing.mod.realization.max": 1,
+                    "deep_think.speed": 150,
+                    "reflection.rate": 0.01,
                     "reflectivemood.speed": 100,
                     "space": 1
                 }

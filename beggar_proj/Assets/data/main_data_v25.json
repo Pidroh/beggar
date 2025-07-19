@@ -154,6 +154,21 @@
                 }
             },
             {
+                "id": "think_reflection",
+                "name": "Reflections on thinking",
+                "desc": "Think about thought, about the intangible",
+                "require": "reflection>1",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "reflection": 3
+                },
+                "mod":{
+                    "think.effect.thoughts": 5,
+                    "think.speed": 50
+                }
+            },
+            {
                 "id": "poor_feast",
                 "name": "Humble feast",
                 "desc": "Organize a small feast for your fellow beggars",
