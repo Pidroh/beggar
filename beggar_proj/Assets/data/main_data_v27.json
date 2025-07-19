@@ -1294,7 +1294,7 @@
                 "id": "housebreaking",
                 "name": "Housebreaking",
                 "desc": "The art of entering into a building when you're not supposed to do so.",
-                "require": "cunning>2&&guilt>10&&crime>2",
+                "require": "cunning>2&&guilt>10&&crime>2&&t_tier1",
                 "tags": "cunning_tag",
                 "cost": {
                     "skillpoints": 50
