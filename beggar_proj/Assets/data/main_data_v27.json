@@ -969,7 +969,7 @@
                 },
                 "mod": {
                     "nutrition.max": 10,
-                    "extravagantlife.dot.mod.luxury.rate": 1
+                    "extravagantlife_dot.mod.luxury.rate": 1
                 }
             },
             {
@@ -1023,7 +1023,7 @@
                 },
                 "mod": {
                     "nutrition.max": 20,
-                    "extravagantlife.dot.mod.luxury.rate": 1
+                    "extravagantlife_dot.mod.luxury.rate": 1
                 }
             },
             {
@@ -1042,7 +1042,7 @@
                     "coin": 2
                 },
                 "mod": {
-                    "extravagantlife.dot.mod.luxury.rate": 1
+                    "extravagantlife_dot.mod.luxury.rate": 1
                 }
             },
             {
@@ -1061,7 +1061,7 @@
                     "coin": 2
                 },
                 "mod": {
-                    "extravagantlife.dot.mod.luxury.rate": 2
+                    "extravagantlife_dot.mod.luxury.rate": 2
                 }
             },
             {
@@ -1080,7 +1080,7 @@
                     "coin": 3
                 },
                 "mod": {
-                    "extravagantlife.dot.mod.luxury.rate": 1
+                    "extravagantlife_dot.mod.luxury.rate": 1
                 }
             },
             {
