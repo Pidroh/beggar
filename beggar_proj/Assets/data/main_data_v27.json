@@ -118,6 +118,7 @@
                 "desc": "Attempt to take your studies to the next level",
                 "require": "latinreading&&academia>=3&&realization>=1",
                 "duration": 40,
+                "max": 1,
                 "cost": {
                     "realization": 1
                 },
@@ -142,6 +143,41 @@
                 },
                 "result": {
                     "academics": 1
+                }
+            },
+            {
+                "id": "betterreading2",
+                "name": "Even better reading",
+                "desc": "Learn how to focus even more on your reading",
+                "require": "academics>0",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "academics": 1,
+                    "fundamentals": 10
+                },
+                "mod": {
+                    "study.speed": 50,
+                    "study.effect.fundamentals": 0.5,
+                    "academics_gen.speed": 20
+                }
+            },
+            {
+                "id": "studydialectic",
+                "name": "Study dialectic",
+                "desc": "Integrate opposing views through dialog",
+                "require": "academics>0",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "academics": 1,
+                    "fundamentals": 10,
+                    "thoughts": 400,
+                    "realization": 1
+                },
+                "mod": {
+                    "think.result.thoughts": 20,
+                    "organizethoughts.result.clarity": 4
                 }
             },
             {
@@ -1341,7 +1377,7 @@
                 "name": "Scribing",
                 "desc": "The art of copying words. Preservation and sharing of information.",
                 "require": "latin>2&&t_tier2",
-                "tags": "academics",
+                "tags": "academic_skill",
                 "cost": {
                     "skillpoints": 50
                 },
@@ -1354,7 +1390,7 @@
                 "name": "Debating",
                 "desc": "Discussion is an exchange of knowledge; an argument an exchange of ignorance",
                 "require": "philosophy>2&&academia>2",
-                "tags": "academics",
+                "tags": "academic_skill",
                 "max": 1,
                 "cost": {
                     "reflection": 5,
