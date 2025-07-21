@@ -113,6 +113,38 @@
                 }
             },
             {
+                "id": "great_study",
+                "name": "Intermediate studies",
+                "desc": "Attempt to take your studies to the next level",
+                "require": "latinreading&&academia>=3&&realization>=1",
+                "duration": 40,
+                "cost": {
+                    "realization": 1
+                },
+                "run": {
+                    "thoughts": 5
+                },
+                "mod": {
+                    "fundamentals.max": 20,
+                    "study.speed": 30
+                }
+            },
+            {
+                "id": "academics_gen",
+                "name": "Comprehend",
+                "desc": "Take your knowledge one step further",
+                "require": "great_study",
+                "duration": 40,
+                "run": {
+                    "thoughts": 30,
+                    "clarity": 4,
+                    "fundamentals": 1
+                },
+                "result": {
+                    "academics": 1
+                }
+            },
+            {
                 "id": "hidden_stash",
                 "name": "Hidden stash",
                 "desc": "Set up a momentary stash of money. Not the safest thing in the world so can't keep it forever.",
