@@ -729,7 +729,7 @@
                 "tag": "joinchurch",
                 "require": "ecclesiology>2&&tonsure",
                 "duration": 120,
-                "lock": "beggary",
+                "lock": "beggary,not_church_class_automated",
                 "max": 1,
                 "cost": {
                     "churchrespect": 20,
