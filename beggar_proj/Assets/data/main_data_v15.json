@@ -1356,7 +1356,7 @@
                 "name": "Street Rat",
                 "desc": "Rat and man, working as one to empty all wallets",
                 "tags": "t_tier2,not_church_class_automated",
-                "lock": "t_tier2",
+                "lock": "t_tier2,jointhechurch",
                 "tag": "criminal",
                 "require": "rodentology>3&&agile&&stealbread>5&&t_tier1",
                 "need": "theself_2",
@@ -1377,7 +1377,7 @@
                 "name": "Rat Warden",
                 "desc": "You are the protector of fellow rats",
                 "tags": "t_tier2,not_church_class_automated",
-                "lock": "t_tier2",
+                "lock": "t_tier2,jointhechurch",
                 "need": "theself_2",
                 "require": "rodentology>=6&&ratbeggar&&t_tier1",
                 "cost": {
@@ -1395,7 +1395,7 @@
                 "name": "Cat Beggar",
                 "desc": "They call him the cat weirdo",
                 "tags": "t_tier2,not_church_class_automated",
-                "lock": "t_tier2",
+                "lock": "t_tier2,jointhechurch",
                 "need": "theself_2",
                 "require": "petcat&&felinology>0&&t_tier1",
                 "cost": {

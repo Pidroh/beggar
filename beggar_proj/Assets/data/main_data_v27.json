@@ -1232,7 +1232,7 @@
                 "name": "Thief",
                 "desc": "A person who steals without using force",
                 "tags": "t_tier2,not_church_class_automated",
-                "lock": "t_tier2",
+                "lock": "t_tier2,jointhechurch",
                 "require": "t_tier1&&crime>0&&stealth>0",
                 "need": "theself_2",
                 "cost": {

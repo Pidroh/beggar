@@ -31,8 +31,11 @@ async function main() {
             if (obj.type === 'CLASS' && Array.isArray(obj.items)) {
                 for (const item of obj.items) {
                     if (!WHITELIST.has(item.id)) {
-                        console.log(item.id);
-                        console.log(item.tags);
+                        if(item.tags.includes("t_tier2") && !item.lock.includes("jointhechurch"))
+                        {
+                            item.lock += "," + "jointhechurch";
+                            modified = true;
+                        }
                         if (typeof item.tags !== 'string' || item.tags.trim() === '') {
                             item.tags = tagToAdd;
                             modified = true;

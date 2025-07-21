@@ -1045,7 +1045,7 @@
                 "name": "Lost Philosopher",
                 "desc": "The one who stays in the streets. Thinking, mumbling. Trying to reach the answer.",
                 "tags": "t_tier2,beggary,not_church_class_automated",
-                "lock": "t_tier2",
+                "lock": "t_tier2,jointhechurch",
                 "need": "theself_2",
                 "require": "t_tier1&&philosophy>=2",
                 "cost": {

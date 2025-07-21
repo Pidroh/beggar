@@ -1179,7 +1179,7 @@
                 "name": "Sadistic Flamer",
                 "desc": "A pyromaniac with affinity for burning people alive",
                 "tags": "t_tier2,not_church_class_automated",
-                "lock": "t_tier2",
+                "lock": "t_tier2,jointhechurch",
                 "require": "t_tier1&&fireaffinity>15&&sadism>2",
                 "need": "theself_2",
                 "cost": {
