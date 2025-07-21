@@ -46,7 +46,7 @@ async function main() {
         }
 
         if (modified) {
-            fs.writeFileSync(fullPath, JSON.stringify(jsonData, null, 2));
+            fs.writeFileSync(fullPath, JSON.stringify(jsonData, null, 4));
             console.log(`Updated: ${file}`);
         } else {
             console.log(`No changes: ${file}`);

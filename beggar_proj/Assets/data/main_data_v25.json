@@ -1,12 +1,12 @@
 [
     {
         "type": "RESOURCE",
-        "items":[
+        "items": [
             {
                 "id": "firewood",
                 "max": 1,
                 "desc": "Wood for the bonfire. You need something to set it on fire though.",
-                "mods":{
+                "mods": {
                     "handdrill_dot.mod.firepower.rate": 0.1
                 }
             },
@@ -26,7 +26,7 @@
                 "name": "Dominance",
                 "max": 3,
                 "desc": "Feelings of control",
-                "mod":{
+                "mod": {
                     "gratitude.max": -1
                 }
             },
@@ -41,7 +41,7 @@
                 "name": "Captive",
                 "max": 0,
                 "desc": "A person who has been taken prisoner",
-                "mod":{
+                "mod": {
                     "dominance.max": 1
                 }
             },
@@ -50,7 +50,7 @@
                 "name": "Flame power",
                 "max": 3,
                 "desc": "The strength of the fire",
-                "mod":{
+                "mod": {
                     "fireaffinity.max": 1,
                     "fireaffinity.rate": 0.05,
                     "firepower.rate": -0.2
@@ -60,7 +60,7 @@
                 "id": "benevolence",
                 "max": 3,
                 "desc": "Meaning well, being kind",
-                "mod":{
+                "mod": {
                     "gratitude.max": 1
                 }
             },
@@ -69,7 +69,7 @@
                 "name": "Animal fat",
                 "max": 0,
                 "desc": "Oil extracted from animals",
-                "mod":{
+                "mod": {
                     "handdrill.speed": 3,
                     "handdrill.success_rate": 5
                 }
@@ -78,7 +78,7 @@
     },
     {
         "type": "TASK",
-        "items":[
+        "items": [
             {
                 "id": "empathypath",
                 "name": "I want to understand others",
@@ -92,7 +92,7 @@
                     "gratitude": 12,
                     "clarity": 2
                 },
-                "mods":{
+                "mods": {
                     "clarity.max": 1,
                     "benevolence.max": 10,
                     "dominance.max": -10,
@@ -112,7 +112,7 @@
                     "sorrow": 5,
                     "clarity": 3
                 },
-                "mods":{
+                "mods": {
                     "clarity.max": 1,
                     "gratitude.max": -10,
                     "dominance.max": 10,
@@ -131,7 +131,7 @@
                     "sorrow": 3,
                     "clarity": 50
                 },
-                "mods":{
+                "mods": {
                     "dominance.max": 15,
                     "charm.max": 5
                 }
@@ -142,14 +142,14 @@
                 "desc": "Use your charity connections to get access to food",
                 "require": "charity>3&&benevolence>200&&t_tier1",
                 "duration": 20,
-                "buy":{
+                "buy": {
                     "clarity": 3,
                     "benevolence": 280
                 },
                 "cost": {
                     "benevolence": 50
                 },
-                "result":{
+                "result": {
                     "food": "1~3"
                 }
             },
@@ -163,7 +163,7 @@
                 "cost": {
                     "reflection": 3
                 },
-                "mod":{
+                "mod": {
                     "think.effect.thoughts": 5,
                     "think.speed": 50
                 }
@@ -179,7 +179,7 @@
                     "benevolence": 5,
                     "breadcrumbs": 100
                 },
-                "mod":{
+                "mod": {
                     "benevolence.max": 10,
                     "benevolence.rate": 0.01
                 }
@@ -196,7 +196,7 @@
                     "breadcrumbs": 40,
                     "food": 5
                 },
-                "mod":{
+                "mod": {
                     "benevolence.max": 100,
                     "benevolence.rate": 0.03
                 }
@@ -212,7 +212,7 @@
                     "benevolence": 5,
                     "mothblanket": 1
                 },
-                "mod":{
+                "mod": {
                     "benevolence.max": 5
                 }
             },
@@ -226,7 +226,7 @@
                 "cost": {
                     "benevolence": 30
                 },
-                "mod":{
+                "mod": {
                     "benevolence.max": 5
                 }
             },
@@ -241,7 +241,7 @@
                     "benevolence": 15,
                     "sadness": 40
                 },
-                "mod":{
+                "mod": {
                     "benevolence.max": 10,
                     "sadness.max": 10,
                     "benevolence.rate": 0.01
@@ -259,7 +259,7 @@
                     "sadness": 50,
                     "sorrow": 5
                 },
-                "mod":{
+                "mod": {
                     "benevolence.max": 30,
                     "sorrow.max": 5,
                     "benevolence.rate": 0.05
@@ -276,7 +276,7 @@
                     "benevolence": 15,
                     "followers": 3
                 },
-                "mod":{
+                "mod": {
                     "poor_feast.max": 2,
                     "poor_feast.mod.benevolence.max": 10,
                     "poor_feast.mod.benevolence.rate": 0.01
@@ -293,7 +293,7 @@
                     "benevolence": 280,
                     "followers": 5
                 },
-                "mod":{
+                "mod": {
                     "small_feast.max": 2,
                     "small_feast.mod.benevolence.max": 20,
                     "small_feast.mod.benevolence.rate": 0.01
@@ -308,7 +308,6 @@
                     "thoughts": 300,
                     "clarity": 4,
                     "charm": 5
-
                 },
                 "duration": 20,
                 "cost": {
@@ -318,7 +317,7 @@
                 },
                 "dot": {
                     "duration": 120,
-                    "mod":{
+                    "mod": {
                         "followers.rate": 0.2,
                         "followers.max": 5,
                         "charm.max": 10
@@ -336,7 +335,7 @@
                     "food": 3,
                     "benevolence": 80
                 },
-                "mod":{
+                "mod": {
                     "sharefood.result.benevolence": 9
                 }
             },
@@ -352,7 +351,7 @@
                     "ratbond": 80,
                     "clarity": 3
                 },
-                "mod":{
+                "mod": {
                     "dominance.rate": 0.1,
                     "dominance.max": 10,
                     "ratbond.max": 50
@@ -370,7 +369,7 @@
                     "cat": 3,
                     "dominance": 50
                 },
-                "mod":{
+                "mod": {
                     "dominance.rate": 0.4,
                     "dominance.max": 100
                 }
@@ -381,13 +380,13 @@
                 "desc": "Feel the pleasure of your feelings of control",
                 "require": "dominance>200",
                 "duration": 5,
-                "buy":{
+                "buy": {
                     "dominance": 250
                 },
                 "cost": {
                     "dominance": 250
                 },
-                "mod":{
+                "mod": {
                     "boredom.max": 20,
                     "irritation.max": 20
                 }
@@ -398,17 +397,17 @@
                 "desc": "Have your rats gather and share food",
                 "require": "charity>2&&rodentology>3",
                 "duration": 5,
-                "buy":{
+                "buy": {
                     "rats": 5,
                     "ratbond": 100
                 },
-                "cost":{
+                "cost": {
                     "rats": 2,
                     "ratbond": 15
                 },
                 "dot": {
                     "duration": 90,
-                    "mod":{
+                    "mod": {
                         "benevolence.rate": 0.5,
                         "sharefood.speed": 200,
                         "breadcrumbs.rate": 1
@@ -421,17 +420,17 @@
                 "desc": "Have your rats gather and share food",
                 "require": "felinology>2&&empathy>2",
                 "duration": 5,
-                "buy":{
+                "buy": {
                     "cat": 3,
                     "catbond": 40
                 },
-                "cost":{
+                "cost": {
                     "cat": 2,
                     "catbond": 30
                 },
                 "dot": {
                     "duration": 90,
-                    "mod":{
+                    "mod": {
                         "benevolence.rate": 2,
                         "benevolence.max": 100
                     }
@@ -443,13 +442,13 @@
                 "desc": "Feel the pleasure of your feelings of control",
                 "require": "benevolence>200",
                 "duration": 5,
-                "buy":{
+                "buy": {
                     "benevolence": 250
                 },
                 "cost": {
                     "benevolence": 250
                 },
-                "mod":{
+                "mod": {
                     "fatigue.max": 20,
                     "irritation.max": 20
                 }
@@ -459,19 +458,19 @@
                 "name": "Flaming rats",
                 "desc": "TODO",
                 "require": "rodentology>6&&sadism>2&&kindling>3",
-                "buy":{
+                "buy": {
                     "rats": 12,
                     "fireaffinity": 20,
                     "firepower": 5,
                     "ratbond": 50
                 },
-                "cost":{
+                "cost": {
                     "rats": 7,
                     "firepower": 5
                 },
                 "dot": {
                     "duration": 50,
-                    "mod":{
+                    "mod": {
                         "dominance.max": 100,
                         "dominance.rate": 1,
                         "firepower.max": 10,
@@ -489,7 +488,7 @@
                 "cost": {
                     "foraging": 10
                 },
-                "result":{
+                "result": {
                     "firewood": 1
                 }
             },
@@ -503,14 +502,14 @@
                     "breadcrumbs": 30,
                     "gratitude": 10
                 },
-                "cost":{
+                "cost": {
                     "breadcrumbs": 15,
                     "gratitude": 3
                 },
                 "run": {
                     "supplication": 2
                 },
-                "result":{
+                "result": {
                     "benevolence": 1
                 }
             },
@@ -526,7 +525,7 @@
                     "dominance": 50,
                     "supplication": 200
                 },
-                "mods":{
+                "mods": {
                     "captive.max": 5
                 }
             },
@@ -542,7 +541,7 @@
                     "benevolence": 150,
                     "supplication": 200
                 },
-                "mods":{
+                "mods": {
                     "benevolence.max": 5,
                     "followers.mod.benevolence.max": 5,
                     "followers.max": 2
@@ -567,7 +566,7 @@
                 },
                 "dot": {
                     "duration": 90,
-                    "mod":{
+                    "mod": {
                         "benevolence.max": 80,
                         "benevolence.rate": 1,
                         "followers.max": -3
@@ -586,7 +585,7 @@
                     "thoughts": 30,
                     "clarity": 2
                 },
-                "mods":{
+                "mods": {
                     "pleafocus.effect.charm": 1
                 }
             },
@@ -603,7 +602,7 @@
                 "result": {
                     "followers": 1
                 },
-                "result_fail":{
+                "result_fail": {
                     "charisma.xp": 8,
                     "charm": 1
                 }
@@ -661,7 +660,7 @@
                 "cost": {
                     "coin": 1
                 },
-                "result":{
+                "result": {
                     "animalfat": 3
                 }
             },
@@ -678,7 +677,7 @@
                 },
                 "duration": 8,
                 "success_rate": 1,
-                "result":{
+                "result": {
                     "firewood": -1,
                     "kindling.xp": "5~10"
                 },
@@ -691,7 +690,7 @@
                         "firepower.rate": 0.3
                     }
                 },
-                "result_fail":{
+                "result_fail": {
                     "kindling.xp": "10~40"
                 }
             },
@@ -711,7 +710,7 @@
                     "fireaffinity": 3
                 },
                 "duration": 2,
-                "result":{
+                "result": {
                     "kindling.xp": "1~5"
                 },
                 "dot": {
@@ -893,7 +892,6 @@
                     "supplication": 80,
                     "firepower": 4
                 },
-
                 "mods": {
                     "dominance.max": 40
                 }
@@ -912,7 +910,6 @@
                     "firepower": 9,
                     "captive": 1
                 },
-
                 "mods": {
                     "dominance.max": 60,
                     "dominance.rate": 0.03
@@ -931,7 +928,6 @@
                     "firepower": 25,
                     "captive": 7
                 },
-
                 "mods": {
                     "dominance.max": 40,
                     "dominance.rate": 0.5,
@@ -1132,16 +1128,16 @@
     },
     {
         "type": "HOUSE",
-        "items":[]
+        "items": []
     },
     {
         "type": "CLASS",
-        "items":[
+        "items": [
             {
-                "id" : "bonfirevagabond",
+                "id": "bonfirevagabond",
                 "name": "Bonfire Vagabond",
-                "desc" : "Sitting by the fire, staring at the flame.",
-                "tags": "t_tier0",
+                "desc": "Sitting by the fire, staring at the flame.",
+                "tags": "t_tier0,not_church_class_automated",
                 "lock": "t_tier0",
                 "require": "t_job&&fireaffinity",
                 "cost": {
@@ -1157,10 +1153,10 @@
                 }
             },
             {
-                "id" : "goodbeggar",
+                "id": "goodbeggar",
                 "name": "Good Beggar",
-                "desc" : "You live by the good will of others, yet you also have good will to give",
-                "tags": "t_tier1",
+                "desc": "You live by the good will of others, yet you also have good will to give",
+                "tags": "t_tier1,not_church_class_automated",
                 "lock": "t_tier1",
                 "require": "t_tier0&&introspection>3&&empathy",
                 "cost": {
@@ -1179,10 +1175,10 @@
                 }
             },
             {
-                "id" : "peopleburner",
+                "id": "peopleburner",
                 "name": "Sadistic Flamer",
-                "desc" : "A pyromaniac with affinity for burning people alive",
-                "tags": "t_tier2",
+                "desc": "A pyromaniac with affinity for burning people alive",
+                "tags": "t_tier2,not_church_class_automated",
                 "lock": "t_tier2",
                 "require": "t_tier1&&fireaffinity>15&&sadism>2",
                 "need": "theself_2",
@@ -1202,10 +1198,10 @@
                 }
             },
             {
-                "id" : "animalburner",
+                "id": "animalburner",
                 "name": "Animal burner",
-                "desc" : "Twisted desires to hear a creature cry",
-                "tags": "t_tier1",
+                "desc": "Twisted desires to hear a creature cry",
+                "tags": "t_tier1,not_church_class_automated",
                 "lock": "t_tier1",
                 "require": "t_tier0&&fireaffinity>10",
                 "cost": {
@@ -1223,9 +1219,9 @@
                 }
             },
             {
-                "id" : "goodpriest",
+                "id": "goodpriest",
                 "name": "Gracious Priest",
-                "desc" : "The third major order of the Church. Spreading love all around",
+                "desc": "The third major order of the Church. Spreading love all around",
                 "tags": "t_tier3",
                 "lock": "t_tier3",
                 "need": "theself_3&&holyscriptures>4&&deacon",
@@ -1251,9 +1247,9 @@
                 "id": "gracebeggar",
                 "name": "Open Hand",
                 "desc": "They gave you this name because they know that you are the true giver",
-                "tags": "t_tier3",
+                "tags": "t_tier3,not_church_class_automated",
                 "lock": "t_tier3",
-                "need": "theself_3&&empathy>3&&charity>=4", 
+                "need": "theself_3&&empathy>3&&charity>=4",
                 "require": "t_tier2&&empathy>=3&&charity>=3",
                 "cost": {
                     "benevolence": 300,
@@ -1262,7 +1258,7 @@
                     "reflection": 10,
                     "nutrition": 8
                 },
-                "mod":{
+                "mod": {
                     "charity.max": 1,
                     "innermind.max": 1,
                     "benevolence.max": 100,
@@ -1273,7 +1269,7 @@
     },
     {
         "type": "SKILL",
-        "items":[
+        "items": [
             {
                 "id": "kindling",
                 "require": "handdrill",
@@ -1364,18 +1360,15 @@
     },
     {
         "type": "LOCATION",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
-         "type": "ENCOUNTER",
-        "items": [
-        ]
+        "type": "ENCOUNTER",
+        "items": []
     },
     {
         "type": "DIALOG",
-        "items":[
+        "items": [
             {
                 "id": "irreversible_church",
                 "title": "Irreversible Action",
@@ -1386,7 +1379,7 @@
     },
     {
         "type": "FURNITURE",
-        "items":[
+        "items": [
             {
                 "id": "symbolicspoon",
                 "name": "Symbolic spoon",

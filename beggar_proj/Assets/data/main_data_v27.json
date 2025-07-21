@@ -1,7 +1,7 @@
 [
     {
         "type": "RESOURCE",
-        "items":[
+        "items": [
             {
                 "id": "realization",
                 "name": "Realization",
@@ -24,7 +24,7 @@
                 "name": "Luxury",
                 "max": 3,
                 "desc": "A state of comfort and elegance",
-                "mod":{
+                "mod": {
                     "luxury.rate": -0.3,
                     "coin.rate": -0.001
                 }
@@ -45,7 +45,7 @@
     },
     {
         "type": "TASK",
-        "items":[
+        "items": [
             {
                 "id": "thinklife",
                 "name": "Think about life",
@@ -84,7 +84,7 @@
                 },
                 "dot": {
                     "duration": 400,
-                    "mod":{
+                    "mod": {
                         "organizethoughts.speed": 200,
                         "thoughts.rate": 10,
                         "revisit_thoughts.result.reflection": 2,
@@ -108,7 +108,7 @@
                     "supplication": 30,
                     "thoughts": 30
                 },
-                "result":{
+                "result": {
                     "realization": 1
                 }
             },
@@ -199,7 +199,7 @@
                 },
                 "dot": {
                     "duration": 400,
-                    "mod":{
+                    "mod": {
                         "coin.max": 40,
                         "guilt.rate": 0.5,
                         "guilt.max": 50
@@ -219,11 +219,11 @@
                     "thoughts": 30,
                     "clarity": 3
                 },
-                "result":{
+                "result": {
                     "coin": "2~6",
                     "danger": "0~3"
                 },
-                "result_fail":{
+                "result_fail": {
                     "coin": "0~2",
                     "danger": "7~30"
                 }
@@ -239,7 +239,7 @@
                 "cost": {
                     "breakinlogistics": 5
                 },
-                "result":{
+                "result": {
                     "coin": "0~10",
                     "breadcrumbs": "0~30",
                     "food": "0~3",
@@ -281,7 +281,7 @@
                 "run": {
                     "guilt": 3
                 },
-                "mod":{
+                "mod": {
                     "steal.success_rate": 25,
                     "steal.result.coin": 3
                 }
@@ -299,7 +299,7 @@
                     "clarity": 3,
                     "guilt": 30
                 },
-                "mod":{
+                "mod": {
                     "steal.success_rate": 2,
                     "steal.result.coin": 1
                 }
@@ -317,7 +317,7 @@
                     "clarity": 7,
                     "guilt": 40
                 },
-                "mod":{
+                "mod": {
                     "steal.success_rate": 2,
                     "steal.result.coin": 1,
                     "guilt.max": 25
@@ -336,10 +336,9 @@
                     "clarity": 15,
                     "guilt": 50
                 },
-                "mod":{
+                "mod": {
                     "steal.success_rate": 2,
                     "steal.result.coin": 1,
-                    
                     "guilt.max": 80
                 }
             },
@@ -367,7 +366,7 @@
                         "steal.success_rate": 45,
                         "steal.speed": 50,
                         "steal.result.coin": 2
-                   }
+                    }
                 }
             },
             {
@@ -392,7 +391,7 @@
                     "duration": 50,
                     "mod": {
                         "coin.rate": 8
-                   }
+                    }
                 }
             },
             {
@@ -419,7 +418,7 @@
                         "steal.success_rate": -20,
                         "steal.speed": -75,
                         "steal.result.coin": 70
-                   }
+                    }
                 }
             },
             {
@@ -443,7 +442,7 @@
                         "luxury.rate": 1,
                         "luxury.max": 3,
                         "coin.rate": -0.3
-                   }
+                    }
                 }
             },
             {
@@ -459,7 +458,7 @@
                     "clarity": 10,
                     "reflection": 3
                 },
-                "mods":{
+                "mods": {
                     "pleafocus.effect.looks": 1
                 }
             },
@@ -480,7 +479,7 @@
                     "thoughts": 15,
                     "clarity": 3
                 },
-                "mods":{
+                "mods": {
                     "thoughts.max": 150,
                     "think.speed": 80,
                     "philosophy.max": 1,
@@ -519,7 +518,7 @@
                     "charm": 1,
                     "clarity": 1
                 },
-                "mods":{
+                "mods": {
                     "followers.mod.breakinlogistics.rate": 0.001
                 }
             },
@@ -541,7 +540,7 @@
                     "charm": 1,
                     "clarity": 1
                 },
-                "mods":{
+                "mods": {
                     "followers.mod.coin.rate": 0.1
                 }
             },
@@ -562,7 +561,7 @@
                     "charm": 1,
                     "clarity": 1
                 },
-                "mods":{
+                "mods": {
                     "followers.mod.coin.max": 10
                 }
             },
@@ -583,7 +582,7 @@
                     "charm": 1,
                     "clarity": 1
                 },
-                "mods":{
+                "mods": {
                     "simple_chest.mod.coin.max": 750,
                     "stolen_chest.mod.coin.max": 850
                 }
@@ -603,7 +602,7 @@
                 "run": {
                     "reflection": 1
                 },
-                "mods":{
+                "mods": {
                     "guilt.max": 100
                 }
             },
@@ -624,7 +623,7 @@
                 },
                 "dot": {
                     "duration": 250,
-                    "mod":{
+                    "mod": {
                         "breakinlogistics.rate": 0.05,
                         "breakinlogistics.max": 5,
                         "thoughts.rate": -1
@@ -650,7 +649,7 @@
                 },
                 "dot": {
                     "duration": 100,
-                    "mod":{
+                    "mod": {
                         "musing.rate": 1,
                         "thoughts.rate": 10
                     }
@@ -692,7 +691,7 @@
                 "run": {
                     "musing": 1
                 },
-                "mod":{
+                "mod": {
                     "musing.max": 100,
                     "reflection.max": 1
                 }
@@ -710,7 +709,7 @@
                 "run": {
                     "thoughts": 10
                 },
-                "mod":{
+                "mod": {
                     "study.speed": 80,
                     "fundamentals.max": 3
                 }
@@ -728,7 +727,7 @@
                 "run": {
                     "thoughts": 10
                 },
-                "mod":{
+                "mod": {
                     "philosophy.max": 1,
                     "reflection.max": 1
                 }
@@ -747,7 +746,7 @@
                     "thoughts": 5,
                     "clarity": 1
                 },
-                "mod":{
+                "mod": {
                     "fundamentals.max": 1,
                     "think.speed": 20,
                     "clarity.max": 3
@@ -767,7 +766,7 @@
                     "thoughts": 7,
                     "clarity": 1
                 },
-                "mod":{
+                "mod": {
                     "fundamentals.max": 2,
                     "think.speed": 25,
                     "clarity.max": 3
@@ -788,7 +787,7 @@
                     "thoughts": 3,
                     "clarity": 1
                 },
-                "mod":{
+                "mod": {
                     "debating.max": 1,
                     "fundamentals.max": 3,
                     "study.speed": 5
@@ -809,7 +808,7 @@
                     "thoughts": 20,
                     "clarity": 1
                 },
-                "mod":{
+                "mod": {
                     "debating.max": 1,
                     "fundamentals.max": 5,
                     "study.speed": 10
@@ -832,7 +831,7 @@
                 "effect": {
                     "ecclesiology.xp": 2
                 },
-                "mod":{
+                "mod": {
                     "fundamentals.max": 2,
                     "think.speed": 25,
                     "gratitude.max": 5
@@ -855,7 +854,7 @@
                 "effect": {
                     "academia.xp": 2
                 },
-                "mod":{
+                "mod": {
                     "fundamentals.max": 2,
                     "organizethoughts.speed": 30,
                     "clarity.max": 5
@@ -878,7 +877,7 @@
                 "effect": {
                     "ecclesiology.xp": 2
                 },
-                "mod":{
+                "mod": {
                     "fundamentals.max": 2,
                     "organizethoughts.speed": 30,
                     "clarity.max": 5,
@@ -903,7 +902,7 @@
                 "effect": {
                     "academia.xp": 2
                 },
-                "mod":{
+                "mod": {
                     "fundamentals.max": 2,
                     "organizethoughts.speed": 30,
                     "clarity.max": 5
@@ -928,7 +927,7 @@
                 "effect": {
                     "academia.xp": 2
                 },
-                "mod":{
+                "mod": {
                     "fundamentals.max": 2,
                     "organizethoughts.speed": 40,
                     "study.speed": 50,
@@ -956,7 +955,7 @@
                     "ecclesiology.xp": 3,
                     "academia.xp": 1
                 },
-                "mod":{
+                "mod": {
                     "churchrespect.max": 100,
                     "gratitude.max": 100,
                     "organizethoughts.speed": 30,
@@ -980,7 +979,7 @@
                     "clarity": 5,
                     "musing": 1
                 },
-                "mod":{
+                "mod": {
                     "reflection.max": 5,
                     "clarity.max": 10,
                     "clarity.rate": 0.5,
@@ -1176,7 +1175,7 @@
     },
     {
         "type": "HOUSE",
-        "items":[
+        "items": [
             {
                 "id": "normal_house",
                 "name": "Living quarters",
@@ -1227,12 +1226,12 @@
     },
     {
         "type": "CLASS",
-        "items":[
+        "items": [
             {
-                "id" : "thief",
+                "id": "thief",
                 "name": "Thief",
-                "desc" : "A person who steals without using force",
-                "tags": "t_tier2",
+                "desc": "A person who steals without using force",
+                "tags": "t_tier2,not_church_class_automated",
                 "lock": "t_tier2",
                 "require": "t_tier1&&crime>0&&stealth>0",
                 "need": "theself_2",
@@ -1247,10 +1246,10 @@
                 }
             },
             {
-                "id" : "burglar",
+                "id": "burglar",
                 "name": "Burglar",
-                "desc" : "Keep your door's closed. Not that it will help you.",
-                "tags": "t_tier3,tier_3_crime",
+                "desc": "Keep your door's closed. Not that it will help you.",
+                "tags": "t_tier3,tier_3_crime,not_church_class_automated",
                 "lock": "t_tier3",
                 "require": "theself_3&&crime>2&&housebreaking>0",
                 "need": "theself_3&&housebreaking>2",
@@ -1270,10 +1269,10 @@
                 }
             },
             {
-                "id" : "underboss",
+                "id": "underboss",
                 "name": "Underboss",
-                "desc" : "The sub-leader of a small crime organization in the city",
-                "tags": "t_tier4,crime_leader,tier_3_crime",
+                "desc": "The sub-leader of a small crime organization in the city",
+                "tags": "t_tier4,crime_leader,tier_3_crime,not_church_class_automated",
                 "lock": "t_tier4",
                 "require": "t_tier3&&followers>0&&crime>2",
                 "need": "theself_4&&crime>3",
@@ -1291,10 +1290,10 @@
                 }
             },
             {
-                "id" : "urbansage",
+                "id": "urbansage",
                 "name": "Urban sage",
-                "desc" : "The first and greatest victory is to conquer yourself",
-                "tags": "t_tier4",
+                "desc": "The first and greatest victory is to conquer yourself",
+                "tags": "t_tier4,not_church_class_automated",
                 "lock": "t_tier4",
                 "need": "theself_4",
                 "require": "t_tier3&&philosophy>4",
@@ -1315,7 +1314,7 @@
     },
     {
         "type": "SKILL",
-        "items":[
+        "items": [
             {
                 "id": "crime",
                 "desc": "How much you know about breaking the law",
@@ -1357,7 +1356,6 @@
                     "danger.rate": -0.1
                 }
             },
-            
             {
                 "id": "housebreaking",
                 "name": "Housebreaking",
@@ -1459,12 +1457,20 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["boredom_weak_emotion", "sad_weak_emotion", "frustration_weak_emotion", "joy_weak_emotion", "anxiety_weak_emotion", "hidden_sadness", "bad_memories"]
+                "encs": [
+                    "boredom_weak_emotion",
+                    "sad_weak_emotion",
+                    "frustration_weak_emotion",
+                    "joy_weak_emotion",
+                    "anxiety_weak_emotion",
+                    "hidden_sadness",
+                    "bad_memories"
+                ]
             }
         ]
     },
     {
-         "type": "ENCOUNTER",
+        "type": "ENCOUNTER",
         "items": [
             {
                 "id": "bad_memories",
@@ -1504,12 +1510,11 @@
     },
     {
         "type": "DIALOG",
-        "items":[
-        ]
+        "items": []
     },
     {
         "type": "FURNITURE",
-        "items":[
+        "items": [
             {
                 "id": "musingswood",
                 "name": "Wood art",
@@ -1561,7 +1566,7 @@
                 "mod": {
                     "reflection.max": 3,
                     "clarity.rate": 0.5,
-                    "luxury.rate": 1,                    
+                    "luxury.rate": 1,
                     "reflectivemood.speed": 50,
                     "space": 2
                 }
