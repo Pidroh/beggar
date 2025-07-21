@@ -1554,6 +1554,22 @@
                 }
             },
             {
+                "id": "nice_wax_tablet",
+                "name": "A fine wax tablet",
+                "desc": "Fairly usable, brand new wax tablet. Great for studying and taking notes. Much cheaper than paper",
+                "require": "academia>2&&coin>5",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "coin": 10
+                },
+                "mod": {
+                    "fundamentals.max": 10,
+                    "academia.max": 1,
+                    "space": 1
+                }
+            },
+            {
                 "id": "fancy_painting",
                 "name": "Stolen painting",
                 "desc": "This one is a bit hard to steal, but it looks great",
