@@ -1,8 +1,7 @@
 [
-
     {
         "type": "TASK",
-        "items":[
+        "items": [
             {
                 "id": "ponderexistence",
                 "name": "What is reality?",
@@ -11,7 +10,7 @@
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
-                "cost":{
+                "cost": {
                     "thoughts": 500,
                     "clarity": 90,
                     "supplication": 1100,
@@ -19,7 +18,7 @@
                     "realization": 1,
                     "rats": 1
                 },
-                "run":{
+                "run": {
                     "thoughts": 10,
                     "supplication": 10,
                     "musing": 2
@@ -36,7 +35,7 @@
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
-                "cost":{
+                "cost": {
                     "coin": 1200,
                     "clarity": 90,
                     "supplication": 1100,
@@ -44,7 +43,7 @@
                     "realization": 1,
                     "luxury": 30
                 },
-                "run":{
+                "run": {
                     "luxury": 1,
                     "coin": 15,
                     "thoughts": 10,
@@ -64,13 +63,13 @@
                 "duration": 90,
                 "tags": "ending_game",
                 "need": "petcat>0",
-                "cost":{    
+                "cost": {
                     "supplication": 450,
                     "thoughts": 200,
                     "clarity": 80,
                     "happiness": 7
                 },
-                "run":{
+                "run": {
                     "thoughts": 5,
                     "supplication": 5
                 }
@@ -83,13 +82,13 @@
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
-                "cost":{    
+                "cost": {
                     "supplication": 2000,
                     "thoughts": 1500,
                     "clarity": 100,
                     "churchrespect": 900
                 },
-                "run":{
+                "run": {
                     "thoughts": 20,
                     "supplication": 20
                 }
@@ -102,13 +101,13 @@
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
-                "cost":{    
+                "cost": {
                     "supplication": 1300,
                     "thoughts": 1000,
                     "clarity": 100,
                     "benevolence": 400
                 },
-                "run":{
+                "run": {
                     "benevolence": 5,
                     "thoughts": 20,
                     "supplication": 20
@@ -143,8 +142,6 @@
     },
     {
         "type": "FURNITURE",
-        "items":[
-            
-        ]
+        "items": []
     }
 ]

@@ -1,8 +1,7 @@
 [
-
     {
         "type": "TASK",
-        "items":[
+        "items": [
             {
                 "id": "ponderexistence",
                 "name": "What is reality?",
@@ -11,14 +10,14 @@
                 "max": 1,
                 "duration": 90,
                 "tags": "ending_game",
-                "cost":{
+                "cost": {
                     "thoughts": 250,
                     "clarity": 50,
                     "supplication": 650,
                     "sorrow": 5,
                     "rats": 1
                 },
-                "run":{
+                "run": {
                     "thoughts": 1,
                     "supplication": 1
                 },
@@ -35,18 +34,17 @@
                 "duration": 90,
                 "tags": "ending_game",
                 "need": "petcat>0",
-                "cost":{    
+                "cost": {
                     "supplication": 450,
                     "thoughts": 200,
                     "clarity": 80,
                     "happiness": 7
                 },
-                "run":{
+                "run": {
                     "thoughts": 5,
                     "supplication": 5
                 }
             }
-            
         ]
     }
 ]
