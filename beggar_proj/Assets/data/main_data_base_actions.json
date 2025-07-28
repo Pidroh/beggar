@@ -1,45 +1,45 @@
 [
-    {
-        "type": "RESOURCE",
-        "items":[]
-    },
-    {
-        "type": "TASK",
-        "items":[
-            {
-                "id": "cunning_mind",
-                "name": "Cunning mind",
-                "desc": "Become able of performing cunning, often criminal activities",
-                "require": "cunning>0",
-                "tag": "thievery",
-                "duration": 2,
-                "buy": {
-                    "thoughts": 40
-                },
-                "cost": {
-                    "supplication": 5
-                },
-                "dot":{
-                    "duration": 240,
-                    "toggle": true,
-                    "mods":{
-                        "guilt.max": 15,
-                        "cunning_style.activate": 1
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "type": "HOUSE",
-        "items":[]
-    },
-    {
-        "type": "CLASS",
-        "items":[]
-    },
-    {
-        "type": "SKILL",
-        "items":[]
-    }
+  {
+    "type": "RESOURCE",
+    "items": []
+  },
+  {
+    "type": "TASK",
+    "items": [
+      {
+        "id": "cunning_mind",
+        "name": "Cunning mind",
+        "desc": "Become able of performing cunning, often criminal activities",
+        "require": "cunning>0",
+        "tag": "thievery",
+        "duration": 2,
+        "buy": {
+          "thoughts": 40
+        },
+        "cost": {
+          "supplication": 5
+        },
+        "dot": {
+          "duration": 240,
+          "toggle": true,
+          "mods": {
+            "guilt.max": 15,
+            "cunning_style.activate": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "HOUSE",
+    "items": []
+  },
+  {
+    "type": "CLASS",
+    "items": []
+  },
+  {
+    "type": "SKILL",
+    "items": []
+  }
 ]
