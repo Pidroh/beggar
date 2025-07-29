@@ -1,777 +1,973 @@
 key$description$Brazilian Portuguese
+cunning_mind_name$$Mente Astuta
+cunning_mind_desc$$Torne-se capaz de realizar atividades astutas, muitas vezes criminosas.
 supplication_name$$súplica
-supplication_desc$$Súplicas desesperadas que um personagem usa para realizar ações de súplica e solicitar ajuda ou misericórdia.
+supplication_desc$$Súplicas desesperadas que um personagem usa para realizar ações de súplica e pedir ajuda ou misericórdia.
 loneliness_name$$Solidão
 loneliness_desc$$Você está sozinho.
 happiness_name$$Felicidade
-happiness_desc$$A felicidade prospera nos momentos tranquilos que você quase deixa passar despercebido.
-focus_name$$foco
+happiness_desc$$A felicidade prospera nos momentos tranquilos que você quase ignora.
+focus_name$$concentração
 focus_desc$$Representa a clareza mental e concentração do seu personagem.
-breadcrumbs_name$$Migalhas de Comida
-breadcrumbs_desc$$Pequenos pedaços antigos de comida.
+breadcrumbs_name$$Migalhas de comida
+breadcrumbs_desc$$Pequenos pedaços de comida antigos
 food_name$$Comida
 food_desc$$Substância nutritiva
 danger_name$$perigo
-danger_desc$$Qual é a probabilidade de você estar em perigo
-nutrition_name$$Nutrição
+danger_desc$$Quão provável você está em perigo
+nutrition_name$$nutrição
 nutrition_desc$$Valores mais altos significam que seu personagem está bem alimentado, enquanto valores mais baixos indicam fome.
 energy_name$$energia
-energy_desc$$A força interior que seu personagem consome para realizar ações.
-thoughts_name$$pensamentos
-thoughts_desc$$Reflexões mentais e ideias moldando a perspectiva de um personagem. Representa o funcionamento interno da mente.
+energy_desc$$A força interna que seu personagem consome para realizar ações.
+thoughts_name$$Pensamentos
+thoughts_desc$$Reflexões mentais e ideias moldando a perspectiva de um personagem. Representam o funcionamento interno da mente.
 deadflower_name$$florfalecida
-deadflower_desc$$Uma flor murcha que outrora simbolizava esperança, agora um lembrete de perda e decadência.
+deadflower_desc$$Uma flor murcha que um dia simbolizou esperança, agora um lembrete de perda e decadência.
 clarity_name$$clareza
-clarity_desc$$Pensamento claro, mente clara.
+clarity_desc$$Pensamento claro, mente clara
 metathought_name$$Pensamento Meta
 metathought_desc$$A capacidade de pensar sobre nosso passado.
-sadness_name$$Tristeza
+sadness_name$$tristeza
 sadness_desc$$O peso de nossas emoções reflete a profundidade de nossas experiências.
-sorrow_name$$Tristeza
-sorrow_desc$$Uma emoção profunda que aprofunda a empatia e a compreensão. Ela nos conecta aos outros por meio de experiências compartilhadas de perda e reflexão.
+sorrow_name$$tristeza
+sorrow_desc$$Uma emoção profunda que aprofunda a empatia e o entendimento de alguém. Ela nos conecta aos outros através de experiências compartilhadas de perda e reflexão.
 gratitude_name$$gratidão
-gratitude_desc$$Prontidão para retribuir gentileza
+gratitude_desc$$Disposição para retribuir gentileza
 faith_name$$Fé Fraca
-faith_desc$$O início da crença no divino.
+faith_desc$$O início da crença no divino
 guilt_name$$culpa
 guilt_desc$$Um sussurro persistente de escolhas passadas.
 rats_name$$ratos
 rats_desc$$O rato é um sobrevivente, um explorador urbano, uma praga e uma criatura da noite.
 cat_name$$Gato de rua
-cat_desc$$Gatos que vivem na cidade, mas curiosamente estão sempre perto de você.
+cat_desc$$Gatos vivendo na cidade, porém estranhamente sempre perto de você.
 ratcorpse_name$$Cadáver de rato
 ratcorpse_desc$$Um rato morto
 catcorpse_name$$Cadáver de gato
-catcorpse_desc$$Um gato morto
-ratbond_name$$laçorato
-ratbond_desc$$Uma conexão leve se forma com seus ratos, criando um pequeno senso de entendimento e confiança.
+catcorpse_desc$$Um gato morto.
+ratbond_name$$ligação com ratos
+ratbond_desc$$Uma conexão fraca se forma com seus ratos, criando um leve senso de compreensão e confiança.
 coin_name$$moeda
 coin_desc$$Um pequeno disco feito de prata.
-catbond_name$$gatoligação
-catbond_desc$$Uma ligação fraca se forma com seus gatos, criando um leve senso de compreensão e confiança.
+catbond_name$$vínculofelino
+catbond_desc$$Uma conexão tênue se forma com seus gatos, criando um leve senso de entendimento e confiança.
 skillpoints_name$$Pontos de habilidade
-skillpoints_desc$$Pontos de habilidade
-foraging_name$$caça
-foraging_desc$$Vasculhe o ambiente em busca de itens úteis e tesouros escondidos.
-perplexion_name$$perplexão
-perplexion_desc$$Um jogo desafiador que testa sua capacidade de resolver quebra-cabeças e enigmas.
+skillpoints_desc$$Usados para adquirir habilidades.
+foraging_name$$busca
+foraging_desc$$Explore o ambiente em busca de itens úteis e tesouros escondidos.
+perplexion_name$$perplexidade
+perplexion_desc$$
 fatigue_name$$fadiga
-fatigue_desc$$cansaço e exaustão após esforço prolongado.
-irritation_name$$Irritação
-irritation_desc$$Você está sentindo uma forte irritação na pele. Suas ações podem ser menos eficazes por um curto período de tempo.
+fatigue_desc$$
+irritation_name$$irritação
+irritation_desc$$
 fear_name$$medo
-fear_desc$$sentimento de ansiedade e insegurança em relação a algo desconhecido ou perigoso.
-boredom_name$$Tédio
-boredom_desc$$Tédio
-beg_a_name$$Mendigar migalhas
-beg_a_desc$$Você pega o que conseguir (você pode segurar pressionado para clicar várias vezes)
-eatcat_name$$Comer cadáver de gato
-eatcat_desc$$Comer cadáver de gato cru
-relax_thoughts_name$$Revitalizar
+fear_desc$$
+boredom_name$$tédio
+boredom_desc$$
+beg_a_name$$Implorar por migalhas
+beg_a_desc$$Você pega o que conseguir (você pode pressionar por mais tempo para clicar várias vezes)
+eatcat_name$$Comer corpo de gato
+eatcat_desc$$Carne crua
+relax_thoughts_name$$Atualizar
 relax_thoughts_desc$$Limpe sua mente, trocando pensamentos dispersos por uma onda de energia renovada.
-organizethoughts_name$$Organize thoughts
-organizethoughts_desc$$Organize seus pensamentos.
-theself_1_name$$O Eu
-theself_1_desc$$A própria essência do jogador, representando sua identidade única no jogo.
+organizethoughts_name$$Organize Pensamentos
+organizethoughts_desc$$
+theself_1_name$$O eu
+theself_1_desc$$
 theself_2_name$$Emoções do eu
-theself_2_desc$$Emoções do eu
+theself_2_desc$$
 thiscrackedvase_name$$Este vaso rachado
-thiscrackedvase_desc$$Eu me pergunto quem foi o proprietário original deste vaso rachado.
+thiscrackedvase_desc$$Fico imaginando quem foi o dono original do vaso rachado.
 contemplatedoll_name$$Boneca Contemplativa
-contemplatedoll_desc$$Qual é a história por trás daquela boneca? Há algo nela que...
-sensitivecontemplation_name$$Contemplação Sensível
-sensitivecontemplation_desc$$Alcançar sentimentos mais profundos, contemplando para dentro.
+contemplatedoll_desc$$Qual é a história por trás daquela boneca? Há algo sobre ela que...
+sensitivecontemplation_name$$Contemplação sensível
+sensitivecontemplation_desc$$Aprofunde-se em sentimentos mais profundos, contemplando para dentro.
 pleafocus_name$$Descanso
-pleafocus_desc$$Tire um descanso para se recuperar e recuperar vitalidade.
-skilled_name$$Torne-se habilidoso
+pleafocus_desc$$Faça uma pausa para se recuperar e recuperar a vitalidade.
+skilled_name$$Tornar-se habilidoso
 skilled_desc$$Talvez seja hora de adquirir uma nova habilidade.
 tier1reach_name$$Crescimento I
-tier1reach_desc$$Parece que você alcançou uma nova fase na vida?
+tier1reach_desc$$Parece que você alcançou uma nova fase na vida!
 tier2reach_name$$Crescimento II
-tier2reach_desc$$Parece que você atingiu uma nova etapa na vida?
-get_alms_name$$Aguardar esmolas
-get_alms_desc$$Receber comida da igreja
+tier2reach_desc$$Parece que você atingiu uma nova fase na vida.
+get_alms_name$$Aguardar esmola
+get_alms_desc$$Receber comida da igreja.
 stealbread_name$$Roubar migalhas
-stealbread_desc$$Roube migalhas sorrateiramente dos vizinhos desprevenidos.
+stealbread_desc$$Roube migalhas casualmente dos vizinhos desprevenidos
 innermind_name$$Mente Interior
-innermind_desc$$Sua mente afiada concede clareza e insights mais profundos, revelando verdades ocultas dentro de si mesmo.
-eatcrumbs_name$$Coma migalhas velhas
-eatcrumbs_desc$$Tem um gosto realmente ruim, a menos que você esteja realmente, realmente com fome.
+innermind_desc$$Sua mente afiada concede clareza e insight mais profundo, revelando verdades ocultas dentro de si mesmo.
+eatcrumbs_name$$Comer migalhas velhas
+eatcrumbs_desc$$Tem um gosto muito ruim, a menos que você esteja realmente, realmente com fome.
 somber_insight_name$$Visão Sombria
-somber_insight_desc$$Uma tristeza quieta e reflexiva colore seus pensamentos, trazendo uma profunda clareza introspectiva.
+somber_insight_desc$$Uma tristeza silenciosa e reflexiva colore seus pensamentos, trazendo uma clareza profunda e introspectiva.
 buyfood_name$$Comprar Comida
 buyfood_desc$$Compre comida suficiente para o dia.
-realmeal_name$$Refeição Real
-realmeal_desc$$Finalmente uma refeição real...Já faz um tempo.
-realmealcat_name$$Nutrição Alternativa
-realmealcat_desc$$Para pessoas que se alimentam de lugares estranhos.
+realmeal_name$$Refeição real
+realmeal_desc$$Finalmente uma refeição real... Já faz um tempo.
+realmealcat_name$$Nutrição alternativa
+realmealcat_desc$$Para pessoas que se alimentam de lugares estranhos
 eatfood_name$$Comer
 eatfood_desc$$Hora de comer
 pouch_name$$Bolsa
-pouch_desc$$Mantenha seu dinheiro seguro, diz o mago.
-purse_name$$Bolsa.
-purse_desc$$Forma comum de carregar... Espera. Eu já vi isso em outro lugar.
-think_name$$pensar
-think_desc$$A sessão de academia do cérebro, onde os neurônios se exercitam e as ideias dão cambalhotas. É como pastorear gatos, mas com pensamentos.
-reflect_name$$Refletir
+pouch_desc$$Mantenha seu dinheiro seguro, diz o mago
+purse_name$$Bolsa
+purse_desc$$Forma comum de carregar... Espera. Já vi isso em outro lugar.
+think_name$$pensamento
+think_desc$$A sessão de treino cerebral, onde os neurônios se exercitam e as ideias fazem saltos mortais. É como pastorear gatos, mas com pensamentos.
+reflect_name$$refletir
 reflect_desc$$Refletir
-breadbasket_name$$Bolsa Esfarrapada
+breadbasket_name$$Pouch Esfarrapada
 breadbasket_desc$$Mais espaço para migalhas.
 unlocksadness_name$$Toque na Ferida
 unlocksadness_desc$$Reconheça a dor que você enterrou.
 agile_name$$Ágil
-agile_desc$$Você percebe que possui reflexos rápidos, você pode agir sem pensar.
-calm_name$$Pensador Calmo
-calm_desc$$Você percebe que é um pensador calmo, alguém que pensa profundamente antes de agir.
+agile_desc$$Você percebe que tem reflexos rápidos, consegue agir sem pensar.
+calm_name$$Pensador calmo
+calm_desc$$Você percebe que é um Pensador calmo, alguém que pensa profundamente antes de agir.
 rat_insight_name$$Visão do Rato
 rat_insight_desc$$Observando os ratos, você obtém uma perspectiva mais afiada e astuta sobre seus pensamentos.
-vermin_sorrow_name$$Tristeza de Verminoses
-vermin_sorrow_desc$$A presença de ratos amplifica a profundidade da sua tristeza, trazendo-a de forma mais clara.
-unlockbreadbasket_name$$Ponder Miguechos
-unlockbreadbasket_desc$$Eu tenho tantos...
-thoughtfulgatherer_name$$Coletor Pensativo
-thoughtfulgatherer_desc$$Você se aproxima da coleta com uma mentalidade calma e reflexiva. Cada passo é dado com cuidado e intenção.
+vermin_sorrow_name$$Tristeza da Praga
+vermin_sorrow_desc$$A presença de ratos amplifica a profundidade da sua tristeza, trazendo-a para um foco mais aguçado.
+unlockbreadbasket_name$$Reflexão de Migalhas
+unlockbreadbasket_desc$$Eu tenho tantas...
+thoughtfulgatherer_name$$Colecionador Pensativo
+thoughtfulgatherer_desc$$Você aborda a coleta com uma mentalidade calma e reflexiva. Cada passo é dado com cuidado e intenção.
 vigorousgather_name$$Forrageiro Vigoroso
-vigorousgather_desc$$Sua busca por comida é impulsionada pela energia do seu corpo. Cada movimento está impregnado de vitalidade.
+vigorousgather_desc$$Sua coleta é impulsionada pela energia do seu corpo. Todo movimento é infundido com vitalidade.
 sadsearch_name$$Busca Triste
-sadsearch_desc$$Sua busca é marcada por uma profunda e silenciosa melancolia. As emoções guiam seu caminho pela terra.
-pickpocket_name$$Batedor de Carteiras
-pickpocket_desc$$Ops, desculpe senhor, eu deveria prestar atenção por onde ando... Espera, cadê meu dinheiro?!
-happycat_name$$Curtir gato
+sadsearch_desc$$Sua busca é marcada por uma profunda melancolia silenciosa. As emoções guiam seu caminho pela terra.
+pickpocket_name$$Batedor de Carteira
+pickpocket_desc$$Ops, desculpe senhor, eu deveria prestar atenção por onde ando... Espera, cadê o meu dinheiro?!
+happycat_name$$Aproveite gato
 happycat_desc$$Hora de passar um tempo de qualidade com meu gato.
 nutritionalharmony_name$$Harmonia Nutricional
-nutritionalharmony_desc$$Harmonia Nutricional
-positivethinking_name$$Pensamento Positivo
-positivethinking_desc$$Pensamento positivo
-innerwarmth_name$$Calor interno
-innerwarmth_desc$$Calor interno
-laylow_name$$Baixo perfil
-laylow_desc$$Deixe o perigo passar enquanto você descansa.
-ratbread_name$$Transportadores de ratos
+nutritionalharmony_desc$$
+positivethinking_name$$Pensamento positivo
+positivethinking_desc$$
+innerwarmth_name$$Calor Interior
+innerwarmth_desc$$
+laylow_name$$Baixar a guarda
+laylow_desc$$Deixe o perigo passar enquanto você descansa
+ratbread_name$$Portadores de Ratos
 ratbread_desc$$Treine seus ratos para roubar comida com você.
-ratoath_name$$Juramento de Rato
-ratoath_desc$$Fazer uma promessa de proteger os companheiros ratos, não importa o custo.
-killcat_name$$Mate um gato
-killcat_desc$$Mate o inimigo
+ratoath_name$$Juramento dos Ratos
+ratoath_desc$$Faça um juramento de proteger seus companheiros ratos, não importa o custo.
+killcat_name$$Matar um gato
+killcat_desc$$Matar o inimigo
 deadcatritual_name$$Ritual da Morte de Felyne
-deadcatritual_desc$$Celebre a morte do mal.
+deadcatritual_desc$$Celebrar a morte do mal.
 pickpocketrat_name$$Ratos Batedores
-pickpocketrat_desc$$Coordene façanhas de roubo com seus ratos.
+pickpocketrat_desc$$Coordene golpes de roubo com seus ratos.
 guiltcunning_name$$Não é minha culpa
 guiltcunning_desc$$Estou com fome e ninguém vai cuidar de mim.
 healthier_name$$Um pouco mais saudável
-healthier_desc$$Sinais leves de melhora são visíveis, mas ainda longe de estar saudável.
+healthier_desc$$Sinais mínimos de melhora são visíveis, mas ainda bem longe de saudável.
 lament_name$$lamento
 lament_desc$$Para encontrar consolo na tristeza, é preciso primeiro abraçar as profundezas do próprio desespero.
-shed_tears_name$$Derramar lágrimas
+shed_tears_name$$Derrame lágrimas
 shed_tears_desc$$Deixe a tristeza fluir e se transformar.
 firstfaith_name$$Ouça as palavras
-firstfaith_desc$$Abra seus ouvidos para as pessoas da igreja.
+firstfaith_desc$$Abra seus ouvidos para as pessoas da igreja
 cunningthoughts_name$$Pensamentos astutos
-cunningthoughts_desc$$Um agitar perturbador de ideias afiadas e inteligentes, surgindo com uma nova vantagem.
-chargefaith_name$$Agradeça as esmolas
-chargefaith_desc$$Mostre sua gratidão pela ajuda que você recebe.
-catnotlonely_name$$Amigo gato
-catnotlonely_desc$$Reconheça seu gato como um pequeno amigo.
-cathappy_name$$Amigo gato II
-cathappy_desc$$Seu gato te ajuda no caminho em direção a algo, embora você não saiba exatamente o que é.
-catbegging_name$$Comece com um gato
-catbegging_desc$$Seu gato se junta a você em suas atividades de mendicância
+cunningthoughts_desc$$Uma corrida inquietante de ideias afiadas e inteligentes, surgindo com uma nova perspicácia.
+chargefaith_name$$Agradeça a esmola
+chargefaith_desc$$Demonstre sua gratidão pela ajuda que você recebe.
+catnotlonely_name$$Amigo do Gato
+catnotlonely_desc$$Reconheça seu gato como um pequeno amigo
+cathappy_name$$Amigo de gato II
+cathappy_desc$$Seu gato te ajuda no caminho em direção a algo, embora você não tenha certeza do que é.
+catbegging_name$$Beg com um gato
+catbegging_desc$$Seu gato se junta a você em suas atividades de mendicância.
 catsupport_name$$Suporte Felyne
-catsupport_desc$$Gatos podem ser apoio moral, sabia?
+catsupport_desc$$Os gatos podem ser um apoio moral, sabia?
 cathappy_b_name$$Amigo gato III
 cathappy_b_desc$$Miau
-almsregular_name$$Esmoleiro regular
-almsregular_desc$$Crie conexões com a pessoa que dá esmolas.
-warmclothes_name$$Roupas antigas
-warmclothes_desc$$Roupas antigas. Elas não são tão ruins.
+almsregular_name$$Esbanjamento frequente
+almsregular_desc$$Crie conexões com a pessoa que dá esbanjamento frequente.
+warmclothes_name$$Roupas velhas
+warmclothes_desc$$Não são tão ruins assim.
 free_food_lead_name$$Boatos sobre comida
 free_food_lead_desc$$Você ouve um grupo falando sobre um lugar para conseguir comida.
-Back Alley_name$$Beco Escuro
-Back Alley_desc$$Um beco estreito e sujo cheio de lixo e entulho, que oferece pouca proteção contra o clima.
+Back Alley_name$$Bequinho sujo
+Back Alley_desc$$Uma viela estreita e suja cheia de lixo e entulho, oferecendo pouca proteção contra o clima.
 churchoutskirts_name$$Arredores da Igreja
 churchoutskirts_desc$$Não muito longe da Igreja de Nossa Senhora, perto do divino.
 underbridge_name$$Debaixo da ponte
-underbridge_desc$$Um lugar seguro para dormir, protegido da chuva.
+underbridge_desc$$Um lugar mais seguro para dormir, protegido da chuva.
 sewer_home_name$$Esgoto
 sewer_home_desc$$Nojento, mas espaçoso.
-gutterborn_name$$Nascido do esgoto
-gutterborn_desc$$Reconheça suas origens nas ruas, abraçando a dura realidade de sua criação.
-churchbeggar_name$$Coletor de Esmolas
-churchbeggar_desc$$Alimenta-se da misericórdia da igreja, transformando adversidades em resiliência e misturando-se ao sagrado em busca de refúgio.
+gutterborn_name$$nascido nas ruas
+gutterborn_desc$$Reconheça suas origens das ruas, abraçando a dura realidade de sua criação.
+churchbeggar_name$$Arrecadador de esmolas
+churchbeggar_desc$$Se beneficia da misericórdia da igreja, transformando adversidades em resiliência e se misturando ao sagrado em busca de refúgio.
 ratbeggar_name$$Sussurrador de Ratos
-ratbeggar_desc$$Cada rato é um companheiro leal, trazendo calor nas ruas frias.
+ratbeggar_desc$$Cada rato é um companheiro leal, trazendo calor às ruas frias.
 breadsnatcher_name$$Ladrão de Pão
-breadsnatcher_desc$$Melhor prestar atenção. Se distraia e a sua comida vai sumir.
-beggar_name$$Mendigo
+breadsnatcher_desc$$É melhor você prestar atenção. Se distraia e sua comida vai sumir.
+beggar_name$$Pedinte
 beggar_desc$$Uma pessoa que vive pedindo dinheiro ou comida.
-cutpurse_name$$Batedor de Carteira
-cutpurse_desc$$Rouba objetos de valor através de furtos e movimentos rápidos e furtivos.
+cutpurse_name$$Batedor
+cutpurse_desc$$Rouba objetos de valor por meio de carteiradas e movimentos rápidos e furtivos.
 streetrat_name$$Rato de Rua
-streetrat_desc$$Rato de Rua: Rato e homem trabalhando juntos para esvaziar todas as carteiras.
-ratwarden_name$$Guardião de Ratos
-ratwarden_desc$$Você é o protetor dos companheiros ratos.
-catbeggar_name$$Pedinte de gato
-catbeggar_desc$$Eles o chamam de esquisito dos gatos.
+streetrat_desc$$Rato e homem, trabalhando juntos para esvaziar todas as carteiras.
+ratwarden_name$$Guardião dos Ratos
+ratwarden_desc$$Você é o protetor dos seus companheiros ratos.
+catbeggar_name$$Pedinte de Gato
+catbeggar_desc$$Eles o chamam de o esquisito dos gatos.
 introspection_name$$introspecção
 introspection_desc$$Refletir internamente significa examinar seus próprios pensamentos e sentimentos.
-contemplation_name$$Contemplação
-contemplation_desc$$Olhando mais dentro de si.
-thinking_name$$pensando
-thinking_desc$$Sua capacidade de formar pensamentos.
+contemplation_name$$contemplação
+contemplation_desc$$Refletindo mais profundamente.
+thinking_name$$Pensando
+thinking_desc$$Sua capacidade de formar pensamentos
 exercise_name$$Exercício
-exercise_desc$$A prontidão do seu corpo para fazer exercícios.
-rodentology_name$$Ratkinship
-rodentology_desc$$Se deseja entender os homens, estude os ratos.
-felinology_name$$Parentes de Gatinho
-felinology_desc$$Serem misteriosos, porém fofos e fascinantes.
+exercise_desc$$A prontidão do seu corpo para fazer exercício
+rodentology_name$$Amizade com Ratos
+rodentology_desc$$Se você quer entender os homens, estude os ratos.
+felinology_name$$Parentesco Felino
+felinology_desc$$Seres misteriosos, mas fofos e fascinantes.
 bestiality_name$$Bestialidade
 bestiality_desc$$Humanos são animais.
-scavenging_name$$Coletando
-scavenging_desc$$Buscar e coletar recursos naturais e itens úteis do ambiente.
-beggarhood_name$$Mendicância
-beggarhood_desc$$Quão bom você é em se misturar com seus companheiros mendigos.
-cunning_name$$Astuto
+scavenging_name$$Catando
+scavenging_desc$$Procure e colete recursos naturais e itens úteis do ambiente.
+beggarhood_name$$Vida de Mendigo
+beggarhood_desc$$Quão bom você é em se misturar com colegas mendigos
+cunning_name$$Astúcia
 cunning_desc$$Por trás de uma fachada encantadora, sombras tramam em silêncio.
-animallove_name$$Cuidado Animal
-animallove_desc$$Um certo afeto por lidar com animais.
+animallove_name$$Cuidado com Animais
+animallove_desc$$Uma certa afinidade para lidar com animais
 emotions_loc_name$$Emoções superficiais
-emotions_loc_desc$$Ao se encarar, você precisa começar por algum lugar.
-creepyalley_name$$Bequela Sinistra
-creepyalley_desc$$Beco estreito de pedra desgastada, fechado e sujo, marcado por rachaduras profundas.
+emotions_loc_desc$$Enfrentar a si mesmo, você precisa começar em algum lugar.
+creepyalley_name$$Beco Sinistro
+creepyalley_desc$$Paredes estreitas de pedra desgastada se aproximam, manchadas de sujeira e marcadas com rachaduras profundas.
 churchfront_name$$Entrada da Igreja de Nossa Senhora
-churchfront_desc$$Paredes de pedra cobertas de hera cercam um caminho de paralelepípedos, ladeado por lanternas tremeluzentes e um pequeno altar de orações.
-midden_name$$Mercado de Detritos
-midden_desc$$Os buracos onde eles jogam todo o lixo dentro.
+churchfront_desc$$Muros de pedra revestidos de hera cercam um caminho de paralelepípedos, ladeado por lanternas tremeluzentes e um pequeno santuário de oração.
+midden_name$$Lixo do Mercado
+midden_desc$$Os buracos onde eles jogam todo o lixo.
 sewer_name$$Esgotos
-sewer_desc$$Estreitos túneis de pedra carregam resíduos morro abaixo, desaguando no rio fora da cidade.
+sewer_desc$$Estreitos túneis de pedra conduzem o lixo morro abaixo, desaguando no rio fora da cidade.
 lostbeggar_name$$Pedinte perdido
-lostbeggar_desc$$Um companheiro pedinte perdido na vida.
-meancat_name$$gato malvado
-meancat_desc$$Um gato de rua rosna e tenta arranhar quem passa.
+lostbeggar_desc$$Um pedinte perdido na vida.
+meancat_name$$Gato malvado
+meancat_desc$$Um gato malvado sibilando e tentando arranhar os transeuntes.
 ratpack_name$$Bando de Ratos
 ratpack_desc$$Ratos correndo pelas ruas, ameaçando subir nas pessoas.
-drawing_wall_name$$Desenho de Parede
-drawing_wall_desc$$Padrões arrepiantes desenhados na parede.
-sick_man_name$$Homem Doente
-sick_man_desc$$Um homem doente e delirante, murmurando.
+drawing_wall_name$$Desenho na Parede
+drawing_wall_desc$$Padrões arrepiantes desenhados na parede
+sick_man_name$$Homem doente
+sick_man_desc$$Um homem doente, delirante, murmurando.
 boredom_weak_emotion_name$$Um pouco entediado
 boredom_weak_emotion_desc$$Se ao menos algo interessante acontecesse...
-sad_weak_emotion_name$$Sentindo-se para baixo
-sad_weak_emotion_desc$$Você não consegue deixar de sentir a tristeza.
+sad_weak_emotion_name$$Se sentindo pra baixo
+sad_weak_emotion_desc$$Não há como evitar sentir a tristeza.
 frustration_weak_emotion_name$$Irritante
-frustration_weak_emotion_desc$$Você acordou com o pé esquerdo.
-joy_weak_emotion_name$$Satisfeito
-joy_weak_emotion_desc$$A vida é difícil, mas estou feliz por estar vivo.
+frustration_weak_emotion_desc$$Você acordou com o pé esquerdo
+joy_weak_emotion_name$$Contente
+joy_weak_emotion_desc$$A vida é difícil, mas estou contente de estar vivo.
 anxiety_weak_emotion_name$$Ansioso
 anxiety_weak_emotion_desc$$Estou mesmo certo do que vou comer amanhã?
-smelly_puddle_name$$Poça Fedida
-smelly_puddle_desc$$Água no chão. Cheira mal.
+smelly_puddle_name$$Poça fedida
+smelly_puddle_desc$$Água no chão. Isso fede.
 pattern_bones_name$$Ossos em um padrão
-pattern_bones_desc$$Ossos arrumados em um padrão intrigante
-rusted_grate_name$$Grade enferrujada
-rusted_grate_desc$$Grade enferrujada. Grades de ferro, cheias de ferrugem. Fico imaginando o que há além...
+pattern_bones_desc$$Ossos dispostos em um padrão intrigante.
+rusted_grate_name$$Grade Enferrujada
+rusted_grate_desc$$Grade de ferro, cheia de ferrugem. Fico imaginando o que há além...
 waste_stream_name$$Fluxo de resíduos
-waste_stream_desc$$Fluxo de resíduos: Fluxo de água que leva o lixo para longe da cidade.
-hungry_beggar_name$$Mendigo Faminto
-hungry_beggar_desc$$Profundo na fome, perto da insanidade.
-lost_diary_page_name$$Página Perdida
+waste_stream_desc$$Fluxo de água que transporta lixo para longe da cidade.
+hungry_beggar_name$$Pedinte faminto
+hungry_beggar_desc$$Profundamente faminto, perto da insanidade.
+lost_diary_page_name$$Página perdida
 lost_diary_page_desc$$Uma página cheia de palavras, mal legível.
-dialog_job_name$$trabalho_dialogo
-dialog_job_desc$$trabalho_dialogo
-irreversible_name$$Irreversível
-irreversible_desc$$Um jogo de quebra-cabeça desafiador no qual você precisa desfazer uma série de ações em ordem reversa para completar cada nível.
-exclusive_upgrade_name$$atualização_exclusiva
-exclusive_upgrade_desc$$Atualização exclusiva
-ending_name$$fim
-ending_desc$$Finalizou! Parabéns por completar o jogo.
-brokenmirror_name$$Espelho Quebrado
-brokenmirror_desc$$Espelho Quebrado
-crackedvase_name$$Vaso rachado
-crackedvase_desc$$Vaso rachado
+dialog_job_name$$diálogo_trabalho
+dialog_job_desc$$
+irreversible_name$$irreversível
+irreversible_desc$$
+exclusive_upgrade_name$$Atualização exclusiva
+exclusive_upgrade_desc$$
+ending_name$$final
+ending_desc$$
+brokenmirror_name$$Espelho quebrado
+brokenmirror_desc$$
+crackedvase_name$$Vaso quebrado
+crackedvase_desc$$
 doll_name$$Boneca Descartada
-doll_desc$$Boneca assustadora descartada coletada de um antigo asilo abandonado.
-mothblanket_name$$Cobertor Comido por Traça
-mothblanket_desc$$Cobertor Comido por Traça
-blanket_name$$Manta velha
-blanket_desc$$Uma manta velha e desgastada, mas ainda assim confortável e acolhedora.
+doll_desc$$
+mothblanket_name$$Cobertor velho
+mothblanket_desc$$
+blanket_name$$Cobertor velho
+blanket_desc$$
 spoiledgrains_name$$Grãos Estragados
-spoiledgrains_desc$$Grãos Estragados.
+spoiledgrains_desc$$
 destroyedpainting_name$$Pintura destruída
-destroyedpainting_desc$$Pintura que foi severamente danificada e agora está em ruínas. É difícil identificar qualquer detalhe ou figura na tela, o que a torna praticamente irreconhecível.
+destroyedpainting_desc$$
 cheese_name$$Queijo
-cheese_desc$$Você encontrou um delicioso pedaço de queijo para recarregar sua energia!
-ratpond_name$$Poça de Ratos
+cheese_desc$$
+ratpond_name$$Poça de Água dos Ratos
 ratpond_desc$$Uma poça de água para os ratos beberem.
 petcat_name$$Gato de Estimação
-petcat_desc$$Um companheiro egoísta, mas um companheiro mesmo assim.
+petcat_desc$$Um amigo egoísta, mas ainda sim um amigo.
 meatbarrel_name$$Barril de carne estragada
-meatbarrel_desc$$Cheiro horrível.
+meatbarrel_desc$$Cheira horrível.
 rottenfruit_name$$Saco de frutas podres
-rottenfruit_desc$$Tons de moscas por toda parte.
+rottenfruit_desc$$Toneladas de moscas por todo lado
 mysterygarbage_name$$Lixo Misterioso
-mysterygarbage_desc$$Ninguém nunca poderia saber o que é isso. Cheira mal, mas reconfortante.
+mysterygarbage_desc$$Ninguém nunca poderia saber o que é. Cheira mal, mas reconfortante.
 ratstatue_name$$Estátua de Rato
-ratstatue_desc$$Uma bela estátua oversized de um rato. Quem fez isso?
+ratstatue_desc$$Uma bela e gigantesca estátua de um rato. Quem fez isso?
 brokenrosario_name$$Rosário Quebrado
-brokenrosario_desc$$Um antigo colar quebrado com contas. Anexado a ele, há algo que, um dia, foi uma cruz.
-oldrosario_name$$Velho Rosário
-oldrosario_desc$$Um velho rosário que não é mais necessário.
+brokenrosario_desc$$Um colar antigo e quebrado com contas. Anexado a ele, há algo que era uma cruz.
+oldrosario_name$$Rosário Antigo
+oldrosario_desc$$Um antigo rosário que não é mais necessário
 stolenbread_name$$Pão do Crime
-stolenbread_desc$$Alimento roubado ressecado. Uma lembrança de um pequeno crime.
+stolenbread_desc$$Comida roubada ressecada. Uma lembrança de um pequeno crime.
 deadflowers_name$$Flores Mortas
 deadflowers_desc$$A efemeridade da vida
 rustyknife_name$$Faca enferrujada
-rustyknife_desc$$Faca enferrujada
-catfoodtray_name$$Bandeja de Comida
-catfoodtray_desc$$Bandeja de comida
+rustyknife_desc$$
+catfoodtray_name$$Bandeja de comida
+catfoodtray_desc$$
 task_name$$tarefa
-task_desc$$missões a serem realizadas pelos jogadores para cumprir objetivos específicos dentro do jogo.
+task_desc$$
 action_name$$Tarefas Instantâneas
-action_desc$$Realize tarefas rápidas para obter recompensas instantâneas!
+action_desc$$
 task_name$$Tarefas
-task_desc$$Conclua as tarefas o mais rápido possível para ganhar pontos!
+task_desc$$
+crime_sep_name$$Atividades Criminosas
+crime_sep_desc$$
 power_up_name$$Power Ups
-power_up_desc$$Itens especiais que concedem habilidades extras temporárias aos jogadores.
+power_up_desc$$
 class_name$$Classes
-class_desc$$Escolha entre várias classes e desbloqueie novas habilidades e poderes para enfrentar desafios cada vez maiores.
-resource_name$$Recurso
-resource_desc$$Recurso
+class_desc$$
+resource_name$$recurso
+resource_desc$$
 resource_name$$Recursos
-resource_desc$$Recursos
+resource_desc$$
 skill_name$$habilidade
-skill_desc$$habilidade
+skill_desc$$
 skill_name$$Habilidades
-skill_desc$$Habilidades
-exploration_name$$Exploração
-exploration_desc$$Exploração
+skill_desc$$
+exploration_name$$exploração
+exploration_desc$$
 location_name$$Localizações
-location_desc$$Explore diferentes localizações ao redor do mundo e descubra segredos escondidos, tesouros misteriosos e desafios emocionantes. Desde florestas densas até cidades antigas, mergulhe em aventuras únicas em cada localização.
+location_desc$$
 housing_name$$Moradia
-housing_desc$$Moradia
-housing_name$$Habitação
-housing_desc$$Este é seu espaço pessoal onde você pode decorar e personalizar sua casa do jeito que desejar. Aumente seu conforto e estilo com móveis, decorações e muito mais.
+housing_desc$$
+housing_name$$Moradia
+housing_desc$$
 furniture_name$$Móveis
-furniture_desc$$Colete e decore sua casa com uma variedade de móveis bonitos! Personalize seu espaço e crie o ambiente dos seus sonhos.
+furniture_desc$$
 log_name$$registro
-log_desc$$Registre todas as suas ações e descobertas neste registro.
-log_name$$Tronco
-log_desc$$Tronco
-settings_name$$configurações
-settings_desc$$configurações
+log_desc$$
+log_name$$Registro
+log_desc$$
+settings_name$$Configurações
+settings_desc$$
 others_name$$outros
-others_desc$$outros
+others_desc$$
 ponderexistence_name$$Qual é a realidade?
-ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
+ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade
 ponderhappiness_name$$Qual é a felicidade?
 ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade.
 churchrespect_name$$Respeito da Igreja
-churchrespect_desc$$Quão bem visto você é pelos membros da igreja.
+churchrespect_desc$$Como você é bem visto pelos membros da igreja
 reflection_name$$Reflexão
-reflection_desc$$Reflexão aplicada a si mesmo, ao passado.
+reflection_desc$$Reflexão aplicada a si mesmo, ao passado
 fundamentals_name$$Fundamentos
 fundamentals_desc$$Os fundamentos do conhecimento
 academics_name$$Acadêmicos
 academics_desc$$Fundamentos cristalizados
 baptism_name$$Batismo
-baptism_desc$$Celebration of being initiated into a religious faith, symbolizing purification and new beginnings.
+baptism_desc$$
 tabularasa_name$$Tábula rasa
-tabularasa_desc$$A ideia de que toda mente começa em branco
+tabularasa_desc$$A ideia de que cada mente começa em branco.
 corgito_name$$Penso, logo existo
-corgito_desc$$Penso, logo existo
+corgito_desc$$Penso, logo existo.
 socraticmethod_name$$Método Socrático
 socraticmethod_desc$$Faça as perguntas certas. O objetivo não é a resposta, mas o pensamento.
 latinbasics_name$$Frases básicas
-latinbasics_desc$$Saudações, querido, estou ansioso pela sua chegada, estou apaixonado por você.
-latinreading_name$$Leitura elementar
-latinreading_desc$$Leitura elementar
+latinbasics_desc$$Salve, querido, estou feliz com sua chegada, estou apaixonado por você.
+latinreading_name$$Leitura Elementar
+latinreading_desc$$Você sabe ler.
 widowmite_name$$Moedinha da Viúva
 widowmite_desc$$A história de uma mulher fiel que se entregou ao divino.
-sheepgoat_name$$As Ovelhas e os Bodes
-sheepgoat_desc$$Uma ovelha em uma mão, um bode na outra, tal é a profundidade do pensamento.
+sheepgoat_name$$A Ovelha e as Cabras
+sheepgoat_desc$$Uma ovelha em uma mão, uma cabra na outra, tal é a profundidade do pensamento.
 specklog_name$$O Cisco e a Trave
-specklog_desc$$Primeiro, olhe para suas próprias falhas.
-sharethebegging_name$$Compartilhe o início.
-sharethebegging_desc$$Compartilhe suas habilidades de mendicância com seus colegas mendigos.
-optimizebegging_name$$Mendicância Avançada
-optimizebegging_desc$$Derrame o conhecimento que você acumulou em sua mendicância.
-begginingmeaning_name$$O significado de mendigar
-begginingmeaning_desc$$O significado de pedir coisas às pessoas
-beggingspots_name$$Pontos de Esmola
+specklog_desc$$Primeiro, olhe para suas próprias falhas
+sharethebegging_name$$Compartilhe a mendicância
+sharethebegging_desc$$Conte aos seus colegas mendigos sobre suas habilidades de mendigar.
+optimizebegging_name$$Mendicância avançada
+optimizebegging_desc$$Despeje o conhecimento que você acumulou mendigando.
+begginingmeaning_name$$O significado de implorar
+begginingmeaning_desc$$O que significa pedir coisas às pessoas
+beggingspots_name$$Pontos de esmola
 beggingspots_desc$$Use seu conhecimento das ruas para encontrar os melhores pontos de esmola.
 tier3reach_name$$Crescimento III
-tier3reach_desc$$Parece que você atingiu uma nova etapa na vida?
-foodchurch_name$$Refeições da igreja
-foodchurch_desc$$Refeições dadas pela igreja
-thankfulthoughts_name$$Pensamentos Agradecidos
-thankfulthoughts_desc$$Sempre ser grato.
+tier3reach_desc$$Parece que você chegou a uma nova etapa na vida.
+foodchurch_name$$Refeições da Igreja
+foodchurch_desc$$Refeição fornecida pela igreja
+thankfulthoughts_name$$Pensamentos de gratidão
+thankfulthoughts_desc$$Sempre sendo grato
 study_name$$Estudo
-study_desc$$Familiarize-se com os fundamentos.
+study_desc$$Volte às bases.
 pray_name$$Reze
-pray_desc$$Que tuas palavras alcancem o Divino.
-studystudy_name$$Estudo estudando.
-studystudy_desc$$Como melhorar no estudo?
-mass_name$$Conhecimento da Massa
+pray_desc$$Que suas palavras alcancem o Divino.
+studystudy_name$$Estudar estudando?
+studystudy_desc$$Como melhorar em estudar?
+mass_name$$Conhecimento da Missa
 mass_desc$$A celebração da eucaristia
 altarservices_name$$Serviços do Altar
-altarservices_desc$$Preparação e execução de todos os assuntos relacionados ao altar.
-maternostra_name$$Memorize Mater Nostra
-maternostra_desc$$Memorize todos os versos da Mater Nostra.
+altarservices_desc$$Preparação e execução de todos os assuntos relacionados ao altar
+maternostra_name$$Memorize Nossa Mãe
+maternostra_desc$$Memorize cada verso da Nossa Mãe.
 aveluna_name$$Memorize Ave Lua
 aveluna_desc$$Memorize cada verso da Ave Lua.
 baptismknowledge_name$$Conhecimento do Batismo
-baptismknowledge_desc$$Aprenda todos os detalhes e procedimentos de batizar novas almas.
+baptismknowledge_desc$$Aprenda todos os detalhes e procedimentos para batizar novas almas.
 eucharistknowledge_name$$Conhecimento da Eucaristia
 eucharistknowledge_desc$$Aprenda todos os detalhes e procedimentos do ato religioso central.
 sevensacraments_name$$Os Sete Sacramentos
-sevensacraments_desc$$Aprenda todos os sete sacramentos.
+sevensacraments_desc$$Aprenda cada um dos sete sacramentos.
 subdeaconduties_name$$Deveres de Subdiácono
-subdeaconduties_desc$$Aprenda todos os deveres do subdiácono.
-deaconduties_name$$Deveres do diácono
-deaconduties_desc$$Aprenda todos os deveres do diácono
-priestduties_name$$Deveres de sacerdote
-priestduties_desc$$Aprenda todos os deveres do sacerdote.
+subdeaconduties_desc$$Aprender todos os deveres do subdiácono.
+deaconduties_name$$Deveres do Diácono
+deaconduties_desc$$Aprenda cada dever do diácono.
+priestduties_name$$Deveres do Sacerdote
+priestduties_desc$$Aprenda cada dever do sacerdote.
 advancedsermons_name$$Sermões Avançados
-advancedsermons_desc$$Aprenda a adicionar verdadeira profundidade às suas palestras.
-transubstation_name$$Transubstação
-transubstation_desc$$A arte de consagrar pão e vinho.
+advancedsermons_desc$$Aprenda como adicionar profundidade real aos seus discursos.
+transubstation_name$$Transubstanciação
+transubstation_desc$$A arte de consagrar pão e vinho
 confessions_name$$Confissões
 confessions_desc$$Aprenda a ouvir e absolver.
 advancedconsecration_name$$Consagração Avançada
 advancedconsecration_desc$$Torne-se capaz de consagrar o altar.
-convincejohn_name$$Convencer John a ajudar com cartas.
-convincejohn_desc$$Diz a lenda que John sabe ler e escrever. Talvez ele possa te ajudar a fazer o mesmo.
+convincejohn_name$$Convença John a ajudar com letras
+convincejohn_desc$$A lenda diz que John sabe ler e escrever. Talvez ele possa te ajudar a fazer o mesmo.
 tonsure_name$$Tonsura
 tonsure_desc$$O ato de raspar a cabeça, como prova de devoção.
-celibacy_name$$Voto de Celibato
+celibacy_name$$Juramento de Celibato
 celibacy_desc$$Uma promessa sagrada de se afastar da conexão física, se entregando a um chamado superior.
 theself_3_name$$Quem sou eu?
 theself_3_desc$$Refletir sobre si mesmo.
 jointhechurch_name$$Junte-se à Igreja
 jointhechurch_desc$$Junte-se oficialmente à igreja.
 beg_b_name$$Implorar por comida
-beg_b_desc$$Seus olhos suplicantes podem conseguir todos os tipos de comida.
-firsteucharist_name$$Primeira assistência eucarística
-firsteucharist_desc$$Você completou sua primeira assistência eucarística. Que a Mãe o abençoe!
+beg_b_desc$$Seus olhos suplicantes podem conseguir todo tipo de comida.
+firsteucharist_name$$Primeira assistência à eucaristia
+firsteucharist_desc$$Você completou sua primeira assistência à eucaristia. Que a Mãe te abençoe!
 subdeacon_name$$Subdiácono
-subdeacon_desc$$Seja nomeado Subdiácono, a primeira ordem maior na Igreja.
+subdeacon_desc$$Seja designado como subdiácono, a primeira ordem maior na Igreja.
 deacon_name$$Diácono
-deacon_desc$$Seja nomeado Diácono, a próxima ordem importante na Igreja.
-reflectgatherer_name$$Reflexos do Coletor
-reflectgatherer_desc$$Reflexos do Coletor: Olhe para trás e veja como você tem coletado até agora. Encontre um caminho para melhorar.
+deacon_desc$$Seja nomeado Diácono, a próxima ordem principal na Igreja.
+reflectgatherer_name$$Reflexões do Coletor
+reflectgatherer_desc$$Olhe como você coletou até agora. Encontre um caminho para melhorar.
 helpchurch_name$$Voluntariado Religioso
-helpchurch_desc$$Contribua com pequenas tarefas na igreja.
+helpchurch_desc$$Ajudar com pequenas tarefas na igreja
 basicsknowledge_name$$Aprenda o básico
-basicsknowledge_desc$$Os blocos básicos do conhecimento
-betterreading_name$$Leitura melhor
-betterreading_desc$$Aprenda a focar mais em sua leitura.
+basicsknowledge_desc$$Os blocos fundamentais do conhecimento.
+betterreading_name$$Leitura Aperfeiçoada
+betterreading_desc$$Aprenda a focar mais na sua leitura.
 firstverse_name$$Primeiro verso divino
-firstverse_desc$$Leia em voz alta um verso da escritura para seus companheiros na igreja.
+firstverse_desc$$Leia em voz alta um verso das escrituras, para seus companheiros na igreja.
 basicschurch_name$$Princípios da Igreja
-basicschurch_desc$$Estude formalmente os princípios básicos da igreja.
-intermediarychurch_name$$Essencia da Igreja
-intermediarychurch_desc$$Ultrapasse os princípios básicos da igreja e entre nos aspectos essenciais.
+basicschurch_desc$$Estudar formalmente os princípios básicos da igreja
+intermediarychurch_name$$Essenciais da Igreja
+intermediarychurch_desc$$Ir além dos princípios básicos da igreja para os aspectos fundamentais.
 revisit_thoughts_name$$Revisitar pensamentos
-revisit_thoughts_desc$$Revisitar pensamentos
+revisit_thoughts_desc$$
 churchcalling_name$$Chamado da Igreja
-churchcalling_desc$$Explore the mysterious church and search for clues to uncover its dark secrets. Will you answer the Calling of the Church?
-thinkbreakthrough_name$$Tempo de Reflexão
-thinkbreakthrough_desc$$Momento para pensar e refletir sobre suas ações e decisões.
-churchbasic_name$$Dormitório da igreja
+churchcalling_desc$$
+thinkbreakthrough_name$$Momento de reflexão
+thinkbreakthrough_desc$$
+churchbasic_name$$Dormitório da Igreja
 churchbasic_desc$$Não muito longe da Igreja de Nossa Senhora, perto do divino.
-churchporter_name$$Sacristão da Igreja
+churchporter_name$$Guardião da Igreja
 churchporter_desc$$Guarda as portas da igreja. Um membro da ordem dos Ostiários.
 lostphilosopher_name$$Filósofo Perdido
-lostphilosopher_desc$$O que fica pelas ruas. Pensando, murmurando. Tentando encontrar a resposta.
+lostphilosopher_desc$$Aquele que fica nas ruas. Pensando, murmurando. Tentando chegar à resposta.
 acolyte_name$$Acólito
 acolyte_desc$$Auxilia em cerimônias religiosas preparando itens, acendendo velas e apoiando o clero.
 lector_name$$Leitor
 lector_desc$$Um membro da ordem menor da igreja. Responsável por ler e ensinar textos sagrados.
 priest_name$$Sacerdote
-priest_desc$$O terceiro principal posto da Igreja. Um líder religioso capaz de realizar todo tipo de ritual.
-expertbeggar_name$$Mendigo Expert
+priest_desc$$A terceira grande ordem da Igreja. Um líder religioso capaz de realizar todos os tipos de rituais.
+expertbeggar_name$$Esfolador Especialista
 expertbeggar_desc$$Um mestre das ruas, um conhecedor das artes da mendicância.
-ecclesiology_name$$Eclesiologia
-ecclesiology_desc$$Conhecimento da igreja e cerimônias religiosas.
+ecclesiology_name$$eclesiologia
+ecclesiology_desc$$Conhecimento da igreja e cerimônias religiosas
 academia_name$$academia
 academia_desc$$A busca pelo conhecimento
 philosophy_name$$filosofia
 philosophy_desc$$O estudo das questões fundamentais.
 latin_name$$latim
-latin_desc$$A linguagem usada no Império Romano. Necessária para ler escrituras.
+latin_desc$$O idioma usado no Império Romano. Necessário para ler escrituras.
 begging_name$$implorando
-begging_desc$$O sutil ofício de fazer os outros verem seu papel como salvadores.
+begging_desc$$A sutil arte de fazer os outros verem seu papel como salvadores.
 cityknowledge_name$$Conhecimento de rua
-cityknowledge_desc$$Você sabe o que está escondido em cada esquina.
-holyscriptures_name$$Escrituras Sagradas
-holyscriptures_desc$$Conhecimento das Escrituras Sagradas.
+cityknowledge_desc$$Você sabe o que se esconde na maioria dos cantos.
+holyscriptures_name$$Sagradas Escrituras
+holyscriptures_desc$$Conhecimento das Sagradas Escrituras.
 ordination_1_name$$Primeira Ordenação
 ordination_1_desc$$Junte-se às ordens menores da igreja, no caminho de servir o divino.
 ordination_2_name$$Segunda Ordenação
-ordination_2_desc$$Avance nas ordens menores da igreja, se aproximando cada vez mais do divino.
+ordination_2_desc$$Avance nos ministérios menores da igreja, se aproximando cada vez mais do divino.
 eucharist_assistance_name$$Auxiliando a eucaristia
-eucharist_assistance_desc$$Preparar o altar, as velas e ajudar com outras coisas durante a eucaristia.
+eucharist_assistance_desc$$Preparar o altar, velas e ajudar com outras coisas durante a eucaristia.
 john_conversation_name$$Um passeio com João, o Sábio
-john_conversation_desc$$Um passeio com João, o Sábio, pelas ruas da cidade.
+john_conversation_desc$$O sábio das ruas, passeando na cidade.
 john_home_name$$Casa do Sábio
-john_home_desc$$A casa de João, o Sábio. Uma tenda cheia de bugigangas estranhas.
+john_home_desc$$A casa de João o Sábio. Uma tenda repleta de bugigangas estranhas.
 blueeyes_name$$Olhos azuis
-blueeyes_desc$$Os olhos azuis de John encaram você profundamente, tentando penetrar em sua alma.
-intriguingquestion_name$$Pergunta intrigante
-intriguingquestion_desc$$Você recebe uma pergunta desafiadora.
+blueeyes_desc$$Os olhos azuis de John encaram profundamente para você, tentando penetrar em sua alma.
+intriguingquestion_name$$Pergunta instigante
+intriguingquestion_desc$$Você está diante de uma pergunta desafiadora.
 johncharade_name$$Uma charada
 johncharade_desc$$Um problema misterioso paira sobre você.
-johnchildhood_name$$Infância do João
-johnchildhood_desc$$Infância do João: João conta a você uma de suas muitas aventuras quando criança.
+johnchildhood_name$$Infância de João
+johnchildhood_desc$$João conta a você uma de suas muitas aventuras quando criança.
 johnlaughter_name$$Risada
-johnlaughter_desc$$A risada de John ecoa pelos seus ouvidos.
-mockingwords_name$$Palavras Zombeteiras
-mockingwords_desc$$Palavras Zombeteiras
-johnprose_name$$Prosabítio
-johnprose_desc$$A prosa de João encanta seu cérebro.
+johnlaughter_desc$$A risada de João ecoa em seus ouvidos.
+mockingwords_name$$Palavras zombeteiras
+mockingwords_desc$$Palavras zombeteiras ecoam em seus ouvidos, diminuindo você.
+johnprose_name$$Prosa
+johnprose_desc$$A prosa de John instiga o seu cérebro.
 sadpainting_name$$Pintura triste
 sadpainting_desc$$Uma pintura que inspira emoções profundas.
-deadflowers_enc_name$$Flores Mortas
+deadflowers_enc_name$$Flores mortas
 deadflowers_enc_desc$$Um buquê de flores mortas deixado no chão.
-johnnap_name$$Sono do João
-johnnap_desc$$Ele reserva um tempo para dormir. Você pode ouvi-lo falando enquanto dorme...
+johnnap_name$$Soneca do João
+johnnap_desc$$Ele leva tempo para dormir. Você pode ouvi-lo falando enquanto dorme...
 preparealtar_name$$Preparando o altar
-preparealtar_desc$$Preparando o altar. Você ajuda a preparar o altar para a eucaristia.
-carrycandles_name$$Carregar velas
-carrycandles_desc$$Transporte as luzes sagradas até o seu lugar de honra, iluminando o ritual com cuidado.
+preparealtar_desc$$Você ajuda a preparar o altar para a eucaristia.
+carrycandles_name$$Carregue velas
+carrycandles_desc$$Transporte as luzes sagradas para o seu lugar de honra, iluminando o ritual com cuidado.
 liturgicalbooks_name$$Livros litúrgicos
-liturgicalbooks_desc$$Prepare os livros a serem utilizados na cerimônia.
-cruetswine_name$$Cruzeiros de vinho
-cruetswine_desc$$Entregue os cruzeiros de vinho ao altar, preparando-os para o sagrado ritual.
-lavabo_name$$O lavabo
-lavabo_desc$$Leve a água e a bacia até o altar para a lavagem cerimonial das mãos.
+liturgicalbooks_desc$$Prepare os livros para serem usados na cerimônia.
+cruetswine_name$$Cálices de Vinho
+cruetswine_desc$$Entregue os cálices de vinho ao altar, preparando-os para o ritual sagrado.
+lavabo_name$$A pia
+lavabo_desc$$Traga a água e a bacia para o altar para a lavagem cerimonial das mãos.
 eyesfaithful_name$$Os olhos dos fiéis
 eyesfaithful_desc$$Eles todos te encaram.
-bishopglare_name$$Olhar do Bispo
-bishopglare_desc$$Seus olhos antigos e cálidos olham fixamente para você.
-joinedprayer_name$$Oração unida
-joinedprayer_desc$$Orem juntos em comunhão
+bishopglare_name$$O olhar do Bispo
+bishopglare_desc$$Seus olhos antigos e calorosos te encaram.
+joinedprayer_name$$Oração conjunta
+joinedprayer_desc$$Orar juntos em comunhão
 wordsbishop_name$$Sermão do Bispo
-wordsbishop_desc$$Mais um conto destinado a transmitir conhecimento.
-chant_name$$Canto
-chant_desc$$Repita as palavras divinas com fé.
+wordsbishop_desc$$Outro conto destinado a transmitir conhecimento
+chant_name$$Entoar
+chant_desc$$Repetir as palavras divinas com fé.
 voicesgossip_name$$Vozes da fofoca
 voicesgossip_desc$$Você pode ouvir as vozes sussurrantes e maldosas das pessoas.
-divinepictures_name$$Imagens divinas.
-divinepictures_desc$$Pinturas belas nas paredes da igreja.
-silenceperiod_name$$Fique em silêncio
-silenceperiod_desc$$Fique em silêncio. A verdadeira comunicação não precisa de palavras.
+divinepictures_name$$Imagens divinas
+divinepictures_desc$$Belas pinturas nas paredes da igreja.
+silenceperiod_name$$Permaneça em silêncio
+silenceperiod_desc$$Falar de verdade não precisa de palavras.
 keyschurch_name$$Chaves da Igreja
 keyschurch_desc$$O Bispo segura as chaves em sua direção.
-holdcandle_name$$O Candelabro
-holdcandle_desc$$O Bispo segura o candelabro simbólico em sua direção.
-irreversible_church_name$$igreja_irreversível
-irreversible_church_desc$$igreja_irreversível
+holdcandle_name$$O Castiçal
+holdcandle_desc$$O Bispo segura o Castiçal simbólico em sua direção.
+irreversible_church_name$$Igreja Irreversível
+irreversible_church_desc$$
 rosario_name$$Rosário
-rosario_desc$$Um belo rosário, novinho em folha.
-childdrawing_name$$Desenho de madeira
-childdrawing_desc$$Uma peça de madeira com um desenho esculpido. Será que foi uma criança quem fez?
-storytellingdolls_name$$Bonecas contadoras de histórias
-storytellingdolls_desc$$Bonecas contadoras de histórias
+rosario_desc$$Um lindo rosário, novinho em folha.
+childdrawing_name$$Desenho em Madeira
+childdrawing_desc$$Uma peça de madeira com um desenho esculpido. Será que foi uma criança que fez isso?
+storytellingdolls_name$$Bonecas Contadoras de Histórias
+storytellingdolls_desc$$Você usa isso para narrar histórias maravilhosas para seus colegas mendigos.
 ponderexistence_name$$Qual é a realidade?
 ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
 ponderhappiness_name$$Qual é a felicidade?
-ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade.
+ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade
 ponderreligion_name$$Quais são os ensinamentos?
-ponderreligion_desc$$Reflexione com todo o seu vigor sobre o significado da religião.
+ponderreligion_desc$$Refletir com toda a sua força sobre o significado da religião.
 firewood_name$$Lenha
-firewood_desc$$Algumas lenhas, te mantém aquecido durante a noite.
+firewood_desc$$Alguma lenha, te mantém aquecido durante a noite
 firewood_name$$lenha
-firewood_desc$$Lenha para a fogueira. Você precisa de algo para acendê-la.
+firewood_desc$$Lenha para a fogueira. Você precisa de algo para acendê-la, no entanto.
 followers_name$$seguidores
-followers_desc$$Uma pessoa que te apoia
-fireaffinity_name$$Afinidade de Fogo
+followers_desc$$Uma pessoa que te apoia.
+fireaffinity_name$$Afinidade com o Fogo
 fireaffinity_desc$$Atração pela chama
 dominance_name$$Domínio
 dominance_desc$$Sentimentos de controle
 charm_name$$Encanto
 charm_desc$$O poder de atrair e encantar os outros.
-captive_name$$Cativo
+captive_name$$Prisioneiro
 captive_desc$$Uma pessoa que foi feita prisioneira
 firepower_name$$Poder da Chama
-firepower_desc$$O poder do fogo.
-benevolence_name$$Benevolência
+firepower_desc$$A força do fogo
+benevolence_name$$benevolência
 benevolence_desc$$Agindo com bondade, sendo gentil.
 animalfat_name$$Gordura animal
 animalfat_desc$$Óleo extraído de animais
-empathypath_name$$Quero entender os outros
-empathypath_desc$$Olhe para eles, entenda seus sentimentos. Escolher isso irá parar quaisquer tendências sociopatas.
-psycho_path_name$$Eu não consigo entender os outros
-psycho_path_desc$$Outras pessoas, suas expressões. Elas não têm significado para você. Escolher isso irá interromper quaisquer tendências empáticas.
+empathypath_name$$Eu quero entender os outros
+empathypath_desc$$Olhe para eles, entenda seus sentimentos. Escolher isso vai parar qualquer tendência sociopática.
+psycho_path_name$$Eu não consigo entender os outros.
+psycho_path_desc$$Outras pessoas, suas expressões. Elas não significam nada para você. Escolher isso irá parar qualquer tendência empática.
 fabricated_emotions_name$$Emoções Fabricadas
-fabricated_emotions_desc$$Imite os outros, copie seus comportamentos. Emoções falsas.
-charity_food_connection_name$$Comida para caridade
-charity_food_connection_desc$$Use suas conexões de caridade para obter acesso à comida
-poor_feast_name$$Banquete humilde
-poor_feast_desc$$Organize um pequeno banquete para seus companheiros mendigos.
-small_feast_name$$Pequena festa
-small_feast_desc$$Organize uma festa para seus colegas mendigos.
+fabricated_emotions_desc$$Imite os outros, copie seus modos. Emoções falsas
+charity_food_connection_name$$Alimento para caridade
+charity_food_connection_desc$$Use suas conexões de caridade para conseguir acesso a alimentos.
+think_reflection_name$$Reflexões sobre o pensamento
+think_reflection_desc$$Reflexões sobre o pensamento, sobre o intangível.
+poor_feast_name$$Festa humilde
+poor_feast_desc$$Organize uma pequena festa para seus colegas mendigos.
+small_feast_name$$Pequeno banquete
+small_feast_desc$$Organize um banquete para seus companheiros mendigos.
 giveblanket_name$$Doar cobertor
-giveblanket_desc$$Certifique-se de que todos estejam mais quentes.
-helpelderly_name$$Ajudar os idosos
-helpelderly_desc$$Eles podem ser sábios, mas também frágeis. Você é fraco, mas também são eles.
-sharesadness_name$$Conversar sobre os tempos tristes
-sharesadness_desc$$Sentar-se com os pobres e deixar que todos falem sobre suas experiências tristes.
-sharesorrow_name$$Chorar juntos
-sharesorrow_desc$$Ouça de verdade, compartilhe e deixe as emoções fluírem.
-better_feasts_follower_name$$Grupo Festas Humildes
-better_feasts_follower_desc$$Tenha seus seguidores ajudando com as festas humildes.
-better_feasts_follower_2_name$$Grupo de pequenas festas
-better_feasts_follower_2_desc$$Tenha seus seguidores ajudando com as pequenas festas.
-nice_speech_name$$Belas palavras
+giveblanket_desc$$Certifique-se de que todos estejam mais aquecidos
+helpelderly_name$$Ajude os idosos
+helpelderly_desc$$Eles podem ser sábios, mas também frágeis. Você é fraco, mas assim como eles são.
+sharesadness_name$$Fale sobre os momentos tristes.
+sharesadness_desc$$Sente-se com os pobres e deixe todos falarem sobre suas experiências tristes.
+sharesorrow_name$$Chore juntos
+sharesorrow_desc$$Realmente ouça, compartilhe e deixe as emoções fluírem.
+better_feasts_follower_name$$Grupo de banquetes simples
+better_feasts_follower_desc$$Peça para seus seguidores ajudarem com os banquetes simples.
+better_feasts_follower_2_name$$Grupo de pequenos festins
+better_feasts_follower_2_desc$$Peça para seus seguidores ajudarem nos pequenos festins
+nice_speech_name$$Belo discurso
 nice_speech_desc$$Coloque seu carisma em palavras.
-better_foodsharing_name$$Compartilhando melhor comida
+better_foodsharing_name$$Compartilhando comida melhor
 better_foodsharing_desc$$Compartilhando mais do que migalhas
-torturerats_name$$Ratos de tortura
-torturerats_desc$$Treine seus ratos na arte de causar dor.
-multilateanimals_name$$Animais mutilados
-multilateanimals_desc$$Mate ratos e gatos, fazendo uma bagunça com eles. Isso é realmente divertido.
-dominant_buff_exp_name$$Supremo dominante
-dominant_buff_exp_desc$$Sinta o prazer dos seus sentimentos de controle.
+torturerats_name$$Torturar ratos
+torturerats_desc$$Treine seus ratos na arte de infligir dor.
+multilateanimals_name$$Mutilar animais
+multilateanimals_desc$$Matar ratos e gatos, fazendo uma bagunça. Isso é realmente divertido.
+dominant_buff_exp_name$$Alta Dominante
+dominant_buff_exp_desc$$Sinta o prazer de ter controle sobre seus sentimentos.
 benevolent_rats_name$$Ratos benevolentes
-benevolent_rats_desc$$Tenha seus ratos reunindo e compartilhando comida.
-warm_feline_hearts_name$$Coração Felino Aquecido
-warm_feline_hearts_desc$$Coração Felino Aquecido: Faça com que seus ratos se reúnam e compartilhem comida.
-benevolence_buff_exp_name$$Alto da Benevolência
-benevolence_buff_exp_desc$$Sinta o prazer de ter o controle dos seus sentimentos.
+benevolent_rats_desc$$Faça seus ratos reunirem e compartilharem comida.
+warm_feline_hearts_name$$Coração felino quente
+warm_feline_hearts_desc$$Junte seus ratos e compartilhe comida
+benevolence_buff_exp_name$$Benevolência alta
+benevolence_buff_exp_desc$$Sinta o prazer de ter controle sobre seus sentimentos.
 flaming_rats_name$$Ratos Flamejantes
 flaming_rats_desc$$Ratos Flamejantes
-collectfirewood_name$$Reunir madeira
-collectfirewood_desc$$Reunir madeira
+collectfirewood_name$$Recolher madeira
+collectfirewood_desc$$
 sharefood_name$$Compartilhar migalhas
-sharefood_desc$$Não é muito, mas você é bem-vindo para tê-lo.
-captive_watchers_name$$Guardiões cativos
+sharefood_desc$$Não é muito, mas fique à vontade para pegar.
+captive_watchers_name$$Vigias de Prisioneiros
 captive_watchers_desc$$Treine e designe pessoas para vigiar seus prisioneiros.
-help_followers_name$$Ajudar Seguidores
-help_followers_desc$$Estender uma mão amiga àqueles que olham para você.
+help_followers_name$$Ajudar seguidores
+help_followers_desc$$Estenda a mão para ajudar aqueles que olham para você.
 benevolent_followers_name$$Ajuda extra
-benevolent_followers_desc$$Diga para seus seguidores ajudarem as pessoas.
-rest_charm_name$$Foco nos encantos
-rest_charm_desc$$Aprimorando a atração enquanto descansa.
-charm_follower_name$$Seguidor de Encanto
-charm_follower_desc$$Encanta as pessoas para que se tornem seguidores.
-better_charming_name$$Melhor Encantador
-better_charming_desc$$Encantar as pessoas para que se tornem seguidoras.
+benevolent_followers_desc$$Diga aos seus seguidores para ajudar as pessoas
+rest_charm_name$$Concentração em encantos
+rest_charm_desc$$Aprimorando a atração enquanto descansa
+charm_follower_name$$Encantar seguidor
+charm_follower_desc$$Encantar pessoas em seguidores.
+better_charming_name$$Encanto Melhor
+better_charming_desc$$Encantar pessoas para seguidores
 feed_the_fire_name$$Controlar a chama
 feed_the_fire_desc$$Torne-se melhor em manter a chama forte.
 drywoodknowledge_name$$Dicas sobre iniciar incêndios
-drywoodknowledge_desc$$Some fellow beggars seem to know a thing or two about flames.
-buyanimalfat_name$$Comprar gordura animal
-buyanimalfat_desc$$Comprar gordura animal
-handdrill_name$$Iniciar um incêndio
-handdrill_desc$$Vai definitivamente pegar fogo desta vez. Talvez.
+drywoodknowledge_desc$$Alguns companheiros mendigos parecem saber algumas coisas sobre chamas
+buyanimalfat_name$$Compre gordura animal
+buyanimalfat_desc$$Preciso pegar um pouco de banha.
+handdrill_name$$Inicie um incêndio
+handdrill_desc$$Desta vez certamente vai pegar fogo. Talvez.
 feedfire_name$$Alimente o fogo
-feedfire_desc$$Queime, bebê, queime.
-antaccident_name$$Uma formiga queimada
-antaccident_desc$$Uma formiga queimada
+feedfire_desc$$Queime, baby, queime
+antaccident_name$$Uma formiga se queimou
+antaccident_desc$$Perceba que uma formiga se queimou no fogo que você fez.
 burnant_name$$Queimar formigas
 burnant_desc$$Agrupe um monte de formigas e jogue-as no fogo.
-causepain_name$$Causar Dor
-causepain_desc$$Causar dor aos seres vivos.
-ratfire_ember_name$$Ember um rato
-ratfire_ember_desc$$Atire uma pequena brasa em um rato e ouça um grito de dor.
+causepain_name$$Causar dor
+causepain_desc$$Causar dor a seres vivos
+ratfire_ember_name$$Ember em um rato
+ratfire_ember_desc$$Lance uma pequena brasa em um rato e ouça um grito de dor.
 burnrat_name$$Jogar um rato no fogo
-burnrat_desc$$Jogar uma brasinha em um rato e escutar um grito de dor
-ratabuser_name$$Abusador de Ratos
-ratabuser_desc$$Machuque ratos em suas atividades sádicas.
+burnrat_desc$$Jogue uma pequena brasa em um rato e ouça um grito de dor.
+ratabuser_name$$Agressor de Ratos
+ratabuser_desc$$Machucar ratos em suas atividades sádicas.
 catabuser_name$$Abusador de Gatos
-catabuser_desc$$Machuque gatos em suas atividades sádicas.
-humanabuser_name$$Abusador humano
-humanabuser_desc$$Machucar humanos em suas atividades sádicas.
-burncat_little_name$$Gato Ardente
-burncat_little_desc$$Tenha o felino provando a chama
-burncat_name$$Gato Incinerado
-burncat_desc$$Os gritos do gato são uma música para os seus ouvidos.
-burnperson_weak_name$$Queimar cativo
-burnperson_weak_desc$$Fazer seus cativos provarem um pouco do fogo.
+catabuser_desc$$Machuque gatos em suas atividades sadistas.
+humanabuser_name$$Abusador de Humanos
+humanabuser_desc$$Machuque humanos em suas atividades sádicas.
+burncat_little_name$$Catequente
+burncat_little_desc$$Faça o felino saborear a chama.
+burncat_name$$Incinerar gato
+burncat_desc$$Os gritos do gato são uma música para seus ouvidos.
+burnperson_weak_name$$Queime cativo
+burnperson_weak_desc$$Faça seus cativos sentirem um pouco do fogo.
 burnperson_strong_name$$Incinerar uma pessoa
-burnperson_strong_desc$$Incinere uma pessoa viva
+burnperson_strong_desc$$Queime completamente uma pessoa viva.
 burnperson_many_name$$Incinerar pessoas
-burnperson_many_desc$$Criar uma grande fogueira humana. Eles não ficarão sozinhos no outro mundo.
+burnperson_many_desc$$Crie uma grande fogueira humana. Eles não ficarão sozinhos no outro mundo.
 kidnap_careful_name$$Sequestro Cauteloso
-kidnap_careful_desc$$Sequestro Cauteloso
+kidnap_careful_desc$$Tenha muito cuidado ao sequestrar.
 kidnap_middle_class_name$$Sequestro de classe média
-kidnap_middle_class_desc$$Sequestro de classe média: Foco em sequestrar pessoas que têm algum dinheiro com elas.
-firewoodstock_name$$Otimizar estoque de lenha
+kidnap_middle_class_desc$$Concentre-se em sequestrar pessoas que tenham algum dinheiro com elas.
+firewoodstock_name$$Otimizar armazenamento de lenha
 firewoodstock_desc$$Sim, se eu fizer assim, cabe muito mais.
 firewood_gathering_name$$Coleta de madeira
-firewood_gathering_desc$$Essa é a forma de transportar grandes pedaços de madeira.
+firewood_gathering_desc$$Assim se carrega grandes pedaços de madeira.
 firewood_gathering2_name$$Coleta de Madeira II
-firewood_gathering2_desc$$Essa é a forma REAL de carregar grandes pedaços de madeira.
+firewood_gathering2_desc$$É assim que você REALMENTE carrega grandes pedaços de madeira.
 capture_person_name$$Capturar uma pessoa
 capture_person_desc$$Detenha e restrinja um indivíduo.
 sadistictend_1_name$$Tendências sádicas
 sadistictend_1_desc$$Mostra um prazer sutil em causar dor aos outros.
-sadistictend_2_name$$Tendências sádicas II
-sadistictend_2_desc$$Encontra satisfação no sofrimento dos outros, muitas vezes prolongando-o desnecessariamente.
-sadistictend_3_name$$Tendências Sadistas III.
+sadistictend_2_name$$Tendências Sádicas II
+sadistictend_2_desc$$Encontra satisfação no sofrimento dos outros, frequentemente prolongando-o desnecessariamente.
+sadistictend_3_name$$Tendências sádicas III
 sadistictend_3_desc$$Possui uma preferência notável por causar dor sempre que possível.
-sadistictend_4_name$$Tendências sádicas IV
-sadistictend_4_desc$$Machuca os outros sem pensar duas vezes.
+sadistictend_4_name$$Tendências Sádicas IV
+sadistictend_4_desc$$Fere os outros sem pensar duas vezes.
 bonfirevagabond_name$$Vagabundo da Fogueira
-bonfirevagabond_desc$$Sentado perto da fogueira, encarando as chamas.
+bonfirevagabond_desc$$Sentado junto à fogueira, encarando a chama.
 goodbeggar_name$$Bom Mendigo
-goodbeggar_desc$$Você vive da boa vontade dos outros, mas também tem boa vontade para oferecer.
+goodbeggar_desc$$Você vive pela boa vontade dos outros, mas também tem boa vontade para dar.
 peopleburner_name$$Piromaníaco Sádico
 peopleburner_desc$$Um piromaníaco com afinidade por queimar pessoas vivas.
-animalburner_name$$Queimador de Animais
-animalburner_desc$$Desejos distorcidos de ouvir um animal chorar.
+animalburner_name$$Queimador de animais
+animalburner_desc$$Desejos distorcidos de ouvir um animal chorar
 goodpriest_name$$Sacerdote Gracioso
-goodpriest_desc$$A terceira ordem principal da Igreja. Espalhando amor por todos os lados.
+goodpriest_desc$$A terceira grande ordem da Igreja. Espalhando amor por todos os lados.
 gracebeggar_name$$Mão Aberta
-gracebeggar_desc$$Te deram esse nome porque sabem que você é um verdadeiro doador.
-kindling_name$$Fogueira
+gracebeggar_desc$$Eles te deram esse nome porque sabem que você é o verdadeiro doador.
+kindling_name$$estiagem
 kindling_desc$$Conhecimento de iniciar incêndios
 sadism_name$$sadismo
-sadism_desc$$Derivando prazer ao infligir dor.
-empathy_name$$Empatia
+sadism_desc$$Derivando prazer de infligir dor
+empathy_name$$empatia
 empathy_desc$$Aprimorando um olhar perspicaz sobre como os outros se sentem.
 charity_name$$caridade
 charity_desc$$Ajuda voluntária
-kidnapping_name$$Sequestro
-kidnapping_desc$$A arte de capturar pessoas.
+kidnapping_name$$sequestro
+kidnapping_desc$$A arte de capturar pessoas
 charisma_name$$carisma
-charisma_desc$$Um sorriso instigante e uma confiança atraente.
-irreversible_church_name$$igreja_irreversível
-irreversible_church_desc$$Igreja que não pode ser revertida para a sua forma original.
-symbolicspoon_name$$Colher simbólica
-symbolicspoon_desc$$Uma colher de ferro que representa um coração de empatia.
-woodstick_name$$Pau de madeira
-woodstick_desc$$Um pequeno bastão. Muito seco. Pode ser usado para acender fogo?
-flint_and_steel_name$$Pedra & Aço
-flint_and_steel_desc$$Bata os dois juntos e a mágica acontece. Pode ser usado para iniciar incêndios.
+charisma_desc$$Um sorriso cativante e uma confiança atraente.
+irreversible_church_name$$Igreja Irreversível
+irreversible_church_desc$$
+symbolicspoon_name$$Colher Simbólica
+symbolicspoon_desc$$Uma colher de ferro que representa um coração de empatia
+woodstick_name$$Pauzinho de Madeira
+woodstick_desc$$Um pequeno pauzinho. Bem seco. Pode ser usado para iniciar incêndios?
+flint_and_steel_name$$Pederneira & Aço
+flint_and_steel_desc$$Bata os dois juntos e a mágica acontece. Pode ser usada para iniciar incêndios.
 tinder_name$$Tinder
-tinder_desc$$Um monte de grama seca
-hay_name$$Um monte de feno
+tinder_desc$$Um monte de capim seco
+hay_name$$Uma pilha de feno
 hay_desc$$Pode ser usado para alimentar o fogo.
-pot_of_fat_name$$Panela de óleo
+pot_of_fat_name$$Pote de óleo
 pot_of_fat_desc$$Para armazenar gordura
 rope_name$$Corda
 rope_desc$$Tem vários usos. Como amarrar pessoas.
-sharingbowl_name$$Tigela Compartilhada
+sharingbowl_name$$Tigela de Compartilhamento
 sharingbowl_desc$$Use isso para compartilhar comida com aqueles que precisam.
 bigbowl_name$$Grande tigela
-bigbowl_desc$$Use para armazenar todas aquelas migalhas
+bigbowl_desc$$Use-a para armazenar todos esses farelos.
 ponderexistence_name$$Qual é a realidade?
 ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
 ponderhappiness_name$$Qual é a felicidade?
 ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade.
 ponderreligion_name$$Quais são os ensinamentos?
-ponderreligion_desc$$Refletem com todo o vosso poder sobre o significado da religião.
+ponderreligion_desc$$Refletir com todas as suas forças sobre o significado da religião.
 pondergood_name$$O que significa ser bom?
-pondergood_desc$$Reflete com todo o teu vigor sobre o significado de ser bom.
-fire_ending_name$$Resposta no fogo
-fire_ending_desc$$Encare a carnificina, dentro da chama.
+pondergood_desc$$Reflexione com todo o seu poder sobre o significado de ser bom.
+fire_ending_name$$Responder no fogo
+fire_ending_desc$$Encare a carnificina, nas chamas.
+realization_name$$Revelação
+realization_desc$$Nova compreensão que surge de reflexão profunda
+musing_name$$Reflexão
+musing_desc$$Pensamentos aleatórios dançando ao redor.
+luxury_name$$Luxo
+luxury_desc$$Um estado de conforto e elegância
+breakinlogistics_name$$Preparação para Arrombamento
+breakinlogistics_desc$$Intel, recursos, ferramentas e a mentalidade necessária para arrombar um local e roubar algo
+looks_name$$Aparência
+looks_desc$$Quem diria que você viria melhorar sua aparência
+thinklife_name$$Pensar na vida
+thinklife_desc$$O que eu fiz e o que eu farei.
+reflectivemood_name$$Estado de Espírito Reflexivo
+reflectivemood_desc$$Um estado de espírito propício para pensamentos profundos (algumas ações e melhorias só podem ser feitas enquanto o efeito estiver ativo).
+deep_think_name$$Reflexão profunda
+deep_think_desc$$Muito além do pensamento superficial
+great_study_name$$Estudos Intermediários
+great_study_desc$$Tente levar seus estudos para o próximo nível.
+academics_gen_name$$Compreensão
+academics_gen_desc$$Leve seu conhecimento a um nível superior.
+betterreading2_name$$Leitura ainda melhor
+betterreading2_desc$$Aprenda a focar ainda mais na sua leitura
+studydialectic_name$$Estudar dialética
+studydialectic_desc$$Integrar visões opostas por meio de diálogo.
+hidden_stash_name$$Esconderijo secreto
+hidden_stash_desc$$Estabeleça um esconderijo temporário de dinheiro. Não é a coisa mais segura do mundo, então não pode mantê-lo para sempre.
+steal_name$$Roubar
+steal_desc$$Pegue o que quiser
+breakinsteal_name$$Quebrar e pegar
+breakinsteal_desc$$Entrar em um prédio e pegar o que puder.
+breakinsteal_rich_name$$Roubo à Mansão
+breakinsteal_rich_desc$$Finalmente é hora de roubar muito daqueles ricaços.
+steallikethief_name$$Roube como um ladrão
+steallikethief_desc$$Seja verdadeiro com o que você é
+lookcrime_1_name$$Sorriso criminoso
+lookcrime_1_desc$$Um sorriso que esconde verdadeiras intenções.
+lookcrime_2_name$$Sorriso criminoso II
+lookcrime_2_desc$$Um sorriso sorrateiro que esconde verdadeiras intenções.
+lookcrime_3_name$$Sorriso Criminoso III
+lookcrime_3_desc$$Um sorriso radiante que esconde verdadeiras intenções.
+shadowhand_name$$Mão Sombria
+shadowhand_desc$$A mão invisível do roubo.
+incentivized_crime_name$$Crime Incentivado
+incentivized_crime_desc$$Ofereça luxos e uma boa vida para motivar seus seguidores.
+grandtheft_name$$Grande Roubo
+grandtheft_desc$$Por que roubar menos se você pode roubar mais?
+extravagantlife_name$$Vida extravagante
+extravagantlife_desc$$Viva a vida boa.
+rest_looks_name$$Foco na aparência
+rest_looks_desc$$Aprimorando a atração enquanto descansa
+read_stolen_book_name$$Leia O Guia dos Perplexos
+read_stolen_book_desc$$É uma leitura difícil. Difícil de acreditar que um livro judaico possa ser encontrado nesta cidade.
+tier4reach_name$$Crescimento IV
+tier4reach_desc$$Parece que você atingiu mais uma nova etapa na vida?
+periodic_house_report_name$$Relatórios periódicos das casas
+periodic_house_report_desc$$Peça para seus seguidores coletarem informações sobre várias casas e horários.
+crime_tax_name$$Imposto criminal
+crime_tax_desc$$Retenha parte da receita das atividades criminosas de seus seguidores.
+distributed_wallet_name$$Carteira distribuída
+distributed_wallet_desc$$Peça aos seus seguidores para guardarem algumas de suas moedas.
+money_guard_name$$Guardas de Dinheiro
+money_guard_desc$$Treine alguns de seus capangas como bandidos para manter sua casa segura. Dessa forma, você finalmente pode guardar quantias maiores de dinheiro em paz.
+crime_higher_name$$Fundação do Crime
+crime_higher_desc$$Agora que você tem o conhecimento criminoso e um lugar seguro para armazenar as coisas, você pode mirar mais alto.
+preparebreakin_name$$Prepare-se para arrombar
+preparebreakin_desc$$Prepare-se e suas ferramentas para cometer arrombamento.
+museaway_name$$Deixe a musa fluir
+museaway_desc$$Deixe a mente voar, dê espaço para suas reflexões respirarem.
+scribe_church_name$$Escreva as escrituras sagradas
+scribe_church_desc$$Copie os documentos sagrados para espalhar a palavra.
+musemax_name$$Memória de Diversão
+musemax_desc$$Pense em maneiras de organizar a memória e limpar espaço para suas reflexões.
+copy_study_book_name$$Copie a Arte de Estudar
+copy_study_book_desc$$Escreva um pequeno ensaio sobre como otimizar os estudos.
+copy_philosophy_meno_name$$Copiar Meno
+copy_philosophy_meno_desc$$Uma obra de Platão, que menciona a anamnese.
+debatebeggars_name$$Debate com mendigos
+debatebeggars_desc$$Onde pedir esmola, como viver, justiça do mundo
+debatefolks_name$$Debate com os moradores da cidade
+debatefolks_desc$$São os impostos justos? Devemos apoiar a igreja? É realmente um pecado?
+debatebreakthrough_name$$Revelação de Dialeto
+debatebreakthrough_desc$$Toda a sua experiência em debates irá guiá-lo para novos conhecimentos
+debatebreakthrough2_name$$Avanço do Dialeto II
+debatebreakthrough2_desc$$Toda a sua experiência debatendo irá te guiar ainda mais alto.
+debatesmallchurch_name$$Debate com acólitos
+debatesmallchurch_desc$$O que é o livre arbítrio? O que esta escritura diz? Qual de nós se tornará padre?
+debateuniversitystudents_name$$Debate com estudantes universitários
+debateuniversitystudents_desc$$Como provar que o divino é real? A alma é imortal? A academia deve se envolver na política?
+debatepriests_name$$Debate com sacerdotes
+debatepriests_desc$$Existem pecados imperdoáveis? O que fazer com um bispo pecador?
+guidance_master_name$$Consulte com os mestres
+guidance_master_desc$$Peça orientação aos mestres da universidade sobre vários assuntos intelectuais.
+debate_with_masters_name$$Debate com os mestres
+debate_with_masters_desc$$A fé ou a razão é o caminho mais elevado para a verdade? Este mundo é eterno?
+discussion_with_bishop_name$$Conversa com um bispo
+discussion_with_bishop_desc$$Um certo bispo deseja discutir filosofia com você.
+theself_4_name$$O eu II
+theself_4_desc$$Revisite a si mesmo.
+normal_house_access_name$$Falsificar acesso a uma casa
+normal_house_access_desc$$Use seu documento falsificado para obter acesso à casa.
+create_house_document_name$$Forjar contrato de habitação
+create_house_document_desc$$Forjar ilegalmente um direito a uma pequena casa na cidade.
+shower_everyday_name$$Tomar banho todos os dias
+shower_everyday_desc$$Lave-se todos os dias. Mais cheiroso, mais limpo e mais saudável.
+forager_realization_name$$Busca Profunda
+forager_realization_desc$$Repenso completamente como você busca por bens perdidos.
+charismatic_leader_weak_name$$Liderança Carismática
+charismatic_leader_weak_desc$$Liderar e encantar, venham seguidores!
+meat_sometimes_name$$Acesso à eventual peça de carne
+meat_sometimes_desc$$Tenha acesso a alguma carne para quando você quiser viver a boa vida.
+meat_everyday_name$$Acesso à carne todos os dias
+meat_everyday_desc$$Quando você quer o bife todos os dias, estamos com você.
+spices_sugar_name$$Especiarias e açúcar
+spices_sugar_desc$$Acesso a uma variedade de especiarias e açúcares diversificados.
+personal_musician_name$$Músico Particular
+personal_musician_desc$$Um músico para tocar para você, conforme necessário.
+order_house_document_name$$Encomendar contrato de habitação falso
+order_house_document_desc$$Falsificar ilegalmente um direito a uma pequena casa na cidade.
+normal_house_name$$Quartos
+normal_house_desc$$Quartos no topo de uma loja. Um lugar seguro.
+modest_house_name$$Casa Modesta
+modest_house_desc$$Sua própria casa, com dois andares. Um pouco apertada, mas é sua.
+three_floor_house_name$$Casa de três andares
+three_floor_house_desc$$Um lugar sofisticado, três andares, muito espaçoso.
 thief_name$$Ladrão
-thief_desc$$Uma pessoa que rouba sem usar violência.
+thief_desc$$Uma pessoa que rouba sem usar força.
+burglar_name$$Ladrão
+burglar_desc$$Mantenha suas portas fechadas. Não que isso vá te ajudar.
+underboss_name$$Subchefe
+underboss_desc$$O subchefe de uma pequena organização criminosa na cidade.
+urbansage_name$$Sábio Urbano
+urbansage_desc$$A primeira e maior vitória é conquistar a si mesmo
 crime_name$$crime
-crime_desc$$O quanto você sabe sobre quebrar a lei.
+crime_desc$$Quanto você sabe sobre burlar a lei
+organized_crime_name$$Crime Organizado
+organized_crime_desc$$Cometendo crimes em grupo.
 stealth_name$$furtividade
-stealth_desc$$Aquilo que não pode ser detectado.
-irreversible_church_name$$igreja_irreversível
-irreversible_church_desc$$igreja_irreversível
+stealth_desc$$Aquilo que não pode ser detectado
+housebreaking_name$$Arrombamento
+housebreaking_desc$$A arte de entrar em um prédio quando você não deveria fazê-lo.
+scribing_name$$Registrar
+scribing_desc$$A arte de copiar palavras. Preservação e compartilhamento de informações.
+debating_name$$Debate
+debating_desc$$Debate é uma troca de conhecimento; uma discussão uma troca de ignorância.
+appearances_name$$Aparências
+appearances_desc$$Às vezes, o que está do lado de fora importa tanto quanto o que está por dentro.
+extravagance_name$$extravagância
+extravagance_desc$$Algumas coisas na vida exigem bastante dinheiro.
+emotions_loc_b_name$$Sentimentos escondidos
+emotions_loc_b_desc$$Coisas dentro de você, que você preferiria não enfrentar.
+bad_memories_name$$Más lembranças
+bad_memories_desc$$Quando você deseja esquecer, tudo o que consegue fazer é lembrar.
+hidden_sadness_name$$Tristeza escondida
+hidden_sadness_desc$$Há sentimentos que mal conseguimos processar. Sua mente se torna um esconderijo.
+musingswood_name$$Arte em Madeira
+musingswood_desc$$Exprese-se profundamente em uma peça de madeira.
+musingswood2_name$$Arte em Madeira II
+musingswood2_desc$$Quebre a expressão atual e traga algo novo.
+fairytale_collection_name$$Coleção de contos de fadas
+fairytale_collection_desc$$Compre uma coleção de contos de fadas bem cara.
+hidden_stash_furniture_name$$Espaço para um esconderijo secreto
+hidden_stash_furniture_desc$$Você pode esconder um pouco de dinheiro aqui. Talvez mais, se criar um esconderijo secreto.
+stolen_mirror_name$$Espelho roubado
+stolen_mirror_desc$$Sua reflexão lhe dá tempo para pensar
+stolen_clothes_name$$Roupas roubadas
+stolen_clothes_desc$$Roupas chiques escondidas na casa de um comerciante.
+nice_wax_tablet_name$$Uma bela tabuleta de cera
+nice_wax_tablet_desc$$Bastante útil, uma tabuleta de cera novinha em folha. Ótima para estudar e fazer anotações. Muito mais barata que papel.
+fancy_painting_name$$Pintura roubada
+fancy_painting_desc$$Esta é um pouco difícil de roubar, mas parece incrível.
+lockpick_tools_name$$Ferramentas de Lockpick
+lockpick_tools_desc$$Muito útil para abrir portas.
+expert_lockpick_tools_name$$Ferramentas de Especialista em Lockpick
+expert_lockpick_tools_desc$$Muito útil para abrir portas.
+stolen_rare_book_name$$O Guia dos Perplexos
+stolen_rare_book_desc$$Um livro bastante raro escrito por Maimônides.
+thief_gloves_name$$Luvas de Ladrão
+thief_gloves_desc$$Luvas de alta qualidade, ideais para... Melhor não dizer.
+fancy_clothes_name$$Roupas chiques
+fancy_clothes_desc$$Roupas de alta qualidade. Mas exigem um pouco de manutenção.
+simple_chest_name$$Baú simples
+simple_chest_desc$$Um local para guardar dinheiro. Ele realmente pode segurar muito mais, mas você tem medo de ladrões.
+stolen_chest_name$$Baú antigo roubado
+stolen_chest_desc$$Um belo baú antigo que pode guardar uma boa quantidade de ouro. Também parece muito chique.
+nice_clothes_name$$Roupas bonitas
+nice_clothes_desc$$Com boa aparência
+ponderexistence_name$$Qual é a realidade?
+ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
+pondercrime_name$$O que significa ser rico?
+pondercrime_desc$$Desfrute do luxo enquanto você reflete sobre o que tudo isso significa.
+ponderhappiness_name$$Qual é a felicidade?
+ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade
+ponderreligion_name$$Quais são os ensinamentos?
+ponderreligion_desc$$Refletir com todo o seu poder sobre o significado da religião.
+pondergood_name$$O que significa ser bom?
+pondergood_desc$$Reflexione com todo seu poder sobre o significado de ser bom.
+fire_ending_name$$Responda no fogo
+fire_ending_desc$$Contemple a carnificina, na chama.
