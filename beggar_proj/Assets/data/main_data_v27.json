@@ -1005,7 +1005,7 @@
             {
                 "id": "create_house_document",
                 "name": "Forge housing contract",
-                "desc": "Illegaly forge a right to a small house in the city",
+                "desc": "Illegally forge a right to a small house in the city",
                 "require": "scribing>2&&crime>2&&tier_3_crime",
                 "duration": 50,
                 "max": 1,
@@ -1155,7 +1155,7 @@
             {
                 "id": "order_house_document",
                 "name": "Order fake housing contract",
-                "desc": "Illegaly forge a right to a small house in the city",
+                "desc": "Illegally forge a right to a small house in the city.",
                 "require": "crime>2&&tier_3_crime&&coin>55",
                 "duration": 30,
                 "max": 1,
@@ -1248,7 +1248,7 @@
             {
                 "id": "burglar",
                 "name": "Burglar",
-                "desc": "Keep your door's closed. Not that it will help you.",
+                "desc": "Keep your doors closed. Not that it will help you.",
                 "tags": "t_tier3,tier_3_crime,not_church_class_automated",
                 "lock": "t_tier3",
                 "require": "theself_3&&crime>2&&housebreaking>0",
@@ -1710,7 +1710,7 @@
             {
                 "id": "thief_gloves",
                 "name": "Thief gloves",
-                "desc": "Very high quality gloves best suited for... Better not to say it",
+                "desc": "Very high-quality gloves best suited for... Better not to say it.",
                 "require": "crime>1&&thief",
                 "max": 1,
                 "cost": {

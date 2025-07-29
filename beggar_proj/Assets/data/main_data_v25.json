@@ -359,7 +359,7 @@
             },
             {
                 "id": "multilateanimals",
-                "name": "Multilate animals",
+                "name": "Mutilate animals",
                 "desc": "Kill rats and cats, making a mess out of it. This is really fun",
                 "require": "rats>8&&cat>2&&sadism>3",
                 "max": 1,

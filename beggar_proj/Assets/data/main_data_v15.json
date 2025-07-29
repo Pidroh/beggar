@@ -933,7 +933,7 @@
             {
                 "id": "guiltcunning",
                 "name": "Not my fault",
-                "desc": "I'm hungry and no is gonna take care of me",
+                "desc": "I'm hungry and no one is going to take care of me.",
                 "duration": 8,
                 "max": 1,
                 "tag": "max_decrease,cunning_style",
@@ -2313,7 +2313,7 @@
                         "priority": 0
                     },
                     {
-                        "id": "crime",
+                        "id": "crime_sep",
                         "name": "Criminal Activities",
                         "unit_types": [
                             "TASK"
