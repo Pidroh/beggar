@@ -1,0 +1,732 @@
+{
+  "general": {
+    "overlay_background_color": "overlay_color",
+    "background_color": "background_color"
+  },
+  "layouts": [
+    {
+      "id": "ending_text",
+      "comment": "Ending text",
+      "axis_mode": [
+        "SELF_SIZE",
+        "CONTAIN_CHILDREN"
+      ],
+      "position_mode": [
+        "CENTER",
+        "CENTER"
+      ],
+      "clickable": true,
+      "position": [],
+      "size": [
+        300,
+        -1
+      ],
+      "padding":[21, 35, 16, 35],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "big_title",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "TOP_ZERO"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "CENTER",
+          "position": [
+            0, 15
+          ],
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        },
+        {
+          "type": "layout",
+          "id": "simple_button",
+          "size": [
+            100,
+            64
+          ],
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "SELF_SIZE"
+          ],
+          "position_mode":[
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialog_yes_no",
+      "comment": "Dialog with title ",
+      "axis_mode": [
+        "SELF_SIZE",
+        "CONTAIN_CHILDREN"
+      ],
+      "position_mode": [
+        "CENTER",
+        "CENTER"
+      ],
+      "clickable": true,
+      "position": [],
+      "size": [
+        300,
+        -1
+      ],
+      "padding":[21, 35, 16, 35],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "big_title",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "TOP_ZERO"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "text_horizontal": "CENTER",
+          "position": [
+            0, 15
+          ],
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        },
+        {
+          "type": "layout",
+          "id": "dialog_buttons",
+          "use_layout_commons": true
+          
+        }
+      ]
+    },
+    {
+      "id": "dialog_buttons",
+      "comment": "Contains 2 buttons for a dialog",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "position_mode": [
+        "LEFT_ZERO",
+        "SIBLING_DISTANCE"
+      ],
+      "position":[0, 13],
+      "size": [
+        100,
+        40
+      ],
+      "fixed_children": [
+        {
+          "type": "button",
+          "id": "center_text_button",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            90,
+            -1
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "position": [
+            -58,
+            0
+          ]
+        },
+        {
+          "type": "button",
+          "id": "center_text_button",
+          "axis_mode": [
+            "SELF_SIZE",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "size": [
+            90,
+            -1
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "position": [
+            58,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simple_button",
+      "comment": "Simple button",
+      "padding": [
+        16,
+        0,
+        8,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "button",
+          "id": "task_button",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
+        }
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "id": "button_text",
+      "alias_ids": [
+        "resource_text"
+      ],
+      "size": 12,
+      "color_id": "main_text",
+      "color_id_disabled": "button_text_disabled"
+    },
+    {
+      "id": "button_text_single_char",
+      "size": 16,
+      "color_id": "main_text",
+      "color_id_disabled": "button_text_disabled"
+    },
+    {
+      "id": "above_button_title_text",
+      "size": 14,
+      "color_id": "main_text"
+    },
+    {
+      "id": "big_title",
+      "size": 22,
+      "color_id": "lore_text"
+    },
+    {
+      "id": "lore_text",
+      "size": 11,
+      "color_id": "lore_text"
+    },
+    {
+      "id": "log_text",
+      "size": 11,
+      "color_id": "lore_text"
+    },
+    {
+      "id": "mini_header_text",
+      "size": 10,
+      "color_id": "mini_header_text"
+    },
+    {
+      "id": "upper_header_text",
+      "size": 11,
+      "color_id": "upper_header_text"
+    },
+    {
+      "id": "simple_text",
+      "size": 12,
+      "color_id": "simple_text",
+      "color_id_disabled": "text_disabled_red"
+    },
+    {
+      "id": "accessory_text",
+      "size": 12,
+      "color_id": "accessory_text",
+      "color_id_disabled": "text_accessory_disabled_red"
+    }
+  ],
+  "buttons": [
+    {
+      "id": "task_button",
+      "padding": [
+        0,
+        15,
+        0,
+        35
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "color_id_clicked": "button_fill_click",
+          "color_id_pressed": "button_fill_pressed",
+          "color_id_active": "button_fill_active",
+          "color_id_hovered": "button_fill_hovered",
+          "color_id_disabled": "button_fill_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill_gauge",
+          "color_id_clicked": "button_fill_gauge_click",
+          "color_id_active": "button_fill_gauge_active",
+          "color_id_pressed": "button_fill_gauge_pressed",
+          "color_id_hovered": "button_fill_gauge_hovered",
+          "color_id_disabled": "button_fill_gauge_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "RAW_FOR_GAUGE",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_border",
+          "color_id": "button_border",
+          "color_id_hovered": "button_border_hovered",
+          "color_id_active": "button_border_active",
+          "color_id_disabled": "button_border_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "accessory_text",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "center_text_button",
+      "padding": [
+        0,
+        0,
+        3,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "button_fill",
+          "color_id": "button_fill",
+          "color_id_clicked": "button_fill_click",
+          "color_id_pressed": "button_fill_pressed",
+          "color_id_active": "button_fill_active",
+          "color_id_hovered": "button_fill_hovered",
+          "color_id_disabled": "button_fill_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        },
+        {
+          "type": "image",
+          "image": "button_border",
+          "color_id": "button_border",
+          "color_id_hovered": "button_border_hovered",
+          "color_id_active": "button_border_active",
+          "color_id_disabled": "button_border_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ],
+          "text_horizontal": "CENTER"
+        },
+        {
+          "type": "text",
+          "id": "button_text_single_char",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "text_horizontal": "CENTER"
+        }
+      ]
+    },
+    {
+      "id": "expander_arrow",
+      "padding": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "arrow",
+          "color_id": "mid_expander_arrow",
+          "axis_mode": [
+            "SELF_SIZE",
+            "SELF_SIZE"
+          ],
+          "position_mode": [
+            "CENTER",
+            "CENTER"
+          ],
+          "size": [
+            36,
+            20
+          ]
+        }
+      ]
+    }
+  ],
+  "colors": [
+    {
+      "id": "background_content",
+      "colors": [
+        "f1f1f1ff",
+        "343a4aff"
+      ]
+    },
+    {
+      "id": "soft_separator",
+      "colors": [
+        "#e8e8e8ff",
+        "#383838ff"
+      ]
+    },
+    {
+      "id": "background_upper_header",
+      "colors": [
+        "e0e1f1ff",
+        "2d3446ff"
+      ]
+    },
+    {
+      "id": "main_text",
+      "colors": [
+        "212121ff",
+        "f1f1f1ff"
+      ]
+    },
+    {
+      "id": "lore_text",
+      "colors": [
+        "4d4d4dff",
+        "8e8e8eff"
+      ]
+    },
+    {
+      "id": "mini_header_text",
+      "colors": [
+        "969696ff",
+        "969696ff"
+      ]
+    },
+    {
+      "id": "upper_header_text",
+      "colors": [
+        "6c6c6cff",
+        "6c6c6cff"
+      ]
+    },
+    {
+      "id": "simple_text",
+      "colors": [
+        "4d4d4dff",
+        "f1f1f1ff"
+      ]
+    },
+    {
+      "id": "accessory_text",
+      "colors": [
+        "969696ff",
+        "969696ff"
+      ]
+    },
+    {
+      "id": "background_tab_menu",
+      "colors": [
+        "f1f1f1ff",
+        "2e3649ff"
+      ]
+    },,
+    {
+      "id": "button_fill",
+      "colors": [
+        "ffffffff",
+        "636a7cff"
+      ]
+    },
+    {
+      "id": "button_border",
+      "colors": [
+        "858585ff",
+        "858585ff"
+      ]
+    },
+    {
+      "id": "button_fill_click",
+      "colors": [
+        "ffd8edff",
+        "666489ff"
+      ]
+    },
+    {
+      "id": "button_fill_active",
+      "colors": [
+        "d2f2f9ff",
+        "566489ff"
+      ]
+    },
+    {
+      "id": "button_fill_pressed",
+      "colors": [
+        "e4f6f4ff",
+        "466489ff"
+      ]
+    },
+    {
+      "id": "button_fill_hovered",
+      "colors": [
+        "f0f0f0ff",
+        "536a7cff"
+      ]
+    },
+    {
+      "id": "button_fill_disabled",
+      "colors": [
+        "ddddddff",
+        "414551ff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge",
+      "colors": [
+        "adf4daff",
+        "3e9c7aff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_click",
+      "colors": [
+        "fff8fdff",
+        "4e9c7aff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_active",
+      "colors": [
+        "8ef0ccff",
+        "3f9f7fff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_pressed",
+      "colors": [
+        "7cede2ff",
+        "3e9c8aff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_hovered",
+      "colors": [
+        "a9f9dfff",
+        "2e9c7aff"
+      ]
+    },
+    {
+      "id": "button_fill_gauge_disabled",
+      "colors": [
+        "ccccccff",
+        "2e7c5aff"
+      ]
+    },
+    {
+      "id": "mid_expander_arrow",
+      "colors": [
+        "686868ff",
+        "686868ff"
+      ]
+    },
+    {
+      "id": "blue_selection_circle",
+      "colors": [
+        "8fd8edff",
+        "388297ff"
+      ]
+    },
+    {
+      "id": "xp_progress",
+      "colors": [
+        "69edbdff",
+        "69edbdff"
+      ]
+    },
+    {
+      "id": "button_text_disabled",
+      "colors": [
+        "656565ff",
+        "9f9f9fff"
+      ]
+    },
+    {
+      "id": "button_border_hovered",
+      "colors": [
+        "#959595ff",
+        "#959595ff"
+      ]
+    },
+    {
+      "id": "button_border_active",
+      "colors": [
+        "#859595ff",
+        "#859595ff"
+      ]
+    },
+    {
+      "id": "button_border_disabled",
+      "colors": [
+        "#858585ff",
+        "#858585ff"
+      ]
+    },
+    {
+      "id": "text_disabled_red",
+      "colors": [
+        "b23636ff",
+        "b23636ff"
+      ]
+    },
+    {
+      "id": "text_accessory_disabled_red",
+      "colors": [
+        "#7e2626ff",
+        "#7e2626ff"
+      ]
+    },
+    {
+      "id": "overlay_color",
+      "colors": [
+        "#acafcdd9",
+        "#acafcdd9"
+      ]
+    },
+    {
+      "id": "background_color",
+      "colors": [
+        "#ffffffff",
+        "#3c4356ff"
+      ]
+    },
+    {
+      "id": "task_button_buff",
+      "colors": [
+        "#d374c3ff",
+        "#8f4b80ff"
+      ]
+    },
+    {
+      "id": "task_button_buff_bar",
+      "colors": [
+        "#f3e594ff",
+        "#3e7e9cff"
+      ]
+    }
+  ],
+  "color_presets": [
+    "light",
+    "dark"
+  ]
+}

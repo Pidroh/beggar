@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
-using static JLayout.JLayoutRuntimeData;
 
 namespace JLayout
 {
