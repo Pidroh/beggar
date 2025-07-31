@@ -20,6 +20,7 @@ public class TitleScreenSetup
         {
             var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", mgc.JLayoutRuntime);
             var lc = parentLayout.AddLayoutAsChild(fleeButtonLayout);
+            lc.PositionModeOverride = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE_REVERSE };
             fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Start Game"));
             JRTControlUnit jCU = new();
             jCU.MainLayout = fleeButtonLayout;
