@@ -14,8 +14,10 @@ public class TitleScreenSetup
     {
         var canvas = mgc.JLayoutRuntime.jLayCanvas;
         JLayCanvasChild jLayCanvasChild = canvas.children[0];
+        // JLayCanvasChild jLayCanvasChild = canvas.Overlays[0];
         jLayCanvasChild.SavePivot();
         var parentLayout = jLayCanvasChild.LayoutRuntimeUnit;
+        
 
         {
             var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", mgc.JLayoutRuntime);
@@ -29,7 +31,7 @@ public class TitleScreenSetup
 
             titleScreenData.StartGameJCU = jCU;
         }
-        
+        //canvas.ShowOverlay();
         /*
         var endingTextLayout = JCanvasMaker.CreateLayout("ending_text", mgc.JLayoutRuntime);
         titleScreenData.TitleScreenLayout = endingTextLayout;
