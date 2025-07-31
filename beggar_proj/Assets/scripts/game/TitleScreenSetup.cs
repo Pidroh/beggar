@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class TitleScreenRuntimeData
 {
-    public JLayoutRuntimeUnit StartGameButton { get; set; }
-    public JLayoutRuntimeUnit TitleScreenLayout { get; set; }
     public JRTControlUnit StartGameJCU { get; internal set; }
 }
 
@@ -15,7 +13,9 @@ public class TitleScreenSetup
     public static void Setup(MainGameControl mgc, TitleScreenRuntimeData titleScreenData)
     {
         var canvas = mgc.JLayoutRuntime.jLayCanvas;
-        var parentLayout = canvas.children[0].LayoutRuntimeUnit;
+        JLayCanvasChild jLayCanvasChild = canvas.children[0];
+        jLayCanvasChild.SavePivot();
+        var parentLayout = jLayCanvasChild.LayoutRuntimeUnit;
 
         {
             var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", mgc.JLayoutRuntime);
@@ -28,6 +28,7 @@ public class TitleScreenSetup
 
             titleScreenData.StartGameJCU = jCU;
         }
+        
         /*
         var endingTextLayout = JCanvasMaker.CreateLayout("ending_text", mgc.JLayoutRuntime);
         titleScreenData.TitleScreenLayout = endingTextLayout;

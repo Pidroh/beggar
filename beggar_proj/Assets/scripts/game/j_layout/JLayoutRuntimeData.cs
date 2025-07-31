@@ -98,7 +98,6 @@ namespace JLayout
         public TMP_FontAsset DefaultFont { get; internal set; }
         public LayoutDataMaster LayoutMaster { get; internal set; }
         public int CurrentColorSchemeId { get; internal set; }
-
         public KeyedSprites ImageSprites;
 
 
@@ -181,6 +180,7 @@ namespace JLayout
 
         public JLayoutChild ChildSelf { get; private set; }
         public bool Hovered => (ChildSelf?.UiUnit) != null && ChildSelf.UiUnit.HoveredWhileVisible;
+
 
         internal bool TryGetSelfButton(out UIUnit buttonUU)
         {
@@ -330,6 +330,7 @@ namespace JLayout
     public class JLayCanvasChild
     {
         public JLayoutRuntimeUnit LayoutRuntimeUnit;
+        private Vector2? _savedPivot;
 
         public JLayCanvasChild(JLayoutRuntimeUnit layoutRuntimeUnit)
         {
@@ -343,7 +344,19 @@ namespace JLayout
             DesiredSize = width;
             LayoutRuntimeUnit.MarkDirtyWithChildren();
         }
+
+        internal void SavePivot()
+        {
+            _savedPivot = LayoutRuntimeUnit.RectTransform.pivot;
+        }
+
+        public void ApplySavedPivot() 
+        {
+            LayoutRuntimeUnit.RectTransform.pivot = _savedPivot.Value;
+        }
+
         public bool Mandatory { get; internal set; }
         public float PreviousWidth { get; internal set; }
+        public bool ForceCenterX { get; internal set; }
     }
 }

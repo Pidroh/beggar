@@ -75,6 +75,11 @@ namespace JLayout
                 parentLayout.RectTransform.SetWidth(newSize);
                 // parentLayout.ContentTransform.SetWidth(320 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
                 parentLayout.RectTransform.SetLeftXToParent(offsetLeftX);
+                if (mainCanvasChild.ForceCenterX) 
+                {
+                    parentLayout.RectTransform.SetPivotByIndex(0, 0.5f);
+                    parentLayout.RectTransform.SetCenterXToParent(0);
+                }
                 parentLayout.RectTransform.SetOffsetMinByIndex(1, offsetBottomY);
                 offsetLeftX += newSize;
 

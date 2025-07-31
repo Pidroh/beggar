@@ -9,18 +9,13 @@ public enum TitleScreenState
 
 public static class TitleScreenControl
 {
-    public static TitleScreenState ManualUpdate(TitleScreenRuntimeData titleScreenData)
+    public static TitleScreenState ManualUpdate(MainGameControl mgc, TitleScreenRuntimeData titleScreenData)
     {
-
+        mgc.JLayoutRuntime.jLayCanvas.children[0].ForceCenterX = true;
         if (titleScreenData.StartGameJCU.TaskClicked) 
         {
-            return TitleScreenState.StartGame;
-        }
-        // Check if Start Game button was clicked
-        if (titleScreenData.StartGameButton != null && 
-            titleScreenData.StartGameButton.ButtonChildren.Count > 0 &&
-            titleScreenData.StartGameButton.IsButtonClicked(0))
-        {
+            mgc.JLayoutRuntime.jLayCanvas.children[0].ForceCenterX = false;
+            mgc.JLayoutRuntime.jLayCanvas.children[0].ApplySavedPivot();
             return TitleScreenState.StartGame;
         }
         

@@ -144,6 +144,16 @@ namespace HeartUnity.View
             trans.offsetMax = new Vector2(deltaOffsetX + distance, trans.offsetMax.y);
         }
 
+        public static void SetCenterXToParent(this RectTransform trans, float distance)
+        {
+            var index = 0;
+            trans.SetAnchorsByIndex(index, 0.5f);
+            
+            var deltaOffsetX = trans.offsetMax[index] - trans.offsetMin[index];
+            trans.offsetMin = new Vector2(0 + distance - deltaOffsetX*0.5f, trans.offsetMin.y);
+            trans.offsetMax = new Vector2(deltaOffsetX * 0.5f + distance, trans.offsetMax.y);
+        }
+
         public static void SetRightXToParent(this RectTransform trans, float distance)
         {
             var index = 0;

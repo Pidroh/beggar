@@ -86,7 +86,7 @@ public class MainGameControl : MonoBehaviour
         // Check title screen state
         if (controlState == ControlState.TITLE)
         {
-            var titleState = TitleScreenControl.ManualUpdate(titleScreenData);
+            var titleState = TitleScreenControl.ManualUpdate(this, titleScreenData);
             if (titleState == TitleScreenState.StartGame)
             {
                 SetupMainGame();
