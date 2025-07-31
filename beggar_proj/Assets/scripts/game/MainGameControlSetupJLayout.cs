@@ -158,8 +158,6 @@ public class MainGameControlSetupJLayout
                 }
 
 
-                var taskParent = jCanvas.children[tabIndex];
-
                 tcu.TabData = item;
                 foreach (var sepD in item.Tab.Separators)
                 {

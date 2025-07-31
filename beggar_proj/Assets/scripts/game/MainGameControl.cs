@@ -60,14 +60,11 @@ public class MainGameControl : MonoBehaviour
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         MainGameControlSetupJLayout.SetupCanvas(this);
 
-        SetupMainGame();
+        // SetupMainGame();
 
-        /*
         // Setup title screen
         titleScreenData = new TitleScreenRuntimeData();
         TitleScreenSetup.Setup(this, titleScreenData);
-        GameStarted = false;
-        */
     }
 
     void SetupMainGame()
@@ -86,7 +83,7 @@ public class MainGameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*/ Check title screen state
+        // Check title screen state
         if (controlState == ControlState.TITLE)
         {
             var titleState = TitleScreenControl.ManualUpdate(titleScreenData);
@@ -95,7 +92,7 @@ public class MainGameControl : MonoBehaviour
                 SetupMainGame();
             }
         }
-        //*/
+        //
         // -----------------------------------------------------------
         // Engine etc updating
         // -----------------------------------------------------------
@@ -170,6 +167,7 @@ public class MainGameControl : MonoBehaviour
             }
             #endregion
 
+            #region game update
             // -----------------------------------------------------------
             // Time, game updating
             // -----------------------------------------------------------
@@ -179,6 +177,8 @@ public class MainGameControl : MonoBehaviour
             {
                 arcaniaModel.ManualUpdate(dt);
             }
+
+            #endregion
 
             #region J Control Update
             JGameControlExecuter.ManualUpdate(this, this.JControlData, Time.deltaTime);

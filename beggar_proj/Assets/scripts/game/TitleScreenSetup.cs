@@ -5,34 +5,31 @@ using UnityEngine;
 
 public class TitleScreenRuntimeData
 {
-    public JLayCanvas TitleCanvas { get; set; }
     public JLayoutRuntimeUnit StartGameButton { get; set; }
     public JLayoutRuntimeUnit TitleScreenLayout { get; set; }
-    public JLayoutRuntimeData LayoutRuntime { get; set; }
-    public EngineView EngineView { get; set; }
+    public JRTControlUnit StartGameJCU { get; internal set; }
 }
 
 public class TitleScreenSetup
 {
     public static void Setup(MainGameControl mgc, TitleScreenRuntimeData titleScreenData)
     {
-        var runtime = new JLayoutRuntimeData();
-        runtime.DefaultFont = mgc.Font;
-        runtime.ImageSprites = mgc.ResourceJson.spritesForLayout;
-        runtime.CurrentColorSchemeId = 0;
-        
-        LayoutDataMaster layoutMaster = new LayoutDataMaster();
-        JsonInterpreter.ReadJson(mgc.ResourceJson.layoutJsonForTitle.text, layoutMaster);
-        runtime.LayoutMaster = layoutMaster;
-        
-        titleScreenData.LayoutRuntime = runtime;
-        
-        var titleCanvas = JCanvasMaker.CreateCanvas(1, mgc.CanvasRequest, null, runtime);
-        titleScreenData.TitleCanvas = titleCanvas;
-        
-        var parentLayout = titleCanvas.children[0].LayoutRuntimeUnit;
-        
-        var endingTextLayout = JCanvasMaker.CreateLayout("ending_text", runtime);
+        var canvas = mgc.JLayoutRuntime.jLayCanvas;
+        var parentLayout = canvas.children[0].LayoutRuntimeUnit;
+
+        {
+            var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", mgc.JLayoutRuntime);
+            var lc = parentLayout.AddLayoutAsChild(fleeButtonLayout);
+            fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Flee"));
+            JRTControlUnit jCU = new();
+            jCU.MainLayout = fleeButtonLayout;
+            jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
+            fleeButtonLayout.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+
+            titleScreenData.StartGameJCU = jCU;
+        }
+        /*
+        var endingTextLayout = JCanvasMaker.CreateLayout("ending_text", mgc.JLayoutRuntime);
         titleScreenData.TitleScreenLayout = endingTextLayout;
         parentLayout.AddLayoutAsChild(endingTextLayout);
         
@@ -41,8 +38,6 @@ public class TitleScreenSetup
         
         var buttonLayout = endingTextLayout.LayoutChildren[0].LayoutRU;
         buttonLayout.ButtonChildren[0].Item1.SetTextRaw(0, "Start Game");
-        titleScreenData.StartGameButton = buttonLayout;
-        
-        titleCanvas.ShowOverlay();
+        titleScreenData.StartGameButton = buttonLayout;*/
     }
 }
