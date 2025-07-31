@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
   - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
   layoutJson: {fileID: 4900000, guid: 60a52a01a6261be4b8003331ffeb259b, type: 3}
+  layoutJsonForTitle: {fileID: 4900000, guid: 0c09879f9db57e9479917932bb37a70c, type: 3}
   spritesForLayout:
     spritesList:
     - _key: 

@@ -8,6 +8,8 @@ public class TitleScreenRuntimeData
     public JLayCanvas TitleCanvas { get; set; }
     public JLayoutRuntimeUnit StartGameButton { get; set; }
     public JLayoutRuntimeUnit TitleScreenLayout { get; set; }
+    public JLayoutRuntimeData LayoutRuntime { get; set; }
+    public EngineView EngineView { get; set; }
 }
 
 public class TitleScreenSetup
@@ -22,6 +24,8 @@ public class TitleScreenSetup
         LayoutDataMaster layoutMaster = new LayoutDataMaster();
         JsonInterpreter.ReadJson(mgc.ResourceJson.layoutJsonForTitle.text, layoutMaster);
         runtime.LayoutMaster = layoutMaster;
+        
+        titleScreenData.LayoutRuntime = runtime;
         
         var titleCanvas = JCanvasMaker.CreateCanvas(1, mgc.CanvasRequest, null, runtime);
         titleScreenData.TitleCanvas = titleCanvas;

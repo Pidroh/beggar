@@ -17,35 +17,40 @@ namespace JLayout
             // foreach (var d in EnumHelper<Direction>.GetAllValues())
             {
                 Direction d = Direction.WEST;
-                var menus = data.jLayCanvas.FixedMenus[d];
-                foreach (var c in menus)
+                if (data.jLayCanvas.FixedMenus.ContainsKey(d))
                 {
-                    if (!c.LayoutRuntimeUnit.Visible) continue;
-                    var item = c.LayoutRuntimeUnit;
-                    item.RectTransform.FillParentHeight();
-                    float axisSize = item.LayoutData.commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
-                    item.RectTransform.SetWidth(axisSize);
-                    item.RectTransform.SetLeftXToParent(offsetLeftX);
-                    offsetLeftX += axisSize;
-                    ProcessChildren(item);
+                    var menus = data.jLayCanvas.FixedMenus[d];
+                    foreach (var c in menus)
+                    {
+                        if (!c.LayoutRuntimeUnit.Visible) continue;
+                        var item = c.LayoutRuntimeUnit;
+                        item.RectTransform.FillParentHeight();
+                        float axisSize = item.LayoutData.commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                        item.RectTransform.SetWidth(axisSize);
+                        item.RectTransform.SetLeftXToParent(offsetLeftX);
+                        offsetLeftX += axisSize;
+                        ProcessChildren(item);
+                    }
                 }
             }
             {
                 Direction d = Direction.SOUTH;
-                var menus = data.jLayCanvas.FixedMenus[d];
-                foreach (var c in menus)
+                if (data.jLayCanvas.FixedMenus.TryGetValue(d, out var menus))
                 {
-                    if (!c.LayoutRuntimeUnit.Visible) continue;
-                    var item = c.LayoutRuntimeUnit;
-                    var nonFixedAxis = 0;
-                    var fixedAxis = 1;
-                    item.RectTransform.FillParentByAxisIndex(nonFixedAxis);
-                    float axisSize = item.LayoutData.commons.Size[fixedAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
-                    item.RectTransform.SetHeight(axisSize);
-                    item.RectTransform.SetBottomYToParent(offsetBottomY);
-                    offsetBottomY += axisSize;
-                    // offset += axisSize;
-                    ProcessChildren(item);
+                    foreach (var c in menus)
+                    {
+                        if (!c.LayoutRuntimeUnit.Visible) continue;
+                        var item = c.LayoutRuntimeUnit;
+                        var nonFixedAxis = 0;
+                        var fixedAxis = 1;
+                        item.RectTransform.FillParentByAxisIndex(nonFixedAxis);
+                        float axisSize = item.LayoutData.commons.Size[fixedAxis] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
+                        item.RectTransform.SetHeight(axisSize);
+                        item.RectTransform.SetBottomYToParent(offsetBottomY);
+                        offsetBottomY += axisSize;
+                        // offset += axisSize;
+                        ProcessChildren(item);
+                    }
                 }
             }
 
@@ -59,12 +64,12 @@ namespace JLayout
                 }
 
                 float currentWidth = mainCanvasChild.LayoutRuntimeUnit.ContentTransform.GetWidth();
-                if(currentWidth != mainCanvasChild.PreviousWidth) 
+                if (currentWidth != mainCanvasChild.PreviousWidth)
                 {
                     mainCanvasChild.PreviousWidth = currentWidth;
                     mainCanvasChild.LayoutRuntimeUnit.MarkDirtyWithChildren();
                 }
-                
+
                 // temporary code
                 float newSize = mainCanvasChild.DesiredSize;
                 parentLayout.RectTransform.SetWidth(newSize);
@@ -72,8 +77,8 @@ namespace JLayout
                 parentLayout.RectTransform.SetLeftXToParent(offsetLeftX);
                 parentLayout.RectTransform.SetOffsetMinByIndex(1, offsetBottomY);
                 offsetLeftX += newSize;
-                
-                
+
+
                 ProcessChildren(parentLayout);
             }
 
@@ -116,10 +121,12 @@ namespace JLayout
                 if (lay.Disabled is true || (hasButton && !buttonUU.ButtonEnabled))
                 {
                     color = ColorSetType.DISABLED;
-                } else if (hasButton && buttonUU.Clicked)
+                }
+                else if (hasButton && buttonUU.Clicked)
                 {
                     color = ColorSetType.CLICKED;
-                } else if (hasButton && buttonUU.MouseDown)
+                }
+                else if (hasButton && buttonUU.MouseDown)
                 {
                     color = ColorSetType.PRESSED;
                 }
@@ -127,7 +134,7 @@ namespace JLayout
                 {
                     color = ColorSetType.HOVERED;
                 }
-                else if (thisActive is true) 
+                else if (thisActive is true)
                 {
                     color = ColorSetType.ACTIVE;
                 }
