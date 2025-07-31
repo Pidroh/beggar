@@ -20,7 +20,7 @@ public class TitleScreenSetup
         {
             var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", mgc.JLayoutRuntime);
             var lc = parentLayout.AddLayoutAsChild(fleeButtonLayout);
-            fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Flee"));
+            fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Start Game"));
             JRTControlUnit jCU = new();
             jCU.MainLayout = fleeButtonLayout;
             jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
