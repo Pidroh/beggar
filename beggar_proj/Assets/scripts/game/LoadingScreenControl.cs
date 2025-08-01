@@ -30,10 +30,10 @@ public static class LoadingScreenControl
                 {
                     // final model setup
                     mgc.arcaniaModel.FinishedSettingUpUnits();
-                    loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING;
+                    loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING_PERSISTENCE;
                 }
                 break;
-            case LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING_PERSISTENCE:
 
                 mgc.RobustDeltaTime = new();
                 mgc.ArcaniaPersistence = new(mgc.HeartGame);
@@ -44,7 +44,7 @@ public static class LoadingScreenControl
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS:
                 // Let the model run once so you can finish up setup with the latest info on visibility
                 mgc.arcaniaModel.ManualUpdate(0);
-                MainGameControlSetupJLayout.SetupGameCanvas(mgc);
+                MainGameControlSetupJLayout.SetupGameCanvasAllAtOnce(mgc);
 
                 loadingData.TextLayout.SetVisibleSelf(false);
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.OVER;

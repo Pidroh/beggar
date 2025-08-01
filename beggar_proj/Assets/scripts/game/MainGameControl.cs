@@ -90,7 +90,7 @@ public class MainGameControl : MonoBehaviour
         HeartGame.CommonDataLoad();
         // Let the model run once so you can finish up setup with the latest info on visibility
         arcaniaModel.ManualUpdate(0);
-        MainGameControlSetupJLayout.SetupGameCanvas(this);
+        MainGameControlSetupJLayout.SetupGameCanvasAllAtOnce(this);
         controlState = ControlState.GAME;
     }
 

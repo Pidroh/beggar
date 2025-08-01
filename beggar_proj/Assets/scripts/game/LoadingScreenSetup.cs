@@ -32,7 +32,7 @@ public class LoadingScreenSetup
         { 
             START,
             MODEL, 
-            LOADING,
+            LOADING_PERSISTENCE,
             CANVAS,
             OVER
         }
