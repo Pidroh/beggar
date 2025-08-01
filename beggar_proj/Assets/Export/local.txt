@@ -94,3 +94,13 @@ Space_Occupied$In the sense of a table taking up too much space$Space Occupied$E
 Acquire_Skill$$Acquire Skill$Adquirir habilidade$Acquérir compétence$Fähigkeit erwerben$スキルを習得$기술 습득$获得技能$獲得技能
 Practice_Skill$$Practice Skill$Prática de Habilidade$Pratiquez votre compétence$Übungsfähigkeit$練習スキル$실력 향상$练习技能$練習技能
 Flee$$Flee$Fugir$Fuir$Fliehen$逃げる$도망치세요$逃走$逃跑
+Beggar's_Life$$Beggar's Life$$$$$$$
+Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$$$$$$$
+Play_Game$$Play Game$$$$$$$
+Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb$Wishlist on Steam$$$$$$$
+Settings$$Settings$$$$$$$
+Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$$$$$$$
+Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$$$$$$$
+Charisma_of_Pain$$Charisma of Pain$$$$$$$
+$$$$$$$$$
+Grand_Theft$$Grand Theft$$$$$$$

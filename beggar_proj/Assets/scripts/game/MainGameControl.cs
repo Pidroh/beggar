@@ -66,7 +66,7 @@ public class MainGameControl : MonoBehaviour
         // SetupMainGame();
         if (straightToGameNoTitle) 
         {
-            SetupMainGame();
+            SetupMainGameAllAtOnce();
         }
         else
         {
@@ -79,9 +79,9 @@ public class MainGameControl : MonoBehaviour
         _lastControlStateStatic = null;
     }
 
-    void SetupMainGame()
+    void SetupMainGameAllAtOnce()
     {
-        MainGameControlSetupJLayout.SetupModelData(this);
+        MainGameControlSetupJLayout.SetupModelDataAllAtOnce(this);
         RobustDeltaTime = new();
         ArcaniaPersistence = new(HeartGame);
         ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
@@ -101,7 +101,7 @@ public class MainGameControl : MonoBehaviour
             var titleState = TitleScreenControl.ManualUpdate(this, titleScreenData);
             if (titleState == TitleScreenState.StartGame)
             {
-                SetupMainGame();
+                SetupMainGameAllAtOnce();
             }
         }
         //

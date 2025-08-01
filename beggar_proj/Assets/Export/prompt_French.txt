@@ -1,0 +1,109 @@
+﻿This is a csv file where $ is the separator. I'm missing the translation of French. Add all missing translations to the file. Make it easy to copy. Don't add a $ mark in the end. I'm serious, do not add $ to the end of ANY lines
+
+
+key$description$English$French
+resources$$Resources$Ressources
+Duration$$Duration$Durée
+Effect_duration$$Effect duration$Durée de l'effet
+modifications$$modifications$modifications
+extra_mods$$extra mods$mods supplémentaires
+mods_targeting_this$$mods targeting this$mods ciblant cela
+extra_effect_mods$$extra effect mods$modificateurs d'effets supplémentaires
+Success_rate$$Success rate$Taux de réussite
+cost$$cost$coût
+result$$result$résultat
+run$$run$courir
+effect$$effect$effet
+first_time$$first time$première fois
+result_failure$$result failure$échec de résultat
+acquisition$$acquisition$acquisition
+Fullscreen$$Fullscreen$Plein écran
+Master_volume$$Master volume$Volume principal
+Music_volume$$Music volume$Volume de la musique
+Sfx_volume$$Sfx volume$Volume des effets sonores
+Language$$Language$Langue
+Color_scheme$$Color scheme$Palette de couleurs
+Exit_game$$Exit game$Quitter le jeu
+Export_save$$Export save$Exporter la sauvegarde
+Import_save$$Import save$Importer la sauvegarde
+Delete_data$$Delete data$Effacer les données
+Close_menu$$Close menu$Fermer le menu
+Ok$  Okay$OK$D'accord
+Confirm$  This is used for confirmation buttons such as closing a dialog$Confirm$Confirmer
+Battle$  This is the label on a button to start a battle$Battle$Bataille
+Level_Up$  This is a button to level up a character or feature$Level Up$Niveau supérieur
+Voice_volume$$Voice volume$Volume vocal
+Evolution$$Evolution$Évolution
+Awakening$$Awakening$Éveil
+Rune$$Rune$Rune
+Freeby$$Freeby$Gratuit
+Return$$Return$Retour
+Scene$$Scene$Scène
+Go_on$$Go on$Avancez
+Go_back$$Go back$Retourner
+You_received$$You received$Vous avez reçu
+Cannot_afford$$Cannot afford$Ne peut pas se permettre
+Object$$Object$Objet
+Monster$$Monster$Monstre
+End_Turn$$End Turn$Fin du tour
+No_need$$No need$Pas besoin
+Sure$$Sure$D'accord
+Tutorial$$Tutorial$Tutoriel
+Advance$$Advance$Avancer
+YOU_LOSE$$YOU LOSE$VOUS PERDEZ
+YOU_WIN$$YOU WIN$VOUS AVEZ GAGNÉ
+Booster_Packs$$Booster Packs$Paquets de renforcement.
+Runes$a power up that can be engraved into a monster$Runes$Runes
+Level$Level of the monster$Level$Niveau
+Attack$attack stat label$Attack$Attaque
+Press_any_button$$Press any button$Appuyez sur n'importe quel bouton
+Demo_End$$Demo End$Fin de la démo
+Wishlist_now!$$Wishlist now!$Liste de souhaits maintenant!
+Card_Nova_Hyper$$Card Nova Hyper$Carte Nova Hyper
+Launch_news$$Launch news$Nouvelles de lancement
+Subscribe$$Subscribe$Abonnez-vous
+Effect$$Effect$Effet
+Self$$Self$Soi
+Sell$$Sell$Vendre
+Color_correction$$Color correction$Correction des couleurs
+Tone_correction$$Tone correction$Correction tonale
+Scanline$$Scanline$Ligne de balayage
+Vignette$$Vignette$Vignette
+Bloom$$Bloom$Éclosion
+Evolve$$Evolve$Évoluer
+Thank_you_for_playing_the_demo$$Thank you for playing the demo$Merci d'avoir joué à la démo.
+Edit$$Edit$Modifier
+Are_you_sure_you_want_to_sell?$$Are you sure you want to sell?$Êtes-vous sûr de vouloir vendre ?
+Yes$$Yes$Oui
+No$$No$Non
+Permanently_delete_all_saved_data?$$Permanently delete all saved data?$Supprimer définitivement toutes les données enregistrées ?
+Close$$Close$Fermer
+Show_Credits$$Show Credits$Afficher les crédits
+Play_Time$$Play Time$Temps de jeu
+Difficulty$$Difficulty$Difficulté
+Game_Stats$$Game Stats$Statistiques du jeu
+It's_not_over_yet!$$It's not over yet!$Ce n'est pas fini !
+New_game_in_development$$New game in development$Nouveau jeu en développement.
+Start_Game$$Start Game$Commencer le jeu
+Go_wishlist$$Go wishlist$Ajouter à la liste de souhaits
+Discord_Server$$Discord Server$Serveur Discord
+Wishlist_the_sequel!$$Wishlist the sequel!$Ajoutez-le sur votre liste de souhaits !
+In_development$$In development$En développement.
+success_rate$In the sense of a probability of success$success rate$taux de réussite
+Speed$$Speed$Vitesse
+Rate$in the sense of something gained over time (translate as a single word if possible though)$Rate$Taux
+Max_Space$In the sense of how much space you have in your room to house things$Max Space$Espace Max
+Space_Occupied$In the sense of a table taking up too much space$Space Occupied$Espace Occupé
+Acquire_Skill$$Acquire Skill$Acquérir compétence
+Practice_Skill$$Practice Skill$Pratiquez votre compétence
+Flee$$Flee$Fuir
+Beggar's_Life$$Beggar's Life$
+Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$
+Play_Game$$Play Game$
+Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb$Wishlist on Steam$
+Settings$$Settings$
+Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$
+Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$
+Charisma_of_Pain$$Charisma of Pain$
+$$$
+Grand_Theft$$Grand Theft$

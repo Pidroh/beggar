@@ -1,0 +1,109 @@
+﻿This is a csv file where $ is the separator. I'm missing the translation of Simplified Chinese. Add all missing translations to the file. Make it easy to copy. Don't add a $ mark in the end. I'm serious, do not add $ to the end of ANY lines
+
+
+key$description$English$Simplified Chinese
+resources$$Resources$资源
+Duration$$Duration$持续时间
+Effect_duration$$Effect duration$效果持续时间
+modifications$$modifications$修改
+extra_mods$$extra mods$额外修改
+mods_targeting_this$$mods targeting this$目标为此的修改
+extra_effect_mods$$extra effect mods$额外效果修改
+Success_rate$$Success rate$成功率
+cost$$cost$成本
+result$$result$结果
+run$$run$奔跑
+effect$$effect$效果
+first_time$$first time$第一次
+result_failure$$result failure$失败结果
+acquisition$$acquisition$获取
+Fullscreen$$Fullscreen$全屏
+Master_volume$$Master volume$主音量
+Music_volume$$Music volume$音乐音量
+Sfx_volume$$Sfx volume$音效音量
+Language$$Language$语言
+Color_scheme$$Color scheme$色彩方案
+Exit_game$$Exit game$退出游戏
+Export_save$$Export save$导出保存
+Import_save$$Import save$导入存档
+Delete_data$$Delete data$删除数据
+Close_menu$$Close menu$关闭菜单
+Ok$  Okay$OK$确定
+Confirm$  This is used for confirmation buttons such as closing a dialog$Confirm$确认
+Battle$  This is the label on a button to start a battle$Battle$战斗
+Level_Up$  This is a button to level up a character or feature$Level Up$升级
+Voice_volume$$Voice volume$语音音量
+Evolution$$Evolution$进化
+Awakening$$Awakening$觉醒
+Rune$$Rune$符文
+Freeby$$Freeby$免费卡
+Return$$Return$返回
+Scene$$Scene$场景
+Go_on$$Go on$继续
+Go_back$$Go back$返回
+You_received$$You received$你收到了
+Cannot_afford$$Cannot afford$支付不起
+Object$$Object$物体
+Monster$$Monster$怪物
+End_Turn$$End Turn$结束回合
+No_need$$No need$不需要
+Sure$$Sure$当然
+Tutorial$$Tutorial$教程
+Advance$$Advance$前进
+YOU_LOSE$$YOU LOSE$你输了
+YOU_WIN$$YOU WIN$你赢了
+Booster_Packs$$Booster Packs$助推包
+Runes$a power up that can be engraved into a monster$Runes$符文
+Level$Level of the monster$Level$等级
+Attack$attack stat label$Attack$攻击
+Press_any_button$$Press any button$按任意按钮.
+Demo_End$$Demo End$演示结束
+Wishlist_now!$$Wishlist now!$立即添加到愿望清单！
+Card_Nova_Hyper$$Card Nova Hyper$Card Nova Hyper
+Launch_news$$Launch news$推出消息
+Subscribe$$Subscribe$订阅
+Effect$$Effect$效果
+Self$$Self$自己
+Sell$$Sell$出售
+Color_correction$$Color correction$色彩校正
+Tone_correction$$Tone correction$色调校正
+Scanline$$Scanline$扫描线
+Vignette$$Vignette$小插曲
+Bloom$$Bloom$光晕效果
+Evolve$$Evolve$进化
+Thank_you_for_playing_the_demo$$Thank you for playing the demo$感谢您试玩演示版本。
+Edit$$Edit$编辑
+Are_you_sure_you_want_to_sell?$$Are you sure you want to sell?$你确定要出售吗？
+Yes$$Yes$是
+No$$No$不
+Permanently_delete_all_saved_data?$$Permanently delete all saved data?$永久删除所有已保存的数据？
+Close$$Close$关闭
+Show_Credits$$Show Credits$显示制作人员
+Play_Time$$Play Time$游戏时间
+Difficulty$$Difficulty$难度
+Game_Stats$$Game Stats$游戏数据
+It's_not_over_yet!$$It's not over yet!$还没结束呢！
+New_game_in_development$$New game in development$新游戏开发中.
+Start_Game$$Start Game$开始游戏
+Go_wishlist$$Go wishlist$加入愿望清单
+Discord_Server$$Discord Server$Discord
+Wishlist_the_sequel!$$Wishlist the sequel!$愿望单上加续集！
+In_development$$In development$开发中
+success_rate$In the sense of a probability of success$success rate$成功率
+Speed$$Speed$速度
+Rate$in the sense of something gained over time (translate as a single word if possible though)$Rate$费率
+Max_Space$In the sense of how much space you have in your room to house things$Max Space$最大空间
+Space_Occupied$In the sense of a table taking up too much space$Space Occupied$占用空间
+Acquire_Skill$$Acquire Skill$获得技能
+Practice_Skill$$Practice Skill$练习技能
+Flee$$Flee$逃走
+Beggar's_Life$$Beggar's Life$
+Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$
+Play_Game$$Play Game$
+Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb$Wishlist on Steam$
+Settings$$Settings$
+Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$
+Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$
+Charisma_of_Pain$$Charisma of Pain$
+$$$
+Grand_Theft$$Grand Theft$

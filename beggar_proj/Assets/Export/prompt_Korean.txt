@@ -1,0 +1,109 @@
+﻿This is a csv file where $ is the separator. I'm missing the translation of Korean. Add all missing translations to the file. Make it easy to copy. Don't add a $ mark in the end. I'm serious, do not add $ to the end of ANY lines
+
+
+key$description$English$Korean
+resources$$Resources$자원
+Duration$$Duration$지속시간
+Effect_duration$$Effect duration$효과 지속시간
+modifications$$modifications$수정
+extra_mods$$extra mods$추가 모드
+mods_targeting_this$$mods targeting this$이 모드 대상
+extra_effect_mods$$extra effect mods$추가 효과 모드
+Success_rate$$Success rate$성공률
+cost$$cost$비용
+result$$result$결과
+run$$run$달리기
+effect$$effect$효과
+first_time$$first time$최초의 시간
+result_failure$$result failure$결과 실패
+acquisition$$acquisition$획득
+Fullscreen$$Fullscreen$전체 화면
+Master_volume$$Master volume$마스터 볼륨
+Music_volume$$Music volume$음악 볼륨
+Sfx_volume$$Sfx volume$효과음 볼륨
+Language$$Language$언어
+Color_scheme$$Color scheme$색 구성
+Exit_game$$Exit game$게임 종료
+Export_save$$Export save$내보내기 저장
+Import_save$$Import save$불러오기 저장
+Delete_data$$Delete data$데이터 삭제
+Close_menu$$Close menu$메뉴 닫기
+Ok$  Okay$OK$확인
+Confirm$  This is used for confirmation buttons such as closing a dialog$Confirm$확인
+Battle$  This is the label on a button to start a battle$Battle$전투
+Level_Up$  This is a button to level up a character or feature$Level Up$레벨 업
+Voice_volume$$Voice volume$음성 볼륨
+Evolution$$Evolution$진화
+Awakening$$Awakening$각성
+Rune$$Rune$룬
+Freeby$$Freeby$무료 카드
+Return$$Return$돌아가기
+Scene$$Scene$장면
+Go_on$$Go on$계속
+Go_back$$Go back$뒤로 가기
+You_received$$You received$받았습니다
+Cannot_afford$$Cannot afford$지불할 수 없습니다
+Object$$Object$물체
+Monster$$Monster$몬스터
+End_Turn$$End Turn$턴 종료
+No_need$$No need$필요 없음
+Sure$$Sure$확실히
+Tutorial$$Tutorial$튜토리얼
+Advance$$Advance$전진
+YOU_LOSE$$YOU LOSE$당신이 졌습니다
+YOU_WIN$$YOU WIN$당신이 이겼습니다
+Booster_Packs$$Booster Packs$부스터 팩
+Runes$a power up that can be engraved into a monster$Runes$룬
+Level$Level of the monster$Level$레벨
+Attack$attack stat label$Attack$공격
+Press_any_button$$Press any button$아무 버튼이나 눌러주세요.
+Demo_End$$Demo End$데모 종료
+Wishlist_now!$$Wishlist now!$위시리스트에 추가하세요!
+Card_Nova_Hyper$$Card Nova Hyper$Card Nova Hyper
+Launch_news$$Launch news$출시 소식
+Subscribe$$Subscribe$구독
+Effect$$Effect$효과
+Self$$Self$자아
+Sell$$Sell$판매
+Color_correction$$Color correction$색상 보정
+Tone_correction$$Tone correction$톤 보정
+Scanline$$Scanline$스캔라인
+Vignette$$Vignette$비네티트
+Bloom$$Bloom$블룸 효과
+Evolve$$Evolve$진화
+Thank_you_for_playing_the_demo$$Thank you for playing the demo$데모를 플레이해 주셔서 감사합니다
+Edit$$Edit$편집
+Are_you_sure_you_want_to_sell?$$Are you sure you want to sell?$판매하시겠습니까?
+Yes$$Yes$네
+No$$No$아니요.
+Permanently_delete_all_saved_data?$$Permanently delete all saved data?$영구적으로 모든 저장된 데이터를 삭제하시겠습니까?
+Close$$Close$가깝게
+Show_Credits$$Show Credits$크레딧 보이기.
+Play_Time$$Play Time$플레이 타임
+Difficulty$$Difficulty$난이도
+Game_Stats$$Game Stats$게임 통계
+It's_not_over_yet!$$It's not over yet!$아직 끝나지 않았어요!
+New_game_in_development$$New game in development$개발 중인 새로운 게임
+Start_Game$$Start Game$게임 시작
+Go_wishlist$$Go wishlist$위시리스트에 추가하기
+Discord_Server$$Discord Server$디스코드 서버
+Wishlist_the_sequel!$$Wishlist the sequel!$후속작을 위시리스트에!
+In_development$$In development$개발 중
+success_rate$In the sense of a probability of success$success rate$성공률
+Speed$$Speed$속력
+Rate$in the sense of something gained over time (translate as a single word if possible though)$Rate$비율
+Max_Space$In the sense of how much space you have in your room to house things$Max Space$최대 공간
+Space_Occupied$In the sense of a table taking up too much space$Space Occupied$공간이 차있습니다
+Acquire_Skill$$Acquire Skill$기술 습득
+Practice_Skill$$Practice Skill$실력 향상
+Flee$$Flee$도망치세요
+Beggar's_Life$$Beggar's Life$
+Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$
+Play_Game$$Play Game$
+Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb$Wishlist on Steam$
+Settings$$Settings$
+Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$
+Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$
+Charisma_of_Pain$$Charisma of Pain$
+$$$
+Grand_Theft$$Grand Theft$

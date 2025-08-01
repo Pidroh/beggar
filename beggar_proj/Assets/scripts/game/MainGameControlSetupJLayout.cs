@@ -6,19 +6,26 @@ using UnityEngine;
 
 public class MainGameControlSetupJLayout
 {
-    internal static void SetupModelData(MainGameControl mgc)
+    internal static void SetupModelDataAllAtOnce(MainGameControl mgc)
     {
-        var arcaniaModel = mgc.arcaniaModel;
-        var arcaniaDatas = arcaniaModel.arcaniaUnits;
-        bool hasLocalizationFileArcania = mgc.ResourceJson.arcaniaTranslationFile.TryGetText(out var localizedText);
+        ArcaniaModel arcaniaModel;
+        ArcaniaUnits arcaniaDatas;
+        bool hasLocalizationFileArcania;
+        SetupLocalization(mgc, out arcaniaModel, out arcaniaDatas, out hasLocalizationFileArcania);
+        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas, hasLocalizationFileArcania && !Local.IsFirstLanguage);
+        arcaniaModel.FinishedSettingUpUnits();
+    }
+
+    private static void SetupLocalization(MainGameControl mgc, out ArcaniaModel arcaniaModel, out ArcaniaUnits arcaniaDatas, out bool hasLocalizationFileArcania)
+    {
+        arcaniaModel = mgc.arcaniaModel;
+        arcaniaDatas = arcaniaModel.arcaniaUnits;
+        hasLocalizationFileArcania = mgc.ResourceJson.arcaniaTranslationFile.TryGetText(out var localizedText);
         if (hasLocalizationFileArcania)
         {
             Local.Instance.AppendLocalizationData(localizedText, false);
         }
-        JsonReader.ReadJson(mgc.ResourceJson, arcaniaDatas, hasLocalizationFileArcania && !Local.IsFirstLanguage);
-        arcaniaModel.FinishedSettingUpUnits();
     }
-    
 
     public static JGameControlDataHolder SetupCanvas(MainGameControl mgc)
     {

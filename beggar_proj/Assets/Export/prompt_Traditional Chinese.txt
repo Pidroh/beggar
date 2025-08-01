@@ -1,0 +1,109 @@
+﻿This is a csv file where $ is the separator. I'm missing the translation of Traditional Chinese. Add all missing translations to the file. Make it easy to copy. Don't add a $ mark in the end. I'm serious, do not add $ to the end of ANY lines
+
+
+key$description$English$Traditional Chinese
+resources$$Resources$資源
+Duration$$Duration$持續時間
+Effect_duration$$Effect duration$效果持續時間
+modifications$$modifications$修改
+extra_mods$$extra mods$額外的修改
+mods_targeting_this$$mods targeting this$針對此進行修改
+extra_effect_mods$$extra effect mods$額外效果修改
+Success_rate$$Success rate$成功率
+cost$$cost$成本
+result$$result$結果
+run$$run$奔跑
+effect$$effect$效果
+first_time$$first time$第一次
+result_failure$$result failure$失敗結果
+acquisition$$acquisition$取得
+Fullscreen$$Fullscreen$全屏
+Master_volume$$Master volume$主音量
+Music_volume$$Music volume$音樂音量
+Sfx_volume$$Sfx volume$音效音量
+Language$$Language$語言
+Color_scheme$$Color scheme$配色方案
+Exit_game$$Exit game$退出遊戲
+Export_save$$Export save$匯出存檔
+Import_save$$Import save$導入存檔
+Delete_data$$Delete data$刪除數據
+Close_menu$$Close menu$關閉選單
+Ok$  Okay$OK$確定
+Confirm$  This is used for confirmation buttons such as closing a dialog$Confirm$確認
+Battle$  This is the label on a button to start a battle$Battle$戰鬥
+Level_Up$  This is a button to level up a character or feature$Level Up$升級
+Voice_volume$$Voice volume$語音音量
+Evolution$$Evolution$進化
+Awakening$$Awakening$覺醒
+Rune$$Rune$符文
+Freeby$$Freeby$免費卡
+Return$$Return$返回
+Scene$$Scene$場景
+Go_on$$Go on$繼續
+Go_back$$Go back$返回
+You_received$$You received$你收到了
+Cannot_afford$$Cannot afford$無法支付
+Object$$Object$物體
+Monster$$Monster$怪物
+End_Turn$$End Turn$結束回合
+No_need$$No need$不需要
+Sure$$Sure$當然
+Tutorial$$Tutorial$教學
+Advance$$Advance$前進
+YOU_LOSE$$YOU LOSE$你輸了
+YOU_WIN$$YOU WIN$你贏了
+Booster_Packs$$Booster Packs$助推器包
+Runes$a power up that can be engraved into a monster$Runes$符文
+Level$Level of the monster$Level$等級
+Attack$attack stat label$Attack$攻擊
+Press_any_button$$Press any button$按任意按鈕
+Demo_End$$Demo End$遊戲結束
+Wishlist_now!$$Wishlist now!$心願單現在就來！
+Card_Nova_Hyper$$Card Nova Hyper$Card Nova Hyper
+Launch_news$$Launch news$發行新聞
+Subscribe$$Subscribe$訂閱
+Effect$$Effect$效果
+Self$$Self$自我
+Sell$$Sell$販售
+Color_correction$$Color correction$顏色校正
+Tone_correction$$Tone correction$色調校正
+Scanline$$Scanline$掃描線
+Vignette$$Vignette$小插曲
+Bloom$$Bloom$光暈效果
+Evolve$$Evolve$進化
+Thank_you_for_playing_the_demo$$Thank you for playing the demo$感謝您玩遊戲試玩版。
+Edit$$Edit$編輯
+Are_you_sure_you_want_to_sell?$$Are you sure you want to sell?$你確定要出售嗎？
+Yes$$Yes$是的
+No$$No$不
+Permanently_delete_all_saved_data?$$Permanently delete all saved data?$永久刪除所有已保存的數據？
+Close$$Close$結束
+Show_Credits$$Show Credits$顯示製作人员
+Play_Time$$Play Time$遊戲時間
+Difficulty$$Difficulty$困難
+Game_Stats$$Game Stats$遊戲數據
+It's_not_over_yet!$$It's not over yet!$還沒結束呢！
+New_game_in_development$$New game in development$開發中的新遊戲
+Start_Game$$Start Game$開始遊戲
+Go_wishlist$$Go wishlist$加入願望清單
+Discord_Server$$Discord Server$Discord
+Wishlist_the_sequel!$$Wishlist the sequel!$願望單上加續集！
+In_development$$In development$開發中EnglishPortuguêsPortuguês BR日本語繁體中文简体中文한국어
+success_rate$In the sense of a probability of success$success rate$成功率
+Speed$$Speed$速度
+Rate$in the sense of something gained over time (translate as a single word if possible though)$Rate$評分
+Max_Space$In the sense of how much space you have in your room to house things$Max Space$最大空間
+Space_Occupied$In the sense of a table taking up too much space$Space Occupied$佔領空間
+Acquire_Skill$$Acquire Skill$獲得技能
+Practice_Skill$$Practice Skill$練習技能
+Flee$$Flee$逃跑
+Beggar's_Life$$Beggar's Life$
+Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$
+Play_Game$$Play Game$
+Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb$Wishlist on Steam$
+Settings$$Settings$
+Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$
+Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$
+Charisma_of_Pain$$Charisma of Pain$
+$$$
+Grand_Theft$$Grand Theft$

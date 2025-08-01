@@ -1,0 +1,109 @@
+﻿This is a csv file where $ is the separator. I'm missing the translation of Japanese. Add all missing translations to the file. Make it easy to copy. Don't add a $ mark in the end. I'm serious, do not add $ to the end of ANY lines
+
+
+key$description$English$Japanese
+resources$$Resources$資源
+Duration$$Duration$期間
+Effect_duration$$Effect duration$効果の継続
+modifications$$modifications$改造
+extra_mods$$extra mods$エクストラモッド
+mods_targeting_this$$mods targeting this$これを対象とするMods
+extra_effect_mods$$extra effect mods$エクストラエフェクトモッド
+Success_rate$$Success rate$成功率
+cost$$cost$コスト
+result$$result$結果
+run$$run$走る
+effect$$effect$効果
+first_time$$first time$初めて
+result_failure$$result failure$結果 失敗
+acquisition$$acquisition$取得
+Fullscreen$$Fullscreen$フルスクリーン
+Master_volume$$Master volume$マスターボリューム
+Music_volume$$Music volume$音楽のボリューム
+Sfx_volume$$Sfx volume$効果音のボリューム
+Language$$Language$言語
+Color_scheme$$Color scheme$カラースキーム
+Exit_game$$Exit game$ゲームを終了
+Export_save$$Export save$セーブデータのエクスポート
+Import_save$$Import save$セーブデータをインポート
+Delete_data$$Delete data$データを削除します。
+Close_menu$$Close menu$メニューを閉じる
+Ok$  Okay$OK$はい
+Confirm$  This is used for confirmation buttons such as closing a dialog$Confirm$確認
+Battle$  This is the label on a button to start a battle$Battle$バトル
+Level_Up$  This is a button to level up a character or feature$Level Up$レベルアップ
+Voice_volume$$Voice volume$ボイスのボリューム
+Evolution$$Evolution$進化
+Awakening$$Awakening$覚醒
+Rune$$Rune$ルーン
+Freeby$$Freeby$フリーカード
+Return$$Return$戻る
+Scene$$Scene$シーン
+Go_on$$Go on$続ける
+Go_back$$Go back$戻る
+You_received$$You received$ゲット
+Cannot_afford$$Cannot afford$支払うことができません
+Object$$Object$オブジェクト
+Monster$$Monster$モンスター
+End_Turn$$End Turn$ターン終了
+No_need$$No need$必要ない
+Sure$$Sure$もちろん
+Tutorial$$Tutorial$チュートリアル
+Advance$$Advance$進む
+YOU_LOSE$$YOU LOSE$あなたは負けました
+YOU_WIN$$YOU WIN$勝利
+Booster_Packs$$Booster Packs$ブースターパック
+Runes$a power up that can be engraved into a monster$Runes$ルーン
+Level$Level of the monster$Level$レベル
+Attack$attack stat label$Attack$攻撃
+Press_any_button$$Press any button$どのボタンでも押してください
+Demo_End$$Demo End$デモ終了
+Wishlist_now!$$Wishlist now!$今すぐウィッシュリストに入れてください！
+Card_Nova_Hyper$$Card Nova Hyper$カードノヴァハイパー
+Launch_news$$Launch news$新作発売情報
+Subscribe$$Subscribe$申込む
+Effect$$Effect$効果
+Self$$Self$自己
+Sell$$Sell$売る
+Color_correction$$Color correction$カラー補正
+Tone_correction$$Tone correction$トーン補正
+Scanline$$Scanline$スキャンライン
+Vignette$$Vignette$ビネット
+Bloom$$Bloom$ブルーム
+Evolve$$Evolve$進化
+Thank_you_for_playing_the_demo$$Thank you for playing the demo$デモをプレイしていただき、ありがとうございます。
+Edit$$Edit$編集
+Are_you_sure_you_want_to_sell?$$Are you sure you want to sell?$売却してもよろしいですか？
+Yes$$Yes$はい
+No$$No$いいえ
+Permanently_delete_all_saved_data?$$Permanently delete all saved data?$全ての保存データを永久に削除しますか？
+Close$$Close$クローズ
+Show_Credits$$Show Credits$クレジットを表示
+Play_Time$$Play Time$プレイタイム
+Difficulty$$Difficulty$難易度
+Game_Stats$$Game Stats$ゲームの統計
+It's_not_over_yet!$$It's not over yet!$まだ終わっていません！
+New_game_in_development$$New game in development$開発中の新しいゲーム
+Start_Game$$Start Game$ゲームを開始
+Go_wishlist$$Go wishlist$ウィッシュリストに追加
+Discord_Server$$Discord Server$ディスコードサーバー
+Wishlist_the_sequel!$$Wishlist the sequel!$続編をウィッシュリストに追加！
+In_development$$In development$開発中
+success_rate$In the sense of a probability of success$success rate$成功率
+Speed$$Speed$速度
+Rate$in the sense of something gained over time (translate as a single word if possible though)$Rate$レート
+Max_Space$In the sense of how much space you have in your room to house things$Max Space$最大空間
+Space_Occupied$In the sense of a table taking up too much space$Space Occupied$占有スペース
+Acquire_Skill$$Acquire Skill$スキルを習得
+Practice_Skill$$Practice Skill$練習スキル
+Flee$$Flee$逃げる
+Beggar's_Life$$Beggar's Life$
+Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$
+Play_Game$$Play Game$
+Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb$Wishlist on Steam$
+Settings$$Settings$
+Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$
+Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$
+Charisma_of_Pain$$Charisma of Pain$
+$$$
+Grand_Theft$$Grand Theft$

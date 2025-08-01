@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -24,31 +25,147 @@ public class JsonReader
         ReadJson(arcaniaDatas, jsonDatas, localizeNameDescription);
     }
 
-    public static void ReadJson(ArcaniaGameConfigurationUnit resourceJson, ArcaniaUnits arcaniaDatas, object p)
+    public struct JsonReaderState
     {
-        throw new NotImplementedException();
+        public JsonReaderStateMode readerState;
+        public int jsonIndex;
+        internal int modAmountBeforeReadingData;
+
+        public enum JsonReaderStateMode
+        {
+            READ_JSON,
+            OVER,
+        }
+    }
+
+    public static JsonReaderState ReadJsonStepByStep(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription, JsonReaderState? stateRef) 
+    {
+        JsonReaderState state = new();
+        if (stateRef == null)
+        {
+            state.readerState = JsonReaderState.JsonReaderStateMode.READ_JSON;
+            state.modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
+
+        }
+        else 
+        {
+            state = stateRef.Value;
+        }
+        switch (state.readerState)
+        {
+            case JsonReaderState.JsonReaderStateMode.READ_JSON:
+                if (state.jsonIndex < config.jsonDatas.Count)
+                    state = ReadJsonSingleFile(arcaniaDatas, config.jsonDatas, localizeNameDescription, state);
+                else 
+                {
+                    ModPostProcessing(arcaniaDatas, state.modAmountBeforeReadingData);
+                    ConditionProcessing(arcaniaDatas);
+                    BrokenPointerCheck(arcaniaDatas);
+                    state.readerState = JsonReaderState.JsonReaderStateMode.OVER;
+                }
+                break;
+            default:
+                break;
+        }
+
+        return state;
     }
 
     public static void ReadJson(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription)
     {
         int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
-
-        foreach (var item in jsonDatas)
+        JsonReaderState readerState = new();
+        readerState.jsonIndex = 0;
+        while (readerState.jsonIndex < jsonDatas.Count)
         {
-            var parentNode = SimpleJSON.JSON.Parse(item.text);
-            if (parentNode.IsArray)
-            {
-                foreach (var c in parentNode.Children)
-                {
-                    ReadArrayOwner(arcaniaDatas, c, localizeNameDescription);
-                }
-            }
-            else
-            {
-                ReadArrayOwner(arcaniaDatas, parentNode, localizeNameDescription);
-            }
+            readerState = ReadJsonSingleFile(arcaniaDatas, jsonDatas, localizeNameDescription, readerState);
         }
 
+        ModPostProcessing(arcaniaDatas, modAmountBeforeReadingData);
+        ConditionProcessing(arcaniaDatas);
+        BrokenPointerCheck(arcaniaDatas);
+    }
+
+    private static void BrokenPointerCheck(ArcaniaUnits arcaniaDatas)
+    {
+        #region check broken pointers
+        foreach (var item in arcaniaDatas.IdMapper.Values)
+        {
+            item.CheckValidity();
+        }
+        #endregion
+    }
+
+    private static void ConditionProcessing(ArcaniaUnits arcaniaDatas)
+    {
+        //--------------------------------------------------------------
+        // Conditions #conditions #post-processing
+        //--------------------------------------------------------------
+        foreach (var item in arcaniaDatas.datas)
+        {
+            foreach (var u in item.Value)
+            {
+                if (u.ConfigTask?.Need == null) continue;
+                u.ConfigTask.Need.humanExpression = ConditionalExpressionParser.ToHumanLanguage(u.ConfigTask.Need.expression);
+            }
+        }
+        #region assign each runtime unit to a separator
+        foreach (var dataList in arcaniaDatas.datas)
+        {
+            if (dataList.Key == UnitType.TAB) continue;
+            if (dataList.Key == UnitType.ENCOUNTER) continue;
+            if (dataList.Key == UnitType.DOT) continue;
+            foreach (var item in dataList.Value)
+            {
+                bool added = false;
+                // this code doesn't handle well having multiple tabs accepting the same unit type
+                // EXAMPLE NON_SUPPORTED:
+                // - Tab 1: Holy Resources
+                // - Tab 2: Dark Resources
+                foreach (var tabCandidates in arcaniaDatas.datas[UnitType.TAB])
+                {
+                    if (!tabCandidates.Tab.AcceptedUnitTypes.Contains(dataList.Key)) continue;
+                    TabRuntime.Separator unitSeparator = null;
+                    foreach (var separatorCandidate in tabCandidates.Tab.Separators)
+                    {
+                        // don't try to look at lower priority separators
+                        if (unitSeparator != null && unitSeparator.Priority >= separatorCandidate.Priority) continue;
+                        if (separatorCandidate.AcceptedUnitTypes.Count > 0 && !separatorCandidate.AcceptedUnitTypes.Contains(dataList.Key)) continue;
+
+                        if (separatorCandidate.RequireMax && !item.HasMax) continue;
+                        if (separatorCandidate.Tags != null && separatorCandidate.Tags.Count > 0)
+                        {
+                            var hasTag = false;
+                            foreach (var tag in separatorCandidate.Tags)
+                            {
+                                if (tag.RuntimeUnits.Contains(item))
+                                {
+                                    hasTag = true;
+                                    break;
+                                }
+                            }
+                            if (!hasTag) continue;
+                        }
+                        if (separatorCandidate.RequireInstant && item.ConfigTask.Duration > 0) continue;
+                        unitSeparator = separatorCandidate;
+                    }
+                    if (unitSeparator == null) continue;
+                    unitSeparator.BoundRuntimeUnits.Add(item);
+                    added = true;
+                    break;
+                }
+                if (added) continue;
+                if (!added)
+                {
+                    Debug.Log("NOT ADDED " + item.ConfigBasic.Id);
+                }
+            }
+        }
+        #endregion
+    }
+
+    private static void ModPostProcessing(ArcaniaUnits arcaniaDatas, int modAmountBeforeReadingData)
+    {
 
         //--------------------------------------------------------------
         // POST PROCESSING #post-processing
@@ -116,12 +233,12 @@ public class JsonReader
                         mod.HumanTextIntermediary = $" Mod {RateLabel} {targetTextKey} ({sourceNameKey}):";
                         mod.HumanTextTarget = $"{RateLabel} ({sourceNameKey} x {intermediaryTextKey}):";
                     }
-                    else 
+                    else
                     {
                         mod.HumanText = $"{targetTextKey} {RateLabel}:";
                         mod.HumanTextTarget = $"{RateLabel} ({sourceNameKey}):";
                     }
-                    
+
                     break;
 
                 case ModType.ResourceChangeChanger:
@@ -138,7 +255,7 @@ public class JsonReader
                     break;
 
                 case ModType.SpaceConsumption:
-                    
+
                     mod.HumanText = spaceOccuppiedLabel + ":";
                     break;
 
@@ -146,7 +263,7 @@ public class JsonReader
                     mod.HumanText = "(Currently Invisible: error)";
                     break;
                 case ModType.SuccessRate:
-                    
+
                     mod.HumanText = $"{targetTextKey} {SuccessRateLabel}:";
                     mod.HumanTextTarget = $"{SuccessRateLabel} ({sourceNameKey}):";
                     break;
@@ -197,83 +314,32 @@ public class JsonReader
             foreach (var ru in mod.Target.RuntimeUnits)
             {
                 ru.RegisterModTargetingSelf(mod);
-                if (mod.ModType == ModType.Activate) 
+                if (mod.ModType == ModType.Activate)
                 {
                     ru.Activatable = true;
                 }
             }
         }
         #endregion
-        //--------------------------------------------------------------
-        // Conditions #conditions #post-processing
-        //--------------------------------------------------------------
-        foreach (var item in arcaniaDatas.datas)
+    }
+
+    private static JsonReaderState ReadJsonSingleFile(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription, JsonReaderState readerState)
+    {
+        TextAsset item = jsonDatas[readerState.jsonIndex];
+        var parentNode = SimpleJSON.JSON.Parse(item.text);
+        if (parentNode.IsArray)
         {
-            foreach (var u in item.Value)
+            foreach (var c in parentNode.Children)
             {
-                if (u.ConfigTask?.Need == null) continue;
-                u.ConfigTask.Need.humanExpression = ConditionalExpressionParser.ToHumanLanguage(u.ConfigTask.Need.expression);
+                ReadArrayOwner(arcaniaDatas, c, localizeNameDescription);
             }
         }
-        #region assign each runtime unit to a separator
-        foreach (var dataList in arcaniaDatas.datas)
+        else
         {
-            if (dataList.Key == UnitType.TAB) continue;
-            if (dataList.Key == UnitType.ENCOUNTER) continue;
-            if (dataList.Key == UnitType.DOT) continue;
-            foreach (var item in dataList.Value)
-            {
-                bool added = false;
-                // this code doesn't handle well having multiple tabs accepting the same unit type
-                // EXAMPLE NON_SUPPORTED:
-                // - Tab 1: Holy Resources
-                // - Tab 2: Dark Resources
-                foreach (var tabCandidates in arcaniaDatas.datas[UnitType.TAB])
-                {
-                    if (!tabCandidates.Tab.AcceptedUnitTypes.Contains(dataList.Key)) continue;
-                    TabRuntime.Separator unitSeparator = null;
-                    foreach (var separatorCandidate in tabCandidates.Tab.Separators)
-                    {
-                        // don't try to look at lower priority separators
-                        if (unitSeparator != null && unitSeparator.Priority >= separatorCandidate.Priority) continue;
-                        if (separatorCandidate.AcceptedUnitTypes.Count > 0 && !separatorCandidate.AcceptedUnitTypes.Contains(dataList.Key)) continue;
-                        
-                        if (separatorCandidate.RequireMax && !item.HasMax) continue;
-                        if (separatorCandidate.Tags != null && separatorCandidate.Tags.Count > 0)
-                        {
-                            var hasTag = false;
-                            foreach (var tag in separatorCandidate.Tags)
-                            {
-                                if (tag.RuntimeUnits.Contains(item)) 
-                                {
-                                    hasTag = true;
-                                    break;
-                                }
-                            }
-                            if (!hasTag) continue;
-                        }
-                        if (separatorCandidate.RequireInstant && item.ConfigTask.Duration > 0) continue;
-                        unitSeparator = separatorCandidate;
-                    }
-                    if (unitSeparator == null) continue;
-                    unitSeparator.BoundRuntimeUnits.Add(item);
-                    added = true;
-                    break;
-                }
-                if (added) continue;
-                if (!added)
-                {
-                    Debug.Log("NOT ADDED " + item.ConfigBasic.Id);
-                }
-            }
+            ReadArrayOwner(arcaniaDatas, parentNode, localizeNameDescription);
         }
-        #endregion
-        #region check broken pointers
-        foreach (var item in arcaniaDatas.IdMapper.Values)
-        {
-            item.CheckValidity();
-        }
-        #endregion
+        readerState.jsonIndex++;
+        return readerState;
     }
 
     private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode, bool localizeNameDescription)
@@ -347,7 +413,7 @@ public class JsonReader
                         var sep = new TabRuntime.Separator();
                         ru.Tab.Separators.Add(sep);
                         ReadUnitTypesToArray(c, sep.AcceptedUnitTypes, key);
-                        
+
                         foreach (var pair in c)
                         {
                             if (!localizeNameDescription && pair.Key == "name") sep.Name = pair.Value.AsString;
@@ -356,9 +422,10 @@ public class JsonReader
                             if (pair.Key == "require_max") sep.RequireMax = pair.Value.AsBool;
                             if (pair.Key == "show_space") sep.ShowSpace = pair.Value.AsBool;
                             if (pair.Key == "require_instant") sep.RequireInstant = pair.Value.AsBool;
-                            if (pair.Key == "tags" || pair.Key == "tag") {
+                            if (pair.Key == "tags" || pair.Key == "tag")
+                            {
                                 sep.Tags ??= new();
-                                ReadTags(sep.Tags, pair.Value.AsString, arcaniaUnits); 
+                                ReadTags(sep.Tags, pair.Value.AsString, arcaniaUnits);
                             }
                         }
                         if (localizeNameDescription) sep.Name = Local.GetText(sep.Id + "_name");
@@ -459,7 +526,8 @@ public class JsonReader
             if (pair.Key == "result_once") ReadChanges(ct.ResultOnce, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "effect") ReadChanges(ct.Effect, pair.Value, arcaniaUnits, 1);
             if (pair.Key == "run") ReadChanges(ct.Run, pair.Value, arcaniaUnits, -1);
-            if (pair.Key == "buy") { 
+            if (pair.Key == "buy")
+            {
                 ReadChanges(ct.Buy, pair.Value, arcaniaUnits, -1);
                 ru.BuyStatus = BuyStatus.NeedsBuy;
             }
@@ -659,7 +727,7 @@ public class JsonReader
         var bu = new ConfigBasic();
         if (localizeNameDescription)
         {
-            bu.name = Local.GetText(id+"_name");
+            bu.name = Local.GetText(id + "_name");
         }
         ru.ConfigBasic = bu;
         bu.Id = id;
