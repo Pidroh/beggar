@@ -32,6 +32,8 @@ public class LoadingScreenSetup
         { 
             START,
             MODEL, 
+            LOADING,
+            CANVAS,
             OVER
         }
     }

@@ -30,20 +30,26 @@ public static class LoadingScreenControl
                 {
                     // final model setup
                     mgc.arcaniaModel.FinishedSettingUpUnits();
-
-                    // TODO(break these down a bit further apart)
-                    mgc.RobustDeltaTime = new();
-                    mgc.ArcaniaPersistence = new(mgc.HeartGame);
-                    mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
-                    mgc.HeartGame.CommonDataLoad();
-                    // Let the model run once so you can finish up setup with the latest info on visibility
-                    mgc.arcaniaModel.ManualUpdate(0);
-                    MainGameControlSetupJLayout.SetupGameCanvas(mgc);
-
-                    loadingData.TextLayout.SetVisibleSelf(false);
-                    loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.OVER;
+                    loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING;
                 }
                 break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING:
+
+                mgc.RobustDeltaTime = new();
+                mgc.ArcaniaPersistence = new(mgc.HeartGame);
+                mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
+                mgc.HeartGame.CommonDataLoad();
+                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS;
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS:
+                // Let the model run once so you can finish up setup with the latest info on visibility
+                mgc.arcaniaModel.ManualUpdate(0);
+                MainGameControlSetupJLayout.SetupGameCanvas(mgc);
+
+                loadingData.TextLayout.SetVisibleSelf(false);
+                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.OVER;
+                break;
+
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.OVER:
                 // nothing happens here
                 break;
