@@ -36,7 +36,8 @@ MonoBehaviour:
   - ForcePrefs: 0
     Key: maindata
   urls:
-    DiscordServer: 
+    DiscordServer: 'https://discord.gg/AtGrxpM '
+    steamPageAppId: 3772140
   reusableCanvas: {fileID: 2817623443350666770, guid: 35da9fb0e0cbbd54ea7e5997936398e7, type: 3}
   SettingCustomChoices:
   - id: LAYOUT_COLOR_SCHEME

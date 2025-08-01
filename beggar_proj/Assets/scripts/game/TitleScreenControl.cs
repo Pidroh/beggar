@@ -1,3 +1,4 @@
+using HeartUnity;
 using JLayout;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -23,8 +24,8 @@ public static class TitleScreenControl
                         mgc.JLayoutRuntime.jLayCanvas.children[0].ForceCenterX = false;
                         mgc.JLayoutRuntime.jLayCanvas.children[0].ApplySavedPivot();
                         return TitleScreenState.StartGame;
-                        break;
                     case TitleScreenRuntimeData.TitleButtons.STEAM:
+                        URLOpener.OpenSteamURL("https://store.steampowered.com/app/" + mgc.HeartGame.config.urls.steamPageAppId + "/?utm_source=insidegame&utm_medium=title_screen", mgc.HeartGame.config.urls.steamPageAppId);
                         break;
                     case TitleScreenRuntimeData.TitleButtons.SETTINGS:
                         mgc.GoToSettings();

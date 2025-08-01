@@ -49,6 +49,7 @@ namespace HeartUnity
         public class URLs
         {
             public string DiscordServer;
+            public uint steamPageAppId;
         }
     }
 }
