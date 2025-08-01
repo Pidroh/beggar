@@ -44,6 +44,7 @@ public class MainGameControl : MonoBehaviour
 
     private ControlState controlState = ControlState.TITLE;
     private TitleScreenRuntimeData titleScreenData;
+    private static ControlState? _lastControlStateStatic;
 
     public enum ControlState
     {
@@ -60,11 +61,22 @@ public class MainGameControl : MonoBehaviour
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         MainGameControlSetupJLayout.SetupCanvas(this);
 
-        // SetupMainGame();
+        var straightToGameNoTitle = _lastControlStateStatic.HasValue ? _lastControlStateStatic == ControlState.GAME : false;
 
-        // Setup title screen
-        titleScreenData = new TitleScreenRuntimeData();
-        TitleScreenSetup.Setup(this, titleScreenData);
+        // SetupMainGame();
+        if (straightToGameNoTitle) 
+        {
+            SetupMainGame();
+        }
+        else
+        {
+            // Setup title screen
+            titleScreenData = new TitleScreenRuntimeData();
+            TitleScreenSetup.Setup(this, titleScreenData);
+        }
+
+
+        _lastControlStateStatic = null;
     }
 
     void SetupMainGame()
@@ -198,6 +210,7 @@ public class MainGameControl : MonoBehaviour
     {
         if (controlState == ControlState.GAME)
             ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
+        MainGameControl._lastControlStateStatic = this.controlState;
         HeartGame.GoToSettings();
     }
 }
