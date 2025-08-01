@@ -1,7 +1,4 @@
 using HeartUnity;
-using JLayout;
-using UnityEngine;
-using UnityEngine.Rendering;
 
 public enum TitleScreenState
 {
@@ -23,6 +20,14 @@ public static class TitleScreenControl
                     case TitleScreenRuntimeData.TitleButtons.PLAY_GAME:
                         mgc.JLayoutRuntime.jLayCanvas.children[0].ForceCenterX = false;
                         mgc.JLayoutRuntime.jLayCanvas.children[0].ApplySavedPivot();
+                        // hide stuff
+                        {
+                            foreach (var pairHide in titleScreenData.TitleButtonsJCUs)
+                            {
+                                pairHide.Item2.MainLayout.SelfUIUnit.Active = false;
+                            }
+                            titleScreenData.TextLayout.SelfUIUnit.Active = false;
+                        }
                         return TitleScreenState.StartGame;
                     case TitleScreenRuntimeData.TitleButtons.STEAM:
                         URLOpener.OpenSteamURL("https://store.steampowered.com/app/" + mgc.HeartGame.config.urls.steamPageAppId + "/?utm_source=insidegame&utm_medium=title_screen", mgc.HeartGame.config.urls.steamPageAppId);

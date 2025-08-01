@@ -9,6 +9,8 @@ public class TitleScreenRuntimeData
 {
     public List<(TitleButtons, JRTControlUnit)> TitleButtonsJCUs = new();
 
+    public JLayoutRuntimeUnit TextLayout { get; internal set; }
+
     public enum TitleButtons 
     { 
         PLAY_GAME, 
@@ -35,6 +37,7 @@ public class TitleScreenSetup
             var lc = parentLayout.AddLayoutAsChild(titleTexts);
             titleTexts.SetTextRaw(0, Local.GetText(mgc.ResourceJson.gameTitleText));
             titleTexts.SetTextRaw(1, Local.GetText(mgc.ResourceJson.gameSubTitleText));
+            titleScreenData.TextLayout = titleTexts;
         }
         foreach (var buttonT in ButtonsToMake)
         {
