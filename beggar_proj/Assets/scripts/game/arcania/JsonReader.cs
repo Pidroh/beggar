@@ -19,10 +19,10 @@ public class JsonReader
         { "result_fail", ResourceChangeType.RESULT_FAIL },
         { "buy", ResourceChangeType.BUY },
     };
-    public static void ReadJson(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription)
+    public static void ReadJsonAllAtOnce(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription)
     {
         var jsonDatas = config.jsonDatas;
-        ReadJson(arcaniaDatas, jsonDatas, localizeNameDescription);
+        ReadJsonAllAtOnce(arcaniaDatas, jsonDatas, localizeNameDescription);
     }
 
     public struct JsonReaderState
@@ -71,7 +71,7 @@ public class JsonReader
         return state;
     }
 
-    public static void ReadJson(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription)
+    public static void ReadJsonAllAtOnce(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription)
     {
         int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
         JsonReaderState readerState = new();

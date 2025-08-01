@@ -1,11 +1,11 @@
 using HeartUnity;
 using HeartUnity.View;
 using JLayout;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using static LoadingScreenSetup;
+
 public class MainGameControl : MonoBehaviour
 {
 
@@ -44,11 +44,13 @@ public class MainGameControl : MonoBehaviour
 
     private ControlState controlState = ControlState.TITLE;
     private TitleScreenRuntimeData titleScreenData;
+    private LoadingScreenRuntimeData loadingScreenData;
     private static ControlState? _lastControlStateStatic;
 
     public enum ControlState
     {
         TITLE,
+        LOADING,
         GAME
     }
 
@@ -101,9 +103,22 @@ public class MainGameControl : MonoBehaviour
             var titleState = TitleScreenControl.ManualUpdate(this, titleScreenData);
             if (titleState == TitleScreenState.StartGame)
             {
-                SetupMainGameAllAtOnce();
+                loadingScreenData = LoadingScreenSetup.Setup(this);
+                this.controlState = ControlState.LOADING;
+                //SetupMainGameAllAtOnce();
+
             }
         }
+        else if (controlState == ControlState.LOADING) 
+        {
+            LoadingScreenControl.ManualUpdate(this, loadingScreenData);
+            if(loadingScreenData.state == LoadingScreenRuntimeData.State.OVER) 
+            {
+                controlState = ControlState.GAME;
+            }
+        }
+        
+
         //
         // -----------------------------------------------------------
         // Engine etc updating
