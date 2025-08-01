@@ -110,6 +110,55 @@
       ]
     },
     {
+      "id": "title_texts",
+      "comment": "Title screen with game title and subtitle",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "position_mode": [
+        "CENTER",
+        "SIBLING_DISTANCE"
+      ],
+      "size": [
+        100,
+        -1
+      ],
+      "padding": [20, 40, 20, 40],
+      "fixed_children": [
+        {
+          "type": "text",
+          "id": "game_title",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "TOP_ZERO"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "game_subtitle",
+          "text_horizontal": "CENTER",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "TEXT_PREFERRED"
+          ],
+          "position_mode": [
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ],
+          "position": [
+            0,
+            10
+          ]
+        }
+      ]
+    },
+    {
       "id": "ending_text",
       "comment": "Ending text",
       "axis_mode": [
@@ -509,6 +558,37 @@
       "padding": [
         16,
         40,
+        8,
+        0
+      ],
+      "fixed_children": [
+        {
+          "type": "button",
+          "id": "task_button",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "PARENT_SIZE_PERCENT"
+          ],
+          "position_mode": [
+            "LEFT_ZERO",
+            "CENTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "centered_simple_button",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "SELF_SIZE"
+      ],
+      "size": [
+        100,
+        64
+      ],
+      "padding": [
+        16,
+        16,
         8,
         0
       ],
@@ -1153,6 +1233,16 @@
     {
       "id": "big_title",
       "size": 22,
+      "color_id": "lore_text"
+    },
+    {
+      "id": "game_title",
+      "size": 24,
+      "color_id": "main_text"
+    },
+    {
+      "id": "game_subtitle",
+      "size": 16,
       "color_id": "lore_text"
     },
     {

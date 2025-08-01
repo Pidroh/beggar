@@ -1,15 +1,27 @@
 using HeartUnity;
 using HeartUnity.View;
 using JLayout;
+using System.Collections.Generic;
 using UnityEngine;
+using static TitleScreenRuntimeData;
 
 public class TitleScreenRuntimeData
 {
-    public JRTControlUnit StartGameJCU { get; internal set; }
+    public List<(TitleButtons, JRTControlUnit)> TitleButtonsJCUs = new();
+
+    public enum TitleButtons 
+    { 
+        PLAY_GAME, 
+        STEAM,
+        SETTINGS
+    }
 }
+
+
 
 public class TitleScreenSetup
 {
+    public static readonly TitleButtons[] ButtonsToMake = new TitleButtons[] { TitleButtons.PLAY_GAME, TitleButtons.STEAM, TitleButtons.SETTINGS };
     public static void Setup(MainGameControl mgc, TitleScreenRuntimeData titleScreenData)
     {
         var canvas = mgc.JLayoutRuntime.jLayCanvas;
@@ -17,19 +29,33 @@ public class TitleScreenSetup
         // JLayCanvasChild jLayCanvasChild = canvas.Overlays[0];
         jLayCanvasChild.SavePivot();
         var parentLayout = jLayCanvasChild.LayoutRuntimeUnit;
-        
 
         {
-            var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", mgc.JLayoutRuntime);
-            var lc = parentLayout.AddLayoutAsChild(fleeButtonLayout);
-            lc.PositionModeOverride = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE_REVERSE };
-            fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Start Game"));
-            JRTControlUnit jCU = new();
-            jCU.MainLayout = fleeButtonLayout;
-            jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
-            fleeButtonLayout.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+            var titleTexts = JCanvasMaker.CreateLayout("title_texts", mgc.JLayoutRuntime);
+            var lc = parentLayout.AddLayoutAsChild(titleTexts);
+            titleTexts.SetTextRaw(0, Local.GetText(mgc.ResourceJson.gameTitleText));
+            titleTexts.SetTextRaw(1, Local.GetText(mgc.ResourceJson.gameSubTitleText));
+        }
+        foreach (var buttonT in ButtonsToMake)
+        {
+            var titleButton = JCanvasMaker.CreateLayout("centered_simple_button", mgc.JLayoutRuntime);
+            var lc = parentLayout.AddLayoutAsChild(titleButton);
+            
+            string rawText = buttonT switch
+            {
+                TitleButtons.PLAY_GAME => Local.GetText("Play Game"),
+                TitleButtons.STEAM => Local.GetText("Wishlist on Steam"),
+                TitleButtons.SETTINGS => Local.GetText("Settings"),
+                _ => "Unknown"
+            };
 
-            titleScreenData.StartGameJCU = jCU;
+            titleButton.ButtonChildren[0].Item1.SetTextRaw(0, rawText);
+            titleButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+            JRTControlUnit jCU = new();
+            jCU.MainLayout = titleButton;
+            jCU.MainExecuteButton = new JButtonAccessor(titleButton, 0);
+            
+            titleScreenData.TitleButtonsJCUs.Add((buttonT, jCU));
         }
         //canvas.ShowOverlay();
         /*
