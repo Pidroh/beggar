@@ -289,6 +289,9 @@ namespace JLayout
             UpdateVisibility();
         }
 
+        internal void SetVisibleSelfGameObjectActive(bool visibleSelf) => SetVisibleSelf(visibleSelf);
+        
+
         internal bool IsButtonClicked(int v)
         {
             return ButtonChildren[v].Item2.UiUnit.Clicked;
