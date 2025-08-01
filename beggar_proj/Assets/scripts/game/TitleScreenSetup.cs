@@ -49,7 +49,7 @@ public class TitleScreenSetup
             string rawText = buttonT switch
             {
                 TitleButtons.PLAY_GAME => Local.GetText("Play Game"),
-                TitleButtons.STEAM => Local.GetText("Wishlist on Steam"),
+                TitleButtons.STEAM => Local.GetText("Wishlist on Steam", "The verb, like a call to action, wishlist as a verb"),
                 TitleButtons.SETTINGS => Local.GetText("Settings"),
                 _ => "Unknown"
             };

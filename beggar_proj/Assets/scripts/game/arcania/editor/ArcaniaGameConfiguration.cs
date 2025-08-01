@@ -17,6 +17,7 @@ public class ArcaniaGameConfiguration : ScriptableObject
         public int majorVersionOverride;
         public int versionOverride;
         public int patchOverride;
+        public string SubtitleOverride;
     }
 }
 #endif
