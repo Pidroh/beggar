@@ -14,7 +14,7 @@ public class LoadingScreenSetup
         {
             var titleTexts = JCanvasMaker.CreateLayout("title_texts", mgc.JLayoutRuntime);
             var lc = parentLayout.AddLayoutAsChild(titleTexts);
-            titleTexts.SetTextRaw(0, "Loading 0%");
+            titleTexts.SetTextRaw(0, "Loading: 0%");
             titleTexts.SetTextRaw(1, "");
             loadingData.TextLayout = titleTexts;
         }
@@ -27,6 +27,7 @@ public class LoadingScreenSetup
         public JsonReader.JsonReaderState? ModelJsonState { get; internal set; }
 
         public State state = State.START;
+        public int loadingProgress;
         public enum State 
         { 
             START,

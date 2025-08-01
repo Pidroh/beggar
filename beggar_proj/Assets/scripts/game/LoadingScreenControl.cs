@@ -14,6 +14,8 @@ public static class LoadingScreenControl
      */
     public static void ManualUpdate(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData) 
     {
+        loadingData.loadingProgress += 5;
+        loadingData.TextLayout.SetTextRaw(0, $"Loading: {loadingData.loadingProgress}%");
         LoadingScreenSetup.LoadingScreenRuntimeData.State previousState = loadingData.state;
         switch (previousState)
         {
