@@ -39,13 +39,20 @@ public static class LoadingScreenControl
                 mgc.ArcaniaPersistence = new(mgc.HeartGame);
                 mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
                 mgc.HeartGame.CommonDataLoad();
-                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS;
-                break;
-            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS:
                 // Let the model run once so you can finish up setup with the latest info on visibility
                 mgc.arcaniaModel.ManualUpdate(0);
-                MainGameControlSetupJLayout.SetupGameCanvasAllAtOnce(mgc);
-
+                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_TAB_MENU;
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_TAB_MENU:
+                MainGameControlSetupJLayout.SetupGameCanvasTabMenuInstantiation(mgc);
+                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS;
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS:
+                MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnits(mgc);
+                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MISC;
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MISC:
+                MainGameControlSetupJLayout.SetupGameCanvasMisc(mgc);
                 loadingData.TextLayout.SetVisibleSelf(false);
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.OVER;
                 break;

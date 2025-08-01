@@ -33,7 +33,9 @@ public class LoadingScreenSetup
             START,
             MODEL, 
             LOADING_PERSISTENCE,
-            CANVAS,
+            CANVAS_TAB_MENU,
+            CANVAS_MAIN_RUNTIME_UNITS,
+            CANVAS_MISC,
             OVER
         }
     }
