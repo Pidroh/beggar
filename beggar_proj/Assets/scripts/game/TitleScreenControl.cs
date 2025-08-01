@@ -24,9 +24,9 @@ public static class TitleScreenControl
                         {
                             foreach (var pairHide in titleScreenData.TitleButtonsJCUs)
                             {
-                                pairHide.Item2.MainLayout.SelfUIUnit.Active = false;
+                                pairHide.Item2.MainLayout.RectTransform.gameObject.SetActive(false);
                             }
-                            titleScreenData.TextLayout.SelfUIUnit.Active = false;
+                            titleScreenData.TextLayout.RectTransform.gameObject.SetActive(false);
                         }
                         return TitleScreenState.StartGame;
                     case TitleScreenRuntimeData.TitleButtons.STEAM:

@@ -36,7 +36,9 @@ public class TitleScreenSetup
             var titleTexts = JCanvasMaker.CreateLayout("title_texts", mgc.JLayoutRuntime);
             var lc = parentLayout.AddLayoutAsChild(titleTexts);
             titleTexts.SetTextRaw(0, Local.GetText(mgc.ResourceJson.gameTitleText));
-            titleTexts.SetTextRaw(1, Local.GetText(mgc.ResourceJson.gameSubTitleText));
+            titleTexts.SetTextRaw(1, Local.GetText(mgc.ResourceJson.gameSubTitleText) + 
+                $"\n{mgc.HeartGame.config.majorVersion}.{mgc.HeartGame.config.versionNumber}.{mgc.HeartGame.config.patchVersion}"
+                );
             titleScreenData.TextLayout = titleTexts;
         }
         foreach (var buttonT in ButtonsToMake)
