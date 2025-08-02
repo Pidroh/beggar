@@ -24,7 +24,7 @@ MonoBehaviour:
   localizedTextAssets:
   - {fileID: 11400000, guid: 845e6940ee10b814195222b90040f089, type: 2}
   copyPreviousMaterial: 1
-  filterMode: 1
+  filterMode: 0
   colorFont: 0
   faceColor: {r: 1, g: 1, b: 1, a: 1}
   outlineColor: {r: 0, g: 0, b: 0, a: 0}

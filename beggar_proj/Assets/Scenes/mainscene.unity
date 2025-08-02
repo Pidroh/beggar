@@ -407,7 +407,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceJson: {fileID: 11400000, guid: 5838a758d2e4b8d449cd508dbad7e1a6, type: 2}
-  Font: {fileID: 11400000, guid: c0a0d9c74c034ae43964b994d6e361b4, type: 2}
+  Font: {fileID: 11400000, guid: dfa44f5ec031b1a428a3abbb7951ad95, type: 2}
+  FontGroup: {fileID: 11400000, guid: b9d5a7b1c2769ff4d8598475ec9e0e17, type: 2}
   ExpanderSprite: {fileID: 21300000, guid: a685aa7ba5f7a074f8a84237bbab1032, type: 3}
   ButtonObjectRequest:
     MainColor: {r: 0.30980393, g: 0.45490196, b: 0.8392157, a: 1}

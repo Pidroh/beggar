@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65feeaf951b95e45869754d9a6f0fb9, type: 3}
+  m_Name: FontGeneratorData_cnh
+  m_EditorClassIdentifier: 
+  font: {fileID: 12800000, guid: 3b60fcd097e79144fbfde243cab7461f, type: 3}
+  useTextVariable: 0
+  text: qwertyuiiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBM
+  sampleSize: 24
+  atlasPad: 2
+  renderMode: 4169
+  atlasW: 2048
+  atlasH: 2048
+  fontName: beggar_text_cnh
+  localizedTextAssets:
+  - {fileID: 11400000, guid: 845e6940ee10b814195222b90040f089, type: 2}
+  copyPreviousMaterial: 1
+  filterMode: 1
+  colorFont: 0
+  faceColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}

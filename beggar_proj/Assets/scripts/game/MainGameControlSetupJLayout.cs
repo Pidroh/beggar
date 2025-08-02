@@ -35,7 +35,8 @@ public class MainGameControlSetupJLayout
             var arcaniaModel = mgc.arcaniaModel;
             var arcaniaDatas = arcaniaModel.arcaniaUnits;
             var config = HeartGame.GetConfig();
-            runtime.DefaultFont = mgc.Font;
+            //runtime.DefaultFont = mgc.Font;
+            runtime.DefaultFont = mgc.FontGroup.GetFont(Local.Instance.Lang.languageName).fontAsset;
             runtime.ImageSprites = mgc.ResourceJson.spritesForLayout;
             #region identify color scheme
             for (int i = 0; i < mgc.HeartGame.config.SettingCustomChoices.Count; i++)

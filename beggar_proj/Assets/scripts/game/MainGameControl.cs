@@ -13,6 +13,7 @@ public class MainGameControl : MonoBehaviour
 
     [SerializeField]
     public TMP_FontAsset Font;
+    public FontGroup FontGroup;
     public Sprite ExpanderSprite;
     public CanvasMaker.CreateObjectRequest ButtonObjectRequest;
     public CanvasMaker.CreateObjectRequest DialogObjectRequest;

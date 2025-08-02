@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6447bccde89374fa0b3c2194a749e3, type: 3}
+  m_Name: FontSettings
+  m_EditorClassIdentifier: 
+  fontHolders:
+  - fontAsset: {fileID: 11400000, guid: c0a0d9c74c034ae43964b994d6e361b4, type: 2}
+    targetSize: 0
+    language: 
+  - fontAsset: {fileID: 11400000, guid: dfa44f5ec031b1a428a3abbb7951ad95, type: 2}
+    targetSize: 0
+    language: Japanese
+  - fontAsset: {fileID: 11400000, guid: 376b0c5e7eecc914993bdc8ec891639d, type: 2}
+    targetSize: 0
+    language: Korean
+  - fontAsset: {fileID: 11400000, guid: 8c4c6822d83161b4a9d82855ab7b3de8, type: 2}
+    targetSize: 0
+    language: Traditional Chinese
+  - fontAsset: {fileID: 11400000, guid: 8c4c6822d83161b4a9d82855ab7b3de8, type: 2}
+    targetSize: 0
+    language: Simplified Chinese

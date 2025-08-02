@@ -15,7 +15,7 @@ public class FontGroup : ScriptableObject
         public string language;
     }
 
-    internal FontHolder GetFont(string languageName)
+    public FontHolder GetFont(string languageName)
     {
         foreach (var fh in fontHolders)
         {
