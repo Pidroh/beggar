@@ -237,7 +237,9 @@ public class MainGameControlSetupJLayout
             endingLay.LayoutRU.SetTextRaw(1, "Ending normal");
             jControlDataHolder.EndingLayout = endingLay;
             endingLay.LayoutRU.SetVisibleSelf(false);
-            endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, "Settings");
+            endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Settings"));
+            endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Wishlist on Steam"));
+            endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Latest Version on Patreon"));
             jControlDataHolder.EndingData.SettingsButton = endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0];
         }
         #endregion

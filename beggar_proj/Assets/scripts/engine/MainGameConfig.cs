@@ -29,6 +29,7 @@ namespace HeartUnity
         public URLs urls;
         public Canvas reusableCanvas;
         public List<SettingCustomChoice> SettingCustomChoices = new();
+        public bool patreonBuild;
 
         [Serializable]
         public class View

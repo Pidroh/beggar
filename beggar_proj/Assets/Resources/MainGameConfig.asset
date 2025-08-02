@@ -16,7 +16,7 @@ MonoBehaviour:
   versionNumber: 25
   patchVersion: 0
   gameTitle: beggar_incremental
-  betaVersion: 0
+  betaVersion: 1
   musicList: {fileID: 0}
   audioList: {fileID: 0}
   voiceLists: []

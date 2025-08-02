@@ -53,6 +53,8 @@ public class ArcaniaGameConfigurationEditor : Editor
                     {
                         gameConfigEngine.patchVersion = entry.patchOverride;
                     }
+                    gameConfigEngine.patreonBuild = entry.patreonBuild;
+
                     EditorUtility.SetDirty(config.configurationReference); // Marks the object as dirty
                     AssetDatabase.SaveAssets(); // Saves the asset to disk
                     AssetDatabase.Refresh();

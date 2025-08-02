@@ -18,6 +18,7 @@ public class ArcaniaGameConfiguration : ScriptableObject
         public int versionOverride;
         public int patchOverride;
         public string SubtitleOverride;
+        public bool patreonBuild;
     }
 }
 #endif
