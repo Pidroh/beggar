@@ -30,6 +30,7 @@ public static class JGameControlExecuterEnding
         {
             URLOpener.OpenPatreon();
         }
+        controlData.EndingData.PatreonButton.Item1.SetVisibleSelf(!mgc.HeartGame.config.patreonBuild);
         TryShowEnding(mgc, controlData);
     }
 
