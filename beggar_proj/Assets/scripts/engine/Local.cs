@@ -135,6 +135,7 @@ namespace HeartUnity
             }
         }
 
+        // replaceSpaceWithUnderscoreInKe HAS to be true or it bugs I think. Maybe remove the argument and force the replacement
         public void AppendLocalizationData(string localiData, bool replaceSpaceWithUnderscoreInKey)
         {
             var lines = localiData.Split('\n');

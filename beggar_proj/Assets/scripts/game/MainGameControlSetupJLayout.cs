@@ -21,7 +21,7 @@ public class MainGameControlSetupJLayout
         hasLocalizationFileArcania = mgc.ResourceJson.arcaniaTranslationFile.TryGetText(out var localizedText);
         if (hasLocalizationFileArcania)
         {
-            Local.Instance.AppendLocalizationData(localizedText, false);
+            Local.Instance.AppendLocalizationData(localizedText, true);
         }
     }
 

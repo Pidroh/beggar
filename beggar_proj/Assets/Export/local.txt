@@ -104,3 +104,7 @@ Enabled_by_an_effect$describing something that is enabled by another effect$Enab
 Charisma_of_Pain$$Charisma of Pain$Carisma da Dor$Charisme de la Douleur$Charisma des Schmerzes$痛みのカリスマ$고통의 카리스마$痛苦的魅力$痛苦的魅力
 $$$$$$$$$
 Grand_Theft$$Grand Theft$Grande Roubo$Vol à main armée$Großer Diebstahl$大盗み$그랜드 도난$抢劫$盜竊風暴
+Acquire$A word for learning or becoming able to do something new$Acquire$Adquirir$Acquérir$Erlangen$習得$습득$获得$習得
+Deactivate$$Deactivate$Desativar$Désactiver$Deaktivieren$無効化$비활성화$停用$停用
+Unlocked$in the sense of gaining access to a new feature, resource or task$Unlocked$Desbloqueado$Débloqué$Freigeschaltet$解放されました$연다$解锁$解鎖
+Space$In the sense of a table taking up too much space$Space$Espaço$Espace$Platz$スペース$공간$空间$空間
