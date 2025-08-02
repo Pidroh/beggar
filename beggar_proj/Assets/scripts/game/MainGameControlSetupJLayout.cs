@@ -88,6 +88,7 @@ public class MainGameControlSetupJLayout
             jControlDataHolder.LabelModificationsExtraEffect = Local.GetText("extra effect mods");
             jControlDataHolder.LabelSuccessRate = Local.GetText("Success rate");
             jControlDataHolder.LabelCost = Local.GetText("cost");
+            jControlDataHolder.LabelSpace = Local.GetText("Space", "In the sense of a table taking up too much space");
             jControlDataHolder.LabelResult = Local.GetText("result");
             jControlDataHolder.LabelRun = Local.GetText("run");
             jControlDataHolder.LabelEffect = Local.GetText("effect");

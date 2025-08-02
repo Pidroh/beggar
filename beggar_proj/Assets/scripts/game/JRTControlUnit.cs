@@ -78,6 +78,7 @@ public class JGameControlDataHolder
     public string LabelAcquireSkill { get; internal set; }
     public string LabelDeactivate { get; internal set; }
     public string LabelAcquire { get; internal set; }
+    public string LabelSpace { get; internal set; }
 }
 
 public class JGameViewMiscData 
