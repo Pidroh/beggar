@@ -79,6 +79,7 @@ public class JGameControlDataHolder
     public string LabelDeactivate { get; internal set; }
     public string LabelAcquire { get; internal set; }
     public string LabelSpace { get; internal set; }
+    public string LabelUnlocked { get; internal set; }
 }
 
 public class JGameViewMiscData 

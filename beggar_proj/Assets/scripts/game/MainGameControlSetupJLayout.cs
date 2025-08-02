@@ -88,6 +88,7 @@ public class MainGameControlSetupJLayout
             jControlDataHolder.LabelModificationsExtraEffect = Local.GetText("extra effect mods");
             jControlDataHolder.LabelSuccessRate = Local.GetText("Success rate");
             jControlDataHolder.LabelCost = Local.GetText("cost");
+            jControlDataHolder.LabelUnlocked = Local.GetText("Unlocked", "in the sense of gaining access to a new feature, resource or task");
             jControlDataHolder.LabelSpace = Local.GetText("Space", "In the sense of a table taking up too much space");
             jControlDataHolder.LabelResult = Local.GetText("result");
             jControlDataHolder.LabelRun = Local.GetText("run");
@@ -613,7 +614,7 @@ public class MainGameControlSetupJLayout
         var text = string.Empty;
         if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED)
         {
-            text = $"Unlocked {logUnit.Unit.ConfigBasic.name}";
+            text = $"{mgc.JControlData.LabelUnlocked}: {logUnit.Unit.ConfigBasic.name}";
         }
         layout.SetTextRaw(0, text);
         return layout;
