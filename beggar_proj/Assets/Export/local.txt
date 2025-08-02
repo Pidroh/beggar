@@ -94,13 +94,13 @@ Space_Occupied$In the sense of a table taking up too much space$Space Occupied$E
 Acquire_Skill$$Acquire Skill$Adquirir habilidade$Acquérir compétence$Fähigkeit erwerben$スキルを習得$기술 습득$获得技能$獲得技能
 Practice_Skill$$Practice Skill$Prática de Habilidade$Pratiquez votre compétence$Übungsfähigkeit$練習スキル$실력 향상$练习技能$練習技能
 Flee$$Flee$Fugir$Fuir$Fliehen$逃げる$도망치세요$逃走$逃跑
-Beggar's_Life$$Beggar's Life$$$$$$$
-Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$$$$$$$
-Play_Game$$Play Game$$$$$$$
-Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb$Wishlist on Steam$$$$$$$
-Settings$$Settings$$$$$$$
-Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$$$$$$$
-Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$$$$$$$
-Charisma_of_Pain$$Charisma of Pain$$$$$$$
+Beggar's_Life$$Beggar's Life$Vida de Mendigo$Vie de mendiant$Bettlerleben$乞食の生活$거지의 삶$乞丐的生活$窮人的生活
+Apply_from_Arcania_Build_Configuration$$Apply from Arcania Build Configuration$Aplicar a partir da configuração de compilação de Arcania.$Appliquer à partir de la configuration de construction d'Arcania$Anwenden aus der Arcania-Build-Konfiguration.$Arcania ビルド構成から適用$Arcania 빌드 설정에서 적용하기.$从Arcania构建配置应用$從 Arcania 建置配置套用
+Play_Game$$Play Game$Jogar Jogo$Jouer au jeu$Spiel starten$ゲームをプレイ$게임하기$玩游戏$玩遊戲
+Wishlist_on_Steam$The verb, like a call to action, wishlist as a verb. Actually use what the term wishlist is on steam for that language$Wishlist on Steam$Adicionar à Lista de Desejos no Steam$Ajouter à votre liste de souhaits sur Steam$Auf die Wunschliste setzen$Steamでウィッシュリストに登録$스팀 위시리스트에 담기$在Steam上加入愿望单。$在Steam上加入願望清單
+Settings$$Settings$Configurações$Paramètres$Einstellungen$設定$설정$设置$設置
+Enables_other_tasks$Describing a characteristing of a certain effect, in that it makes other tasks possible (enabled)$Enables other tasks$Permite outras tarefas$Permet d'effectuer d'autres tâches.$Ermöglicht andere Aufgaben.$他のタスクを可能にします。$다른 작업을 가능케 합니다.$使其他任务成为可能。$啟用其他任務
+Enabled_by_an_effect$describing something that is enabled by another effect$Enabled by an effect$Habilitado por um efeito.$Activé par un effet$Durch einen Effekt ermöglicht.$効果により可能$효과에 의해 활성화됩니다.$受效果启动$通過效果啟動
+Charisma_of_Pain$$Charisma of Pain$Carisma da Dor$Charisme de la Douleur$Charisma des Schmerzes$痛みのカリスマ$고통의 카리스마$痛苦的魅力$痛苦的魅力
 $$$$$$$$$
-Grand_Theft$$Grand Theft$$$$$$$
+Grand_Theft$$Grand Theft$Grande Roubo$Vol à main armée$Großer Diebstahl$大盗み$그랜드 도난$抢劫$盜竊風暴
