@@ -1,5 +1,6 @@
 ﻿using HeartUnity;
 using HeartUnity.View;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public static class JGameControlExecuter
@@ -268,7 +269,7 @@ public static class JGameControlExecuter
                                     {
                                         if (unit.Data.BuyStatus == BuyStatus.NeedsBuy)
                                         {
-                                            unit.TitleText.SetTextRaw($"{ArcaniaCommonStrings.AcquireLocalLocalized} ({unit.Data.Name})");
+                                            unit.TitleText.SetTextRaw($"{mgc.JControlData.LabelAcquire} ({unit.Data.Name})");
                                         }
                                         else if (unit.Data.BuyStatus == BuyStatus.Bought)
                                         {
@@ -284,7 +285,7 @@ public static class JGameControlExecuter
                                             unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive_bar);
                                             if(unit.Data.DotRU.DotConfig.Toggle) 
                                             {
-                                                unit.TitleText.SetTextRaw($"{ArcaniaCommonStrings.DeactivateLocalLocalized} ({unit.Data.Name})");
+                                                unit.TitleText.SetTextRaw($"{mgc.JControlData.LabelDeactivate} ({unit.Data.Name})");
                                             }
                                         }
                                         else

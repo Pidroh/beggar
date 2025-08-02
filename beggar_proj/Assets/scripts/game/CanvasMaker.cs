@@ -9,8 +9,6 @@ using HeartUnity;
 
 public static class ArcaniaCommonStrings
 {
-    public static string AcquireLocalLocalized => Local.GetText("Acquire", "A word for learning or becoming able to do something new");
-    public static string DeactivateLocalLocalized => Local.GetText("Deactivate");
 }
 
 public class CanvasMaker

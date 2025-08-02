@@ -78,6 +78,10 @@ public class MainGameControlSetupJLayout
             #region localized strings
             jControlDataHolder.LabelDuration = Local.GetText("Duration");
             jControlDataHolder.LabelEffectDuration = Local.GetText("Effect duration");
+
+            jControlDataHolder.LabelAcquire = Local.GetText("Acquire", "A word for learning or becoming able to do something new");
+            jControlDataHolder.LabelDeactivate = Local.GetText("Deactivate");
+            
             jControlDataHolder.LabelModifications = Local.GetText("modifications");
             jControlDataHolder.LabelModificationsExtra = Local.GetText("extra mods");
             jControlDataHolder.LabelModificationsTargeting = Local.GetText("mods targeting this");
