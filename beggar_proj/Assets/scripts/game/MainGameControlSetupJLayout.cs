@@ -415,6 +415,7 @@ public class MainGameControlSetupJLayout
             JCanvasMaker.AddFixedMenu(jCanvas, dir, layoutRU);
             // jCanvas.FixedMenus[dir].Add(layoutRU);
             jControlDataHolder.tabMenu[dir] = layoutRU;
+            layoutRU.SetVisibleSelf(false);
         }
         #endregion
         // -------------------------------------------------
