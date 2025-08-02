@@ -19,11 +19,13 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: 7a9fa94f04cbd3f41baa847d4443b463, type: 3}
+    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
+    - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
     buildConfigId: web
     majorVersionOverride: 0
-    versionOverride: 22
-    patchOverride: 2
+    versionOverride: 25
+    patchOverride: 0
+    SubtitleOverride: Charisma of Pain
   - id: android
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -33,6 +35,7 @@ MonoBehaviour:
     majorVersionOverride: 0
     versionOverride: 22
     patchOverride: 2
+    SubtitleOverride: 
   - id: patreon
     jsonDatas:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
@@ -44,7 +47,8 @@ MonoBehaviour:
     buildConfigId: web_patreon
     majorVersionOverride: 0
     versionOverride: 27
-    patchOverride: 1
+    patchOverride: 0
+    SubtitleOverride: Grand Theft
   - id: patreon_windows
     jsonDatas:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
@@ -54,8 +58,9 @@ MonoBehaviour:
     - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
     buildConfigId: windows_patreon
     majorVersionOverride: 0
-    versionOverride: 25
-    patchOverride: 2
+    versionOverride: 27
+    patchOverride: 0
+    SubtitleOverride: Grand Theft
   - id: patreon_dev
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -66,6 +71,7 @@ MonoBehaviour:
     majorVersionOverride: 0
     versionOverride: 50
     patchOverride: 0
+    SubtitleOverride: 
   - id: test
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -74,3 +80,4 @@ MonoBehaviour:
     majorVersionOverride: 0
     versionOverride: 15
     patchOverride: 0
+    SubtitleOverride: 

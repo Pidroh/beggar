@@ -35,6 +35,10 @@ public class ArcaniaGameConfigurationEditor : Editor
                 {
                     config.configurationReference.jsonDatas.Clear();
                     config.configurationReference.jsonDatas.AddRange(entry.jsonDatas);
+                    if (!string.IsNullOrWhiteSpace(entry.SubtitleOverride)) 
+                    {
+                        config.configurationReference.gameSubTitleText = entry.SubtitleOverride;
+                    }
                     if (entry.majorVersionOverride >= 0) 
                     {
                         gameConfigEngine.majorVersion = entry.majorVersionOverride;
