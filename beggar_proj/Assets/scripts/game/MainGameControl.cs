@@ -80,6 +80,10 @@ public class MainGameControl : MonoBehaviour
 
 
         _lastControlStateStatic = null;
+        if (Local.WantToChooseLanguage) 
+        {
+            HeartGame.GoToLanguageSelection();
+        }
     }
 
     void SetupMainGameAllAtOnce()
