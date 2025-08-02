@@ -1,4 +1,5 @@
-﻿using JLayout;
+﻿using HeartUnity;
+using JLayout;
 using System;
 
 
@@ -24,6 +25,10 @@ public static class JGameControlExecuterEnding
         if (controlData.EndingData.SteamButton.Item2.UiUnit.Clicked)
         {
             TitleScreenControl.OpenSteam(mgc);
+        }
+        if (controlData.EndingData.PatreonButton.Item2.UiUnit.Clicked)
+        {
+            URLOpener.OpenPatreon();
         }
         TryShowEnding(mgc, controlData);
     }

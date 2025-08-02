@@ -11,10 +11,15 @@ namespace HeartUnity
 {
     public static class URLOpener
     {
+        public static void OpenPatreon()
+        {
+            OpenURL("https://www.patreon.com/c/perennialhearts");
+        }
+
         /** 
-         * Opens both on Steam API and the browser, 
-         * this is because Steam can be slow on some devices
-         */
+* Opens both on Steam API and the browser, 
+* this is because Steam can be slow on some devices
+*/
         public static void OpenSteamURL(string url, uint appId)
         {
 
