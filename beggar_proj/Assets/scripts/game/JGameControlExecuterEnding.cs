@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JLayout;
+using System;
 
 
 
@@ -19,6 +20,10 @@ public static class JGameControlExecuterEnding
         if (controlData.EndingData.SettingsButton.Item2.UiUnit.Clicked)
         {
             mgc.GoToSettings();
+        }
+        if (controlData.EndingData.SteamButton.Item2.UiUnit.Clicked)
+        {
+            TitleScreenControl.OpenSteam(mgc);
         }
         TryShowEnding(mgc, controlData);
     }
@@ -51,4 +56,6 @@ public class JEndingGameData
     public RuntimeUnit[] runtimeUnits = new RuntimeUnit[JGameControlExecuterEnding.ENDING_COUNT] { null, null, null, null, null, null };
 
     public (JLayout.JLayoutRuntimeUnit, JLayout.JLayoutChild) SettingsButton { get; internal set; }
+    public (JLayoutRuntimeUnit, JLayoutChild) PatreonButton { get; internal set; }
+    public (JLayoutRuntimeUnit, JLayoutChild) SteamButton { get; internal set; }
 }

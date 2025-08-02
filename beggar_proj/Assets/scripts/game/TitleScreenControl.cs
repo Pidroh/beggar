@@ -30,7 +30,7 @@ public static class TitleScreenControl
                         }
                         return TitleScreenState.StartGame;
                     case TitleScreenRuntimeData.TitleButtons.STEAM:
-                        URLOpener.OpenSteamURL("https://store.steampowered.com/app/" + mgc.HeartGame.config.urls.steamPageAppId + "/?utm_source=insidegame&utm_medium=title_screen", mgc.HeartGame.config.urls.steamPageAppId);
+                        OpenSteam(mgc);
                         break;
                     case TitleScreenRuntimeData.TitleButtons.SETTINGS:
                         mgc.GoToSettings();
@@ -43,5 +43,10 @@ public static class TitleScreenControl
 
 
         return TitleScreenState.Continue;
+    }
+
+    public static void OpenSteam(MainGameControl mgc)
+    {
+        URLOpener.OpenSteamURL("https://store.steampowered.com/app/" + mgc.HeartGame.config.urls.steamPageAppId + "/?utm_source=insidegame&utm_medium=title_screen", mgc.HeartGame.config.urls.steamPageAppId);
     }
 }
