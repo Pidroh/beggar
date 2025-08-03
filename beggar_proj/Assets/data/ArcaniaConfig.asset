@@ -17,7 +17,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
   - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
   - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-  - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
+  - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
+  - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
   layoutJson: {fileID: 4900000, guid: 60a52a01a6261be4b8003331ffeb259b, type: 3}
   spritesForLayout:
     spritesList:
@@ -55,4 +56,4 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: b790c32ea34f79247ba7a2d9afcc6e70, type: 3}
   arcaniaTranslationFile: {fileID: 11400000, guid: 845e6940ee10b814195222b90040f089, type: 2}
   gameTitleText: Beggar's Life
-  gameSubTitleText: Charisma of Pain
+  gameSubTitleText: Grand Theft
