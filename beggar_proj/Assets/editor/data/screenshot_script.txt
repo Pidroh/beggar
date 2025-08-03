@@ -1,0 +1,6 @@
+> load_save
+> start_game
+> expand id:think
+> screenshot name:basic
+> wait 2.4s
+> activate_tab id:skill 
