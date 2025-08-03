@@ -160,7 +160,7 @@ namespace HeartUnity
             SaveData();
         }
 
-        internal void SetString(SettingUnitData.StandardSettingType setting, string data)
+        public void SetString(SettingUnitData.StandardSettingType setting, string data)
         {
             foreach (var uc in this.unitControls)
             {

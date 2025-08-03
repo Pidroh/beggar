@@ -7,6 +7,7 @@ using UnityEditor;
 using HeartUnity;
 using System.Linq;
 using JLayout;
+using static HeartUnity.SettingModel;
 
 namespace BeggarEditor
 {
@@ -202,8 +203,20 @@ namespace BeggarEditor
             currentLanguage = languages[currentLanguageIndex];
             Debug.Log($"[ScreenshotScript] Processing language: {currentLanguage}");
 
-            // Change the language
-            Local.ChangeLanguage(currentLanguage);
+            // Change the language using the settings system (like ReusableSettingMenu does)
+            var mainGameControl = GameObject.FindObjectOfType<MainGameControl>();
+            if (mainGameControl?.HeartGame?.settingModel != null)
+            {
+                // Use the settings system to properly save the language change
+                mainGameControl.HeartGame.settingModel.SetString(SettingModel.SettingUnitData.StandardSettingType.LANGUAGE_SELECTION, currentLanguage);
+                Debug.Log($"[ScreenshotScript] Language set through settings system: {currentLanguage}");
+            }
+            else
+            {
+                // Fallback to direct language change
+                Local.ChangeLanguage(currentLanguage);
+                Debug.Log($"[ScreenshotScript] Language set directly: {currentLanguage}");
+            }
 
             // Reload the scene to apply language change
             var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
