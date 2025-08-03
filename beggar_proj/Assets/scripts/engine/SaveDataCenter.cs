@@ -28,7 +28,7 @@ namespace HeartUnity
             return ZipUtilities.CreateZipBytesFromVirtualFiles(listName, listContent);
         }
 
-        internal static void ImportSave(List<string> names, List<string> content)
+        public static void ImportSave(List<string> names, List<string> content)
         {
             ProcessPersistenceUnitList(HeartGame.GetConfig().PersistenceUnits);
             ProcessPersistenceUnitList(PersistentTextUnit.DefaultSaveDataUnits);

@@ -205,7 +205,7 @@ namespace HeartUnity
             }
         }
 
-        internal static void ChangeLanguage(string languageName)
+        public static void ChangeLanguage(string languageName)
         {
             Instance.languageChosen = true;
             for (int i = 0; i < Instance.languages.Count; i++)
