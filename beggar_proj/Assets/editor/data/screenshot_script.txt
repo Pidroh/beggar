@@ -4,3 +4,9 @@
 > screenshot name:basic
 > wait 2.4s
 > activate_tab id:skill 
+> activate_tab id:housing
+> activate_tab id:housing
+> activate_tab id:exploration
+> expand id:crackedvase
+> expand id:doll
+> screenshot name:housing
