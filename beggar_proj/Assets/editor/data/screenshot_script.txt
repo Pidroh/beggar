@@ -10,3 +10,10 @@
 > expand id:crackedvase
 > expand id:doll
 > screenshot name:housing
+> activate_tab id:resource
+> activate_tab id:housing
+> activate_tab id:exploration
+> expand id:lament
+> expand id:pleafocus
+> expand id:churchfront
+> screenshot name:exploration
