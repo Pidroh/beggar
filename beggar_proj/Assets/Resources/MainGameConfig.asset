@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MainGameConfig
   m_EditorClassIdentifier: 
   majorVersion: 0
-  versionNumber: 25
+  versionNumber: 27
   patchVersion: 0
   gameTitle: beggar_incremental
-  betaVersion: 1
+  betaVersion: 0
   musicList: {fileID: 0}
   audioList: {fileID: 0}
   voiceLists: []
