@@ -99,10 +99,13 @@ namespace BeggarEditor
         private float waitTimer = 0f;
         private ScreenshotScript script;
         private List<string> languages;
+        private List<int> colorSchemes;
         private int currentLanguageIndex = 0;
+        private int currentColorSchemeIndex = 0;
         private Queue<ScreenshotCommand> commandQueue;
         private ScreenshotCommand currentCommand;
         private string currentLanguage;
+        private int currentColorScheme;
         private MainGameControl mainGameControl;
 
         public bool IsComplete => currentState == State.Complete;
@@ -181,9 +184,15 @@ namespace BeggarEditor
                 return;
             }
 
+            // Get all available color schemes from configuration
+            colorSchemes = GetAvailableColorSchemes();
+
             Debug.Log($"[ScreenshotScript] Found {languages.Count} languages: {string.Join(", ", languages)}");
+            Debug.Log($"[ScreenshotScript] Found {colorSchemes.Count} color schemes");
+            Debug.Log($"[ScreenshotScript] Total combinations: {languages.Count * colorSchemes.Count}");
             
             currentLanguageIndex = 0;
+            currentColorSchemeIndex = 0;
             currentState = State.ChangingLanguage;
         }
 
@@ -194,6 +203,7 @@ namespace BeggarEditor
 
         private void ChangeLanguage()
         {
+            // Check if we've finished all combinations
             if (currentLanguageIndex >= languages.Count)
             {
                 currentState = State.Complete;
@@ -201,15 +211,22 @@ namespace BeggarEditor
             }
 
             currentLanguage = languages[currentLanguageIndex];
-            Debug.Log($"[ScreenshotScript] Processing language: {currentLanguage}");
+            currentColorScheme = colorSchemes[currentColorSchemeIndex];
+            
+            string colorSchemeName = currentColorScheme == 0 ? "light" : "dark";
+            Debug.Log($"[ScreenshotScript] Processing combination: {currentLanguage} + {colorSchemeName} (scheme {currentColorScheme})");
 
-            // Change the language using the settings system (like ReusableSettingMenu does)
+            // Change the language and color scheme using the settings system
             var mainGameControl = GameObject.FindObjectOfType<MainGameControl>();
             if (mainGameControl?.HeartGame?.settingModel != null)
             {
-                // Use the settings system to properly save the language change
-                mainGameControl.HeartGame.settingModel.SetString(SettingModel.SettingUnitData.StandardSettingType.LANGUAGE_SELECTION, currentLanguage);
+                // Set language
+                mainGameControl.HeartGame.settingModel.SetString(SettingUnitData.StandardSettingType.LANGUAGE_SELECTION, currentLanguage);
                 Debug.Log($"[ScreenshotScript] Language set through settings system: {currentLanguage}");
+                
+                // Set color scheme (CUSTOM_CHOICE_1)
+                mainGameControl.HeartGame.settingModel.SetInt(SettingUnitData.StandardSettingType.CUSTOM_CHOICE_1, currentColorScheme);
+                Debug.Log($"[ScreenshotScript] Color scheme set through settings system: {currentColorScheme}");
             }
             else
             {
@@ -218,7 +235,7 @@ namespace BeggarEditor
                 Debug.Log($"[ScreenshotScript] Language set directly: {currentLanguage}");
             }
 
-            // Reload the scene to apply language change
+            // Reload the scene to apply changes
             var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
             
@@ -244,9 +261,19 @@ namespace BeggarEditor
             }
             else if (currentCommand == null && commandQueue.Count == 0)
             {
-                // Done with this language
-                Debug.Log($"[ScreenshotScript] Completed language: {currentLanguage}");
-                currentLanguageIndex++;
+                // Done with this combination
+                string colorSchemeName = currentColorScheme == 0 ? "light" : "dark";
+                Debug.Log($"[ScreenshotScript] Completed combination: {currentLanguage} + {colorSchemeName}");
+                
+                // Move to next combination
+                currentColorSchemeIndex++;
+                if (currentColorSchemeIndex >= colorSchemes.Count)
+                {
+                    // Move to next language
+                    currentColorSchemeIndex = 0;
+                    currentLanguageIndex++;
+                }
+                
                 waitTimer = 1f;
                 currentState = State.ChangingLanguage;
                 return;
@@ -418,7 +445,8 @@ namespace BeggarEditor
                 Directory.CreateDirectory(outputDir);
             }
 
-            string fileName = $"{name}_{currentLanguage}.png";
+            string colorSchemeName = currentColorScheme == 0 ? "light" : "dark";
+            string fileName = $"{name}_{currentLanguage}_{colorSchemeName}.png";
             string outputPath = Path.Combine(outputDir, fileName);
 
             // Take screenshot
@@ -498,6 +526,41 @@ namespace BeggarEditor
             }
 
             return languages;
+        }
+
+        private List<int> GetAvailableColorSchemes()
+        {
+            var colorSchemes = new List<int>();
+            var config = HeartGame.GetConfig();
+            
+            if (config != null && config.SettingCustomChoices != null)
+            {
+                // Find the LAYOUT_COLOR_SCHEME custom choice
+                foreach (var customChoice in config.SettingCustomChoices)
+                {
+                    if (customChoice.id == "LAYOUT_COLOR_SCHEME")
+                    {
+                        // Add indices for each available choice
+                        for (int i = 0; i < customChoice.choiceKeys.Count; i++)
+                        {
+                            colorSchemes.Add(i);
+                        }
+                        
+                        Debug.Log($"[ScreenshotScript] Found color schemes: {string.Join(", ", customChoice.choiceKeys)}");
+                        break;
+                    }
+                }
+            }
+
+            // Fallback to default if nothing found
+            if (colorSchemes.Count == 0)
+            {
+                Debug.LogWarning("[ScreenshotScript] No color schemes found in config, using defaults");
+                colorSchemes.Add(0); // White/light
+                colorSchemes.Add(1); // Black/dark
+            }
+
+            return colorSchemes;
         }
 
         private IEnumerator ChangeLanguage(string language)

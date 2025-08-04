@@ -147,7 +147,7 @@ namespace HeartUnity
             return settingsList;
         }
 
-        internal void SetInt(SettingUnitData.StandardSettingType setting, int data)
+        public void SetInt(SettingUnitData.StandardSettingType setting, int data)
         {
             foreach (var uc in this.unitControls)
             {

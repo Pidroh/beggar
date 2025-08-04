@@ -27,7 +27,7 @@ MonoBehaviour:
     buildTarget: 20
   - tag: windows_patreon
     copyFileTag: 
-    outputPath: ../builds/windows_patreon/beggar_windows_patreon%V%%BETA%.exe
+    outputPath: ../builds/windows_patreon%V%%BETA%/beggar_windows_patreon.exe
     buildTarget: 5
   - tag: android
     copyFileTag: 
