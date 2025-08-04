@@ -1,5 +1,19 @@
-- Version 25
+- Version 27
 Patreon: true
+Dev notes: Grand Theft - Thievery and debates
+# CHANGES
+5 new resource(s)
+54 new task(s)
+3 new house(s)
+4 new class(s)
+8 new skill(s)
+1 new location(s)
+2 new encounter(s)
+0 new dialog(s)
+16 new furniture(s)
+
+- Version 25
+Latest: true
 Dev notes: Sadism VS Empathy, and the warmth of fire
 # CHANGES
 9 new resource(s)
@@ -9,7 +23,6 @@ Dev notes: Sadism VS Empathy, and the warmth of fire
 9 new furniture(s)
 
 - Version 22
-Latest: true
 Dev notes: Faith, reason, and the power of literacy await 
 # CHANGES
 4 new resource(s)

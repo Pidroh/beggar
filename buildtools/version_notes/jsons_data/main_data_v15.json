@@ -1,7 +1,7 @@
 [
     {
         "type": "RESOURCE",
-        "items":[
+        "items": [
             {
                 "id": "supplication",
                 "max": 30,
@@ -21,7 +21,7 @@
                 "id": "happiness",
                 "max": 0,
                 "desc": "Joy thrives in the quiet moments you almost overlook",
-                "mod" : {
+                "mod": {
                     "supplication.max": 10,
                     "sadness.rate": -1
                 }
@@ -52,11 +52,10 @@
                 "id": "nutrition",
                 "max": 5,
                 "desc": "Higher values mean your character is well-fed, while lower values indicate hunger.",
-                "mod":{
+                "mod": {
                     "thoughts.max": 1
                 }
             },
-            
             {
                 "id": "energy",
                 "desc": "The inner strength your character consumes to perform actions.",
@@ -67,7 +66,7 @@
                 "id": "thoughts",
                 "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
                 "max": 5
-            },            
+            },
             {
                 "id": "deadflower",
                 "desc": "A withered bloom that once symbolized hope, now a reminder of loss and decay.",
@@ -175,7 +174,7 @@
             {
                 "id": "ratbond",
                 "desc": "A faint connection forms with your rats, creating a slight sense of understanding and trust.",
-                "max": 5   
+                "max": 5
             },
             {
                 "id": "coin",
@@ -185,7 +184,7 @@
             {
                 "id": "catbond",
                 "desc": "A faint connection forms with your cats, creating a slight sense of understanding and trust.",
-                "max": 5   
+                "max": 5
             },
             {
                 "id": "skillpoints",
@@ -232,17 +231,17 @@
     },
     {
         "type": "TASK",
-        "items":[
+        "items": [
             {
                 "id": "beg_a",
                 "name": "Beg for crumbs",
                 "desc": "You take what you get (you can long press to multi-click)",
                 "locked": false,
                 "tag": "beggary",
-                "cost":{
+                "cost": {
                     "supplication": 1
                 },
-                "result":{
+                "result": {
                     "breadcrumbs": 1
                 }
             },
@@ -265,7 +264,7 @@
                 "name": "Refresh",
                 "desc": "Clear your mind, exchanging scattered thoughts for a surge of renewed energy.",
                 "require": "thoughts>2",
-                "result":{
+                "result": {
                     "supplication": 1
                 }
             },
@@ -278,7 +277,7 @@
                     "supplication": 1,
                     "thoughts": 1
                 },
-                "result":{
+                "result": {
                     "clarity": 1
                 }
             },
@@ -294,7 +293,7 @@
                 "run": {
                     "thoughts": 1
                 },
-                "mod":{
+                "mod": {
                     "clarity.max": 2,
                     "thoughts.max": 2
                 }
@@ -311,7 +310,7 @@
                 "run": {
                     "thoughts": 2
                 },
-                "mod":{
+                "mod": {
                     "clarity.max": 10,
                     "thoughts.rate": 0.5,
                     "sadness.max": 10
@@ -331,7 +330,7 @@
                 "run": {
                     "thoughts": 1
                 },
-                "mod":{
+                "mod": {
                     "clarity.max": 2,
                     "crackedvase.mod.clarity.max": 5
                 }
@@ -350,7 +349,7 @@
                 "run": {
                     "thoughts": 1
                 },
-                "mod":{
+                "mod": {
                     "clarity.max": 5,
                     "doll.mod.clarity.max": 25
                 }
@@ -369,9 +368,9 @@
                 "run": {
                     "thoughts": 1
                 },
-                "mod":{
+                "mod": {
                     "clarity.max": 5,
-                    "organizethoughts.effect.clarity": 1
+                    "organizethoughts.result.clarity": 1
                 }
             },
             {
@@ -438,7 +437,7 @@
                 "name": "Steal breadcrumbs",
                 "desc": "Casually pilfer scraps from unsuspecting neighbors",
                 "require": "cunning>0",
-                "tag": "thievery,beggary",
+                "tag": "thievery,beggary,cunning_style",
                 "duration": 3,
                 "result": {
                     "breadcrumbs": 10,
@@ -469,7 +468,7 @@
                 "require": "breadcrumbs > 6",
                 "tag": "beggary",
                 "duration": 5,
-                "cost":{
+                "cost": {
                     "breadcrumbs": 10
                 },
                 "result": {
@@ -483,10 +482,10 @@
                 "require": "introspection>2",
                 "duration": 50,
                 "max": 1,
-                "cost":{
+                "cost": {
                     "sadness": 10
                 },
-                "run":{
+                "run": {
                     "thoughts": 1
                 },
                 "mod": {
@@ -501,7 +500,7 @@
                 "name": "Buy Food",
                 "desc": "Buy enough food for the day",
                 "require": "coin>2",
-                "cost":{
+                "cost": {
                     "coin": 1
                 },
                 "result": {
@@ -561,7 +560,7 @@
                 "desc": "Keep your money safe, says the wizard",
                 "require": "coin>3",
                 "max": 3,
-                "cost":{
+                "cost": {
                     "coin": 3
                 },
                 "mod": {
@@ -574,7 +573,7 @@
                 "desc": "Common way to carry... Wait. I have seen this somewhere else.",
                 "require": "coin>10",
                 "max": 2,
-                "cost":{
+                "cost": {
                     "coin": 10
                 },
                 "mod": {
@@ -593,7 +592,6 @@
                     "supplication": 1
                 }
             },
-
             {
                 "id": "reflect",
                 "desc": "Reflect",
@@ -645,7 +643,7 @@
                     "thoughts": 10
                 },
                 "mod": {
-                    "fatigue.rate": -0.2 
+                    "fatigue.rate": -0.2
                 }
             },
             {
@@ -660,10 +658,9 @@
                     "thoughts": 10
                 },
                 "mod": {
-                    "perplexion.rate": -0.2 
+                    "perplexion.rate": -0.2
                 }
             },
-
             {
                 "id": "rat_insight",
                 "name": "Rat's Insight",
@@ -675,7 +672,7 @@
                     "ratbond": 10,
                     "thoughts": 10
                 },
-                "mod":{
+                "mod": {
                     "thoughts.max": 10,
                     "thoughts.rate": 0.01
                 }
@@ -691,7 +688,7 @@
                     "ratbond": 30,
                     "sadness": 10
                 },
-                "mod":{
+                "mod": {
                     "sadness.max": 10,
                     "ratbond.max": 10
                 }
@@ -714,7 +711,7 @@
                 "duration": 5,
                 "max": 1,
                 "require": "scavenging>=1",
-                "mod":{
+                "mod": {
                     "foraging.rate": 0.03
                 },
                 "cost": {
@@ -728,7 +725,7 @@
                 "duration": 5,
                 "max": 1,
                 "require": "scavenging>=2",
-                "mod":{
+                "mod": {
                     "foraging.max": 10
                 },
                 "cost": {
@@ -742,7 +739,7 @@
                 "duration": 5,
                 "max": 1,
                 "require": "scavenging>=3",
-                "mod":{
+                "mod": {
                     "foraging.max": 20,
                     "sadness.max": 3
                 },
@@ -757,7 +754,7 @@
                 "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
                 "require": "pickpocketer",
                 "need": "danger<10",
-                "tag": "thievery",
+                "tag": "thievery,cunning_style",
                 "success_rate": 50,
                 "result": {
                     "danger": "0~2",
@@ -787,7 +784,7 @@
                 "name": "Nutritional harmony",
                 "require": "happiness",
                 "duration": 40,
-                "max":1,
+                "max": 1,
                 "cost": {
                     "happiness": 3
                 },
@@ -802,7 +799,7 @@
                 "name": "Positive thinking",
                 "require": "happiness",
                 "duration": 40,
-                "max":1,
+                "max": 1,
                 "cost": {
                     "happiness": 5,
                     "thoughts": 100
@@ -818,7 +815,7 @@
                 "name": "Inner warmth",
                 "require": "happiness",
                 "duration": 40,
-                "max":1,
+                "max": 1,
                 "cost": {
                     "happiness": 5,
                     "gratitude": 30
@@ -850,6 +847,7 @@
                 "duration": 10,
                 "require": "streetrat",
                 "max": 1,
+                "tag": "cunning_style",
                 "cost": {
                     "ratbond": 100,
                     "rats": 8
@@ -920,7 +918,7 @@
                 "id": "pickpocketrat",
                 "name": "Pickpocketing Rats",
                 "desc": "Coordinate stealing feats with your rats",
-                "tag": "pickpockter",
+                "tag": "pickpockter,cunning_style",
                 "require": "streetrat&&!pickpocket",
                 "duration": 15,
                 "max": 1,
@@ -935,13 +933,13 @@
             {
                 "id": "guiltcunning",
                 "name": "Not my fault",
-                "desc": "I'm hungry and no is gonna take care of me",
+                "desc": "I'm hungry and no one is going to take care of me.",
                 "duration": 8,
                 "max": 1,
-                "tag": "max_decrease",
+                "tag": "max_decrease,cunning_style",
                 "require": "stealbread>=3",
-                "mod":{
-                    "guilt.max": 20,
+                "mod": {
+                    "guilt.max": 25,
                     "gratitude.max": -5
                 },
                 "cost": {
@@ -960,7 +958,7 @@
                     "nutrition": 3
                 },
                 "mod": {
-                    "supplication.max":20,
+                    "supplication.max": 20,
                     "nutrition.max": 5
                 }
             },
@@ -1144,7 +1142,7 @@
                     "supplication": 10
                 },
                 "mod": {
-                    "faith.max":5,
+                    "faith.max": 5,
                     "gratitude.max": 5,
                     "breadcrumbs.rate": 0.1
                 }
@@ -1171,7 +1169,7 @@
                 "locked": false,
                 "require": "beggarhood>1",
                 "max": 1,
-                "cost":{
+                "cost": {
                     "supplication": 10,
                     "thoughts": 10
                 }
@@ -1180,7 +1178,7 @@
     },
     {
         "type": "HOUSE",
-        "items":[
+        "items": [
             {
                 "id": "Back Alley",
                 "name": "Back Alley",
@@ -1242,11 +1240,11 @@
     },
     {
         "type": "CLASS",
-        "items":[
+        "items": [
             {
-                "id" : "gutterborn",
-                "desc" : "Acknowledge your origins from the streets, embracing the harsh reality of your upbringing.",
-                "tags": "t_job",
+                "id": "gutterborn",
+                "desc": "Acknowledge your origins from the streets, embracing the harsh reality of your upbringing.",
+                "tags": "t_job,not_church_class_automated",
                 "lock": "t_job",
                 "require": "thoughts>0",
                 "cost": {
@@ -1261,10 +1259,10 @@
                 }
             },
             {
-                "id" : "churchbeggar",
+                "id": "churchbeggar",
                 "name": "Alms Collector",
-                "desc" : "Thrives on the mercy of the church, turning hardship into resilience and blending into the sacred for refuge.",
-                "tags": "t_tier0",
+                "desc": "Thrives on the mercy of the church, turning hardship into resilience and blending into the sacred for refuge.",
+                "tags": "t_tier0,not_church_class_automated",
                 "lock": "t_tier0",
                 "require": "faith>4",
                 "cost": {
@@ -1279,10 +1277,10 @@
                 }
             },
             {
-                "id" : "ratbeggar",
+                "id": "ratbeggar",
                 "name": "Rat Whisperer",
-                "desc" : "Each rat is a loyal companion, bringing warmth in the cold streets.",
-                "tags": "t_tier0",
+                "desc": "Each rat is a loyal companion, bringing warmth in the cold streets.",
+                "tags": "t_tier0,not_church_class_automated",
                 "lock": "t_tier0",
                 "require": "rodentology>=3",
                 "need": "rats>=5",
@@ -1297,10 +1295,10 @@
                 }
             },
             {
-                "id" : "breadsnatcher",
+                "id": "breadsnatcher",
                 "name": "Bread Snatcher",
-                "desc" : "You better pay attention. Get distracted and your food will be gone.",
-                "tags": "t_tier0",
+                "desc": "You better pay attention. Get distracted and your food will be gone.",
+                "tags": "t_tier0,not_church_class_automated",
                 "lock": "t_tier0",
                 "require": "t_job&&cunning>1",
                 "cost": {
@@ -1314,10 +1312,10 @@
                 }
             },
             {
-                "id" : "beggar",
+                "id": "beggar",
                 "name": "Beggar",
-                "desc" : "A person who lives by asking for money or food",
-                "tags": "t_tier1",
+                "desc": "A person who lives by asking for money or food",
+                "tags": "t_tier1,not_church_class_automated",
                 "lock": "t_tier1",
                 "require": "t_tier0&&introspection>3",
                 "cost": {
@@ -1333,10 +1331,10 @@
                 }
             },
             {
-                "id" : "cutpurse",
+                "id": "cutpurse",
                 "name": "Cutpurse",
-                "desc" : "Steals valuables through pickpocketing and quick, stealthy movements.",
-                "tags": "t_tier1",
+                "desc": "Steals valuables through pickpocketing and quick, stealthy movements.",
+                "tags": "t_tier1,not_church_class_automated",
                 "lock": "t_tier1",
                 "tag": "criminal,pickpocketer",
                 "require": "t_tier0&&introspection>3&&cunning>2&&agile",
@@ -1357,8 +1355,8 @@
                 "id": "streetrat",
                 "name": "Street Rat",
                 "desc": "Rat and man, working as one to empty all wallets",
-                "tags": "t_tier2",
-                "lock": "t_tier2",
+                "tags": "t_tier2,not_church_class_automated",
+                "lock": "t_tier2,jointhechurch",
                 "tag": "criminal",
                 "require": "rodentology>3&&agile&&stealbread>5&&t_tier1",
                 "need": "theself_2",
@@ -1366,8 +1364,7 @@
                     "ratbond": 120,
                     "guilt": 20
                 },
-                "mods":
-                {
+                "mods": {
                     "ratbond.max": 20,
                     "guilt.max": 20,
                     "rodentology.max": 1,
@@ -1379,16 +1376,15 @@
                 "id": "ratwarden",
                 "name": "Rat Warden",
                 "desc": "You are the protector of fellow rats",
-                "tags": "t_tier2",
-                "lock": "t_tier2",
+                "tags": "t_tier2,not_church_class_automated",
+                "lock": "t_tier2,jointhechurch",
                 "need": "theself_2",
                 "require": "rodentology>=6&&ratbeggar&&t_tier1",
                 "cost": {
                     "ratbond": 200,
                     "rats": 18
                 },
-                "mods":
-                {
+                "mods": {
                     "ratbond.max": 40,
                     "rodentology.max": 2,
                     "rats.max": 2
@@ -1398,16 +1394,15 @@
                 "id": "catbeggar",
                 "name": "Cat Beggar",
                 "desc": "They call him the cat weirdo",
-                "tags": "t_tier2",
-                "lock": "t_tier2",
+                "tags": "t_tier2,not_church_class_automated",
+                "lock": "t_tier2,jointhechurch",
                 "need": "theself_2",
                 "require": "petcat&&felinology>0&&t_tier1",
                 "cost": {
                     "cat": 2,
                     "catbond": 15
                 },
-                "mods":
-                {
+                "mods": {
                     "cat.max": 1,
                     "catbond.max": 20,
                     "felinology.max": 1
@@ -1417,7 +1412,7 @@
     },
     {
         "type": "SKILL",
-        "items":[
+        "items": [
             {
                 "id": "introspection",
                 "require": "t_job",
@@ -1587,7 +1582,13 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["boredom_weak_emotion", "sad_weak_emotion", "frustration_weak_emotion", "joy_weak_emotion", "anxiety_weak_emotion"]
+                "encs": [
+                    "boredom_weak_emotion",
+                    "sad_weak_emotion",
+                    "frustration_weak_emotion",
+                    "joy_weak_emotion",
+                    "anxiety_weak_emotion"
+                ]
             },
             {
                 "id": "creepyalley",
@@ -1608,7 +1609,13 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["lostbeggar", "meancat", "ratpack", "drawing_wall", "sick_man"]
+                "encs": [
+                    "lostbeggar",
+                    "meancat",
+                    "ratpack",
+                    "drawing_wall",
+                    "sick_man"
+                ]
             },
             {
                 "id": "churchfront",
@@ -1629,7 +1636,11 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["lostbeggar", "meancat", "ratpack"]
+                "encs": [
+                    "lostbeggar",
+                    "meancat",
+                    "ratpack"
+                ]
             },
             {
                 "id": "midden",
@@ -1650,7 +1661,13 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["meancat", "ratpack", "hungry_beggar", "smelly_puddle", "pattern_bones"]
+                "encs": [
+                    "meancat",
+                    "ratpack",
+                    "hungry_beggar",
+                    "smelly_puddle",
+                    "pattern_bones"
+                ]
             },
             {
                 "id": "sewer",
@@ -1671,14 +1688,21 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["meancat", "ratpack", "smelly_puddle", "pattern_bones", "sick_man", "rusted_grate", "waste_stream", "lost_diary_page"]
+                "encs": [
+                    "meancat",
+                    "ratpack",
+                    "smelly_puddle",
+                    "pattern_bones",
+                    "sick_man",
+                    "rusted_grate",
+                    "waste_stream",
+                    "lost_diary_page"
+                ]
             }
-
-            
         ]
     },
     {
-         "type": "ENCOUNTER",
+        "type": "ENCOUNTER",
         "items": [
             {
                 "id": "lostbeggar",
@@ -1692,7 +1716,7 @@
                     "supplication": 5,
                     "sadness": 1
                 }
-            }, 
+            },
             {
                 "id": "meancat",
                 "name": "Mean cat",
@@ -1741,7 +1765,6 @@
                     "introspection.xp": 1,
                     "perplexion": "-1~1",
                     "irritation": "-1~2"
-
                 },
                 "result": {
                     "thoughts": 3,
@@ -1916,7 +1939,7 @@
     },
     {
         "type": "DIALOG",
-        "items":[
+        "items": [
             {
                 "id": "dialog_job",
                 "title": "Class Selection",
@@ -1940,12 +1963,11 @@
                 "content": "Performing this action will complete the game. Are you sure?",
                 "tags": "ending_game"
             }
-            
         ]
     },
     {
         "type": "FURNITURE",
-        "items":[
+        "items": [
             {
                 "id": "brokenmirror",
                 "name": "Broken mirror",
@@ -1968,7 +1990,7 @@
                     "foraging": 2
                 },
                 "mod": {
-                    "sadness.max" : 5,
+                    "sadness.max": 5,
                     "space": 1
                 }
             },
@@ -1980,7 +2002,7 @@
                     "foraging": 4
                 },
                 "mod": {
-                    "sadness.max" : 8,
+                    "sadness.max": 8,
                     "sorrow.max": 1,
                     "space": 1
                 }
@@ -1994,7 +2016,7 @@
                     "foraging": 3
                 },
                 "mod": {
-                    "pleafocus.effect.supplication" : 1,
+                    "pleafocus.effect.supplication": 1,
                     "supplication.max": 10,
                     "space": 1
                 }
@@ -2008,7 +2030,7 @@
                     "coin": 8
                 },
                 "mod": {
-                    "pleafocus.effect.supplication" : 5,
+                    "pleafocus.effect.supplication": 5,
                     "supplication.max": 20,
                     "space": 2
                 }
@@ -2023,7 +2045,7 @@
                     "foraging": 3
                 },
                 "mod": {
-                    "pleafocus.effect.supplication" : -0.25,
+                    "pleafocus.effect.supplication": -0.25,
                     "supplication.max": -10,
                     "rats.rate": 0.1,
                     "space": 1
@@ -2037,8 +2059,8 @@
                     "foraging": 3
                 },
                 "mod": {
-                    "sadness.max" : 3,
-                    "sadness.rate" : 0.02,
+                    "sadness.max": 3,
+                    "sadness.rate": 0.02,
                     "space": 1
                 }
             },
@@ -2141,7 +2163,6 @@
                     "space": 2
                 }
             },
-            
             {
                 "id": "ratstatue",
                 "name": "Rat Statue",
@@ -2229,7 +2250,7 @@
                 "mod": {
                     "contemplation.max": 1,
                     "clarity.max": 3,
-                    "organizethoughts.effect.clarity": 1,
+                    "organizethoughts.result.clarity": 1,
                     "space": 1
                 }
             },
@@ -2265,14 +2286,14 @@
     },
     {
         "type": "TAB",
-        "items":[
+        "items": [
             {
                 "id": "task",
                 "unit_types": [
                     "TASK",
                     "CLASS"
                 ],
-                "icon" : "tab_tasks",
+                "icon": "tab_tasks",
                 "separator": [
                     {
                         "id": "action",
@@ -2280,6 +2301,7 @@
                         "unit_types": [
                             "TASK"
                         ],
+                        "priority": 1,
                         "require_instant": true
                     },
                     {
@@ -2288,7 +2310,16 @@
                         "unit_types": [
                             "TASK"
                         ],
-                        "default": true
+                        "priority": 0
+                    },
+                    {
+                        "id": "crime_sep",
+                        "name": "Criminal Activities",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "thievery,cunning_style"
                     },
                     {
                         "id": "power_up",
@@ -2296,6 +2327,7 @@
                         "unit_types": [
                             "TASK"
                         ],
+                        "priority": 10,
                         "require_max": true
                     },
                     {
@@ -2303,17 +2335,17 @@
                         "name": "Classes",
                         "unit_types": [
                             "CLASS"
-                        ]
+                        ],
+                        "priority": 100
                     }
                 ]
             },
-            
             {
                 "id": "resource",
                 "unit_types": [
                     "RESOURCE"
                 ],
-                "icon" : "tab_resources",
+                "icon": "tab_resources",
                 "separator": [
                     {
                         "id": "resource",
@@ -2328,7 +2360,7 @@
                     "SKILL"
                 ],
                 "require": "t_job",
-                "icon" : "tab_skills",
+                "icon": "tab_skills",
                 "separator": [
                     {
                         "id": "skill",
@@ -2346,7 +2378,7 @@
                 "unit_types": [
                     "LOCATION"
                 ],
-                "icon" : "tab_exploration_c",
+                "icon": "tab_exploration_c",
                 "separator": [
                     {
                         "id": "location",
@@ -2358,10 +2390,11 @@
             {
                 "id": "housing",
                 "unit_types": [
-                    "HOUSE", "FURNITURE"
+                    "HOUSE",
+                    "FURNITURE"
                 ],
                 "require": "t_job",
-                "icon" : "tab_housing",
+                "icon": "tab_housing",
                 "separator": [
                     {
                         "id": "housing",
@@ -2382,11 +2415,10 @@
             },
             {
                 "id": "log",
-                "unit_types": [
-                ],
+                "unit_types": [],
                 "contains_logs": true,
                 "necessary_for_desktop_and_thinnable": true,
-                "icon" : "tab_log",
+                "icon": "tab_log",
                 "separator": [
                     {
                         "id": "log",
@@ -2397,16 +2429,14 @@
             },
             {
                 "id": "settings",
-                "unit_types": [
-                ],
-                "icon" : "tab_config",
+                "unit_types": [],
+                "icon": "tab_config",
                 "open_settings": true
             },
             {
                 "id": "others",
-                "unit_types": [
-                ],
-                "icon" : "tab_plus",
+                "unit_types": [],
+                "icon": "tab_plus",
                 "open_other_tabs": true
             }
         ]

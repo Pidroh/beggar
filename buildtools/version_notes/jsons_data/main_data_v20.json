@@ -1,8 +1,7 @@
 [
     {
         "type": "RESOURCE",
-        "items":[
-            
+        "items": [
             {
                 "id": "churchrespect",
                 "name": "Church Respect",
@@ -36,7 +35,7 @@
     },
     {
         "type": "TASK",
-        "items":[
+        "items": [
             {
                 "id": "baptism",
                 "name": "Baptism",
@@ -49,7 +48,7 @@
                 "run": {
                     "faith": 1
                 },
-                "mod":{
+                "mod": {
                     "faith.max": 10,
                     "churchrespect.max": 20
                 }
@@ -64,7 +63,7 @@
                 "cost": {
                     "thoughts": 100
                 },
-                "mod":{
+                "mod": {
                     "thoughts.max": 100,
                     "contemplation.max": 1
                 }
@@ -81,7 +80,7 @@
                     "clarity": 10,
                     "reflection": 1
                 },
-                "mod":{
+                "mod": {
                     "reflection.max": 3,
                     "introspection.max": 1
                 }
@@ -98,9 +97,9 @@
                     "clarity": 15,
                     "reflection": 2
                 },
-                "mod":{
+                "mod": {
                     "think.effect.thoughts": 2,
-                    "organizethoughts.effect.clarity": 1
+                    "organizethoughts.result.clarity": 1
                 }
             },
             {
@@ -114,7 +113,7 @@
                     "thoughts": 50,
                     "clarity": 5
                 },
-                "mod":{
+                "mod": {
                     "supplication.max": 50,
                     "supplication.rate": 0.5,
                     "churchrespect.max": 10
@@ -130,9 +129,9 @@
                 "cost": {
                     "thoughts": 150
                 },
-                "mod":{
+                "mod": {
                     "thoughts.max": 100,
-                    "fundamentals.max": 3 
+                    "fundamentals.max": 3
                 }
             },
             {
@@ -149,7 +148,7 @@
                 "run": {
                     "thoughts": 10
                 },
-                "mod":{
+                "mod": {
                     "gratitude.max": 30,
                     "faith.max": 15
                 }
@@ -168,7 +167,7 @@
                 "run": {
                     "thoughts": 10
                 },
-                "mod":{
+                "mod": {
                     "churchrespect.max": 15,
                     "faith.max": 15
                 }
@@ -187,13 +186,12 @@
                 "run": {
                     "thoughts": 10
                 },
-                "mod":{
+                "mod": {
                     "churchrespect.max": 20,
                     "clarity.max": 5,
                     "reflection.max": 2
                 }
             },
-            
             {
                 "id": "sharethebegging",
                 "name": "Share the begging",
@@ -208,7 +206,7 @@
                 "run": {
                     "supplication": 5
                 },
-                "mod":{
+                "mod": {
                     "beggarhood.max": 1,
                     "supplication.max": 20
                 }
@@ -227,7 +225,7 @@
                 "run": {
                     "thoughts": 3
                 },
-                "mod":{
+                "mod": {
                     "beg_a.result.breadcrumbs": 2,
                     "beg_b.result.breadcrumbs": 2
                 }
@@ -247,7 +245,7 @@
                 "run": {
                     "supplication": 5
                 },
-                "mod":{
+                "mod": {
                     "supplication.max": 100,
                     "pleafocus.effect.supplication": 2,
                     "clarity.max": 3
@@ -267,7 +265,7 @@
                 "run": {
                     "supplication": 5
                 },
-                "mod":{
+                "mod": {
                     "begging.max": 1,
                     "beg_a.result.breadcrumbs": 1
                 }
@@ -502,7 +500,6 @@
                     "churchrespect.max": 80
                 }
             },
-            
             {
                 "id": "subdeaconduties",
                 "name": "Subdeacon duties",
@@ -561,7 +558,7 @@
                 "mod": {
                     "fundamentals.max": 1,
                     "churchrespect.max": 50,
-                    "faith.max":30
+                    "faith.max": 30
                 }
             },
             {
@@ -658,7 +655,7 @@
                     "thoughts": 3,
                     "supplication": 5
                 },
-                "mod":{
+                "mod": {
                     "thoughts.max": 10,
                     "clarity.max": 5
                 }
@@ -676,7 +673,7 @@
                 "run": {
                     "faith": 1
                 },
-                "mod":{
+                "mod": {
                     "faith.max": 5,
                     "churchrespect.max": 30
                 }
@@ -696,7 +693,7 @@
                 "run": {
                     "faith": 1
                 },
-                "mod":{
+                "mod": {
                     "faith.max": 5,
                     "churchrespect.max": 50,
                     "churchrespect.rate": 0.1
@@ -716,10 +713,10 @@
                 "run": {
                     "thoughts": 3
                 },
-                "mod":{
+                "mod": {
                     "reflection.max": 5,
                     "clarity.max": 10,
-                    "organizethoughts.effect.clarity": 1
+                    "organizethoughts.result.clarity": 1
                 }
             },
             {
@@ -729,7 +726,7 @@
                 "tag": "joinchurch",
                 "require": "ecclesiology>2&&tonsure",
                 "duration": 120,
-                "lock": "beggary",
+                "lock": "beggary,not_church_class_automated",
                 "max": 1,
                 "cost": {
                     "churchrespect": 20,
@@ -740,7 +737,7 @@
                 "run": {
                     "faith": 1
                 },
-                "mod":{
+                "mod": {
                     "faith.max": 50,
                     "churchrespect.max": 50
                 }
@@ -750,7 +747,7 @@
                 "name": "Beg for food",
                 "desc": "Your pleading eyes can get all sorts of food",
                 "require": "expertbeggar",
-                "cost":{
+                "cost": {
                     "supplication": 15
                 },
                 "success_rate": 60,
@@ -779,7 +776,7 @@
                 "run": {
                     "faith": 1
                 },
-                "mod":{
+                "mod": {
                     "churchrespect.max": 100
                 }
             },
@@ -799,7 +796,7 @@
                 "run": {
                     "faith": 1
                 },
-                "mod":{
+                "mod": {
                     "churchrespect.max": 100,
                     "ecclesiology.max": 1,
                     "holyscriptures.max": 1
@@ -821,7 +818,7 @@
                 "run": {
                     "faith": 1
                 },
-                "mod":{
+                "mod": {
                     "churchrespect.max": 100,
                     "ecclesiology.max": 1,
                     "holyscriptures.max": 1
@@ -838,7 +835,7 @@
                     "thoughts": 3,
                     "clarity": 1
                 },
-                "mod":{
+                "mod": {
                     "scavenging.max": 1
                 },
                 "cost": {
@@ -876,7 +873,7 @@
                 "mod": {
                     "fundamentals.max": 2,
                     "study.speed": 10,
-                    "clarity.max" : 5
+                    "clarity.max": 5
                 }
             },
             {
@@ -906,7 +903,7 @@
                     "thoughts": 80
                 },
                 "mod": {
-                    "churchrespect.max":20
+                    "churchrespect.max": 20
                 }
             },
             {
@@ -921,7 +918,7 @@
                     "faith": 15
                 },
                 "mod": {
-                    "churchrespect.max":20,
+                    "churchrespect.max": 20,
                     "faith.max": 10,
                     "fundamentals.max": 1
                 }
@@ -941,7 +938,7 @@
                     "thoughts": 15
                 },
                 "mod": {
-                    "churchrespect.max":30,
+                    "churchrespect.max": 30,
                     "faith.max": 15,
                     "fundamentals.max": 2
                 }
@@ -958,8 +955,23 @@
                     "supplication": 10,
                     "thoughts": 5
                 },
-                "result":{
+                "result": {
                     "reflection": 1
+                }
+            },
+            {
+                "id": "churchcalling",
+                "name": "Calling of the Church",
+                "require": "t_tier2&&ecclesiology>2&&jointhechurch",
+                "duration": 120,
+                "max": 1,
+                "run": {
+                    "supplication": 10,
+                    "thoughts": 5
+                },
+                "mod": {
+                    "ecclesiology.max": 2,
+                    "faith.max": 80
                 }
             },
             {
@@ -979,14 +991,13 @@
                     "clarity.max": 5,
                     "thoughts.max": 50,
                     "reflection.max": 1
-
                 }
             }
         ]
     },
     {
         "type": "HOUSE",
-        "items":[
+        "items": [
             {
                 "id": "churchbasic",
                 "name": "Church dormitory",
@@ -1001,18 +1012,17 @@
                     "faith.max": 50,
                     "pray.effect.faith": 2,
                     "churchrespect.max": 50
-
                 }
             }
         ]
     },
     {
         "type": "CLASS",
-        "items":[
+        "items": [
             {
-                "id" : "churchporter",
+                "id": "churchporter",
                 "name": "Church Porter",
-                "desc" : "Guards the doors of the church. A member of the order of Ostiarius",
+                "desc": "Guards the doors of the church. A member of the order of Ostiarius",
                 "tags": "t_tier1",
                 "lock": "t_tier1",
                 "require": "t_tier0&&ordination_1&&jointhechurch",
@@ -1031,11 +1041,11 @@
                 }
             },
             {
-                "id" : "lostphilosopher",
+                "id": "lostphilosopher",
                 "name": "Lost Philosopher",
-                "desc" : "The one who stays in the streets. Thinking, mumbling. Trying to reach the answer.",
-                "tags": "t_tier2",
-                "lock": "t_tier2",
+                "desc": "The one who stays in the streets. Thinking, mumbling. Trying to reach the answer.",
+                "tags": "t_tier2,beggary,not_church_class_automated",
+                "lock": "t_tier2,jointhechurch",
                 "need": "theself_2",
                 "require": "t_tier1&&philosophy>=2",
                 "cost": {
@@ -1051,9 +1061,9 @@
                 }
             },
             {
-                "id" : "acolyte",
+                "id": "acolyte",
                 "name": "Acolyte",
-                "desc" : "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
+                "desc": "Assists in religious ceremonies by preparing items, lighting candles, and supporting clergy.",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "need": "theself_2",
@@ -1071,9 +1081,9 @@
                 }
             },
             {
-                "id" : "lector",
+                "id": "lector",
                 "name": "Lector",
-                "desc" : "A member of the minor order of the church. In charge of reading and teaching sacred texts.",
+                "desc": "A member of the minor order of the church. In charge of reading and teaching sacred texts.",
                 "tags": "t_tier2",
                 "lock": "t_tier2",
                 "need": "theself_2",
@@ -1093,9 +1103,9 @@
                 }
             },
             {
-                "id" : "priest",
+                "id": "priest",
                 "name": "Priest",
-                "desc" : "The third major order of the Church. A religious leader capable of performing all sorts of rituals.",
+                "desc": "The third major order of the Church. A religious leader capable of performing all sorts of rituals.",
                 "tags": "t_tier3",
                 "lock": "t_tier3",
                 "need": "theself_3&&holyscriptures>4&&deacon",
@@ -1114,10 +1124,10 @@
                 }
             },
             {
-                "id" : "expertbeggar",
+                "id": "expertbeggar",
                 "name": "Expert Beggar",
-                "desc" : "A master of the streets, the coinosseur of the begging arts.",
-                "tags": "t_tier3,beggary",
+                "desc": "A master of the streets, the coinosseur of the begging arts.",
+                "tags": "t_tier3,beggary,not_church_class_automated",
                 "lock": "t_tier3,beg_a",
                 "need": "theself_3&&begging>=4&&beggarhood>=5&&cityknowledge>=3",
                 "require": "t_tier2&&begging>2&&beggarhood>=3&&cityknowledge>=1",
@@ -1138,7 +1148,7 @@
     },
     {
         "type": "SKILL",
-        "items":[
+        "items": [
             {
                 "id": "ecclesiology",
                 "require": "faith>0&&churchbeggar>0||churchfront>0&&faith>0",
@@ -1258,7 +1268,17 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["eyesfaithful", "bishopglare", "joinedprayer", "wordsbishop", "chant", "voicesgossip", "divinepictures", "silenceperiod", "keyschurch"]
+                "encs": [
+                    "eyesfaithful",
+                    "bishopglare",
+                    "joinedprayer",
+                    "wordsbishop",
+                    "chant",
+                    "voicesgossip",
+                    "divinepictures",
+                    "silenceperiod",
+                    "keyschurch"
+                ]
             },
             {
                 "id": "ordination_2",
@@ -1279,13 +1299,23 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["eyesfaithful", "bishopglare", "joinedprayer", "wordsbishop", "chant", "voicesgossip", "divinepictures", "silenceperiod", "holdcandle"]
+                "encs": [
+                    "eyesfaithful",
+                    "bishopglare",
+                    "joinedprayer",
+                    "wordsbishop",
+                    "chant",
+                    "voicesgossip",
+                    "divinepictures",
+                    "silenceperiod",
+                    "holdcandle"
+                ]
             },
             {
                 "id": "eucharist_assistance",
                 "name": "Assisting the eucharist",
                 "desc": "Prepare the altar, candles, and help out with other things during the eucharist",
-                "require": "jointhechurch&&acolyte||lector&&jointhechurch",
+                "require": "jointhechurch&&ordination_2&&t_tier2",
                 "length": 8,
                 "run": {
                     "supplication": 1
@@ -1300,7 +1330,16 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["preparealtar", "carrycandles", "liturgicalbooks", "cruetswine", "lavabo", "voicesgossip", "divinepictures", "silenceperiod"]
+                "encs": [
+                    "preparealtar",
+                    "carrycandles",
+                    "liturgicalbooks",
+                    "cruetswine",
+                    "lavabo",
+                    "voicesgossip",
+                    "divinepictures",
+                    "silenceperiod"
+                ]
             },
             {
                 "id": "john_conversation",
@@ -1322,7 +1361,15 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose"]
+                "encs": [
+                    "blueeyes",
+                    "intriguingquestion",
+                    "johncharade",
+                    "johnchildhood",
+                    "johnlaughter",
+                    "mockingwords",
+                    "johnprose"
+                ]
             },
             {
                 "id": "john_home",
@@ -1344,12 +1391,23 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": ["blueeyes", "intriguingquestion", "johncharade", "johnchildhood", "johnlaughter", "mockingwords", "johnprose", "sadpainting", "deadflowers_enc", "johnnap"]
+                "encs": [
+                    "blueeyes",
+                    "intriguingquestion",
+                    "johncharade",
+                    "johnchildhood",
+                    "johnlaughter",
+                    "mockingwords",
+                    "johnprose",
+                    "sadpainting",
+                    "deadflowers_enc",
+                    "johnnap"
+                ]
             }
         ]
     },
     {
-         "type": "ENCOUNTER",
+        "type": "ENCOUNTER",
         "items": [
             {
                 "id": "blueeyes",
@@ -1733,12 +1791,11 @@
                     "churchrespect": 50
                 }
             }
-            
         ]
     },
     {
         "type": "DIALOG",
-        "items":[
+        "items": [
             {
                 "id": "irreversible_church",
                 "title": "Irreversible Action",
@@ -1749,7 +1806,7 @@
     },
     {
         "type": "FURNITURE",
-        "items":[
+        "items": [
             {
                 "id": "rosario",
                 "name": "Rosario",
