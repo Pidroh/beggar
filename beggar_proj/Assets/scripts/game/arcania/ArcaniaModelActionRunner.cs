@@ -75,7 +75,11 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             return;
         }
         // only DONE or FRESH tasks need to pay the cost
-        if (!data.IsTaskHalfWay) _model.ApplyResourceChanges(data, ResourceChangeType.COST);
+        if (!data.IsTaskHalfWay) { 
+            _model.ApplyResourceChanges(data, ResourceChangeType.COST);
+            // ensure cost doesn't get paid twice
+            data.TaskProgress = 0.01f;
+        }
         if (data.IsInstant()) CompleteTask(data);
         if (data.IsInstant()) return;
         RunContinuously(data);

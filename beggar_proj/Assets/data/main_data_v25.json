@@ -386,9 +386,13 @@
                 "cost": {
                     "dominance": 250
                 },
-                "mod": {
-                    "boredom.max": 20,
-                    "irritation.max": 20
+                
+                "dot": {
+                    "duration": 200,
+                    "mod": {
+                        "boredom.max": 20,
+                        "irritation.max": 20
+                    }
                 }
             },
             {
@@ -448,10 +452,13 @@
                 "cost": {
                     "benevolence": 250
                 },
-                "mod": {
-                    "fatigue.max": 20,
-                    "irritation.max": 20
-                }
+                "dot": {
+                    "duration": 200,
+                    "mod": {
+                        "fatigue.max": 20,
+                        "irritation.max": 20
+                    }
+                }  
             },
             {
                 "id": "flaming_rats",

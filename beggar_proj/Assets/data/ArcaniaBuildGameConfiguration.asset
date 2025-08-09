@@ -24,7 +24,7 @@ MonoBehaviour:
     buildConfigId: web
     majorVersionOverride: 0
     versionOverride: 25
-    patchOverride: 0
+    patchOverride: 2
     SubtitleOverride: Charisma of Pain
     patreonBuild: 0
   - id: android
