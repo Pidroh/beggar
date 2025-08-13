@@ -14,18 +14,30 @@ public class BeatTextDisplay : MonoBehaviour
     [SerializeField] private float amplitudeCutoffBig = 0.95f;
     [SerializeField] private float fixedDelay = 0f;
     
+    [Header("Word Sources")]
+    [SerializeField] private TextAsset randomWordSource;
+    [SerializeField] private TextAsset bigWordSource;
+    
     [Header("UI Settings")]
-    [SerializeField] private float fontSize = 36f;
+    [SerializeField] private float bigFontSize = 48f;
+    [SerializeField] private float smallFontSize = 24f;
     [SerializeField] private Color textColor = Color.white;
     
     private Canvas canvas;
-    private List<float> timestamps = new List<float>();
-    private string[] randomWords = { "apple", "orange", "pumpkin" };
-    public TextAsset randomWordSource;
-    public TextAsset bigWordSource;
-    private int currentTimestampIndex = 0;
+    private List<BeatData> beatDataList = new List<BeatData>();
+    private string[] randomWords;
+    private string[] bigWords;
+    private int currentBeatIndex = 0;
+    private int currentBigWordIndex = 0;
     private float startTime;
     private List<ActiveText> activeTexts = new List<ActiveText>();
+    
+    private class BeatData
+    {
+        public float time;
+        public int group;
+        public float amplitude;
+    }
     
     private class ActiveText
     {
@@ -39,6 +51,7 @@ public class BeatTextDisplay : MonoBehaviour
     private void Start()
     {
         CreateCanvas();
+        ParseWordSources();
         ParseBeatsFile();
         startTime = Time.time;
     }
@@ -47,17 +60,47 @@ public class BeatTextDisplay : MonoBehaviour
     {
         float currentTime = Time.time - startTime;
         
-        if (currentTimestampIndex < timestamps.Count)
+        if (currentBeatIndex < beatDataList.Count)
         {
-            float adjustedTimestamp = timestamps[currentTimestampIndex] + fixedDelay;
+            BeatData beat = beatDataList[currentBeatIndex];
+            float adjustedTimestamp = beat.time + fixedDelay;
             if (currentTime >= adjustedTimestamp)
             {
-                CreateAndDisplayText();
-                currentTimestampIndex++;
+                CreateAndDisplayText(beat);
+                currentBeatIndex++;
             }
         }
         
         UpdateActiveTexts();
+    }
+    
+    private void ParseWordSources()
+    {
+        if (randomWordSource != null)
+        {
+            randomWords = randomWordSource.text.Split('\n');
+            for (int i = 0; i < randomWords.Length; i++)
+            {
+                randomWords[i] = randomWords[i].Trim();
+            }
+        }
+        else
+        {
+            randomWords = new string[] { "word", "text", "item" };
+        }
+        
+        if (bigWordSource != null)
+        {
+            bigWords = bigWordSource.text.Split('\n');
+            for (int i = 0; i < bigWords.Length; i++)
+            {
+                bigWords[i] = bigWords[i].Trim();
+            }
+        }
+        else
+        {
+            bigWords = new string[] { "BIG", "LARGE", "HUGE" };
+        }
     }
     
     private void CreateCanvas()
@@ -90,23 +133,35 @@ public class BeatTextDisplay : MonoBehaviour
                 continue;
                 
             string[] parts = line.Split(',');
-            if (parts.Length >= 2)
+            if (parts.Length >= 3)
             {
-                if (float.TryParse(parts[0], out float time) && int.TryParse(parts[1], out int group))
+                if (float.TryParse(parts[0], out float time) && 
+                    int.TryParse(parts[1], out int group) && 
+                    float.TryParse(parts[2], out float amplitude))
                 {
-                    if (targetGroup.Contains(group))
+                    BeatData beat = new BeatData
                     {
-                        timestamps.Add(time);
-                    }
+                        time = time,
+                        group = group,
+                        amplitude = amplitude
+                    };
+                    beatDataList.Add(beat);
                 }
             }
         }
         
-        Debug.Log($"Loaded {timestamps.Count} timestamps for group {targetGroup}");
+        Debug.Log($"Loaded {beatDataList.Count} beats from file");
     }
     
-    private void CreateAndDisplayText()
+    private void CreateAndDisplayText(BeatData beat)
     {
+        bool isBigWord = beat.amplitude >= amplitudeCutoffBig && targetGroup.Contains(beat.group);
+        
+        if (!isBigWord && beat.amplitude >= amplitudeCutoffBig)
+        {
+            return;
+        }
+        
         GameObject textObject = new GameObject("BeatText");
         textObject.transform.SetParent(canvas.transform, false);
         
@@ -117,13 +172,38 @@ public class BeatTextDisplay : MonoBehaviour
         rectTransform.position = new Vector3(randomX, randomY, 0);
         
         TextMeshProUGUI textComponent = textObject.AddComponent<TextMeshProUGUI>();
-        textComponent.text = randomWords[Random.Range(0, randomWords.Length)];
+        
+        if (isBigWord)
+        {
+            if (bigWords != null && bigWords.Length > 0)
+            {
+                textComponent.text = bigWords[currentBigWordIndex % bigWords.Length];
+                currentBigWordIndex++;
+            }
+            else
+            {
+                textComponent.text = "BIG";
+            }
+            textComponent.fontSize = bigFontSize;
+        }
+        else
+        {
+            if (randomWords != null && randomWords.Length > 0)
+            {
+                textComponent.text = randomWords[Random.Range(0, randomWords.Length)];
+            }
+            else
+            {
+                textComponent.text = "word";
+            }
+            textComponent.fontSize = smallFontSize;
+        }
+        
         textComponent.font = font;
-        textComponent.fontSize = fontSize;
         textComponent.color = textColor;
         textComponent.alignment = TextAlignmentOptions.Center;
         
-        rectTransform.sizeDelta = new Vector2(200, 50);
+        rectTransform.sizeDelta = new Vector2(300, 100);
         
         ActiveText activeText = new ActiveText
         {
