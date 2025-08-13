@@ -10,7 +10,7 @@ public class BeatTextDisplay : MonoBehaviour
     [SerializeField] private TextAsset beatsFile;
     [SerializeField] private float holdDuration = 0.4f;
     [SerializeField] private float fadeDuration = 1.0f;
-    [SerializeField] private int targetGroup = 1;
+    [SerializeField] private List<int> targetGroup = new();
     [SerializeField] private float fixedDelay = 0f;
     
     [Header("UI Settings")]
@@ -91,7 +91,7 @@ public class BeatTextDisplay : MonoBehaviour
             {
                 if (float.TryParse(parts[0], out float time) && int.TryParse(parts[1], out int group))
                 {
-                    if (group == targetGroup)
+                    if (targetGroup.Contains(group))
                     {
                         timestamps.Add(time);
                     }
