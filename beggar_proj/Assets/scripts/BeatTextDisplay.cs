@@ -11,6 +11,7 @@ public class BeatTextDisplay : MonoBehaviour
     [SerializeField] private float holdDuration = 0.4f;
     [SerializeField] private float fadeDuration = 1.0f;
     [SerializeField] private List<int> targetGroup = new();
+    [SerializeField] private float amplitudeCutoffBig = 0.95f;
     [SerializeField] private float fixedDelay = 0f;
     
     [Header("UI Settings")]
@@ -20,6 +21,8 @@ public class BeatTextDisplay : MonoBehaviour
     private Canvas canvas;
     private List<float> timestamps = new List<float>();
     private string[] randomWords = { "apple", "orange", "pumpkin" };
+    public TextAsset randomWordSource;
+    public TextAsset bigWordSource;
     private int currentTimestampIndex = 0;
     private float startTime;
     private List<ActiveText> activeTexts = new List<ActiveText>();
