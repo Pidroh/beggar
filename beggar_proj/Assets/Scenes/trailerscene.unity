@@ -304,7 +304,7 @@ MonoBehaviour:
   beatsFile: {fileID: 4900000, guid: b6316fecaeed41544934695f1b333006, type: 3}
   holdDuration: 0.4
   fadeDuration: 1
-  targetGroup: 3
+  targetGroup: 2
   fixedDelay: 0.1
   fontSize: 36
   textColor: {r: 1, g: 1, b: 1, a: 1}
@@ -335,8 +335,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 629aefc2c0f557e40a2b8a8d79af9fd5, type: 3}
-  m_Resource: {fileID: 8300000, guid: 629aefc2c0f557e40a2b8a8d79af9fd5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c9cff1807d4b02447b62e55acef9dbc4, type: 3}
+  m_Resource: {fileID: 8300000, guid: c9cff1807d4b02447b62e55acef9dbc4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
