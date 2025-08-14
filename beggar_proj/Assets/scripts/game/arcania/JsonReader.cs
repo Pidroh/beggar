@@ -353,8 +353,9 @@ public class JsonReader
             {
                 var dr = new DialogRuntime()
                 {
-                    Title = item["title"],
-                    Content = item["content"],
+                    // use name as the key for the dialog title localized string
+                    Title = localizeNameDescription ? Local.GetText(item["id"]+"_name") : item["title"],
+                    Content = localizeNameDescription ? Local.GetText(item["id"]+"_desc") : item["content"],
                     Id = item["id"],
                 };
                 foreach (var pair in item)
