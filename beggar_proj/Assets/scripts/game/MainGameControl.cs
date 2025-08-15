@@ -67,7 +67,7 @@ public class MainGameControl : MonoBehaviour
         var straightToGameNoTitle = _lastControlStateStatic.HasValue ? _lastControlStateStatic == ControlState.GAME : false;
 
         // SetupMainGame();
-        if (straightToGameNoTitle) 
+        if (straightToGameNoTitle)
         {
             SetupMainGameAllAtOnce();
         }
@@ -80,7 +80,7 @@ public class MainGameControl : MonoBehaviour
 
 
         _lastControlStateStatic = null;
-        if (Local.WantToChooseLanguage) 
+        if (Local.WantToChooseLanguage)
         {
             HeartGame.GoToLanguageSelection();
         }
@@ -114,15 +114,27 @@ public class MainGameControl : MonoBehaviour
 
             }
         }
-        else if (controlState == ControlState.LOADING) 
+        else if (controlState == ControlState.LOADING)
         {
             LoadingScreenControl.ManualUpdate(this, loadingScreenData);
-            if(loadingScreenData.state == LoadingScreenRuntimeData.State.OVER) 
+            if (loadingScreenData.state == LoadingScreenRuntimeData.State.OVER)
             {
                 controlState = ControlState.GAME;
             }
         }
-        
+
+        #region debug command (title screen too)
+        {
+            if (DebugMenuManager.CheckCommand("dpi", out int v))
+            {
+                EngineView.OverwriteDPI(v);
+            }
+            if (DebugMenuManager.CheckCommand("dpi"))
+            {
+                EngineView.ClearOverwriteDPI();
+            }
+        }
+        #endregion
 
         //
         // -----------------------------------------------------------
@@ -160,16 +172,7 @@ public class MainGameControl : MonoBehaviour
                     TimeMultiplier = 1;
                 }
             }
-            {
-                if (DebugMenuManager.CheckCommand("dpi", out int v))
-                {
-                    EngineView.OverwriteDPI(v);
-                }
-                if (DebugMenuManager.CheckCommand("dpi"))
-                {
-                    EngineView.ClearOverwriteDPI();
-                }
-            }
+
             {
                 if (DebugMenuManager.CheckCommand("value", out string label, out int v))
                 {

@@ -1,4 +1,5 @@
 using HeartUnity;
+using HeartUnity.View;
 
 public enum TitleScreenState
 {
@@ -11,6 +12,7 @@ public static class TitleScreenControl
     public static TitleScreenState ManualUpdate(MainGameControl mgc, TitleScreenRuntimeData titleScreenData)
     {
         mgc.JLayoutRuntime.jLayCanvas.children[0].ForceCenterX = true;
+        mgc.JLayoutRuntime.jLayCanvas.children[0].UpdateDesiredSize(400 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
         foreach (var pair in titleScreenData.TitleButtonsJCUs)
         {
             if (pair.Item2.TaskClicked)
