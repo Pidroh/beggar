@@ -279,14 +279,14 @@ hungry_beggar_name$$Hungriger Bettler
 hungry_beggar_desc$$Tief im Hunger, kurz vor dem Wahnsinn.
 lost_diary_page_name$$Verlorene Seite
 lost_diary_page_desc$$Eine Seite voller Worte, kaum lesbar.
-dialog_job_name$$Dialog_Aufgabe
-dialog_job_desc$$
-irreversible_name$$unumkehrbar
-irreversible_desc$$
-exclusive_upgrade_name$$Exklusives Upgrade
-exclusive_upgrade_desc$$
-ending_name$$Ende
-ending_desc$$
+dialog_job_name$$Klassenauswahl
+dialog_job_desc$$Das Auswählen einer Klasse sperrt die anderen Klassen aus derselben Stufe aus. Bist du sicher?
+irreversible_name$$Unumkehrbare Aktion
+irreversible_desc$$Sobald erledigt, kann diese Aktion nicht rückgängig gemacht werden. Bist du sicher?
+exclusive_upgrade_name$$Upgrade-Auswahl
+exclusive_upgrade_desc$$Das Auswählen dieses Upgrades sperrt Upgrades aus demselben Level. Bist du sicher?
+ending_name$$Ende der Reise
+ending_desc$$Führen dieser Aktion wird das Spiel beenden. Bist du sicher?
 brokenmirror_name$$Zerbrochener Spiegel
 brokenmirror_desc$$
 crackedvase_name$$Zerbrochene Vase
@@ -327,38 +327,28 @@ rustyknife_name$$Rostiges Messer
 rustyknife_desc$$
 catfoodtray_name$$Essenstablett
 catfoodtray_desc$$
-task_name$$Aufgabe
+task_name$$Aufgaben
 task_desc$$
 action_name$$Sofortige Aufgaben
 action_desc$$
-task_name$$Aufgaben
-task_desc$$
 crime_sep_name$$Kriminelle Aktivitäten
 crime_sep_desc$$
 power_up_name$$Stärkungen
 power_up_desc$$
 class_name$$Klassen
 class_desc$$
-resource_name$$Ressource
-resource_desc$$
 resource_name$$Ressourcen
 resource_desc$$
-skill_name$$Fähigkeit
-skill_desc$$
 skill_name$$Fähigkeiten
 skill_desc$$
 exploration_name$$Erkundung
 exploration_desc$$
 location_name$$Orte
 location_desc$$
-housing_name$$Wohnen
-housing_desc$$
 housing_name$$Wohnung
 housing_desc$$
 furniture_name$$Möbel
 furniture_desc$$
-log_name$$Protokoll
-log_desc$$
 log_name$$Protokoll
 log_desc$$
 settings_name$$Einstellungen
@@ -366,9 +356,9 @@ settings_desc$$
 others_name$$andere
 others_desc$$
 ponderexistence_name$$Was ist Realität?
-ponderexistence_desc$$Fragen Sie eine Ratte nach der Natur Ihrer Realität.
+ponderexistence_desc$$Frag eine Ratte nach der Natur deiner Realität.
 ponderhappiness_name$$Was ist Glück?
-ponderhappiness_desc$$Frag deine Katze nach der Natur des Glücks.
+ponderhappiness_desc$$Fragen Sie Ihre Katze nach der Natur des Glücks.
 churchrespect_name$$Kirchenrespekt
 churchrespect_desc$$Wie gut du von den Mitgliedern der Kirche angesehen wirst.
 reflection_name$$Reflexion
@@ -569,22 +559,16 @@ keyschurch_name$$Schlüssel der Kirche
 keyschurch_desc$$Der Bischof hält die Schlüssel auf dich zu.
 holdcandle_name$$Die Kerze
 holdcandle_desc$$Der Bischof hält die symbolische Kerze zu dir.
-irreversible_church_name$$Unumkehrbare Kirche
-irreversible_church_desc$$
+irreversible_church_name$$Unumkehrbare Aktion
+irreversible_church_desc$$Sobald dies geschehen ist, kann diese Aktion nicht rückgängig gemacht werden. Du wirst nicht länger in der Lage sein, auf der Straße zu betteln, unter anderem. Aber du wirst Zugang zu einer ganz neuen Bandbreite von Möglichkeiten bekommen. Gehst du mit dieser Aktion weiter?
 rosario_name$$Rosario
 rosario_desc$$Ein wunderschönes Rosario, brandneu.
 childdrawing_name$$Holzzeichnung
 childdrawing_desc$$Ein Stück Holz mit einer eingeschnitzten Zeichnung. War es ein Kind, das es gemacht hat?
 storytellingdolls_name$$Geschichtenerzähler-Puppen
 storytellingdolls_desc$$Du benutzt diese, um deinen Mitbegrebern wunderbare Geschichten zu erzählen.
-ponderexistence_name$$Was ist Realität?
-ponderexistence_desc$$Frag eine Ratte nach der Natur deiner Realität.
-ponderhappiness_name$$Was ist Glück?
-ponderhappiness_desc$$Frag deine Katze nach der Natur des Glücks.
 ponderreligion_name$$Was sind die Lehren?
-ponderreligion_desc$$Sinne mit aller Kraft über die Bedeutung der Religion nach.
-firewood_name$$Kaminholz
-firewood_desc$$Einige Kaminholz, hält dich nachts warm.
+ponderreligion_desc$$Denke mit all deiner Kraft über die Bedeutung von Religion nach.
 firewood_name$$Brennholz
 firewood_desc$$Brennholz für das Lagerfeuer. Du brauchst jedoch etwas, um es anzuzünden.
 followers_name$$Anhänger
@@ -743,8 +727,6 @@ kidnapping_name$$Entführung
 kidnapping_desc$$Die Kunst, Menschen zu entführen
 charisma_name$$Charisma
 charisma_desc$$Ein überzeugendes Lächeln und eine attraktive Ausstrahlung.
-irreversible_church_name$$Unumkehrbare Kirche
-irreversible_church_desc$$
 symbolicspoon_name$$Symbolischer Löffel
 symbolicspoon_desc$$Ein eiserner Löffel, der für ein Herz voller Empathie steht.
 woodstick_name$$Holzstab
@@ -763,16 +745,10 @@ sharingbowl_name$$Teilschale
 sharingbowl_desc$$Verwenden Sie dies, um Essen mit Bedürftigen zu teilen.
 bigbowl_name$$Große Schüssel
 bigbowl_desc$$Verwende sie, um all diese Krümel zu lagern.
-ponderexistence_name$$Was ist Realität?
-ponderexistence_desc$$Frag eine Ratte nach der Natur deiner Realität.
-ponderhappiness_name$$Was ist Glück?
-ponderhappiness_desc$$Frag deine Katze nach der Natur des Glücks.
-ponderreligion_name$$Was sind die Lehren?
-ponderreligion_desc$$Grüble mit aller Kraft über die Bedeutung der Religion nach.
 pondergood_name$$Was bedeutet es, gut zu sein?
-pondergood_desc$$Grüble mit aller Kraft über die Bedeutung, gut zu sein.
+pondergood_desc$$Grüble mit all deiner Kraft über die Bedeutung, gut zu sein.
 fire_ending_name$$Antwort im Feuer
-fire_ending_desc$$Starre in das Gemetzel, in die Flamme.
+fire_ending_desc$$Blicke in das Gemetzel, in die Flamme.
 realization_name$$Erkenntnis
 realization_desc$$Neues Verständnis, das aus tiefem Nachdenken entsteht.
 musing_name$$Grübeln
@@ -959,15 +935,5 @@ stolen_chest_name$$Gestohlene antike Truhe
 stolen_chest_desc$$Eine schöne antike Truhe, die jede Menge Gold aufnehmen kann. Sieht auch wirklich schick aus.
 nice_clothes_name$$Schöne Kleidung
 nice_clothes_desc$$Ein gepflegtes Aussehen.
-ponderexistence_name$$Was ist Realität?
-ponderexistence_desc$$Frag eine Ratte nach der Natur deiner Realität.
 pondercrime_name$$Was bedeutet es, reich zu sein?
 pondercrime_desc$$In Luxus schwelgen, während du darüber nachdenkst, was das alles bedeutet.
-ponderhappiness_name$$Was ist Glück?
-ponderhappiness_desc$$Fragen Sie Ihre Katze nach der Natur des Glücks.
-ponderreligion_name$$Was sind die Lehren?
-ponderreligion_desc$$Denke mit all deiner Kraft über die Bedeutung von Religion nach.
-pondergood_name$$Was bedeutet es, gut zu sein?
-pondergood_desc$$Grüble mit all deiner Kraft über die Bedeutung, gut zu sein.
-fire_ending_name$$Antwort im Feuer
-fire_ending_desc$$Blicke in das Gemetzel, in die Flamme.

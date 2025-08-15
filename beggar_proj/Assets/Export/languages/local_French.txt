@@ -279,14 +279,14 @@ hungry_beggar_name$$Mendiant affamé
 hungry_beggar_desc$$Au bord de la folie, dévoré par la faim
 lost_diary_page_name$$Page perdue
 lost_diary_page_desc$$Une page remplie de mots, à peine lisible
-dialog_job_name$$dialogue_travail
-dialog_job_desc$$
-irreversible_name$$irréversible
-irreversible_desc$$
-exclusive_upgrade_name$$amélioration_exclusive
-exclusive_upgrade_desc$$
-ending_name$$fin
-ending_desc$$
+dialog_job_name$$Sélection de classe
+dialog_job_desc$$Choisir une classe verrouillera les autres classes du même niveau. Êtes-vous sûr ?
+irreversible_name$$Action irréversible
+irreversible_desc$$Une fois fait, cette action ne peut être annulée. Êtes-vous sûr ?
+exclusive_upgrade_name$$Sélection de Mise à Niveau
+exclusive_upgrade_desc$$Sélectionner cette amélioration verrouillera les améliorations du même niveau. Êtes-vous sûr ?
+ending_name$$Fin du voyage
+ending_desc$$Effectuer cette action terminera le jeu. Êtes-vous sûr ?
 brokenmirror_name$$Miroir brisé
 brokenmirror_desc$$
 crackedvase_name$$Vase fissuré
@@ -327,38 +327,28 @@ rustyknife_name$$Couteau rouillé
 rustyknife_desc$$
 catfoodtray_name$$Plateau de nourriture
 catfoodtray_desc$$
-task_name$$tâche
+task_name$$Tâches
 task_desc$$
 action_name$$Tâches Instantanées
 action_desc$$
-task_name$$Tâches
-task_desc$$
 crime_sep_name$$Activités criminelles
 crime_sep_desc$$
 power_up_name$$Bonus de puissance
 power_up_desc$$
 class_name$$Classes
 class_desc$$
-resource_name$$ressource
-resource_desc$$
 resource_name$$Ressources
 resource_desc$$
-skill_name$$compétence
-skill_desc$$
 skill_name$$Compétences
 skill_desc$$
 exploration_name$$exploration
 exploration_desc$$
 location_name$$Emplacements
 location_desc$$
-housing_name$$logement
-housing_desc$$
 housing_name$$Logement
 housing_desc$$
 furniture_name$$Meubles
 furniture_desc$$
-log_name$$logarithme
-log_desc$$
 log_name$$Journal
 log_desc$$
 settings_name$$Paramètres
@@ -366,9 +356,9 @@ settings_desc$$
 others_name$$les autres
 others_desc$$
 ponderexistence_name$$Qu'est-ce que la réalité ?
-ponderexistence_desc$$Demandez à un rat de quel est la nature de votre réalité
+ponderexistence_desc$$Demandez à un rat à propos de la nature de votre réalité.
 ponderhappiness_name$$Qu'est-ce que le bonheur ?
-ponderhappiness_desc$$Demande à ton chat de te parler de la nature du bonheur.
+ponderhappiness_desc$$Demandez à votre chat de vous parler de la nature du bonheur.
 churchrespect_name$$Respect de l'Église
 churchrespect_desc$$À quel point es-tu bien vu par les membres de l'Église?
 reflection_name$$Réflexion
@@ -569,22 +559,16 @@ keyschurch_name$$Clés de l'Église
 keyschurch_desc$$L'évêque vous tend les clés.
 holdcandle_name$$Le chandelier
 holdcandle_desc$$L'évêque vous tend le chandelier symbolique.
-irreversible_church_name$$Église irréversible
-irreversible_church_desc$$
+irreversible_church_name$$Action irréversible
+irreversible_church_desc$$Une fois terminée, cette action ne peut pas être annulée. Vous ne pourrez plus mendier dans les rues, entre autres actions. Mais vous gagnerez accès à tout un nouvel éventail de possibilités. Voulez-vous continuer avec cette action ?
 rosario_name$$Rosario
 rosario_desc$$Un beau rosario, tout neuf
 childdrawing_name$$Dessin en bois
 childdrawing_desc$$Un morceau de bois avec un dessin sculpté. Était-ce un enfant qui l'a fait?
 storytellingdolls_name$$Poupées conteuses
 storytellingdolls_desc$$Vous utilisez ces poupées pour raconter des histoires merveilleuses à vos compagnons mendiants.
-ponderexistence_name$$Qu'est-ce que la réalité?
-ponderexistence_desc$$Demandez à un rat de parler de la nature de votre réalité.
-ponderhappiness_name$$Qu'est-ce que le bonheur ?
-ponderhappiness_desc$$Demandez à votre chat de décrire la nature du bonheur
 ponderreligion_name$$Quels sont les enseignements ?
-ponderreligion_desc$$Méditez de toutes vos forces sur la signification de la religion.
-firewood_name$$Bois de chauffage
-firewood_desc$$Du bois de chauffage, vous garde au chaud la nuit.
+ponderreligion_desc$$Réfléchissez de toutes vos forces sur le sens de la religion.
 firewood_name$$bois de chauffage
 firewood_desc$$Bois pour le feu de camp. Vous avez besoin de quelque chose pour l'allumer cependant.
 followers_name$$partisans
@@ -743,8 +727,6 @@ kidnapping_name$$enlèvement
 kidnapping_desc$$L'art d'enlèvement de personnes.
 charisma_name$$charisme
 charisma_desc$$Un sourire captivant et une confiance attrayante
-irreversible_church_name$$Église irréversible
-irreversible_church_desc$$
 symbolicspoon_name$$Cuillère symbolique
 symbolicspoon_desc$$Une cuillère en fer qui représente un cœur d'empathie
 woodstick_name$$Bâton en bois
@@ -763,16 +745,10 @@ sharingbowl_name$$Bol de partage
 sharingbowl_desc$$Utilisez ceci pour partager de la nourriture avec ceux dans le besoin.
 bigbowl_name$$Grand bol
 bigbowl_desc$$Utilisez-le pour stocker tous ces petits morceaux.
-ponderexistence_name$$Qu'est-ce que la réalité ?
-ponderexistence_desc$$Demandez à un rat de décrire la nature de votre réalité
-ponderhappiness_name$$Qu'est-ce que le bonheur ?
-ponderhappiness_desc$$Demandez à votre chat de parler de la nature du bonheur.
-ponderreligion_name$$Quels sont les enseignements ?
-ponderreligion_desc$$Réfléchissez de toutes vos forces sur la signification de la religion
-pondergood_name$$Que signifie être bon?
-pondergood_desc$$Réfléchissez de toutes vos forces sur le sens d'être bon.
+pondergood_name$$Que signifie être bon ?
+pondergood_desc$$Ruminer avec toute votre force sur la signification d'être bon
 fire_ending_name$$Réponse dans le feu
-fire_ending_desc$$Fixez le carnage, fixez la flamme
+fire_ending_desc$$Plongez votre regard dans le carnage, dans la flamme.
 realization_name$$Réalisation
 realization_desc$$Nouvelle compréhension qui vient d'une réflexion profonde
 musing_name$$Réflexion
@@ -959,15 +935,5 @@ stolen_chest_name$$Coffre antique volé
 stolen_chest_desc$$Un joli coffre antique qui peut contenir pas mal d'or. A aussi l'air vraiment élégant.
 nice_clothes_name$$Beaux vêtements
 nice_clothes_desc$$Avoir une apparence soignée
-ponderexistence_name$$Qu'est-ce que la réalité ?
-ponderexistence_desc$$Demandez à un rat à propos de la nature de votre réalité.
 pondercrime_name$$Que signifie être riche ?
 pondercrime_desc$$Plongez dans le luxe tout en réfléchissant à ce que tout cela signifie.
-ponderhappiness_name$$Qu'est-ce que le bonheur ?
-ponderhappiness_desc$$Demandez à votre chat de vous parler de la nature du bonheur.
-ponderreligion_name$$Quels sont les enseignements ?
-ponderreligion_desc$$Réfléchissez de toutes vos forces sur le sens de la religion.
-pondergood_name$$Que signifie être bon ?
-pondergood_desc$$Ruminer avec toute votre force sur la signification d'être bon
-fire_ending_name$$Réponse dans le feu
-fire_ending_desc$$Plongez votre regard dans le carnage, dans la flamme.

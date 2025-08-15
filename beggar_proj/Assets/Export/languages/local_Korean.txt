@@ -279,14 +279,14 @@ hungry_beggar_name$$굶주린 거지
 hungry_beggar_desc$$굶주린 거지, 미쳐가는 듯이 배고파 함께 있다.
 lost_diary_page_name$$잃어버린 페이지
 lost_diary_page_desc$$단어로 가득한 페이지, 거의 읽기 힘든 페이지
-dialog_job_name$$작업 대화
-dialog_job_desc$$
-irreversible_name$$돌이킬 수 없는
-irreversible_desc$$
-exclusive_upgrade_name$$독점 업그레이드
-exclusive_upgrade_desc$$
-ending_name$$마지막
-ending_desc$$
+dialog_job_name$$직업 선택
+dialog_job_desc$$동일한 티어의 다른 클래스를 잠금 처리함으로써 클래스를 선택합니다. 확실합니까?
+irreversible_name$$돌이킬 수 없는 행동
+irreversible_desc$$한 번 한 후에는 이 작업을 되돌릴 수 없습니다. 확실합니까?
+exclusive_upgrade_name$$업그레이드 선택
+exclusive_upgrade_desc$$해당 업그레이드를 선택하면 동일한 티어의 업그레이드를 잠그게 됩니다. 확실합니까?
+ending_name$$여정의 끝
+ending_desc$$이 작업을 수행하면 게임이 완료됩니다. 확실합니까?
 brokenmirror_name$$부서진 거울
 brokenmirror_desc$$
 crackedvase_name$$깨진 화분
@@ -331,20 +331,14 @@ task_name$$작업
 task_desc$$
 action_name$$즉시 작업
 action_desc$$
-task_name$$작업
-task_desc$$
 crime_sep_name$$범죄 활동
 crime_sep_desc$$
 power_up_name$$파워 업
 power_up_desc$$
 class_name$$클래스
 class_desc$$
-resource_name$$자원
-resource_desc$$
 resource_name$$자원들
 resource_desc$$
-skill_name$$기술
-skill_desc$$
 skill_name$$기술
 skill_desc$$
 exploration_name$$탐험
@@ -353,22 +347,18 @@ location_name$$위치
 location_desc$$
 housing_name$$주택
 housing_desc$$
-housing_name$$주택
-housing_desc$$
 furniture_name$$가구
 furniture_desc$$
-log_name$$로그
-log_desc$$
 log_name$$로그
 log_desc$$
 settings_name$$설정
 settings_desc$$
 others_name$$다른이
 others_desc$$
-ponderexistence_name$$현실은 무엇인가요?
-ponderexistence_desc$$당신의 현실에 대해 쥐에게 물어보세요.
+ponderexistence_name$$현실이란 무엇인가요?
+ponderexistence_desc$$당신의 현실에 대해 쥐에게 물어보세요
 ponderhappiness_name$$행복이란 무엇인가요?
-ponderhappiness_desc$$고양이에게 행복의 본질에 대해 묻어보세요.
+ponderhappiness_desc$$고양이에게 행복의 본질에 대해 물어보세요.
 churchrespect_name$$교회 존중
 churchrespect_desc$$교회 구성원들에게 얼마나 잘 보이는지
 reflection_name$$반영
@@ -569,22 +559,16 @@ keyschurch_name$$교회의 열쇠
 keyschurch_desc$$주교는 당신을 향해 열쇠를 가지고 있습니다.
 holdcandle_name$$촛대
 holdcandle_desc$$주교는 상징적인 촛대를 당신에게 향해 들고 있습니다.
-irreversible_church_name$$돌이킬 수 없는 교회
-irreversible_church_desc$$
+irreversible_church_name$$불가역적인 행동
+irreversible_church_desc$$일단 한 번 실행되면 이 작업은 되돌릴 수 없습니다. 거리에서 구걸할 수 없거나 다른 작업도 할 수 없을 겁니다. 그러나 새로운 가능성에 접근할 수 있을 겁니다. 이 작업을 계속하시겠습니까?
 rosario_name$$로사리오
 rosario_desc$$아름다운 로사리오, 새거입니다.
 childdrawing_name$$나무 그림
 childdrawing_desc$$조각된 그림이 있는 한 조각의 나무. 작은 아이가 만든 것일까?
 storytellingdolls_name$$이야기 인형
 storytellingdolls_desc$$당신은 이들을 사용하여 동료 거지들에게 멋진 이야기를 전할 수 있습니다.
-ponderexistence_name$$현실은 무엇인가요?
-ponderexistence_desc$$당신의 현실에 대한 본질에 대해 쥐에게 물어보세요
-ponderhappiness_name$$행복은 무엇인가요?
-ponderhappiness_desc$$고양이에게 행복의 본질에 대해 물어보세요.
-ponderreligion_name$$교리는 무엇인가요?
-ponderreligion_desc$$모든 힘을 다해 종교의 의미를 숙고하세요
-firewood_name$$나무덩이
-firewood_desc$$어떤 나무덩이, 밤에 따뜻하게 해줍니다
+ponderreligion_name$$가르침은 무엇인가요?
+ponderreligion_desc$$몸부림침이 죽어도 계속 생각해 보십시오.
 firewood_name$$장작
 firewood_desc$$모닥불용 나무. 불을 붙이는 데 필요한 것이 있어야 합니다.
 followers_name$$팔로워
@@ -743,8 +727,6 @@ kidnapping_name$$사람납치
 kidnapping_desc$$사람을 납치하는 기술
 charisma_name$$매력
 charisma_desc$$매력적인 미소와 매력적인 자신감
-irreversible_church_name$$돌이킨교회
-irreversible_church_desc$$
 symbolicspoon_name$$상징적인 숟가락
 symbolicspoon_desc$$공감의 심장을 상징하는 철제 숟가락
 woodstick_name$$목재막대
@@ -763,16 +745,10 @@ sharingbowl_name$$나눔 그릇
 sharingbowl_desc$$이것을 사용하여 필요한 사람들과 음식을 나눠주세요.
 bigbowl_name$$큰 그릇
 bigbowl_desc$$그 속에 모든 조각들을 보관하는 데 사용하세요.
-ponderexistence_name$$현실이란 무엇인가요?
-ponderexistence_desc$$당신의 현실의 본질에 대해 쥐에게 물어보세요.
-ponderhappiness_name$$행복이란 무엇인가요?
-ponderhappiness_desc$$고양이에게 행복의 본질에 대해 물어보세요.
-ponderreligion_name$$가르침은 무엇인가?
-ponderreligion_desc$$모든 힘을 다하여 종교의 의미를 심사숙고하십시오.
-pondergood_name$$양심으로 묵상하십시오좋은 것이란 무엇을 의미합니까?
-pondergood_desc$$모든 힘을 다해 양심으로 좋은 것이란 무엇을 의미하는지 곰곰히 생각하십시오.
-fire_ending_name$$불 속 대답
-fire_ending_desc$$참상을 응시하라, 화염 속으로
+pondergood_name$$양심의 의미는 무엇입니까?
+pondergood_desc$$모든 힘을 다해 선한 것의 의미를 심사숙고하세요.
+fire_ending_name$$불 속의 해답
+fire_ending_desc$$카나지를 응시하라, 불 속으로
 realization_name$$깨달음
 realization_desc$$깊은 사색으로부터 오는 새로운 이해
 musing_name$$고찰
@@ -959,15 +935,5 @@ stolen_chest_name$$훔친 고미술 선반
 stolen_chest_desc$$고급스러운 고미술 선반이며 꽤 많은 금을 담을 수 있습니다. 또한 정말 화려해 보입니다.
 nice_clothes_name$$좋은 옷
 nice_clothes_desc$$멋지게 보이기
-ponderexistence_name$$현실이란 무엇인가요?
-ponderexistence_desc$$당신의 현실에 대해 쥐에게 물어보세요
 pondercrime_name$$부자가 된다는 것이 무엇을 의미하는 가요?
 pondercrime_desc$$함께 모든 의미가 무엇인지 곰곰히 생각하면서 사치에 푹 빠져 보세요.
-ponderhappiness_name$$행복이란 무엇인가요?
-ponderhappiness_desc$$고양이에게 행복의 본질에 대해 물어보세요.
-ponderreligion_name$$가르침은 무엇인가요?
-ponderreligion_desc$$몸부림침이 죽어도 계속 생각해 보십시오.
-pondergood_name$$양심의 의미는 무엇입니까?
-pondergood_desc$$모든 힘을 다해 선한 것의 의미를 심사숙고하세요.
-fire_ending_name$$불 속의 해답
-fire_ending_desc$$카나지를 응시하라, 불 속으로

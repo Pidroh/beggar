@@ -279,14 +279,14 @@ hungry_beggar_name$$Pedinte faminto
 hungry_beggar_desc$$Profundamente faminto, perto da insanidade.
 lost_diary_page_name$$Página perdida
 lost_diary_page_desc$$Uma página cheia de palavras, mal legível.
-dialog_job_name$$diálogo_trabalho
-dialog_job_desc$$
-irreversible_name$$irreversível
-irreversible_desc$$
-exclusive_upgrade_name$$Atualização exclusiva
-exclusive_upgrade_desc$$
-ending_name$$final
-ending_desc$$
+dialog_job_name$$Seleção de Classe
+dialog_job_desc$$Selecionar uma classe bloqueará as outras classes do mesmo nível. Você tem certeza?
+irreversible_name$$Ação Irreversível
+irreversible_desc$$Uma vez feita, esta ação não pode ser desfeita. Você tem certeza?
+exclusive_upgrade_name$$Seleção de Melhoria
+exclusive_upgrade_desc$$Seleção desta melhoria bloqueará as melhorias do mesmo nível. Você tem certeza?
+ending_name$$Fim da Jornada
+ending_desc$$Realizar esta ação irá completar o jogo. Você tem certeza?
 brokenmirror_name$$Espelho quebrado
 brokenmirror_desc$$
 crackedvase_name$$Vaso quebrado
@@ -327,24 +327,18 @@ rustyknife_name$$Faca enferrujada
 rustyknife_desc$$
 catfoodtray_name$$Bandeja de comida
 catfoodtray_desc$$
-task_name$$tarefa
+task_name$$Tarefas
 task_desc$$
 action_name$$Tarefas Instantâneas
 action_desc$$
-task_name$$Tarefas
-task_desc$$
 crime_sep_name$$Atividades Criminosas
 crime_sep_desc$$
 power_up_name$$Power Ups
 power_up_desc$$
 class_name$$Classes
 class_desc$$
-resource_name$$recurso
-resource_desc$$
 resource_name$$Recursos
 resource_desc$$
-skill_name$$habilidade
-skill_desc$$
 skill_name$$Habilidades
 skill_desc$$
 exploration_name$$exploração
@@ -353,12 +347,8 @@ location_name$$Localizações
 location_desc$$
 housing_name$$Moradia
 housing_desc$$
-housing_name$$Moradia
-housing_desc$$
 furniture_name$$Móveis
 furniture_desc$$
-log_name$$registro
-log_desc$$
 log_name$$Registro
 log_desc$$
 settings_name$$Configurações
@@ -366,9 +356,9 @@ settings_desc$$
 others_name$$outros
 others_desc$$
 ponderexistence_name$$Qual é a realidade?
-ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade
+ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
 ponderhappiness_name$$Qual é a felicidade?
-ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade.
+ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade
 churchrespect_name$$Respeito da Igreja
 churchrespect_desc$$Como você é bem visto pelos membros da igreja
 reflection_name$$Reflexão
@@ -569,22 +559,16 @@ keyschurch_name$$Chaves da Igreja
 keyschurch_desc$$O Bispo segura as chaves em sua direção.
 holdcandle_name$$O Castiçal
 holdcandle_desc$$O Bispo segura o Castiçal simbólico em sua direção.
-irreversible_church_name$$Igreja Irreversível
-irreversible_church_desc$$
+irreversible_church_name$$Ação Irreversível
+irreversible_church_desc$$Uma vez feito, essa ação não pode ser desfeita. Você não será mais capaz de mendigar nas ruas, entre outras ações. Mas você terá acesso a uma nova gama de possibilidades. Prossiga com esta ação?
 rosario_name$$Rosário
 rosario_desc$$Um lindo rosário, novinho em folha.
 childdrawing_name$$Desenho em Madeira
 childdrawing_desc$$Uma peça de madeira com um desenho esculpido. Será que foi uma criança que fez isso?
 storytellingdolls_name$$Bonecas Contadoras de Histórias
 storytellingdolls_desc$$Você usa isso para narrar histórias maravilhosas para seus colegas mendigos.
-ponderexistence_name$$Qual é a realidade?
-ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
-ponderhappiness_name$$Qual é a felicidade?
-ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade
 ponderreligion_name$$Quais são os ensinamentos?
-ponderreligion_desc$$Refletir com toda a sua força sobre o significado da religião.
-firewood_name$$Lenha
-firewood_desc$$Alguma lenha, te mantém aquecido durante a noite
+ponderreligion_desc$$Refletir com todo o seu poder sobre o significado da religião.
 firewood_name$$lenha
 firewood_desc$$Lenha para a fogueira. Você precisa de algo para acendê-la, no entanto.
 followers_name$$seguidores
@@ -743,8 +727,6 @@ kidnapping_name$$sequestro
 kidnapping_desc$$A arte de capturar pessoas
 charisma_name$$carisma
 charisma_desc$$Um sorriso cativante e uma confiança atraente.
-irreversible_church_name$$Igreja Irreversível
-irreversible_church_desc$$
 symbolicspoon_name$$Colher Simbólica
 symbolicspoon_desc$$Uma colher de ferro que representa um coração de empatia
 woodstick_name$$Pauzinho de Madeira
@@ -763,16 +745,10 @@ sharingbowl_name$$Tigela de Compartilhamento
 sharingbowl_desc$$Use isso para compartilhar comida com aqueles que precisam.
 bigbowl_name$$Grande tigela
 bigbowl_desc$$Use-a para armazenar todos esses farelos.
-ponderexistence_name$$Qual é a realidade?
-ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
-ponderhappiness_name$$Qual é a felicidade?
-ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade.
-ponderreligion_name$$Quais são os ensinamentos?
-ponderreligion_desc$$Refletir com todas as suas forças sobre o significado da religião.
 pondergood_name$$O que significa ser bom?
-pondergood_desc$$Reflexione com todo o seu poder sobre o significado de ser bom.
-fire_ending_name$$Responder no fogo
-fire_ending_desc$$Encare a carnificina, nas chamas.
+pondergood_desc$$Reflexione com todo seu poder sobre o significado de ser bom.
+fire_ending_name$$Responda no fogo
+fire_ending_desc$$Contemple a carnificina, na chama.
 realization_name$$Revelação
 realization_desc$$Nova compreensão que surge de reflexão profunda
 musing_name$$Reflexão
@@ -959,15 +935,5 @@ stolen_chest_name$$Baú antigo roubado
 stolen_chest_desc$$Um belo baú antigo que pode guardar uma boa quantidade de ouro. Também parece muito chique.
 nice_clothes_name$$Roupas bonitas
 nice_clothes_desc$$Com boa aparência
-ponderexistence_name$$Qual é a realidade?
-ponderexistence_desc$$Pergunte a um rato sobre a natureza da sua realidade.
 pondercrime_name$$O que significa ser rico?
 pondercrime_desc$$Desfrute do luxo enquanto você reflete sobre o que tudo isso significa.
-ponderhappiness_name$$Qual é a felicidade?
-ponderhappiness_desc$$Pergunte ao seu gato sobre a natureza da felicidade
-ponderreligion_name$$Quais são os ensinamentos?
-ponderreligion_desc$$Refletir com todo o seu poder sobre o significado da religião.
-pondergood_name$$O que significa ser bom?
-pondergood_desc$$Reflexione com todo seu poder sobre o significado de ser bom.
-fire_ending_name$$Responda no fogo
-fire_ending_desc$$Contemple a carnificina, na chama.
