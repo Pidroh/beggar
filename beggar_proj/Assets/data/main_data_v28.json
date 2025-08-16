@@ -121,7 +121,7 @@
                     "heavydisease.mod.supplication.rate": 0.03
                 }
             },{
-                "id": "diseasebody3",
+                "id": "diseasebody4",
                 "name": "Resist disease III",
                 "desc": "Really, there is no need to worry",
                 "require": "diseaseintolerance>=5",
@@ -179,6 +179,23 @@
                         "middisease.mod.thoughts.max": 20,
                         "middisease.mod.supplication.rate": 1,
                         "middisease.mod.thoughts.rate": 1
+                    }
+                }
+            },
+            {
+                "id": "diseasedot_b",
+                "name": "Disease into strength",
+                "desc": "Cope with the severity of your disease",
+                "require": "diseasebody4",
+                "tag": "disease_tag",
+                "duration": 5,
+                "dot": {
+                    "duration": 120,
+                    "mod": {
+                        "heavydisease.mod.supplication.max": 100,
+                        "heavydisease.mod.thoughts.max": 50,
+                        "heavydisease.mod.supplication.rate": 1,
+                        "heavydisease.mod.thoughts.rate": 1
                     }
                 }
             },
