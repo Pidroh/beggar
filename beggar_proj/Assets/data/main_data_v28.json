@@ -7,6 +7,7 @@
                 "name": "Small illness",
                 "max": 5,
                 "desc": "Nothing too serious",
+                "tag":"disease_tag",
                 "mod": {
                     "middisease.rate": 0.001
                 }
@@ -16,6 +17,7 @@
                 "name": "Sickness",
                 "max": 5,
                 "desc": "You better get that treated",
+                "tag":"disease_tag",
                 "mod": {
                     "supplication.max": -20,
                     "thoughts.max": -10,
@@ -27,6 +29,7 @@
                 "name": "Disease",
                 "max": 3,
                 "desc": "Things are getting pretty bad, huh?",
+                "tag":"disease_tag",
                 "mod": {
                     "supplication.max": -80,
                     "thoughts.max": -20,
@@ -39,6 +42,7 @@
                 "name": "Terminal disease",
                 "max": 1,
                 "desc": "Enjoy what time you have left",
+                "tag":"disease_tag",
                 "mod": {
                     "supplication.max": -200,
                     "thoughts.max": -100,
@@ -50,6 +54,7 @@
                 "id": "degeneration",
                 "name": "Degeneration",
                 "max": 1000,
+                "tag":"disease_tag",
                 "desc": "The disease eating away at your body",
                 "mod": {
                     "supplication.max": -5,
@@ -61,7 +66,63 @@
     {
         "type": "TASK",
         "items": [
-
+            {
+                "id": "sickmind",
+                "name": "Sick mind adaptation",
+                "desc": "Don't let sickness stop your mind",
+                "require": "diseaseintolerance>=1",
+                "tag": "disease_tag",
+                "max": 5,
+                "duration": 10,
+                "mod": {
+                    "middisease.mod.thoughts.max": 5
+                }
+            },
+            {
+                "id": "sickbody",
+                "name": "Incorporate disease",
+                "desc": "You're sick, so what?",
+                "require": "diseaseintolerance>=2",
+                "tag": "disease_tag",
+                "max": 5,
+                "duration": 8,
+                "mod": {
+                    "middisease.mod.supplication.max": 5,
+                    "middisease.mod.thoughts.max": 5
+                }
+            },
+            {
+                "id": "diseasebody2",
+                "name": "Resist disease",
+                "desc": "This is nothing",
+                "require": "diseaseintolerance>=3",
+                "tag": "disease_tag",
+                "max": 1,
+                "duration": 90,
+                "mod": {
+                    "middisease.mod.supplication.max": 10,
+                    "middisease.mod.thoughts.max": 10,
+                    "middisease.mod.clarity.max": 1,
+                    "middisease.mod.supplication.rate": 0.02
+                }
+            },
+            {
+                "id": "diseasedot",
+                "name": "Thrive on disease",
+                "desc": "Convince yourself the disease makes you stronger",
+                "require": "diseaseintolerance>=2",
+                "tag": "disease_tag",
+                "duration": 5,
+                "dot": {
+                    "duration": 120,
+                    "mod": {
+                        "middisease.mod.supplication.max": 20,
+                        "middisease.mod.thoughts.max": 20,
+                        "middisease.mod.supplication.rate": 1,
+                        "middisease.mod.thoughts.rate": 1
+                    }
+                }
+            }
         ]
     },
     {
