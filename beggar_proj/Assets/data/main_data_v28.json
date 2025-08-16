@@ -71,7 +71,7 @@
                 "name": "Disease awareness",
                 "desc": "Become aware of your body's health state",
                 "require": "????",zzz
-                "tag": "thievery",
+                "tag": "disease_sep",
                 "duration": 2,
                 "buy": {
                     "weakdisease": 1
@@ -82,6 +82,7 @@
                     "toggle": true,
                     "mods": {
                         "weakdisease.max": 1,
+                        "thoughts.rate": 0.1,
                         "disease_style.activate": 1
                     }
                 }
@@ -91,7 +92,7 @@
                 "name": "Sick mind adaptation",
                 "desc": "Don't let sickness stop your mind",
                 "require": "diseaseintolerance>=1",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "max": 5,
                 "duration": 10,
                 "mod": {
@@ -103,7 +104,7 @@
                 "name": "Incorporate disease",
                 "desc": "You're sick, so what?",
                 "require": "diseaseintolerance>=2",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "max": 5,
                 "duration": 8,
                 "mod": {
@@ -116,7 +117,7 @@
                 "name": "Resist disease",
                 "desc": "This is nothing",
                 "require": "diseaseintolerance>=3",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "max": 1,
                 "duration": 90,
                 "mod": {
@@ -131,7 +132,7 @@
                 "name": "Resist disease II",
                 "desc": "Really, it's nothing",
                 "require": "diseaseintolerance>=4",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "max": 1,
                 "duration": 40,
                 "mod": {
@@ -145,7 +146,7 @@
                 "name": "Resist disease III",
                 "desc": "Really, there is no need to worry",
                 "require": "diseaseintolerance>=5",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "max": 1,
                 "duration": 70,
                 "mod": {
@@ -160,7 +161,7 @@
                 "name": "Intolerance potential",
                 "desc": "Your body can go further",
                 "require": "diseaseintolerance>=3&&heavydisease",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "max": 1,
                 "duration": 15,
                 "cost": {
@@ -175,7 +176,7 @@
                 "name": "Intolerance potential II",
                 "desc": "Your body can go further",
                 "require": "diseaseintolerance>=4&&heavydisease",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "max": 1,
                 "duration": 70,
                 "cost": {
@@ -190,7 +191,7 @@
                 "name": "Thrive on disease",
                 "desc": "Convince yourself the disease makes you stronger",
                 "require": "diseaseintolerance>=2",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "duration": 5,
                 "dot": {
                     "duration": 120,
@@ -207,7 +208,7 @@
                 "name": "Disease into strength",
                 "desc": "Cope with the severity of your disease",
                 "require": "diseasebody4",
-                "tag": "disease_tag",
+                "tag": "disease_style",
                 "duration": 5,
                 "dot": {
                     "duration": 120,
@@ -225,7 +226,7 @@
                 "name": "Unsanitary life",
                 "desc": "Throw away your fears, go deeper into what is dirty",
                 "require": "middisease>=5&&t_tier2",
-                "tag": "disease_tag,warning_disease",
+                "tag": "disease_style,warning_disease",
                 "max": 1,
                 "duration": 90,
                 "mod": {
