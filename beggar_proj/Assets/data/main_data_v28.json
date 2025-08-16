@@ -95,15 +95,18 @@
         "type": "SKILL",
         "items": [
             {
-                "id": "crime",
-                "desc": "How much you know about breaking the law",
-                "require": "cunning>2&&guilt>10",
-                "tags": "cunning_tag",
+                "id": "diseaseintolerance",
+                "name": "Disease intolerance",
+                "desc": "Your body adapts to it's condition",
+                "require": "middisease>1",
                 "cost": {
-                    "skillpoints": 50
+                    "middisease": 5
                 },
                 "mod": {
-                    "guilt.max": 5
+                    "middisease.max": 1,
+                    "weakdisease.max": 1,
+                    "middisease.mod.supplication.max": 5,
+                    "middisease.mod.thoughts.max": 5
                 }
             }
             
