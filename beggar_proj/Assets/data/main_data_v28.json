@@ -117,8 +117,22 @@
                 "mod": {
                     "heavydisease.mod.supplication.max": 20,
                     "heavydisease.mod.thoughts.max": 5,
-                    "heavydisease.mod.clarity.max": 1,
-                    "heavydisease.mod.supplication.rate": 0.05
+                    "heavydisease.mod.clarity.max": 15,
+                    "heavydisease.mod.supplication.rate": 0.03
+                }
+            },{
+                "id": "diseasebody3",
+                "name": "Resist disease III",
+                "desc": "Really, there is no need to worry",
+                "require": "diseaseintolerance>=5",
+                "tag": "disease_tag",
+                "max": 1,
+                "duration": 70,
+                "mod": {
+                    "heavydisease.mod.supplication.max": 35,
+                    "heavydisease.mod.thoughts.max": 8,
+                    "heavydisease.mod.reflection.max": 1,
+                    "heavydisease.mod.supplication.rate": 0.03
                 }
             },
             {
