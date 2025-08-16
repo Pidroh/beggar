@@ -107,6 +107,51 @@
                 }
             },
             {
+                "id": "diseasebody3",
+                "name": "Resist disease II",
+                "desc": "Really, it's nothing",
+                "require": "diseaseintolerance>=4",
+                "tag": "disease_tag",
+                "max": 1,
+                "duration": 40,
+                "mod": {
+                    "heavydisease.mod.supplication.max": 20,
+                    "heavydisease.mod.thoughts.max": 5,
+                    "heavydisease.mod.clarity.max": 1,
+                    "heavydisease.mod.supplication.rate": 0.05
+                }
+            },
+            {
+                "id": "diseasemax_a",
+                "name": "Intolerance potential",
+                "desc": "Your body can go further",
+                "require": "diseaseintolerance>=3&&heavydisease",
+                "tag": "disease_tag",
+                "max": 1,
+                "duration": 15,
+                "cost": {
+                    "middisease": 10
+                },
+                "mod": {
+                    "diseaseintolerance.max": 1 
+                }
+            },
+            {
+                "id": "diseasemax_b",
+                "name": "Intolerance potential II",
+                "desc": "Your body can go further",
+                "require": "diseaseintolerance>=4&&heavydisease",
+                "tag": "disease_tag",
+                "max": 1,
+                "duration": 70,
+                "cost": {
+                    "middisease": 15
+                },
+                "mod": {
+                    "diseaseintolerance.max": 1 
+                }
+            },
+            {
                 "id": "diseasedot",
                 "name": "Thrive on disease",
                 "desc": "Convince yourself the disease makes you stronger",
