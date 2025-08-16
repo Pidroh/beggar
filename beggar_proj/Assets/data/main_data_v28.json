@@ -122,6 +122,22 @@
                         "middisease.mod.thoughts.rate": 1
                     }
                 }
+            },
+            {
+                "id": "unlockheavydisease",
+                "name": "Unsanitary life",
+                "desc": "Throw away your fears, go deeper into what is dirty",
+                "require": "middisease>=5&&t_tier2",
+                "tag": "disease_tag,warning_disease",
+                "max": 1,
+                "duration": 90,
+                "mod": {
+                    "middisease.mod.heavydisease.rate": 0.01,
+                    "middisease.max": 10,
+                    "weakdisease.max": 20,
+                    "middisease.rate": 0.01,
+                    "weakdisease.rate": 0.1
+                }
             }
         ]
     },
