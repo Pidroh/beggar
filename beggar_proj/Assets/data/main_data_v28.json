@@ -2,8 +2,60 @@
     {
         "type": "RESOURCE",
         "items": [
-            
-
+            {
+                "id": "weakdisease",
+                "name": "Small illness",
+                "max": 5,
+                "desc": "Nothing too serious",
+                "mod": {
+                    "middisease.rate": 0.001
+                }
+            },
+            {
+                "id": "middisease",
+                "name": "Sickness",
+                "max": 5,
+                "desc": "You better get that treated",
+                "mod": {
+                    "supplication.max": -20,
+                    "thoughts.max": -10,
+                    "supplication.rate": -0.02
+                }
+            },
+            {
+                "id": "heavydisease",
+                "name": "Disease",
+                "max": 3,
+                "desc": "Things are getting pretty bad, huh?",
+                "mod": {
+                    "supplication.max": -80,
+                    "thoughts.max": -20,
+                    "supplication.rate": -0.1,
+                    "superheavydisease.rate": 0.001
+                }
+            },
+            {
+                "id": "superheavydisease",
+                "name": "Terminal disease",
+                "max": 1,
+                "desc": "Enjoy what time you have left",
+                "mod": {
+                    "supplication.max": -200,
+                    "thoughts.max": -100,
+                    "supplication.rate": -0.1,
+                    "dengeneration.rate": 0.01
+                }
+            },
+            {
+                "id": "degeneration",
+                "name": "Degeneration",
+                "max": 1000,
+                "desc": "The disease eating away at your body",
+                "mod": {
+                    "supplication.max": -5,
+                    "thoughts.max": -5
+                }
+            }
         ]
     },
     {
