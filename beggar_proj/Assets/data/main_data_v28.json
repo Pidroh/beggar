@@ -70,7 +70,7 @@
                 "id": "disease_mind",
                 "name": "Disease awareness",
                 "desc": "Become aware of your body's health state",
-                "require": "????",zzz
+                "require": "diseaseintolerance>=1",
                 "tag": "disease_sep",
                 "duration": 2,
                 "buy": {
