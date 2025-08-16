@@ -1,0 +1,81 @@
+[
+    {
+        "type": "RESOURCE",
+        "items": [
+            
+
+        ]
+    },
+    {
+        "type": "TASK",
+        "items": [
+
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items": []
+    },
+    {
+        "type": "CLASS",
+        "items": [
+            {
+                "id": "sicktier3",
+                "name": "Sickly Undergrounder",
+                "desc": "Sick and isolated",
+                "tags": "t_tier3,not_church_class_automated",
+                "lock": "t_tier3",
+                "require": "theself_3&&disease>2",
+                "need": "theself_3",
+                "cost": {
+                    "thoughts": 400,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "disease": 5
+                },
+                "mod": {
+                    "disease.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items": [
+            {
+                "id": "crime",
+                "desc": "How much you know about breaking the law",
+                "require": "cunning>2&&guilt>10",
+                "tags": "cunning_tag",
+                "cost": {
+                    "skillpoints": 50
+                },
+                "mod": {
+                    "guilt.max": 5
+                }
+            }
+            
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+        ]
+    },
+    {
+        "type": "ENCOUNTER",
+        "items": [
+           
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items": []
+    },
+    {
+        "type": "FURNITURE",
+        "items": [
+
+        ]
+    }
+]
