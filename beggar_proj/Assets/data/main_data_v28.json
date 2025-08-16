@@ -202,7 +202,14 @@
     },
     {
         "type": "DIALOG",
-        "items": []
+        "items": [
+            {
+                "id": "irreversible_disease",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. Negative effects are often permanent. But you will gain access to a new range of possibilities. Go ahead with this action?",
+                "tags": "warningdisease"
+            }
+        ]
     },
     {
         "type": "FURNITURE",
