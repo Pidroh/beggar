@@ -67,6 +67,26 @@
         "type": "TASK",
         "items": [
             {
+                "id": "disease_mind",
+                "name": "Disease awareness",
+                "desc": "Become aware of your body's health state",
+                "require": "????",zzz
+                "tag": "thievery",
+                "duration": 2,
+                "buy": {
+                    "weakdisease": 1
+                },
+                
+                "dot": {
+                    "duration": 240,
+                    "toggle": true,
+                    "mods": {
+                        "weakdisease.max": 1,
+                        "disease_style.activate": 1
+                    }
+                }
+            },
+            {
                 "id": "sickmind",
                 "name": "Sick mind adaptation",
                 "desc": "Don't let sickness stop your mind",
@@ -199,6 +219,7 @@
                     }
                 }
             },
+            
             {
                 "id": "unlockheavydisease",
                 "name": "Unsanitary life",
