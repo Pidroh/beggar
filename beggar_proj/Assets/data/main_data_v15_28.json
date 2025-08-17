@@ -1,0 +1,2444 @@
+[
+    {
+        "type": "RESOURCE",
+        "items": [
+            {
+                "id": "supplication",
+                "max": 30,
+                "initial": 30,
+                "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
+            },
+            {
+                "id": "loneliness",
+                "max": 10,
+                "initial": 10,
+                "desc": "You are alone",
+                "mod": {
+                    "happiness.max": -5
+                }
+            },
+            {
+                "id": "happiness",
+                "max": 0,
+                "desc": "Joy thrives in the quiet moments you almost overlook",
+                "mod": {
+                    "supplication.max": 10,
+                    "sadness.rate": -1
+                }
+            },
+            {
+                "id": "focus",
+                "desc": "Represents your character's mental clarity and concentration.",
+                "max": 5
+            },
+            {
+                "id": "breadcrumbs",
+                "name": "Foodcrumbs",
+                "desc": "Small, old pieces of food",
+                "max": 15
+            },
+            {
+                "id": "food",
+                "name": "Food",
+                "desc": "Nutritious substance",
+                "max": 5
+            },
+            {
+                "id": "danger",
+                "desc": "How likely you are to be in danger",
+                "max": 100
+            },
+            {
+                "id": "nutrition",
+                "max": 5,
+                "desc": "Higher values mean your character is well-fed, while lower values indicate hunger.",
+                "mod": {
+                    "thoughts.max": 1
+                }
+            },
+            {
+                "id": "energy",
+                "desc": "The inner strength your character consumes to perform actions.",
+                "initial": 0,
+                "max": 5
+            },
+            {
+                "id": "thoughts",
+                "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
+                "max": 5
+            },
+            {
+                "id": "deadflower",
+                "desc": "A withered bloom that once symbolized hope, now a reminder of loss and decay.",
+                "initial": 0,
+                "max": 0
+            },
+            {
+                "id": "clarity",
+                "desc": "Clear thought, clear mind",
+                "max": 3,
+                "mod": {
+                    "thoughts.max": 1
+                }
+            },
+            {
+                "id": "metathought",
+                "name": "Meta thought",
+                "desc": "The capacibility to think about our past",
+                "flavor": "The mirror of the mind",
+                "max": 3,
+                "mod": {
+                    "thoughts.max": 10
+                }
+            },
+            {
+                "id": "sadness",
+                "desc": "The weight of our emotions reflects the depth of our experiences",
+                "flavor": "Silent ache",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 5
+                }
+            },
+            {
+                "id": "sorrow",
+                "desc": "A profound emotion that deepens one's empathy and understanding. It connects us to others through shared experiences of loss and reflection.",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 15
+                }
+            },
+            {
+                "id": "gratitude",
+                "desc": "Readiness to return kindness",
+                "max": 10,
+                "mod": {
+                    "supplication.max": 1,
+                    "thoughts.max": 1
+                }
+            },
+            {
+                "id": "faith",
+                "name": "Faint Faith",
+                "desc": "The start of belief in the divine",
+                "max": 5,
+                "mod": {
+                    "supplication.max": 1,
+                    "gratitude.max": 3
+                }
+            },
+            {
+                "id": "guilt",
+                "desc": "A lingering whisper of choices past.",
+                "max": 5
+            },
+            {
+                "id": "rats",
+                "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
+                "max": 3,
+                "mod": {
+                    "ratbond.max": 10,
+                    "ratbond.rate": 0.01
+                }
+            },
+            {
+                "id": "cat",
+                "name": "Stray cat",
+                "desc": "Cats living in the city, yet odly are always near you",
+                "max": 0,
+                "mod": {
+                    "catbond.max": 10,
+                    "catbond.rate": 0.01
+                }
+            },
+            {
+                "id": "ratcorpse",
+                "name": "Rat corpse",
+                "desc": "A dead rat",
+                "max": 3,
+                "mod": {
+                    "ratbond.max": 3,
+                    "supplication.max": -1
+                }
+            },
+            {
+                "id": "catcorpse",
+                "name": "Cat corpse",
+                "desc": "A dead cat",
+                "max": 3,
+                "mod": {
+                    "catbond.max": 3,
+                    "supplication.max": -1
+                }
+            },
+            {
+                "id": "ratbond",
+                "desc": "A faint connection forms with your rats, creating a slight sense of understanding and trust.",
+                "max": 5
+            },
+            {
+                "id": "coin",
+                "desc": "A small disk made of silver",
+                "max": 5
+            },
+            {
+                "id": "catbond",
+                "desc": "A faint connection forms with your cats, creating a slight sense of understanding and trust.",
+                "max": 5
+            },
+            {
+                "id": "skillpoints",
+                "name": "Skill points",
+                "desc": "Used to attain skills"
+            },
+            {
+                "id": "foraging",
+                "require": "scavenging>0",
+                "desc": "Scavenge the environment for useful items and hidden treasures.",
+                "max": 3
+            },
+            {
+                "id": "perplexion",
+                "stressor": true,
+                "tags": "stress",
+                "max": 10
+            },
+            {
+                "id": "fatigue",
+                "stressor": true,
+                "tags": "stress",
+                "max": 10
+            },
+            {
+                "id": "irritation",
+                "stressor": true,
+                "tags": "stress",
+                "max": 10
+            },
+            {
+                "id": "fear",
+                "stressor": true,
+                "tags": "stress",
+                "max": 10
+            },
+            {
+                "id": "boredom",
+                "stressor": true,
+                "tags": "stress",
+                "max": 10
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items": [
+            {
+                "id": "beg_a",
+                "name": "Beg for crumbs",
+                "desc": "You take what you get (you can long press to multi-click)",
+                "locked": false,
+                "tag": "beggary",
+                "cost": {
+                    "supplication": 1
+                },
+                "result": {
+                    "breadcrumbs": 1
+                }
+            },
+            {
+                "id": "eatcat",
+                "name": "Eat cat corpse",
+                "desc": "Raw",
+                "require": "bestiality>2",
+                "duration": 10,
+                "cost": {
+                    "catcorpse": 1
+                },
+                "result": {
+                    "nutrition": 30,
+                    "sadness": 5
+                }
+            },
+            {
+                "id": "relax_thoughts",
+                "name": "Refresh",
+                "desc": "Clear your mind, exchanging scattered thoughts for a surge of renewed energy.",
+                "require": "thoughts>2",
+                "result": {
+                    "supplication": 1
+                }
+            },
+            {
+                "id": "organizethoughts",
+                "name": "Organize thoughts",
+                "require": "introspection>3",
+                "duration": 6,
+                "run": {
+                    "supplication": 1,
+                    "thoughts": 1
+                },
+                "result": {
+                    "clarity": 1
+                }
+            },
+            {
+                "id": "theself_1",
+                "name": "The self",
+                "require": "contemplation",
+                "duration": 15,
+                "max": 1,
+                "cost": {
+                    "clarity": 5
+                },
+                "run": {
+                    "thoughts": 1
+                },
+                "mod": {
+                    "clarity.max": 2,
+                    "thoughts.max": 2
+                }
+            },
+            {
+                "id": "theself_2",
+                "name": "Emotions of the self",
+                "require": "contemplation>2&&emotions_loc",
+                "duration": 60,
+                "max": 1,
+                "cost": {
+                    "clarity": 40
+                },
+                "run": {
+                    "thoughts": 2
+                },
+                "mod": {
+                    "clarity.max": 10,
+                    "thoughts.rate": 0.5,
+                    "sadness.max": 10
+                }
+            },
+            {
+                "id": "thiscrackedvase",
+                "name": "This cracked vase",
+                "desc": "I wonder who was the original owner of the cracked vase",
+                "require": "contemplation>1",
+                "duration": 90,
+                "max": 1,
+                "cost": {
+                    "clarity": 5,
+                    "thoughts": 70
+                },
+                "run": {
+                    "thoughts": 1
+                },
+                "mod": {
+                    "clarity.max": 2,
+                    "crackedvase.mod.clarity.max": 5
+                }
+            },
+            {
+                "id": "contemplatedoll",
+                "name": "Contemplate Doll",
+                "desc": "What is the story behind that doll? There is something about it that...",
+                "require": "contemplation>3",
+                "duration": 70,
+                "max": 1,
+                "cost": {
+                    "clarity": 15,
+                    "thoughts": 90
+                },
+                "run": {
+                    "thoughts": 1
+                },
+                "mod": {
+                    "clarity.max": 5,
+                    "doll.mod.clarity.max": 25
+                }
+            },
+            {
+                "id": "sensitivecontemplation",
+                "name": "Sensitive contemplation",
+                "desc": "Reach out to deeper feelings, contemplating inward",
+                "require": "contemplation>2",
+                "duration": 70,
+                "max": 1,
+                "cost": {
+                    "clarity": 5,
+                    "thoughts": 90
+                },
+                "run": {
+                    "thoughts": 1
+                },
+                "mod": {
+                    "clarity.max": 5,
+                    "organizethoughts.result.clarity": 1
+                }
+            },
+            {
+                "id": "pleafocus",
+                "name": "Rest",
+                "desc": "Take a break to recuperate and regain vitality",
+                "require": "supplication<3",
+                "slot": "rest",
+                "effect": {
+                    "supplication": 1,
+                    "foraging": 1,
+                    "stress": -1
+                }
+            },
+            {
+                "id": "skilled",
+                "name": "Become skilled",
+                "desc": "Maybe it is time to gain a new skill",
+                "require": "t_tier0",
+                "duration": 5,
+                "max": 1,
+                "result": {
+                    "skillpoints": 100
+                }
+            },
+            {
+                "id": "tier1reach",
+                "name": "Growth I",
+                "desc": "You seem to have reached a new stage in life?",
+                "require": "t_tier1",
+                "duration": 5,
+                "max": 1,
+                "mod": {
+                    "skilled.max": 1,
+                    "clarity.max": 10
+                }
+            },
+            {
+                "id": "tier2reach",
+                "name": "Growth II",
+                "desc": "You seem to have reached a new stage in life?",
+                "require": "t_tier2",
+                "duration": 5,
+                "max": 1,
+                "mod": {
+                    "skilled.max": 1,
+                    "clarity.max": 25
+                }
+            },
+            {
+                "id": "get_alms",
+                "name": "Wait for alms",
+                "desc": "Receive food from the church",
+                "require": "free_food_lead",
+                "tag": "beggary",
+                "duration": 5,
+                "result": {
+                    "breadcrumbs": 10,
+                    "gratitude": 1
+                }
+            },
+            {
+                "id": "stealbread",
+                "name": "Steal breadcrumbs",
+                "desc": "Casually pilfer scraps from unsuspecting neighbors",
+                "require": "cunning>0",
+                "tag": "thievery,beggary,cunning_style",
+                "duration": 3,
+                "result": {
+                    "breadcrumbs": 10,
+                    "guilt": 1,
+                    "faith": -1,
+                    "gratitude": -1
+                }
+            },
+            {
+                "id": "innermind",
+                "name": "Inner Mind",
+                "desc": "Your sharpened mind grants clarity and deeper insight, unveiling hidden truths within yourself.",
+                "max": 2,
+                "require": "t_tier0",
+                "duration": 10,
+                "cost": {
+                    "supplication": 200,
+                    "thoughts": 50
+                },
+                "mod": {
+                    "introspection.max": 1
+                }
+            },
+            {
+                "id": "eatcrumbs",
+                "name": "Eat old crumbs",
+                "desc": "It tastes really bad, unless you're really, really hungry",
+                "require": "breadcrumbs > 6",
+                "tag": "beggary",
+                "duration": 5,
+                "cost": {
+                    "breadcrumbs": 10
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            },
+            {
+                "id": "somber_insight",
+                "name": "Somber Insight",
+                "desc": "A quiet, reflective sadness colors your thoughts, bringing a deep, introspective clarity",
+                "require": "introspection>2",
+                "duration": 50,
+                "max": 1,
+                "cost": {
+                    "sadness": 10
+                },
+                "run": {
+                    "thoughts": 1
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "supplication.rate": 0.05,
+                    "sadness.max": 5,
+                    "thoughts.max": 10
+                }
+            },
+            {
+                "id": "buyfood",
+                "name": "Buy Food",
+                "desc": "Buy enough food for the day",
+                "require": "coin>2",
+                "cost": {
+                    "coin": 1
+                },
+                "result": {
+                    "food": 1
+                }
+            },
+            {
+                "id": "realmeal",
+                "name": "Real meal",
+                "desc": "Finally a real meal... It has been a while",
+                "require": "food",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "food": 1
+                },
+                "result": {
+                    "sadness": -5,
+                    "sorrow": -5
+                },
+                "mod": {
+                    "nutrition.max": 100,
+                    "nutrition.rate": 0.25
+                }
+            },
+            {
+                "id": "realmealcat",
+                "name": "Alternative nutrition",
+                "desc": "For people who get their meals out of weird places",
+                "require": "eatcat>0",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "nutrition": 5
+                },
+                "mod": {
+                    "nutrition.max": 110,
+                    "nutrition.rate": 0.1
+                }
+            },
+            {
+                "id": "eatfood",
+                "name": "Eat",
+                "desc": "Time to eat",
+                "require": "realmeal",
+                "duration": 7,
+                "cost": {
+                    "food": 5
+                },
+                "result": {
+                    "nutrition": 25
+                }
+            },
+            {
+                "id": "pouch",
+                "name": "Pouch",
+                "desc": "Keep your money safe, says the wizard",
+                "require": "coin>3",
+                "max": 3,
+                "cost": {
+                    "coin": 3
+                },
+                "mod": {
+                    "coin.max": 5
+                }
+            },
+            {
+                "id": "purse",
+                "name": "Purse",
+                "desc": "Common way to carry... Wait. I have seen this somewhere else.",
+                "require": "coin>10",
+                "max": 2,
+                "cost": {
+                    "coin": 10
+                },
+                "mod": {
+                    "coin.max": 15
+                }
+            },
+            {
+                "id": "think",
+                "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
+                "require": "nutrition>0",
+                "duration": 3,
+                "result": {
+                    "thoughts": 1
+                },
+                "run": {
+                    "supplication": 1
+                }
+            },
+            {
+                "id": "reflect",
+                "desc": "Reflect",
+                "duration": 3,
+                "max": 2,
+                "require": "thoughts>=5",
+                "cost": {
+                    "thoughts": 2
+                },
+                "mod": {
+                    "thoughts.max": 2
+                }
+            },
+            {
+                "id": "breadbasket",
+                "name": "Tattered Pouch",
+                "desc": "More space for breadcrumbs",
+                "duration": 3,
+                "max": 2,
+                "require": "unlockbreadbasket",
+                "cost": {
+                    "supplication": 50,
+                    "breadcrumbs": 15
+                },
+                "mod": {
+                    "breadcrumbs.max": 15
+                }
+            },
+            {
+                "id": "unlocksadness",
+                "name": "Touch the Wound",
+                "desc": "Acknowledge the pain you've buried.",
+                "duration": 3,
+                "max": 1,
+                "require": "thoughts>7",
+                "cost": {
+                    "thoughts": 10
+                }
+            },
+            {
+                "id": "agile",
+                "name": "Agile",
+                "desc": "You realize you have quick reflexes, you can act without thinking",
+                "tag": "trait1",
+                "duration": 3,
+                "max": 1,
+                "require": "exercise>2",
+                "cost": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "fatigue.rate": -0.2
+                }
+            },
+            {
+                "id": "calm",
+                "name": "Calm thinker",
+                "desc": "You realize you are a calm thinker, someone who thinks deeply before acting",
+                "tag": "trait1",
+                "duration": 3,
+                "max": 1,
+                "require": "thinking>2",
+                "cost": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "perplexion.rate": -0.2
+                }
+            },
+            {
+                "id": "rat_insight",
+                "name": "Rat's Insight",
+                "desc": "By observing rats, you gain a sharper, more cunning perspective on your thoughts.",
+                "duration": 10,
+                "max": 2,
+                "require": "rodentology>=1",
+                "cost": {
+                    "ratbond": 10,
+                    "thoughts": 10
+                },
+                "mod": {
+                    "thoughts.max": 10,
+                    "thoughts.rate": 0.01
+                }
+            },
+            {
+                "id": "vermin_sorrow",
+                "name": "Vermin Sorrow",
+                "desc": "The presence of rats amplifies the depth of your sadness, bringing it into sharper focus.",
+                "duration": 10,
+                "max": 1,
+                "require": "rodentology>=4",
+                "cost": {
+                    "ratbond": 30,
+                    "sadness": 10
+                },
+                "mod": {
+                    "sadness.max": 10,
+                    "ratbond.max": 10
+                }
+            },
+            {
+                "id": "unlockbreadbasket",
+                "name": "Ponder Crumbs",
+                "desc": "I have so many...",
+                "duration": 5,
+                "max": 1,
+                "require": "thoughts>2",
+                "cost": {
+                    "thoughts": 7
+                }
+            },
+            {
+                "id": "thoughtfulgatherer",
+                "name": "Thoughtful Gatherer",
+                "desc": "You approach foraging with a calm and reflective mindset. Each step is taken with care and intention.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=1",
+                "mod": {
+                    "foraging.rate": 0.03
+                },
+                "cost": {
+                    "thoughts": 15
+                }
+            },
+            {
+                "id": "vigorousgather",
+                "name": "Vigorous Forager",
+                "desc": "Your foraging is driven by your body energy. Every movement is infused with vitality.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=2",
+                "mod": {
+                    "foraging.max": 10
+                },
+                "cost": {
+                    "nutrition": 5
+                }
+            },
+            {
+                "id": "sadsearch",
+                "name": "Sad Search",
+                "desc": "Your foraging is marked by a deep, quiet melancholy. The emotions guide your path through the earth.",
+                "duration": 5,
+                "max": 1,
+                "require": "scavenging>=3",
+                "mod": {
+                    "foraging.max": 20,
+                    "sadness.max": 3
+                },
+                "cost": {
+                    "thoughts": 2,
+                    "sadness": 3
+                }
+            },
+            {
+                "id": "pickpocket",
+                "name": "Pick Pocket",
+                "desc": "Oops, sorry sir, I should watch where I walk... Wait, where is my money?!",
+                "require": "pickpocketer",
+                "need": "danger<10",
+                "tag": "thievery,cunning_style",
+                "success_rate": 50,
+                "result": {
+                    "danger": "0~2",
+                    "coin": "0~2",
+                    "guilt": 1
+                },
+                "result_fail": {
+                    "danger": "1~5"
+                }
+            },
+            {
+                "id": "happycat",
+                "name": "Enjoy cat",
+                "desc": "Time to spend some quality time with my cat",
+                "require": "petcat&&felinology>4&&cathappy>1",
+                "duration": 10,
+                "effect": {
+                    "catbond": 1
+                },
+                "result": {
+                    "happiness": 1,
+                    "sadness": -1
+                }
+            },
+            {
+                "id": "nutritionalharmony",
+                "name": "Nutritional harmony",
+                "require": "happiness",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "happiness": 3
+                },
+                "mod": {
+                    "nutrition.rate": 0.2,
+                    "nutrition.max": 10,
+                    "supplication.max": 50
+                }
+            },
+            {
+                "id": "positivethinking",
+                "name": "Positive thinking",
+                "require": "happiness",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "happiness": 5,
+                    "thoughts": 100
+                },
+                "mod": {
+                    "thoughts.max": 20,
+                    "think.effect.thoughts": 1,
+                    "think.effect.happiness": 0.05
+                }
+            },
+            {
+                "id": "innerwarmth",
+                "name": "Inner warmth",
+                "require": "happiness",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "happiness": 5,
+                    "gratitude": 30
+                },
+                "mod": {
+                    "gratitude.rate": 0.5,
+                    "think.effect.gratitude": 0.5,
+                    "gratitude.max": 5
+                }
+            },
+            {
+                "id": "laylow",
+                "name": "Laying low",
+                "desc": "Let the danger pass while you rest",
+                "duration": 10,
+                "require": "danger>=10",
+                "max": 1,
+                "result": {
+                    "guilt": 3
+                },
+                "mod": {
+                    "pleafocus.effect.danger": -0.2
+                }
+            },
+            {
+                "id": "ratbread",
+                "name": "Rat carriers",
+                "desc": "Train your rats to steal food with you",
+                "duration": 10,
+                "require": "streetrat",
+                "max": 1,
+                "tag": "cunning_style",
+                "cost": {
+                    "ratbond": 100,
+                    "rats": 8
+                },
+                "mod": {
+                    "stealbread.result.breadcrumbs": 5,
+                    "stealbread.result.ratbond": 2
+                }
+            },
+            {
+                "id": "ratoath",
+                "name": "Rat Oath",
+                "desc": "Make a promise to protect fellow rats, no matter the cost",
+                "duration": 100,
+                "require": "ratwarden",
+                "needs": "petcat==0",
+                "lock": "petcat",
+                "max": 1,
+                "cost": {
+                    "ratbond": 100,
+                    "rats": 8
+                },
+                "mod": {
+                    "rodentology.max": 1,
+                    "ratbond.max": 50,
+                    "felinology.max": -3
+                }
+            },
+            {
+                "id": "killcat",
+                "name": "Kill a cat",
+                "desc": "Kill the enemy",
+                "duration": 15,
+                "require": "ratoath",
+                "need": "weapon",
+                "result": {
+                    "ratbond": 20,
+                    "guilt": 3,
+                    "catcorpse": 1
+                },
+                "mod": {
+                    "catbond.max": -20
+                }
+            },
+            {
+                "id": "deadcatritual",
+                "name": "Felyne Death Ritual",
+                "desc": "Celebrate the death of evil",
+                "duration": 100,
+                "require": "catcorpse&&rodentology>8",
+                "max": 3,
+                "cost": {
+                    "catcorpse": 1,
+                    "ratbond": 20
+                },
+                "run": {
+                    "ratbond": 1
+                },
+                "effect": {
+                    "rodentology.xp": 1
+                },
+                "mod": {
+                    "ratbond.rate": 0.5,
+                    "rats.max": 1
+                }
+            },
+            {
+                "id": "pickpocketrat",
+                "name": "Pickpocketing Rats",
+                "desc": "Coordinate stealing feats with your rats",
+                "tag": "pickpockter,cunning_style",
+                "require": "streetrat&&!pickpocket",
+                "duration": 15,
+                "max": 1,
+                "cost": {
+                    "ratbond": 80,
+                    "rats": 8
+                },
+                "mod": {
+                    "guilt.max": 5
+                }
+            },
+            {
+                "id": "guiltcunning",
+                "name": "Not my fault",
+                "desc": "I'm hungry and no one is going to take care of me.",
+                "duration": 8,
+                "max": 1,
+                "tag": "max_decrease,cunning_style",
+                "require": "stealbread>=3",
+                "mod": {
+                    "guilt.max": 25,
+                    "gratitude.max": -5
+                },
+                "cost": {
+                    "thoughts": 30,
+                    "sadness": 8
+                }
+            },
+            {
+                "id": "healthier",
+                "name": "A bit healthier",
+                "desc": "Minor signs of improvement are visible, but not even close to healthy.",
+                "duration": 5,
+                "max": 1,
+                "require": "nutrition>1",
+                "cost": {
+                    "nutrition": 3
+                },
+                "mod": {
+                    "supplication.max": 20,
+                    "nutrition.max": 5
+                }
+            },
+            {
+                "id": "lament",
+                "desc": "To find solace in sorrow, one must first embrace the depths of their own despair.",
+                "require": "unlocksadness>0",
+                "duration": 4,
+                "cost": {
+                    "thoughts": 3
+                },
+                "result": {
+                    "sadness": 1
+                }
+            },
+            {
+                "id": "shed_tears",
+                "name": "Shed tears",
+                "desc": "Let the sadness flow and transform",
+                "flavor": "Tears come from the heart and not from the brain",
+                "require": "introspection>=5",
+                "duration": 5,
+                "cost": {
+                    "thoughts": 3,
+                    "sadness": 10
+                },
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "sorrow": 1
+                }
+            },
+            {
+                "id": "firstfaith",
+                "name": "Listen to the words",
+                "desc": "Open your ears for the people of the church",
+                "require": "gratitude>3",
+                "need": "pray_tool",
+                "duration": 30,
+                "max": 1,
+                "cost": {
+                    "gratitude": 10,
+                    "thoughts": 10,
+                    "sadness": 5
+                },
+                "result": {
+                    "faith": 1,
+                    "guilt": -1
+                }
+            },
+            {
+                "id": "cunningthoughts",
+                "name": "Cunning thoughts",
+                "desc": "An unsettling rush of sharp, clever ideas, emerging with a newfound edge.",
+                "require": "gutterborn&&introspection>2",
+                "max": 1,
+                "cost": {
+                    "thoughts": 15
+                }
+            },
+            {
+                "id": "chargefaith",
+                "name": "Thank the alms",
+                "desc": "Show your gratitude about the help you receive",
+                "require": "firstfaith",
+                "need": "pray_tool",
+                "tag": "beggary",
+                "duration": 5,
+                "cost": {
+                    "gratitude": 1,
+                    "thoughts": 1,
+                    "supplication": 10
+                },
+                "result": {
+                    "faith": 1
+                }
+            },
+            {
+                "id": "catnotlonely",
+                "name": "Cat buddy",
+                "desc": "Recognize your cat as a little friend",
+                "require": "felinology>0",
+                "need": "petcat",
+                "max": 1,
+                "duration": 10,
+                "cost": {
+                    "thoughts": 20,
+                    "catbond": 20,
+                    "breadcrumbs": 30
+                },
+                "result": {
+                    "loneliness": -1
+                }
+            },
+            {
+                "id": "cathappy",
+                "name": "Cat buddy II",
+                "desc": "Your cat helps you out on the path towards something, though you are not sure what that is.",
+                "require": "felinology>2",
+                "need": "petcat",
+                "max": 1,
+                "duration": 15,
+                "cost": {
+                    "thoughts": 20,
+                    "catbond": 30,
+                    "breadcrumbs": 30
+                },
+                "result": {
+                    "loneliness": -1
+                },
+                "mod": {
+                    "happiness.max": 5
+                }
+            },
+            {
+                "id": "catbegging",
+                "name": "Beg with a cat",
+                "desc": "Your cat joins you in your begging activities",
+                "require": "felinology>1",
+                "need": "petcat",
+                "duration": 15,
+                "max": 1,
+                "cost": {
+                    "thoughts": 15,
+                    "catbond": 15,
+                    "breadcrumbs": 20
+                },
+                "mod": {
+                    "supplication.max": 60,
+                    "supplication.rate": 1
+                }
+            },
+            {
+                "id": "catsupport",
+                "name": "Felyne support",
+                "desc": "Cats can be moral support, you know?",
+                "require": "felinology>2",
+                "need": "petcat",
+                "duration": 40,
+                "max": 1,
+                "cost": {
+                    "thoughts": 15,
+                    "catbond": 60
+                },
+                "mod": {
+                    "irritation.max": 10
+                }
+            },
+            {
+                "id": "cathappy_b",
+                "name": "Cat buddy III",
+                "desc": "Meow",
+                "require": "felinology>3",
+                "need": "petcat",
+                "max": 1,
+                "duration": 50,
+                "cost": {
+                    "thoughts": 25,
+                    "catbond": 80
+                },
+                "result": {
+                    "loneliness": -3
+                },
+                "mod": {
+                    "cathappy.max": 1,
+                    "catnotlonely.max": 1,
+                    "felinology.max": 1,
+                    "happiness.max": 15
+                }
+            },
+            {
+                "id": "almsregular",
+                "name": "Alms regular",
+                "desc": "Create connections within the person who gives the alms",
+                "require": "churchbeggar",
+                "duration": 10,
+                "max": 1,
+                "cost": {
+                    "faith": 5,
+                    "supplication": 10
+                },
+                "mod": {
+                    "faith.max": 5,
+                    "gratitude.max": 5,
+                    "breadcrumbs.rate": 0.1
+                }
+            },
+            {
+                "id": "warmclothes",
+                "name": "Old clothes",
+                "desc": "They aren't half bad",
+                "max": 1,
+                "require": "coin>4",
+                "cost": {
+                    "coin": 5
+                },
+                "mod": {
+                    "supplication.rate": 1,
+                    "thoughts.rate": 0.5,
+                    "nutrition.max": 25
+                }
+            },
+            {
+                "id": "free_food_lead",
+                "name": "Rumours about food",
+                "desc": "Your hear a group talking about a place to get food",
+                "locked": false,
+                "require": "beggarhood>1",
+                "max": 1,
+                "cost": {
+                    "supplication": 10,
+                    "thoughts": 10
+                }
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items": [
+            {
+                "id": "Back Alley",
+                "name": "Back Alley",
+                "require": "t_job",
+                "cost": {
+                    "thoughts": 3
+                },
+                "desc": "A narrow, dirty alleyway filled with garbage and debris, offering minimal protection from the weather.",
+                "mod": {
+                    "space.max": 3
+                }
+            },
+            {
+                "id": "churchoutskirts",
+                "name": "Church outskirts",
+                "require": "churchbeggar",
+                "cost": {
+                    "thoughts": 10,
+                    "faith": 4
+                },
+                "desc": "Not too far from the Church of Our Lady, close to the divine",
+                "mod": {
+                    "space.max": 5,
+                    "faith.max": 10,
+                    "chargefaith.effect.faith": 1
+                }
+            },
+            {
+                "id": "underbridge",
+                "name": "Under the bridge",
+                "require": "t_tier1&&beggarhood>1",
+                "cost": {
+                    "thoughts": 60
+                },
+                "desc": "A safer place to sleep, protected from the rain.",
+                "mod": {
+                    "space.max": 6,
+                    "pleafocus.effect.supplication": 1,
+                    "nutrition.max": 3
+                }
+            },
+            {
+                "id": "sewer_home",
+                "name": "Sewer",
+                "require": "sewer",
+                "cost": {
+                    "thoughts": 80
+                },
+                "desc": "Disguting, but spaceful.",
+                "mod": {
+                    "space.max": 10,
+                    "pleafocus.effect.supplication": -1,
+                    "supplication.max": -100,
+                    "happiness.max": -20,
+                    "rats.max": 5
+                }
+            }
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items": [
+            {
+                "id": "gutterborn",
+                "desc": "Acknowledge your origins from the streets, embracing the harsh reality of your upbringing.",
+                "tags": "t_job,not_church_class_automated",
+                "lock": "t_job",
+                "require": "thoughts>0",
+                "cost": {
+                    "thoughts": 5,
+                    "supplication": 40,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "supplication.max": 10,
+                    "thoughts.max": 10,
+                    "sadness.max": 10
+                }
+            },
+            {
+                "id": "churchbeggar",
+                "name": "Alms Collector",
+                "desc": "Thrives on the mercy of the church, turning hardship into resilience and blending into the sacred for refuge.",
+                "tags": "t_tier0,not_church_class_automated",
+                "lock": "t_tier0",
+                "require": "faith>4",
+                "cost": {
+                    "thoughts": 5,
+                    "gratitude": 10,
+                    "faith": 10,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "gratitude.max": 20
+                }
+            },
+            {
+                "id": "ratbeggar",
+                "name": "Rat Whisperer",
+                "desc": "Each rat is a loyal companion, bringing warmth in the cold streets.",
+                "tags": "t_tier0,not_church_class_automated",
+                "lock": "t_tier0",
+                "require": "rodentology>=3",
+                "need": "rats>=5",
+                "cost": {
+                    "thoughts": 50,
+                    "rats": 5,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "rodentology.max": 2,
+                    "rats.max": 3
+                }
+            },
+            {
+                "id": "breadsnatcher",
+                "name": "Bread Snatcher",
+                "desc": "You better pay attention. Get distracted and your food will be gone.",
+                "tags": "t_tier0,not_church_class_automated",
+                "lock": "t_tier0",
+                "require": "t_job&&cunning>1",
+                "cost": {
+                    "thoughts": 15,
+                    "guilt": 10,
+                    "nutrition": 2
+                },
+                "mod": {
+                    "cunning.max": 2,
+                    "guilt.max": 10
+                }
+            },
+            {
+                "id": "beggar",
+                "name": "Beggar",
+                "desc": "A person who lives by asking for money or food",
+                "tags": "t_tier1,not_church_class_automated",
+                "lock": "t_tier1",
+                "require": "t_tier0&&introspection>3",
+                "cost": {
+                    "sadness": 30,
+                    "sorrow": 4,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "thoughts.max": 50,
+                    "supplication.max": 100,
+                    "supplication.rate": 1,
+                    "innermind.max": 2
+                }
+            },
+            {
+                "id": "cutpurse",
+                "name": "Cutpurse",
+                "desc": "Steals valuables through pickpocketing and quick, stealthy movements.",
+                "tags": "t_tier1,not_church_class_automated",
+                "lock": "t_tier1",
+                "tag": "criminal,pickpocketer",
+                "require": "t_tier0&&introspection>3&&cunning>2&&agile",
+                "cost": {
+                    "guilt": 15,
+                    "sorrow": 4,
+                    "nutrition": 5
+                },
+                "mod": {
+                    "thoughts.max": 50,
+                    "supplication.max": 80,
+                    "supplication.rate": 0.2,
+                    "cunning.max": 1,
+                    "innermind.max": 2
+                }
+            },
+            {
+                "id": "streetrat",
+                "name": "Street Rat",
+                "desc": "Rat and man, working as one to empty all wallets",
+                "tags": "t_tier2,not_church_class_automated",
+                "lock": "t_tier2,jointhechurch",
+                "tag": "criminal",
+                "require": "rodentology>3&&agile&&stealbread>5&&t_tier1",
+                "need": "theself_2",
+                "cost": {
+                    "ratbond": 120,
+                    "guilt": 20
+                },
+                "mods": {
+                    "ratbond.max": 20,
+                    "guilt.max": 20,
+                    "rodentology.max": 1,
+                    "cunning.max": 1,
+                    "rats.max": 1
+                }
+            },
+            {
+                "id": "ratwarden",
+                "name": "Rat Warden",
+                "desc": "You are the protector of fellow rats",
+                "tags": "t_tier2,not_church_class_automated",
+                "lock": "t_tier2,jointhechurch",
+                "need": "theself_2",
+                "require": "rodentology>=6&&ratbeggar&&t_tier1",
+                "cost": {
+                    "ratbond": 200,
+                    "rats": 18
+                },
+                "mods": {
+                    "ratbond.max": 40,
+                    "rodentology.max": 2,
+                    "rats.max": 2
+                }
+            },
+            {
+                "id": "catbeggar",
+                "name": "Cat Beggar",
+                "desc": "They call him the cat weirdo",
+                "tags": "t_tier2,not_church_class_automated",
+                "lock": "t_tier2,jointhechurch",
+                "need": "theself_2",
+                "require": "petcat&&felinology>0&&t_tier1",
+                "cost": {
+                    "cat": 2,
+                    "catbond": 15
+                },
+                "mods": {
+                    "cat.max": 1,
+                    "catbond.max": 20,
+                    "felinology.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items": [
+            {
+                "id": "introspection",
+                "require": "t_job",
+                "cost": {
+                    "thoughts": 5,
+                    "sadness": 5
+                },
+                "desc": "Reflecting inwardly means examining your own thoughts and feelings.",
+                "mod": {
+                    "thoughts.max": 5,
+                    "sadness.max": 5,
+                    "supplication.max": 5
+                }
+            },
+            {
+                "id": "contemplation",
+                "require": "t_tier1&&introspection>4",
+                "cost": {
+                    "thoughts": 100
+                },
+                "desc": "Looking further within.",
+                "mod": {
+                    "thoughts.max": 3,
+                    "thoughts.rate": 0.1,
+                    "clarity.max": 1
+                }
+            },
+            {
+                "id": "thinking",
+                "require": "introspection>2&&skillpoints>0",
+                "cost": {
+                    "thoughts": 5,
+                    "skillpoints": 100
+                },
+                "desc": "Your capability of forming thoughts",
+                "mod": {
+                    "thoughts.max": 2,
+                    "perplexion.max": 0.5,
+                    "think.effect.thoughts": 0.1
+                }
+            },
+            {
+                "id": "exercise",
+                "name": "Exercise",
+                "require": "introspection>2&&skillpoints>0",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "desc": "The readiness of your body for doing exercise",
+                "mod": {
+                    "fatigue.max": 0.5
+                }
+            },
+            {
+                "id": "rodentology",
+                "name": "Ratkinship",
+                "desc": "If you want to understand men, study mice",
+                "require": "rats",
+                "cost": {
+                    "thoughts": 10
+                },
+                "mod": {
+                    "rats.max": 1,
+                    "thoughts.max": 1,
+                    "supplication.max": 2
+                }
+            },
+            {
+                "id": "felinology",
+                "name": "Catkinship",
+                "desc": "Mysterious beings, yet cute and fascinating",
+                "require": "petcat",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "cat.max": 1,
+                    "catbond.max": 3
+                }
+            },
+            {
+                "id": "bestiality",
+                "name": "Bestiality",
+                "desc": "Humans are animals",
+                "require": "catcorpse||ratcorpse",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "ratbond.max": 4,
+                    "catbond.max": 4
+                }
+            },
+            {
+                "id": "scavenging",
+                "name": "Scavenging",
+                "desc": "Seek out and collect natural resources and useful items from the environment.",
+                "require": "introspection>1",
+                "cost": {
+                    "thoughts": 15
+                },
+                "mod": {
+                    "foraging.max": 1
+                }
+            },
+            {
+                "id": "beggarhood",
+                "name": "Beggarhood",
+                "desc": "How good you are at mingling with fellow beggars",
+                "require": "t_job",
+                "cost": {
+                    "thoughts": 50,
+                    "supplication": 20
+                },
+                "mod": {
+                    "thoughts.max": 5,
+                    "supplication.max": 15
+                }
+            },
+            {
+                "id": "cunning",
+                "name": "Cunning",
+                "desc": "Behind a charming facade, shadows plot in silence.",
+                "require": "cunningthoughts",
+                "cost": {
+                    "thoughts": 60
+                },
+                "mod": {
+                    "thoughts.max": 3,
+                    "guilt.max": 1
+                }
+            },
+            {
+                "id": "animallove",
+                "name": "Animal Care",
+                "desc": "A certain affinity for handling animals",
+                "require": "ratbond>20&rodentology>2",
+                "cost": {
+                    "thoughts": 60
+                },
+                "mod": {
+                    "ratbond.max": 5,
+                    "catbond.max": 5
+                }
+            }
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+            {
+                "id": "emotions_loc",
+                "name": "Surface emotions",
+                "desc": "In facing yourself, you gotta start somewhere",
+                "require": "theself_1",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "result": {
+                    "supplication": 80,
+                    "clarity": 10
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "boredom_weak_emotion",
+                    "sad_weak_emotion",
+                    "frustration_weak_emotion",
+                    "joy_weak_emotion",
+                    "anxiety_weak_emotion"
+                ]
+            },
+            {
+                "id": "creepyalley",
+                "name": "Creepy Alley",
+                "desc": "Narrow walls of weathered stone close in, stained with grime and etched with deep cracks",
+                "require": "t_tier0",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "supplication": 10,
+                    "thoughts": 20
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "lostbeggar",
+                    "meancat",
+                    "ratpack",
+                    "drawing_wall",
+                    "sick_man"
+                ]
+            },
+            {
+                "id": "churchfront",
+                "name": "Entrance of the Church of Our lady",
+                "desc": "Ivy-clad stone walls surround a cobblestone path, lined with flickering lanterns and a small prayer shrine",
+                "require": "t_tier0",
+                "length": 10,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "faith": 40,
+                    "thoughts": 30
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "lostbeggar",
+                    "meancat",
+                    "ratpack"
+                ]
+            },
+            {
+                "id": "midden",
+                "name": "Market Midden",
+                "desc": "The holes where they throw all the garbage in",
+                "require": "creepyalley",
+                "length": 15,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "rats": 20,
+                    "ratbond": 20
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "meancat",
+                    "ratpack",
+                    "hungry_beggar",
+                    "smelly_puddle",
+                    "pattern_bones"
+                ]
+            },
+            {
+                "id": "sewer",
+                "name": "Sewers",
+                "desc": "Narrow stone tunnels carry waste downhill, draining into the river outside the city.",
+                "require": "midden",
+                "length": 20,
+                "run": {
+                    "supplication": 1
+                },
+                "result": {
+                    "rats": 50,
+                    "ratbond": 200
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "meancat",
+                    "ratpack",
+                    "smelly_puddle",
+                    "pattern_bones",
+                    "sick_man",
+                    "rusted_grate",
+                    "waste_stream",
+                    "lost_diary_page"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "ENCOUNTER",
+        "items": [
+            {
+                "id": "lostbeggar",
+                "name": "Lost beggar",
+                "desc": "A fellow beggar lost in life",
+                "effect": {
+                    "beggarhood.xp": 1,
+                    "fatigue": "-1~3"
+                },
+                "result": {
+                    "supplication": 5,
+                    "sadness": 1
+                }
+            },
+            {
+                "id": "meancat",
+                "name": "Mean cat",
+                "desc": "A stray cat hisses and attempts to scratch passerby",
+                "effect": {
+                    "irritation": "-2~2",
+                    "fatigue": "-2~2",
+                    "rats": "-0.1~0"
+                },
+                "result": {
+                    "rats": "0~2"
+                }
+            },
+            {
+                "id": "ratpack",
+                "name": "Rat pack",
+                "desc": "Rats running through the streets, threatening to climb on folks",
+                "effect": {
+                    "irritation": "-1~2",
+                    "fatigue": "-1~1",
+                    "ratbond": 1
+                },
+                "result": {
+                    "rats": "1~3"
+                }
+            },
+            {
+                "id": "drawing_wall",
+                "name": "Wall Drawing",
+                "desc": "Eerie patterns drawn on the wall",
+                "effect": {
+                    "introspection.xp": 1,
+                    "perplexion": "-1~2"
+                },
+                "result": {
+                    "supplication": 4,
+                    "sorrow": 1,
+                    "faith": 1
+                }
+            },
+            {
+                "id": "sick_man",
+                "name": "Sick man",
+                "desc": "A sick, delirious man, mumbling",
+                "effect": {
+                    "introspection.xp": 1,
+                    "perplexion": "-1~1",
+                    "irritation": "-1~2"
+                },
+                "result": {
+                    "thoughts": 3,
+                    "sorrow": 1,
+                    "guilt": 1
+                }
+            },
+            {
+                "id": "boredom_weak_emotion",
+                "name": "A bit bored",
+                "desc": "If only something interesting would happen...",
+                "effect": {
+                    "contemplation.xp": 1,
+                    "perplexion": "0~1",
+                    "irritation": "0~1",
+                    "thoughts": "-2~0"
+                },
+                "result": {
+                    "thoughts": 5,
+                    "clarity": "0~2"
+                }
+            },
+            {
+                "id": "sad_weak_emotion",
+                "name": "Feeling down",
+                "desc": "You can't help but feel the blues",
+                "effect": {
+                    "introspection.xp": 1,
+                    "perplexion": "0~1",
+                    "irritation": "0~1",
+                    "sadness": "0~1",
+                    "happiness": "-1~1"
+                },
+                "result": {
+                    "thoughts": "3~5",
+                    "sadness": "2~5"
+                }
+            },
+            {
+                "id": "frustration_weak_emotion",
+                "name": "Irritating",
+                "desc": "You woke up in the wrong side of the bed",
+                "effect": {
+                    "introspection.xp": 1,
+                    "irritation": "1~4",
+                    "perplexion": "1~3"
+                },
+                "result": {
+                    "thoughts": "2~7",
+                    "sadness": "1~3",
+                    "clarity": "1~2"
+                }
+            },
+            {
+                "id": "joy_weak_emotion",
+                "name": "Pleased",
+                "desc": "Life is hard but I'm glad to be alive",
+                "effect": {
+                    "irritation": "-2~0",
+                    "perplexion": "-3~0",
+                    "sadness": "-2~0",
+                    "sorrow": "-1~0",
+                    "happiness": "0~2"
+                },
+                "result": {
+                    "thoughts": "2~7",
+                    "clarity": "1~2"
+                }
+            },
+            {
+                "id": "anxiety_weak_emotion",
+                "name": "Anxious",
+                "desc": "Am I even sure of what I'm gonna eat tomorrow?",
+                "effect": {
+                    "irritation": "0~2",
+                    "perplexion": "0~2",
+                    "sadness": "0~2",
+                    "happiness": "-1~1"
+                },
+                "result": {
+                    "clarity": "-1~1",
+                    "sorrow": "0~1"
+                }
+            },
+            {
+                "id": "smelly_puddle",
+                "name": "Smelly puddle",
+                "desc": "Water on the ground. It stinks.",
+                "effect": {
+                    "irritation": "0~2",
+                    "perplexion": "0~2",
+                    "sadness": "0~2",
+                    "supplication": "-1~0"
+                },
+                "result": {
+                    "clarity": "-1~1",
+                    "rats": "0~1"
+                }
+            },
+            {
+                "id": "pattern_bones",
+                "name": "Bones in a pattern",
+                "desc": "Bones arranged in an intriguing pattern",
+                "effect": {
+                    "thoughts": "0~1",
+                    "perplexion": "0~2",
+                    "fear": "0~1",
+                    "sadness": "0~1",
+                    "thinking.xp": 1
+                },
+                "result": {
+                    "clarity": "-1~1"
+                }
+            },
+            {
+                "id": "rusted_grate",
+                "name": "Rusted grate",
+                "desc": "Grates of iron, filled with rust. I wonder what is beyond...",
+                "effect": {
+                    "thoughts": "-1~1",
+                    "perplexion": "0~1",
+                    "fear": "0~2"
+                },
+                "result": {
+                    "clarity": "-1~1"
+                }
+            },
+            {
+                "id": "waste_stream",
+                "name": "Waste stream",
+                "desc": "Water flow that carries garbage away from the town",
+                "effect": {
+                    "rats": "0~1",
+                    "fatigue": "0~3",
+                    "perplexion": "0~1",
+                    "thoughts": "-1~1"
+                },
+                "result": {
+                    "clarity": "0~1",
+                    "rats": "0~2"
+                }
+            },
+            {
+                "id": "hungry_beggar",
+                "name": "Hungry beggar",
+                "desc": "Deep in hunger, close to insanity",
+                "effect": {
+                    "breadcrumbs": "-2~0",
+                    "fatigue": "0~2",
+                    "irritation": "0~2"
+                },
+                "result": {
+                    "sadness": "0~2",
+                    "food": "-1~0",
+                    "breadcrumbs": "-1~0"
+                }
+            },
+            {
+                "id": "lost_diary_page",
+                "name": "Lost page",
+                "desc": "A page filled with words, barely readable",
+                "effect": {
+                    "thoughts": "0~1",
+                    "perplexion": "0~2",
+                    "thinking.xp": 1
+                },
+                "result": {
+                    "thoughts": "2~6"
+                }
+            }
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items": [
+            {
+                "id": "dialog_job",
+                "title": "Class Selection",
+                "content": "Picking a class will lock out the other classes from the same tier. Are you sure?",
+                "tags": "t_tier0"
+            },
+            {
+                "id": "irreversible",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. Are you sure?",
+                "tags": "max_decrease,irreversible"
+            },
+            {
+                "id": "exclusive_upgrade",
+                "title": "Upgrade Selection",
+                "content": "Picking this upgrade will lock out upgrades from the same tier. Are you sure?"
+            },
+            {
+                "id": "ending",
+                "title": "End of the Journey",
+                "content": "Performing this action will complete the game. Are you sure?",
+                "tags": "ending_game"
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items": [
+            {
+                "id": "brokenmirror",
+                "name": "Broken mirror",
+                "require": "scavenging>0",
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "introspection.max": 1,
+                    "thoughts.max": 5,
+                    "thoughts.rate": 0.01,
+                    "space": 1
+                }
+            },
+            {
+                "id": "crackedvase",
+                "name": "Cracked vase",
+                "require": "scavenging>0",
+                "cost": {
+                    "foraging": 2
+                },
+                "mod": {
+                    "sadness.max": 5,
+                    "space": 1
+                }
+            },
+            {
+                "id": "doll",
+                "name": "Discarded Doll",
+                "require": "scavenging>0",
+                "cost": {
+                    "foraging": 4
+                },
+                "mod": {
+                    "sadness.max": 8,
+                    "sorrow.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "mothblanket",
+                "name": "Moth-eaten blanket",
+                "require": "scavenging>1",
+                "max": 1,
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 1,
+                    "supplication.max": 10,
+                    "space": 1
+                }
+            },
+            {
+                "id": "blanket",
+                "name": "Old blanket",
+                "require": "coin>5",
+                "max": 1,
+                "cost": {
+                    "coin": 8
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 5,
+                    "supplication.max": 20,
+                    "space": 2
+                }
+            },
+            {
+                "id": "spoiledgrains",
+                "name": "Spoiled Grains",
+                "tag": "ratsource",
+                "require": "scavenging>0",
+                "max": 2,
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": -0.25,
+                    "supplication.max": -10,
+                    "rats.rate": 0.1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "destroyedpainting",
+                "name": "Destroyed painting",
+                "require": "scavenging>2",
+                "cost": {
+                    "foraging": 3
+                },
+                "mod": {
+                    "sadness.max": 3,
+                    "sadness.rate": 0.02,
+                    "space": 1
+                }
+            },
+            {
+                "id": "cheese",
+                "name": "Cheese",
+                "require": "coin>3",
+                "max": 2,
+                "cost": {
+                    "coin": 4
+                },
+                "mod": {
+                    "rats.max": 1,
+                    "ratbond.max": 20,
+                    "space": 1
+                }
+            },
+            {
+                "id": "ratpond",
+                "name": "Rat puddle",
+                "desc": "A puddle of water for the rats to drink",
+                "require": "rodentology>=2",
+                "max": 3,
+                "cost": {
+                    "thoughts": 50,
+                    "foraging": 30
+                },
+                "mod": {
+                    "rats.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "petcat",
+                "name": "Pet Cat",
+                "desc": "A selfish buddy, but a buddy nonetheless",
+                "require": "animallove>1",
+                "max": 1,
+                "cost": {
+                    "rats": 5
+                },
+                "mod": {
+                    "rats.rate": -0.5,
+                    "supplication.max": 50,
+                    "supplication.rate": 1,
+                    "animallove.max": 1,
+                    "catbond.rate": 0.4,
+                    "catbond.max": 30,
+                    "space": 3
+                }
+            },
+            {
+                "id": "meatbarrel",
+                "name": "Spoiled meat barrel",
+                "desc": "It smells horrible",
+                "require": "midden",
+                "tag": "ratsource",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "ratbond": 20
+                },
+                "mod": {
+                    "rats.max": 4,
+                    "rodentology.max": 1,
+                    "supplication.max": -20,
+                    "space": 3
+                }
+            },
+            {
+                "id": "rottenfruit",
+                "name": "Rotten fruit sack",
+                "desc": "Tons of flies all around",
+                "require": "midden",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "ratbond": 20
+                },
+                "mod": {
+                    "ratbond.max": 10,
+                    "rodentology.max": 1,
+                    "supplication.max": -15,
+                    "space": 2
+                }
+            },
+            {
+                "id": "mysterygarbage",
+                "name": "Mystery Garbage",
+                "desc": "Nobody could ever know what this is. It smells bad, but comforting.",
+                "require": "sewer",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "ratbond": 20
+                },
+                "mod": {
+                    "ratbond.max": 25,
+                    "supplication.max": -15,
+                    "space": 2
+                }
+            },
+            {
+                "id": "ratstatue",
+                "name": "Rat Statue",
+                "desc": "A beautiful, oversized statue of a rat. Who made this?",
+                "require": "sewer&&rodentology>=4",
+                "max": 1,
+                "cost": {
+                    "foraging": 30,
+                    "ratbond": 20
+                },
+                "mod": {
+                    "ratbond.max": 25,
+                    "supplication.max": -15,
+                    "space": 2
+                }
+            },
+            {
+                "id": "brokenrosario",
+                "name": "Broken Rosario",
+                "desc": "An old, broken necklace with beads. Attached to it is something that was once a cross.",
+                "require": "gratitude>4&&scavenging>2",
+                "tag": "pray_tool",
+                "max": 1,
+                "cost": {
+                    "thoughts": 30,
+                    "gratitude": 3,
+                    "foraging": 30
+                },
+                "mod": {
+                    "gratitude.max": 5,
+                    "faith.max": 5,
+                    "sadness.max": -3,
+                    "sorrow.max": -1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "oldrosario",
+                "name": "Old Rosario",
+                "desc": "An old rosario that is no longer needed",
+                "require": "faith>10&&churchbeggar",
+                "tag": "pray_tool",
+                "max": 1,
+                "cost": {
+                    "faith": 15,
+                    "gratitude": 10
+                },
+                "mod": {
+                    "gratitude.max": 10,
+                    "faith.max": 10,
+                    "sadness.max": -5,
+                    "sorrow.max": -3,
+                    "guilt.max": -5,
+                    "space": 1
+                }
+            },
+            {
+                "id": "stolenbread",
+                "name": "Crime Bread",
+                "desc": "Dried out stolen food. A keep sake of a small crime",
+                "require": "stealbread>=3&&cunning>2",
+                "max": 1,
+                "cost": {
+                    "breadcrumbs": 40,
+                    "supplication": 100
+                },
+                "mod": {
+                    "guilt.max": 10,
+                    "faith.max": -5,
+                    "gratitude.max": -5,
+                    "space": 1
+                }
+            },
+            {
+                "id": "deadflowers",
+                "name": "Dead flowers",
+                "desc": "The ephemarility of life",
+                "require": "sensitivecontemplation",
+                "max": 1,
+                "cost": {
+                    "thoughts": 30,
+                    "clarity": 12,
+                    "foraging": 30
+                },
+                "mod": {
+                    "contemplation.max": 1,
+                    "clarity.max": 3,
+                    "organizethoughts.result.clarity": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "rustyknife",
+                "name": "Rusty knife",
+                "require": "scavenging>2&&ratoath",
+                "tag": "weapon",
+                "cost": {
+                    "foraging": 30
+                },
+                "mod": {
+                    "guilt.max": 5,
+                    "cunning.max": 1,
+                    "space": 1
+                }
+            },
+            {
+                "id": "catfoodtray",
+                "name": "Foodtray",
+                "require": "felinology>1",
+                "cost": {
+                    "foraging": 20,
+                    "breadcrumbs": 40
+                },
+                "mod": {
+                    "breadcrumbs.rate": -0.1,
+                    "cat.rate": 0.1,
+                    "space": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "TAB",
+        "items": [
+            {
+                "id": "task",
+                "unit_types": [
+                    "TASK",
+                    "CLASS"
+                ],
+                "icon": "tab_tasks",
+                "separator": [
+                    {
+                        "id": "action",
+                        "name": "Instant Tasks",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 1,
+                        "require_instant": true
+                    },
+                    {
+                        "id": "task",
+                        "name": "Tasks",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 0
+                    },
+                    {
+                        "id": "crime_sep",
+                        "name": "Criminal Activities",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "thievery,cunning_style"
+                    },
+                    {
+                        "id": "power_up",
+                        "name": "Power Ups",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 10,
+                        "require_max": true
+                    },
+                    {
+                        "id": "class",
+                        "name": "Classes",
+                        "unit_types": [
+                            "CLASS"
+                        ],
+                        "priority": 100
+                    }
+                ]
+            },
+            {
+                "id": "resource",
+                "unit_types": [
+                    "RESOURCE"
+                ],
+                "icon": "tab_resources",
+                "separator": [
+                    {
+                        "id": "resource",
+                        "name": "Resources",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "id": "skill",
+                "unit_types": [
+                    "SKILL"
+                ],
+                "require": "t_job",
+                "icon": "tab_skills",
+                "separator": [
+                    {
+                        "id": "skill",
+                        "name": "Skills",
+                        "unit_types": [
+                            "SKILL"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "exploration",
+                "exploration_active_tab": true,
+                "require": "t_tier0",
+                "unit_types": [
+                    "LOCATION"
+                ],
+                "icon": "tab_exploration_c",
+                "separator": [
+                    {
+                        "id": "location",
+                        "name": "Locations",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "id": "housing",
+                "unit_types": [
+                    "HOUSE",
+                    "FURNITURE"
+                ],
+                "require": "t_job",
+                "icon": "tab_housing",
+                "separator": [
+                    {
+                        "id": "housing",
+                        "name": "Housing",
+                        "show_space": true,
+                        "unit_types": [
+                            "HOUSE"
+                        ]
+                    },
+                    {
+                        "id": "furniture",
+                        "name": "Furniture",
+                        "unit_types": [
+                            "FURNITURE"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "log",
+                "unit_types": [],
+                "contains_logs": true,
+                "necessary_for_desktop_and_thinnable": true,
+                "icon": "tab_log",
+                "separator": [
+                    {
+                        "id": "log",
+                        "name": "Log",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "id": "settings",
+                "unit_types": [],
+                "icon": "tab_config",
+                "open_settings": true
+            },
+            {
+                "id": "others",
+                "unit_types": [],
+                "icon": "tab_plus",
+                "open_other_tabs": true
+            }
+        ]
+    }
+]
