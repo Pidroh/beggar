@@ -261,7 +261,9 @@
                     "disease": 5
                 },
                 "mod": {
-                    "disease.max": 1
+                    "middisease.max": 3,
+                    "weakdisease.max": 3,
+                    "diseaseintolerance.max": 1
                 }
             }
         ]
