@@ -71,7 +71,7 @@
                 "name": "Disease awareness",
                 "desc": "Become aware of your body's health state",
                 "require": "diseaseintolerance>=1",
-                "tag": "disease_sep",
+                "tag": "diseasery",
                 "duration": 2,
                 "buy": {
                     "weakdisease": 1
