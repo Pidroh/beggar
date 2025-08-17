@@ -139,7 +139,7 @@
                 "mod": {
                     "ratbond.max": 10,
                     "ratbond.rate": 0.01,
-                    "weakdisease.rate": 0.01
+                    "weakdisease.rate": 0.0001
                 }
             },
             {
@@ -1231,9 +1231,10 @@
                 "desc": "Disguting, but spaceful.",
                 "mod": {
                     "space.max": 10,
-                    "pleafocus.effect.supplication": -1,
+                    "pleafocus.effect.supplication": -0.8,
                     "supplication.max": -100,
                     "happiness.max": -20,
+                    "weakdisease.rate": 0.01,
                     "rats.max": 5
                 }
             }
