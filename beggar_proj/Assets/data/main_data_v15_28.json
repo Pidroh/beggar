@@ -138,7 +138,8 @@
                 "max": 3,
                 "mod": {
                     "ratbond.max": 10,
-                    "ratbond.rate": 0.01
+                    "ratbond.rate": 0.01,
+                    "weakdisease.rate": 0.01
                 }
             },
             {
