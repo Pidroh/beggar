@@ -2374,7 +2374,7 @@
                      },
                      {
                         "id": "mental_sep_res",
-                         "name": "Reason",
+                         "name": "Reasoning",
                          "unit_types": [
                              "RESOURCE"
                          ],
@@ -2389,6 +2389,15 @@
                          ],
                          "priority": 2,
                          "tags": "emotionry"
+                     },
+                     {
+                        "id": "animal_sep_res",
+                         "name": "Animal-related",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "animalry"
                      }
                 ]
             },
