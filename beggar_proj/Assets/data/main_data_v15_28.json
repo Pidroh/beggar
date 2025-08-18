@@ -2324,14 +2324,14 @@
                         "tags": "thievery,cunning_style"
                     },
                     {
-                        "id": "disease_sep",
+                       "id": "disease_sep",
                         "name": "Pathologies",
                         "unit_types": [
                             "TASK"
                         ],
                         "priority": 2,
                         "tags": "diseasery,disease_style"
-                    },
+                    }, 
                     {
                         "id": "power_up",
                         "name": "Power Ups",
@@ -2362,7 +2362,25 @@
                         "id": "resource",
                         "name": "Resources",
                         "default": true
-                    }
+                    },
+                    {
+                        "id": "disease_sep_res",
+                         "name": "Pathologies",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "diseasery,disease_style"
+                     },
+                     {
+                        "id": "mental_sep_res",
+                         "name": "Reason",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "reasonry"
+                     }
                 ]
             },
             {
