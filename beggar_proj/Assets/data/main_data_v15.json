@@ -2556,6 +2556,15 @@
                          "priority": 2,
                          "tags": "animalry"
                      },
+                     {
+                        "id": "fire_sep_furnit",
+                         "name": "Fire-related furniture",
+                         "unit_types": [
+                             "FURNITURE"
+                         ],
+                         "priority": 2,
+                         "tags": "firery"
+                     },
                     {
                         "id": "furniture",
                         "name": "Furniture",
