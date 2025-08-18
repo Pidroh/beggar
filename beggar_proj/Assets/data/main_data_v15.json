@@ -2410,6 +2410,15 @@
                          "tags": "emotionry"
                      },
                      {
+                        "id": "food_sep_res",
+                         "name": "Food-related",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "foodry"
+                     },
+                     {
                         "id": "animal_sep_res",
                          "name": "Animal-related",
                          "unit_types": [
