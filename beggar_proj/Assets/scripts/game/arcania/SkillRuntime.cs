@@ -25,7 +25,7 @@ public class SkillRuntime
         return Mathf.Min(xp / (float)max, 1f);
     }
 
-    internal void Acquire()
+    public void Acquire()
     {
         _acquired = true;
     }

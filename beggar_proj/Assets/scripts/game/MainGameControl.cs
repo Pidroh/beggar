@@ -180,6 +180,32 @@ public class MainGameControl : MonoBehaviour
                 }
             }
             {
+                if (DebugMenuManager.CheckCommand("max"))
+                {
+                    foreach (var item in arcaniaModel.arcaniaUnits.datas)
+                    {
+                        foreach (var item2 in item.Value)
+                        {
+                            var endingT = false;
+                            foreach (var endU in this.JControlData.EndingData.runtimeUnits)
+                            {
+                                if (endU == null) continue;
+                                if (endU == item2)  {
+                                    endingT = true;
+                                    break;
+                                }
+                            }
+                            if (item2.HasMax && !endingT)
+                            {
+                                item2.SetValue(item2.Max);
+                                item2.Skill?.Acquire();
+                            }
+                                
+                        }
+                    }
+                }
+            }
+            {
                 if (DebugMenuManager.CheckCommand("resources"))
                 {
                     foreach (var item in arcaniaModel.arcaniaUnits.datas[UnitType.RESOURCE])
