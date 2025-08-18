@@ -2437,6 +2437,15 @@
                          "tags": "thievery"
                      },
                      {
+                        "id": "exploration_sep_res",
+                         "name": "Exploration-related",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "explorationry"
+                     },
+                     {
                         "id": "resource",
                         "name": "Resources",
                         "default": true
