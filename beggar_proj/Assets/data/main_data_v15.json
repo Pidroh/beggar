@@ -2557,6 +2557,15 @@
                          "tags": "animalry"
                      },
                      {
+                        "id": "crime_sep_furnit",
+                         "name": "Criminal furniture",
+                         "unit_types": [
+                             "FURNITURE"
+                         ],
+                         "priority": 2,
+                         "tags": "thievery"
+                     },
+                     {
                         "id": "fire_sep_furnit",
                          "name": "Fire-related furniture",
                          "unit_types": [
