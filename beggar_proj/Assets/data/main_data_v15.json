@@ -2428,6 +2428,15 @@
                          "tags": "religionry"
                      },
                      {
+                        "id": "crime_sep_res",
+                         "name": "Criminal",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "thievery"
+                     },
+                     {
                         "id": "resource",
                         "name": "Resources",
                         "default": true
