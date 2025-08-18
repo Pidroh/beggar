@@ -2446,6 +2446,15 @@
                          "tags": "explorationry"
                      },
                      {
+                        "id": "study_sep_res",
+                         "name": "Academics",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "studyry"
+                     },
+                     {
                         "id": "resource",
                         "name": "Resources",
                         "default": true
