@@ -2380,6 +2380,15 @@
                          ],
                          "priority": 2,
                          "tags": "reasonry"
+                     },
+                     {
+                        "id": "emotion_sep_res",
+                         "name": "Emotions",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "emotionry"
                      }
                 ]
             },
