@@ -2381,16 +2381,7 @@
                 ],
                 "icon": "tab_resources",
                 "separator": [
-                    
-                    {
-                        "id": "disease_sep_res",
-                         "name": "Pathologies",
-                         "unit_types": [
-                             "RESOURCE"
-                         ],
-                         "priority": 2,
-                         "tags": "diseasery,disease_style"
-                     },
+
                      {
                         "id": "mental_sep_res",
                          "name": "Reasoning",
@@ -2417,6 +2408,15 @@
                          ],
                          "priority": 2,
                          "tags": "foodry"
+                     },
+                     {
+                        "id": "disease_sep_res",
+                         "name": "Pathologies",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "diseasery,disease_style"
                      },
                      {
                         "id": "animal_sep_res",
@@ -2529,6 +2529,15 @@
                             "HOUSE"
                         ]
                     },
+                    {
+                        "id": "food_sep_res",
+                         "name": "Food-related",
+                         "unit_types": [
+                             "FURNITURE"
+                         ],
+                         "priority": 2,
+                         "tags": "foodry"
+                     },
                     {
                         "id": "furniture",
                         "name": "Furniture",
