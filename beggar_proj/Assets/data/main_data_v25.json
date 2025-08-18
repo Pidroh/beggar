@@ -6,6 +6,7 @@
                 "id": "firewood",
                 "max": 1,
                 "desc": "Wood for the bonfire. You need something to set it on fire though.",
+                "tag":"firery",
                 "mods": {
                     "handdrill_dot.mod.firepower.rate": 0.1
                 }
@@ -13,11 +14,13 @@
             {
                 "id": "followers",
                 "max": 0,
+                "tag":"charismary",
                 "desc": "A person who supports you"
             },
             {
                 "id": "fireaffinity",
                 "name": "Fire Affinity",
+                "tag":"firery",
                 "max": 5,
                 "desc": "Attraction to the flame"
             },
@@ -25,6 +28,7 @@
                 "id": "dominance",
                 "name": "Dominance",
                 "max": 3,
+                "tag":"emotionry",
                 "desc": "Feelings of control",
                 "mod": {
                     "gratitude.max": -1
@@ -33,6 +37,7 @@
             {
                 "id": "charm",
                 "name": "Charm",
+                "tag":"charismary",
                 "max": 3,
                 "desc": "The power of attracting and delighting others"
             },
@@ -48,6 +53,7 @@
             {
                 "id": "firepower",
                 "name": "Flame power",
+                "tag":"firery",
                 "max": 3,
                 "desc": "The strength of the fire",
                 "mod": {
@@ -59,6 +65,7 @@
             {
                 "id": "benevolence",
                 "max": 3,
+                "tag":"emotionry",
                 "desc": "Meaning well, being kind",
                 "mod": {
                     "gratitude.max": 1
@@ -67,6 +74,7 @@
             {
                 "id": "animalfat",
                 "name": "Animal fat",
+                "tag":"animationry",
                 "max": 0,
                 "desc": "Oil extracted from animals",
                 "mod": {
