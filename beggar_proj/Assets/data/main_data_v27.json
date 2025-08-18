@@ -7,6 +7,7 @@
                 "name": "Realization",
                 "max": 1,
                 "desc": "New understanding that comes from deep thought",
+                "tag":"reasonry",
                 "mod": {
                     "reflection.max": 1,
                     "clarity.max": 10,
@@ -16,6 +17,7 @@
             {
                 "id": "musing",
                 "name": "Musing",
+                "tag":"reasonry",
                 "max": 30,
                 "desc": "Random thoughts dancing around"
             },
@@ -32,12 +34,14 @@
             {
                 "id": "breakinlogistics",
                 "name": "Break-in Setup",
+                "tag":"thievery",
                 "max": 0,
                 "desc": "Intel, resources, tools, and the mindset required for breaking into a place and stealing something"
             },
             {
                 "id": "looks",
                 "name": "Looks",
+                "tag":"charismary",
                 "max": 30,
                 "desc": "Who knew you would come to improve your appearance"
             }
