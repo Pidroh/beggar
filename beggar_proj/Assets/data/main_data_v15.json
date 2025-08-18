@@ -2455,6 +2455,15 @@
                          "tags": "studyry"
                      },
                      {
+                        "id": "charisma_sep_res",
+                         "name": "Charismatics",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "charismary"
+                     },
+                     {
                         "id": "resource",
                         "name": "Resources",
                         "default": true
