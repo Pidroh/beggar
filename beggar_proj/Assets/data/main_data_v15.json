@@ -2531,12 +2531,21 @@
                     },
                     {
                         "id": "food_sep_res",
-                         "name": "Food-related",
+                         "name": "Food-related furniture",
                          "unit_types": [
                              "FURNITURE"
                          ],
                          "priority": 2,
                          "tags": "foodry"
+                     },
+                     {
+                        "id": "religion_sep_res",
+                         "name": "Religion furniture",
+                         "unit_types": [
+                             "FURNITURE"
+                         ],
+                         "priority": 2,
+                         "tags": "religionry"
                      },
                     {
                         "id": "furniture",
