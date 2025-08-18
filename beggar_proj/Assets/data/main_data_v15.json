@@ -6,6 +6,7 @@
                 "id": "supplication",
                 "max": 30,
                 "initial": 30,
+                "tag":"emotionry",
                 "desc": "Desperate pleas that a character uses to perform begging actions and request aid or mercy."
             },
             {
@@ -13,6 +14,7 @@
                 "max": 10,
                 "initial": 10,
                 "desc": "You are alone",
+                "tag":"emotionry",
                 "mod": {
                     "happiness.max": -5
                 }
@@ -21,6 +23,7 @@
                 "id": "happiness",
                 "max": 0,
                 "desc": "Joy thrives in the quiet moments you almost overlook",
+                "tag":"emotionry",
                 "mod": {
                     "supplication.max": 10,
                     "sadness.rate": -1
@@ -34,12 +37,14 @@
             {
                 "id": "breadcrumbs",
                 "name": "Foodcrumbs",
+                "tag":"foodry",
                 "desc": "Small, old pieces of food",
                 "max": 15
             },
             {
                 "id": "food",
                 "name": "Food",
+                "tag":"foodry",
                 "desc": "Nutritious substance",
                 "max": 5
             },
@@ -51,6 +56,7 @@
             {
                 "id": "nutrition",
                 "max": 5,
+                "tag":"foodry",
                 "desc": "Higher values mean your character is well-fed, while lower values indicate hunger.",
                 "mod": {
                     "thoughts.max": 1
@@ -64,6 +70,7 @@
             },
             {
                 "id": "thoughts",
+                "tag":"reasonry",
                 "desc": "Mental reflections and ideas shaping a character's perspective. Represent the inner workings of the mind.",
                 "max": 5
             },
@@ -75,6 +82,7 @@
             },
             {
                 "id": "clarity",
+                "tag":"reasonry",
                 "desc": "Clear thought, clear mind",
                 "max": 3,
                 "mod": {
@@ -84,6 +92,7 @@
             {
                 "id": "metathought",
                 "name": "Meta thought",
+                "tag":"reasonry",
                 "desc": "The capacibility to think about our past",
                 "flavor": "The mirror of the mind",
                 "max": 3,
@@ -94,6 +103,7 @@
             {
                 "id": "sadness",
                 "desc": "The weight of our emotions reflects the depth of our experiences",
+                "tag":"emotionry",
                 "flavor": "Silent ache",
                 "max": 5,
                 "mod": {
@@ -102,6 +112,7 @@
             },
             {
                 "id": "sorrow",
+                "tag":"emotionry",
                 "desc": "A profound emotion that deepens one's empathy and understanding. It connects us to others through shared experiences of loss and reflection.",
                 "max": 5,
                 "mod": {
@@ -110,6 +121,7 @@
             },
             {
                 "id": "gratitude",
+                "tag":"emotionry",
                 "desc": "Readiness to return kindness",
                 "max": 10,
                 "mod": {
@@ -120,6 +132,7 @@
             {
                 "id": "faith",
                 "name": "Faint Faith",
+                "tag":"religionry",
                 "desc": "The start of belief in the divine",
                 "max": 5,
                 "mod": {
@@ -129,11 +142,13 @@
             },
             {
                 "id": "guilt",
+                "tag":"emotionry",
                 "desc": "A lingering whisper of choices past.",
                 "max": 5
             },
             {
                 "id": "rats",
+                "tag":"animalry",
                 "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
                 "max": 3,
                 "mod": {
@@ -144,6 +159,7 @@
             {
                 "id": "cat",
                 "name": "Stray cat",
+                "tag":"animalry",
                 "desc": "Cats living in the city, yet odly are always near you",
                 "max": 0,
                 "mod": {
@@ -154,6 +170,7 @@
             {
                 "id": "ratcorpse",
                 "name": "Rat corpse",
+                "tag":"animalry",
                 "desc": "A dead rat",
                 "max": 3,
                 "mod": {
@@ -164,6 +181,7 @@
             {
                 "id": "catcorpse",
                 "name": "Cat corpse",
+                "tag":"animalry",
                 "desc": "A dead cat",
                 "max": 3,
                 "mod": {
@@ -173,6 +191,7 @@
             },
             {
                 "id": "ratbond",
+                "tag":"animalry",
                 "desc": "A faint connection forms with your rats, creating a slight sense of understanding and trust.",
                 "max": 5
             },
@@ -183,6 +202,7 @@
             },
             {
                 "id": "catbond",
+                "tag":"animalry",
                 "desc": "A faint connection forms with your cats, creating a slight sense of understanding and trust.",
                 "max": 5
             },
@@ -199,30 +219,35 @@
             },
             {
                 "id": "perplexion",
+                "tag":"explorationry",
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
             },
             {
                 "id": "fatigue",
+                "tag":"explorationry",
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
             },
             {
                 "id": "irritation",
+                "tag":"explorationry",
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
             },
             {
                 "id": "fear",
+                "tag":"explorationry",
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
             },
             {
                 "id": "boredom",
+                "tag":"explorationry",
                 "stressor": true,
                 "tags": "stress",
                 "max": 10
@@ -1230,7 +1255,7 @@
                 "desc": "Disguting, but spaceful.",
                 "mod": {
                     "space.max": 10,
-                    "pleafocus.effect.supplication": -1,
+                    "pleafocus.effect.supplication": -0.8,
                     "supplication.max": -100,
                     "happiness.max": -20,
                     "rats.max": 5
@@ -2322,6 +2347,15 @@
                         "tags": "thievery,cunning_style"
                     },
                     {
+                       "id": "disease_sep",
+                        "name": "Pathologies",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "diseasery,disease_style"
+                    }, 
+                    {
                         "id": "power_up",
                         "name": "Power Ups",
                         "unit_types": [
@@ -2351,7 +2385,43 @@
                         "id": "resource",
                         "name": "Resources",
                         "default": true
-                    }
+                    },
+                    {
+                        "id": "disease_sep_res",
+                         "name": "Pathologies",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "diseasery,disease_style"
+                     },
+                     {
+                        "id": "mental_sep_res",
+                         "name": "Reasoning",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "reasonry"
+                     },
+                     {
+                        "id": "emotion_sep_res",
+                         "name": "Emotions",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "emotionry"
+                     },
+                     {
+                        "id": "animal_sep_res",
+                         "name": "Animal-related",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "animalry"
+                     }
                 ]
             },
             {
