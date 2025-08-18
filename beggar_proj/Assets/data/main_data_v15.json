@@ -2381,11 +2381,7 @@
                 ],
                 "icon": "tab_resources",
                 "separator": [
-                    {
-                        "id": "resource",
-                        "name": "Resources",
-                        "default": true
-                    },
+                    
                     {
                         "id": "disease_sep_res",
                          "name": "Pathologies",
@@ -2421,7 +2417,21 @@
                          ],
                          "priority": 2,
                          "tags": "animalry"
-                     }
+                     },
+                     {
+                        "id": "religion_sep_res",
+                         "name": "Religion",
+                         "unit_types": [
+                             "RESOURCE"
+                         ],
+                         "priority": 2,
+                         "tags": "religionry"
+                     },
+                     {
+                        "id": "resource",
+                        "name": "Resources",
+                        "default": true
+                    }
                 ]
             },
             {
