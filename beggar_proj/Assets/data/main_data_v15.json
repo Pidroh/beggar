@@ -2397,6 +2397,24 @@
                         "tags": "emotionry"
                     },
                     {
+                        "id": "religion_sep_task",
+                        "name": "Religion",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "religionry"
+                    },
+                    {
+                        "id": "emotion_sep_task",
+                        "name": "Emotion-related",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "emotionry"
+                    },
+                    {
                         "id": "power_up",
                         "name": "Power Ups",
                         "unit_types": [
