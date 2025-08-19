@@ -2406,13 +2406,13 @@
                         "tags": "religionry"
                     },
                     {
-                        "id": "emotion_sep_task",
-                        "name": "Emotion-related",
+                        "id": "charity_sep_task",
+                        "name": "Charity",
                         "unit_types": [
                             "TASK"
                         ],
                         "priority": 2,
-                        "tags": "emotionry"
+                        "tags": "charityry"
                     },
                     {
                         "id": "power_up",
