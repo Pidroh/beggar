@@ -2415,6 +2415,33 @@
                         "tags": "charityry"
                     },
                     {
+                        "id": "sadism_sep_task",
+                        "name": "Sadism",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "sadismry"
+                    },
+                    {
+                        "id": "religion_sep_task",
+                        "name": "Religion",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "religionry"
+                    },
+                    {
+                        "id": "charity_sep_task",
+                        "name": "Charity",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "charityry"
+                    },
+                    {
                         "id": "power_up",
                         "name": "Power Ups",
                         "unit_types": [
