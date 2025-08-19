@@ -2388,13 +2388,13 @@
                         "tags": "thievery,cunning_style"
                     },
                     {
-                        "id": "disease_sep",
-                        "name": "Pathologies",
+                        "id": "emotion_sep_task",
+                        "name": "Emotion-related",
                         "unit_types": [
                             "TASK"
                         ],
                         "priority": 2,
-                        "tags": "diseasery,disease_style"
+                        "tags": "emotionry"
                     },
                     {
                         "id": "power_up",
