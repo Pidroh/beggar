@@ -7,7 +7,7 @@
                 "name": "Church Respect",
                 "max": 5,
                 "desc": "How well seen you are by members of the church",
-                "tag":"religionry"
+                "tag": "religionry"
             },
             {
                 "id": "reflection",
@@ -15,7 +15,7 @@
                 "max": 3,
                 "desc": "Thought applied to the self, to the past",
                 "flavor": "The mirror of the mind",
-                "tag":"reasonry",
+                "tag": "reasonry",
                 "mod": {
                     "clarity.max": 1,
                     "thoughts.max": 5
@@ -24,14 +24,14 @@
             {
                 "id": "fundamentals",
                 "name": "Fundamentals",
-                "tag":"studyry",
+                "tag": "studyry",
                 "max": 0,
                 "desc": "The basics of knowledge"
             },
             {
                 "id": "academics",
                 "name": "Academics",
-                "tag":"studyry",
+                "tag": "studyry",
                 "max": 1,
                 "desc": "Crystalized fundamentals"
             }
@@ -299,7 +299,8 @@
                 "result": {
                     "food": 1,
                     "gratitude": 10
-                }
+                },
+                "tag": "religionry"
             },
             {
                 "id": "thankfulthoughts",
@@ -329,7 +330,8 @@
                 },
                 "result": {
                     "fundamentals": 1
-                }
+                },
+                "tag": "studyry"
             },
             {
                 "id": "pray",
@@ -344,7 +346,8 @@
                 "result": {
                     "faith": 2,
                     "gratitude": 1
-                }
+                },
+                "tag": "religionry"
             },
             {
                 "id": "studystudy",
@@ -762,7 +765,8 @@
                 },
                 "result_fail": {
                     "breadcrumbs": "15~30"
-                }
+                },
+                "tag": "beggary"
             },
             {
                 "id": "firsteucharist",
@@ -862,7 +866,8 @@
                 "result": {
                     "churchrespect": 1,
                     "faith": 1
-                }
+                },
+                "tag": "religionry"
             },
             {
                 "id": "basicsknowledge",
@@ -961,7 +966,8 @@
                 },
                 "result": {
                     "reflection": 1
-                }
+                },
+                "tag": "mentalry"
             },
             {
                 "id": "churchcalling",

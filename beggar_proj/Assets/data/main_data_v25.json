@@ -6,7 +6,7 @@
                 "id": "firewood",
                 "max": 1,
                 "desc": "Wood for the bonfire. You need something to set it on fire though.",
-                "tag":"firery",
+                "tag": "firery",
                 "mods": {
                     "handdrill_dot.mod.firepower.rate": 0.1
                 }
@@ -14,13 +14,13 @@
             {
                 "id": "followers",
                 "max": 0,
-                "tag":"charismary",
+                "tag": "charismary",
                 "desc": "A person who supports you"
             },
             {
                 "id": "fireaffinity",
                 "name": "Fire Affinity",
-                "tag":"firery",
+                "tag": "firery",
                 "max": 5,
                 "desc": "Attraction to the flame"
             },
@@ -28,7 +28,7 @@
                 "id": "dominance",
                 "name": "Dominance",
                 "max": 3,
-                "tag":"emotionry",
+                "tag": "emotionry",
                 "desc": "Feelings of control",
                 "mod": {
                     "gratitude.max": -1
@@ -37,7 +37,7 @@
             {
                 "id": "charm",
                 "name": "Charm",
-                "tag":"charismary",
+                "tag": "charismary",
                 "max": 3,
                 "desc": "The power of attracting and delighting others"
             },
@@ -53,7 +53,7 @@
             {
                 "id": "firepower",
                 "name": "Flame power",
-                "tag":"firery",
+                "tag": "firery",
                 "max": 3,
                 "desc": "The strength of the fire",
                 "mod": {
@@ -65,7 +65,7 @@
             {
                 "id": "benevolence",
                 "max": 3,
-                "tag":"emotionry",
+                "tag": "emotionry",
                 "desc": "Meaning well, being kind",
                 "mod": {
                     "gratitude.max": 1
@@ -74,7 +74,7 @@
             {
                 "id": "animalfat",
                 "name": "Animal fat",
-                "tag":"animationry",
+                "tag": "animationry",
                 "max": 0,
                 "desc": "Oil extracted from animals",
                 "mod": {
@@ -159,7 +159,8 @@
                 },
                 "result": {
                     "food": "1~3"
-                }
+                },
+                "tag": "charityry"
             },
             {
                 "id": "think_reflection",
@@ -330,7 +331,8 @@
                         "followers.max": 5,
                         "charm.max": 10
                     }
-                }
+                },
+                "tag": "charismary"
             },
             {
                 "id": "better_foodsharing",
@@ -394,14 +396,14 @@
                 "cost": {
                     "dominance": 250
                 },
-                
                 "dot": {
                     "duration": 200,
                     "mod": {
                         "boredom.max": 20,
                         "irritation.max": 20
                     }
-                }
+                },
+                "tag": "sadismry"
             },
             {
                 "id": "benevolent_rats",
@@ -424,7 +426,8 @@
                         "sharefood.speed": 200,
                         "breadcrumbs.rate": 1
                     }
-                }
+                },
+                "tag": "charityry"
             },
             {
                 "id": "warm_feline_hearts",
@@ -446,7 +449,8 @@
                         "benevolence.rate": 2,
                         "benevolence.max": 100
                     }
-                }
+                },
+                "tag": "animalry"
             },
             {
                 "id": "benevolence_buff_exp",
@@ -466,7 +470,8 @@
                         "fatigue.max": 20,
                         "irritation.max": 20
                     }
-                }  
+                },
+                "tag": "charityry"
             },
             {
                 "id": "flaming_rats",
@@ -493,7 +498,8 @@
                         "rats.max": -15,
                         "ratbond.max": -200
                     }
-                }
+                },
+                "tag": "animalry"
             },
             {
                 "id": "collectfirewood",
@@ -505,7 +511,8 @@
                 },
                 "result": {
                     "firewood": 1
-                }
+                },
+                "tag": "firery"
             },
             {
                 "id": "sharefood",
@@ -526,7 +533,8 @@
                 },
                 "result": {
                     "benevolence": 1
-                }
+                },
+                "tag": "charityry"
             },
             {
                 "id": "captive_watchers",
@@ -586,7 +594,8 @@
                         "benevolence.rate": 1,
                         "followers.max": -3
                     }
-                }
+                },
+                "tag": "charityry"
             },
             {
                 "id": "rest_charm",
@@ -620,7 +629,8 @@
                 "result_fail": {
                     "charisma.xp": 8,
                     "charm": 1
-                }
+                },
+                "tag": "charismary"
             },
             {
                 "id": "better_charming",
@@ -677,7 +687,8 @@
                 },
                 "result": {
                     "animalfat": 3
-                }
+                },
+                "tag": "firery"
             },
             {
                 "id": "handdrill",
@@ -707,7 +718,8 @@
                 },
                 "result_fail": {
                     "kindling.xp": "10~40"
-                }
+                },
+                "tag": "firery"
             },
             {
                 "id": "feedfire",
@@ -736,7 +748,8 @@
                         "fireaffinity.rate": 0.08,
                         "fireaffinity.max": 5
                     }
-                }
+                },
+                "tag": "firery"
             },
             {
                 "id": "antaccident",
@@ -763,7 +776,8 @@
                 },
                 "result": {
                     "dominance": 1
-                }
+                },
+                "tag": "sadismry"
             },
             {
                 "id": "causepain",
@@ -773,7 +787,8 @@
                 "duration": 3,
                 "result": {
                     "dominance": 1
-                }
+                },
+                "tag": "sadismry"
             },
             {
                 "id": "ratfire_ember",
@@ -971,7 +986,8 @@
                         "capture_person.success_rate": 35,
                         "danger.rate": -0.2
                     }
-                }
+                },
+                "tag": "sadismry"
             },
             {
                 "id": "kidnap_middle_class",
@@ -994,7 +1010,8 @@
                         "capture_person.result.coin": 1,
                         "capture_person.result.danger": 2
                     }
-                }
+                },
+                "tag": "sadismry"
             },
             {
                 "id": "firewoodstock",
@@ -1060,7 +1077,8 @@
                 },
                 "result_fail": {
                     "danger": "2~7"
-                }
+                },
+                "tag": "sadismry"
             },
             {
                 "id": "sadistictend_1",

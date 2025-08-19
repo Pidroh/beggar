@@ -7,7 +7,7 @@
                 "name": "Realization",
                 "max": 1,
                 "desc": "New understanding that comes from deep thought",
-                "tag":"reasonry",
+                "tag": "reasonry",
                 "mod": {
                     "reflection.max": 1,
                     "clarity.max": 10,
@@ -17,7 +17,7 @@
             {
                 "id": "musing",
                 "name": "Musing",
-                "tag":"reasonry",
+                "tag": "reasonry",
                 "max": 30,
                 "desc": "Random thoughts dancing around"
             },
@@ -34,14 +34,14 @@
             {
                 "id": "breakinlogistics",
                 "name": "Break-in Setup",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 0,
                 "desc": "Intel, resources, tools, and the mindset required for breaking into a place and stealing something"
             },
             {
                 "id": "looks",
                 "name": "Looks",
-                "tag":"charismary",
+                "tag": "charismary",
                 "max": 30,
                 "desc": "Who knew you would come to improve your appearance"
             }
@@ -95,14 +95,15 @@
                         "thinklife.max": 3,
                         "reflective_style.activate": 1
                     }
-                }
+                },
+                "tag": "mentalry"
             },
             {
                 "id": "deep_think",
                 "name": "Deep thinking",
                 "desc": "Way beyond surface thought",
                 "require": "reflectivemood_dot",
-                "tag": "reflective_style",
+                "tag": "reflective_style,mentalry",
                 "duration": 100,
                 "cost": {
                     "clarity": 80,
@@ -147,7 +148,8 @@
                 },
                 "result": {
                     "academics": 1
-                }
+                },
+                "tag": "studyry"
             },
             {
                 "id": "betterreading2",
@@ -447,7 +449,8 @@
                         "luxury.max": 3,
                         "coin.rate": -0.3
                     }
-                }
+                },
+                "tag": "luxuryry"
             },
             {
                 "id": "rest_looks",
@@ -639,7 +642,7 @@
                 "name": "Muse away",
                 "desc": "Think away, give your musings space to breath",
                 "require": "emotions_loc_b",
-                "tag": "reflective_style",
+                "tag": "reflective_style,mentalry",
                 "buy": {
                     "realization": 1,
                     "reflection": 15
@@ -678,7 +681,8 @@
                 },
                 "cost": {
                     "clarity": 1
-                }
+                },
+                "tag": "religionry"
             },
             {
                 "id": "musemax",
@@ -1524,7 +1528,7 @@
                 "name": "Wood art",
                 "desc": "Deeply express yourself in a piece of wood",
                 "require": "thinklife",
-                "tag":"junk",
+                "tag": "junk",
                 "max": 1,
                 "cost": {
                     "reflection": 10,
@@ -1544,7 +1548,7 @@
                 "name": "Wood art II",
                 "desc": "Break the current expression and bring out something new",
                 "require": "deep_think>0",
-                "tag":"junk",
+                "tag": "junk",
                 "max": 5,
                 "cost": {
                     "reflection": 15,
@@ -1564,7 +1568,7 @@
                 "name": "Fairy-tale collection",
                 "desc": "Buy a fairly expensive collection of fairy tales",
                 "require": "extravagance>=2",
-                "tag":"luxuryry",
+                "tag": "luxuryry",
                 "max": 1,
                 "cost": {
                     "foraging": 50,
@@ -1583,7 +1587,7 @@
                 "name": "Room for a hidden stash",
                 "desc": "You can hide a little bit of money here. Maybe more if you setup a hidden stash",
                 "require": "crime>1&&coin>15",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "thoughts": 120,
@@ -1599,7 +1603,7 @@
                 "name": "Stolen mirror",
                 "desc": "Your reflection gives you time to think",
                 "require": "housebreaking>1",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "foraging": 30,
@@ -1622,7 +1626,7 @@
                 "name": "Stolen clothes",
                 "desc": "Quite the fancy clothes hidden in a merchant's house",
                 "require": "housebreaking>2",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "foraging": 30,
@@ -1641,7 +1645,7 @@
                 "name": "A fine wax tablet",
                 "desc": "Fairly usable, brand new wax tablet. Great for studying and taking notes. Much cheaper than paper",
                 "require": "academia>2&&coin>5",
-                "tag":"studyry",
+                "tag": "studyry",
                 "max": 1,
                 "cost": {
                     "foraging": 30,
@@ -1658,7 +1662,7 @@
                 "name": "Stolen painting",
                 "desc": "This one is a bit hard to steal, but it looks great",
                 "require": "housebreaking>3",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "foraging": 30,
@@ -1676,7 +1680,7 @@
                 "name": "Lockpick Tools",
                 "desc": "Very useful for opening up doors",
                 "require": "housebreaking>=2",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "foraging": 10,
@@ -1693,7 +1697,7 @@
                 "name": "Expert Lockpick Tools",
                 "desc": "Very useful for opening up doors",
                 "require": "housebreaking>=4",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "foraging": 30,
@@ -1710,7 +1714,7 @@
                 "name": "The Guide of the Perplexed",
                 "desc": "A fairly rare book written by Maimonides",
                 "require": "housebreaking>2",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "foraging": 30,
@@ -1727,7 +1731,7 @@
                 "name": "Thief gloves",
                 "desc": "Very high-quality gloves best suited for... Better not to say it.",
                 "require": "crime>1&&thief",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "coin": 50
@@ -1744,7 +1748,7 @@
                 "name": "Fancy clothes",
                 "desc": "High quality clothes. But it's a bit high maintenance",
                 "require": "looks>2",
-                "tag":"luxuryry",
+                "tag": "luxuryry",
                 "max": 1,
                 "cost": {
                     "coin": 50
@@ -1762,7 +1766,7 @@
                 "name": "Simple chest",
                 "desc": "A spot to keep money. It can actually hold way more, but you are afraid of thieves",
                 "require": "safe_house&&coin>40",
-                "tag":"storagery",
+                "tag": "storagery",
                 "max": 1,
                 "cost": {
                     "coin": 30
@@ -1777,7 +1781,7 @@
                 "name": "Stolen antique chest",
                 "desc": "A nice antique chest that can hold quite a bit of gold. Also looks really fancy",
                 "require": "housebreaking",
-                "tag":"thievery",
+                "tag": "thievery",
                 "max": 1,
                 "cost": {
                     "breakinlogistics": 6
@@ -1795,7 +1799,7 @@
                 "desc": "Looking presentable",
                 "max": 1,
                 "require": "safe_house",
-                "tag":"luxuryry",
+                "tag": "luxuryry",
                 "cost": {
                     "coin": 15
                 },
