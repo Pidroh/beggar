@@ -2433,13 +2433,13 @@
                         "tags": "firery"
                     },
                     {
-                        "id": "charity_sep_task",
-                        "name": "Charity",
+                        "id": "study_sep_task",
+                        "name": "Academics",
                         "unit_types": [
                             "TASK"
                         ],
                         "priority": 2,
-                        "tags": "charityry"
+                        "tags": "studyry"
                     },
                     {
                         "id": "power_up",
