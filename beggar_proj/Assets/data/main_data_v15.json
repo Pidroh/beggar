@@ -2589,6 +2589,15 @@
                          "priority": 2,
                          "tags": "firery"
                      },
+                     {
+                        "id": "luxury_sep_furnit",
+                         "name": "Luxury furniture",
+                         "unit_types": [
+                             "FURNITURE"
+                         ],
+                         "priority": 2,
+                         "tags": "luxuryry"
+                     },
                     {
                         "id": "furniture",
                         "name": "Furniture",
