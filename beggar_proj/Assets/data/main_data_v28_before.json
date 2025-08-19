@@ -1,0 +1,64 @@
+[
+    {
+        "type": "RESOURCE",
+        "items": [{
+            "id": "rats",
+            "tag": "animalry",
+            "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
+            "max": 3,
+            "mod": {
+                "ratbond.max": 10,
+                "ratbond.rate": 0.01
+            }
+        }]
+    },
+    {
+        "type": "TASK",
+        "items": []
+    },
+    {
+        "type": "HOUSE",
+        "items": [
+            {
+                "id": "sewer_home",
+                "name": "Sewer",
+                "require": "sewer",
+                "cost": {
+                    "thoughts": 80
+                },
+                "desc": "Disguting, but spaceful.",
+                "mod": {
+                    "space.max": 10,
+                    "pleafocus.effect.supplication": -0.8,
+                    "supplication.max": -100,
+                    "happiness.max": -20,
+                    "rats.max": 5
+                }
+            }
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items": []
+    },
+    {
+        "type": "SKILL",
+        "items": []
+    },
+    {
+        "type": "LOCATION",
+        "items": []
+    },
+    {
+        "type": "ENCOUNTER",
+        "items": []
+    },
+    {
+        "type": "DIALOG",
+        "items": []
+    },
+    {
+        "type": "FURNITURE",
+        "items": []
+    }
+]
