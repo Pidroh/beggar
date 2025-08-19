@@ -276,6 +276,7 @@
                 "desc": "Raw",
                 "require": "bestiality>2",
                 "duration": 10,
+                "tag": "animalry",
                 "cost": {
                     "catcorpse": 1
                 },
@@ -298,6 +299,7 @@
                 "name": "Organize thoughts",
                 "require": "introspection>3",
                 "duration": 6,
+                "tag": "mentalry",
                 "run": {
                     "supplication": 1,
                     "thoughts": 1
@@ -311,6 +313,7 @@
                 "name": "The self",
                 "require": "contemplation",
                 "duration": 15,
+                "tag": "mentalry",
                 "max": 1,
                 "cost": {
                     "clarity": 5
@@ -328,6 +331,7 @@
                 "name": "Emotions of the self",
                 "require": "contemplation>2&&emotions_loc",
                 "duration": 60,
+                "tag": "mentalry",
                 "max": 1,
                 "cost": {
                     "clarity": 40
@@ -346,6 +350,7 @@
                 "name": "This cracked vase",
                 "desc": "I wonder who was the original owner of the cracked vase",
                 "require": "contemplation>1",
+                "tag": "mentalry",
                 "duration": 90,
                 "max": 1,
                 "cost": {
@@ -365,6 +370,7 @@
                 "name": "Contemplate Doll",
                 "desc": "What is the story behind that doll? There is something about it that...",
                 "require": "contemplation>3",
+                "tag": "mentalry",
                 "duration": 70,
                 "max": 1,
                 "cost": {
@@ -384,6 +390,7 @@
                 "name": "Sensitive contemplation",
                 "desc": "Reach out to deeper feelings, contemplating inward",
                 "require": "contemplation>2",
+                "tag": "mentalry",
                 "duration": 70,
                 "max": 1,
                 "cost": {
@@ -404,6 +411,7 @@
                 "desc": "Take a break to recuperate and regain vitality",
                 "require": "supplication<3",
                 "slot": "rest",
+                "tag": "mentalry",
                 "effect": {
                     "supplication": 1,
                     "foraging": 1,
@@ -415,6 +423,7 @@
                 "name": "Become skilled",
                 "desc": "Maybe it is time to gain a new skill",
                 "require": "t_tier0",
+                "tag": "growthry",
                 "duration": 5,
                 "max": 1,
                 "result": {
@@ -426,6 +435,7 @@
                 "name": "Growth I",
                 "desc": "You seem to have reached a new stage in life?",
                 "require": "t_tier1",
+                "tag": "growthry",
                 "duration": 5,
                 "max": 1,
                 "mod": {
@@ -438,6 +448,7 @@
                 "name": "Growth II",
                 "desc": "You seem to have reached a new stage in life?",
                 "require": "t_tier2",
+                "tag": "growthry",
                 "duration": 5,
                 "max": 1,
                 "mod": {
@@ -477,6 +488,7 @@
                 "desc": "Your sharpened mind grants clarity and deeper insight, unveiling hidden truths within yourself.",
                 "max": 2,
                 "require": "t_tier0",
+                "tag": "mentalry",
                 "duration": 10,
                 "cost": {
                     "supplication": 200,
@@ -505,6 +517,7 @@
                 "name": "Somber Insight",
                 "desc": "A quiet, reflective sadness colors your thoughts, bringing a deep, introspective clarity",
                 "require": "introspection>2",
+                "tag": "mentalry",
                 "duration": 50,
                 "max": 1,
                 "cost": {
@@ -525,6 +538,7 @@
                 "name": "Buy Food",
                 "desc": "Buy enough food for the day",
                 "require": "coin>2",
+                "tag": "commercery",
                 "cost": {
                     "coin": 1
                 },
@@ -537,6 +551,7 @@
                 "name": "Real meal",
                 "desc": "Finally a real meal... It has been a while",
                 "require": "food",
+                "tag": "foodry",
                 "duration": 10,
                 "max": 1,
                 "cost": {
@@ -556,6 +571,7 @@
                 "name": "Alternative nutrition",
                 "desc": "For people who get their meals out of weird places",
                 "require": "eatcat>0",
+                "tag": "foodry",
                 "duration": 10,
                 "max": 1,
                 "cost": {
@@ -571,6 +587,7 @@
                 "name": "Eat",
                 "desc": "Time to eat",
                 "require": "realmeal",
+                "tag": "foodry",
                 "duration": 7,
                 "cost": {
                     "food": 5
@@ -609,6 +626,7 @@
                 "id": "think",
                 "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
                 "require": "nutrition>0",
+                "tag": "mentalry",
                 "duration": 3,
                 "result": {
                     "thoughts": 1
@@ -623,6 +641,7 @@
                 "duration": 3,
                 "max": 2,
                 "require": "thoughts>=5",
+                "tag": "mentalry",
                 "cost": {
                     "thoughts": 2
                 },
@@ -635,6 +654,7 @@
                 "name": "Tattered Pouch",
                 "desc": "More space for breadcrumbs",
                 "duration": 3,
+                "tag": "storagery",
                 "max": 2,
                 "require": "unlockbreadbasket",
                 "cost": {
@@ -650,6 +670,7 @@
                 "name": "Touch the Wound",
                 "desc": "Acknowledge the pain you've buried.",
                 "duration": 3,
+                "tag": "mentalry",
                 "max": 1,
                 "require": "thoughts>7",
                 "cost": {
@@ -691,6 +712,7 @@
                 "name": "Rat's Insight",
                 "desc": "By observing rats, you gain a sharper, more cunning perspective on your thoughts.",
                 "duration": 10,
+                "tag": "animalry",
                 "max": 2,
                 "require": "rodentology>=1",
                 "cost": {
