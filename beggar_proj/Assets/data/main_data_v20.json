@@ -1816,7 +1816,7 @@
                 "name": "Rosario",
                 "desc": "A beautiful rosario, brand new",
                 "require": "ecclesiology>2&&churchbeggar||ecclesiology>2&&churchporter",
-                "tag": "pray_tool",
+                "tag": "pray_tool,religionry",
                 "max": 1,
                 "cost": {
                     "faith": 15,
@@ -1837,6 +1837,7 @@
                 "desc": "A piece of wood with a carved drawing. Was it a child who made it?",
                 "require": "reflection>2&&scavenging>3",
                 "max": 3,
+                "tag": "junk",
                 "cost": {
                     "foraging": 50
                 },
@@ -1850,6 +1851,7 @@
                 "name": "Storytelling dolls",
                 "desc": "You use these to narrate wonderful stories to your fellow beggars",
                 "require": "cityknowledge>1",
+                "tag": "junk",
                 "max": 1,
                 "cost": {
                     "foraging": 50
