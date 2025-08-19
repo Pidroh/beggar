@@ -23,6 +23,33 @@ function ProcessJson(jsonFileContent, currentResults) {
     return currentResults;
 }
 
+function extractRequirementDetails(requireString, targetId) {
+    if (!requireString) return null;
+    
+    // Check for different patterns and normalize to minimum required value
+    const patterns = [
+        { regex: new RegExp(`${targetId}>=([0-9]+)`), adjust: 0 },  // >= stays the same
+        { regex: new RegExp(`${targetId}>([0-9]+)`), adjust: 1 },   // > needs +1
+        { regex: new RegExp(`${targetId}==([0-9]+)`), adjust: 0 },  // == stays the same
+        { regex: new RegExp(`${targetId}<=([0-9]+)`), adjust: 0 },  // <= stays the same (max requirement)
+        { regex: new RegExp(`${targetId}<([0-9]+)`), adjust: -1 }   // < needs -1 (max requirement)
+    ];
+    
+    for (const pattern of patterns) {
+        const match = requireString.match(pattern.regex);
+        if (match) {
+            return parseInt(match[1]) + pattern.adjust;
+        }
+    }
+    
+    // Check if just the id is mentioned (implicitly means >0, so required is 1)
+    if (requireString.includes(targetId)) {
+        return 1;
+    }
+    
+    return null;
+}
+
 function PostProcessResults(currentResults) {
     const idCount = {};
 
@@ -34,8 +61,12 @@ function PostProcessResults(currentResults) {
 
             for (const otherType in currentResults) {
                 for (const otherItem of currentResults[otherType]) {
-                    if (otherItem.require && otherItem.require.includes(id)) {
-                        idCount[id].push(otherItem.id);
+                    const requiredValue = extractRequirementDetails(otherItem.require, id);
+                    if (requiredValue !== null) {
+                        idCount[id].push({
+                            id: otherItem.id,
+                            requiredValue: requiredValue
+                        });
                     }
                 }
             }
@@ -45,7 +76,7 @@ function PostProcessResults(currentResults) {
     // Append the count to each item in currentResults
     for (const type in currentResults) {
         for (const item of currentResults[type]) {
-            item.requireCount = idCount[item.id] || 0;
+            item.requireCount = idCount[item.id] || [];
         }
     }
 
@@ -70,7 +101,16 @@ function DisplayResults(currentResults) {
         if (type != "SKILL") continue;
         console.log(type);
         for (const item of currentResults[type]) {
-            console.log(` ${item.id}: ${item.requireCount.length} \n   ${item.requireCount}\n`);
+            if (item.requireCount.length > 0) {
+                // Sort requirements by requiredValue
+                item.requireCount.sort((a, b) => a.requiredValue - b.requiredValue);
+                
+                console.log(` ${item.id}: ${item.requireCount.length} requirements`);
+                for (const req of item.requireCount) {
+                    console.log(`   ${req.requiredValue}: ${req.id}`);
+                }
+                console.log('');
+            }
         }
     }
 }

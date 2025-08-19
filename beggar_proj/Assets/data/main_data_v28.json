@@ -47,7 +47,7 @@
                     "supplication.max": -200,
                     "thoughts.max": -100,
                     "supplication.rate": -0.1,
-                    "dengeneration.rate": 0.01
+                    "degeneration.rate": 0.01
                 }
             },
             {
@@ -258,7 +258,7 @@
                     "thoughts": 400,
                     "clarity": 80,
                     "reflection": 10,
-                    "disease": 5
+                    "middisease": 5
                 },
                 "mod": {
                     "middisease.max": 3,
