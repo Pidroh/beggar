@@ -2424,13 +2424,13 @@
                         "tags": "sadismry"
                     },
                     {
-                        "id": "religion_sep_task",
-                        "name": "Religion",
+                        "id": "fire_sep_task",
+                        "name": "Fire",
                         "unit_types": [
                             "TASK"
                         ],
                         "priority": 2,
-                        "tags": "religionry"
+                        "tags": "firery"
                     },
                     {
                         "id": "charity_sep_task",
