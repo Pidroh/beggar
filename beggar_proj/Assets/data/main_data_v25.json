@@ -1400,6 +1400,7 @@
                 "name": "Symbolic spoon",
                 "desc": "An iron spoon that stands for a heart of empathy",
                 "require": "empathy>2&&t_tier2",
+                "tag": "junk",
                 "max": 1,
                 "cost": {
                     "foraging": 20,
@@ -1416,7 +1417,7 @@
                 "id": "woodstick",
                 "name": "Wood stick",
                 "desc": "A little stick. Very dry. Can be used to start fires?",
-                "tags": "firetool",
+                "tags": "firetool,firery",
                 "require": "scavenging>0&&drywoodknowledge",
                 "max": 1,
                 "cost": {
@@ -1432,7 +1433,7 @@
                 "id": "flint_and_steel",
                 "name": "Flint & Steel",
                 "desc": "Hit the two together and magic happens. Can be used to start fires",
-                "tags": "firetool",
+                "tags": "firetool,firery",
                 "require": "scavenging>1&&kindling>1",
                 "max": 1,
                 "cost": {
@@ -1450,6 +1451,7 @@
                 "name": "Tinder",
                 "desc": "A bunch of dry grass",
                 "require": "woodstick",
+                "tag": "firery",
                 "max": 2,
                 "cost": {
                     "foraging": 5
@@ -1465,6 +1467,7 @@
                 "name": "A pile of hay",
                 "desc": "Can be used to feed the fire",
                 "require": "scavenging>2&&kindling>0",
+                "tag": "firery",
                 "max": 2,
                 "cost": {
                     "foraging": 30,
@@ -1482,6 +1485,7 @@
                 "name": "Oil pot",
                 "desc": "To store fat",
                 "require": "scavenging>2&&kindling>2&&coin>3",
+                "tag": "firery",
                 "max": 2,
                 "cost": {
                     "foraging": 30,
@@ -1497,6 +1501,7 @@
                 "name": "Rope",
                 "desc": "Has various uses. Like tying people up",
                 "require": "sadism>1",
+                "tag": "sadismry",
                 "max": 3,
                 "cost": {
                     "foraging": 20
@@ -1511,6 +1516,7 @@
                 "name": "Sharing bowl",
                 "desc": "Use this to share food with those in need",
                 "require": "foraging>2&&beggarhood>2",
+                "tag": "charityry",
                 "cost": {
                     "foraging": 20,
                     "breadcrumbs": 25
@@ -1527,6 +1533,7 @@
                 "name": "Big bowl",
                 "desc": "Use it to store all those crumbles",
                 "require": "sharingbowl",
+                "tag": "charityry",
                 "cost": {
                     "foraging": 20,
                     "breadcrumbs": 25
