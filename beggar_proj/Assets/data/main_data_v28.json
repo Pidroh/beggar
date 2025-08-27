@@ -160,7 +160,7 @@
             {
                 "id": "lifesewer",
                 "name": "Life in the sewers",
-                "desc": "It's not half bad, really",
+                "desc": "It's not half bad, really...",
                 "require": "sewer_knowledge>=1",
                 "tag": "sewer_style",
                 "max": 1,
@@ -170,10 +170,29 @@
                     "clarity": 5
                 },
                 "mod": {
-                    "sewer_home.mod.supplication.max": 40,
-                    "sewer_home.mod.supplication.rate": 0.01,
-                    "sewer_home.mod.thoughts.max": 40,
-                    "sewer_home.mod.thoughts.rate": 0.01
+                    "sewer_home_tag.mod.sadness.max": 30,
+                    "sewer_home_tag.mod.supplication.rate": 0.01,
+                    "sewer_home_tag.mod.sorrow.max": 5,
+                    "sewer_home_tag.mod.thoughts.rate": 0.01
+                }
+            },
+            {
+                "id": "lifesewer2",
+                "name": "Life in the sewers II",
+                "desc": "You get used to life down here",
+                "require": "sewer_knowledge>=3",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "ratbond": 120,
+                    "clarity": 10
+                },
+                "mod": {
+                    "sewer_home_tag.mod.sadness.max": 50,
+                    "sewer_home_tag.mod.supplication.rate": 0.01,
+                    "sewer_home_tag.mod.sorrow.max": 10,
+                    "sewer_home_tag.mod.thoughts.rate": 0.01
                 }
             },
             {
@@ -265,7 +284,7 @@
             {
                 "id": "sewer_home2",
                 "name": "Sewer Chambers",
-                "require": "sewer",
+                "require": "deep_sewer&&lifesewer2",
                 "cost": {
                     "thoughts": 300
                 },
