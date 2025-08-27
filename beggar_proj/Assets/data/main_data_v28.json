@@ -241,7 +241,26 @@
     },
     {
         "type": "HOUSE",
-        "items": []
+        "items": [
+            {
+                "id": "sewer_home2",
+                "name": "Sewer Chambers",
+                "require": "sewer",
+                "cost": {
+                    "thoughts": 300
+                },
+                "desc": "A hidden chamber deep in the sewers, not bad at all",
+                "mod": {
+                    "space.max": 20,
+                    "sewer_knowledge.max": 1,
+                    "pleafocus.effect.supplication": -0.4,
+                    "supplication.max": -100,
+                    "happiness.max": -20,
+                    "rats.max": 10,
+                    "weakdisease.rate": 0.1
+                }
+            }
+        ]
     },
     {
         "type": "CLASS",
@@ -317,7 +336,8 @@
                 },
                 "mod": {
                     "sewer_home.mod.thoughts.max": 10,
-                    "sewer_home.mod.supplication.max": 10
+                    "sewer_home.mod.supplication.max": 10,
+                    "foraging.max": 20
                 }
             }
         ]
