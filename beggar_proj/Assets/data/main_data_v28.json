@@ -265,6 +265,27 @@
                     "weakdisease.max": 3,
                     "diseaseintolerance.max": 1
                 }
+            },
+            {
+                "id": "sewercreature",
+                "name": "Sewer creature",
+                "desc": "A life shaped by filth",
+                "tags": "t_tier4,not_church_class_automated",
+                "lock": "t_tier4",
+                "need": "theself_4",
+                "require": "t_tier3&&sewer_knowledge>=4",
+                "cost": {
+                    "thoughts": 200,
+                    "rats": 10,
+                    "realization": 1,
+                    "musing": 100,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "sewer_knowledge.max": 1,
+                    "rats.max": 10,
+                    "diseaseintolerance.max": 1
+                }
             }
         ]
     },
