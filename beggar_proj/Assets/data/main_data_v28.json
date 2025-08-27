@@ -306,8 +306,20 @@
                     "middisease.mod.supplication.max": 5,
                     "middisease.mod.thoughts.max": 5
                 }
+            },
+            {
+                "id": "sewer_knowledge",
+                "name": "Sewer knowledge",
+                "desc": "How well you know the underground sewer system of the city",
+                "require": "sewer&&t_tier2",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "sewer_home.mod.thoughts.max": 10,
+                    "sewer_home.mod.supplication.max": 10
+                }
             }
-            
         ]
     },
     {
