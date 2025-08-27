@@ -254,8 +254,7 @@
                     "space.max": 20,
                     "sewer_knowledge.max": 1,
                     "pleafocus.effect.supplication": -0.4,
-                    "supplication.max": -100,
-                    "happiness.max": -20,
+                    "happiness.max": -15,
                     "rats.max": 10,
                     "weakdisease.rate": 0.1
                 }
