@@ -325,6 +325,36 @@
     {
         "type": "LOCATION",
         "items": [
+            {
+                "id": "deep_sewer",
+                "name": "Deep sewer",
+                "desc": "Secret tunnels, secret chambers, holes, and a bad smell",
+                "require": "sewer_knowledge>=2",
+                "length": 30,
+                "run": {
+                    "supplication": 5
+                },
+                "result": {
+                    "rats": 70,
+                    "ratbond": 300
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "meancat",
+                    "ratpack",
+                    "smelly_puddle",
+                    "pattern_bones",
+                    "sick_man",
+                    "rusted_grate",
+                    "waste_stream",
+                    "lost_diary_page"
+                ]
+            }
         ]
     },
     {
