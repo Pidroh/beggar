@@ -141,7 +141,8 @@
                     "heavydisease.mod.clarity.max": 15,
                     "heavydisease.mod.supplication.rate": 0.03
                 }
-            },{
+            },
+            {
                 "id": "diseasebody4",
                 "name": "Resist disease III",
                 "desc": "Really, there is no need to worry",
@@ -154,6 +155,25 @@
                     "heavydisease.mod.thoughts.max": 8,
                     "heavydisease.mod.reflection.max": 1,
                     "heavydisease.mod.supplication.rate": 0.03
+                }
+            },
+            {
+                "id": "lifesewer",
+                "name": "Life in the sewers",
+                "desc": "It's not half bad, really",
+                "require": "sewer_knowledge>=1",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "ratbond": 50,
+                    "clarity": 5
+                },
+                "mod": {
+                    "sewer_home.mod.supplication.max": 40,
+                    "sewer_home.mod.supplication.rate": 0.01,
+                    "sewer_home.mod.thoughts.max": 40,
+                    "sewer_home.mod.thoughts.rate": 0.01
                 }
             },
             {
