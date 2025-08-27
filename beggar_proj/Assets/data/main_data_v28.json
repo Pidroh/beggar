@@ -196,6 +196,22 @@
                 }
             },
             {
+                "id": "sewerrest",
+                "name": "Indomitable rest",
+                "desc": "If you can rest in the sewers, you can rest anywhere",
+                "require": "lifesewer2",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "ratbond": 120,
+                    "clarity": 10
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 1.5
+                }
+            },
+            {
                 "id": "diseasemax_a",
                 "name": "Intolerance potential",
                 "desc": "Your body can go further",
