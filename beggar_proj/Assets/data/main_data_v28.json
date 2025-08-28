@@ -248,6 +248,25 @@
                 }
             },
             {
+                "id": "sickrats", 
+                "name": "Rat disease transmission",
+                "desc": "You observe how disease transmits on a group of rats",
+                "require": "contamination>=1",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "ratbond": 50,
+                    "reflection": 2,
+                    "heavydisease": 1
+                },
+                "mod": {
+                    "rats.mod.weakdisease.max": 5,
+                    "rats.mod.middisease.max": 5,
+                    "rats.mod.middisease.rate": 0.1
+                }
+            },
+            {
                 "id": "diseasemax_a",
                 "name": "Intolerance potential",
                 "desc": "Your body can go further",
