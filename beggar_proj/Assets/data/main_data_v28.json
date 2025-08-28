@@ -448,6 +448,22 @@
                     "sorrow": 1,
                     "guilt": 1
                 }
+            },
+            {
+                "id": "glimmerlight",
+                "name": "Glimmer of light",
+                "desc": "There is hope",
+                "effect": {
+                    "happiness": 1,
+                    "sadness": "-1",
+                    "fear": "-1",
+                    "irritation": "-1"
+                },
+                "result": {
+                    "thoughts": 3,
+                    "clarity": 1,
+                    "realization": 1
+                }
             }
         ]
     },
