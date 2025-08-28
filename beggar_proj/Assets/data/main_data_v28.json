@@ -205,12 +205,30 @@
                 "duration": 70,
                 "cost": {
                     "ratbond": 120,
-                    "clarity": 10
+                    "realization": 1
                 },
                 "mod": {
                     "rats.mod.sadness.max": 30,
                     "rats.mod.ratbond.max": 10,
                     "rats.max": 10
+                }
+            },
+            {
+                "id": "sewer_cats",
+                "name": "Cats of the sewer",
+                "desc": "Fascinating how they live down here",
+                "require": "sewer_knowledge>=4",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 70,
+                "cost": {
+                    "catbond": 80,
+                    "realization": 3
+                },
+                "mod": {
+                    "cats.mod.sadness.max": 30,
+                    "cats.mod.catbond.max": 10,
+                    "cats.max": 2
                 }
             },
             {
