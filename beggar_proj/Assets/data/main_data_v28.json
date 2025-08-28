@@ -429,6 +429,20 @@
                     "sewer_home.mod.supplication.max": 10,
                     "foraging.max": 20
                 }
+            },
+            {
+                "id": "contamination",
+                "name": "Contamination",
+                "desc": "How disease spreads",
+                "require": "sewer_knowledge>=5",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "sewer_home.mod.weakdisease.max": 5,
+                    "sewer_home.mod.middisease.max": 3,
+                    "sewer_home.mod.heavydisease.max": 1
+                }
             }
         ]
     },
