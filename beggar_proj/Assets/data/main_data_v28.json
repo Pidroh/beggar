@@ -440,8 +440,8 @@
                 "desc": "A cadaver. Smells bad",
                 "effect": {
                     "weakdisease": 1,
-                    "perplexion": "1~2",
-                    "fear": "1~2"
+                    "perplexion": "1~3",
+                    "fear": "1~4"
                 },
                 "result": {
                     "thoughts": 3,
@@ -463,6 +463,21 @@
                     "thoughts": 3,
                     "clarity": 1,
                     "realization": 1
+                }
+            },
+            {
+                "id": "big_rat",
+                "name": "Big rat",
+                "desc": "It's a bit aggressive",
+                "effect": {
+                    "weakdisease": 1,
+                    "ratbond": 1,
+                    "fatigue": "1~4",
+                    "fear": "1~4"
+                },
+                "result": {
+                    "thoughts": 3,
+                    "rats": 3
                 }
             }
         ]
