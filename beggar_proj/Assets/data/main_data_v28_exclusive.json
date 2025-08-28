@@ -141,8 +141,8 @@
             },
             {
                 "id": "disease_sad_ending",
-                "name": "Sadness of disease",
-                "desc": "",
+                "name": "What does it mean to be sick?",
+                "desc": "How did your body come to this?",
                 "require": "superheavydisease>0&&t_tier4",
                 "duration": 90,
                 "need": "degeneration>100",
@@ -150,16 +150,15 @@
                 "max": 1,
                 "cost": {
                     "thoughts": 600,
-                    "dominance": 500,
-                    "firepower": 26,
-                    "fireaffinity": 100,
-                    "captive": 8
+                    "musing": 100,
+                    "reflection": 18,
+                    "realization": 1
                 },
                 "run": {
-                    "firepower": 1
+                    "clarity": 5
                 },
                 "modification": {
-                    "superheavydisease.max": 1
+                    "sorrow.max": 1
                 }
             }
         ]
