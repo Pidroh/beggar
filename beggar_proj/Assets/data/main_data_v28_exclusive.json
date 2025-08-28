@@ -120,6 +120,7 @@
                 "require": "sadism>4&&t_tier4",
                 "duration": 90,
                 "need": "handdrill_dot&&burnperson_many>2",
+                "tags": "ending_game",
                 "max": 1,
                 "cost": {
                     "thoughts": 600,
@@ -144,7 +145,8 @@
                 "desc": "",
                 "require": "superheavydisease>0&&t_tier4",
                 "duration": 90,
-                "need": "handdrill_dot&&burnperson_many>2",
+                "need": "degeneration>100",
+                "tags": "ending_game",
                 "max": 1,
                 "cost": {
                     "thoughts": 600,
@@ -157,10 +159,7 @@
                     "firepower": 1
                 },
                 "modification": {
-                    "dominance.max": 40,
-                    "dominance.rate": 0.5,
-                    "fireaffinity.max": 10,
-                    "fireaffinity.rate": 0.5
+                    "superheavydisease.max": 1
                 }
             }
         ]
