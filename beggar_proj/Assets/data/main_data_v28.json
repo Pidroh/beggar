@@ -434,7 +434,21 @@
     {
         "type": "ENCOUNTER",
         "items": [
-           
+            {
+                "id": "dead_body",
+                "name": "Dead body",
+                "desc": "A cadaver. Smells bad",
+                "effect": {
+                    "weakdisease": 1,
+                    "perplexion": "1~2",
+                    "fear": "1~2"
+                },
+                "result": {
+                    "thoughts": 3,
+                    "sorrow": 1,
+                    "guilt": 1
+                }
+            }
         ]
     },
     {
