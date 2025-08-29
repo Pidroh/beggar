@@ -357,12 +357,14 @@
                 "tag": "disease_style",
                 "duration": 5,
                 "dot": {
-                    "duration": 120,
+                    "duration": 200,
                     "mod": {
-                        "heavydisease.mod.supplication.max": 100,
-                        "heavydisease.mod.thoughts.max": 50,
-                        "heavydisease.mod.supplication.rate": 1,
-                        "heavydisease.mod.thoughts.rate": 1
+                        "heavydisease.rate": 0.1,
+                        "heavydisease.mod.superheavydisease.rate": 0.01,
+                        "superheavydisease.mod.degeneration.rate": 0.05,
+                        "weakdisease.max": 100,
+                        "heavydisease.max": 3,
+                        "superheavydisease.max": 1
                     }
                 }
             },
@@ -488,7 +490,7 @@
                 "id": "contamination",
                 "name": "Contamination",
                 "desc": "How disease spreads",
-                "require": "sewer_knowledge>=5",
+                "require": "sewer_knowledge>=5&&unlockheavydisease",
                 "cost": {
                     "skillpoints": 100
                 },
