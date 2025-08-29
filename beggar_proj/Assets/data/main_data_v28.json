@@ -349,7 +349,23 @@
                     }
                 }
             },
-            
+            {
+                "id": "contamination_dot",
+                "name": "Self contamination",
+                "desc": "Use yourself as a disease vessel",
+                "require": "contamination>=3",
+                "tag": "disease_style",
+                "duration": 5,
+                "dot": {
+                    "duration": 120,
+                    "mod": {
+                        "heavydisease.mod.supplication.max": 100,
+                        "heavydisease.mod.thoughts.max": 50,
+                        "heavydisease.mod.supplication.rate": 1,
+                        "heavydisease.mod.thoughts.rate": 1
+                    }
+                }
+            },
             {
                 "id": "unlockheavydisease",
                 "name": "Unsanitary life",
