@@ -621,7 +621,7 @@ public class JsonReader
                 {
                     var values = c.Value.AsString.Split("~");
                     min = float.Parse(values[0]);
-                    max = float.Parse(values[1]);
+                    max = float.Parse(values[1]); 
                 }
             }
 

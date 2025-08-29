@@ -226,9 +226,9 @@
                     "realization": 3
                 },
                 "mod": {
-                    "cats.mod.sadness.max": 30,
-                    "cats.mod.catbond.max": 10,
-                    "cats.max": 2
+                    "cat.mod.sadness.max": 30,
+                    "cat.mod.catbond.max": 10,
+                    "cat.max": 2
                 }
             },
             {
@@ -280,9 +280,9 @@
                     "heavydisease": 1
                 },
                 "mod": {
-                    "cats.mod.weakdisease.max": 5,
-                    "cats.mod.middisease.max": 5,
-                    "cats.mod.middisease.rate": 0.1
+                    "cat.mod.weakdisease.max": 5,
+                    "cat.mod.middisease.max": 5,
+                    "cat.mod.middisease.rate": 0.1
                 }
             },
             {
@@ -379,9 +379,9 @@
                     "duration": 200,
                     "mod": {
                         "rats.rate": 2,
-                        "cats.rate": 0.5,
+                        "cat.rate": 0.5,
                         "rats.max": 30,
-                        "cats.max": 10
+                        "cat.max": 10
                     }
                 }
             },
@@ -410,6 +410,7 @@
                 "id": "sewer_home2",
                 "name": "Sewer Chambers",
                 "require": "deep_sewer&&lifesewer2",
+                "tag":"sewer_home_tag",
                 "cost": {
                     "thoughts": 300
                 },
@@ -578,9 +579,9 @@
                 "desc": "There is hope",
                 "effect": {
                     "happiness": 1,
-                    "sadness": "-1",
-                    "fear": "-1",
-                    "irritation": "-1"
+                    "sadness": "-1~0",
+                    "fear": "-2~-0",
+                    "irritation": "-2~0"
                 },
                 "result": {
                     "thoughts": 3,
