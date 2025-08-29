@@ -369,6 +369,23 @@
                 }
             },
             {
+                "id": "sickanimal_call",
+                "name": "Gather sick animals",
+                "desc": "Reunite all sick animals around you",
+                "require": "contamination>=2",
+                "tag": "disease_style",
+                "duration": 5,
+                "dot": {
+                    "duration": 200,
+                    "mod": {
+                        "rats.rate": 2,
+                        "cats.rate": 0.5,
+                        "rats.max": 30,
+                        "cats.max": 10
+                    }
+                }
+            },
+            {
                 "id": "unlockheavydisease",
                 "name": "Unsanitary life",
                 "desc": "Throw away your fears, go deeper into what is dirty",
