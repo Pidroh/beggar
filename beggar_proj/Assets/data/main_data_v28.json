@@ -435,7 +435,7 @@
                 "desc": "Sick and isolated",
                 "tags": "t_tier3,not_church_class_automated",
                 "lock": "t_tier3",
-                "require": "theself_3&&disease>2",
+                "require": "theself_3&&middisease>2",
                 "need": "theself_3",
                 "cost": {
                     "thoughts": 400,
