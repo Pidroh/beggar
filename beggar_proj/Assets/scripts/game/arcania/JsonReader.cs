@@ -738,6 +738,7 @@ public class JsonReader
         foreach (var pair in item)
         {
             if (pair.Key == "initial") ru.SetValue(pair.Value.AsInt);
+            if (pair.Key == "above_max") bu.AboveMax = true;
             if (pair.Key == "name" && !localizeNameDescription) bu.name = pair.Value;
             if (pair.Key == "mod" || pair.Key == "mods") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
@@ -806,6 +807,7 @@ public class ConfigBasic
     public List<IDPointer> Tags { get; } = new();
     public UnitType UnitType { get; internal set; }
     public string SpriteKey { get; internal set; }
+    public bool AboveMax { get; internal set; }
 }
 
 public enum UnitType
