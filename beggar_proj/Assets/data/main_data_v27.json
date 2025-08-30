@@ -57,6 +57,7 @@
                 "require": "t_tier3&&reflection>=15",
                 "duration": 50,
                 "max": 2,
+                "above_max": true,
                 "cost": {
                     "reflection": 10
                 },

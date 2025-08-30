@@ -13,7 +13,7 @@ public static class JGameControlExecuterEnding
     };
     public static string[] endingMessageSnippet = new string[ENDING_COUNT] { "I'm the beggar's journey", "The beggar's journey is the cat", 
         "The beggar's journey is in the scriptures", "The beggar's journey is good", "The beggar's journey is made of fire", "The beggar's journey ends in luxury", "The beggar's journey is a struggle" };
-    public static string endingMessage = "$PART1$. \n At least until more content is added. \n\n Let me know you finished the game by sending me: \"$PART2$\".\n\n You can comment on the Reddit post, email, the Discord channel, etc";
+        public static string endingMessage = "$PART1$. \n At least until more content is added. \n\n Let me know you finished the game by sending me: \"$PART2$\".\n\n You can comment on the Reddit post, email, the Discord channel, etc";
 
 
     internal static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
