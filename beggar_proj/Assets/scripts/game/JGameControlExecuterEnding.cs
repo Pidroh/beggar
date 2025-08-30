@@ -59,7 +59,7 @@ public static class JGameControlExecuterEnding
 
 public class JEndingGameData
 {
-    public RuntimeUnit[] runtimeUnits = new RuntimeUnit[JGameControlExecuterEnding.ENDING_COUNT] { null, null, null, null, null, null };
+    public RuntimeUnit[] runtimeUnits = new RuntimeUnit[JGameControlExecuterEnding.ENDING_COUNT] { null, null, null, null, null, null, null };
 
     public (JLayout.JLayoutRuntimeUnit, JLayout.JLayoutChild) SettingsButton { get; internal set; }
     public (JLayoutRuntimeUnit, JLayoutChild) PatreonButton { get; internal set; }

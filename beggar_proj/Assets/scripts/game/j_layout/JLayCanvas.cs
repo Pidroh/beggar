@@ -63,8 +63,8 @@ namespace JLayout
         {
             if (ActiveChildren.Contains(layoutParent)) return;
             while (childrenForLayouting.Remove(layoutParent)) { }
-            childrenForLayouting.Insert(0, layoutParent);
-            ActiveChildren.Insert(0, layoutParent);
+            childrenForLayouting.Add(layoutParent);
+            ActiveChildren.Add(layoutParent);
         }
 
         public void ShowChild(int childIndex)

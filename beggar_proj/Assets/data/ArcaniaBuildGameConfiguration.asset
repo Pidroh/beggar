@@ -23,9 +23,9 @@ MonoBehaviour:
     - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
     buildConfigId: web
     majorVersionOverride: 0
-    versionOverride: 25
-    patchOverride: 2
-    SubtitleOverride: Charisma of Pain
+    versionOverride: 27
+    patchOverride: 1
+    SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: android
     jsonDatas:
@@ -47,12 +47,12 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
     - {fileID: 4900000, guid: e7d13781458fb2c4aaf54e585c6698de, type: 3}
     - {fileID: 4900000, guid: a22bcea98d999ce4a83a6c96c1459356, type: 3}
-    - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
+    - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
     buildConfigId: web_patreon
     majorVersionOverride: 0
-    versionOverride: 27
+    versionOverride: 28
     patchOverride: 0
-    SubtitleOverride: Grand Theft
+    SubtitleOverride: Sewer Pathology
     patreonBuild: 0
   - id: patreon_windows
     jsonDatas:
@@ -62,12 +62,13 @@ MonoBehaviour:
     - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
     - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
     - {fileID: 4900000, guid: e7d13781458fb2c4aaf54e585c6698de, type: 3}
-    - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
+    - {fileID: 4900000, guid: a22bcea98d999ce4a83a6c96c1459356, type: 3}
+    - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
     buildConfigId: windows_patreon
     majorVersionOverride: 0
-    versionOverride: 27
+    versionOverride: 28
     patchOverride: 0
-    SubtitleOverride: Grand Theft
+    SubtitleOverride: Sewer Pathology
     patreonBuild: 0
   - id: patreon_dev
     jsonDatas:

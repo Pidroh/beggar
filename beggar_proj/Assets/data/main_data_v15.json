@@ -2443,15 +2443,6 @@
                 "icon": "tab_resources",
                 "separator": [
                     {
-                        "id": "mental_sep_res",
-                        "name": "Reasoning",
-                        "unit_types": [
-                            "RESOURCE"
-                        ],
-                        "priority": 2,
-                        "tags": "reasonry"
-                    },
-                    {
                         "id": "emotion_sep_res",
                         "name": "Emotions",
                         "unit_types": [
@@ -2460,6 +2451,16 @@
                         "priority": 2,
                         "tags": "emotionry"
                     },
+                    {
+                        "id": "mental_sep_res",
+                        "name": "Reasoning",
+                        "unit_types": [
+                            "RESOURCE"
+                        ],
+                        "priority": 2,
+                        "tags": "reasonry"
+                    },
+                    
                     {
                         "id": "food_sep_res",
                         "name": "Food-related",
