@@ -76,8 +76,9 @@ namespace JLayout
                 }
                 // shows in the opposite order so that the bottoms ones are shown last
                 // thus, prioritized
-                for (int i = N - 1; i >= 0; i--)
-                //for (int i = 0; i < N; i++)
+                //for (int i = N - 1; i >= 0; i--)
+
+                for (int i = 0; i < N; i++)
                 {
                     dc.ShowChild(dc.children[i]);
                 }
