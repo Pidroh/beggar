@@ -548,6 +548,7 @@ public static class JGameControlExecuter
             for (int i = mgc.JLayoutRuntime.jLayCanvas.ActiveChildren.Count - 1; i >= 0; i--)
             {
                 if (mgc.JLayoutRuntime.jLayCanvas.ActiveChildren[i].Mandatory) continue;
+                if (mgc.JLayoutRuntime.jLayCanvas.ActiveChildren[i] == mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame) continue;
                 mgc.JLayoutRuntime.jLayCanvas.ActiveChildren.RemoveAt(i);
                 break;
             }
