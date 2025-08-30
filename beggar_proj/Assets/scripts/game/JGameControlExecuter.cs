@@ -418,6 +418,9 @@ public static class JGameControlExecuter
         // do it twice to make sure
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
+        // after all need to hide check, clear
+        mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
+
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
         JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
 
