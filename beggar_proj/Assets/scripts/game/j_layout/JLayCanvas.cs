@@ -26,6 +26,8 @@ namespace JLayout
         public Image overlayImage { get; internal set; }
         public bool OverlayVisible => overlayImage.IsActive();
 
+        public JLayCanvasChild RequestVisibleNextFrame { get; private set; }
+
         internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
 
         internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);
@@ -65,6 +67,7 @@ namespace JLayout
             while (childrenForLayouting.Remove(layoutParent)) { }
             childrenForLayouting.Add(layoutParent);
             ActiveChildren.Add(layoutParent);
+            RequestVisibleNextFrame = layoutParent;
         }
 
         public void ShowChild(int childIndex)
