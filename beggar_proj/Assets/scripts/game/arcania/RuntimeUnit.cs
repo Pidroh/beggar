@@ -24,7 +24,7 @@ public class RuntimeUnit
     public float TaskProgressRatio => CalculateTaskProgressRatio();
 
     // Skills cannot drop below max
-    public bool MaxCanLimitValue => Skill == null;
+    public bool MaxCanLimitValue => Skill == null && !ConfigBasic.AboveMax;
 
     public string Name => ConfigBasic.name;
 
