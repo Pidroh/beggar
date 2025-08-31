@@ -195,6 +195,57 @@
                     "sewer_home_tag.mod.thoughts.rate": 0.01
                 }
             },
+
+            {
+                "id": "disease_resistance1",
+                "name": "Natural recuperation",
+                "desc": "Your body resists and recovers",
+                "require": "diseaseintolerance>=6",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "superheavydisease": 1
+                },
+                "effect": {
+                    "weakdisease": -2,
+                    "middisease": -2
+                },
+                "result": {
+                    "heavydisease": -100,
+                    "superheavydisease": -10,
+                    "degeneration": -500
+                },
+                "mod": {
+                    "superheavydisease.realization.max": 1,
+                    "superheavydisease.mod.reflection.max": 10
+                }
+            },
+            {
+                "id": "disease_resistance2",
+                "name": "Natural recuperation II",
+                "desc": "Your body resists and recovers",
+                "require": "diseaseintolerance>=7&&disease_resistance1",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "superheavydisease": 1
+                },
+                "effect": {
+                    "weakdisease": -4,
+                    "middisease": -4
+                },
+                "result": {
+                    "heavydisease": -100,
+                    "superheavydisease": -10,
+                    "degeneration": -500
+                },
+                "mod": {
+                    "superheavydisease.realization.max": 2,
+                    "superheavydisease.mod.reflection.max": 25
+                }
+            },
             {
                 "id": "sewer_rats",
                 "name": "Rats of the sewer",
