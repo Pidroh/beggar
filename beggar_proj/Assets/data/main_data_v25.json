@@ -92,6 +92,7 @@
                 "name": "I want to understand others",
                 "desc": "Look at them, understand their feelings. Choosing this will stop any sociopathic tendencies.",
                 "require": "gratitude>5&&clarity>2&&benevolence",
+                "lock": "psycho_path",
                 "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
@@ -115,6 +116,7 @@
                 "tag": "irreversible",
                 "duration": 40,
                 "max": 1,
+                "lock": "empathypath",
                 "cost": {
                     "dominance": 3,
                     "sorrow": 5,

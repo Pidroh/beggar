@@ -350,6 +350,13 @@ public static class JGameControlExecuter
                                     //unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data));
                                     unit.MainExecuteButton.SetActivePowered(arcaniaModel.Housing.IsLivingInHouse(unit.Data));
                                     unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data) || arcaniaModel.Housing.IsLivingInHouse(unit.Data));
+                                    if (arcaniaModel.Housing.IsLivingInHouse(unit.Data))
+                                    {
+                                        unit.TitleText.SetTextRaw($"{unit.Data.Name} ({mgc.JControlData.LabelLivingHere})");
+                                    }
+                                    else {
+                                        unit.TitleText.SetTextRaw($"{unit.Data.Name}");
+                                    }
                                     if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data))
                                     {
 

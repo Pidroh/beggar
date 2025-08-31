@@ -1222,6 +1222,18 @@
         "type": "HOUSE",
         "items": [
             {
+                "id": "no_home",
+                "name": "Nowhere",
+                "require": "t_job",
+                "cost": {
+                    "thoughts": 3
+                },
+                "desc": "You live nowhere",
+                "mod": {
+                    "space.max": 0
+                }
+            },
+            {
                 "id": "Back Alley",
                 "name": "Back Alley",
                 "require": "t_job",

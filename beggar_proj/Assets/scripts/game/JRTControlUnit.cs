@@ -80,6 +80,7 @@ public class JGameControlDataHolder
     public string LabelAcquire { get; internal set; }
     public string LabelSpace { get; internal set; }
     public string LabelUnlocked { get; internal set; }
+    public string LabelLivingHere { get; internal set; }
 }
 
 public class JGameViewMiscData 
