@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
   - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
   - {fileID: 4900000, guid: e7d13781458fb2c4aaf54e585c6698de, type: 3}
-  - {fileID: 4900000, guid: a22bcea98d999ce4a83a6c96c1459356, type: 3}
+  - {fileID: 4900000, guid: 2acd81d63e74d93489353a1d556a8b4c, type: 3}
   - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
   layoutJson: {fileID: 4900000, guid: 60a52a01a6261be4b8003331ffeb259b, type: 3}
   spritesForLayout:

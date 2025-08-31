@@ -2381,6 +2381,15 @@
                         "tags": "religionry"
                     },
                     {
+                        "id": "disease_sep_task",
+                        "name": "Pathologies",
+                        "unit_types": [
+                            "TASK"
+                        ],
+                        "priority": 2,
+                        "tags": "diseasery,disease_style"
+                    },
+                    {
                         "id": "charity_sep_task",
                         "name": "Charity",
                         "unit_types": [

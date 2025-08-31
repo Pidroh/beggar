@@ -143,16 +143,12 @@
                 "id": "disease_sad_ending",
                 "name": "What does it mean to be sick?",
                 "desc": "How did your body come to this?",
-                "require": "superheavydisease>0&&t_tier4",
-                "duration": 90,
+                "require": "degeneration>50",
+                "duration": 600,
                 "need": "degeneration>100",
                 "tags": "ending_game",
                 "max": 1,
                 "cost": {
-                    "thoughts": 600,
-                    "musing": 100,
-                    "reflection": 18,
-                    "realization": 1
                 },
                 "run": {
                     "clarity": 5
