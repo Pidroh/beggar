@@ -28,6 +28,7 @@
                     "thoughts": 80
                 },
                 "desc": "Disguting, but spaceful.",
+                "tag": "sewer_home_tag",
                 "mod": {
                     "space.max": 10,
                     "pleafocus.effect.supplication": -0.8,
