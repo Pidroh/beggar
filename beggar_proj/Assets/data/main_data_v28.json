@@ -528,7 +528,7 @@
                 "name": "Deep sewer",
                 "desc": "Secret tunnels, secret chambers, holes, and a bad smell",
                 "require": "sewer_knowledge>=2",
-                "length": 30,
+                "length": 40,
                 "run": {
                     "supplication": 5
                 },
@@ -550,7 +550,10 @@
                     "sick_man",
                     "rusted_grate",
                     "waste_stream",
-                    "lost_diary_page"
+                    "lost_diary_page",
+                    "dead_body", 
+                    "glimmerlight",
+                    "big_rat"
                 ]
             }
         ]
