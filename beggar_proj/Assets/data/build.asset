@@ -29,6 +29,10 @@ MonoBehaviour:
     copyFileTag: 
     outputPath: ../builds/windows_patreon%V%%BETA%/beggar_windows_patreon.exe
     buildTarget: 5
+  - tag: windows_steam_demo
+    copyFileTag: 
+    outputPath: ../builds/windows_steam_demo%V%%BETA%/beggar_windows_steam_demo.exe
+    buildTarget: 5
   - tag: android
     copyFileTag: 
     outputPath: ../builds/android/beggar_life%V%%BETA%.aab

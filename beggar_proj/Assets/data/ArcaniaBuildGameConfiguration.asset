@@ -29,6 +29,21 @@ MonoBehaviour:
     patchOverride: 1
     SubtitleOverride: Grand Theft
     patreonBuild: 0
+  - id: normal_steam_demo
+    jsonDatas:
+    - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
+    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
+    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
+    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
+    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
+    - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
+    - {fileID: 4900000, guid: a22bcea98d999ce4a83a6c96c1459356, type: 3}
+    buildConfigId: windows_steam_demo
+    majorVersionOverride: 0
+    versionOverride: 27
+    patchOverride: 1
+    SubtitleOverride: Grand Theft
+    patreonBuild: 0
   - id: android
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
