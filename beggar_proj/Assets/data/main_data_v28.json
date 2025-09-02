@@ -7,7 +7,7 @@
                 "name": "Small illness",
                 "max": 5,
                 "desc": "Nothing too serious",
-                "tag":"disease_tag",
+                "tag": "disease_tag",
                 "mod": {
                     "middisease.rate": 0.001
                 }
@@ -17,7 +17,7 @@
                 "name": "Sickness",
                 "max": 5,
                 "desc": "You better get that treated",
-                "tag":"disease_tag",
+                "tag": "disease_tag",
                 "mod": {
                     "supplication.max": -20,
                     "thoughts.max": -10,
@@ -29,7 +29,7 @@
                 "name": "Disease",
                 "max": 3,
                 "desc": "Things are getting pretty bad, huh?",
-                "tag":"disease_tag",
+                "tag": "disease_tag",
                 "mod": {
                     "supplication.max": -80,
                     "thoughts.max": -20,
@@ -42,7 +42,7 @@
                 "name": "Terminal disease",
                 "max": 1,
                 "desc": "Enjoy what time you have left",
-                "tag":"disease_tag",
+                "tag": "disease_tag",
                 "mod": {
                     "supplication.max": -200,
                     "thoughts.max": -100,
@@ -54,7 +54,7 @@
                 "id": "degeneration",
                 "name": "Degeneration",
                 "max": 1000,
-                "tag":"disease_tag",
+                "tag": "disease_tag",
                 "desc": "The disease eating away at your body",
                 "mod": {
                     "supplication.max": -5,
@@ -76,7 +76,6 @@
                 "buy": {
                     "weakdisease": 1
                 },
-                
                 "dot": {
                     "duration": 240,
                     "toggle": true,
@@ -195,7 +194,6 @@
                     "sewer_home_tag.mod.thoughts.rate": 0.01
                 }
             },
-
             {
                 "id": "disease_resistance1",
                 "name": "Natural recuperation",
@@ -299,7 +297,7 @@
                 }
             },
             {
-                "id": "sickrats", 
+                "id": "sickrats",
                 "name": "Rat disease transmission",
                 "desc": "You observe how disease transmits on a group of rats",
                 "require": "contamination>=1",
@@ -318,7 +316,7 @@
                 }
             },
             {
-                "id": "sickcats", 
+                "id": "sickcats",
                 "name": "Cat disease transmission",
                 "desc": "You observe how disease transmits on a group of cats",
                 "require": "contamination>=2",
@@ -348,7 +346,7 @@
                     "middisease": 10
                 },
                 "mod": {
-                    "diseaseintolerance.max": 1 
+                    "diseaseintolerance.max": 1
                 }
             },
             {
@@ -363,7 +361,7 @@
                     "middisease": 15
                 },
                 "mod": {
-                    "diseaseintolerance.max": 1 
+                    "diseaseintolerance.max": 1
                 }
             },
             {
@@ -461,7 +459,7 @@
                 "id": "sewer_home2",
                 "name": "Sewer Chambers",
                 "require": "deep_sewer&&lifesewer2",
-                "tag":"sewer_home_tag",
+                "tag": "sewer_home_tag",
                 "cost": {
                     "thoughts": 300
                 },
@@ -602,7 +600,7 @@
                     "rusted_grate",
                     "waste_stream",
                     "lost_diary_page",
-                    "dead_body", 
+                    "dead_body",
                     "glimmerlight",
                     "big_rat"
                 ]
@@ -673,8 +671,6 @@
     },
     {
         "type": "FURNITURE",
-        "items": [
-
-        ]
+        "items": []
     }
 ]

@@ -146,12 +146,11 @@
                 "desc": "A lingering whisper of choices past.",
                 "max": 5
             },
-            
             {
                 "id": "cat",
                 "name": "Stray cat",
                 "tag": "animalry",
-                "desc": "Cats living in the city, yet odly are always near you",
+                "desc": "Cats living in the city, yet oddly are always near you",
                 "max": 0,
                 "mod": {
                     "catbond.max": 10,
@@ -2481,7 +2480,6 @@
                         "priority": 2,
                         "tags": "reasonry"
                     },
-                    
                     {
                         "id": "food_sep_res",
                         "name": "Food-related",

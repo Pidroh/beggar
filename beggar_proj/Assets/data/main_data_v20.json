@@ -160,7 +160,7 @@
             {
                 "id": "sheepgoat",
                 "name": "The Sheep and the Goats",
-                "desc": "A sheep on a hand, a goat on another, such is the depth of thought",
+                "desc": "A sheep in one hand, a goat in the other, such is the depth of thought.",
                 "require": "holyscriptures>1",
                 "duration": 15,
                 "max": 1,

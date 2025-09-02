@@ -1,17 +1,19 @@
 [
     {
         "type": "RESOURCE",
-        "items": [{
-            "id": "rats",
-            "tag": "animalry",
-            "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
-            "max": 3,
-            "mod": {
-                "ratbond.max": 10,
-                "ratbond.rate": 0.01,
-                "weakdisease.rate": 0.03
+        "items": [
+            {
+                "id": "rats",
+                "tag": "animalry",
+                "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
+                "max": 3,
+                "mod": {
+                    "ratbond.max": 10,
+                    "ratbond.rate": 0.01,
+                    "weakdisease.rate": 0.03
+                }
             }
-        }]
+        ]
     },
     {
         "type": "TASK",

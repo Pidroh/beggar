@@ -1053,7 +1053,7 @@
             {
                 "id": "forager_realization",
                 "name": "Deep foraging",
-                "desc": "Throughly rethink how you search for lost goods",
+                "desc": "Thoroughly rethink how you search for lost goods.",
                 "require": "realization",
                 "duration": 15,
                 "max": 1,

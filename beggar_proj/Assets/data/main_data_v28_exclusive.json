@@ -148,10 +148,8 @@
                 "need": "degeneration>500",
                 "tags": "ending_game",
                 "max": 1,
-                "cost": {
-                },
-                "run": {
-                },
+                "cost": {},
+                "run": {},
                 "modification": {
                     "sorrow.max": 1
                 }
