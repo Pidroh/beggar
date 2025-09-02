@@ -37,10 +37,8 @@ faith_name$$희미한 믿음
 faith_desc$$신성에 대한 믿음의 시작
 guilt_name$$죄책감
 guilt_desc$$과거 선택에 대한 남은 속삭임.
-rats_name$$쥐
-rats_desc$$쥐는 생존자이자 도시 탐험가, 해충이자 밤의 존재입니다.
-cat_name$$거리 고양이
-cat_desc$$도시에서 살고 있는 고양이들은 기이하게도 항상 당신 가까이에 있습니다.
+cat_name$$유기묘
+cat_desc$$도시에서 살고 있지만 이상하게도 항상 당신 근처에 있는 유기묘
 ratcorpse_name$$쥐 시체
 ratcorpse_desc$$죽은 쥐
 catcorpse_name$$죽은 고양이
@@ -189,14 +187,14 @@ warmclothes_name$$오래된 옷
 warmclothes_desc$$그들은 나쁘지 않아요
 free_food_lead_name$$음식에 대한 소문
 free_food_lead_desc$$식사를 하러 가는 장소에 대해 이야기하는 그룹의 소문을 듣습니다.
+no_home_name$$아무 곳
+no_home_desc$$당신은 아무 곳에 살고 있습니다
 Back Alley_name$$뒷골목
 Back Alley_desc$$쓰레기와 잔해로 가득한 좁고 더러운 뒷골목, 날씨로부터 최소한의 보호를 제공합니다.
 churchoutskirts_name$$교회 외곽
 churchoutskirts_desc$$교회 외곽에 있어서 교회 부인성당 바로 근처에 있습니다.
 underbridge_name$$다리 아래
 underbridge_desc$$비를 막아주고 안전한 잠자리
-sewer_home_name$$하수도
-sewer_home_desc$$혐오스럽지만 넓은 공간.
 gutterborn_name$$하수구 출신
 gutterborn_desc$$거리에서 시작된 것을 인정하고 자신의 어린 시절의 가혹한 현실을 받아들이세요.
 churchbeggar_name$$성당의 자비를 바탕으로 번영을 찾아 어려움을 활력으로 바꾸고 성스러운 것에 동화하여 피난처로 사용합니다.
@@ -333,12 +331,46 @@ action_name$$즉시 작업
 action_desc$$
 crime_sep_name$$범죄 활동
 crime_sep_desc$$
+emotion_sep_task_name$$감정 관련
+emotion_sep_task_desc$$
+religion_sep_task_name$$종교
+religion_sep_task_desc$$
+disease_sep_task_name$$병리학
+disease_sep_task_desc$$
+charity_sep_task_name$$자선단체
+charity_sep_task_desc$$
+sadism_sep_task_name$$고통심
+sadism_sep_task_desc$$
+fire_sep_task_name$$불
+fire_sep_task_desc$$
+study_sep_task_name$$학문
+study_sep_task_desc$$
 power_up_name$$파워 업
 power_up_desc$$
 class_name$$클래스
 class_desc$$
 resource_name$$자원들
 resource_desc$$
+emotion_sep_res_name$$감정
+emotion_sep_res_desc$$
+mental_sep_res_name$$추리
+mental_sep_res_desc$$
+food_sep_res_name$$음식 관련
+food_sep_res_desc$$
+disease_sep_res_name$$병리학
+disease_sep_res_desc$$
+animal_sep_res_name$$동물 관련
+animal_sep_res_desc$$
+religion_sep_res_name$$종교
+religion_sep_res_desc$$
+crime_sep_res_name$$범죄자
+crime_sep_res_desc$$
+exploration_sep_res_name$$탐험 관련
+exploration_sep_res_desc$$
+study_sep_res_name$$학문
+study_sep_res_desc$$
+charisma_sep_res_name$$매혹적인
+charisma_sep_res_desc$$
 skill_name$$기술
 skill_desc$$
 exploration_name$$탐험
@@ -347,6 +379,18 @@ location_name$$위치
 location_desc$$
 housing_name$$주택
 housing_desc$$
+food_sep_furnit_name$$식품 관련 가구
+food_sep_furnit_desc$$
+religion_sep_furnit_name$$종교 가구
+religion_sep_furnit_desc$$
+animal_sep_furnit_name$$동물 관련 가구
+animal_sep_furnit_desc$$
+crime_sep_furnit_name$$범죄 가구
+crime_sep_furnit_desc$$
+fire_sep_furnit_name$$화재 관련 가구
+fire_sep_furnit_desc$$
+luxury_sep_furnit_name$$고급 가구
+luxury_sep_furnit_desc$$
 furniture_name$$가구
 furniture_desc$$
 log_name$$로그
@@ -382,7 +426,7 @@ latinreading_desc$$초급 읽기 가능합니다.
 widowmite_name$$미막 동전
 widowmite_desc$$신에게 스스로 바쳤던 충실한 여자의 이야기
 sheepgoat_name$$양과 염소
-sheepgoat_desc$$한 손에 양, 다른 한 손에 염소, 이것이 생각의 심오함입니다.
+sheepgoat_desc$$한 손에 양, 한 손에 염소, 그런 심오한 사고의 깊이입니다.
 specklog_name$$겨냥과 원목
 specklog_desc$$먼저, 자신의 결핍을 살펴보십시오.
 sharethebegging_name$$구걸 공유하기
@@ -603,8 +647,8 @@ small_feast_name$$작은 잔치
 small_feast_desc$$동료 거지들을 위해 잔치를 열어보세요.
 giveblanket_name$$담요 기부
 giveblanket_desc$$모두가 더 따뜻해지도록 해주세요
-helpelderly_name$$어르신 도우러 가세요
-helpelderly_desc$$그들은 현명할 수 있지만 역시 취약합니다. 당신은 약하지만 그들도 그렇습니다
+helpelderly_name$$고령자 돕기
+helpelderly_desc$$그들은 지혜로울 수도 있지만 연약할 수도 있습니다. 당신은 약하지만 그들도 마찬가지입니다
 sharesadness_name$$슬픈 시간에 대해 이야기하기
 sharesadness_desc$$가난한 이와 함께 앉아 슬픈 경험에 대해 이야기하게 해주세요.
 sharesorrow_name$$함께 울어요
@@ -853,8 +897,8 @@ create_house_document_name$$주택 계약 위조
 create_house_document_desc$$도시 속 작은 주택에 대한 권리를 불법으로 위조하세요.
 shower_everyday_name$$매일 샤워하세요
 shower_everyday_desc$$매일 목욕하세요. 냄새가 덜 나고 깨끗하며 건강해집니다.
-forager_realization_name$$깊은 수색
-forager_realization_desc$$잃어버린 물품을 찾는 방식을 철저히 재고하십시오.
+forager_realization_name$$깊은 탐사
+forager_realization_desc$$잃어버린 물품을 찾는 방법을 철저히 재고해 보세요.
 charismatic_leader_weak_name$$매력적인 리더십
 charismatic_leader_weak_desc$$리드하고 매료시켜, 추종자들이여!
 meat_sometimes_name$$최종적인 고기 한 조각에 접근
@@ -937,3 +981,85 @@ nice_clothes_name$$좋은 옷
 nice_clothes_desc$$멋지게 보이기
 pondercrime_name$$부자가 된다는 것이 무엇을 의미하는 가요?
 pondercrime_desc$$함께 모든 의미가 무엇인지 곰곰히 생각하면서 사치에 푹 빠져 보세요.
+weakdisease_name$$작은 질병
+weakdisease_desc$$별로 심각하지 않아요
+middisease_name$$질병
+middisease_desc$$당신은 그것을 치료 받는 게 좋겠어요.
+heavydisease_name$$질병
+heavydisease_desc$$상황이 매우 나빠지고 있네, 그치?
+superheavydisease_name$$말기 질환
+superheavydisease_desc$$남은 시간을 즐기세요
+degeneration_name$$퇴화
+degeneration_desc$$신체를 먹고있는 질병
+disease_mind_name$$질병 인식
+disease_mind_desc$$신체의 건강 상태를 인식하세요
+sickmind_name$$병든 마인적응
+sickmind_desc$$병든 마인을 멈추지 마세요
+sickbody_name$$질병 통합
+sickbody_desc$$너 아파, 그래 그럼.
+diseasebody2_name$$질병 저항력
+diseasebody2_desc$$이것은 아무것도 아닙니다
+diseasebody3_name$$저항력 질병 II
+diseasebody3_desc$$정말, 아무것도 아닙니다
+diseasebody4_name$$질병 저항 III
+diseasebody4_desc$$진짜 걱정할 필요 없어요
+lifesewer_name$$하수구에서의 삶
+lifesewer_desc$$정말로 그리 나쁘지 않아요...
+lifesewer2_name$$하수구 속 생활 II
+lifesewer2_desc$$여기서 삶에 익숙해져 갑니다.
+disease_resistance1_name$$자연 회복력
+disease_resistance1_desc$$당신의 몸은 저항하고 회복합니다
+disease_resistance2_name$$자연 회복 II
+disease_resistance2_desc$$당신의 몸이 저항하고 회복합니다
+sewer_rats_name$$하수구의 쥐들
+sewer_rats_desc$$여기서 살아가는 방법이 놀라울 정도로 흥미롭다
+sewer_cats_name$$하수구의 고양이들
+sewer_cats_desc$$여기서 어떻게 살아가는지 정말 흥미롭다.
+sewerrest_name$$불굴의 휴식
+sewerrest_desc$$하수구에서 휴식을 취한다면, 어디서든 휴식을 취할 수 있습니다.
+sickrats_name$$쥐 질병 전파
+sickrats_desc$$쥐 질병 전파에 대한 관찰을 합니다
+sickcats_name$$고양이 질병 전파
+sickcats_desc$$고양이들에게 어떻게 질병이 전파되는지 관찰합니다.
+diseasemax_a_name$$인내력
+diseasemax_a_desc$$당신의 몸은 더 멀리 갈 수 있습니다
+diseasemax_b_name$$인톨러런스 잠재력 II
+diseasemax_b_desc$$당신의 몸은 더 멀리 갈 수 있습니다.
+diseasedot_name$$질병으로 번창하기
+diseasedot_desc$$질병으로 번창하기를 믿으세요
+diseasedot_b_name$$질병을 힘으로 변환
+diseasedot_b_desc$$질병의 심각함에 대처하세요
+contamination_dot_name$$자가 오염
+contamination_dot_desc$$자신을 질병 운반체로 사용하세요
+sickanimal_call_name$$근처 아픈 동물들을 하나로 모으세요
+sickanimal_call_desc$$근처 아픈 동물들을 하나로 모으세요.
+unlockheavydisease_name$$불결한 삶
+unlockheavydisease_desc$$두려움을 버리고 더러운 것에 더 깊이 들어가세요
+sewer_home2_name$$하수 구역
+sewer_home2_desc$$하수 구역 깊숙하게 숨겨진 방, 나쁘지 않아요
+sicktier3_name$$병약한 지하 생물
+sicktier3_desc$$병약하고 고립된
+sewercreature_name$$하수도 생물
+sewercreature_desc$$오물에 모양을 갖춘 삶
+diseaseintolerance_name$$질병 불쾌함
+diseaseintolerance_desc$$당신의 몸은 그 상태에 적응합니다.
+sewer_knowledge_name$$하수도 지식
+sewer_knowledge_desc$$도시의 지하 하수도 시스템을 얼마나 잘 알고 있습니까
+contamination_name$$오염
+contamination_desc$$질병이 퍼지는 방법
+deep_sewer_name$$깊은 하수도
+deep_sewer_desc$$비밀 터널, 비밀 방, 구멍, 그리고 나쁜 냄새
+dead_body_name$$시체
+dead_body_desc$$시체. 악臭이 난다
+glimmerlight_name$$빛의 반짝임
+glimmerlight_desc$$희망이 있습니다
+big_rat_name$$큰 쥐
+big_rat_desc$$조금 공격적입니다
+irreversible_disease_name$$돌이킬 수 없는 행동
+irreversible_disease_desc$$한 번 시작하면 이 행동은 돌이킬 수 없습니다. 부정적인 효과는 종종 영구적입니다. 그러나 당신은 새로운 가능성을 열게 될 것입니다. 이 행동을 계속하시겠습니까?
+rats_name$$쥐
+rats_desc$$쥐는 생존자이자 도시 탐험가, 해충이자 밤의 존재입니다.
+sewer_home_name$$하수도
+sewer_home_desc$$혐오스럽지만 넓은 공간.
+disease_sad_ending_name$$병이란 무엇을 의미하는 걸까요?
+disease_sad_ending_desc$$당신의 몸이 어떻게 이 지경에 이르게 되었나요?

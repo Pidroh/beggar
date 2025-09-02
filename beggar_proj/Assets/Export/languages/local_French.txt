@@ -37,10 +37,8 @@ faith_name$$Foi Faible
 faith_desc$$Le commencement de la croyance en le divin.
 guilt_name$$Culpabilité
 guilt_desc$$Un murmure persistant des choix passés.
-rats_name$$rats
-rats_desc$$Le rat est un survivant, un explorateur urbain, une nuisance et une créature de la nuit.
 cat_name$$Chat errant
-cat_desc$$Chats errants vivant en ville, mais curieusement sont toujours près de vous.
+cat_desc$$Chats vivant en ville, mais étrangement sont toujours près de vous
 ratcorpse_name$$Cadavre de rat
 ratcorpse_desc$$Un rat mort
 catcorpse_name$$Cadavre de chat
@@ -189,14 +187,14 @@ warmclothes_name$$Vieux vêtements
 warmclothes_desc$$Ils ne sont pas si mal.
 free_food_lead_name$$Rumeurs sur la nourriture
 free_food_lead_desc$$Vous entendez un groupe parler d'un endroit pour se procurer de la nourriture.
+no_home_name$$Nulle part
+no_home_desc$$Vous vivez nulle part
 Back Alley_name$$Ruelle sombre
 Back Alley_desc$$Une ruelle étroite et sale remplie d'ordures et de débris, offrant une protection minimale contre les intempéries.
 churchoutskirts_name$$Périphérie de l'église
 churchoutskirts_desc$$Pas trop loin de l'église Notre-Dame, près du divin
 underbridge_name$$Sous le pont
 underbridge_desc$$Un endroit plus sûr pour dormir, protégé de la pluie.
-sewer_home_name$$Égout
-sewer_home_desc$$Répugnant, mais spacieux.
 gutterborn_name$$né dans les égouts
 gutterborn_desc$$Reconnaissez vos origines des rues, embrassant la dure réalité de votre éducation.
 churchbeggar_name$$Collecteur d'Offrandes
@@ -333,12 +331,46 @@ action_name$$Tâches Instantanées
 action_desc$$
 crime_sep_name$$Activités criminelles
 crime_sep_desc$$
+emotion_sep_task_name$$Émotionnel
+emotion_sep_task_desc$$
+religion_sep_task_name$$Religion
+religion_sep_task_desc$$
+disease_sep_task_name$$Pathologies
+disease_sep_task_desc$$
+charity_sep_task_name$$Charité
+charity_sep_task_desc$$
+sadism_sep_task_name$$Sadisme
+sadism_sep_task_desc$$
+fire_sep_task_name$$Feu
+fire_sep_task_desc$$
+study_sep_task_name$$Érudition
+study_sep_task_desc$$
 power_up_name$$Bonus de puissance
 power_up_desc$$
 class_name$$Classes
 class_desc$$
 resource_name$$Ressources
 resource_desc$$
+emotion_sep_res_name$$Émotions
+emotion_sep_res_desc$$
+mental_sep_res_name$$Raisonnement
+mental_sep_res_desc$$
+food_sep_res_name$$Aliments apparentés
+food_sep_res_desc$$
+disease_sep_res_name$$Maladies
+disease_sep_res_desc$$
+animal_sep_res_name$$Lié aux animaux
+animal_sep_res_desc$$
+religion_sep_res_name$$Religion
+religion_sep_res_desc$$
+crime_sep_res_name$$Criminel
+crime_sep_res_desc$$
+exploration_sep_res_name$$Exploration lié
+exploration_sep_res_desc$$
+study_sep_res_name$$Universitaires
+study_sep_res_desc$$
+charisma_sep_res_name$$Charismatiques
+charisma_sep_res_desc$$
 skill_name$$Compétences
 skill_desc$$
 exploration_name$$exploration
@@ -347,6 +379,18 @@ location_name$$Emplacements
 location_desc$$
 housing_name$$Logement
 housing_desc$$
+food_sep_furnit_name$$Meubles liés à la nourriture
+food_sep_furnit_desc$$
+religion_sep_furnit_name$$Mobilier religieux
+religion_sep_furnit_desc$$
+animal_sep_furnit_name$$Mobilier lié aux animaux
+animal_sep_furnit_desc$$
+crime_sep_furnit_name$$Meubles criminels
+crime_sep_furnit_desc$$
+fire_sep_furnit_name$$Meubles liés au feu
+fire_sep_furnit_desc$$
+luxury_sep_furnit_name$$Meubles de luxe
+luxury_sep_furnit_desc$$
 furniture_name$$Meubles
 furniture_desc$$
 log_name$$Journal
@@ -382,7 +426,7 @@ latinreading_desc$$Lis quelques choses.
 widowmite_name$$Le sou de la veuve
 widowmite_desc$$L'histoire d'une femme fidèle qui s'est donnée au divin.
 sheepgoat_name$$Le Mouton et les Chèvres
-sheepgoat_desc$$Un mouton dans une main, une chèvre dans l'autre, tel est le niveau de réflexion.
+sheepgoat_desc$$Un mouton dans une main, une chèvre dans l'autre, voilà la profondeur de la pensée.
 specklog_name$$La paille et la poutre
 specklog_desc$$Tout d'abord, regardez vos propres défauts.
 sharethebegging_name$$Partager la mendicité
@@ -854,7 +898,7 @@ create_house_document_desc$$Forger illégalement un droit à une petite maison e
 shower_everyday_name$$Douche tous les jours
 shower_everyday_desc$$Lave-toi tous les jours. Ça sent meilleur, c'est plus propre et plus sain.
 forager_realization_name$$Exploration approfondie
-forager_realization_desc$$Repenser complètement la façon dont vous cherchez des biens perdus
+forager_realization_desc$$Repenser profondément la façon dont vous recherchez les biens perdus.
 charismatic_leader_weak_name$$Leadership charismatique
 charismatic_leader_weak_desc$$Menez et charmez, venez disciples!
 meat_sometimes_name$$Accès à la pièce de viande ultime
@@ -937,3 +981,85 @@ nice_clothes_name$$Beaux vêtements
 nice_clothes_desc$$Avoir une apparence soignée
 pondercrime_name$$Que signifie être riche ?
 pondercrime_desc$$Plongez dans le luxe tout en réfléchissant à ce que tout cela signifie.
+weakdisease_name$$Petite maladie
+weakdisease_desc$$Rien de trop grave
+middisease_name$$Maladie
+middisease_desc$$Vous feriez mieux de faire traiter cela.
+heavydisease_name$$Maladie
+heavydisease_desc$$Les choses deviennent assez mauvaises, hein ?
+superheavydisease_name$$Maladie terminale
+superheavydisease_desc$$Profitez du temps qu'il vous reste.
+degeneration_name$$Dégradation
+degeneration_desc$$La maladie qui ronge votre corps
+disease_mind_name$$Conscience de la maladie
+disease_mind_desc$$Prenez conscience de l'état de santé de votre corps
+sickmind_name$$Adaptation d'esprit malade
+sickmind_desc$$Ne laissez pas la maladie arrêter votre esprit
+sickbody_name$$Incorporer la maladie
+sickbody_desc$$Tu es malade, alors quoi ?
+diseasebody2_name$$Résister aux maladies
+diseasebody2_desc$$Résister aux maladies
+diseasebody3_name$$Résistance aux maladies II
+diseasebody3_desc$$Vraiment, ce n'est rien.
+diseasebody4_name$$Résiste maladie III
+diseasebody4_desc$$Vraiment, pas besoin de s'inquiéter
+lifesewer_name$$Vie dans les égouts
+lifesewer_desc$$Ce n'est pas si mal, en réalité...
+lifesewer2_name$$Vie dans les égouts II
+lifesewer2_desc$$On s'habitue à la vie ici en bas
+disease_resistance1_name$$Récupération naturelle
+disease_resistance1_desc$$Votre corps résiste et récupère
+disease_resistance2_name$$Récupération naturelle II
+disease_resistance2_desc$$Votre corps résiste et récupère
+sewer_rats_name$$Rats des égouts
+sewer_rats_desc$$Fascinant comment ils vivent ici bas
+sewer_cats_name$$Chats des égouts
+sewer_cats_desc$$Fascinant comment ils vivent ici bas
+sewerrest_name$$Repos intrépide
+sewerrest_desc$$Si vous pouvez vous reposer dans les égouts, vous pouvez vous reposer n'importe où
+sickrats_name$$Transmission de maladie chez les rats
+sickrats_desc$$Vous observez comment la maladie se transmet à un groupe de rats
+sickcats_name$$Transmission de maladie chez les chats
+sickcats_desc$$Vous observez comment la maladie se transmet sur un groupe de chats.
+diseasemax_a_name$$Potentiel d'intolérance
+diseasemax_a_desc$$Votre corps peut aller plus loin
+diseasemax_b_name$$Potentiel d'intolérance II
+diseasemax_b_desc$$Votre corps peut aller plus loin
+diseasedot_name$$Prosperer de la maladie
+diseasedot_desc$$Convainquez-vous que la maladie vous rend plus fort
+diseasedot_b_name$$Maladie en force
+diseasedot_b_desc$$Affrontez la gravité de votre maladie
+contamination_dot_name$$Auto-contamination
+contamination_dot_desc$$Utilisez-vous comme un vecteur de maladie
+sickanimal_call_name$$Regroupe les animaux malades
+sickanimal_call_desc$$Regroupe tous les animaux malades autour de toi
+unlockheavydisease_name$$Vie insalubre
+unlockheavydisease_desc$$Jetez vos peurs, plongez dans ce qui est sale
+sewer_home2_name$$Chambres des égouts
+sewer_home2_desc$$Une chambre cachée au fond des égouts, pas mal du tout
+sicktier3_name$$Souterrain Malade
+sicktier3_desc$$Malade et isolé
+sewercreature_name$$Créature des égouts
+sewercreature_desc$$Une vie façonnée par la saleté
+diseaseintolerance_name$$Intolérance aux maladies
+diseaseintolerance_desc$$Votre corps s'adapte à sa condition
+sewer_knowledge_name$$Connaissance des égouts
+sewer_knowledge_desc$$À quel point connaissez-vous le système d'égouts souterrain de la ville
+contamination_name$$Contamination
+contamination_desc$$Comment la maladie se propage
+deep_sewer_name$$Égout profond
+deep_sewer_desc$$Tunnels secrets, chambres secrètes, trous et une mauvaise odeur
+dead_body_name$$Cadavre mort
+dead_body_desc$$Un cadavre. Ça sent mauvais.
+glimmerlight_name$$Lueur d'espoir
+glimmerlight_desc$$Il y a de l'espoir
+big_rat_name$$Gros rat
+big_rat_desc$$Il est un peu agressif
+irreversible_disease_name$$Action irréversible
+irreversible_disease_desc$$Une fois fait, cette action ne peut être annulée. Les effets négatifs sont souvent permanents. Mais vous aurez accès à une nouvelle gamme de possibilités. Poursuivez cette action.
+rats_name$$rats
+rats_desc$$Le rat est un survivant, un explorateur urbain, une nuisance et une créature de la nuit.
+sewer_home_name$$Égout
+sewer_home_desc$$Répugnant, mais spacieux.
+disease_sad_ending_name$$Qu'est-ce que cela signifie d'être malade?
+disease_sad_ending_desc$$Comment votre corps en est-il arrivé là?

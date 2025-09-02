@@ -37,10 +37,8 @@ faith_name$$Leichtgläubigkeit
 faith_desc$$Der Beginn des Glaubens an das Göttliche.
 guilt_name$$Schuld
 guilt_desc$$Eine bleibende Ahnung vergangener Entscheidungen.
-rats_name$$Ratten
-rats_desc$$Die Ratte ist ein Überlebender, ein Stadtforscher, eine Plage und ein Geschöpf der Nacht.
 cat_name$$Streunende Katze
-cat_desc$$Katzen, die in der Stadt leben, sind seltsamerweise immer in deiner Nähe.
+cat_desc$$Streunende Katzen, die in der Stadt leben, aber seltsamerweise immer in deiner Nähe sind.
 ratcorpse_name$$Rattenkadaver
 ratcorpse_desc$$Ein totes Rattenkadaver
 catcorpse_name$$Katzenkadaver
@@ -189,14 +187,14 @@ warmclothes_name$$Alte Kleidung
 warmclothes_desc$$Sie sind gar nicht so schlecht.
 free_food_lead_name$$Gerüchte über Essen
 free_food_lead_desc$$Du hörst eine Gruppe reden über einen Ort, an dem man Essen bekommt.
+no_home_name$$Nirgendwo
+no_home_desc$$Du lebst nirgendwo
 Back Alley_name$$Gasse hinten
 Back Alley_desc$$Eine schmale, schmutzige Gasse voller Müll und Trümmern, die nur minimalen Schutz vor dem Wetter bietet.
 churchoutskirts_name$$Kirchenvorstadt
 churchoutskirts_desc$$Nicht weit von der Kirche Unserer Lieben Frau entfernt, in der Nähe des Göttlichen.
 underbridge_name$$Unter der Brücke
 underbridge_desc$$Ein sicherer Ort zum Schlafen, geschützt vor dem Regen.
-sewer_home_name$$Kanalisation
-sewer_home_desc$$Widerlich, aber geräumig.
 gutterborn_name$$gassengeboren
 gutterborn_desc$$Anerkenne deine Herkunft von den Straßen und umarme die harte Realität deiner Herkunft.
 churchbeggar_name$$Almosenkollekteur
@@ -333,12 +331,46 @@ action_name$$Sofortige Aufgaben
 action_desc$$
 crime_sep_name$$Kriminelle Aktivitäten
 crime_sep_desc$$
+emotion_sep_task_name$$Emotionsbezogen
+emotion_sep_task_desc$$
+religion_sep_task_name$$Religion
+religion_sep_task_desc$$
+disease_sep_task_name$$Pathologien
+disease_sep_task_desc$$
+charity_sep_task_name$$Wohltätigkeit
+charity_sep_task_desc$$
+sadism_sep_task_name$$Sadismus
+sadism_sep_task_desc$$
+fire_sep_task_name$$Feuer
+fire_sep_task_desc$$
+study_sep_task_name$$Gelehrte
+study_sep_task_desc$$
 power_up_name$$Stärkungen
 power_up_desc$$
 class_name$$Klassen
 class_desc$$
 resource_name$$Ressourcen
 resource_desc$$
+emotion_sep_res_name$$Gefühle
+emotion_sep_res_desc$$
+mental_sep_res_name$$Denken
+mental_sep_res_desc$$
+food_sep_res_name$$Lebensmittelbezogen
+food_sep_res_desc$$
+disease_sep_res_name$$Pathologien
+disease_sep_res_desc$$
+animal_sep_res_name$$Tierbezogen
+animal_sep_res_desc$$
+religion_sep_res_name$$Religion
+religion_sep_res_desc$$
+crime_sep_res_name$$Krimineller
+crime_sep_res_desc$$
+exploration_sep_res_name$$Erkundungsbezogen
+exploration_sep_res_desc$$
+study_sep_res_name$$Akademiker
+study_sep_res_desc$$
+charisma_sep_res_name$$Charismatiker
+charisma_sep_res_desc$$
 skill_name$$Fähigkeiten
 skill_desc$$
 exploration_name$$Erkundung
@@ -347,6 +379,18 @@ location_name$$Orte
 location_desc$$
 housing_name$$Wohnung
 housing_desc$$
+food_sep_furnit_name$$Lebensmittelbezogene Möbel
+food_sep_furnit_desc$$
+religion_sep_furnit_name$$Religionsmöbel
+religion_sep_furnit_desc$$
+animal_sep_furnit_name$$Tierbezogene Möbel
+animal_sep_furnit_desc$$
+crime_sep_furnit_name$$Kriminelle Möbel
+crime_sep_furnit_desc$$
+fire_sep_furnit_name$$Feuermöbel
+fire_sep_furnit_desc$$
+luxury_sep_furnit_name$$Luxusmöbel
+luxury_sep_furnit_desc$$
 furniture_name$$Möbel
 furniture_desc$$
 log_name$$Protokoll
@@ -381,8 +425,8 @@ latinreading_name$$Elementares Lesen
 latinreading_desc$$Legere aliqua potes.
 widowmite_name$$Witwe Münze
 widowmite_desc$$Die Geschichte einer treuen Frau, die sich dem Göttlichen hingab.
-sheepgoat_name$$Das Schaf und die Ziegen
-sheepgoat_desc$$Ein Schaf auf der einen Hand, eine Ziege auf der anderen, so tief ist der Gedanke.
+sheepgoat_name$$Die Schafe und die Ziegen
+sheepgoat_desc$$Ein Schaf in der einen Hand, eine Ziege in der anderen, so tief ist der Gedanke.
 specklog_name$$Der Splitter und der Balken
 specklog_desc$$Zuerst betrachte deine eigenen Fehler.
 sharethebegging_name$$Teile das Betteln
@@ -604,7 +648,7 @@ small_feast_desc$$Organisieren Sie ein Fest für Ihre Mitschnorrer.
 giveblanket_name$$Eine Decke spenden
 giveblanket_desc$$Stelle sicher, dass jeder wärmer ist.
 helpelderly_name$$Helfen Sie den Älteren
-helpelderly_desc$$Sie mögen weise sein, aber auch zerbrechlich. Du bist schwach, aber so sind sie auch.
+helpelderly_desc$$Sie mögen weise sein, aber auch zerbrechlich. Du bist schwach, aber das sind sie auch.
 sharesadness_name$$Sprecht über die traurigen Zeiten
 sharesadness_desc$$Setzen Sie sich mit den Armen hin und lassen Sie jeden über ihre traurigen Erfahrungen sprechen.
 sharesorrow_name$$Weint zusammen
@@ -854,7 +898,7 @@ create_house_document_desc$$Illegal einen Anspruch auf ein kleines Haus in der S
 shower_everyday_name$$Dusche jeden Tag
 shower_everyday_desc$$Wasch dich jeden einzelnen Tag. Riecht besser, sauberer und gesünder.
 forager_realization_name$$Tiefes Durchforsten
-forager_realization_desc$$Durchdenken Sie gründlich, wie Sie nach verlorenen Gütern suchen.
+forager_realization_desc$$Gründlich überdenke, wie du nach verlorenen Gütern suchst.
 charismatic_leader_weak_name$$Charismatische Führung
 charismatic_leader_weak_desc$$Führen und bezaubern, kommt Anhänger!
 meat_sometimes_name$$Zugriff auf das zukünftige Stück Fleisch
@@ -937,3 +981,85 @@ nice_clothes_name$$Schöne Kleidung
 nice_clothes_desc$$Ein gepflegtes Aussehen.
 pondercrime_name$$Was bedeutet es, reich zu sein?
 pondercrime_desc$$In Luxus schwelgen, während du darüber nachdenkst, was das alles bedeutet.
+weakdisease_name$$Kleine Krankheit
+weakdisease_desc$$Nichts zu ernsthaft.
+middisease_name$$Krankheit
+middisease_desc$$Du solltest das behandeln lassen.
+heavydisease_name$$Krankheit
+heavydisease_desc$$Die Dinge werden ziemlich schlimm, oder?
+superheavydisease_name$$Terminaler Krankheit
+superheavydisease_desc$$Genieße die verbleibende Zeit.
+degeneration_name$$Degeneration
+degeneration_desc$$Die Krankheit, die deinen Körper dahinschwinden lässt
+disease_mind_name$$Krankheitsbewusstsein
+disease_mind_desc$$Werden Sie sich des Gesundheitszustands Ihres Körpers bewusst.
+sickmind_name$$Kranker Geist Anpassung
+sickmind_desc$$Lass nicht zu, dass Krankheit deinen Geist stoppt.
+sickbody_name$$Krankheit integrieren
+sickbody_desc$$Du bist krank, also was?
+diseasebody2_name$$Widerstehe Krankheiten
+diseasebody2_desc$$Das ist nichts.
+diseasebody3_name$$Widerstehe Krankheit II
+diseasebody3_desc$$Wirklich, es ist nichts.
+diseasebody4_name$$Widerstand gegen Krankheiten III
+diseasebody4_desc$$Wirklich, es besteht kein Grund zur Sorge.
+lifesewer_name$$Leben in den Abwässern
+lifesewer_desc$$Es ist eigentlich gar nicht so schlecht...
+lifesewer2_name$$Leben in den Abwässern II
+lifesewer2_desc$$Man gewöhnt sich an das Leben hier unten.
+disease_resistance1_name$$Natürliche Erholung
+disease_resistance1_desc$$Dein Körper widersteht und erholt sich.
+disease_resistance2_name$$Natürliche Regeneration II
+disease_resistance2_desc$$Dein Körper widersteht und erholt sich
+sewer_rats_name$$Kanalratten
+sewer_rats_desc$$Faszinierend, wie sie hier unten leben.
+sewer_cats_name$$Kanal-Katzen
+sewer_cats_desc$$Faszinierend, wie sie hier unten leben.
+sewerrest_name$$Unbeugsamer Ruhm
+sewerrest_desc$$Wenn du dich in den Kanälen ausruhen kannst, kannst du dich überall ausruhen
+sickrats_name$$Rattenkrankheitsübertragung
+sickrats_desc$$Sie beobachten, wie Krankheit sich in einer Gruppe von Ratten überträgt.
+sickcats_name$$Katzenkrankenheitsübertragung
+sickcats_desc$$Sie beobachten, wie Krankheiten in einer Gruppe von Katzen übertragen werden
+diseasemax_a_name$$Intoleranzpotenzial
+diseasemax_a_desc$$Dein Körper kann weiter gehen.
+diseasemax_b_name$$Intoleranzpotenzial II
+diseasemax_b_desc$$Dein Körper kann weiter gehen.
+diseasedot_name$$Gedeihen in der Krankheit
+diseasedot_desc$$Überzeuge dich selbst, dass die Krankheit dich stärker macht.
+diseasedot_b_name$$Krankheit in Stärke
+diseasedot_b_desc$$Kommen Sie mit der Schwere Ihrer Krankheit zurecht.
+contamination_dot_name$$Selbstkontamination
+contamination_dot_desc$$Verwenden Sie sich selbst als Krankheitsüberträger.
+sickanimal_call_name$$Sammle kranke Tiere
+sickanimal_call_desc$$Sammle alle kranken Tiere um dich herum
+unlockheavydisease_name$$Unhygienisches Leben
+unlockheavydisease_desc$$Wirf deine Ängste weg, gehe tiefer in das hinein, was schmutzig ist.
+sewer_home2_name$$Kanal Kammern
+sewer_home2_desc$$Eine versteckte Kammer tief in den Kanal Kammern, gar nicht so schlecht.
+sicktier3_name$$Kränklicher Unterweltler
+sicktier3_desc$$Krank und isoliert
+sewercreature_name$$Kanalwesen
+sewercreature_desc$$Ein Leben geprägt von Schmutz
+diseaseintolerance_name$$Krankheitsintoleranz
+diseaseintolerance_desc$$Dein Körper passt sich seinem Zustand an.
+sewer_knowledge_name$$Kanalisationswissen
+sewer_knowledge_desc$$Wie gut kennst du das unterirdische Kanalisationswissen der Stadt?
+contamination_name$$Kontamination
+contamination_desc$$Wie sich Krankheiten verbreiten
+deep_sewer_name$$Tiefe Kanalisation
+deep_sewer_desc$$Geheime Gänge, geheime Kammern, Löcher und ein schlechter Geruch
+dead_body_name$$Toter Körper
+dead_body_desc$$Ein Leichnam. Riecht schlecht
+glimmerlight_name$$Schimmer des Lichts
+glimmerlight_desc$$Es gibt Hoffnung
+big_rat_name$$Große Ratte
+big_rat_desc$$Es ist ein bisschen aggressiv.
+irreversible_disease_name$$Unumkehrbare Aktion
+irreversible_disease_desc$$Einmal ausgeführt, kann diese Aktion nicht rückgängig gemacht werden. Negative Auswirkungen sind oft dauerhaft. Aber du wirst Zugang zu einer neuen Palette von Möglichkeiten erhalten. Gehst du mit dieser Aktion weiter?
+rats_name$$Ratten
+rats_desc$$Die Ratte ist ein Überlebender, ein Stadtforscher, eine Plage und ein Geschöpf der Nacht.
+sewer_home_name$$Kanalisation
+sewer_home_desc$$Widerlich, aber geräumig.
+disease_sad_ending_name$$Was bedeutet es, krank zu sein?
+disease_sad_ending_desc$$Wie kam dein Körper dazu?

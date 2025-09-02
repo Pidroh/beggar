@@ -37,10 +37,8 @@ faith_name$$微弱信仰
 faith_desc$$神聖信仰的開始
 guilt_name$$內疚
 guilt_desc$$從過去的選擇中響起的持續低語。
-rats_name$$老鼠
-rats_desc$$老鼠是倖存者，城市探險家，害蟲，以及夜行動物。
 cat_name$$流浪貓
-cat_desc$$城市中生活的貓，卻奇怪地總是在你附近。
+cat_desc$$在城市裡生活的貓，但奇怪的是它們總是靠近你。
 ratcorpse_name$$死老鼠
 ratcorpse_desc$$一隻死老鼠
 catcorpse_name$$死貓
@@ -189,14 +187,14 @@ warmclothes_name$$舊衣服
 warmclothes_desc$$它們並不算太糟糕
 free_food_lead_name$$食物传闻
 free_food_lead_desc$$你聽到一群人在討論一個可以買到食物的地方。
+no_home_name$$虛空
+no_home_desc$$你生活在虛空
 Back Alley_name$$後巷
 Back Alley_desc$$一條狹窄骯髒的後巷，堆滿了垃圾和碎片，提供最低限度的避風遮雨。
 churchoutskirts_name$$教堂外环 教堂外环
 churchoutskirts_desc$$離我們夫人教堂不太遠，靠近神聖。
 underbridge_name$$橋下
 underbridge_desc$$一個更安全的地方睡覺，能保護不被雨淋到。
-sewer_home_name$$汙水溝
-sewer_home_desc$$令人厭惡，但空間寬敞。
 gutterborn_name$$閂生
 gutterborn_desc$$承認你來自街頭，接受你艱難的成長背景。
 churchbeggar_name$$施舍者
@@ -333,12 +331,46 @@ action_name$$即時任務
 action_desc$$
 crime_sep_name$$犯罪活動
 crime_sep_desc$$
+emotion_sep_task_name$$與情緒相關
+emotion_sep_task_desc$$
+religion_sep_task_name$$宗教
+religion_sep_task_desc$$
+disease_sep_task_name$$病理学
+disease_sep_task_desc$$
+charity_sep_task_name$$慈善
+charity_sep_task_desc$$
+sadism_sep_task_name$$虐待主义
+sadism_sep_task_desc$$
+fire_sep_task_name$$火
+fire_sep_task_desc$$
+study_sep_task_name$$學術
+study_sep_task_desc$$
 power_up_name$$增益道具
 power_up_desc$$
 class_name$$職業
 class_desc$$
 resource_name$$資源
 resource_desc$$
+emotion_sep_res_name$$情感
+emotion_sep_res_desc$$
+mental_sep_res_name$$推理
+mental_sep_res_desc$$
+food_sep_res_name$$食物相關
+food_sep_res_desc$$
+disease_sep_res_name$$病理
+disease_sep_res_desc$$
+animal_sep_res_name$$與動物有關
+animal_sep_res_desc$$
+religion_sep_res_name$$宗教
+religion_sep_res_desc$$
+crime_sep_res_name$$罪犯
+crime_sep_res_desc$$
+exploration_sep_res_name$$探索相關
+exploration_sep_res_desc$$
+study_sep_res_name$$學業
+study_sep_res_desc$$
+charisma_sep_res_name$$魅力使
+charisma_sep_res_desc$$
 skill_name$$技能
 skill_desc$$
 exploration_name$$探索
@@ -347,6 +379,18 @@ location_name$$地點
 location_desc$$
 housing_name$$住所
 housing_desc$$
+food_sep_furnit_name$$食品相關家具
+food_sep_furnit_desc$$
+religion_sep_furnit_name$$宗教家具
+religion_sep_furnit_desc$$
+animal_sep_furnit_name$$動物相關的家具
+animal_sep_furnit_desc$$
+crime_sep_furnit_name$$犯罪家具
+crime_sep_furnit_desc$$
+fire_sep_furnit_name$$火相關的家具
+fire_sep_furnit_desc$$
+luxury_sep_furnit_name$$豪华家具
+luxury_sep_furnit_desc$$
 furniture_name$$家具
 furniture_desc$$
 log_name$$日誌
@@ -382,7 +426,7 @@ latinreading_desc$$你可以閱讀一些字。
 widowmite_name$$寡婦的兩文錢
 widowmite_desc$$一位忠信的女性奉獻自己給神的故事
 sheepgoat_name$$羊和山羊
-sheepgoat_desc$$一隻羊在一隻手上，一隻山羊在另一隻手上，思想之深刻。
+sheepgoat_desc$$一隻羊在一隻手裡，一隻山羊在另一隻手裡，這就是思考的深度。
 specklog_name$$塵芥與樑木
 specklog_desc$$首先，看看自己的缺點。
 sharethebegging_name$$分享乞讨
@@ -603,8 +647,8 @@ small_feast_name$$小宴席
 small_feast_desc$$給你的同伴乞丐們舉辦一場宴席。
 giveblanket_name$$捐赠毯子
 giveblanket_desc$$確保每個人都更溫暖
-helpelderly_name$$幫助老人
-helpelderly_desc$$他們也許很聰明，但同時也很脆弱。你雖然脆弱，但他們也是。
+helpelderly_name$$幫助年長者
+helpelderly_desc$$他們可能很聰明，但也很脆弱。你很軟弱，他們也一樣。
 sharesadness_name$$談談傷心時刻
 sharesadness_desc$$與貧窮者坐下，讓每個人談談他們的傷心經歷。
 sharesorrow_name$$一起哭泣
@@ -854,7 +898,7 @@ create_house_document_desc$$在城市中非法仿造擁有一座小房屋的權�
 shower_everyday_name$$每天洗澡
 shower_everyday_desc$$每天都要洗澡。聞起來更好，更乾淨，更健康。
 forager_realization_name$$深度搜尋
-forager_realization_desc$$徹底重新思考你尋找遺失物品的方式
+forager_realization_desc$$徹底重新考慮如何搜尋失物。
 charismatic_leader_weak_name$$有魅力的領導
 charismatic_leader_weak_desc$$引領並迷住眾人，前來追隨者！
 meat_sometimes_name$$獲得最終一塊肉
@@ -937,3 +981,85 @@ nice_clothes_name$$漂亮的衣服
 nice_clothes_desc$$看起來整齊大方
 pondercrime_name$$什麼是富有意義的？
 pondercrime_desc$$沉浸在奢侈中，思索這一切的含義。
+weakdisease_name$$小病
+weakdisease_desc$$不太嚴重
+middisease_name$$病症
+middisease_desc$$你最好去治療一下。
+heavydisease_name$$疾病
+heavydisease_desc$$事情變得相當糟糕，呃？
+superheavydisease_name$$绝症
+superheavydisease_desc$$享受你剩下的時間
+degeneration_name$$退化
+degeneration_desc$$侵蝕你的身體的疾病
+disease_mind_name$$疾病意識
+disease_mind_desc$$意識到身體健康狀況
+sickmind_name$$心智適應疾病
+sickmind_desc$$不要讓疾病阻止你的思維
+sickbody_name$$導入疾病
+sickbody_desc$$你生病了，所以怎樣？
+diseasebody2_name$$抗病御災
+diseasebody2_desc$$這沒什麼
+diseasebody3_name$$抗病II
+diseasebody3_desc$$其實，這沒什麼。
+diseasebody4_name$$抗病 III
+diseasebody4_desc$$真的，沒有必要擔心。
+lifesewer_name$$污水道生活
+lifesewer_desc$$這真的不算太糟……
+lifesewer2_name$$污水管道生活II
+lifesewer2_desc$$在這裡的生活，你會適應的。
+disease_resistance1_name$$自然恢复
+disease_resistance1_desc$$你的身體抵抗並恢復
+disease_resistance2_name$$自然恢復II
+disease_resistance2_desc$$你的身體抵抗並康復
+sewer_rats_name$$下水道的老鼠
+sewer_rats_desc$$他們在這裡生活的方式很迷人。
+sewer_cats_name$$下水道貓
+sewer_cats_desc$$他們是如何在這裡生活的。
+sewerrest_name$$堅忍休息
+sewerrest_desc$$如果你能在下水道休息，你就可以在任何地方休息
+sickrats_name$$老鼠疾病传播
+sickrats_desc$$你觀察老鼠群之間疾病的傳播
+sickcats_name$$貓病傳播
+sickcats_desc$$觀察貓群中疾病的傳播
+diseasemax_a_name$$潛在不耐受
+diseasemax_a_desc$$您的身體可以走得更遠
+diseasemax_b_name$$不耐症潛能 II
+diseasemax_b_desc$$你的身體可以更進一步
+diseasedot_name$$在疾病中茁壮成长
+diseasedot_desc$$在疾病中茁壯成長
+diseasedot_b_name$$將疾病轉化為力量
+diseasedot_b_desc$$應對您的疾病嚴重程度
+contamination_dot_name$$自我污染
+contamination_dot_desc$$將自己當作疾病容器。
+sickanimal_call_name$$聚集生病的動物
+sickanimal_call_desc$$聚集身邊所有生病的動物
+unlockheavydisease_name$$不潔的生活
+unlockheavydisease_desc$$拋棄你的恐懼，深入探索骯髒的事物
+sewer_home2_name$$污水污水
+sewer_home2_desc$$污水深處的隱藏密室，一點都不錯
+sicktier3_name$$病弱地底人
+sicktier3_desc$$病弱和孤立
+sewercreature_name$$污水生物
+sewercreature_desc$$一生被污穢塑造
+diseaseintolerance_name$$疾病不耐症
+diseaseintolerance_desc$$您的身體會適應它的狀況
+sewer_knowledge_name$$污水知識
+sewer_knowledge_desc$$城市地下污水系統的認識程度
+contamination_name$$污染
+contamination_desc$$疾病如何傳播
+deep_sewer_name$$深渠
+deep_sewer_desc$$隱秘的隧道，隱密的房間，洞穴，和惡臭
+dead_body_name$$死人
+dead_body_desc$$死人。聞起來很臭
+glimmerlight_name$$微光
+glimmerlight_desc$$有希望
+big_rat_name$$大老鼠
+big_rat_desc$$有點兇猛
+irreversible_disease_name$$不可逆行动
+irreversible_disease_desc$$一旦完成，此舉將無法撤銷。 負面效應往往是永久的。 但您將獲得新的可能性範圍。 繼續進行此操作嗎？
+rats_name$$老鼠
+rats_desc$$老鼠是倖存者，城市探險家，害蟲，以及夜行動物。
+sewer_home_name$$汙水溝
+sewer_home_desc$$令人厭惡，但空間寬敞。
+disease_sad_ending_name$$得病的感覺是什麼？
+disease_sad_ending_desc$$你的身體是怎麼了？
