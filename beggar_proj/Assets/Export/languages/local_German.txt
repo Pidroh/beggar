@@ -205,7 +205,7 @@ breadsnatcher_name$$Brot Dieb
 breadsnatcher_desc$$Pass lieber auf. Lass dich ablenken und dein Essen wird verschwunden sein.
 beggar_name$$Bettler
 beggar_desc$$Eine Person, die von Geld oder Essen lebt.
-cutpurse_name$$Taschendieb
+cutpurse_name$$Langfinger
 cutpurse_desc$$Stiehlt Wertgegenstände durch Taschendiebstahl und schnelle, listige Bewegungen.
 streetrat_name$$Straßenrat
 streetrat_desc$$Ratte und Mensch, arbeiten zusammen, um alle Brieftaschen zu leeren.
@@ -353,7 +353,7 @@ resource_name$$Ressourcen
 resource_desc$$
 emotion_sep_res_name$$Gefühle
 emotion_sep_res_desc$$
-mental_sep_res_name$$Denken
+mental_sep_res_name$$Schlussfolgerung
 mental_sep_res_desc$$
 food_sep_res_name$$Lebensmittelbezogen
 food_sep_res_desc$$
@@ -765,7 +765,7 @@ sadism_name$$Sadism
 sadism_desc$$Die Freude, die aus dem Zufügen von Schmerz entsteht.
 empathy_name$$Einfühlungsvermögen
 empathy_desc$$Schärfung des Einfühlungsvermögens für die Gefühle anderer
-charity_name$$Wohltätigkeit
+charity_name$$Karitativer Verein
 charity_desc$$Freiwillige Hilfe
 kidnapping_name$$Entführung
 kidnapping_desc$$Die Kunst, Menschen zu entführen
@@ -985,7 +985,7 @@ weakdisease_name$$Kleine Krankheit
 weakdisease_desc$$Nichts zu ernsthaft.
 middisease_name$$Krankheit
 middisease_desc$$Du solltest das behandeln lassen.
-heavydisease_name$$Krankheit
+heavydisease_name$$Erkrankung
 heavydisease_desc$$Die Dinge werden ziemlich schlimm, oder?
 superheavydisease_name$$Terminaler Krankheit
 superheavydisease_desc$$Genieße die verbleibende Zeit.

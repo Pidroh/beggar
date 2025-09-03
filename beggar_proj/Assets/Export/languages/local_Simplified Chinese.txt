@@ -29,7 +29,7 @@ metathought_name$$元灵思考
 metathought_desc$$思考我们的过去的能力
 sadness_name$$悲伤
 sadness_desc$$我们情感的重量反映了经历的深度
-sorrow_name$$悲伤
+sorrow_name$$忧伤
 sorrow_desc$$一种深刻的情感，深化了人们的同情心和理解。它通过共同经历损失和反思，将我们与他人联系起来。
 gratitude_name$$感激
 gratitude_desc$$感激回报的准备
@@ -205,7 +205,7 @@ breadsnatcher_name$$面包小偷
 breadsnatcher_desc$$你最好专心点。一不留神，你的食物就会不见了。
 beggar_name$$乞丐
 beggar_desc$$靠向别人要钱或食物生活的人
-cutpurse_name$$扒手
+cutpurse_name$$小偷
 cutpurse_desc$$通过扒窃和快速、隐秘的动作来窃取贵重物品。
 streetrat_name$$街头鼠
 streetrat_desc$$老鼠和人，一起合作一起清空所有的钱包
@@ -217,7 +217,7 @@ introspection_name$$反省
 introspection_desc$$反省意味着审视自己的思想和感情。
 contemplation_name$$沉思
 contemplation_desc$$深入探求。
-thinking_name$$思考
+thinking_name$$想法
 thinking_desc$$你构思能力
 exercise_name$$运动
 exercise_desc$$身体准备好运动
@@ -761,15 +761,15 @@ gracebeggar_name$$张手
 gracebeggar_desc$$他们给了你这个名字，因为他们知道你是真正的施与者。
 kindling_name$$引火柴
 kindling_desc$$点火的知识
-sadism_name$$虐待主义
+sadism_name$$施虐癖
 sadism_desc$$从造成痛苦中获取快乐
 empathy_name$$同理心
 empathy_desc$$磨练对他人感受的敏锐洞察力
-charity_name$$慈善
+charity_name$$慈善事业
 charity_desc$$自愿帮助
 kidnapping_name$$绑架
 kidnapping_desc$$绑架人的技能
-charisma_name$$魅力
+charisma_name$$个人魅力
 charisma_desc$$一个引人注目的微笑和吸引人的自信
 symbolicspoon_name$$象征性勺子
 symbolicspoon_desc$$象征着同理心的铁勺
@@ -795,7 +795,7 @@ fire_ending_name$$在火焰中找到答案
 fire_ending_desc$$盯着混乱，凝视火焰
 realization_name$$领悟
 realization_desc$$深思之后而得到的新领悟
-musing_name$$思考
+musing_name$$冥想
 musing_desc$$随机的想法在脑海中跳舞
 luxury_name$$奢华
 luxury_desc$$舒适和优雅的状态
@@ -811,9 +811,9 @@ deep_think_name$$深思熟虑
 deep_think_desc$$远超表面思考
 great_study_name$$中级研究
 great_study_desc$$尝试将你的研究提升到下一个水平
-academics_gen_name$$领悟
+academics_gen_name$$理解
 academics_gen_desc$$深入领悟您的知识.
-betterreading2_name$$更好的阅读
+betterreading2_name$$更进一步的阅读
 betterreading2_desc$$学习如何更专注于阅读
 studydialectic_name$$研究辩证法
 studydialectic_desc$$通过对话整合相互对立的观点
@@ -985,7 +985,7 @@ weakdisease_name$$小疾病
 weakdisease_desc$$无需太过担心
 middisease_name$$疾病
 middisease_desc$$你最好去治疗一下
-heavydisease_name$$疾病
+heavydisease_name$$重病
 heavydisease_desc$$事情变得相当糟糕，是吧？
 superheavydisease_name$$终末疾病
 superheavydisease_desc$$享受你剩下的时间
@@ -1059,7 +1059,7 @@ irreversible_disease_name$$不可逆转的行动
 irreversible_disease_desc$$完成后，这个行动无法撤销。负面影响通常是永久的。但你将获得一系列新的可能性。你要继续这个行动吗？
 rats_name$$老鼠
 rats_desc$$老鼠是一个幸存者，城市探险家，害虫，夜晚的生物。
-sewer_home_name$$下水道
+sewer_home_name$$污水管道
 sewer_home_desc$$令人作呕，但宽敞。
 disease_sad_ending_name$$生病意味着什么？
 disease_sad_ending_desc$$你的身体是怎么了？

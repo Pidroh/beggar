@@ -29,7 +29,7 @@ metathought_name$$메타 생각
 metathought_desc$$과거에 대해 생각하는 능력
 sadness_name$$슬픔
 sadness_desc$$우리 감정의 무게는 우리 경험의 깊이를 반영합니다.
-sorrow_name$$슬픔
+sorrow_name$$애도
 sorrow_desc$$깊은 공감과 이해를 깊게 하는 슬픔이라는 강렬한 감정입니다. 이는 상실과 사색을 통해 다른 이들과 우리를 연결시켜줍니다.
 gratitude_name$$감사
 gratitude_desc$$친절을 돌려주기 위한 준비 완료
@@ -161,7 +161,7 @@ guiltcunning_name$$제 잘못이 아니에요
 guiltcunning_desc$$배가 고프고 아무도 나를 돌볼 사람이 없어요.
 healthier_name$$조금 더 건강해요
 healthier_desc$$뚜렸한 개선 흔적이 보이지만, 건강에는 다소 미치지 못해요.
-lament_name$$슬픔
+lament_name$$애도
 lament_desc$$슬픔 속에서 위안을 찾기 위해서는 먼저 자신의 절망에 빠져들어야 합니다.
 shed_tears_name$$눈물을 흘리다
 shed_tears_desc$$슬픔을 흘려서 변화되게 하세요.
@@ -217,7 +217,7 @@ introspection_name$$자기 성찰
 introspection_desc$$자기를 되짚어보는 것은 자신의 생각과 감정을 조망하는 것을 의미합니다.
 contemplation_name$$묵상
 contemplation_desc$$내면을 더 깊이 살피기.
-thinking_name$$생각하기
+thinking_name$$사고력
 thinking_desc$$생각을 형성하는 능력
 exercise_name$$운동
 exercise_desc$$운동을 할 몸의 준비 상태
@@ -769,7 +769,7 @@ charity_name$$자선활동
 charity_desc$$자원봉사협력
 kidnapping_name$$사람납치
 kidnapping_desc$$사람을 납치하는 기술
-charisma_name$$매력
+charisma_name$$매혹력
 charisma_desc$$매력적인 미소와 매력적인 자신감
 symbolicspoon_name$$상징적인 숟가락
 symbolicspoon_desc$$공감의 심장을 상징하는 철제 숟가락
@@ -917,9 +917,9 @@ modest_house_name$$겸손한 집
 modest_house_desc$$당신만의 집, 두 층으로 이루어져 있습니다. 조금 비좁지만, 당신의 것입니다.
 three_floor_house_name$$세 층 집
 three_floor_house_desc$$화려한 장소, 세 층, 매우 넓은 공간.
-thief_name$$도둑
+thief_name$$도난범
 thief_desc$$힘을 사용하지 않고 훔치는 사람
-burglar_name$$도둑
+burglar_name$$강도
 burglar_desc$$문을 닫아 놓으세요. 당신을 돕지는 않겠지만.
 underboss_name$$부하장
 underboss_desc$$도시 속 작은 범죄 조직의 부하장
@@ -985,7 +985,7 @@ weakdisease_name$$작은 질병
 weakdisease_desc$$별로 심각하지 않아요
 middisease_name$$질병
 middisease_desc$$당신은 그것을 치료 받는 게 좋겠어요.
-heavydisease_name$$질병
+heavydisease_name$$질환
 heavydisease_desc$$상황이 매우 나빠지고 있네, 그치?
 superheavydisease_name$$말기 질환
 superheavydisease_desc$$남은 시간을 즐기세요
@@ -1059,7 +1059,7 @@ irreversible_disease_name$$돌이킬 수 없는 행동
 irreversible_disease_desc$$한 번 시작하면 이 행동은 돌이킬 수 없습니다. 부정적인 효과는 종종 영구적입니다. 그러나 당신은 새로운 가능성을 열게 될 것입니다. 이 행동을 계속하시겠습니까?
 rats_name$$쥐
 rats_desc$$쥐는 생존자이자 도시 탐험가, 해충이자 밤의 존재입니다.
-sewer_home_name$$하수도
+sewer_home_name$$오수정
 sewer_home_desc$$혐오스럽지만 넓은 공간.
 disease_sad_ending_name$$병이란 무엇을 의미하는 걸까요?
 disease_sad_ending_desc$$당신의 몸이 어떻게 이 지경에 이르게 되었나요?

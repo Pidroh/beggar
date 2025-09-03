@@ -217,7 +217,7 @@ introspection_name$$自省
 introspection_desc$$反思自己意識和感受。
 contemplation_name$$默想
 contemplation_desc$$更深入地看。
-thinking_name$$思考
+thinking_name$$想法
 thinking_desc$$思考能力
 exercise_name$$锻炼
 exercise_desc$$您的身體做運動的準備程度
@@ -319,7 +319,7 @@ oldrosario_name$$舊羅薩里歐
 oldrosario_desc$$一個不再需要的舊羅薩里歐
 stolenbread_name$$犯罪麵包
 stolenbread_desc$$被偷來的食物乾瘪了。一件小犯罪的紀念品。
-deadflowers_name$$枯萎的花
+deadflowers_name$$凋零的花束
 deadflowers_desc$$生命的短暫
 rustyknife_name$$生鏽的刀
 rustyknife_desc$$
@@ -531,7 +531,7 @@ expertbeggar_name$$乞丐大師
 expertbeggar_desc$$街頭的大師，乞討藝術的行家。
 ecclesiology_name$$教会学
 ecclesiology_desc$$教會學和宗教儀式的知識
-academia_name$$學術
+academia_name$$學問
 academia_desc$$追求知識
 philosophy_name$$哲學
 philosophy_desc$$研究基本問題
@@ -591,7 +591,7 @@ joinedprayer_name$$共同祈禱
 joinedprayer_desc$$共同祈禱
 wordsbishop_name$$主教的勸誡
 wordsbishop_desc$$另一個意在傳授知識的故事
-chant_name$$祈禱
+chant_name$$念誦
 chant_desc$$堅定信仰地重複神聖的言辭
 voicesgossip_name$$閒言碎語的聲音
 voicesgossip_desc$$你可以聽到人們的低語、刻薄的聲音。
@@ -761,15 +761,15 @@ gracebeggar_name$$開手
 gracebeggar_desc$$他們給了你這個名字是因為他們知道你是真正的給予者。
 kindling_name$$打柴
 kindling_desc$$點火知識
-sadism_name$$虐待主义
+sadism_name$$施虐癖
 sadism_desc$$從施加疼痛中獲得快樂
 empathy_name$$同理心
 empathy_desc$$對他人感受保持敏銳的視角
-charity_name$$慈善
+charity_name$$慈善事業
 charity_desc$$自願幫助
 kidnapping_name$$绑架
 kidnapping_desc$$綁架人的技藝
-charisma_name$$魅力
+charisma_name$$个人魅力
 charisma_desc$$一個迷人的微笑和吸引人的自信
 symbolicspoon_name$$象徵性湯匙
 symbolicspoon_desc$$象徵性湯匙，代表著同理心。

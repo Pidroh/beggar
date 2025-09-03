@@ -29,7 +29,7 @@ metathought_name$$Pensamento Meta
 metathought_desc$$A capacidade de pensar sobre nosso passado.
 sadness_name$$tristeza
 sadness_desc$$O peso de nossas emoções reflete a profundidade de nossas experiências.
-sorrow_name$$tristeza
+sorrow_name$$Luto
 sorrow_desc$$Uma emoção profunda que aprofunda a empatia e o entendimento de alguém. Ela nos conecta aos outros através de experiências compartilhadas de perda e reflexão.
 gratitude_name$$gratidão
 gratitude_desc$$Disposição para retribuir gentileza
@@ -109,7 +109,7 @@ eatfood_name$$Comer
 eatfood_desc$$Hora de comer
 pouch_name$$Bolsa
 pouch_desc$$Mantenha seu dinheiro seguro, diz o mago
-purse_name$$Bolsa
+purse_name$$Carteira
 purse_desc$$Forma comum de carregar... Espera. Já vi isso em outro lugar.
 think_name$$pensamento
 think_desc$$A sessão de treino cerebral, onde os neurônios se exercitam e as ideias fazem saltos mortais. É como pastorear gatos, mas com pensamentos.
@@ -293,7 +293,7 @@ doll_name$$Boneca Descartada
 doll_desc$$
 mothblanket_name$$Cobertor velho
 mothblanket_desc$$
-blanket_name$$Cobertor velho
+blanket_name$$Manta antiga
 blanket_desc$$
 spoiledgrains_name$$Grãos Estragados
 spoiledgrains_desc$$
@@ -795,7 +795,7 @@ fire_ending_name$$Responda no fogo
 fire_ending_desc$$Contemple a carnificina, na chama.
 realization_name$$Revelação
 realization_desc$$Nova compreensão que surge de reflexão profunda
-musing_name$$Reflexão
+musing_name$$Devaneio
 musing_desc$$Pensamentos aleatórios dançando ao redor.
 luxury_name$$Luxo
 luxury_desc$$Um estado de conforto e elegância
@@ -919,7 +919,7 @@ three_floor_house_name$$Casa de três andares
 three_floor_house_desc$$Um lugar sofisticado, três andares, muito espaçoso.
 thief_name$$Ladrão
 thief_desc$$Uma pessoa que rouba sem usar força.
-burglar_name$$Ladrão
+burglar_name$$Invasor
 burglar_desc$$Mantenha suas portas fechadas. Não que isso vá te ajudar.
 underboss_name$$Subchefe
 underboss_desc$$O subchefe de uma pequena organização criminosa na cidade.
@@ -985,7 +985,7 @@ weakdisease_name$$Pequena doença
 weakdisease_desc$$Nada muito sério
 middisease_name$$Doença
 middisease_desc$$É melhor você tratar isso.
-heavydisease_name$$Doença
+heavydisease_name$$Enfermidade
 heavydisease_desc$$As coisas estão ficando bem ruins, né?
 superheavydisease_name$$Doença terminal
 superheavydisease_desc$$Aproveite o tempo que lhe resta.

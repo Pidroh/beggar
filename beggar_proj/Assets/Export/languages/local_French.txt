@@ -109,7 +109,7 @@ eatfood_name$$Manger
 eatfood_desc$$Il est temps de manger
 pouch_name$$Bourse
 pouch_desc$$Protégez votre argent, dit le sorcier
-purse_name$$Bourse
+purse_name$$Portefeuille
 purse_desc$$Moyen courant de transport... Attends. J'ai vu ça quelque part d'autre.
 think_name$$pensée
 think_desc$$La séance de gymnastique du cerveau, où les neurones font de la musculation et les pensées font des saltos. C'est comme rassembler des chats, mais avec des pensées.
@@ -507,7 +507,7 @@ firstverse_name$$Premier vers divin
 firstverse_desc$$Lisez à voix haute un verset de l'Écriture, pour vos compagnons à l'église
 basicschurch_name$$Fondements de l'Église
 basicschurch_desc$$Étudier les principes de base de l'Église.
-intermediarychurch_name$$Fondements de l'Église
+intermediarychurch_name$$Essentiels de l'Église
 intermediarychurch_desc$$Dépassez les principes de base de l'Église pour aborder les aspects essentiels.
 revisit_thoughts_name$$Revisiter les pensées
 revisit_thoughts_desc$$
@@ -795,7 +795,7 @@ fire_ending_name$$Réponse dans le feu
 fire_ending_desc$$Plongez votre regard dans le carnage, dans la flamme.
 realization_name$$Réalisation
 realization_desc$$Nouvelle compréhension qui vient d'une réflexion profonde
-musing_name$$Réflexion
+musing_name$$Pensée
 musing_desc$$Pensées aléatoires dansant autour
 luxury_name$$Luxe
 luxury_desc$$Un état de confort et d'élégance
@@ -919,7 +919,7 @@ three_floor_house_name$$Maison de trois étages
 three_floor_house_desc$$Un endroit chic, trois étages, très spacieux
 thief_name$$Voleur
 thief_desc$$Une personne qui vole sans utiliser la force
-burglar_name$$Voleur
+burglar_name$$Cambrioleur
 burglar_desc$$Gardez vos portes fermées. Pas que cela vous aidera.
 underboss_name$$Sous-chef
 underboss_desc$$Le sous-chef d'une petite organisation criminelle en ville.
@@ -985,7 +985,7 @@ weakdisease_name$$Petite maladie
 weakdisease_desc$$Rien de trop grave
 middisease_name$$Maladie
 middisease_desc$$Vous feriez mieux de faire traiter cela.
-heavydisease_name$$Maladie
+heavydisease_name$$Grave maladie
 heavydisease_desc$$Les choses deviennent assez mauvaises, hein ?
 superheavydisease_name$$Maladie terminale
 superheavydisease_desc$$Profitez du temps qu'il vous reste.

@@ -109,3 +109,4 @@ Deactivate$$Deactivate$Desativar$Désactiver$Deaktivieren$無効化$비활성화
 Unlocked$in the sense of gaining access to a new feature, resource or task$Unlocked$Desbloqueado$Débloqué$Freigeschaltet$解放されました$연다$解锁$解鎖
 Space$In the sense of a table taking up too much space$Space$Espaço$Espace$Platz$スペース$공간$空间$空間
 Latest_Version_on_Patreon$$Latest Version on Patreon$Última versão no Patreon$Dernière version sur Patreon$Neueste Version auf Patreon.$Patreonでの最新バージョン$패트리온의 최신 버전$Patreon上的最新版本$最新版本在Patreon上
+living_here$$living here$$$$$$$

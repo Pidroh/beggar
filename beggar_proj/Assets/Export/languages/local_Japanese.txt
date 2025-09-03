@@ -29,7 +29,7 @@ metathought_name$$メタな思考
 metathought_desc$$過去を考える能力
 sadness_name$$悲しみ
 sadness_desc$$感情の重さは私たちの経験の深さを反映しています
-sorrow_name$$悲しみ
+sorrow_name$$悲哀
 sorrow_desc$$深い共感と理解を深める悲しみ。それは、私たちを他者とつなぎ、喪失や反省を通じて共有する経験を通じてつなぎ合わせます。
 gratitude_name$$感謝
 gratitude_desc$$親切を返す準備
@@ -217,13 +217,13 @@ introspection_name$$内省
 introspection_desc$$内省することは、自分自身の思考や感情を調べることを意味します。
 contemplation_name$$瞑想
 contemplation_desc$$より深く内部を見つめる。
-thinking_name$$考える
+thinking_name$$思考力
 thinking_desc$$考えを形成する能力
 exercise_name$$運動
 exercise_desc$$運動をするためのあなたの体の準備
 rodentology_name$$ネズミ血統
 rodentology_desc$$人を理解したいなら、ネズミを勉強せよ
-felinology_name$$猫の絆
+felinology_name$$猫学
 felinology_desc$$神秘的な存在だけれど、可愛いくて魅力的
 bestiality_name$$獣姦
 bestiality_desc$$人間は獣だ
@@ -259,7 +259,7 @@ boredom_weak_emotion_name$$ちょっと退屈
 boredom_weak_emotion_desc$$もし面白いことが起こるならば...
 sad_weak_emotion_name$$気持ちが落ち込んでいる
 sad_weak_emotion_desc$$あなたは憂鬱な気分にならざるを得ません
-frustration_weak_emotion_name$$イライラ
+frustration_weak_emotion_name$$不快感
 frustration_weak_emotion_desc$$ベッドから逆の側で目覚めました
 joy_weak_emotion_name$$喜んで
 joy_weak_emotion_desc$$人生は厳しいけれど、生きていて喜んでいます。
@@ -319,7 +319,7 @@ oldrosario_name$$古いロザリオ
 oldrosario_desc$$必要なくなった古いロザリオ
 stolenbread_name$$犯罪パン
 stolenbread_desc$$盗まれた食べ物を干し上げたもの。小さな犯罪の記念品。
-deadflowers_name$$枯れた花
+deadflowers_name$$枯れた花々
 deadflowers_desc$$人生のはかなさ
 rustyknife_name$$さびたナイフ
 rustyknife_desc$$
@@ -405,7 +405,7 @@ ponderhappiness_name$$幸せとは何ですか？
 ponderhappiness_desc$$猫に幸せの本質について尋ねてみてください
 churchrespect_name$$教会の尊敬
 churchrespect_desc$$教会のメンバーからどれだけ見られているか
-reflection_name$$反射
+reflection_name$$熟考
 reflection_desc$$自己や過去に対して適用される考え
 fundamentals_name$$基礎
 fundamentals_desc$$知識の基本
@@ -537,7 +537,7 @@ philosophy_name$$哲学
 philosophy_desc$$根本的な問いの研究
 latin_name$$ラテン
 latin_desc$$ローマ帝国で使用されていた言語。 聖典を読むために必要です。
-begging_name$$懇願
+begging_name$$嘆願
 begging_desc$$他人に自らを救世主として見せる微妙な技術
 cityknowledge_name$$ストリートナレッジ
 cityknowledge_desc$$角の多くに潜むものを知っています
@@ -569,7 +569,7 @@ johnprose_name$$散文
 johnprose_desc$$ジョンの散文はあなたの脳を誘惑します。
 sadpainting_name$$悲しい絵
 sadpainting_desc$$深い感情を呼び起こす絵。
-deadflowers_enc_name$$枯れた花
+deadflowers_enc_name$$枯れた花束
 deadflowers_enc_desc$$地面に残された枯れた花束
 johnnap_name$$ジョンのお昼寝
 johnnap_desc$$彼は眠る時間をとります。彼が寝言を言っているのが聞こえます...
@@ -591,7 +591,7 @@ joinedprayer_name$$一緒に祈る
 joinedprayer_desc$$一緒に祈る.
 wordsbishop_name$$主教の説教
 wordsbishop_desc$$もう一つの物語は、知識を伝えることを意図しています。
-chant_name$$祈り
+chant_name$$唱える
 chant_desc$$信心を持って神聖な言葉を繰り返します。
 voicesgossip_name$$うわさ話の声
 voicesgossip_desc$$人々のささやく、意地悪な声が聞こえます
@@ -761,15 +761,15 @@ gracebeggar_name$$開かれた手
 gracebeggar_desc$$彼らはあなたが本当の施し手であることを知っているから、あなたにこの名前を与えたのです。
 kindling_name$$着火材
 kindling_desc$$火を起こす知識
-sadism_name$$サディズム
+sadism_name$$苦悦
 sadism_desc$$痛みを与えることから喜びを得る
 empathy_name$$共感
 empathy_desc$$他人がどのように感じているかを鋭く観察する
-charity_name$$慈善
+charity_name$$チャリティー
 charity_desc$$自発的な支援
 kidnapping_name$$誘拐
 kidnapping_desc$$人々を捕らえる技術
-charisma_name$$魅力
+charisma_name$$カリスマ性
 charisma_desc$$説得力のある笑顔と魅力的な自信
 symbolicspoon_name$$象徴的なスプーン
 symbolicspoon_desc$$共感の心を象徴する鉄のスプーン
@@ -919,7 +919,7 @@ three_floor_house_name$$三階建ての家
 three_floor_house_desc$$高級な場所、三階建て、とても広々とした
 thief_name$$泥棒
 thief_desc$$力を使わずに盗みをする人
-burglar_name$$泥棒
+burglar_name$$空き巣
 burglar_desc$$ドアを閉めておいてください。それがあなたを助けるとは限らない。
 underboss_name$$副ボス
 underboss_desc$$市内の小さな犯罪組織の副リーダー
@@ -985,7 +985,7 @@ weakdisease_name$$小さな病気
 weakdisease_desc$$それほど深刻ではありません
 middisease_name$$病気
 middisease_desc$$その治療を受けた方がいい
-heavydisease_name$$病気
+heavydisease_name$$疾病
 heavydisease_desc$$状況がかなり悪化してきているね。
 superheavydisease_name$$終末期の病気
 superheavydisease_desc$$残された時間を楽しんでください
@@ -1059,7 +1059,7 @@ irreversible_disease_name$$不可逆な行動
 irreversible_disease_desc$$一度行われると、この行動は元に戻すことはできません。否定的な影響はしばしば永続的です。しかし、新しい可能性にアクセスできるようになります。この行動を進めてもよろしいですか？
 rats_name$$ラット
 rats_desc$$ラットは、生存者であり、都市の探検家であり、害虫であり、夜の生き物です。
-sewer_home_name$$下水道
+sewer_home_name$$地下室
 sewer_home_desc$$不快ながらも広々としています。
 disease_sad_ending_name$$病気とは何を意味するのか？
 disease_sad_ending_desc$$体がどうしてこんな状態になったのか？
