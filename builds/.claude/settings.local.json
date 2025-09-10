@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/user/Documents/gamedev/_unity/beggar/buildtools/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

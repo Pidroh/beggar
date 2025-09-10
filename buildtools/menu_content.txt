@@ -1,4 +1,4 @@
     <div id="menu-bar">
-      <a href="../menu.html" target="_blank">Change log / Other Links</a>
+      <a href="https://www.perennialhearts.com/beggar_builds/menu.html" target="_blank">Change log / Other Links</a>
       <a href="https://www.patreon.com/perennialhearts" target="_blank">Latest Dev Version (Patreon Only)</a>
     </div>
