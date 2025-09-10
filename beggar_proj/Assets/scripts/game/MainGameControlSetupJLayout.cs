@@ -3,6 +3,7 @@ using HeartUnity.View;
 using JLayout;
 using System.Collections.Generic;
 using UnityEngine;
+using static TitleScreenRuntimeData;
 
 public class MainGameControlSetupJLayout
 {
@@ -239,8 +240,13 @@ public class MainGameControlSetupJLayout
             jControlDataHolder.EndingLayout = endingLay;
             endingLay.LayoutRU.SetVisibleSelf(false);
             endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Settings"));
+#if UNITY_STANDALONE_WIN
             endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Wishlist on Steam"));
+#else 
+            endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Demo on Steam", "Steam as in the PC game store"));
+#endif
             endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Latest Version on Patreon"));
+            
             jControlDataHolder.EndingData.SettingsButton = endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0];
             jControlDataHolder.EndingData.SteamButton = endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0];
             jControlDataHolder.EndingData.PatreonButton = endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0];

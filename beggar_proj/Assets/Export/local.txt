@@ -109,4 +109,5 @@ Deactivate$$Deactivate$Desativar$Désactiver$Deaktivieren$無効化$비활성화
 Unlocked$in the sense of gaining access to a new feature, resource or task$Unlocked$Desbloqueado$Débloqué$Freigeschaltet$解放されました$연다$解锁$解鎖
 Space$In the sense of a table taking up too much space$Space$Espaço$Espace$Platz$スペース$공간$空间$空間
 Latest_Version_on_Patreon$$Latest Version on Patreon$Última versão no Patreon$Dernière version sur Patreon$Neueste Version auf Patreon.$Patreonでの最新バージョン$패트리온의 최신 버전$Patreon上的最新版本$最新版本在Patreon上
-living_here$$living here$$$$$$$
+living_here$$living here$morando aqui$vivant ici$hier leben$ここに住んでいます$여기서 살기$居住在这里$居住在這裡
+Demo_on_Steam$Steam as in the PC game store$Demo on Steam$Demonstração na Steam$Démo sur Steam$Demo auf Steam.$Steamでデモ$스팀 데모$Steam上的试玩版本$在Steam上的展示版
