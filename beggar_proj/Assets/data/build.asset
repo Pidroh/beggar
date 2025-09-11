@@ -17,23 +17,34 @@ MonoBehaviour:
     copyFileTag: 
     outputPath: ../builds/site/web%V%%BETA%/
     buildTarget: 20
+    forceGzipOnWebGL: 0
+  - tag: web_unity_room
+    copyFileTag: 
+    outputPath: ../builds/unity_room/web%V%%BETA%/
+    buildTarget: 20
+    forceGzipOnWebGL: 1
   - tag: webtest
     copyFileTag: 
     outputPath: ../builds/test/webtest%V%%BETA%/
     buildTarget: 20
+    forceGzipOnWebGL: 0
   - tag: web_patreon
     copyFileTag: 
     outputPath: ../builds/patreon/webtest%V%%BETA%/
     buildTarget: 20
+    forceGzipOnWebGL: 0
   - tag: windows_patreon
     copyFileTag: 
     outputPath: ../builds/windows_patreon%V%%BETA%/beggar_windows_steam_demo.exe
     buildTarget: 5
+    forceGzipOnWebGL: 0
   - tag: windows_steam_demo
     copyFileTag: 
     outputPath: ../builds/windows_steam_demo%V%%BETA%/beggar_windows_steam_demo.exe
     buildTarget: 5
+    forceGzipOnWebGL: 0
   - tag: android
     copyFileTag: 
     outputPath: ../builds/android/beggar_life%V%%BETA%.aab
     buildTarget: 13
+    forceGzipOnWebGL: 0
