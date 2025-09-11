@@ -1,0 +1,39 @@
+[
+    {
+        "type": "RESOURCE",
+        "items": []
+    },
+    {
+        "type": "TASK",
+        "items": []
+    },
+    {
+        "type": "HOUSE",
+        "items": []
+    },
+    {
+        "type": "CLASS",
+        "items": []
+    },
+    {
+        "type": "SKILL",
+        "items": []
+    },
+    {
+        "type": "LOCATION",
+        "items": []
+    },
+    {
+        "type": "ENCOUNTER",
+        "items": []
+    },
+    {
+        "type": "DIALOG",
+        "items": [
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items": []
+    }
+]
