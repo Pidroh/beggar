@@ -15,5 +15,6 @@ public class FileBuildConfigurations : ScriptableObject
         public string copyFileTag;
         public string outputPath;
         public BuildTarget buildTarget = BuildTarget.StandaloneWindows64;
+        public bool forceGzipOnWebGL;
     }
 }

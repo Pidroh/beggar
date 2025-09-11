@@ -48,6 +48,14 @@ public class CustomBuild
         var copyFileConfig = entry.copyFileTag;
         var outputPath = entry.outputPath;
         var config = HeartGame.GetConfig();
+        if(entry.forceGzipOnWebGL && entry.buildTarget == BuildTarget.WebGL) 
+        {
+            PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
+        } else
+        {
+            PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
+        }
+        
         PlayerSettings.bundleVersion = $"{config.majorVersion}.{config.versionNumber.ToString("D2")}.{config.patchVersion.ToString("D2")}";
         PlayerSettings.Android.bundleVersionCode = config.majorVersion * 10000 + config.versionNumber * 100 + config.patchVersion;
         if (outputPath.Contains("%V%")) 
