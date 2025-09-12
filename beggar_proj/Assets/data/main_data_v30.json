@@ -40,7 +40,20 @@
     },
     {
         "type": "SKILL",
-        "items": []
+        "items": [
+            {
+                "id": "parishlore",
+                "require": "priestduties&&ecclesiology>=5",
+                "cost": {
+                    "skillpoints": 75
+                },
+                "desc": "Knowledge of the geographical area assigned to the local priest",
+                "mod": {
+                    "faith.max": 5,
+                    "churchrespect.max": 5
+                }
+            }
+        ]
     },
     {
         "type": "LOCATION",
