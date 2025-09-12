@@ -43,6 +43,7 @@
         "items": [
             {
                 "id": "parishlore",
+                "name": "Parish lore",
                 "require": "priestduties&&ecclesiology>=5",
                 "cost": {
                     "skillpoints": 75
@@ -51,6 +52,17 @@
                 "mod": {
                     "faith.max": 5,
                     "churchrespect.max": 5
+                }
+            },
+            {
+                "id": "administration",
+                "require": "t_tier3&&followers>1",
+                "cost": {
+                    "skillpoints": 75
+                },
+                "desc": "The process of running an organization",
+                "mod": {
+                    "followers.max": 2
                 }
             }
         ]

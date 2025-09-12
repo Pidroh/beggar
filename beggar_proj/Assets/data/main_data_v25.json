@@ -478,7 +478,7 @@
             {
                 "id": "flaming_rats",
                 "name": "Flaming rats",
-                "desc": "TODO",
+                "desc": "Rats on fire, causing chaos",
                 "require": "rodentology>6&&sadism>2&&kindling>3",
                 "buy": {
                     "rats": 12,
