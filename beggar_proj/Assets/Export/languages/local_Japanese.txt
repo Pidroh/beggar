@@ -63,7 +63,7 @@ fear_name$$恐怖
 fear_desc$$
 boredom_name$$退屈
 boredom_desc$$
-beg_a_name$$クモにクモ
+beg_a_name$$クズを乞う
 beg_a_desc$$あなたは得られるものを取る（長押しして複数回クリックすることができます）
 eatcat_name$$猫の死体を食べる
 eatcat_desc$$生
