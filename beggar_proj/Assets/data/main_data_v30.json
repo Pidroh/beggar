@@ -15,9 +15,9 @@
         "type": "CLASS",
         "items": [
             {
-                "id": "bishop",
-                "name": "Bishop",
-                "desc": "TODO",
+                "id": "archdeacon",
+                "name": "Archdeacon",
+                "desc": "A member of the clergy, under direct command of the Bishop",
                 "tags": "t_tier4",
                 "lock": "t_tier4",
                 "need": "theself_4",
