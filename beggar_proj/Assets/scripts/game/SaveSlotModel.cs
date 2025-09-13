@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
+public class SaveSlotExecuterIO 
+{ 
+
+}
+
 public class SaveSlotModel 
 {
     public List<SaveSlotUnit> saveSlots = new();
