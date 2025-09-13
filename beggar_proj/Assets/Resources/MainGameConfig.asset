@@ -35,6 +35,12 @@ MonoBehaviour:
   PersistenceUnits:
   - ForcePrefs: 0
     Key: maindata
+  - ForcePrefs: 0
+    Key: maindata_1
+  - ForcePrefs: 0
+    Key: maindata_2
+  - ForcePrefs: 0
+    Key: save_slots
   urls:
     DiscordServer: 'https://discord.gg/AtGrxpM '
     steamPageAppId: 3772140
