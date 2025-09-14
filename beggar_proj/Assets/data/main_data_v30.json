@@ -7,6 +7,26 @@
         "type": "TASK",
         "items": [
             {
+                "id": "church_social",
+                "name": "Church socialization",
+                "desc": "Spend time with fellows from the church",
+                "require": "charisma>2&&jointhechurch",
+                "tag": "diseasery",
+                "duration": 2,
+                "buy": {
+                    "weakdisease": 1
+                },
+                "dot": {
+                    "duration": 240,
+                    "toggle": true,
+                    "mods": {
+                        "weakdisease.max": 1,
+                        "thoughts.rate": 0.1,
+                        "disease_style.activate": 1
+                    }
+                }
+            },
+            {
                 "id": "archpriest",
                 "name": "Archpriest",
                 "desc": "Commit yourself to administrating a group of priests, each with their own parish",
