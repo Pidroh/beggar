@@ -29,6 +29,19 @@ MonoBehaviour:
     patchOverride: 1
     SubtitleOverride: Grand Theft
     patreonBuild: 0
+  - id: android
+    jsonDatas:
+    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
+    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
+    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
+    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
+    - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
+    buildConfigId: android
+    majorVersionOverride: 0
+    versionOverride: 27
+    patchOverride: 1
+    SubtitleOverride: 
+    patreonBuild: 0
   - id: normal_unity_room_oneshot
     jsonDatas:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
@@ -58,17 +71,6 @@ MonoBehaviour:
     versionOverride: 27
     patchOverride: 1
     SubtitleOverride: Grand Theft
-    patreonBuild: 0
-  - id: android
-    jsonDatas:
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: 7a9fa94f04cbd3f41baa847d4443b463, type: 3}
-    buildConfigId: android
-    majorVersionOverride: 0
-    versionOverride: 22
-    patchOverride: 2
-    SubtitleOverride: 
     patreonBuild: 0
   - id: patreon
     jsonDatas:

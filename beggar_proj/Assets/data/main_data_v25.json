@@ -1396,33 +1396,7 @@
     {
         "type": "LOCATION",
         "items": [
-            {
-                "id": "greatercity",
-                "name": "Greater city",
-                "desc": "Explore the bigger streets, the central areas",
-                "require": "t_tier3",
-                "length": 30,
-                "run": {
-                    "supplication": 5
-                },
-                "result": {
-                    "supplication": 100,
-                    "thoughts": 100
-                },
-                "result_once": {
-                    "skillpoints": 50
-                },
-                "loot_WIP": {
-                    "rare_itemWIP": "1~5"
-                },
-                "encs": [
-                    "lostbeggar",
-                    "meancat",
-                    "ratpack",
-                    "drawing_wall",
-                    "sick_man"
-                ]
-            }
+            
         ]
     },
     {

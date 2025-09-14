@@ -24,7 +24,6 @@ namespace HeartUnity
             var loader = new WWW(url);
             yield return loader;
             UploadedBytes = loader.bytes;
-
         }
     }
 }

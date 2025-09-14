@@ -21,7 +21,8 @@ namespace HeartUnity.View
         public ReusableMenuPrefabs reusablePrefabs;
         public SettingPersistence persistence;
         public static CrossSceneData crossSceneData;
-#if !PLATFORM_SWITCH && !PLATFORM_ANDROID
+#if !PLATFORM_SWITCH
+        // mobile version is on FileUtilitiesMobile.cs
         private FileUtilities _fileUtilities;
 #endif
         public SettingDialog settingDialog;
@@ -125,7 +126,7 @@ namespace HeartUnity.View
             settingDialog = crossSceneData.settingDialog;
             settingSceneMode = crossSceneData.settingSceneMode;
             crossSceneData = default;
-#if !UNITY_SWITCH && !UNITY_ANDROID
+#if !UNITY_SWITCH
             _fileUtilities = new FileUtilities();
 #endif
             switch (settingSceneMode)
@@ -430,7 +431,7 @@ namespace HeartUnity.View
             engineView.ManualUpdate();
             engineView.inputManager.UpdateWithButtonBindings(bindings);
             input.ManualUpdate();
-#if !PLATFORM_SWITCH && !PLATFORM_ANDROID
+#if !PLATFORM_SWITCH
             if (_importingSave && _fileUtilities.UploadedBytes != null)
             {
                 _importingSave = false;
@@ -505,7 +506,7 @@ namespace HeartUnity.View
                 case SettingUnitData.StandardSettingType.EXIT_MENU:
                     RequestReturn();
                     break;
-#if !PLATFORM_SWITCH &&!PLATFORM_ANDROID
+#if !PLATFORM_SWITCH
                 case SettingUnitData.StandardSettingType.EXPORT_SAVE:
                     {
                         var config = HeartGame.GetConfig();

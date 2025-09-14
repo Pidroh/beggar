@@ -35,6 +35,28 @@
                     "holyscriptures.max": 1,
                     "ecclesiology.max": 1
                 }
+            },
+            {
+                "id": "veteranpriest",
+                "name": "Veteran priest",
+                "desc": "A priest used to his ways, comfortable and a bit wise",
+                "tags": "t_tier4",
+                "lock": "t_tier4",
+                "need": "theself_4",
+                "require": "t_tier3",
+                "cost": {
+                    "thoughts": 1700,
+                    "gratitude": 1200,
+                    "faith": 400,
+                    "musing": 200,
+                    "nutrition": 90
+                },
+                "mod": {
+                    "faith.max": 20,
+                    "churchrespect.max": 150,
+                    "holyscriptures.max": 1,
+                    "ecclesiology.max": 1
+                }
             }
         ]
     },
@@ -64,12 +86,52 @@
                 "mod": {
                     "followers.max": 2
                 }
+            },
+            {
+                "id": "cathedral_matters",
+                "name": "Cathedral matters",
+                "require": "t_tier3&&followers>1",
+                "cost": {
+                    "skillpoints": 75
+                },
+                "desc": "Knowledge of the cathedral and the diocese, the area of influence of a bishop",
+                "mod": {
+                    "churchrespect.max": 5
+                }
             }
         ]
     },
     {
         "type": "LOCATION",
-        "items": []
+        "items": [
+            {
+                "id": "greatercity",
+                "name": "Greater city",
+                "desc": "Explore the bigger streets, the central areas",
+                "require": "t_tier3",
+                "length": 30,
+                "run": {
+                    "supplication": 5
+                },
+                "result": {
+                    "supplication": 100,
+                    "thoughts": 100
+                },
+                "result_once": {
+                    "skillpoints": 50
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "lostbeggar",
+                    "meancat",
+                    "ratpack",
+                    "drawing_wall",
+                    "sick_man"
+                ]
+            }
+        ]
     },
     {
         "type": "ENCOUNTER",
