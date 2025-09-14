@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(java:*)",
+      "Bash(curl:*)",
+      "Bash(powershell:*)",
+      "Bash(where java)",
+      "Bash(\"jdk11.0.28_6/bin/java\" -jar bundletool_all.jar build-apks --bundle=beggar_life0_27_01.aab --output=beggar_life0_27_01.apks --mode=universal)",
+      "Bash(adb install:*)",
+      "Bash(adb pair:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

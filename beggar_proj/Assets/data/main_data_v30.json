@@ -5,7 +5,69 @@
     },
     {
         "type": "TASK",
-        "items": []
+        "items": [
+            {
+                "id": "archpriest",
+                "name": "Archpriest",
+                "desc": "Commit yourself to administrating a group of priests, each with their own parish",
+                "require": "administration>=2",
+                "tag": "religionry",
+                "max": 1,
+                "duration": 50,
+                "cost": {
+                },
+                "mod": {
+                }
+            },
+            {
+                "id": "migling_priests",
+                "name": "Migling with priests",
+                "desc": "Spend time chatting with other priests",
+                "require": "parish_lore>=1",
+                "tag": "religionry",
+                "max": 3,
+                "duration": 20,
+                "cost": {
+                    "churchrespect": 100,
+                    "charm": 5
+                },
+                "mod": {
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "surrounding_parish",
+                "name": "Surrounding parishes",
+                "desc": "Become acquainted with the other parishes",
+                "require": "parish_lore>=2",
+                "tag": "religionry",
+                "max": 3,
+                "duration": 40,
+                "cost": {
+                    "supplication": 500,
+                    "clarity": 30
+                },
+                "mod": {
+                    "churchrespect.max": 50
+                }
+            },
+            {
+                "id": "speak_archpriest",
+                "name": "Speak with the archpriest",
+                "desc": "Become acquainted with the other parishes",
+                "require": "parish_lore>=3&&surrounding_parish&&migling_priests",
+                "tag": "religionry",
+                "max": 3,
+                "duration": 40,
+                "cost": {
+                    "cathedral_support": 1,
+                    "realization": 1
+                },
+                "mod": {
+                    "cathedral_support.max": 1
+                }
+            }
+        ]
     },
     {
         "type": "HOUSE",
@@ -90,7 +152,7 @@
             {
                 "id": "cathedral_matters",
                 "name": "Cathedral matters",
-                "require": "t_tier3&&followers>1",
+                "require": "t_tier3&&cathedral_visit",
                 "cost": {
                     "skillpoints": 75
                 },
@@ -129,6 +191,50 @@
                     "ratpack",
                     "drawing_wall",
                     "sick_man"
+                ]
+            },
+            {
+                "id": "cathedral_first",
+                "name": "Cathedral visit",
+                "desc": "Visit the cathedral for the first time",
+                "require": "t_tier3",
+                "length": 30,
+                "run": {
+                    "supplication": 5
+                },
+                "result": {
+                    "churchrespect": 100,
+                    "faith": 50
+                },
+                "result_once": {
+                    "skillpoints": 30
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                ]
+            },
+            {
+                "id": "parish_activities",
+                "name": "Parish activities",
+                "desc": "Serve the parish you are assigned to",
+                "require": "priest||good_priest",
+                "length": 10,
+                "run": {
+                    "supplication": 5
+                },
+                "result": {
+                    "churchrespect": 100,
+                    "faith": 50
+                },
+                "result_once": {
+                    "skillpoints": 30
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
                 ]
             }
         ]

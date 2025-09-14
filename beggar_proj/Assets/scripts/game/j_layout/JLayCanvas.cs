@@ -97,9 +97,10 @@ namespace JLayout
             return Mathf.Max(Mathf.FloorToInt(Screen.width / physicalTabPixelSize), 1);
         }
 
-        private float GetAdjustedMinimumTabPixelWidth()
+        public float GetAdjustedMinimumTabPixelWidth()
         {
-            return Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
+            float minimumTabPixel = Mathf.Max(minimumDefaultTabPixelWidth * DefaultPixelSizeToPhysicalPixelSize, minimumDefaultTabPixelWidth);
+            return Mathf.Min(minimumTabPixel, Screen.width);
         }
 
         internal bool IsChildVisible(int tabIndex)
