@@ -18,6 +18,7 @@ public class TabRuntime
     public bool OpenOtherTabs { get; internal set; }
     public bool ExplorationActiveTab { get; internal set; }
     public bool NecessaryForDesktopAndThinnable { get; internal set; }
+    public bool ContainsSaveSlots { get; internal set; }
 
     public class Separator {
         public List<UnitType> AcceptedUnitTypes = new();
