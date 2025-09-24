@@ -29,5 +29,6 @@ public class SaveSlotModel
     public class SaveSlotPersistence 
     {
         public List<SaveSlotPersistenceUnit> persistenceUnits = new();
+        public int currentSaveSlot;
     }
 }

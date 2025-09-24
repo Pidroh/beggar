@@ -275,5 +275,19 @@
     {
         "type": "FURNITURE",
         "items": []
-    }
+    },
+    {
+        "id": "log",
+        "unit_types": [],
+        "contains_logs": true,
+        "necessary_for_desktop_and_thinnable": true,
+        "icon": "tab_log",
+        "separator": [
+            {
+                "id": "log",
+                "name": "Log",
+                "default": true
+            }
+        ]
+    },
 ]
