@@ -219,15 +219,21 @@ public class MainGameControlSetupJLayout
             if (!tab.TabData.Tab.ContainsSaveSlots) continue;
             var tabHolder = jCanvas.children[tabIndex];
 
-            adapt code below to work as Debug button
-            var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
-            var lc = playerParent.AddLayoutAsChild(fleeButtonLayout);
-            fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Flee"));
-            JRTControlUnit jCU = new();
-            jCU.MainLayout = fleeButtonLayout;
-            jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
-            fleeButtonLayout.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
-            jControlDataHolder.Exploration.FleeButtonJCU = jCU;
+            int nSlots = 3;
+            for (int slotIndex = 0; slotIndex < nSlots; slotIndex++)
+            {
+                var tempNewGameButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempNewGameButton);
+                tempNewGameButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game"));
+                JRTControlUnit jCU = new();
+                jCU.MainLayout = tempNewGameButton;
+                jCU.MainExecuteButton = new JButtonAccessor(tempNewGameButton, 0);
+                tempNewGameButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+                JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
+                unit.newGameButton = jCU;
+                jControlDataHolder.SaveSlots.saveSlots.Add(unit);
+            }
+            
         }
         #endregion
 

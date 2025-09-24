@@ -346,6 +346,10 @@ public class JsonReader
     {
         var items = parentNode["items"];
         string typeS = parentNode["type"];
+        if (typeS == null) 
+        {
+            
+        }
         if (!EnumHelper<UnitType>.TryGetEnumFromName(typeS, out var type)) Debug.LogError($"{typeS} not found in UnitType");
         if (type == UnitType.DIALOG)
         {

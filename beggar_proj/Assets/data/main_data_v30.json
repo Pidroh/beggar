@@ -1,7 +1,12 @@
 [
     {
         "type": "RESOURCE",
-        "items": []
+        "items": [
+            {
+                "id": "cathedral_support",
+                "name": "Cathedral support"
+            }
+        ]
     },
     {
         "type": "TASK",
@@ -150,7 +155,7 @@
         "type": "SKILL",
         "items": [
             {
-                "id": "parishlore",
+                "id": "parish_lore",
                 "name": "Parish lore",
                 "require": "priestduties&&ecclesiology>=5",
                 "cost": {
@@ -243,7 +248,7 @@
                 "id": "parish_activities",
                 "name": "Parish activities",
                 "desc": "Serve the parish you are assigned to",
-                "require": "priest||good_priest",
+                "require": "priest||goodpriest",
                 "length": 10,
                 "run": {
                     "supplication": 5
@@ -277,9 +282,15 @@
         "items": []
     },
     {
-        "id": "save_slot_tab",
-        "unit_types": [],
-        "contains_save_slots": true,
-        "icon": "tab_log"
+        "type": "TAB",
+        "items": [
+            {
+                "id": "save_slot_tab",
+                "unit_types": [],
+                "contains_save_slots": true,
+                "icon": "tab_log"
+            }
+        ]
     }
+    
 ]

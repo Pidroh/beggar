@@ -55,6 +55,7 @@ public class JGameControlDataHolder
     public List<JTabControlUnit> TabControlUnits = new();
     public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
     public JGameControlDataExploration Exploration = new();
+    public JGameControlDataSaveSlot SaveSlots = new();
     public JGameViewMiscData gameViewMiscData = new();
     public JLayoutRuntimeData LayoutRuntime { get; internal set; }
     public JLayoutChild DialogLayout { get; internal set; }
@@ -97,7 +98,20 @@ public class JGameControlDataExploration
     public List<JRTControlUnit> StressorJCUs = new();
 
     public JRTControlUnit FleeButtonJCU { get; internal set; }
+}
 
+public class JGameControlDataSaveSlot 
+{
+    public JRTControlUnit forceSaveButton { get; internal set; }
+    public List<ControlSaveSlotUnit> saveSlots = new();
+    public class ControlSaveSlotUnit 
+    {
+        public JRTControlUnit newGameButton { get; internal set; }
+        public JRTControlUnit loadGameButton { get; internal set; }
+        public JRTControlUnit deleteButton { get; internal set; }
+        public JRTControlUnit exportButton { get; internal set; }
+        public JRTControlUnit copyButton { get; internal set; }
+    }
 }
 
 public class JTabControlUnit
