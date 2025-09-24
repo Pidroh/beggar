@@ -82,7 +82,7 @@ public class MainGameControlSetupJLayout
 
             jControlDataHolder.LabelAcquire = Local.GetText("Acquire", "A word for learning or becoming able to do something new");
             jControlDataHolder.LabelDeactivate = Local.GetText("Deactivate");
-            
+
             jControlDataHolder.LabelModifications = Local.GetText("modifications");
             jControlDataHolder.LabelModificationsExtra = Local.GetText("extra mods");
             jControlDataHolder.LabelModificationsTargeting = Local.GetText("mods targeting this");
@@ -212,6 +212,25 @@ public class MainGameControlSetupJLayout
 
         #endregion
 
+        #region save slot instantiation
+        for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
+        {
+            var tab = jControlDataHolder.TabControlUnits[tabIndex];
+            if (!tab.TabData.Tab.ContainsSaveSlots) continue;
+            var tabHolder = jCanvas.children[tabIndex];
+
+            adapt code below to work as Debug button
+            var fleeButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+            var lc = playerParent.AddLayoutAsChild(fleeButtonLayout);
+            fleeButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Flee"));
+            JRTControlUnit jCU = new();
+            jCU.MainLayout = fleeButtonLayout;
+            jCU.MainExecuteButton = new JButtonAccessor(fleeButtonLayout, 0);
+            fleeButtonLayout.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+            jControlDataHolder.Exploration.FleeButtonJCU = jCU;
+        }
+        #endregion
+
         #region instantiating dialog stuff
         var overlay = jCanvas.Overlays[0];
         {
@@ -242,11 +261,11 @@ public class MainGameControlSetupJLayout
             endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Settings"));
 #if UNITY_STANDALONE_WIN
             endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Wishlist on Steam"));
-#else 
+#else
             endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Demo on Steam", "Steam as in the PC game store"));
 #endif
             endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Latest Version on Patreon"));
-            
+
             jControlDataHolder.EndingData.SettingsButton = endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0];
             jControlDataHolder.EndingData.SteamButton = endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0];
             jControlDataHolder.EndingData.PatreonButton = endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0];
