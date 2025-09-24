@@ -277,17 +277,9 @@
         "items": []
     },
     {
-        "id": "log",
+        "id": "save_slot_tab",
         "unit_types": [],
-        "contains_logs": true,
-        "necessary_for_desktop_and_thinnable": true,
-        "icon": "tab_log",
-        "separator": [
-            {
-                "id": "log",
-                "name": "Log",
-                "default": true
-            }
-        ]
-    },
+        "contains_save_slots": true,
+        "icon": "tab_log"
+    }
 ]
