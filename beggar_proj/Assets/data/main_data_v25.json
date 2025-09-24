@@ -434,7 +434,7 @@
             {
                 "id": "warm_feline_hearts",
                 "name": "Warm feline heart",
-                "desc": "Have your rats gather and share food",
+                "desc": "Have your cats gather and share food",
                 "require": "felinology>2&&empathy>2",
                 "duration": 5,
                 "buy": {

@@ -14,14 +14,18 @@
                 "tag": "diseasery",
                 "duration": 2,
                 "buy": {
-                    "weakdisease": 1
+                    "faith": 50,
+                    "churchrespect": 100
+                },
+                "cost" :{
+                    "charm": 20
                 },
                 "dot": {
                     "duration": 240,
                     "toggle": true,
                     "mods": {
-                        "weakdisease.max": 1,
-                        "thoughts.rate": 0.1,
+                        "churchrespect.max": 200,
+                        "churchrespect.rate": 1,
                         "disease_style.activate": 1
                     }
                 }
