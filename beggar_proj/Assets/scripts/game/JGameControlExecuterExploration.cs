@@ -13,6 +13,10 @@ public static class JGameControlExecuterSaveSlot
                 mgc.SaveArcaniaMainSlot();
                 SaveSlotExecution.ChangeSlotAndLoadCurrentScene(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
             }
+            if (item.exportButton.TaskClicked) 
+            {
+                
+            }
         }
     }
 }
