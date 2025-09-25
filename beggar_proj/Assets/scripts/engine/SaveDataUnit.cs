@@ -25,6 +25,23 @@ namespace HeartUnity
             Debug.Log($"Data save {json}");
 
         }
+
+        public bool TryLoadRawText(out string rawText)
+        {
+            if (textUnit.TryLoad(textUnit.mainSaveLocation, out var t)) 
+            {
+                rawText = t;
+                return true;
+            }
+            if (textUnit.TryLoad(textUnit.backupSaveLocation, out var t2))
+            {
+                rawText = t2;
+                return true;
+            }
+            rawText = null;
+            return false;
+        }
+
         public bool TryLoad(out T obj)
         {
             var location = textUnit.mainSaveLocation;

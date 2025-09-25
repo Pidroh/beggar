@@ -23,7 +23,7 @@ namespace HeartUnity
             });
         }
 
-        internal void ExportBytes(byte[] bytes, string suggestedFileName, string extension)
+        public void ExportBytes(byte[] bytes, string suggestedFileName, string extension)
         {
             // write temporary path
             var path = Path.Combine(Application.temporaryCachePath, $"{suggestedFileName}.{extension}");
