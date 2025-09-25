@@ -222,16 +222,36 @@ public class MainGameControlSetupJLayout
             int nSlots = 3;
             for (int slotIndex = 0; slotIndex < nSlots; slotIndex++)
             {
-                var tempNewGameButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
-                var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempNewGameButton);
-                tempNewGameButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game"));
-                JRTControlUnit jCU = new();
-                jCU.MainLayout = tempNewGameButton;
-                jCU.MainExecuteButton = new JButtonAccessor(tempNewGameButton, 0);
-                tempNewGameButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
                 JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
-                unit.newGameButton = jCU;
                 jControlDataHolder.SaveSlots.saveSlots.Add(unit);
+                for (int i = 0; i < 2; i++)
+                {
+                    var tempNewGameButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                    var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempNewGameButton);
+                    JRTControlUnit jCU = new();
+                    jCU.MainLayout = tempNewGameButton;
+                    jCU.MainExecuteButton = new JButtonAccessor(tempNewGameButton, 0);
+                    tempNewGameButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+                    
+                    switch (i)
+                    {
+                        case 0:
+                            {
+                                tempNewGameButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game")); 
+                                unit.newGameButton = jCU;
+                            }
+                            break;
+                        case 1:
+                            {
+                                tempNewGameButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("export"));
+                                unit.exportButton = jCU;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                
             }
             
         }
