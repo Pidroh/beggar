@@ -1,10 +1,13 @@
-﻿using System;
+﻿using HeartUnity;
+using System;
 using System.Collections.Generic;
 
 public class SaveSlotExecuterIO 
 { 
 
 }
+
+
 
 public class SaveSlotModel 
 {
@@ -26,9 +29,19 @@ public class SaveSlotModel
     }
 
     [Serializable]
-    public class SaveSlotPersistence 
+    public class SaveSlotPersistenceData
     {
         public List<SaveSlotPersistenceUnit> persistenceUnits = new();
         public int currentSaveSlot;
+    }
+
+    public class SaveSlotPersistence
+    {
+        public SaveDataUnit<SaveSlotPersistenceData> saveUnit;
+
+        public SaveSlotPersistence(HeartGame heartGame)
+        {
+            saveUnit = new SaveDataUnit<SaveSlotPersistenceData>("save_slots", heartGame);
+        }
     }
 }

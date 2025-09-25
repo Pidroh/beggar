@@ -90,9 +90,7 @@ public class MainGameControl : MonoBehaviour
     {
         MainGameControlSetupJLayout.SetupModelDataAllAtOnce(this);
         RobustDeltaTime = new();
-        ArcaniaPersistence = new(HeartGame);
-        ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
-        HeartGame.CommonDataLoad();
+        LoadingScreenControl.LoadSlotAndCommons(this);
         // Let the model run once so you can finish up setup with the latest info on visibility
         arcaniaModel.ManualUpdate(0);
         MainGameControlSetupJLayout.SetupGameCanvasAllAtOnce(this);

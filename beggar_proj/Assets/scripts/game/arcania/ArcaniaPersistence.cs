@@ -6,9 +6,9 @@ public class ArcaniaPersistence
 {
     public SaveDataUnit<ArcaniaPersistenceData> saveUnit;
 
-    public ArcaniaPersistence(HeartGame hg)
+    public ArcaniaPersistence(HeartGame hg, string saveKey)
     {
-        saveUnit = new SaveDataUnit<ArcaniaPersistenceData>("maindata", hg);
+        saveUnit = new SaveDataUnit<ArcaniaPersistenceData>(saveKey, hg);
     }
 
     public void Save(ArcaniaUnits units, ArcaniaModelExploration exploration)

@@ -36,9 +36,7 @@ public static class LoadingScreenControl
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING_PERSISTENCE:
 
                 mgc.RobustDeltaTime = new();
-                mgc.ArcaniaPersistence = new(mgc.HeartGame);
-                mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
-                mgc.HeartGame.CommonDataLoad();
+                LoadSlotAndCommons(mgc);
                 // Let the model run once so you can finish up setup with the latest info on visibility
                 mgc.arcaniaModel.ManualUpdate(0);
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_TAB_MENU;
@@ -64,5 +62,19 @@ public static class LoadingScreenControl
                 break;
         }
     }
-    
+
+    public static void LoadSlotAndCommons(MainGameControl mgc)
+    {
+        var ssp = new SaveSlotModel.SaveSlotPersistence(mgc.HeartGame);
+        ssp.saveUnit.TryLoad(out var slotData);
+        var currentSaveSlot = slotData.currentSaveSlot;
+        var key = "maindata";
+        if (currentSaveSlot > 0) 
+        {
+            key += $"_{currentSaveSlot}";
+        }
+        mgc.ArcaniaPersistence = new (mgc.HeartGame, key);
+        mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
+        mgc.HeartGame.CommonDataLoad();
+    }
 }
