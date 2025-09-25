@@ -151,7 +151,7 @@ public class MainGameControl : MonoBehaviour
             if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN)
             {
                 lastSaveTime = Time.unscaledTime;
-                ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
+                SaveArcaniaMainSlot();
                 HeartGame.SaveCommon();
             }
             #endregion
@@ -251,6 +251,11 @@ public class MainGameControl : MonoBehaviour
 
         // Layout is executed after so that it can fix things before rendering
         JLayoutRuntimeExecuter.ManualUpdate(this.JLayoutRuntime);
+    }
+
+    public void SaveArcaniaMainSlot()
+    {
+        ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
     }
 
     public void GoToSettings()
