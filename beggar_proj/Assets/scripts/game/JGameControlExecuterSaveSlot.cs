@@ -22,6 +22,10 @@ public static class JGameControlExecuterSaveSlot
                     new FileUtilities().ExportBytes(zipBytes, $"beggar_single_savedata{System.DateTime.Now.ToString("yyyy_M_d_H_m_s")}", "beggar");
                 }
             }
+            if (item.importButton.TaskClicked) 
+            {
+                
+            }
         }
     }
 }
