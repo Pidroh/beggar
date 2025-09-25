@@ -1,4 +1,21 @@
 ﻿using System;
+
+public static class JGameControlExecuterSaveSlot 
+{
+    public static void ManualUpdate(MainGameControl mgc) 
+    {
+        var cd = mgc.JControlData;
+        for (int slot = 0; slot < cd.SaveSlots.saveSlots.Count; slot++)
+        {
+            JGameControlDataSaveSlot.ControlSaveSlotUnit item = cd.SaveSlots.saveSlots[slot];
+            if (item.newGameButton.TaskClicked) 
+            {
+                SaveSlotExecution.ChangeSlotAndLoadCurrentScene(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
+            }
+        }
+    }
+}
+
 public static class JGameControlExecuterExploration
 {
     internal static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)

@@ -1,13 +1,14 @@
 ﻿using HeartUnity;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine.SceneManagement;
 
 // this code will likely eventually be moved to engine side, so it shouldn't be dependent on game 
 public static class SaveSlotExecution
 {
 
-    public static SaveSlotModelData.SaveSlotPersistenceData LoadSlotModel(int slotNumber, HeartGame heartGame)
+    public static SaveSlotModelData LoadSlotModel(int slotNumber, HeartGame heartGame)
     {
         var ssp = new SaveSlotModelData.SaveSlotPersistence(heartGame);
         SaveSlotModelData slotModel = new();
@@ -33,7 +34,7 @@ public static class SaveSlotExecution
 
         // if there are too many slots, remove them
         slotModel.saveSlots.RemoveRange(slotNumber, slotModel.saveSlots.Count - slotNumber);
-        return slotData;
+        return slotModel;
     }
 
     public static void ChangeSlotAndLoadCurrentScene(HeartGame heartGame, SaveSlotModelData model, int newSlot)

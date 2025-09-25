@@ -430,6 +430,7 @@ public static class JGameControlExecuter
         mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
 
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
+        JGameControlExecuterSaveSlot.ManualUpdate(mgc);
         JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
 
         #region dialog

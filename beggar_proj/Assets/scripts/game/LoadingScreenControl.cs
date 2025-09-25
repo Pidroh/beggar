@@ -68,8 +68,9 @@ public static class LoadingScreenControl
     {
         int slotNumber = 4;
         HeartGame heartGame = mgc.HeartGame;
-        SaveSlotModelData.SaveSlotPersistenceData slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
-        var currentSaveSlot = slotData.currentSaveSlot;
+        var slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
+        mgc.JControlData.SaveSlots.ModelData = slotData;
+        var currentSaveSlot = slotData.currentSlot;
         var key = "maindata";
         if (currentSaveSlot > 0)
         {
