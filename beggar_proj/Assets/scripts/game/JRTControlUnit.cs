@@ -108,11 +108,11 @@ public class JGameControlDataSaveSlot
     public List<ControlSaveSlotUnit> saveSlots = new();
     public class ControlSaveSlotUnit 
     {
-
         public JRTControlUnit newGameButton { get; internal set; }
         public JRTControlUnit loadGameButton { get; internal set; }
         public JRTControlUnit deleteButton { get; internal set; }
         public JRTControlUnit exportButton { get; internal set; }
+        public JRTControlUnit importButton;
         public JRTControlUnit copyButton { get; internal set; }
     }
 }

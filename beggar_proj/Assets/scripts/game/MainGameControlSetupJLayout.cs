@@ -226,25 +226,31 @@ public class MainGameControlSetupJLayout
                 jControlDataHolder.SaveSlots.saveSlots.Add(unit);
                 for (int i = 0; i < 2; i++)
                 {
-                    var tempNewGameButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
-                    var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempNewGameButton);
+                    var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                    var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempSlotButton);
                     JRTControlUnit jCU = new();
-                    jCU.MainLayout = tempNewGameButton;
-                    jCU.MainExecuteButton = new JButtonAccessor(tempNewGameButton, 0);
-                    tempNewGameButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+                    jCU.MainLayout = tempSlotButton;
+                    jCU.MainExecuteButton = new JButtonAccessor(tempSlotButton, 0);
+                    tempSlotButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
                     
                     switch (i)
                     {
                         case 0:
                             {
-                                tempNewGameButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game")); 
+                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game")); 
                                 unit.newGameButton = jCU;
                             }
                             break;
                         case 1:
                             {
-                                tempNewGameButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("export"));
+                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("export"));
                                 unit.exportButton = jCU;
+                            }
+                            break;
+                        case 2:
+                            {
+                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("import"));
+                                unit.importButton = jCU;
                             }
                             break;
                         default:
