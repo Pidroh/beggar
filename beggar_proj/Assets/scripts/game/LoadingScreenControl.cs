@@ -1,4 +1,5 @@
 ﻿using HeartUnity;
+using System.Globalization;
 
 public static class LoadingScreenControl 
 {
@@ -65,16 +66,19 @@ public static class LoadingScreenControl
 
     public static void LoadSlotAndCommons(MainGameControl mgc)
     {
-        var ssp = new SaveSlotModel.SaveSlotPersistence(mgc.HeartGame);
-        ssp.saveUnit.TryLoad(out var slotData);
+        int slotNumber = 4;
+        HeartGame heartGame = mgc.HeartGame;
+        SaveSlotModelData.SaveSlotPersistenceData slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
         var currentSaveSlot = slotData.currentSaveSlot;
         var key = "maindata";
-        if (currentSaveSlot > 0) 
+        if (currentSaveSlot > 0)
         {
             key += $"_{currentSaveSlot}";
         }
-        mgc.ArcaniaPersistence = new (mgc.HeartGame, key);
+        mgc.ArcaniaPersistence = new(heartGame, key);
         mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
-        mgc.HeartGame.CommonDataLoad();
+        heartGame.CommonDataLoad();
     }
+
+    
 }

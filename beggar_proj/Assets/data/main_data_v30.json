@@ -181,7 +181,7 @@
             {
                 "id": "cathedral_matters",
                 "name": "Cathedral matters",
-                "require": "t_tier3&&cathedral_visit",
+                "require": "t_tier3&&cathedral_first",
                 "cost": {
                     "skillpoints": 75
                 },
