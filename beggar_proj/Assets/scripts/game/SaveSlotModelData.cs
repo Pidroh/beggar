@@ -68,6 +68,20 @@ public static class SaveSlotExecution
         }
         return false;
     }
+
+    internal static int? CopySlotToEmptySlot(int slot, SaveSlotModelData model)
+    {
+        for (int slotTarget = 0; slotTarget < model.saveSlots.Count; slotTarget++)
+        {
+            SaveSlotModelData.SaveSlotUnit item = model.saveSlots[slotTarget];
+            if (!item.hasSave) 
+            {
+
+                return slotTarget;
+            }
+        }
+        return null;
+    }
 }
 
 

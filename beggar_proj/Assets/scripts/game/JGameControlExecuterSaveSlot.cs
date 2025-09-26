@@ -72,6 +72,10 @@ public static class JGameControlExecuterSaveSlot
                 mgc.JControlData.SaveSlots.FileUtilities.ImportFileRequest("beggar");
                 Debug.Log("import file request...?");
             }
+            if (item.copyButton?.TaskClicked ?? false) 
+            {
+                int slotTarget = SaveSlotExecution.CopySlotToEmptySlot(slot, mgc.JControlData.SaveSlots);
+            } 
             if (item.deleteButton?.TaskClicked ?? false) 
             {
                 
