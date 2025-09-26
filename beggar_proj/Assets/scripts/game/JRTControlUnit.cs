@@ -104,6 +104,8 @@ public class JGameControlDataSaveSlot
 {
     public JRTControlUnit forceSaveButton { get; internal set; }
     public SaveSlotModelData ModelData { get; internal set; }
+    public bool ImportingSlotSave { get; internal set; }
+    public FileUtilities FileUtilities { get; internal set; }
 
     public List<ControlSaveSlotUnit> saveSlots = new();
     public class ControlSaveSlotUnit 

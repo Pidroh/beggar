@@ -218,7 +218,7 @@ public class MainGameControlSetupJLayout
             var tab = jControlDataHolder.TabControlUnits[tabIndex];
             if (!tab.TabData.Tab.ContainsSaveSlots) continue;
             var tabHolder = jCanvas.children[tabIndex];
-
+            jControlDataHolder.SaveSlots.FileUtilities = new FileUtilities();
             int nSlots = 3;
             for (int slotIndex = 0; slotIndex < nSlots; slotIndex++)
             {
