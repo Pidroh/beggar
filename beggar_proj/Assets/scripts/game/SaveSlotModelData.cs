@@ -59,6 +59,15 @@ public static class SaveSlotExecution
         }
         new SaveSlotModelData.SaveSlotPersistence(heartGame).saveUnit.Save(p);
     }
+
+    internal static bool HasEmptySlot(SaveSlotModelData modelData)
+    {
+        foreach (var item in modelData.saveSlots)
+        {
+            if (!item.hasSave) return true;
+        }
+        return false;
+    }
 }
 
 

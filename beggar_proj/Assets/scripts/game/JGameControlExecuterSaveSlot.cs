@@ -37,6 +37,7 @@ public static class JGameControlExecuterSaveSlot
             mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions = willSkipInputNextFrame;
             return;
         }
+        var hasEmptySlot = SaveSlotExecution.HasEmptySlot(mgc.JControlData.SaveSlots.ModelData)
         for (int slot = 0; slot < cd.SaveSlots.saveSlots.Count; slot++)
         {
             JGameControlDataSaveSlot.ControlSaveSlotUnit item = cd.SaveSlots.saveSlots[slot];
