@@ -25,10 +25,11 @@ public static class JGameControlExecuterSaveSlot
             if (item.importButton.TaskClicked) 
             {
                 mgc.JControlData.SaveSlots.ImportingSlotSave = true;
+                mgc.JControlData.SaveSlots.FileUtilities.ImportFileRequest("beggar");
             }
-            if (mgc.JControlData.SaveSlots.ImportingSlotSave) 
+            if (mgc.JControlData.SaveSlots.ImportingSlotSave && mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes != null) 
             { 
-
+                
             }
         }
     }
