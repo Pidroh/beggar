@@ -74,7 +74,11 @@ public static class JGameControlExecuterSaveSlot
             }
             if (item.copyButton?.TaskClicked ?? false) 
             {
-                int slotTarget = SaveSlotExecution.CopySlotToEmptySlot(slot, mgc.JControlData.SaveSlots);
+                int? slotTarget = SaveSlotExecution.CopySlotToEmptySlot(slot, mgc.JControlData.SaveSlots.ModelData);
+                if (slotTarget.HasValue) 
+                {
+                    
+                }
             } 
             if (item.deleteButton?.TaskClicked ?? false) 
             {
