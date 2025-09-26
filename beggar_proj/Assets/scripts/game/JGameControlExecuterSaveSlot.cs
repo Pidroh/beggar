@@ -37,10 +37,12 @@ public static class JGameControlExecuterSaveSlot
             mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions = willSkipInputNextFrame;
             return;
         }
-        var hasEmptySlot = SaveSlotExecution.HasEmptySlot(mgc.JControlData.SaveSlots.ModelData)
+        var hasEmptySlot = SaveSlotExecution.HasEmptySlot(mgc.JControlData.SaveSlots.ModelData);
         for (int slot = 0; slot < cd.SaveSlots.saveSlots.Count; slot++)
         {
+            var slotD = mgc.JControlData.SaveSlots.ModelData.saveSlots[slot];
             JGameControlDataSaveSlot.ControlSaveSlotUnit item = cd.SaveSlots.saveSlots[slot];
+            item.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
             if (item.newGameButton.TaskClicked)
             {
                 mgc.SaveArcaniaMainSlot();

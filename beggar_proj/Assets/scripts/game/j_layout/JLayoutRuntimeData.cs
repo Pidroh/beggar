@@ -74,6 +74,11 @@ namespace JLayout
             buttonOwner.ButtonChildren[index].Item2.UiUnit.ConsumeClick();
         }
 
+        internal void SetVisible(bool v)
+        {
+            buttonOwner.ButtonChildren[index].Item1.SetVisibleSelf(false);
+        }
+
         public bool ButtonClicked => buttonOwner.ButtonChildren[index].Item2.UiUnit.Clicked;
 
         internal void MultiClickEnabled(bool v)
