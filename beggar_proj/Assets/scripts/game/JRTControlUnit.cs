@@ -34,6 +34,11 @@ public class JRTControlUnit
     public JRTControlUnitMods IntermediaryMods = new();
     public JRTControlUnitMods TargetingThisMods = new();
     public JRTControlUnitMods TargetingThisEffectMods = new();
+
+    internal void ConsumeClick()
+    {
+        MainExecuteButton.ConsumeClick();
+    }
 }
 
 public class JRTControlUnitMods
@@ -109,6 +114,7 @@ public class JGameControlDataSaveSlot
     // which slot you are importing from
     public int? ImportingSlotSave { get; internal set; }
     public FileUtilities FileUtilities { get; internal set; }
+    public bool ActionHappenedLastFrameSoSkipActions { get; internal set; }
 
     public List<ControlSaveSlotUnit> saveSlots = new();
     public class ControlSaveSlotUnit 

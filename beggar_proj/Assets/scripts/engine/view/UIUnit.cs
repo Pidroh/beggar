@@ -59,6 +59,13 @@ namespace HeartUnity.View
         private bool _longPressClick = false;
         public bool LongPressClickHappenedThisFrame => _longPressClick;
         public Color? NormalColor;
+
+        public void ConsumeClick()
+        {
+            _longPressClick = false;
+            _clickedInternal = false;
+        }
+
         public Color? ClickColor;
 
 

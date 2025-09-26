@@ -69,6 +69,11 @@ namespace JLayout
             this.index = index;
         }
 
+        internal void ConsumeClick()
+        {
+            buttonOwner.ButtonChildren[index].Item2.UiUnit.ConsumeClick();
+        }
+
         public bool ButtonClicked => buttonOwner.ButtonChildren[index].Item2.UiUnit.Clicked;
 
         internal void MultiClickEnabled(bool v)

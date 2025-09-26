@@ -8,6 +8,7 @@ public static class JGameControlExecuterSaveSlot
     public static void ManualUpdate(MainGameControl mgc)
     {
         var cd = mgc.JControlData;
+        bool willSkipInputNextFrame = false;
         if (mgc.JControlData.SaveSlots.ImportingSlotSave.HasValue && mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes != null)
         {
             var slot = mgc.JControlData.SaveSlots.ImportingSlotSave.Value;
@@ -16,6 +17,7 @@ public static class JGameControlExecuterSaveSlot
             var _2 = ListPool<string>.Get(out var content);
             ZipUtilities.ExtractZipFromBytes(mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes, titles, content);
             mgc.JControlData.SaveSlots.FileUtilities.ResetBytes();
+            willSkipInputNextFrame = true;
             if (titles.Count == 1 && content.Count == 1 && titles[0] == "exported_unit")
             {
                 var slotKey = JGameControlDataSaveSlot.SlotSaveKeys[slot];
@@ -30,6 +32,11 @@ public static class JGameControlExecuterSaveSlot
                 }
             }
         }
+        if (mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions) 
+        {
+            mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions = willSkipInputNextFrame;
+            return;
+        }
         for (int slot = 0; slot < cd.SaveSlots.saveSlots.Count; slot++)
         {
             JGameControlDataSaveSlot.ControlSaveSlotUnit item = cd.SaveSlots.saveSlots[slot];
@@ -40,6 +47,9 @@ public static class JGameControlExecuterSaveSlot
             }
             if (item.exportButton.TaskClicked)
             {
+                willSkipInputNextFrame = true;
+                // necessary because the pop up seems to bug things
+                item.exportButton.ConsumeClick();
                 if (mgc.ArcaniaPersistence.saveUnit.TryLoadRawText(out var rawText))
                 {
                     var zipBytes = ZipUtilities.CreateZipBytesFromVirtualFiles(new List<string>(new string[] { "exported_unit" }), new List<string>(new string[] { rawText }));
@@ -48,10 +58,14 @@ public static class JGameControlExecuterSaveSlot
             }
             if (item.importButton.TaskClicked)
             {
+                willSkipInputNextFrame = true;
+                // necessary because the pop up seems to bug things
+                item.exportButton.ConsumeClick();
                 mgc.JControlData.SaveSlots.ImportingSlotSave = slot;
                 mgc.JControlData.SaveSlots.FileUtilities.ImportFileRequest("beggar");
                 Debug.Log("import file request...?");
             }
         }
+        mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions = willSkipInputNextFrame;
     }
 }
