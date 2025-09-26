@@ -77,7 +77,7 @@ public static class JGameControlExecuterSaveSlot
                 int? slotTarget = SaveSlotExecution.CopySlotToEmptySlot(slot, mgc.JControlData.SaveSlots.ModelData);
                 if (slotTarget.HasValue) 
                 {
-                    
+                    SaveDataCenter.CopyPersistentTextFromTwoKeys(sourceKey: JGameControlDataSaveSlot.SlotSaveKeys[slot], targetKey: JGameControlDataSaveSlot.SlotSaveKeys[slotTarget.Value], heartGame: mgc.HeartGame);
                 }
             } 
             if (item.deleteButton?.TaskClicked ?? false) 

@@ -51,5 +51,15 @@ namespace HeartUnity
         public void HardwareLoad() 
         {
         }
+
+        public static void CopyPersistentTextFromTwoKeys(string sourceKey, string targetKey, HeartGame heartGame)
+        {
+            var ptuSource = new PersistentTextUnit(sourceKey, heartGame);
+            var ptuTarget = new PersistentTextUnit(targetKey, heartGame);
+            if (ptuSource.TryLoad(out var d)) 
+            {
+                ptuTarget.Save(d);
+            }
+        }
     }
 }

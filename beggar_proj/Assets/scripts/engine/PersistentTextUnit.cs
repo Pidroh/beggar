@@ -99,6 +99,21 @@ namespace HeartUnity
             switchTextUnit.Save(data);
         }
 #else
+        internal bool TryLoad(out string jsonData) 
+        {
+            if (TryLoad(mainSaveLocation, out var d1)) 
+            {
+                jsonData = d1;
+                return true;
+            }
+            if (TryLoad(backupSaveLocation, out var d2))
+            {
+                jsonData = d2;
+                return true;
+            }
+            jsonData = null;
+            return false;
+        }
         internal bool TryLoad(string location, out string jsonData)
         {
             if (IsPlayerPrefs)
