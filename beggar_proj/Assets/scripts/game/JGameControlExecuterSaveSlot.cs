@@ -69,6 +69,10 @@ public static class JGameControlExecuterSaveSlot
                 mgc.JControlData.SaveSlots.FileUtilities.ImportFileRequest("beggar");
                 Debug.Log("import file request...?");
             }
+            if (item.deleteButton?.TaskClicked ?? false) 
+            {
+                
+            }
         }
         mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions = willSkipInputNextFrame;
     }

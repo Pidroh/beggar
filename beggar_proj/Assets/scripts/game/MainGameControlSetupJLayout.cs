@@ -224,9 +224,11 @@ public class MainGameControlSetupJLayout
             {
                 JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
                 jControlDataHolder.SaveSlots.saveSlots.Add(unit);
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if (i == 2 && slotIndex == mgc.JControlData.SaveSlots.ModelData.currentSlot) 
+                    bool importButtonCreation = i == 2;
+                    // can't import into the current slot
+                    if (importButtonCreation && slotIndex == mgc.JControlData.SaveSlots.ModelData.currentSlot) 
                     {
                         continue;
                     }
@@ -255,6 +257,18 @@ public class MainGameControlSetupJLayout
                             {
                                 tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("import"));
                                 unit.importButton = jCU;
+                            }
+                            break;
+                        case 3:
+                            {
+                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("delete"));
+                                unit.deleteButton = jCU;
+                            }
+                            break;
+                        case 4:
+                            {
+                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText(""));
+                                unit.deleteButton = jCU;
                             }
                             break;
                         default:
