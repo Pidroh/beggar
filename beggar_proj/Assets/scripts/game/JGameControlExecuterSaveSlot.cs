@@ -43,7 +43,8 @@ public static class JGameControlExecuterSaveSlot
             if (item.newGameButton.TaskClicked)
             {
                 mgc.SaveArcaniaMainSlot();
-                SaveSlotExecution.ChangeSlotAndLoadCurrentScene(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
+                SaveSlotExecution.ChangeSlotAndSaveSlotData(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
+                mgc.ReloadScene();
             }
             if (item.exportButton.TaskClicked)
             {

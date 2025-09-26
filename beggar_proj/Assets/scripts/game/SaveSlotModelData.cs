@@ -37,11 +37,10 @@ public static class SaveSlotExecution
         return slotModel;
     }
 
-    public static void ChangeSlotAndLoadCurrentScene(HeartGame heartGame, SaveSlotModelData model, int newSlot)
+    public static void ChangeSlotAndSaveSlotData(HeartGame heartGame, SaveSlotModelData model, int newSlot)
     {
         model.currentSlot = newSlot;
         SaveData(model, heartGame);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private static void SaveData(SaveSlotModelData model, HeartGame heartGame)

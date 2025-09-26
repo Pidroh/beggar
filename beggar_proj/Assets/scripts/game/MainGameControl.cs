@@ -258,6 +258,12 @@ public class MainGameControl : MonoBehaviour
         ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
     }
 
+    public void ReloadScene() 
+    {
+        MainGameControl._lastControlStateStatic = this.controlState;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void GoToSettings()
     {
         if (controlState == ControlState.GAME)
