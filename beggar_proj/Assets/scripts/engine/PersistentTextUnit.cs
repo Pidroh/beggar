@@ -94,7 +94,7 @@ namespace HeartUnity
             return jsonData != null;
         }
 
-        internal void Save(string data)
+        public void Save(string data)
         {
             switchTextUnit.Save(data);
         }
@@ -170,7 +170,7 @@ namespace HeartUnity
             Debug.Log("Save file back " + backupSaveLocation);
         }
 
-        internal void Save(string data)
+        public void Save(string data)
         {
             if (IsPlayerPrefs)
             {
