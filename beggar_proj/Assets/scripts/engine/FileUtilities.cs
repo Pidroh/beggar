@@ -50,7 +50,7 @@ namespace HeartUnity
 
         void ExportBytesInternal(byte[] bytes, string suggestedFile, string extension)
         {
-            var path = StandaloneFileBrowser.SaveFilePanel("Exporting file", "", suggestedFile, "extension);
+            var path = StandaloneFileBrowser.SaveFilePanel("Exporting file", "", suggestedFile, "extension");
             if (!string.IsNullOrEmpty(path))
             {
                 File.WriteAllBytes(path, bytes);
