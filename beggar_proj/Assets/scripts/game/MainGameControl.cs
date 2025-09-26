@@ -4,6 +4,7 @@ using JLayout;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static LoadingScreenSetup;
 
 public class MainGameControl : MonoBehaviour

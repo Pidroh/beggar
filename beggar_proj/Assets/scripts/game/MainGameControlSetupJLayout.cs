@@ -226,6 +226,10 @@ public class MainGameControlSetupJLayout
                 jControlDataHolder.SaveSlots.saveSlots.Add(unit);
                 for (int i = 0; i < 3; i++)
                 {
+                    if (i == 2 && slotIndex == mgc.JControlData.SaveSlots.ModelData.currentSlot) 
+                    {
+                        continue;
+                    }
                     var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
                     var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempSlotButton);
                     JRTControlUnit jCU = new();
