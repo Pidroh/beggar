@@ -48,8 +48,12 @@ public static class JGameControlExecuterSaveSlot
             if (item.exportButton.TaskClicked)
             {
                 willSkipInputNextFrame = true;
-                // necessary because the pop up seems to bug things
                 item.exportButton.ConsumeClick();
+                // save before exporting
+                if (slot == mgc.JControlData.SaveSlots.ModelData.currentSlot) 
+                {
+                    mgc.SaveArcaniaMainSlot();
+                }
                 if (mgc.ArcaniaPersistence.saveUnit.TryLoadRawText(out var rawText))
                 {
                     var zipBytes = ZipUtilities.CreateZipBytesFromVirtualFiles(new List<string>(new string[] { "exported_unit" }), new List<string>(new string[] { rawText }));
@@ -59,7 +63,6 @@ public static class JGameControlExecuterSaveSlot
             if (item.importButton.TaskClicked)
             {
                 willSkipInputNextFrame = true;
-                // necessary because the pop up seems to bug things
                 item.exportButton.ConsumeClick();
                 mgc.JControlData.SaveSlots.ImportingSlotSave = slot;
                 mgc.JControlData.SaveSlots.FileUtilities.ImportFileRequest("beggar");
