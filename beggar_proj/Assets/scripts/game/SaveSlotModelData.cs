@@ -71,12 +71,13 @@ public static class SaveSlotExecution
 
     internal static int? CopySlotToEmptySlot(int slot, SaveSlotModelData model)
     {
+        var sourceSlot = model.saveSlots[slot];
         for (int slotTarget = 0; slotTarget < model.saveSlots.Count; slotTarget++)
         {
-            SaveSlotModelData.SaveSlotUnit item = model.saveSlots[slotTarget];
-            if (!item.hasSave) 
+            SaveSlotModelData.SaveSlotUnit targetSlot = model.saveSlots[slotTarget];
+            if (!targetSlot.hasSave) 
             {
-
+                targetSlot.CopyFrom(sourceSlot);
                 return slotTarget;
             }
         }
@@ -97,6 +98,14 @@ public class SaveSlotModelData
         public DateTime lastSaveTime;
         public int playTimeSeconds;
         public bool hasSave;
+
+        internal void CopyFrom(SaveSlotUnit sourceSlot)
+        {
+            this.representativeText = sourceSlot.representativeText;
+            this.playTimeSeconds = sourceSlot.playTimeSeconds;
+            this.lastSaveTime = sourceSlot.lastSaveTime;
+            this.hasSave = sourceSlot.hasSave;
+        }
     }
 
     [Serializable]
