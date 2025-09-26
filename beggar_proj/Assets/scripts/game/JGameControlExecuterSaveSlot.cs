@@ -1,5 +1,6 @@
 ﻿using HeartUnity;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Pool;
 
 public static class JGameControlExecuterSaveSlot
@@ -14,7 +15,7 @@ public static class JGameControlExecuterSaveSlot
             var _1 = ListPool<string>.Get(out var titles);
             var _2 = ListPool<string>.Get(out var content);
             ZipUtilities.ExtractZipFromBytes(mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes, titles, content);
-            mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes = null;
+            mgc.JControlData.SaveSlots.FileUtilities.ResetBytes();
             if (titles.Count == 1 && content.Count == 1 && titles[0] == "exported_unit")
             {
                 var slotKey = JGameControlDataSaveSlot.SlotSaveKeys[slot];
@@ -49,6 +50,7 @@ public static class JGameControlExecuterSaveSlot
             {
                 mgc.JControlData.SaveSlots.ImportingSlotSave = slot;
                 mgc.JControlData.SaveSlots.FileUtilities.ImportFileRequest("beggar");
+                Debug.Log("import file request...?");
             }
         }
     }

@@ -26,7 +26,12 @@ namespace HeartUnity
 
         public void ImportFileRequest(string extension)
         {
-            StartImportInternal("hg");
+            StartImportInternal(extension);
+        }
+
+        public void ResetBytes()
+        {
+            _monoBehaviour.ResetBytes();
         }
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -45,7 +50,7 @@ namespace HeartUnity
 
         void ExportBytesInternal(byte[] bytes, string suggestedFile, string extension)
         {
-            var path = StandaloneFileBrowser.SaveFilePanel("Exporting file", "", suggestedFile, "hg");
+            var path = StandaloneFileBrowser.SaveFilePanel("Exporting file", "", suggestedFile, "extension);
             if (!string.IsNullOrEmpty(path))
             {
                 File.WriteAllBytes(path, bytes);

@@ -224,7 +224,7 @@ public class MainGameControlSetupJLayout
             {
                 JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
                 jControlDataHolder.SaveSlots.saveSlots.Add(unit);
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
                     var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempSlotButton);

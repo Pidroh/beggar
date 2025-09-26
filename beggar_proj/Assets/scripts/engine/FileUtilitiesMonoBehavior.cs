@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 //using UnityEngine.U2D;
 
@@ -24,6 +25,11 @@ namespace HeartUnity
             var loader = new WWW(url);
             yield return loader;
             UploadedBytes = loader.bytes;
+        }
+
+        internal void ResetBytes()
+        {
+            UploadedBytes = null;
         }
     }
 }
