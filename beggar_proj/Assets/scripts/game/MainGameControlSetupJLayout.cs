@@ -218,12 +218,19 @@ public class MainGameControlSetupJLayout
             var tab = jControlDataHolder.TabControlUnits[tabIndex];
             if (!tab.TabData.Tab.ContainsSaveSlots) continue;
             var tabHolder = jCanvas.children[tabIndex];
+            
             jControlDataHolder.SaveSlots.FileUtilities = new FileUtilities();
             int nSlots = 3;
             for (int slotIndex = 0; slotIndex < nSlots; slotIndex++)
             {
                 JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
                 jControlDataHolder.SaveSlots.saveSlots.Add(unit);
+                var slotExpandable = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
+                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(slotExpandable);
+                JRTControlUnit jCUSlot = new();
+                jControlDataHolder.SaveSlots.slotControlUnits.Add(jCUSlot);
+                jCUSlot.ExpandWhenClickingLayout = slotExpandable;
+                jCUSlot.ExpandButtonImage = new JImageAccessor(slotExpandable.ButtonChildren[0].Item1, 0);
                 for (int i = 0; i < 5; i++)
                 {
                     bool importButtonCreation = i == 2;
@@ -234,6 +241,8 @@ public class MainGameControlSetupJLayout
                     }
                     var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
                     var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempSlotButton);
+                    jCUSlot.InsideExpandable.Add(tempSlotButton);
+                    tempSlotButton.SetParentShowing(false);
                     JRTControlUnit jCU = new();
                     jCU.MainLayout = tempSlotButton;
                     jCU.MainExecuteButton = new JButtonAccessor(tempSlotButton, 0);
@@ -275,7 +284,6 @@ public class MainGameControlSetupJLayout
                             break;
                     }
                 }
-                
             }
             
         }

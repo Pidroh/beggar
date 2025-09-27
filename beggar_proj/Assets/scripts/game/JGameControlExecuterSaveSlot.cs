@@ -40,6 +40,7 @@ public static class JGameControlExecuterSaveSlot
         var hasEmptySlot = SaveSlotExecution.HasEmptySlot(mgc.JControlData.SaveSlots.ModelData);
         for (int slot = 0; slot < cd.SaveSlots.saveSlots.Count; slot++)
         {
+            JGameControlExecuter.UpdateExpandLogicForUnit(mgc.JControlData.SaveSlots.slotControlUnits[slot]);
             var slotD = mgc.JControlData.SaveSlots.ModelData.saveSlots[slot];
             JGameControlDataSaveSlot.ControlSaveSlotUnit item = cd.SaveSlots.saveSlots[slot];
             item.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
