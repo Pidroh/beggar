@@ -82,7 +82,7 @@ public static class JGameControlExecuterSaveSlot
             } 
             if (item.deleteButton?.TaskClicked ?? false) 
             {
-                
+                SaveSlotExecution.DeleteSlot(mgc.JControlData.SaveSlots.ModelData, slot);
             }
         }
         mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions = willSkipInputNextFrame;

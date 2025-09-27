@@ -92,6 +92,11 @@ public static class SaveSlotExecution
         csu.playTimeSeconds = 0;
         csu.representativeText = representativeTextKey;
     }
+
+    internal static void DeleteSlot(SaveSlotModelData modelData, int slot)
+    {
+        modelData.saveSlots[slot].hasSave = false;
+    }
 }
 
 
