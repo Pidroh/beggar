@@ -83,6 +83,15 @@ public static class SaveSlotExecution
         }
         return null;
     }
+
+    internal static void InitCurrentSlotIfNoSave(SaveSlotModelData slotData, string representativeTextKey)
+    {
+        var csu = slotData.CurrentSlotUnit;
+        csu.hasSave = true;
+        csu.lastSaveTime = DateTime.Now;
+        csu.playTimeSeconds = 0;
+        csu.representativeText = representativeTextKey;
+    }
 }
 
 
@@ -91,6 +100,7 @@ public class SaveSlotModelData
 {
     public List<SaveSlotUnit> saveSlots = new();
     public int currentSlot;
+    public SaveSlotUnit CurrentSlotUnit => saveSlots[currentSlot];
 
     public class SaveSlotUnit
     {

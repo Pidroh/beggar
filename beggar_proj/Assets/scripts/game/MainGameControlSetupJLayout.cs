@@ -267,8 +267,8 @@ public class MainGameControlSetupJLayout
                             break;
                         case 4:
                             {
-                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText(""));
-                                unit.deleteButton = jCU;
+                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("copy"));
+                                unit.copyButton = jCU;
                             }
                             break;
                         default:
