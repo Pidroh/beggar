@@ -3,6 +3,7 @@ using System.Globalization;
 
 public static class LoadingScreenControl 
 {
+    public static string[] SlotSaveKeys => JGameControlDataSaveSlot.SlotSaveKeys;
     /*
      * MainGameControlSetupJLayout.SetupModelDataAllAtOnce(this);
         RobustDeltaTime = new();

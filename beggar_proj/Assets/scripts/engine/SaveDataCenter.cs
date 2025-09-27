@@ -61,5 +61,10 @@ namespace HeartUnity
                 ptuTarget.Save(d);
             }
         }
+
+        public static void DeleteSaveFromKey(string p, HeartGame heartGame)
+        {
+            new PersistentTextUnit(p, heartGame).Delete();
+        }
     }
 }

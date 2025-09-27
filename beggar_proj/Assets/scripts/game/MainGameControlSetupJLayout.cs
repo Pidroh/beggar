@@ -244,7 +244,7 @@ public class MainGameControlSetupJLayout
                         case 0:
                             {
                                 tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game")); 
-                                unit.newGameButton = jCU;
+                                unit.newGameOrLoadGameButton = jCU;
                             }
                             break;
                         case 1:
