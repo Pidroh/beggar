@@ -66,7 +66,7 @@ public static class LoadingScreenControl
 
     public static void LoadSlotAndCommons(MainGameControl mgc)
     {
-        int slotNumber = 4;
+        int slotNumber = 3;
         HeartGame heartGame = mgc.HeartGame;
         var slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
         mgc.JControlData.SaveSlots.ModelData = slotData;
