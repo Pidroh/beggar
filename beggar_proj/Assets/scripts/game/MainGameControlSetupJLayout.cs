@@ -230,6 +230,7 @@ public class MainGameControlSetupJLayout
                 JRTControlUnit jCUSlot = new();
                 jControlDataHolder.SaveSlots.slotControlUnits.Add(jCUSlot);
                 jCUSlot.ExpandWhenClickingLayout = slotExpandable;
+                jCUSlot.ExpandButton = new JButtonAccessor(slotExpandable, 0);
                 jCUSlot.ExpandButtonImage = new JImageAccessor(slotExpandable.ButtonChildren[0].Item1, 0);
                 for (int i = 0; i < 5; i++)
                 {
