@@ -153,6 +153,7 @@ public class MainGameControl : MonoBehaviour
             {
                 lastSaveTime = Time.unscaledTime;
                 SaveArcaniaMainSlot();
+
                 HeartGame.SaveCommon();
             }
             #endregion

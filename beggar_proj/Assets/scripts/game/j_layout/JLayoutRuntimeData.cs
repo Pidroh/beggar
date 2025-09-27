@@ -76,7 +76,7 @@ namespace JLayout
 
         internal void SetVisible(bool v)
         {
-            buttonOwner.ButtonChildren[index].Item1.SetVisibleSelf(false);
+            buttonOwner.ButtonChildren[index].Item1.SetVisibleSelf(v);
         }
 
         public bool ButtonClicked => buttonOwner.ButtonChildren[index].Item2.UiUnit.Clicked;
@@ -139,13 +139,10 @@ namespace JLayout
             {
                 MarkDirtyWithChildren();
             }
-            else
+            // let the parent know whenever visibility changes
+            if (ChildSelf != null)
             {
-                // if not visible, has to let the parent know
-                if (ChildSelf != null)
-                {
-                    ChildSelf.PropagateDirtyUp();
-                }
+                ChildSelf.PropagateDirtyUp();
             }
         }
 
