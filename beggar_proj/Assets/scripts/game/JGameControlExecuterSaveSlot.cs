@@ -43,6 +43,7 @@ public static class JGameControlExecuterSaveSlot
             var slotD = mgc.JControlData.SaveSlots.ModelData.saveSlots[slot];
             JGameControlDataSaveSlot.ControlSaveSlotUnit item = cd.SaveSlots.saveSlots[slot];
             item.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
+            item.newGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
             if (item.newGameButton.TaskClicked)
             {
                 mgc.SaveArcaniaMainSlot();
