@@ -232,6 +232,7 @@ public class MainGameControlSetupJLayout
                 jCUSlot.ExpandWhenClickingLayout = slotExpandable;
                 jCUSlot.ExpandButton = new JButtonAccessor(slotExpandable, 0);
                 jCUSlot.ExpandButtonImage = new JImageAccessor(slotExpandable.ButtonChildren[0].Item1, 0);
+                jCUSlot.RightAlignedText = new JLayTextAccessor(slotExpandable, 1);
                 for (int i = 0; i < 5; i++)
                 {
                     bool importButtonCreation = i == 2;
@@ -255,6 +256,8 @@ public class MainGameControlSetupJLayout
                             {
                                 tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game")); 
                                 unit.newGameOrLoadGameButton = jCU;
+
+                                
                             }
                             break;
                         case 1:
