@@ -1,4 +1,5 @@
 ﻿using HeartUnity;
+using JLayout;
 using System.Collections.Generic;
 
 public class JGameControlDataSaveSlot 
@@ -17,11 +18,11 @@ public class JGameControlDataSaveSlot
     public class ControlSaveSlotUnit 
     {
         public JRTControlUnit newGameOrLoadGameButton { get; internal set; }
-        public JRTControlUnit loadGameButton { get; internal set; }
         public JRTControlUnit deleteButton { get; internal set; }
         public JRTControlUnit exportButton { get; internal set; }
         public JRTControlUnit importButton;
         public JRTControlUnit copyButton { get; internal set; }
+        public JLayTextAccessor TextForTimeStuff { get; internal set; }
     }
 }
 

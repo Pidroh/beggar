@@ -232,7 +232,7 @@ public class MainGameControlSetupJLayout
                 jCUSlot.ExpandWhenClickingLayout = slotExpandable;
                 jCUSlot.ExpandButton = new JButtonAccessor(slotExpandable, 0);
                 jCUSlot.ExpandButtonImage = new JImageAccessor(slotExpandable.ButtonChildren[0].Item1, 0);
-                jCUSlot.RightAlignedText = new JLayTextAccessor(slotExpandable, 1);
+                unit.TextForTimeStuff = new JLayTextAccessor(slotExpandable, 1);
                 for (int i = 0; i < 5; i++)
                 {
                     bool importButtonCreation = i == 2;

@@ -50,10 +50,11 @@ public static class JGameControlExecuterSaveSlot
         {
             JGameControlExecuter.UpdateExpandLogicForUnit(mgc.JControlData.SaveSlots.slotControlUnits[slot]);
             var slotD = mgc.JControlData.SaveSlots.ModelData.saveSlots[slot];
-            JGameControlDataSaveSlot.ControlSaveSlotUnit item = cd.SaveSlots.saveSlots[slot];
-            item.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
-            item.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
-            if (item.newGameOrLoadGameButton.TaskClicked)
+            JGameControlDataSaveSlot.ControlSaveSlotUnit slotControlUnit = cd.SaveSlots.saveSlots[slot];
+            slotControlUnit.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
+            slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
+            slotControlUnit.TextForTimeStuff.SetTextRaw($"{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}");
+            if (slotControlUnit.newGameOrLoadGameButton.TaskClicked)
             {
                 var isNewGame = slotD.hasSave == false;
                 if (isNewGame) 
@@ -64,10 +65,10 @@ public static class JGameControlExecuterSaveSlot
                 SaveSlotExecution.ChangeSlotAndSaveSlotData(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
                 mgc.ReloadScene();
             }
-            if (item.exportButton.TaskClicked)
+            if (slotControlUnit.exportButton.TaskClicked)
             {
                 willSkipInputNextFrame = true;
-                item.exportButton.ConsumeClick();
+                slotControlUnit.exportButton.ConsumeClick();
                 // save before exporting
                 if (slot == mgc.JControlData.SaveSlots.ModelData.currentSlot) 
                 {
@@ -79,15 +80,15 @@ public static class JGameControlExecuterSaveSlot
                     new FileUtilities().ExportBytes(zipBytes, $"beggar_single_savedata{System.DateTime.Now.ToString("yyyy_M_d_H_m_s")}", "beggar");
                 }
             }
-            if (item.importButton?.TaskClicked ?? false)
+            if (slotControlUnit.importButton?.TaskClicked ?? false)
             {
                 willSkipInputNextFrame = true;
-                item.exportButton.ConsumeClick();
+                slotControlUnit.exportButton.ConsumeClick();
                 mgc.JControlData.SaveSlots.ImportingSlotSave = slot;
                 mgc.JControlData.SaveSlots.FileUtilities.ImportFileRequest("beggar");
                 Debug.Log("import file request...?");
             }
-            if (item.copyButton?.TaskClicked ?? false) 
+            if (slotControlUnit.copyButton?.TaskClicked ?? false) 
             {
                 int? slotTarget = SaveSlotExecution.CopySlotToEmptySlot(slot, mgc.JControlData.SaveSlots.ModelData);
                 if (slotTarget.HasValue) 
@@ -95,7 +96,7 @@ public static class JGameControlExecuterSaveSlot
                     SaveDataCenter.CopyPersistentTextFromTwoKeys(sourceKey: JGameControlDataSaveSlot.SlotSaveKeys[slot], targetKey: JGameControlDataSaveSlot.SlotSaveKeys[slotTarget.Value], heartGame: mgc.HeartGame);
                 }
             } 
-            if (item.deleteButton?.TaskClicked ?? false) 
+            if (slotControlUnit.deleteButton?.TaskClicked ?? false) 
             {
                 SaveSlotExecution.DeleteSlot(mgc.JControlData.SaveSlots.ModelData, slot);
             }
