@@ -147,7 +147,7 @@ namespace HeartUnity
         private void SaveCommonData()
         {
             var common = new CommonPlayerSaveData();
-            common.TotalPlayTimeSeconds = (int)PlayTimeControl.playTime;
+            PlayTimeControl.FeedSaveCommonData(common);
             _commonSaveDataPersistence.Save(common);
         }
 

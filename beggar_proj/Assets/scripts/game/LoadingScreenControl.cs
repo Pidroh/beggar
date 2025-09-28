@@ -78,6 +78,7 @@ public static class LoadingScreenControl
         var key = JGameControlDataSaveSlot.SlotSaveKeys[currentSaveSlot];
         mgc.ArcaniaPersistence = new(heartGame, key);
         mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
+        mgc.JControlData.SaveSlots.playTimeUnit = heartGame.PlayTimeControl.Register("beggar_unit");
         heartGame.CommonDataLoad();
 
     }

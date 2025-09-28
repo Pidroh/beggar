@@ -12,6 +12,8 @@ namespace HeartUnity
         private bool _inited;
         public List<PlaytimeUnit> units = new();
 
+        public PlaytimeUnit MainTime { get; private set; }
+
         internal PlayTimeControlCenter() 
         { 
         }
@@ -34,6 +36,7 @@ namespace HeartUnity
         public void Load(CommonPlayerSaveData commonSaveData)
         {
             var mainTime = Register("engine_main_time");
+            this.MainTime = mainTime;
             mainTime.playTime = commonSaveData.TotalPlayTimeSeconds;
             // get time between scene transitions
             Init();
@@ -74,6 +77,10 @@ namespace HeartUnity
             return $"{hours:D2}:{minutes:D2}:{seconds:D2}";
         }
 
+        internal void FeedSaveCommonData(CommonPlayerSaveData common)
+        {
+            common.TotalPlayTimeSeconds = (int) MainTime.playTime;
+        }
     }
 
     public class PlaytimeUnit 

@@ -7,7 +7,7 @@ public static class JGameControlExecuterSaveSlot
 {
     public static void ManualUpdate(MainGameControl mgc)
     {
-        mgc.JControlData.SaveSlots.playTimeControl.Update();
+        mgc.JControlData.SaveSlots.playTimeUnit.Update();
         var cd = mgc.JControlData;
         bool willSkipInputNextFrame = false;
         
