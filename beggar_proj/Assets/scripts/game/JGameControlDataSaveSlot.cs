@@ -8,7 +8,7 @@ public class JGameControlDataSaveSlot
     public JRTControlUnit forceSaveButton { get; internal set; }
     public SaveSlotModelData ModelData { get; internal set; }
     public List<JRTControlUnit> slotControlUnits = new();
-    public PlayTimeControl playTimeControl = new();
+    public PlayTimeControlCenter playTimeControl = new();
 
     // which slot you are importing from
     public int? ImportingSlotSave { get; internal set; }

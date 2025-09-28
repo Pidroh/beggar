@@ -79,5 +79,6 @@ public static class LoadingScreenControl
         mgc.ArcaniaPersistence = new(heartGame, key);
         mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
         heartGame.CommonDataLoad();
+
     }
 }

@@ -54,7 +54,7 @@ public static class JGameControlExecuterSaveSlot
             JGameControlDataSaveSlot.ControlSaveSlotUnit slotControlUnit = cd.SaveSlots.saveSlots[slot];
             slotControlUnit.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
-            slotControlUnit.TextForTimeStuff.SetTextRaw($"{PlayTimeControl.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}");
+            slotControlUnit.TextForTimeStuff.SetTextRaw($"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}");
             if (slotControlUnit.newGameOrLoadGameButton.TaskClicked)
             {
                 var isNewGame = slotD.hasSave == false;
@@ -62,7 +62,6 @@ public static class JGameControlExecuterSaveSlot
                 {
                     SaveDataCenter.DeleteSaveFromKey(LoadingScreenControl.SlotSaveKeys[slot], mgc.HeartGame);
                 }
-                mgc.SaveArcaniaMainSlot();
                 SaveSlotExecution.ChangeSlotAndSaveSlotData(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
                 mgc.ReloadScene();
             }

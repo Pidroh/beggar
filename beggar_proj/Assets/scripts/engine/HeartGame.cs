@@ -20,7 +20,7 @@ namespace HeartUnity
 
         public EngineView EngineView { get; private set; }
 
-        public PlayTimeControl PlayTimeControl = new PlayTimeControl();
+        public PlayTimeControlCenter PlayTimeControl = new PlayTimeControlCenter();
         private CommonPlayerSaveDataPersistence _commonSaveDataPersistence;
         public MainGameConfig config;
 
@@ -48,7 +48,7 @@ namespace HeartUnity
             CreateCommonPlayerSaveDataPersistence(key);
             if (_commonSaveDataPersistence.TryLoad(out var playerSave))
             {
-                PlayTimeControl.Init(playerSave);
+                PlayTimeControl.Load(playerSave);
             }
         }
 
