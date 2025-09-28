@@ -39,7 +39,7 @@ namespace HeartUnity
 
         
 
-        static string ConvertSecondsToTimeFormat(int totalSeconds)
+        public static string ConvertSecondsToTimeFormat(int totalSeconds)
         {
             int hours = totalSeconds / 3600;
             int minutes = (totalSeconds % 3600) / 60;
