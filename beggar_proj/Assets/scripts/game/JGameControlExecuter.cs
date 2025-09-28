@@ -98,7 +98,6 @@ public static class JGameControlExecuter
                 }
             }
 
-
             if (alwaysActive && !dynamicCanvas.IsChildVisible(tabIndex))
             {
                 dynamicCanvas.ShowChild(tabIndex);
@@ -114,7 +113,6 @@ public static class JGameControlExecuter
                 else if (tabControl.TabData.Tab.OpenOtherTabs)
                 {
                     // dynamicCanvas.ShowOverlay(this.TabButtonOverlayLayout);
-
                 }
                 else if (dynamicCanvas.CanShowOnlyOneChild())
                 {
@@ -134,7 +132,7 @@ public static class JGameControlExecuter
 
             #region calculate if tab is active
             bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
-
+            
             tabActive |= alwaysActive;
             foreach (var item in tabControl.TabToggleButtons)
             {
@@ -456,6 +454,12 @@ public static class JGameControlExecuter
             }
         }
         #endregion
+    }
+
+    internal static bool IsTabVisibleAndShowing(MainGameControl mgc, JTabControlUnit tabC)
+    {
+        var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
+        return dynamicCanvas.IsChildVisible(mgc.JControlData.TabControlUnits.IndexOf(tabC)) && tabC.TabData.Visible;
     }
 
     private static void FeedModToList(JRTControlUnitMods modList, bool showEvenIfZero)

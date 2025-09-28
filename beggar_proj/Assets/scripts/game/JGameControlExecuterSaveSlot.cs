@@ -9,6 +9,7 @@ public static class JGameControlExecuterSaveSlot
     {
         var cd = mgc.JControlData;
         bool willSkipInputNextFrame = false;
+        
         if (mgc.JControlData.SaveSlots.ImportingSlotSave.HasValue && mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes != null)
         {
             var slot = mgc.JControlData.SaveSlots.ImportingSlotSave.Value;
@@ -31,6 +32,13 @@ public static class JGameControlExecuterSaveSlot
                     }
                 }
             }
+        }
+        // check if the save slot tab is visible and if not, interrupt this update
+        foreach (var tabC in mgc.JControlData.TabControlUnits)
+        {
+            var tabData = tabC.TabData;
+            if (!tabData.Tab.ContainsSaveSlots) continue;
+            if (!JGameControlExecuter.IsTabVisibleAndShowing(mgc, tabC)) return;
         }
         if (mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions) 
         {
