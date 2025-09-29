@@ -53,6 +53,8 @@ public static class JGameControlExecuterSaveSlot
             JGameControlExecuter.UpdateExpandLogicForUnit(mgc.JControlData.SaveSlots.slotControlUnits[slot]);
             var slotD = mgc.JControlData.SaveSlots.ModelData.saveSlots[slot];
             JGameControlDataSaveSlot.ControlSaveSlotUnit slotControlUnit = cd.SaveSlots.saveSlots[slot];
+            slotControlUnit.importButton?.MainExecuteButton.SetVisible(!slotD.hasSave);
+            slotControlUnit.exportButton.MainExecuteButton.SetVisible(slotD.hasSave);
             slotControlUnit.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
             slotControlUnit.TextForTimeStuff.SetTextRaw($"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}");
