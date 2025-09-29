@@ -61,8 +61,10 @@ public static class JGameControlExecuterSaveSlot
                 {
                     SaveDataCenter.DeleteSaveFromKey(LoadingScreenControl.SlotSaveKeys[slot], mgc.HeartGame);
                 }
-                SaveSlotExecution.ChangeSlotAndSaveSlotData(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
+                // has to call reload scene before changing slot, or else the slot information is saved to the wrong slot
                 mgc.ReloadScene();
+                SaveSlotExecution.ChangeSlotAndSaveSlotData(mgc.HeartGame, mgc.JControlData.SaveSlots.ModelData, slot);
+                
             }
             if (slotControlUnit.exportButton.TaskClicked)
             {

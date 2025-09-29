@@ -260,6 +260,7 @@ public class MainGameControl : MonoBehaviour
 
         SaveSlotModelData modelData = this.JControlData.SaveSlots.ModelData;
         modelData.CurrentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
+        modelData.CurrentSlotUnit.lastSaveTime = System.DateTime.Now;
         SaveSlotExecution.SaveData(modelData, this.HeartGame);
         ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
     }

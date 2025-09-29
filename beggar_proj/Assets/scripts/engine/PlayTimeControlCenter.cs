@@ -56,7 +56,7 @@ namespace HeartUnity
                     }
                 }
             }
-            
+            dateTimePreviousScene.Clear();
         }
 
         internal void BeforeChangeScene()
