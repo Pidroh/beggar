@@ -288,7 +288,7 @@
                 "id": "save_slot_tab",
                 "unit_types": [],
                 "contains_save_slots": true,
-                "icon": "tab_log"
+                "icon": "tab_save_slot"
             }
         ]
     }
