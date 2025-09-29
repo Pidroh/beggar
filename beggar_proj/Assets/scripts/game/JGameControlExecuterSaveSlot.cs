@@ -7,7 +7,6 @@ public static class JGameControlExecuterSaveSlot
 {
     public static void ManualUpdate(MainGameControl mgc)
     {
-        mgc.JControlData.SaveSlots.playTimeUnit.Update();
         var cd = mgc.JControlData;
         bool willSkipInputNextFrame = false;
         
@@ -72,7 +71,7 @@ public static class JGameControlExecuterSaveSlot
                 // save before exporting
                 if (slot == mgc.JControlData.SaveSlots.ModelData.currentSlot) 
                 {
-                    mgc.SaveArcaniaMainSlot();
+                    mgc.SaveGameAndCurrentSlot();
                 }
                 if (mgc.ArcaniaPersistence.saveUnit.TryLoadRawText(out var rawText))
                 {

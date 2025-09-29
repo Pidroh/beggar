@@ -43,7 +43,7 @@ public static class SaveSlotExecution
         SaveData(model, heartGame);
     }
 
-    private static void SaveData(SaveSlotModelData model, HeartGame heartGame)
+    public static void SaveData(SaveSlotModelData model, HeartGame heartGame)
     {
         var p = new SaveSlotModelData.SaveSlotPersistenceData();
         p.currentSaveSlot = model.currentSlot;

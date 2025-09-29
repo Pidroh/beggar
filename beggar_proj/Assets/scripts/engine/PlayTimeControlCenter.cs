@@ -96,7 +96,9 @@ namespace HeartUnity
         }
 
         public string PlayTimeToShowAsString => PlayTimeControlCenter.ConvertSecondsToTimeFormat(PlayTimeToShow);
-        public void Update()
+
+        // should not be called externally from the engine since it's called by the center
+        internal void Update()
         {
             playTime += Time.unscaledDeltaTime;
         }

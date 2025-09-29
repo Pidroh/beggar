@@ -152,7 +152,7 @@ public class MainGameControl : MonoBehaviour
             if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN)
             {
                 lastSaveTime = Time.unscaledTime;
-                SaveArcaniaMainSlot();
+                SaveGameAndCurrentSlot();
 
                 HeartGame.SaveCommon();
             }
@@ -255,8 +255,12 @@ public class MainGameControl : MonoBehaviour
         JLayoutRuntimeExecuter.ManualUpdate(this.JLayoutRuntime);
     }
 
-    public void SaveArcaniaMainSlot()
+    public void SaveGameAndCurrentSlot()
     {
+
+        SaveSlotModelData modelData = this.JControlData.SaveSlots.ModelData;
+        modelData.CurrentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
+        SaveSlotExecution.SaveData(modelData, this.HeartGame);
         ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
     }
 
@@ -276,7 +280,7 @@ public class MainGameControl : MonoBehaviour
     {
         if (controlState == ControlState.GAME) 
         {
-            ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
+            SaveGameAndCurrentSlot();
             
         }
             
