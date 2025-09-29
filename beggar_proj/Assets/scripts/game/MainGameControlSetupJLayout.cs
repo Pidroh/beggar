@@ -224,8 +224,17 @@ public class MainGameControlSetupJLayout
             {
                 JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
                 jControlDataHolder.SaveSlots.saveSlots.Add(unit);
+                var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
+                JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+
+                layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
+
                 var slotExpandable = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
-                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(slotExpandable);
+                
+                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(layoutRU);
+                //tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(slotExpandable);
+                layoutRU.AddLayoutAsChild(slotExpandable);
+
                 JRTControlUnit jCUSlot = new();
                 jControlDataHolder.SaveSlots.slotControlUnits.Add(jCUSlot);
                 jCUSlot.ExpandWhenClickingLayout = slotExpandable;
@@ -243,7 +252,7 @@ public class MainGameControlSetupJLayout
                     }
                     var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
                     jCUSlot.MainLayout = tempSlotButton;
-                    tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempSlotButton);
+                    layoutRU.AddLayoutAsChild(tempSlotButton);
                     jCUSlot.InsideExpandable.Add(tempSlotButton);
                     tempSlotButton.SetParentShowing(false);
                     JRTControlUnit jCU = new();
@@ -341,7 +350,6 @@ public class MainGameControlSetupJLayout
         var jControlDataHolder = mgc.JControlData;
         var runtime = jControlDataHolder.LayoutRuntime;
         var arcaniaModel = mgc.arcaniaModel;
-        var arcaniaDatas = arcaniaModel.arcaniaUnits;
         var jCanvas = runtime.jLayCanvas;
         var layoutMaster = runtime.LayoutMaster;
 
