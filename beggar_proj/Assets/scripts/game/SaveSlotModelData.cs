@@ -87,6 +87,8 @@ public static class SaveSlotExecution
     internal static void InitCurrentSlotIfNoSave(SaveSlotModelData slotData, string representativeTextKey)
     {
         var csu = slotData.CurrentSlotUnit;
+        // if already has a save, do nothing
+        if (csu.hasSave) return;
         csu.hasSave = true;
         csu.lastSaveTime = DateTime.Now;
         csu.playTimeSeconds = 0;
