@@ -40,6 +40,12 @@ namespace HeartUnity.View
             transform.offsetMin = transform.offsetMax = new Vector2(0, 0);
         }
 
+        public static void LimitDPIBasedOnPhysicalScreenAdjustedWidth(float maxAdjustedWidth) 
+        {
+            var maximumDpi = (Screen.width / maxAdjustedWidth) * 96f;
+            EngineView.SetMaxDpi(maximumDpi);
+        }
+
         public static void SetOffsets(this RectTransform trans, RectOffset offsets)
         {
             int left = offsets.left;
