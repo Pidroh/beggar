@@ -5,10 +5,12 @@ using UnityEngine.Pool;
 
 public static class JGameControlExecuterSaveSlot
 {
+    public static string[] ClassPriorityTier { get; } = new string[] { "t_job", "t_tier0", "t_tier1", "t_tier2", "t_tier3", "t_tier4", "t_tier5" };
     public static void ManualUpdate(MainGameControl mgc)
     {
         var cd = mgc.JControlData;
         bool willSkipInputNextFrame = false;
+
         
         if (mgc.JControlData.SaveSlots.ImportingSlotSave.HasValue && mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes != null)
         {
@@ -54,6 +56,7 @@ public static class JGameControlExecuterSaveSlot
             slotControlUnit.copyButton.MainExecuteButton.SetVisible(hasEmptySlot && slotD.hasSave);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
             slotControlUnit.TextForTimeStuff.SetTextRaw($"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}");
+            slotControlUnit.TextForFlavor.SetTextRaw(slotD.representativeText);
             if (slotControlUnit.newGameOrLoadGameButton.TaskClicked)
             {
                 var isNewGame = slotD.hasSave == false;

@@ -257,10 +257,33 @@ public class MainGameControl : MonoBehaviour
 
     public void SaveGameAndCurrentSlot()
     {
+        var flavorText = "Nobody";
+        var classes = arcaniaModel.arcaniaUnits.datas[UnitType.CLASS];
+        int lastTagPriority = -1;
+        foreach (var item in classes)
+        {
+            if (item.Value <= 0) continue;
+            foreach (var tag in item.ConfigBasic.Tags)
+            {
+                for (int tagPriority = 0; tagPriority < JGameControlExecuterSaveSlot.ClassPriorityTier.Length; tagPriority++)
+                {
+                    string tagP = JGameControlExecuterSaveSlot.ClassPriorityTier[tagPriority];
+                    if (tagP != tag.id) continue;
+                    if (tagPriority > lastTagPriority)
+                    {
+                        lastTagPriority = tagPriority;
+                        flavorText = item.ConfigBasic.name;
+                    }
+                }
+            }
+        }
 
         SaveSlotModelData modelData = this.JControlData.SaveSlots.ModelData;
-        modelData.CurrentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
-        modelData.CurrentSlotUnit.lastSaveTime = System.DateTime.Now;
+        SaveSlotModelData.SaveSlotUnit currentSlotUnit = modelData.CurrentSlotUnit;
+        currentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
+        currentSlotUnit.lastSaveTime = System.DateTime.Now;
+        currentSlotUnit.representativeText = flavorText;
+
         SaveSlotExecution.SaveData(modelData, this.HeartGame);
         ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
     }

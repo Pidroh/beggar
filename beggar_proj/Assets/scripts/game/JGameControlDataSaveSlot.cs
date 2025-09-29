@@ -24,6 +24,7 @@ public class JGameControlDataSaveSlot
         public JRTControlUnit importButton;
         public JRTControlUnit copyButton { get; internal set; }
         public JLayTextAccessor TextForTimeStuff { get; internal set; }
+        public JLayTextAccessor TextForFlavor { get; internal set; }
     }
 }
 
