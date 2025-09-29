@@ -242,7 +242,8 @@ public class MainGameControlSetupJLayout
                         continue;
                     }
                     var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
-                    var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempSlotButton);
+                    jCUSlot.MainLayout = tempSlotButton;
+                    tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(tempSlotButton);
                     jCUSlot.InsideExpandable.Add(tempSlotButton);
                     tempSlotButton.SetParentShowing(false);
                     JRTControlUnit jCU = new();
