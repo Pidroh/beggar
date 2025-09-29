@@ -56,10 +56,11 @@ public static class JGameControlExecuterSaveSlot
             slotControlUnit.importButton?.MainLayout.SetVisibleSelf(!slotD.hasSave);
             slotControlUnit.exportButton.MainLayout.SetVisibleSelf(slotD.hasSave);
             slotControlUnit.copyButton.MainLayout.SetVisibleSelf(hasEmptySlot && slotD.hasSave);
-            slotControlUnit.newGameOrLoadGameButton.MainLayout.SetVisibleSelf(slot != mgc.JControlData.SaveSlots.ModelData.currentSlot);
+            bool notCurrentSlot = slot != mgc.JControlData.SaveSlots.ModelData.currentSlot;
+            slotControlUnit.newGameOrLoadGameButton.MainLayout.SetVisibleSelf(notCurrentSlot);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
             slotControlUnit.TextForTimeStuff.SetTextRaw($"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}");
-            slotControlUnit.TextForFlavor.SetTextRaw(slotD.representativeText);
+            slotControlUnit.TextForFlavor.SetTextRaw((notCurrentSlot ? "" : Local.GetText("Current slot") + "\n") +slotD.representativeText);
             if (slotControlUnit.newGameOrLoadGameButton.TaskClicked)
             {
                 var isNewGame = slotD.hasSave == false;
