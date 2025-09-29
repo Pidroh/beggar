@@ -18,10 +18,11 @@ namespace HeartUnity
         { 
         }
 
-        public PlaytimeUnit Register(string id) 
+        public PlaytimeUnit Register(string id, int savedTime) 
         {
             if (_inited) Debug.LogError("Register play time before init");
             var pu = new PlaytimeUnit(id);
+            pu.playTime = savedTime;
             units.Add(pu);
             return pu;
         }
@@ -35,9 +36,8 @@ namespace HeartUnity
 
         public void Load(CommonPlayerSaveData commonSaveData)
         {
-            var mainTime = Register("engine_main_time");
+            var mainTime = Register("engine_main_time", savedTime: commonSaveData.TotalPlayTimeSeconds);
             this.MainTime = mainTime;
-            mainTime.playTime = commonSaveData.TotalPlayTimeSeconds;
             // get time between scene transitions
             Init();
         }
