@@ -3,6 +3,7 @@ using HeartUnity.View;
 using JLayout;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class JRTControlUnit
 {
@@ -57,6 +58,7 @@ public class JResourceChangeGroup
 
 public class JGameControlDataHolder
 {
+    public Vector2 lastScreenSize;
     public List<JTabControlUnit> TabControlUnits = new();
     public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
     public JGameControlDataExploration Exploration = new();

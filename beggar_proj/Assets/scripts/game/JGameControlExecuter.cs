@@ -10,6 +10,12 @@ public static class JGameControlExecuter
 
     public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
     {
+        var changedScreenSize = Screen.width != controlData.lastScreenSize.x || Screen.height != controlData.lastScreenSize.y;
+        controlData.lastScreenSize = new Vector2(Screen.width, Screen.height);
+        if (changedScreenSize) 
+        {
+            RectTransformExtensions.LimitDPIBasedOnPhysicalScreenAdjustedWidth(NormalMaxTabWidth);
+        }
         var labelDuration = controlData.LabelDuration;
         var labelEffectDuration = controlData.LabelEffectDuration;
         var labelSuccessRate = controlData.LabelSuccessRate;
