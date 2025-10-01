@@ -49,15 +49,21 @@ public static class SaveSlotExecution
         p.currentSaveSlot = model.currentSlot;
         foreach (var item in model.saveSlots)
         {
-            p.persistenceUnits.Add(new()
-            {
-                playTimeSeconds = item.playTimeSeconds,
-                representativeText = item.representativeTextRaw,
-                lastSaveTime = item.lastSaveTime.ToString("yyMMdd_HHmmss"),
-                hasSave = item.hasSave
-            });
+            SaveSlotModelData.SaveSlotPersistenceUnit sspu = CreatePersistenceUnitFromSlot(item);
+            p.persistenceUnits.Add(sspu);
         }
         new SaveSlotModelData.SaveSlotPersistence(heartGame).saveUnit.Save(p);
+    }
+
+    public static SaveSlotModelData.SaveSlotPersistenceUnit CreatePersistenceUnitFromSlot(SaveSlotModelData.SaveSlotUnit item)
+    {
+        return new()
+        {
+            playTimeSeconds = item.playTimeSeconds,
+            representativeText = item.representativeTextRaw,
+            lastSaveTime = item.lastSaveTime.ToString("yyMMdd_HHmmss"),
+            hasSave = item.hasSave
+        };
     }
 
     internal static bool HasEmptySlot(SaveSlotModelData modelData)

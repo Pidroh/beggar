@@ -20,7 +20,7 @@ public static class JGameControlExecuterSaveSlot
             ZipUtilities.ExtractZipFromBytes(mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes, titles, content);
             mgc.JControlData.SaveSlots.FileUtilities.ResetBytes();
             willSkipInputNextFrame = true;
-            if (titles.Count == 1 && content.Count == 1 && titles[0] == "exported_unit")
+            if (titles.Count == 2 && content.Count == 2)
             {
                 var slotKey = JGameControlDataSaveSlot.SlotSaveKeys[slot];
                 var pus = mgc.HeartGame.config.PersistenceUnits;
@@ -29,7 +29,7 @@ public static class JGameControlExecuterSaveSlot
                     if (item.Key == slotKey) 
                     {
                         var ptu = new PersistentTextUnit(item, mgc.HeartGame);
-                        ptu.Save(content[0]);
+                        ptu.Save(content[1]);
                     }
                 }
             }
@@ -90,9 +90,20 @@ public static class JGameControlExecuterSaveSlot
                 {
                     mgc.SaveGameAndCurrentSlot();
                 }
+                // TODO: this code seems to only load the text from CURRENT slot, instead of the chosen EXPORT slot
                 if (mgc.ArcaniaPersistence.saveUnit.TryLoadRawText(out var rawText))
                 {
-                    var zipBytes = ZipUtilities.CreateZipBytesFromVirtualFiles(new List<string>(new string[] { "exported_unit" }), new List<string>(new string[] { rawText }));
+
+                    var slotUnitJson = JsonUtility.ToJson(SaveSlotExecution.CreatePersistenceUnitFromSlot(slotD));
+                    var zipBytes = ZipUtilities.CreateZipBytesFromVirtualFiles(
+                        new List<string>(new string[] { 
+                            "exported_slot",
+                            "exported_unit" 
+                        }), 
+                        new List<string>(new string[] {
+                            slotUnitJson,
+                            rawText 
+                        }));
                     new FileUtilities().ExportBytes(zipBytes, $"beggar_single_savedata{System.DateTime.Now.ToString("yyyy_M_d_H_m_s")}", "beggar");
                 }
             }
