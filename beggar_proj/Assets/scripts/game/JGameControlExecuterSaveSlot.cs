@@ -24,6 +24,7 @@ public static class JGameControlExecuterSaveSlot
             {
                 var slotKey = JGameControlDataSaveSlot.SlotSaveKeys[slot];
                 var pus = mgc.HeartGame.config.PersistenceUnits;
+                SaveSlotExecution.ImportIndividualSlot(mgc.JControlData.SaveSlots.ModelData, slot, content[0]);
                 foreach (var item in pus)
                 {
                     if (item.Key == slotKey) 

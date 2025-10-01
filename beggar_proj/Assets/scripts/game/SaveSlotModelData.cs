@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // this code will likely eventually be moved to engine side, so it shouldn't be dependent on game 
@@ -19,10 +20,7 @@ public static class SaveSlotExecution
             foreach (var slotU in slotData.persistenceUnits)
             {
                 SaveSlotModelData.SaveSlotUnit unit = new();
-                unit.hasSave = slotU.hasSave;
-                unit.lastSaveTime = System.DateTime.ParseExact(slotU.lastSaveTime, "yyMMdd_HHmmss", CultureInfo.InvariantCulture);
-                unit.playTimeSeconds = slotU.playTimeSeconds;
-                unit.representativeTextRaw = slotU.representativeText;
+                FeedPersistenceIntoSlot(slotU, unit);
                 slotModel.saveSlots.Add(unit);
             }
         }
@@ -35,6 +33,20 @@ public static class SaveSlotExecution
         // if there are too many slots, remove them
         slotModel.saveSlots.RemoveRange(slotNumber, slotModel.saveSlots.Count - slotNumber);
         return slotModel;
+    }
+
+    private static void FeedPersistenceIntoSlot(SaveSlotModelData.SaveSlotPersistenceUnit slotU, SaveSlotModelData.SaveSlotUnit unit)
+    {
+        unit.hasSave = slotU.hasSave;
+        unit.lastSaveTime = System.DateTime.ParseExact(slotU.lastSaveTime, "yyMMdd_HHmmss", CultureInfo.InvariantCulture);
+        unit.playTimeSeconds = slotU.playTimeSeconds;
+        unit.representativeTextRaw = slotU.representativeText;
+    }
+
+    internal static void ImportIndividualSlot(SaveSlotModelData model, int slot, string jsonString)
+    {
+        var slotP = JsonUtility.FromJson<SaveSlotModelData.SaveSlotPersistenceUnit>(jsonString);
+        FeedPersistenceIntoSlot(slotP, model.saveSlots[slot]);
     }
 
     public static void ChangeSlotAndSaveSlotData(HeartGame heartGame, SaveSlotModelData model, int newSlot)
