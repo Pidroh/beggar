@@ -38,8 +38,16 @@ public static class JGameControlExecuterSaveSlot
         // check if the save slot tab is visible and if not, interrupt this update
         foreach (var tabC in mgc.JControlData.TabControlUnits)
         {
-            var tabData = tabC.TabData;
-            if (!tabData.Tab.ContainsSaveSlots) continue;
+            var hasSlots = false;
+            foreach (var sep in tabC.SeparatorControls)
+            {
+                if (sep.SepD.ContainsSaveSlots) 
+                {
+                    hasSlots = true;
+                    break;
+                }
+            }
+            if (!hasSlots) continue;
             if (!JGameControlExecuter.IsTabVisibleAndShowing(mgc, tabC)) return;
         }
         if (mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions) 

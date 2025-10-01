@@ -216,89 +216,93 @@ public class MainGameControlSetupJLayout
         for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
         {
             var tab = jControlDataHolder.TabControlUnits[tabIndex];
-            if (!tab.TabData.Tab.ContainsSaveSlots) continue;
-            var tabHolder = jCanvas.children[tabIndex];
-            jControlDataHolder.SaveSlots.FileUtilities = new FileUtilities();
-            int nSlots = 3;
-            for (int slotIndex = 0; slotIndex < nSlots; slotIndex++)
+            foreach (var sep in tab.SeparatorControls)
             {
-                JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
-                jControlDataHolder.SaveSlots.saveSlots.Add(unit);
-                var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
-                JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
-
-                layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
-
-                var slotExpandable = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
-                
-                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(layoutRU);
-                //tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(slotExpandable);
-                layoutRU.AddLayoutAsChild(slotExpandable);
-
-                JRTControlUnit jCUSlot = new();
-                jControlDataHolder.SaveSlots.slotControlUnits.Add(jCUSlot);
-                jCUSlot.ExpandWhenClickingLayout = slotExpandable;
-                jCUSlot.ExpandButton = new JButtonAccessor(slotExpandable, 0);
-                jCUSlot.ExpandButtonImage = new JImageAccessor(slotExpandable.ButtonChildren[0].Item1, 0);
-                unit.TextForFlavor = new JLayTextAccessor(slotExpandable, 0);
-                unit.TextForTimeStuff = new JLayTextAccessor(slotExpandable, 1);
-                for (int i = 0; i < 5; i++)
+                if (!sep.SepD.ContainsSaveSlots) continue;
+                var tabHolder = jCanvas.children[tabIndex];
+                jControlDataHolder.SaveSlots.FileUtilities = new FileUtilities();
+                int nSlots = 3;
+                for (int slotIndex = 0; slotIndex < nSlots; slotIndex++)
                 {
-                    bool importButtonCreation = i == 2;
-                    // can't import into the current slot
-                    if (importButtonCreation && slotIndex == mgc.JControlData.SaveSlots.ModelData.currentSlot) 
-                    {
-                        continue;
-                    }
-                    var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
-                    jCUSlot.MainLayout = tempSlotButton;
-                    layoutRU.AddLayoutAsChild(tempSlotButton);
-                    jCUSlot.InsideExpandable.Add(tempSlotButton);
-                    tempSlotButton.SetParentShowing(false);
-                    JRTControlUnit jCU = new();
-                    jCU.MainLayout = tempSlotButton;
-                    jCU.MainExecuteButton = new JButtonAccessor(tempSlotButton, 0);
-                    tempSlotButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
-                    
-                    switch (i)
-                    {
-                        case 0:
-                            {
-                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game")); 
-                                unit.newGameOrLoadGameButton = jCU;
+                    JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
+                    jControlDataHolder.SaveSlots.saveSlots.Add(unit);
+                    var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
+                    JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
 
-                                
-                            }
-                            break;
-                        case 1:
-                            {
-                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("export"));
-                                unit.exportButton = jCU;
-                            }
-                            break;
-                        case 2:
-                            {
-                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("import"));
-                                unit.importButton = jCU;
-                            }
-                            break;
-                        case 3:
-                            {
-                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("delete"));
-                                unit.deleteButton = jCU;
-                            }
-                            break;
-                        case 4:
-                            {
-                                tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("copy"));
-                                unit.copyButton = jCU;
-                            }
-                            break;
-                        default:
-                            break;
+                    layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
+
+                    var slotExpandable = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
+
+                    tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(layoutRU);
+                    //tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(slotExpandable);
+                    layoutRU.AddLayoutAsChild(slotExpandable);
+
+                    JRTControlUnit jCUSlot = new();
+                    jControlDataHolder.SaveSlots.slotControlUnits.Add(jCUSlot);
+                    jCUSlot.ExpandWhenClickingLayout = slotExpandable;
+                    jCUSlot.ExpandButton = new JButtonAccessor(slotExpandable, 0);
+                    jCUSlot.ExpandButtonImage = new JImageAccessor(slotExpandable.ButtonChildren[0].Item1, 0);
+                    unit.TextForFlavor = new JLayTextAccessor(slotExpandable, 0);
+                    unit.TextForTimeStuff = new JLayTextAccessor(slotExpandable, 1);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        bool importButtonCreation = i == 2;
+                        // can't import into the current slot
+                        if (importButtonCreation && slotIndex == mgc.JControlData.SaveSlots.ModelData.currentSlot)
+                        {
+                            continue;
+                        }
+                        var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                        jCUSlot.MainLayout = tempSlotButton;
+                        layoutRU.AddLayoutAsChild(tempSlotButton);
+                        jCUSlot.InsideExpandable.Add(tempSlotButton);
+                        tempSlotButton.SetParentShowing(false);
+                        JRTControlUnit jCU = new();
+                        jCU.MainLayout = tempSlotButton;
+                        jCU.MainExecuteButton = new JButtonAccessor(tempSlotButton, 0);
+                        tempSlotButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+
+                        switch (i)
+                        {
+                            case 0:
+                                {
+                                    tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("new game"));
+                                    unit.newGameOrLoadGameButton = jCU;
+
+
+                                }
+                                break;
+                            case 1:
+                                {
+                                    tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("export"));
+                                    unit.exportButton = jCU;
+                                }
+                                break;
+                            case 2:
+                                {
+                                    tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("import"));
+                                    unit.importButton = jCU;
+                                }
+                                break;
+                            case 3:
+                                {
+                                    tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("delete"));
+                                    unit.deleteButton = jCU;
+                                }
+                                break;
+                            case 4:
+                                {
+                                    tempSlotButton.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("copy"));
+                                    unit.copyButton = jCU;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
+            
             
         }
         #endregion

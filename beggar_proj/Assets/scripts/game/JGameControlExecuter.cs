@@ -196,6 +196,7 @@ public static class JGameControlExecuter
             {
                 var process = false;
                 var shouldShowSep = false;
+                shouldShowSep |= sep.SepD.ContainsSaveSlots;
                 if (sep.SeparatorLayout.ClickedLayout)
                 {
                     sep.Expanded = !sep.Expanded;

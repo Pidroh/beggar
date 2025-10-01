@@ -292,7 +292,7 @@
                 "separator": [
                     {
                         "id": "slots",
-                        "name": "Slots",
+                        "name": "Save Slots",
                         "contains_save_slots": true,
                         "unit_types": [
                         ]
