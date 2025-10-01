@@ -293,6 +293,7 @@
                     {
                         "id": "slots",
                         "name": "Slots",
+                        "contains_save_slots": true,
                         "unit_types": [
                         ]
                     }
