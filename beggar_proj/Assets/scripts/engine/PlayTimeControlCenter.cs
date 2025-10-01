@@ -36,7 +36,13 @@ namespace HeartUnity
 
         public void Load(CommonPlayerSaveData commonSaveData)
         {
-            var mainTime = Register("engine_main_time", savedTime: commonSaveData.TotalPlayTimeSeconds);
+            int totalPlayTimeSeconds = commonSaveData.TotalPlayTimeSeconds;
+            Init(totalPlayTimeSeconds);
+        }
+
+        public void Init(int totalPlayTimeSeconds)
+        {
+            var mainTime = Register("engine_main_time", savedTime: totalPlayTimeSeconds);
             this.MainTime = mainTime;
             // get time between scene transitions
             Init();

@@ -50,6 +50,10 @@ namespace HeartUnity
             {
                 PlayTimeControl.Load(playerSave);
             }
+            else 
+            {
+                PlayTimeControl.Init(0);
+            }
         }
 
         private void CreateCommonPlayerSaveDataPersistence(string key)
