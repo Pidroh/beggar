@@ -101,6 +101,17 @@ public class MainGameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region high DPI handling
+        var controlData = this.JControlData;
+        var changedScreenSize = Screen.width != controlData.lastScreenSize.x || Screen.height != controlData.lastScreenSize.y;
+        controlData.lastScreenSize = new Vector2(Screen.width, Screen.height);
+        if (changedScreenSize || EngineView.DpiChanged)
+        {
+            RectTransformExtensions.LimitDPIBasedOnPhysicalScreenAdjustedWidth(JGameControlExecuter.NormalMinTabWidth);
+        }
+        #endregion
+
+
         // Check title screen state
         if (controlState == ControlState.TITLE)
         {
