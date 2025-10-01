@@ -22,7 +22,7 @@ public static class SaveSlotExecution
                 unit.hasSave = slotU.hasSave;
                 unit.lastSaveTime = System.DateTime.ParseExact(slotU.lastSaveTime, "yyMMdd_HHmmss", CultureInfo.InvariantCulture);
                 unit.playTimeSeconds = slotU.playTimeSeconds;
-                unit.representativeText = slotU.representativeText;
+                unit.representativeTextRaw = slotU.representativeText;
                 slotModel.saveSlots.Add(unit);
             }
         }
@@ -52,7 +52,7 @@ public static class SaveSlotExecution
             p.persistenceUnits.Add(new()
             {
                 playTimeSeconds = item.playTimeSeconds,
-                representativeText = item.representativeText,
+                representativeText = item.representativeTextRaw,
                 lastSaveTime = item.lastSaveTime.ToString("yyMMdd_HHmmss"),
                 hasSave = item.hasSave
             });
@@ -92,12 +92,13 @@ public static class SaveSlotExecution
         csu.hasSave = true;
         csu.lastSaveTime = DateTime.Now;
         csu.playTimeSeconds = 0;
-        csu.representativeText = representativeTextKey;
+        csu.representativeTextRaw = representativeTextKey;
     }
 
     internal static void DeleteSlot(SaveSlotModelData modelData, int slot)
     {
         modelData.saveSlots[slot].hasSave = false;
+        modelData.saveSlots[slot].representativeTextRaw = Local.GetText("Empty_save_slot");
     }
 }
 
@@ -111,14 +112,14 @@ public class SaveSlotModelData
 
     public class SaveSlotUnit
     {
-        public string representativeText;
+        public string representativeTextRaw;
         public DateTime lastSaveTime;
         public int playTimeSeconds;
         public bool hasSave;
 
         internal void CopyFrom(SaveSlotUnit sourceSlot)
         {
-            this.representativeText = sourceSlot.representativeText;
+            this.representativeTextRaw = sourceSlot.representativeTextRaw;
             this.playTimeSeconds = sourceSlot.playTimeSeconds;
             this.lastSaveTime = sourceSlot.lastSaveTime;
             this.hasSave = sourceSlot.hasSave;

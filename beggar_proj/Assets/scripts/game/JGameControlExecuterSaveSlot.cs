@@ -10,7 +10,6 @@ public static class JGameControlExecuterSaveSlot
     {
         var cd = mgc.JControlData;
         bool willSkipInputNextFrame = false;
-
         
         if (mgc.JControlData.SaveSlots.ImportingSlotSave.HasValue && mgc.JControlData.SaveSlots.FileUtilities.UploadedBytes != null)
         {
@@ -67,8 +66,9 @@ public static class JGameControlExecuterSaveSlot
             bool notCurrentSlot = slot != mgc.JControlData.SaveSlots.ModelData.currentSlot;
             slotControlUnit.newGameOrLoadGameButton.MainLayout.SetVisibleSelf(notCurrentSlot);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
-            slotControlUnit.TextForTimeStuff.SetTextRaw($"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}");
-            slotControlUnit.TextForFlavor.SetTextRaw((notCurrentSlot ? "" : Local.GetText("Current slot") + "\n") +slotD.representativeText);
+            string timeText = slotD.hasSave ? $"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}" : "";
+            slotControlUnit.TextForTimeStuff.SetTextRaw(timeText);
+            slotControlUnit.TextForFlavor.SetTextRaw((notCurrentSlot ? "" : Local.GetText("Current slot") + "\n") +slotD.representativeTextRaw);
             if (slotControlUnit.newGameOrLoadGameButton.TaskClicked)
             {
                 var isNewGame = slotD.hasSave == false;

@@ -268,7 +268,7 @@ public class MainGameControl : MonoBehaviour
 
     public void SaveGameAndCurrentSlot()
     {
-        var flavorText = "Nobody";
+        var flavorText = Local.GetText("Nobody");
         var classes = arcaniaModel.arcaniaUnits.datas[UnitType.CLASS];
         int lastTagPriority = -1;
         foreach (var item in classes)
@@ -293,7 +293,7 @@ public class MainGameControl : MonoBehaviour
         SaveSlotModelData.SaveSlotUnit currentSlotUnit = modelData.CurrentSlotUnit;
         currentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
         currentSlotUnit.lastSaveTime = System.DateTime.Now;
-        currentSlotUnit.representativeText = flavorText;
+        currentSlotUnit.representativeTextRaw = flavorText;
 
         SaveSlotExecution.SaveData(modelData, this.HeartGame);
         ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
