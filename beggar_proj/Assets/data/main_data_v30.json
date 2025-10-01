@@ -288,7 +288,15 @@
                 "id": "save_slot_tab",
                 "unit_types": [],
                 "contains_save_slots": true,
-                "icon": "tab_save_slot"
+                "icon": "tab_save_slot",
+                "separator": [
+                    {
+                        "id": "slots",
+                        "name": "Slots",
+                        "unit_types": [
+                        ]
+                    }
+                ]
             }
         ]
     }
