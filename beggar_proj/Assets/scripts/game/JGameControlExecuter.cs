@@ -131,12 +131,11 @@ public static class JGameControlExecuter
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
 
             bool clickedTabButton = false;
-            if (tabControl.OverlayButton.IsButtonClicked(0)) 
+            if (tabControl.OverlayButton.ClickedLayout) 
             {
                 clickedTabButton = true;
                 dynamicCanvas.HideOverlay();
             }
-            clickedTabButton |= tabControl.OverlayButton.IsButtonClicked(0);
             foreach (var tabB in tabControl.TabToggleButtons)
             {
                 if (tabB.ClickedLayout)

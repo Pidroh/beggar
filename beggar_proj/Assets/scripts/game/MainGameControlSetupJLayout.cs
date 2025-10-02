@@ -607,7 +607,7 @@ public class MainGameControlSetupJLayout
             dialogLay.LayoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
             foreach (var tabC in mgc.JControlData.TabControlUnits)
             {
-                var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                var tempSlotButton = JCanvasMaker.CreateLayout("tab_button_desktop_as_layout", runtime);
                 dialogLay.LayoutRU.AddLayoutAsChild(tempSlotButton);
                 tabC.OverlayButton = tempSlotButton;
             }
