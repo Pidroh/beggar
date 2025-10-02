@@ -154,7 +154,8 @@ public static class JGameControlExecuter
                 }
                 else if (tabControl.TabData.Tab.OpenOtherTabs)
                 {
-                    // dynamicCanvas.ShowOverlay(this.TabButtonOverlayLayout);
+                    dynamicCanvas.ShowOverlay();
+                    mgc.JControlData.OverlayTabMenuLayout.LayoutRU.SetVisibleSelf(true);
                 }
                 else if (dynamicCanvas.CanShowOnlyOneChild())
                 {
@@ -473,16 +474,6 @@ public static class JGameControlExecuter
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
         JGameControlExecuterSaveSlot.ManualUpdate(mgc);
         JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
-
-        // TODO move this somewhere else?
-        {
-            JLayout.JLayCanvas dynamicCanvas = mgc.JControlData.LayoutRuntime.jLayCanvas;
-            if (!dynamicCanvas.OverlayVisible)
-            {
-                dynamicCanvas.ShowOverlay();
-                mgc.JControlData.OverlayTabMenuLayout.LayoutRU.SetVisibleSelf(true);
-            }
-        }
         
 
         #region dialog
