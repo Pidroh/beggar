@@ -536,12 +536,11 @@ public class MainGameControlSetupJLayout
         #region overlay tab menu
         var overlay = jCanvas.Overlays[0];
         {
-            var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
-            dialogLay.LayoutRU.SetTextRaw(0, "Tab title");
-            dialogLay.LayoutRU.SetTextRaw(1, "Tab text");
-            dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.SetVisibleSelf(false);
+            var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("overlay_tab_button", runtime));
+            dialogLay.LayoutRU.SetTextRaw(0, "Tabs");
             dialogLay.LayoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
             jControlDataHolder.OverlayTabMenuLayout = dialogLay;
+            dialogLay.LayoutRU.SetVisibleSelf(false);
         }
         #endregion
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)

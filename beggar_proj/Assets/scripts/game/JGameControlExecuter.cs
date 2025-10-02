@@ -521,6 +521,10 @@ public static class JGameControlExecuter
 
     private static void HideOverlay(MainGameControl mgc)
     {
+        if (mgc.JControlData.overlayType == JGameControlDataHolder.OverlayType.TabMenu) 
+        {
+            mgc.JControlData.OverlayTabMenuLayout.LayoutRU.SetVisibleSelf(false);
+        }
         mgc.JControlData.overlayType = null;
         mgc.JLayoutRuntime.jLayCanvas.HideOverlay();
     }
