@@ -533,16 +533,32 @@ public class MainGameControlSetupJLayout
         // TAB BUTTON INSTANTIATING (not yet implemented button instantiation) AND OTHER SMALL SETUP
         // -------------------------------------------------
         #region tab button and other things
+        #region overlay tab menu
+        var overlay = jCanvas.Overlays[0];
+        {
+            var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
+            dialogLay.LayoutRU.SetTextRaw(0, "Tab title");
+            dialogLay.LayoutRU.SetTextRaw(1, "Tab text");
+            dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.SetVisibleSelf(false);
+            dialogLay.LayoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
+            jControlDataHolder.OverlayTabMenuLayout = dialogLay;
+        }
+        #endregion
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             var tcu = new JTabControlUnit();
-            for (int buttonTypeIndex = 0; buttonTypeIndex < 2; buttonTypeIndex++)
+            for (int buttonTypeIndex = 0; buttonTypeIndex < 3; buttonTypeIndex++)
             {
                 var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
-                var d = buttonTypeIndex == 0 ? Direction.WEST : Direction.SOUTH;
                 var buttonLayRU = JCanvasMaker.CreateLayout(buttonLD, runtime);
-                var child = jControlDataHolder.tabMenu[d].AddLayoutAsChild(buttonLayRU);
+                var parentLayout = jControlDataHolder.OverlayTabMenuLayout.LayoutRU;
+                if (buttonTypeIndex <= 1) 
+                {
+                    var d = buttonTypeIndex == 0 ? Direction.WEST : Direction.SOUTH;
+                    parentLayout = jControlDataHolder.tabMenu[d];
+                }
+                var child = parentLayout.AddLayoutAsChild(buttonLayRU);
                 if (buttonTypeIndex == 1)
                     child.PositionModeOverride = new PositionMode[] { PositionMode.SIBLING_DISTANCE, PositionMode.CENTER };
 
@@ -555,10 +571,20 @@ public class MainGameControlSetupJLayout
                 {
                     buttonLayRU.ImageChildren[1].UiUnit.ChangeSprite(sprite);
                 }
-                if (buttonTypeIndex == 0)
-                    tcu.DesktopButton = buttonLayRU;
-                else
-                    tcu.MobileButton = buttonLayRU;
+                switch (buttonTypeIndex)
+                {
+                    case 0:
+                        tcu.DesktopButton = buttonLayRU;
+                        break;
+                    case 1:
+                        tcu.MobileButton = buttonLayRU;
+                        break;
+                    case 2:
+                        tcu.OverlayButton = buttonLayRU;
+                        break;
+                    default:
+                        break;
+                }
                 tcu.TabToggleButtons.Add(buttonLayRU);
             }
 
@@ -597,23 +623,7 @@ public class MainGameControlSetupJLayout
         }
         #endregion
 
-        #region overlay tab menu
-        var overlay = jCanvas.Overlays[0];
-        {
-            var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
-            dialogLay.LayoutRU.SetTextRaw(0, "Tab title");
-            dialogLay.LayoutRU.SetTextRaw(1, "Tab text");
-            dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.SetVisibleSelf(false);
-            dialogLay.LayoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
-            foreach (var tabC in mgc.JControlData.TabControlUnits)
-            {
-                var tempSlotButton = JCanvasMaker.CreateLayout("tab_button_desktop_as_layout", runtime);
-                dialogLay.LayoutRU.AddLayoutAsChild(tempSlotButton);
-                tabC.OverlayButton = tempSlotButton;
-            }
-            jControlDataHolder.OverlayTabMenuLayout = dialogLay;
-        }
-        #endregion
+        
     }
 
     private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, int mode)

@@ -115,11 +115,14 @@ public static class JGameControlExecuter
             bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
             bool bigTabButtonEnabled = tabEnabled && !plusTabForced && !alwaysActive && !tabButtonEnabled;
 
-            tabControl.OverlayButton.SetVisibleSelf(bigTabButtonEnabled);
+            
             foreach (var tabB in tabControl.TabToggleButtons)
             {
+                // visibility of overlay is set below
+                if (tabB == tabControl.OverlayButton) continue;
                 tabB.SetVisibleSelf(tabButtonEnabled && !alwaysActive);
             }
+            tabControl.OverlayButton.SetVisibleSelf(bigTabButtonEnabled);
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
             if (!tabEnabled) continue;
 
