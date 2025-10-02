@@ -131,6 +131,12 @@ public static class JGameControlExecuter
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
 
             bool clickedTabButton = false;
+            if (tabControl.OverlayButton.IsButtonClicked(0)) 
+            {
+                clickedTabButton = true;
+                dynamicCanvas.HideOverlay();
+            }
+            clickedTabButton |= tabControl.OverlayButton.IsButtonClicked(0);
             foreach (var tabB in tabControl.TabToggleButtons)
             {
                 if (tabB.ClickedLayout)
@@ -474,7 +480,7 @@ public static class JGameControlExecuter
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
         JGameControlExecuterSaveSlot.ManualUpdate(mgc);
         JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
-        
+                
 
         #region dialog
 
