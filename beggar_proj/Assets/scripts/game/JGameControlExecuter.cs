@@ -110,9 +110,12 @@ public static class JGameControlExecuter
             bool plusTabForced = tabControl.TabData.Tab.OpenOtherTabs && !allTabButtonVisible;
             bool tabEnabled = tabControl.TabData.Visible || plusTabForced;
             bool tabButtonEnabled = (tabEnabled && numberOfTabButtonsAlreadyActiveExcludingPlusTab < maxNumberOfTabButtonVisibleExcludingPlusTab) || plusTabForced;
+
             var tabData = tabControl.TabData.Tab;
             bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
+            bool bigTabButtonEnabled = tabEnabled && !plusTabForced && !alwaysActive && !tabButtonEnabled;
 
+            tabControl.OverlayButton.SetVisibleSelf(bigTabButtonEnabled);
             foreach (var tabB in tabControl.TabToggleButtons)
             {
                 tabB.SetVisibleSelf(tabButtonEnabled && !alwaysActive);
