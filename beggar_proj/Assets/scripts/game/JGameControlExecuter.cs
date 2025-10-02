@@ -74,7 +74,7 @@ public static class JGameControlExecuter
 
         #region find out how many tab button visible in the menus
         var numberOfTabButtonsThatNeedButtonExcludingPlusTab = 0;
-        bool allTabsVisible;
+        bool allTabButtonVisible;
         int maxNumberOfTabButtonVisible;
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
@@ -94,26 +94,37 @@ public static class JGameControlExecuter
             int axis = 0;
             float size = layout.GetSize(axis);
             maxNumberOfTabButtonVisible = Mathf.FloorToInt(size / (55 * RectTransformExtensions.DpiScaleFromDefault));
-            allTabsVisible = numberOfTabButtonsThatNeedButtonExcludingPlusTab <= maxNumberOfTabButtonVisible;
+            allTabButtonVisible = numberOfTabButtonsThatNeedButtonExcludingPlusTab <= maxNumberOfTabButtonVisible;
         }
-        
+
+        // if has to show plus tab, exclude one of the max
+        int maxNumberOfTabButtonVisibleExcludingPlusTab = allTabButtonVisible ? maxNumberOfTabButtonVisible : maxNumberOfTabButtonVisible - 1;
         #endregion
 
         #region Main loop that does tons of things (tabs, logs, each unit)
+        int numberOfTabButtonsAlreadyActiveExcludingPlusTab = 0;
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
             JTabControlUnit tabControl = controlData.TabControlUnits[tabIndex];
             // open other tabs currently just invisible for now
-            bool tabEnabled = tabControl.TabData.Visible && !tabControl.TabData.Tab.OpenOtherTabs;
+            bool plusTabForced = tabControl.TabData.Tab.OpenOtherTabs && !allTabButtonVisible;
+            bool tabEnabled = tabControl.TabData.Visible || plusTabForced;
+            bool tabButtonEnabled = (tabEnabled && numberOfTabButtonsAlreadyActiveExcludingPlusTab < maxNumberOfTabButtonVisibleExcludingPlusTab) || plusTabForced;
             var tabData = tabControl.TabData.Tab;
             bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
 
             foreach (var tabB in tabControl.TabToggleButtons)
             {
-                tabB.SetVisibleSelf(tabEnabled && !alwaysActive);
+                tabB.SetVisibleSelf(tabButtonEnabled && !alwaysActive);
             }
             mgc.JLayoutRuntime.jLayCanvas.EnableChild(tabIndex, tabEnabled);
             if (!tabEnabled) continue;
+
+            if (tabButtonEnabled && !alwaysActive && !plusTabForced)
+            {
+                numberOfTabButtonsAlreadyActiveExcludingPlusTab++;
+            }
+
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
 
             bool clickedTabButton = false;
