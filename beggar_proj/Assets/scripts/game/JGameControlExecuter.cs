@@ -471,6 +471,17 @@ public static class JGameControlExecuter
         JGameControlExecuterSaveSlot.ManualUpdate(mgc);
         JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
 
+        // TODO move this somewhere else?
+        {
+            JLayout.JLayCanvas dynamicCanvas = mgc.JControlData.LayoutRuntime.jLayCanvas;
+            if (!dynamicCanvas.OverlayVisible)
+            {
+                dynamicCanvas.ShowOverlay();
+                mgc.JControlData.OverlayTabMenuLayout.LayoutRU.SetVisibleSelf(true);
+            }
+        }
+        
+
         #region dialog
 
         var dialog = arcaniaModel.Dialog.ActiveDialog;

@@ -597,6 +597,23 @@ public class MainGameControlSetupJLayout
         }
         #endregion
 
+        #region overlay tab menu
+        var overlay = jCanvas.Overlays[0];
+        {
+            var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("dialog_yes_no", runtime));
+            dialogLay.LayoutRU.SetTextRaw(0, "Tab title");
+            dialogLay.LayoutRU.SetTextRaw(1, "Tab text");
+            dialogLay.LayoutRU.LayoutChildren[0].LayoutRU.SetVisibleSelf(false);
+            dialogLay.LayoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
+            foreach (var tabC in mgc.JControlData.TabControlUnits)
+            {
+                var tempSlotButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                dialogLay.LayoutRU.AddLayoutAsChild(tempSlotButton);
+                tabC.OverlayButton = tempSlotButton;
+            }
+            jControlDataHolder.OverlayTabMenuLayout = dialogLay;
+        }
+        #endregion
     }
 
     private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, int mode)

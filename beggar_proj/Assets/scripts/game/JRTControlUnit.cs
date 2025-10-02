@@ -67,6 +67,7 @@ public class JGameControlDataHolder
     public JLayoutRuntimeData LayoutRuntime { get; internal set; }
     public JLayoutChild DialogLayout { get; internal set; }
     public JLayoutChild EndingLayout { get; internal set; }
+    public JLayoutChild OverlayTabMenuLayout { get; internal set; }
     public JEndingGameData EndingData { get; internal set; } = new();
     public string LabelDuration { get; internal set; }
     public string LabelEffectDuration { get; internal set; }
@@ -117,6 +118,7 @@ public class JTabControlUnit
     public List<JLayoutRuntimeUnit> TabToggleButtons = new();
     public int LogAmount { get; internal set; }
     public JLayoutRuntimeUnit MobileButton { get; internal set; }
+    public JLayoutRuntimeUnit OverlayButton { get; internal set; }
     public JLayoutRuntimeUnit SpaceShowLayout { get; internal set; }
 
     public class JSeparatorControl 
