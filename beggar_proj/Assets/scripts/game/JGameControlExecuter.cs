@@ -137,7 +137,7 @@ public static class JGameControlExecuter
             if (tabControl.OverlayButton.ClickedLayout) 
             {
                 clickedTabButton = true;
-                dynamicCanvas.HideOverlay();
+                HideOverlay(mgc);
             }
             foreach (var tabB in tabControl.TabToggleButtons)
             {
@@ -162,7 +162,7 @@ public static class JGameControlExecuter
                 }
                 else if (tabControl.TabData.Tab.OpenOtherTabs)
                 {
-                    dynamicCanvas.ShowOverlay();
+                    JGameControlExecuter.ShowOverlay(mgc, JGameControlDataHolder.OverlayType.TabMenu);
                     mgc.JControlData.OverlayTabMenuLayout.LayoutRU.SetVisibleSelf(true);
                 }
                 else if (dynamicCanvas.CanShowOnlyOneChild())
@@ -475,6 +475,16 @@ public static class JGameControlExecuter
         #endregion
         // do it twice to make sure
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
+        //mgc.JLayoutRuntime.jLayCanvas.Overlays[0].LayoutRuntimeUnit.ScrollViewportImage.raycastTarget
+        bool overlayClickable = mgc.JControlData.overlayType == JGameControlDataHolder.OverlayType.TabMenu;
+        mgc.JLayoutRuntime.jLayCanvas.Overlays[0].LayoutRuntimeUnit.ScrollViewportImage.raycastTarget = !overlayClickable;
+        if (overlayClickable) 
+        {
+            if (mgc.JLayoutRuntime.jLayCanvas.overlayImageUU.Clicked)
+            {
+                HideOverlay(mgc);
+            }
+        }
 
         // after all need to hide check, clear
         mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
@@ -491,11 +501,11 @@ public static class JGameControlExecuter
         {
             if (arcaniaModel.Dialog.ShouldShow)
             {
-                ShowDialog(dialog, controlData);
+                ShowDialog(mgc, dialog, controlData);
             }
             else
             {
-                controlData.LayoutRuntime.jLayCanvas.HideOverlay();
+                HideOverlay(mgc);
                 controlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
             }
         }
@@ -507,6 +517,18 @@ public static class JGameControlExecuter
             }
         }
         #endregion
+    }
+
+    private static void HideOverlay(MainGameControl mgc)
+    {
+        mgc.JControlData.overlayType = null;
+        mgc.JLayoutRuntime.jLayCanvas.HideOverlay();
+    }
+
+    public static void ShowOverlay(MainGameControl mgc, JGameControlDataHolder.OverlayType overType)
+    {
+        mgc.JControlData.overlayType = overType;
+        mgc.JLayoutRuntime.jLayCanvas.ShowOverlay();
     }
 
     internal static bool IsTabVisibleAndShowing(MainGameControl mgc, JTabControlUnit tabC)
@@ -584,11 +606,11 @@ public static class JGameControlExecuter
         modList.Header.SetVisibleSelf(hasAnyVisible);
     }
 
-    private static void ShowDialog(DialogRuntime dialog, JGameControlDataHolder controlData)
+    private static void ShowDialog(MainGameControl mgc, DialogRuntime dialog, JGameControlDataHolder controlData)
     {
         controlData.DialogLayout.LayoutRU.SetTextRaw(0, dialog.Title);
         controlData.DialogLayout.LayoutRU.SetTextRaw(1, dialog.Content);
-        controlData.LayoutRuntime.jLayCanvas.ShowOverlay();
+        JGameControlExecuter.ShowOverlay(mgc, JGameControlDataHolder.OverlayType.YesNo);
         controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
     }
 

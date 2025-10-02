@@ -4,6 +4,7 @@ using UnityEngine;
 using static JLayout.JLayoutRuntimeData;
 using HeartUnity.View;
 using TMPro;
+using UnityEngine.UI;
 
 namespace JLayout
 {
@@ -190,6 +191,7 @@ namespace JLayout
         public JLayoutChild ChildSelf { get; private set; }
         public bool Hovered => (ChildSelf?.UiUnit) != null && ChildSelf.UiUnit.HoveredWhileVisible;
 
+        public Image ScrollViewportImage { get; internal set; }
 
         internal bool TryGetSelfButton(out UIUnit buttonUU)
         {

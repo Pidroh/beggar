@@ -59,6 +59,7 @@ public class JResourceChangeGroup
 public class JGameControlDataHolder
 {
     public Vector2 lastScreenSize;
+    public OverlayType? overlayType;
     public List<JTabControlUnit> TabControlUnits = new();
     public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
     public JGameControlDataExploration Exploration = new();
@@ -90,6 +91,10 @@ public class JGameControlDataHolder
     public string LabelSpace { get; internal set; }
     public string LabelUnlocked { get; internal set; }
     public string LabelLivingHere { get; internal set; }
+    public enum OverlayType 
+    {
+        YesNo, Ending, TabMenu
+    }
 }
 
 public class JGameViewMiscData 

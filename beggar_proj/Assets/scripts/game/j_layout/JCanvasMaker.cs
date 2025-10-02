@@ -345,7 +345,7 @@ namespace JLayout
             scrollbar.targetGraphic = handleImage;
             scrollbar.handleRect = handleRT;
             lp.DefaultPositionModes = new PositionMode[2] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
-
+            lp.ScrollViewportImage = viewportImage;
             return lp;
         }
 

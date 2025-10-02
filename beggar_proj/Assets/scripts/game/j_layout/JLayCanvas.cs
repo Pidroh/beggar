@@ -17,7 +17,7 @@ namespace JLayout
         public RectTransform OverlayRoot { get; internal set; }
         public List<JLayCanvasChild> ActiveChildren = new();
         public List<JLayCanvasChild> Overlays = new();
-
+        internal UIUnit overlayImageUU;
         private const int minimumDefaultTabPixelWidth = 320;
 
         // Pixel size adjusted from fall back DPI to actual DPI

@@ -45,7 +45,7 @@ public static class JGameControlExecuterEnding
             // older versions might not have all the endings
             if (ru == null) continue;
             if (ru.Value <= 0) continue;
-            dynamicCanvas.ShowOverlay();
+            JGameControlExecuter.ShowOverlay(mainGameControl, JGameControlDataHolder.OverlayType.Ending);
 
             var message = endingMessage;
             message = message.Replace("$PART1$", endingPrefix[i]).Replace("$PART2$", endingMessageSnippet[i]);
