@@ -66,6 +66,8 @@ namespace JLayout
                     var oi = dc.OverlayRoot.CreateFullSizeChild("overlay_image");
                     dc.overlayImage = oi.gameObject.AddComponent<Image>();
                     dc.overlayImage.color = new Color(0f, 0f, 0f, 0.99f);
+                    oi.gameObject.AddComponent<Button>();
+                    dc.overlayImageUU = oi.gameObject.AddComponent<UIUnit>();
                     dc.HideOverlay();
                 }
                 {
