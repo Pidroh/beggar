@@ -146,6 +146,8 @@ namespace JLayout
             }
         }
 
+        internal float GetSize(int axis) => RectTransform.GetSize()[axis];
+
         public void MarkDirtyWithChildren()
         {
             if (ChildSelf != null)

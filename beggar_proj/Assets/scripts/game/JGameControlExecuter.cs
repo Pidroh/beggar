@@ -72,6 +72,33 @@ public static class JGameControlExecuter
         controlData.tabMenu[Direction.SOUTH].SetVisibleSelf(!desktopMode);
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
+        #region find out how many tab button visible in the menus
+        var numberOfTabButtonsThatNeedButtonExcludingPlusTab = 0;
+        bool allTabsVisible;
+        int maxNumberOfTabButtonVisible;
+        for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
+        {
+            // no tab button at all in this case
+            JTabControlUnit jTabControlUnit = controlData.TabControlUnits[tabIndex];
+            if (jTabControlUnit.TabData.Tab.NecessaryForDesktopAndThinnable && desktopMode) continue;
+            if (!jTabControlUnit.TabData.Visible) continue;
+            if (jTabControlUnit.TabData.Tab.OpenSettings) continue;
+            numberOfTabButtonsThatNeedButtonExcludingPlusTab++;
+        }
+
+        {
+            var checkingDesktop = desktopMode;
+            var direction = checkingDesktop ? Direction.WEST : Direction.SOUTH;
+            // do nothing for now on desktop, TODO implement this for diff direction
+            var layout = controlData.tabMenu[Direction.SOUTH];
+            int axis = 0;
+            float size = layout.GetSize(axis);
+            maxNumberOfTabButtonVisible = Mathf.FloorToInt(size / (55 * RectTransformExtensions.DpiScaleFromDefault));
+            allTabsVisible = numberOfTabButtonsThatNeedButtonExcludingPlusTab <= maxNumberOfTabButtonVisible;
+        }
+        
+        #endregion
+
         #region Main loop that does tons of things (tabs, logs, each unit)
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {

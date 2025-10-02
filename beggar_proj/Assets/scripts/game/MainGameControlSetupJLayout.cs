@@ -3,7 +3,6 @@ using HeartUnity.View;
 using JLayout;
 using System.Collections.Generic;
 using UnityEngine;
-using static TitleScreenRuntimeData;
 
 public class MainGameControlSetupJLayout
 {
