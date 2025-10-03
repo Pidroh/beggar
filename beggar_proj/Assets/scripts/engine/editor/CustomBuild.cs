@@ -80,7 +80,15 @@ public class CustomBuild
         }
         if(entry.buildTarget == BuildTarget.Android)
         {
-            EditorUserBuildSettings.buildAppBundle = true;
+            if (!outputPath.Contains("apk"))
+            {
+                EditorUserBuildSettings.buildAppBundle = true;
+            }
+            else 
+            {
+                EditorUserBuildSettings.buildAppBundle = false;
+            }
+            
         }
         // Define the build options
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions

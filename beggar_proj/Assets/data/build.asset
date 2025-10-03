@@ -48,3 +48,8 @@ MonoBehaviour:
     outputPath: ../builds/android/beggar_life%V%%BETA%.aab
     buildTarget: 13
     forceGzipOnWebGL: 0
+  - tag: android_apk
+    copyFileTag: 
+    outputPath: ../builds/android/beggar_life%V%%BETA%.apk
+    buildTarget: 13
+    forceGzipOnWebGL: 0

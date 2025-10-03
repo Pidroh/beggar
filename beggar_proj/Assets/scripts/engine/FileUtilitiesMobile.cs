@@ -30,6 +30,11 @@ namespace HeartUnity
             File.WriteAllBytes(path, bytes);
             NativeFilePicker.ExportFile(path);
         }
+
+        public void ResetBytes() 
+        {
+            UploadedBytes = null;
+        }
     }
 }
 #endif
