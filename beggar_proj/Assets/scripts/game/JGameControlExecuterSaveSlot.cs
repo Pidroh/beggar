@@ -126,9 +126,15 @@ public static class JGameControlExecuterSaveSlot
             } 
             if (slotControlUnit.deleteButton?.TaskClicked ?? false) 
             {
-                SaveSlotExecution.DeleteSlot(mgc.JControlData.SaveSlots.ModelData, slot);
+                mgc.JControlData.SaveSlots.SlotDeleteRequest = slot;
+                // SaveSlotExecution.DeleteSlot(mgc.JControlData.SaveSlots.ModelData, slot);
             }
         }
         mgc.JControlData.SaveSlots.ActionHappenedLastFrameSoSkipActions = willSkipInputNextFrame;
+    }
+
+    public static void ConfirmDelete(MainGameControl mgc) 
+    {
+        SaveSlotExecution.DeleteSlot(mgc.JControlData.SaveSlots.ModelData, mgc.JControlData.SaveSlots.SlotDeleteRequest);
     }
 }

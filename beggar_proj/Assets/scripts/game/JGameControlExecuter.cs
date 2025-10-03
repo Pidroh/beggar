@@ -523,9 +523,24 @@ public static class JGameControlExecuter
         }
         for (int i = 0; i < 2; i++)
         {
-            if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
+            if (controlData.overlayType == JGameControlDataHolder.OverlayType.YesNoArcaniaDialog) 
             {
-                arcaniaModel.Dialog.DialogComplete(i);
+                if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
+                {
+                    arcaniaModel.Dialog.DialogComplete(i);
+                }
+            }
+            if (controlData.overlayType == JGameControlDataHolder.OverlayType.ConfirmDeleteSave)
+            {
+                if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
+                {
+                    if (i == 0)
+                    {
+                        JGameControlExecuterSaveSlot.ConfirmDelete(mgc);
+                    }
+                    JGameControlExecuter.HideOverlay(mgc);
+
+                }
             }
         }
         #endregion
