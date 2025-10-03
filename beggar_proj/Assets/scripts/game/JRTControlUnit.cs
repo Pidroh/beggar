@@ -60,6 +60,10 @@ public class JGameControlDataHolder
 {
     public Vector2 lastScreenSize;
     public OverlayType? overlayType;
+
+    public JLayoutChild OverlayTabMenuLayout { get; internal set; }
+    public JRTControlUnit TabOverlayCloseButtonJCU { get; internal set; }
+
     public List<JTabControlUnit> TabControlUnits = new();
     public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
     public JGameControlDataExploration Exploration = new();
@@ -68,7 +72,6 @@ public class JGameControlDataHolder
     public JLayoutRuntimeData LayoutRuntime { get; internal set; }
     public JLayoutChild DialogLayout { get; internal set; }
     public JLayoutChild EndingLayout { get; internal set; }
-    public JLayoutChild OverlayTabMenuLayout { get; internal set; }
     public JEndingGameData EndingData { get; internal set; } = new();
     public string LabelDuration { get; internal set; }
     public string LabelEffectDuration { get; internal set; }
@@ -91,6 +94,8 @@ public class JGameControlDataHolder
     public string LabelSpace { get; internal set; }
     public string LabelUnlocked { get; internal set; }
     public string LabelLivingHere { get; internal set; }
+    
+
     public enum OverlayType 
     {
         YesNo, Ending, TabMenu

@@ -533,7 +533,7 @@ public class MainGameControlSetupJLayout
         // TAB BUTTON INSTANTIATING (not yet implemented button instantiation) AND OTHER SMALL SETUP
         // -------------------------------------------------
         #region tab button and other things
-        #region overlay tab menu
+        #region overlay tab menu layout setup
         var overlay = jCanvas.Overlays[0];
         {
             var dialogLay = overlay.LayoutRuntimeUnit.AddLayoutAsChild(JCanvasMaker.CreateLayout("overlay_tab_button", runtime));
@@ -620,9 +620,21 @@ public class MainGameControlSetupJLayout
                 }
             }
         }
+        #region overlay tab menu close button
+        {
+            var closeButtonOverlayTab = JCanvasMaker.CreateLayout("centered_simple_button", runtime);
+            jControlDataHolder.OverlayTabMenuLayout.LayoutRU.AddLayoutAsChild(closeButtonOverlayTab);
+            closeButtonOverlayTab.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Close"));
+            JRTControlUnit jCU = new();
+            jCU.MainLayout = closeButtonOverlayTab;
+            closeButtonOverlayTab.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+            jCU.MainExecuteButton = new JButtonAccessor(closeButtonOverlayTab, 0);
+            jControlDataHolder.TabOverlayCloseButtonJCU = jCU;
+        }
+        #endregion
         #endregion
 
-        
+
     }
 
     private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, int mode)

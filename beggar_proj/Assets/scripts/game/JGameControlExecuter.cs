@@ -93,13 +93,20 @@ public static class JGameControlExecuter
             var layout = controlData.tabMenu[Direction.SOUTH];
             int axis = 0;
             float size = layout.GetSize(axis);
-            maxNumberOfTabButtonVisible = Mathf.FloorToInt(size / (55 * RectTransformExtensions.DpiScaleFromDefault));
+            // leeway so it shows one more tab button depending on width
+            var leeway = 20 * RectTransformExtensions.DpiScaleFromDefault;
+            maxNumberOfTabButtonVisible = Mathf.FloorToInt((size + leeway) / (55 * RectTransformExtensions.DpiScaleFromDefault));
             allTabButtonVisible = numberOfTabButtonsThatNeedButtonExcludingPlusTab <= maxNumberOfTabButtonVisible;
         }
 
         // if has to show plus tab, exclude one of the max
         int maxNumberOfTabButtonVisibleExcludingPlusTab = allTabButtonVisible ? maxNumberOfTabButtonVisible : maxNumberOfTabButtonVisible - 1;
         #endregion
+
+        if (mgc.JControlData.TabOverlayCloseButtonJCU.TaskClicked) 
+        {
+            HideOverlay(mgc);
+        }
 
         #region Main loop that does tons of things (tabs, logs, each unit)
         int numberOfTabButtonsAlreadyActiveExcludingPlusTab = 0;
