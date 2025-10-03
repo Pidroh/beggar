@@ -291,6 +291,7 @@ public class MainGameControl : MonoBehaviour
 
         SaveSlotModelData modelData = this.JControlData.SaveSlots.ModelData;
         SaveSlotModelData.SaveSlotUnit currentSlotUnit = modelData.CurrentSlotUnit;
+        currentSlotUnit.hasSave = true;
         currentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
         currentSlotUnit.lastSaveTime = System.DateTime.Now;
         currentSlotUnit.representativeTextRaw = flavorText;
