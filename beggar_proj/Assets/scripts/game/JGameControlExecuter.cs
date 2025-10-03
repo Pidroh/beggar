@@ -78,11 +78,12 @@ public static class JGameControlExecuter
         int maxNumberOfTabButtonVisible;
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
-            // no tab button at all in this case
+            
             JTabControlUnit jTabControlUnit = controlData.TabControlUnits[tabIndex];
+            // no tab button at all in this case
             if (jTabControlUnit.TabData.Tab.NecessaryForDesktopAndThinnable && desktopMode) continue;
             if (!jTabControlUnit.TabData.Visible) continue;
-            if (jTabControlUnit.TabData.Tab.OpenSettings) continue;
+            if (jTabControlUnit.TabData.Tab.OpenOtherTabs) continue;
             numberOfTabButtonsThatNeedButtonExcludingPlusTab++;
         }
 
@@ -90,8 +91,8 @@ public static class JGameControlExecuter
             var checkingDesktop = desktopMode;
             var direction = checkingDesktop ? Direction.WEST : Direction.SOUTH;
             // do nothing for now on desktop, TODO implement this for diff direction
-            var layout = controlData.tabMenu[Direction.SOUTH];
-            int axis = 0;
+            var layout = controlData.tabMenu[direction];
+            int axis = checkingDesktop ? 1 : 0;
             float size = layout.GetSize(axis);
             // leeway so it shows one more tab button depending on width
             var leeway = 20 * RectTransformExtensions.DpiScaleFromDefault;
@@ -117,6 +118,10 @@ public static class JGameControlExecuter
             bool plusTabForced = tabControl.TabData.Tab.OpenOtherTabs && !allTabButtonVisible;
             bool tabEnabled = tabControl.TabData.Visible || plusTabForced;
             bool tabButtonEnabled = (tabEnabled && numberOfTabButtonsAlreadyActiveExcludingPlusTab < maxNumberOfTabButtonVisibleExcludingPlusTab) || plusTabForced;
+            if (tabControl.TabData.Tab.OpenOtherTabs && !plusTabForced) { 
+                tabButtonEnabled = false;
+                tabEnabled = false;
+            }
 
             var tabData = tabControl.TabData.Tab;
             bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
