@@ -98,7 +98,10 @@ public class MainGameControlSetupJLayout
             jControlDataHolder.LabelBuy = Local.GetText("acquisition");
             jControlDataHolder.LabelAcquireSkill = Local.GetText("Acquire Skill");
             jControlDataHolder.LabelPracticeSkill = Local.GetText("Practice Skill");
-            jControlDataHolder.LabelLivingHere = Local.GetText("living here");
+            jControlDataHolder.LabelConfirmSlotDeleteTitle = Local.GetText("Delete save slot");
+            jControlDataHolder.LabelConfirmSlotDeleteContent = Local.GetText("Data cannot be recovered");
+
+            jControlDataHolder.LabelDuration = Local.GetText("Duration");
 
             #endregion
 

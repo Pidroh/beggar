@@ -94,7 +94,8 @@ public class JGameControlDataHolder
     public string LabelSpace { get; internal set; }
     public string LabelUnlocked { get; internal set; }
     public string LabelLivingHere { get; internal set; }
-    
+    public string LabelConfirmSlotDeleteTitle { get; internal set; }
+    public string LabelConfirmSlotDeleteContent { get; internal set; }
 
     public enum OverlayType 
     {
