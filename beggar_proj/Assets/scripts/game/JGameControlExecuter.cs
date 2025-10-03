@@ -515,7 +515,7 @@ public static class JGameControlExecuter
             {
                 ShowDialog(mgc, dialog, controlData);
             }
-            else
+            else if (controlData.overlayType == JGameControlDataHolder.OverlayType.YesNoArcaniaDialog)
             {
                 HideOverlay(mgc);
                 controlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
@@ -536,7 +536,7 @@ public static class JGameControlExecuter
                 {
                     if (i == 0)
                     {
-                        JGameControlExecuterSaveSlot.ConfirmDelete(mgc);
+                        JGameControlExecuterSaveSlot.ConfirmDelete(mgc);  
                     }
                     JGameControlExecuter.HideOverlay(mgc);
 
