@@ -64,6 +64,7 @@ public static class JGameControlExecuterSaveSlot
             slotControlUnit.importButton?.MainLayout.SetVisibleSelf(!slotD.hasSave);
             slotControlUnit.exportButton.MainLayout.SetVisibleSelf(slotD.hasSave);
             slotControlUnit.copyButton.MainLayout.SetVisibleSelf(hasEmptySlot && slotD.hasSave);
+            slotControlUnit.deleteButton?.MainLayout.SetVisibleSelf(slotD.hasSave);
             bool notCurrentSlot = slot != mgc.JControlData.SaveSlots.ModelData.currentSlot;
             slotControlUnit.newGameOrLoadGameButton.MainLayout.SetVisibleSelf(notCurrentSlot);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
