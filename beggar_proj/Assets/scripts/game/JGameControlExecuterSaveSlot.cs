@@ -127,6 +127,7 @@ public static class JGameControlExecuterSaveSlot
             if (slotControlUnit.deleteButton?.TaskClicked ?? false) 
             {
                 mgc.JControlData.SaveSlots.SlotDeleteRequest = slot;
+                JGameControlExecuter.ShowDialog(mgc, mgc.JControlData.LabelConfirmSlotDeleteTitle, mgc.JControlData.LabelConfirmSlotDeleteContent, JGameControlDataHolder.OverlayType.ConfirmDeleteSave);
                 // SaveSlotExecution.DeleteSlot(mgc.JControlData.SaveSlots.ModelData, slot);
             }
         }

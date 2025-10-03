@@ -642,11 +642,12 @@ public static class JGameControlExecuter
         string title = dialog.Title;
         string content = dialog.Content;
         const JGameControlDataHolder.OverlayType overlayType = JGameControlDataHolder.OverlayType.YesNoArcaniaDialog;
-        ShowDialog(mgc, controlData, title, content, overlayType);
+        ShowDialog(mgc, title, content, overlayType);
     }
 
-    public static void ShowDialog(MainGameControl mgc, JGameControlDataHolder controlData, string title, string content, JGameControlDataHolder.OverlayType overlayType)
+    public static void ShowDialog(MainGameControl mgc, string title, string content, JGameControlDataHolder.OverlayType overlayType)
     {
+        var controlData = mgc.JControlData;
         controlData.DialogLayout.LayoutRU.SetTextRaw(0, title);
         controlData.DialogLayout.LayoutRU.SetTextRaw(1, content);
         JGameControlExecuter.ShowOverlay(mgc, overlayType);
