@@ -98,7 +98,7 @@ public class JGameControlDataHolder
 
     public enum OverlayType 
     {
-        YesNo, Ending, TabMenu
+        YesNoArcaniaDialog, ConfirmDeleteSave, Ending, TabMenu
     }
 }
 

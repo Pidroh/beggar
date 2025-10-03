@@ -624,9 +624,17 @@ public static class JGameControlExecuter
 
     private static void ShowDialog(MainGameControl mgc, DialogRuntime dialog, JGameControlDataHolder controlData)
     {
-        controlData.DialogLayout.LayoutRU.SetTextRaw(0, dialog.Title);
-        controlData.DialogLayout.LayoutRU.SetTextRaw(1, dialog.Content);
-        JGameControlExecuter.ShowOverlay(mgc, JGameControlDataHolder.OverlayType.YesNo);
+        string title = dialog.Title;
+        string content = dialog.Content;
+        const JGameControlDataHolder.OverlayType overlayType = JGameControlDataHolder.OverlayType.YesNoArcaniaDialog;
+        ShowDialog(mgc, controlData, title, content, overlayType);
+    }
+
+    public static void ShowDialog(MainGameControl mgc, JGameControlDataHolder controlData, string title, string content, JGameControlDataHolder.OverlayType overlayType)
+    {
+        controlData.DialogLayout.LayoutRU.SetTextRaw(0, title);
+        controlData.DialogLayout.LayoutRU.SetTextRaw(1, content);
+        JGameControlExecuter.ShowOverlay(mgc, overlayType);
         controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
     }
 
