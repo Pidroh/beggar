@@ -1305,7 +1305,7 @@
                 "tags": "t_tier4,not_church_class_automated",
                 "lock": "t_tier4",
                 "need": "theself_4",
-                "require": "t_tier3&&philosophy>4",
+                "require": "t_tier3&&philosophy>=3",
                 "cost": {
                     "thoughts": 200,
                     "clarity": 25,
