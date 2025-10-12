@@ -81,14 +81,14 @@
                     "clarity": 100,
                     "thoughts": 400
                 },
-                "duration": 30,
+                "duration": 10,
                 "cost": {
                     "reflection": 3,
                     "clarity": 40,
                     "thoughts": 200
                 },
                 "dot": {
-                    "duration": 400,
+                    "duration": 500,
                     "mod": {
                         "organizethoughts.speed": 200,
                         "thoughts.rate": 10,
@@ -111,8 +111,8 @@
                     "reflection": 10
                 },
                 "run": {
-                    "supplication": 30,
-                    "thoughts": 30
+                    "supplication": 20,
+                    "thoughts": 20
                 },
                 "result": {
                     "realization": 1

@@ -72,7 +72,7 @@ MonoBehaviour:
     buildConfigId: windows_steam_demo
     majorVersionOverride: 0
     versionOverride: 27
-    patchOverride: 1
+    patchOverride: 2
     SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: patreon
