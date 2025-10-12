@@ -546,7 +546,7 @@ public static class JGameControlExecuter
         #endregion
     }
 
-    private static void HideOverlay(MainGameControl mgc)
+    public static void HideOverlay(MainGameControl mgc)
     {
         if (mgc.JControlData.overlayType == JGameControlDataHolder.OverlayType.TabMenu) 
         {
@@ -651,7 +651,7 @@ public static class JGameControlExecuter
         controlData.DialogLayout.LayoutRU.SetTextRaw(0, title);
         controlData.DialogLayout.LayoutRU.SetTextRaw(1, content);
         JGameControlExecuter.ShowOverlay(mgc, overlayType);
-        controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
+        controlData.DialogLayout.LayoutRU.SetVisibleSelf(true); 
     }
 
     public static void UpdateExpandLogicForUnit(JRTControlUnit unit)

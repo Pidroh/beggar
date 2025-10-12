@@ -349,6 +349,9 @@ public class MainGameControlSetupJLayout
             jControlDataHolder.EndingData.PatreonButton = endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0];
         }
         #endregion
+
+        JGameControlExecuter.HideOverlay(mgc);
+        mgc.JControlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
     }
 
     public static void SetupGameCanvasMainRuntimeUnits(MainGameControl mgc)
