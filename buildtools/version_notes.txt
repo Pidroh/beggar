@@ -1,5 +1,18 @@
-- Version 27
+- Version 28
 Patreon: true
+Dev notes: Sewer Pathology
+# CHANGES
+5 new resource(s)
+22 new task(s)
+1 new house(s)
+2 new class(s)
+3 new skill(s)
+1 new location(s)
+3 new encounter(s)
+1 new dialog(s)
+
+- Version 27
+Latest: true
 Dev notes: Grand Theft - Thievery and debates
 # CHANGES
 5 new resource(s)
@@ -13,7 +26,6 @@ Dev notes: Grand Theft - Thievery and debates
 16 new furniture(s)
 
 - Version 25
-Latest: true
 Dev notes: Sadism VS Empathy, and the warmth of fire
 # CHANGES
 9 new resource(s)

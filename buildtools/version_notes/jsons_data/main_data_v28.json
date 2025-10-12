@@ -1,0 +1,676 @@
+[
+    {
+        "type": "RESOURCE",
+        "items": [
+            {
+                "id": "weakdisease",
+                "name": "Small illness",
+                "max": 5,
+                "desc": "Nothing too serious",
+                "tag": "disease_tag",
+                "mod": {
+                    "middisease.rate": 0.001
+                }
+            },
+            {
+                "id": "middisease",
+                "name": "Sickness",
+                "max": 5,
+                "desc": "You better get that treated",
+                "tag": "disease_tag",
+                "mod": {
+                    "supplication.max": -20,
+                    "thoughts.max": -10,
+                    "supplication.rate": -0.02
+                }
+            },
+            {
+                "id": "heavydisease",
+                "name": "Disease",
+                "max": 3,
+                "desc": "Things are getting pretty bad, huh?",
+                "tag": "disease_tag",
+                "mod": {
+                    "supplication.max": -80,
+                    "thoughts.max": -20,
+                    "supplication.rate": -0.1,
+                    "superheavydisease.rate": 0.001
+                }
+            },
+            {
+                "id": "superheavydisease",
+                "name": "Terminal disease",
+                "max": 1,
+                "desc": "Enjoy what time you have left",
+                "tag": "disease_tag",
+                "mod": {
+                    "supplication.max": -200,
+                    "thoughts.max": -100,
+                    "supplication.rate": -0.1,
+                    "degeneration.rate": 0.01
+                }
+            },
+            {
+                "id": "degeneration",
+                "name": "Degeneration",
+                "max": 1000,
+                "tag": "disease_tag",
+                "desc": "The disease eating away at your body",
+                "mod": {
+                    "supplication.max": -5,
+                    "thoughts.max": -5
+                }
+            }
+        ]
+    },
+    {
+        "type": "TASK",
+        "items": [
+            {
+                "id": "disease_mind",
+                "name": "Disease awareness",
+                "desc": "Become aware of your body's health state",
+                "require": "diseaseintolerance>=1",
+                "tag": "diseasery",
+                "duration": 2,
+                "buy": {
+                    "weakdisease": 1
+                },
+                "dot": {
+                    "duration": 240,
+                    "toggle": true,
+                    "mods": {
+                        "weakdisease.max": 1,
+                        "thoughts.rate": 0.1,
+                        "disease_style.activate": 1
+                    }
+                }
+            },
+            {
+                "id": "sickmind",
+                "name": "Sick mind adaptation",
+                "desc": "Don't let sickness stop your mind",
+                "require": "diseaseintolerance>=1",
+                "tag": "disease_style",
+                "max": 5,
+                "duration": 10,
+                "mod": {
+                    "middisease.mod.thoughts.max": 5
+                }
+            },
+            {
+                "id": "sickbody",
+                "name": "Incorporate disease",
+                "desc": "You're sick, so what?",
+                "require": "diseaseintolerance>=2",
+                "tag": "disease_style",
+                "max": 5,
+                "duration": 8,
+                "mod": {
+                    "middisease.mod.supplication.max": 5,
+                    "middisease.mod.thoughts.max": 5
+                }
+            },
+            {
+                "id": "diseasebody2",
+                "name": "Resist disease",
+                "desc": "This is nothing",
+                "require": "diseaseintolerance>=3",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 90,
+                "mod": {
+                    "middisease.mod.supplication.max": 10,
+                    "middisease.mod.thoughts.max": 10,
+                    "middisease.mod.clarity.max": 1,
+                    "middisease.mod.supplication.rate": 0.02
+                }
+            },
+            {
+                "id": "diseasebody3",
+                "name": "Resist disease II",
+                "desc": "Really, it's nothing",
+                "require": "diseaseintolerance>=4",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 40,
+                "mod": {
+                    "heavydisease.mod.supplication.max": 20,
+                    "heavydisease.mod.thoughts.max": 5,
+                    "heavydisease.mod.clarity.max": 15,
+                    "heavydisease.mod.supplication.rate": 0.03
+                }
+            },
+            {
+                "id": "diseasebody4",
+                "name": "Resist disease III",
+                "desc": "Really, there is no need to worry",
+                "require": "diseaseintolerance>=5",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 70,
+                "mod": {
+                    "heavydisease.mod.supplication.max": 35,
+                    "heavydisease.mod.thoughts.max": 8,
+                    "heavydisease.mod.reflection.max": 1,
+                    "heavydisease.mod.supplication.rate": 0.03
+                }
+            },
+            {
+                "id": "lifesewer",
+                "name": "Life in the sewers",
+                "desc": "It's not half bad, really...",
+                "require": "sewer_knowledge>=1",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "ratbond": 50,
+                    "clarity": 5
+                },
+                "mod": {
+                    "sewer_home_tag.mod.sadness.max": 30,
+                    "sewer_home_tag.mod.supplication.rate": 0.01,
+                    "sewer_home_tag.mod.sorrow.max": 5,
+                    "sewer_home_tag.mod.thoughts.rate": 0.01
+                }
+            },
+            {
+                "id": "lifesewer2",
+                "name": "Life in the sewers II",
+                "desc": "You get used to life down here",
+                "require": "sewer_knowledge>=3",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "ratbond": 120,
+                    "clarity": 10
+                },
+                "mod": {
+                    "sewer_home_tag.mod.sadness.max": 50,
+                    "sewer_home_tag.mod.supplication.rate": 0.01,
+                    "sewer_home_tag.mod.sorrow.max": 10,
+                    "sewer_home_tag.mod.thoughts.rate": 0.01
+                }
+            },
+            {
+                "id": "disease_resistance1",
+                "name": "Natural recuperation",
+                "desc": "Your body resists and recovers",
+                "require": "diseaseintolerance>=6",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "superheavydisease": 1
+                },
+                "effect": {
+                    "weakdisease": -2,
+                    "middisease": -2
+                },
+                "result": {
+                    "heavydisease": -100,
+                    "superheavydisease": -10,
+                    "degeneration": -500
+                },
+                "mod": {
+                    "superheavydisease.realization.max": 1,
+                    "superheavydisease.mod.reflection.max": 10
+                }
+            },
+            {
+                "id": "disease_resistance2",
+                "name": "Natural recuperation II",
+                "desc": "Your body resists and recovers",
+                "require": "diseaseintolerance>=7&&disease_resistance1",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "superheavydisease": 1
+                },
+                "effect": {
+                    "weakdisease": -4,
+                    "middisease": -4
+                },
+                "result": {
+                    "heavydisease": -100,
+                    "superheavydisease": -10,
+                    "degeneration": -500
+                },
+                "mod": {
+                    "superheavydisease.realization.max": 2,
+                    "superheavydisease.mod.reflection.max": 25
+                }
+            },
+            {
+                "id": "sewer_rats",
+                "name": "Rats of the sewer",
+                "desc": "Fascinating how they live down here",
+                "require": "sewer_knowledge>=4",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 70,
+                "cost": {
+                    "ratbond": 120,
+                    "realization": 1
+                },
+                "mod": {
+                    "rats.mod.sadness.max": 30,
+                    "rats.mod.ratbond.max": 10,
+                    "rats.max": 10
+                }
+            },
+            {
+                "id": "sewer_cats",
+                "name": "Cats of the sewer",
+                "desc": "Fascinating how they live down here",
+                "require": "sewer_knowledge>=4",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 70,
+                "cost": {
+                    "catbond": 80,
+                    "realization": 3
+                },
+                "mod": {
+                    "cat.mod.sadness.max": 30,
+                    "cat.mod.catbond.max": 10,
+                    "cat.max": 2
+                }
+            },
+            {
+                "id": "sewerrest",
+                "name": "Indomitable rest",
+                "desc": "If you can rest in the sewers, you can rest anywhere",
+                "require": "lifesewer2",
+                "tag": "sewer_style",
+                "max": 1,
+                "duration": 90,
+                "cost": {
+                    "ratbond": 120,
+                    "clarity": 10
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 1.5
+                }
+            },
+            {
+                "id": "sickrats",
+                "name": "Rat disease transmission",
+                "desc": "You observe how disease transmits on a group of rats",
+                "require": "contamination>=1",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "ratbond": 50,
+                    "reflection": 2,
+                    "heavydisease": 1
+                },
+                "mod": {
+                    "rats.mod.weakdisease.max": 5,
+                    "rats.mod.middisease.max": 5,
+                    "rats.mod.middisease.rate": 0.1
+                }
+            },
+            {
+                "id": "sickcats",
+                "name": "Cat disease transmission",
+                "desc": "You observe how disease transmits on a group of cats",
+                "require": "contamination>=2",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 70,
+                "cost": {
+                    "catbond": 50,
+                    "reflection": 2,
+                    "heavydisease": 1
+                },
+                "mod": {
+                    "cat.mod.weakdisease.max": 5,
+                    "cat.mod.middisease.max": 5,
+                    "cat.mod.middisease.rate": 0.1
+                }
+            },
+            {
+                "id": "diseasemax_a",
+                "name": "Intolerance potential",
+                "desc": "Your body can go further",
+                "require": "diseaseintolerance>=3&&heavydisease",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 15,
+                "cost": {
+                    "middisease": 10
+                },
+                "mod": {
+                    "diseaseintolerance.max": 1
+                }
+            },
+            {
+                "id": "diseasemax_b",
+                "name": "Intolerance potential II",
+                "desc": "Your body can go further",
+                "require": "diseaseintolerance>=4&&heavydisease",
+                "tag": "disease_style",
+                "max": 1,
+                "duration": 70,
+                "cost": {
+                    "middisease": 15
+                },
+                "mod": {
+                    "diseaseintolerance.max": 1
+                }
+            },
+            {
+                "id": "diseasedot",
+                "name": "Thrive on disease",
+                "desc": "Convince yourself the disease makes you stronger",
+                "require": "diseaseintolerance>=2",
+                "tag": "disease_style",
+                "duration": 5,
+                "dot": {
+                    "duration": 120,
+                    "mod": {
+                        "middisease.mod.supplication.max": 20,
+                        "middisease.mod.thoughts.max": 20,
+                        "middisease.mod.supplication.rate": 1,
+                        "middisease.mod.thoughts.rate": 1
+                    }
+                }
+            },
+            {
+                "id": "diseasedot_b",
+                "name": "Disease into strength",
+                "desc": "Cope with the severity of your disease",
+                "require": "diseasebody4",
+                "tag": "disease_style",
+                "duration": 5,
+                "dot": {
+                    "duration": 120,
+                    "mod": {
+                        "heavydisease.mod.supplication.max": 100,
+                        "heavydisease.mod.thoughts.max": 50,
+                        "heavydisease.mod.supplication.rate": 1,
+                        "heavydisease.mod.thoughts.rate": 1
+                    }
+                }
+            },
+            {
+                "id": "contamination_dot",
+                "name": "Self contamination",
+                "desc": "Use yourself as a disease vessel",
+                "require": "contamination>=3",
+                "tag": "disease_style",
+                "duration": 5,
+                "dot": {
+                    "duration": 200,
+                    "mod": {
+                        "heavydisease.rate": 0.1,
+                        "heavydisease.mod.superheavydisease.rate": 0.01,
+                        "superheavydisease.mod.degeneration.rate": 0.05,
+                        "weakdisease.max": 100,
+                        "heavydisease.max": 3,
+                        "superheavydisease.max": 1
+                    }
+                }
+            },
+            {
+                "id": "sickanimal_call",
+                "name": "Gather sick animals",
+                "desc": "Reunite all sick animals around you",
+                "require": "contamination>=2",
+                "tag": "disease_style",
+                "duration": 5,
+                "dot": {
+                    "duration": 200,
+                    "mod": {
+                        "rats.rate": 2,
+                        "cat.rate": 0.5,
+                        "rats.max": 30,
+                        "cat.max": 10
+                    }
+                }
+            },
+            {
+                "id": "unlockheavydisease",
+                "name": "Unsanitary life",
+                "desc": "Throw away your fears, go deeper into what is dirty",
+                "require": "middisease>=5&&t_tier2",
+                "tag": "disease_style,warning_disease",
+                "max": 1,
+                "duration": 90,
+                "mod": {
+                    "middisease.mod.heavydisease.rate": 0.01,
+                    "middisease.max": 10,
+                    "weakdisease.max": 20,
+                    "middisease.rate": 0.01,
+                    "weakdisease.rate": 0.1
+                }
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items": [
+            {
+                "id": "sewer_home2",
+                "name": "Sewer Chambers",
+                "require": "deep_sewer&&lifesewer2",
+                "tag": "sewer_home_tag",
+                "cost": {
+                    "thoughts": 300
+                },
+                "desc": "A hidden chamber deep in the sewers, not bad at all",
+                "mod": {
+                    "space.max": 20,
+                    "sewer_knowledge.max": 1,
+                    "pleafocus.effect.supplication": -0.4,
+                    "happiness.max": -15,
+                    "rats.max": 10,
+                    "weakdisease.rate": 0.1
+                }
+            }
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items": [
+            {
+                "id": "sicktier3",
+                "name": "Sickly Undergrounder",
+                "desc": "Sick and isolated",
+                "tags": "t_tier3,not_church_class_automated",
+                "lock": "t_tier3",
+                "require": "theself_3&&middisease>2",
+                "need": "theself_3",
+                "cost": {
+                    "thoughts": 400,
+                    "clarity": 80,
+                    "reflection": 10,
+                    "middisease": 5
+                },
+                "mod": {
+                    "middisease.max": 3,
+                    "weakdisease.max": 3,
+                    "diseaseintolerance.max": 1
+                }
+            },
+            {
+                "id": "sewercreature",
+                "name": "Sewer creature",
+                "desc": "A life shaped by filth",
+                "tags": "t_tier4,not_church_class_automated",
+                "lock": "t_tier4",
+                "need": "theself_4",
+                "require": "t_tier3&&sewer_knowledge>=4",
+                "cost": {
+                    "thoughts": 200,
+                    "rats": 10,
+                    "realization": 1,
+                    "musing": 100,
+                    "nutrition": 8
+                },
+                "mod": {
+                    "sewer_knowledge.max": 1,
+                    "rats.max": 10,
+                    "diseaseintolerance.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items": [
+            {
+                "id": "diseaseintolerance",
+                "name": "Disease intolerance",
+                "desc": "Your body adapts to it's condition",
+                "require": "middisease>1",
+                "cost": {
+                    "middisease": 5
+                },
+                "mod": {
+                    "middisease.max": 1,
+                    "weakdisease.max": 1,
+                    "middisease.mod.supplication.max": 5,
+                    "middisease.mod.thoughts.max": 5
+                }
+            },
+            {
+                "id": "sewer_knowledge",
+                "name": "Sewer knowledge",
+                "desc": "How well you know the underground sewer system of the city",
+                "require": "sewer&&t_tier2",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "sewer_home.mod.thoughts.max": 10,
+                    "sewer_home.mod.supplication.max": 10,
+                    "foraging.max": 20
+                }
+            },
+            {
+                "id": "contamination",
+                "name": "Contamination",
+                "desc": "How disease spreads",
+                "require": "sewer_knowledge>=5&&unlockheavydisease",
+                "cost": {
+                    "skillpoints": 100
+                },
+                "mod": {
+                    "sewer_home.mod.weakdisease.max": 5,
+                    "sewer_home.mod.middisease.max": 3,
+                    "sewer_home.mod.heavydisease.max": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+            {
+                "id": "deep_sewer",
+                "name": "Deep sewer",
+                "desc": "Secret tunnels, secret chambers, holes, and a bad smell",
+                "require": "sewer_knowledge>=2",
+                "length": 40,
+                "run": {
+                    "supplication": 5
+                },
+                "result": {
+                    "rats": 70,
+                    "ratbond": 300
+                },
+                "result_once": {
+                    "skillpoints": 25
+                },
+                "loot_WIP": {
+                    "rare_itemWIP": "1~5"
+                },
+                "encs": [
+                    "meancat",
+                    "ratpack",
+                    "smelly_puddle",
+                    "pattern_bones",
+                    "sick_man",
+                    "rusted_grate",
+                    "waste_stream",
+                    "lost_diary_page",
+                    "dead_body",
+                    "glimmerlight",
+                    "big_rat"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "ENCOUNTER",
+        "items": [
+            {
+                "id": "dead_body",
+                "name": "Dead body",
+                "desc": "A cadaver. Smells bad",
+                "effect": {
+                    "weakdisease": 1,
+                    "perplexion": "1~3",
+                    "fear": "1~4"
+                },
+                "result": {
+                    "thoughts": 3,
+                    "sorrow": 1,
+                    "guilt": 1
+                }
+            },
+            {
+                "id": "glimmerlight",
+                "name": "Glimmer of light",
+                "desc": "There is hope",
+                "effect": {
+                    "happiness": 1,
+                    "sadness": "-1~0",
+                    "fear": "-2~-0",
+                    "irritation": "-2~0"
+                },
+                "result": {
+                    "thoughts": 3,
+                    "clarity": 1,
+                    "realization": 1
+                }
+            },
+            {
+                "id": "big_rat",
+                "name": "Big rat",
+                "desc": "It's a bit aggressive",
+                "effect": {
+                    "weakdisease": 1,
+                    "ratbond": 1,
+                    "fatigue": "1~4",
+                    "fear": "1~4"
+                },
+                "result": {
+                    "thoughts": 3,
+                    "rats": 3
+                }
+            }
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items": [
+            {
+                "id": "irreversible_disease",
+                "title": "Irreversible Action",
+                "content": "Once done, this action cannot be undone. Negative effects are often permanent. But you will gain access to a new range of possibilities. Go ahead with this action?",
+                "tags": "warning_disease"
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items": []
+    }
+]

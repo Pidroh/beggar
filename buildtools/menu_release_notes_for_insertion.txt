@@ -1,12 +1,18 @@
 
       <div class="version">
-        <h2>Version 0.27 (Patreon Early Access)</h2>
+        <h2>Version 0.28 (Patreon Early Access)</h2>
+        <p>Sewer Pathology</p>
+        <p>5 new resource(s)<br>22 new task(s)<br>1 new house(s)<br>2 new class(s)<br>3 new skill(s)<br>1 new location(s)<br>3 new encounter(s)<br>1 new dialog(s)</p>
+      </div>
+    
+      <div class="version">
+        <h2>Version 0.27 (Stable)</h2>
         <p>Grand Theft - Thievery and debates</p>
         <p>5 new resource(s)<br>54 new task(s)<br>3 new house(s)<br>4 new class(s)<br>8 new skill(s)<br>1 new location(s)<br>2 new encounter(s)<br>0 new dialog(s)<br>16 new furniture(s)</p>
       </div>
     
       <div class="version">
-        <h2>Version 0.25 (Stable)</h2>
+        <h2>Version 0.25 </h2>
         <p>Sadism VS Empathy, and the warmth of fire</p>
         <p>9 new resource(s)<br>57 new task(s)<br>6 new class(s)<br>6 new skill(s)<br>9 new furniture(s)</p>
       </div>
