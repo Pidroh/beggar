@@ -1573,7 +1573,7 @@
                 "max": 1,
                 "cost": {
                     "foraging": 50,
-                    "coin": 3000
+                    "coin": 1400
                 },
                 "mod": {
                     "reflection.max": 3,
