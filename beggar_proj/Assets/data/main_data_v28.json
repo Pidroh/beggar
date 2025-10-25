@@ -82,27 +82,72 @@
                 "tag": "mentalry",
                 "desc": "Willingness to learn",
                 "require": "introspection>=4",
+                "duration": 30,
+                "cost":{
+                    "thoughts": 50,
+                    "supplication": 80
+                },
                 "result": {
-                    "skillpoints": 5
+                    "skillpoints": 5,
+                    "analysis": 1
                 },
                 "mod": {
-                    "analysis.rate": 0.001
+                    "analysis.rate": 0.01
                 },
                 "max": 1
             },
             {
-                "id": "analytical_powerup1",
-                "name": "Keen mind",
+                "id": "analytical_unlock1",
+                "name": "Keen thoughts",
                 "tag": "mentalry",
-                "desc": "Willingness to learn",
-                "require": "introspection>=4",
+                "desc": "The flow of thoughts will lead me somewhere",
+                "require": "analysis",
+                "duration": 70,
+                "cost":{
+                    "thoughts": 50,
+                    "supplication": 30,
+                    "analysis": 5
+                },
                 "result": {
+                    "analysis": 1,
                     "skillpoints": 5
                 },
-                "mod": {
-                    "analysis.rate": 0.001
-                },
                 "max": 1
+            },
+            {
+                "id": "analytical_skill_points_a",
+                "name": "Begginer insight",
+                "tag": "mentalry",
+                "desc": "You know so little it's fast to accumulate new learnings",
+                "require": "analytical_unlock1",
+                "max": 3,
+                "duration": 30,
+                "cost":{
+                    "thoughts": 50,
+                    "supplication": 30,
+                    "analysis": 1
+                },
+                "result": {
+                    "skillpoints": 20
+                }
+            },
+            {
+                "id": "analytical_skill_points_b",
+                "name": "Novice insight",
+                "tag": "mentalry",
+                "desc": "You're still a beginner but it's already harder to learn",
+                "require": "analytical_unlock2",
+                "max": 2,
+                "duration": 50,
+                "cost":{
+                    "thoughts": 100,
+                    "supplication": 90,
+                    "clarity": 3,
+                    "analysis": 30
+                },
+                "result": {
+                    "skillpoints": 25
+                }
             },
             {
                 "id": "disease_mind",
