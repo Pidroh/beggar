@@ -60,12 +60,50 @@
                     "supplication.max": -5,
                     "thoughts.max": -5
                 }
+            },
+            {
+                "id": "analysis",
+                "name": "Analysis",
+                "max": 30,
+                "tag": "mentalry",
+                "desc": "Detailed examination of reality",
+                "mod": {
+                    "thoughts.max": 1
+                }
             }
         ]
     },
     {
         "type": "TASK",
         "items": [
+            {
+                "id": "analytical_powerup1",
+                "name": "Keen mind",
+                "tag": "mentalry",
+                "desc": "Willingness to learn",
+                "require": "introspection>=4",
+                "result": {
+                    "skillpoints": 5
+                },
+                "mod": {
+                    "analysis.rate": 0.001
+                },
+                "max": 1
+            },
+            {
+                "id": "analytical_powerup1",
+                "name": "Keen mind",
+                "tag": "mentalry",
+                "desc": "Willingness to learn",
+                "require": "introspection>=4",
+                "result": {
+                    "skillpoints": 5
+                },
+                "mod": {
+                    "analysis.rate": 0.001
+                },
+                "max": 1
+            },
             {
                 "id": "disease_mind",
                 "name": "Disease awareness",
