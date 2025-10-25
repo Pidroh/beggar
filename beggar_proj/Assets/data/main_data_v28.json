@@ -154,7 +154,7 @@
                 "name": "Challenging insight",
                 "tag": "mentalry",
                 "desc": "Getting to intermediary level, learning is quite tricky",
-                "require": "analytical_unlock2",
+                "require": "analytical_unlock3",
                 "max": 2,
                 "duration": 70,
                 "cost":{
@@ -172,7 +172,7 @@
                 "name": "Advanced insight",
                 "tag": "mentalry",
                 "desc": "Beyond intermediary, learning can feel daunting",
-                "require": "analytical_unlock2",
+                "require": "analytical_unlock4",
                 "max": 3,
                 "duration": 70,
                 "cost":{
@@ -190,7 +190,7 @@
                 "name": "Persistent insight",
                 "tag": "mentalry",
                 "desc": "It's hard, but learning is forever",
-                "require": "analytical_unlock2",
+                "require": "analytical_unlock5",
                 "duration": 300,
                 "cost":{
                     "thoughts": 300,
