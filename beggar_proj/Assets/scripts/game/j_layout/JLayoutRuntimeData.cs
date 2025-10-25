@@ -155,10 +155,12 @@ namespace JLayout
             {
                 ChildSelf.PropagateDirtyUp();
             }
+            // update dirty of all axis, with extra dirty on the height because of the algorithm needing two steps
             for (int i = 0; i < Dirty.Length; i++)
             {
                 Dirty[i]++;
             }
+            Dirty[1]++;
             foreach (var child in Children)
             {
                 child.LayoutRU?.MarkDirtyWithChildren();

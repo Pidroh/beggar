@@ -75,7 +75,8 @@
                 "id": "reflectivemood",
                 "name": "Reflective mood",
                 "desc": "A state of mind conducive to deep thought (some actions and power ups can only be done while the effect is active)",
-                "require": "musingswood",
+                "require": "thinklife",
+                "need": "musingswood",
                 "buy": {
                     "reflection": 15,
                     "clarity": 100,
