@@ -119,7 +119,7 @@
                 "name": "Keen thoughts II",
                 "tag": "mentalry",
                 "desc": "The flow of thoughts will lead me somewhere",
-                "require": "analysis",
+                "require": "analysis&&analytical_skill_points_a>=3",
                 "duration": 70,
                 "cost":{
                     "thoughts": 100,
@@ -137,7 +137,7 @@
                 "name": "Keen thoughts III",
                 "tag": "mentalry",
                 "desc": "The flow of thoughts will lead me somewhere",
-                "require": "analysis",
+                "require": "analysis&&analytical_skill_points_b>=3",
                 "duration": 70,
                 "cost":{
                     "thoughts": 100,
@@ -155,7 +155,7 @@
                 "name": "Keen thoughts IV",
                 "tag": "mentalry",
                 "desc": "The flow of thoughts will lead me somewhere",
-                "require": "analysis",
+                "require": "analysis&&analytical_skill_points_c>=3",
                 "duration": 70,
                 "cost":{
                     "thoughts": 100,
@@ -173,7 +173,7 @@
                 "name": "Keen thoughts V",
                 "tag": "mentalry",
                 "desc": "The flow of thoughts will lead me somewhere",
-                "require": "analysis",
+                "require": "analysis&&analytical_skill_points_d>=3",
                 "duration": 70,
                 "cost":{
                     "thoughts": 150,
