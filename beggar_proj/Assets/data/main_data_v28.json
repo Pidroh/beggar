@@ -115,6 +115,79 @@
                 "max": 1
             },
             {
+                "id": "analytical_unlock2",
+                "name": "Keen thoughts II",
+                "tag": "mentalry",
+                "desc": "The flow of thoughts will lead me somewhere",
+                "require": "analysis",
+                "duration": 70,
+                "cost":{
+                    "thoughts": 100,
+                    "supplication": 70,
+                    "analysis": 70
+                },
+                "result": {
+                    "analysis": 8,
+                    "skillpoints": 10
+                },
+                "max": 1
+            },
+            {
+                "id": "analytical_unlock3",
+                "name": "Keen thoughts III",
+                "tag": "mentalry",
+                "desc": "The flow of thoughts will lead me somewhere",
+                "require": "analysis",
+                "duration": 70,
+                "cost":{
+                    "thoughts": 100,
+                    "supplication": 70,
+                    "analysis": 600
+                },
+                "result": {
+                    "analysis": 30,
+                    "skillpoints": 10
+                },
+                "max": 1
+            },
+            {
+                "id": "analytical_unlock4",
+                "name": "Keen thoughts IV",
+                "tag": "mentalry",
+                "desc": "The flow of thoughts will lead me somewhere",
+                "require": "analysis",
+                "duration": 70,
+                "cost":{
+                    "thoughts": 100,
+                    "supplication": 70,
+                    "analysis": 1500
+                },
+                "result": {
+                    "analysis": 80,
+                    "skillpoints": 10
+                },
+                "max": 1
+            },
+            {
+                "id": "analytical_unlock5",
+                "name": "Keen thoughts V",
+                "tag": "mentalry",
+                "desc": "The flow of thoughts will lead me somewhere",
+                "require": "analysis",
+                "duration": 70,
+                "cost":{
+                    "thoughts": 150,
+                    "supplication": 70,
+                    "clarity": 20,
+                    "analysis": 4500
+                },
+                "result": {
+                    "analysis": 100,
+                    "skillpoints": 10
+                },
+                "max": 1
+            },
+            {
                 "id": "analytical_skill_points_a",
                 "name": "Begginer insight",
                 "tag": "mentalry",
