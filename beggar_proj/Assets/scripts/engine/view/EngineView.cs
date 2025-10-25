@@ -36,10 +36,11 @@ namespace HeartUnity.View
         private MouseAsSpriteInfo mouseView;
         public ReusableMenuPrefabs reusableMenuPrefabs;
 
-        public static float dpi => overwrittenDpi.HasValue ? overwrittenDpi.Value : Mathf.Min(Screen.dpi, maximumDpi ?? 999999);
+        public static float dpi => overwrittenDpi.HasValue ? overwrittenDpi.Value : Mathf.Clamp(Screen.dpi, minimumDpi ?? 0, maximumDpi ?? 999999);
         private static float? overwrittenDpi;
         private static float? previousDpi;
         private static float? maximumDpi;
+        private static float? minimumDpi;
         public static bool DpiChanged;
         private bool pixelPerfectScale;
         public bool DisabledAutoScaling;
@@ -78,6 +79,10 @@ namespace HeartUnity.View
         internal static void SetMaxDpi(float maximumDpi)
         {
             EngineView.maximumDpi = maximumDpi;
+        }
+        internal static void SetMinDpi(float minimumDpi)
+        {
+            EngineView.minimumDpi = minimumDpi;
         }
 
         public static bool IsVisibleOnCamera(RectTransform target)

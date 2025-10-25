@@ -107,7 +107,8 @@ public class MainGameControl : MonoBehaviour
         controlData.lastScreenSize = new Vector2(Screen.width, Screen.height);
         if (changedScreenSize || EngineView.DpiChanged)
         {
-            RectTransformExtensions.LimitDPIBasedOnPhysicalScreenAdjustedWidth(JGameControlExecuter.NormalMinTabWidth);
+            RectTransformExtensions.LimitDPIBasedOnPhysicalScreenAdjustedWidth(JGameControlExecuter.NormalMinTabWidth, 1920);
+            
         }
         #endregion
 

@@ -40,10 +40,16 @@ namespace HeartUnity.View
             transform.offsetMin = transform.offsetMax = new Vector2(0, 0);
         }
 
-        public static void LimitDPIBasedOnPhysicalScreenAdjustedWidth(float maxAdjustedWidth) 
+        /*
+         * Min DPI is for high resolution monitors that might report DPI values too low
+         * Max DPI is for high DPI screens that might result in adjusted widths that are too low
+         */
+        public static void LimitDPIBasedOnPhysicalScreenAdjustedWidth(float widthForMaxDPI, float widthForMinDPI) 
         {
-            var maximumDpi = (Screen.width / maxAdjustedWidth) * 96f;
+            var minDpi = (Screen.width / widthForMinDPI) * 96f; 
+            var maximumDpi = (Screen.width / widthForMaxDPI) * 96f;
             EngineView.SetMaxDpi(maximumDpi);
+            EngineView.SetMinDpi(minDpi);
         }
 
         public static void SetOffsets(this RectTransform trans, RectOffset offsets)
