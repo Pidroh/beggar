@@ -169,17 +169,34 @@
             },
             {
                 "id": "analytical_skill_points_d",
-                "name": "Challenging insight",
+                "name": "Advanced insight",
                 "tag": "mentalry",
-                "desc": "Getting to intermediary level, learning is quite tricky",
+                "desc": "Beyond intermediary, learning can feel daunting",
                 "require": "analytical_unlock2",
-                "max": 2,
+                "max": 3,
                 "duration": 70,
                 "cost":{
-                    "thoughts": 150,
-                    "supplication": 140,
-                    "clarity": 20,
-                    "analysis": 20
+                    "thoughts": 250,
+                    "clarity": 30,
+                    "realization": 1,
+                    "analysis": 40
+                },
+                "result": {
+                    "skillpoints": 20
+                }
+            },
+            {
+                "id": "analytical_skill_points_infinite",
+                "name": "Persistent insight",
+                "tag": "mentalry",
+                "desc": "It's hard, but learning is forever",
+                "require": "analytical_unlock2",
+                "duration": 300,
+                "cost":{
+                    "thoughts": 300,
+                    "clarity": 50,
+                    "realization": 5,
+                    "analysis": 4500
                 },
                 "result": {
                     "skillpoints": 25
