@@ -276,6 +276,66 @@
                 }
             },
             {
+                "id": "analytical_skill_points_max_a",
+                "name": "Insight extension",
+                "desc": "Analyse your own insight",
+                "duration": 70,
+                "cost": {
+                    "analysis": 2,
+                    "thoughts": 50
+                },
+                "mod":{
+                    "analytical_skill_points_a.max": 2,
+                    "thoughts.max": 50,
+                    "thoughts.rate": 0.1
+                }
+            },
+            {
+                "id": "analytical_skill_points_max_b",
+                "name": "Insight extension II",
+                "desc": "Analyse your own insight",
+                "duration": 70,
+                "cost": {
+                    "analysis": 35,
+                    "thoughts": 20
+                },
+                "mod":{
+                    "analytical_skill_points_b.max": 2,
+                    "thoughts.max": 50,
+                    "thoughts.rate": 0.1
+                }
+            },
+            {
+                "id": "analytical_skill_points_max_c",
+                "name": "Insight extension III",
+                "desc": "Analyse your own insight",
+                "duration": 70,
+                "cost": {
+                    "analysis": 40,
+                    "thoughts": 20
+                },
+                "mod":{
+                    "analytical_skill_points_c.max": 2,
+                    "thoughts.max": 50,
+                    "thoughts.rate": 0.1
+                }
+            },
+            {
+                "id": "analytical_skill_points_max_d",
+                "name": "Insight extension IV",
+                "desc": "Analyse your own insight",
+                "duration": 70,
+                "cost": {
+                    "analysis": 80,
+                    "thoughts": 20
+                },
+                "mod":{
+                    "analytical_skill_points_d.max": 2,
+                    "thoughts.max": 50,
+                    "thoughts.rate": 0.1
+                }
+            },
+            {
                 "id": "disease_mind",
                 "name": "Disease awareness",
                 "desc": "Become aware of your body's health state",
