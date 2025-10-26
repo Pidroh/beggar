@@ -64,7 +64,7 @@
             {
                 "id": "analysis",
                 "name": "Analysis",
-                "max": 30,
+                "max": 15,
                 "tag": "mentalry",
                 "desc": "Detailed examination of reality",
                 "mod": {
@@ -797,6 +797,19 @@
     {
         "type": "SKILL",
         "items": [
+            {
+                "id": "analytics",
+                "name": "Analytics",
+                "desc": "Systematic process of analysis",
+                "require": "analysis>2",
+                "cost": {
+                    "analysis": 5
+                },
+                "mod": {
+                    "analysis.max": 5,
+                    "analysis.rate": 0.005
+                }
+            },
             {
                 "id": "diseaseintolerance",
                 "name": "Disease intolerance",
