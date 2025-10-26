@@ -293,6 +293,22 @@
                 "max": 1
             },
             {
+                "id": "deep_analysis",
+                "name": "Focused analysis",
+                "tag": "mentalry",
+                "desc": "Engage in thorough analytical work",
+                "require": "analytics>=1",
+                "duration": 15,
+                "cost":{
+                    "thoughts": 50,
+                    "supplication": 40,
+                    "clarity": 2
+                },
+                "result": {
+                    "analysis": 1
+                }
+            },
+            {
                 "id": "analytical_unlock1",
                 "name": "Keen thoughts",
                 "tag": "mentalry",
