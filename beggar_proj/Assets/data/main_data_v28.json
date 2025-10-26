@@ -361,6 +361,24 @@
                 "max": 2
             },
             {
+                "id": "upgrade_rest_efficiency",
+                "name": "Mindful recovery",
+                "tag": "mentalry",
+                "desc": "Learn to rest more efficiently",
+                "require": "analytics>=2",
+                "duration": 90,
+                "cost":{
+                    "thoughts": 150,
+                    "supplication": 100,
+                    "clarity": 8,
+                    "analysis": 200
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 0.5
+                },
+                "max": 1
+            },
+            {
                 "id": "analytical_unlock1",
                 "name": "Keen thoughts",
                 "tag": "mentalry",

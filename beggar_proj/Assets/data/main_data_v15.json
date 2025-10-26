@@ -264,7 +264,7 @@
                 "id": "eatcat",
                 "name": "Eat cat corpse",
                 "desc": "Raw",
-                "require": "bestiality>2",
+                "require": "animalism>2",
                 "duration": 10,
                 "tag": "animalry,nn",
                 "cost": {
@@ -1531,7 +1531,7 @@
                 }
             },
             {
-                "id": "bestiality",
+                "id": "animalism",
                 "name": "Animalism",
                 "desc": "Humans are animals",
                 "require": "catcorpse||ratcorpse",
