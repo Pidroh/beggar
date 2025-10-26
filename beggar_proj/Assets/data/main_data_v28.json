@@ -293,7 +293,7 @@
                 "max": 1
             },
             {
-                "id": "deep_analysis",
+                "id": "manual_analysis",
                 "name": "Focused analysis",
                 "tag": "mentalry",
                 "desc": "Engage in thorough analytical work",
@@ -307,6 +307,58 @@
                 "result": {
                     "analysis": 1
                 }
+            },
+            {
+                "id": "upgrade_manual_analysis_result1",
+                "name": "Enhanced focus",
+                "tag": "mentalry",
+                "desc": "Generate more analysis from focused work",
+                "require": "analytics>=2",
+                "duration": 60,
+                "cost":{
+                    "thoughts": 100,
+                    "clarity": 5,
+                    "analysis": 400
+                },
+                "mod": {
+                    "manual_analysis.result.analysis": 4
+                },
+                "max": 2
+            },
+            {
+                "id": "upgrade_manual_analysis_result2",
+                "name": "Deep focus mastery",
+                "tag": "mentalry",
+                "desc": "Maximize analytical output from focused sessions",
+                "require": "analytics>=4",
+                "duration": 80,
+                "cost":{
+                    "thoughts": 150,
+                    "clarity": 10,
+                    "realization": 1,
+                    "analysis": 3000
+                },
+                "mod": {
+                    "manual_analysis.result.analysis": 9
+                },
+                "max": 2
+            },
+            {
+                "id": "upgrade_manual_analysis_speed",
+                "name": "Analytical acceleration",
+                "tag": "mentalry",
+                "desc": "Perform focused analysis much faster",
+                "require": "analytics>=5",
+                "duration": 70,
+                "cost":{
+                    "thoughts": 120,
+                    "clarity": 8,
+                    "analysis": 2500
+                },
+                "mod": {
+                    "manual_analysis.speed": 200
+                },
+                "max": 2
             },
             {
                 "id": "analytical_unlock1",
