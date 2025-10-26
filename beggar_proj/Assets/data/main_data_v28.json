@@ -545,6 +545,7 @@
                 "desc": "Analyse your own insight",
                 "require": "analytical_skill_points_a>=2",
                 "duration": 70,
+                "max": 1,
                 "cost": {
                     "analysis": 2,
                     "thoughts": 50
@@ -560,6 +561,7 @@
                 "name": "Insight extension II",
                 "desc": "Analyse your own insight",
                 "require": "analytical_skill_points_b>=2",
+                "max": 1,
                 "duration": 70,
                 "cost": {
                     "analysis": 35,
@@ -576,6 +578,7 @@
                 "name": "Insight extension III",
                 "desc": "Analyse your own insight",
                 "require": "analytical_skill_points_c>=2",
+                "max": 1,
                 "duration": 70,
                 "cost": {
                     "analysis": 40,
@@ -592,6 +595,7 @@
                 "name": "Insight extension IV",
                 "desc": "Analyse your own insight",
                 "require": "analytical_skill_points_d>=2",
+                "max": 1,
                 "duration": 70,
                 "cost": {
                     "analysis": 80,

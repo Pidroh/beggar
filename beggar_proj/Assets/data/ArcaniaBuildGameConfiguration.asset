@@ -88,7 +88,7 @@ MonoBehaviour:
     buildConfigId: web_patreon
     majorVersionOverride: 0
     versionOverride: 28
-    patchOverride: 0
+    patchOverride: 1
     SubtitleOverride: Sewer Pathology
     patreonBuild: 0
   - id: patreon_windows
