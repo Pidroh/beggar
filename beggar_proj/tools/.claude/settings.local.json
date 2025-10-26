@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Read(//c/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/Assets/data/**)"
     ],
     "deny": [],
     "ask": []

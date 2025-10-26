@@ -365,13 +365,29 @@
                 "name": "Mindful recovery",
                 "tag": "mentalry",
                 "desc": "Learn to rest more efficiently",
-                "require": "analytics>=2",
+                "require": "TODO",
                 "duration": 90,
                 "cost":{
-                    "thoughts": 150,
-                    "supplication": 100,
-                    "clarity": 8,
-                    "analysis": 200
+                    "thoughts": 70,
+                    "supplication": 10,
+                    "clarity": 3
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 0.5
+                },
+                "max": 1
+            },
+            {
+                "id": "upgrade_rest_efficiency2",
+                "name": "Healthy recovery",
+                "tag": "mentalry",
+                "desc": "Learn to rest more efficiently",
+                "require": "TODO",
+                "duration": 90,
+                "cost":{
+                    "thoughts": 70,
+                    "supplication": 10,
+                    "clarity": 3
                 },
                 "mod": {
                     "pleafocus.effect.supplication": 0.5
