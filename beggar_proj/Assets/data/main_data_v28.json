@@ -364,7 +364,7 @@
                 "id": "supplication_dot",
                 "name": "Supplicative mind",
                 "tag": "mentalry",
-                "desc": "Learn to rest more efficiently",
+                "desc": "Get in a state of being aware of your supplication self",
                 "require": "restskill>=1",
                 "duration": 2,
                 "cost":{
@@ -378,24 +378,6 @@
                         "rest_style.activate": 1
                     }
                 }
-                
-            },
-            {
-                "id": "upgrade_rest_efficiency",
-                "name": "Mindful recovery",
-                "tag": "rest_style",
-                "desc": "Learn to rest more efficiently",
-                "require": "restskill>=1",
-                "duration": 90,
-                "cost":{
-                    "thoughts": 70,
-                    "supplication": 10,
-                    "clarity": 3
-                },
-                "mod": {
-                    "pleafocus.effect.supplication": 0.5
-                },
-                "max": 1
             },
             {
                 "id": "upgrade_rest_efficiency",
@@ -417,7 +399,7 @@
             {
                 "id": "upgrade_rest_efficiency2",
                 "name": "Healthy recovery",
-                "tag": "restry",
+                "tag": "rest_style",
                 "desc": "A healthier body can rest better",
                 "require": "restskill>=2",
                 "duration": 50,
@@ -1188,6 +1170,19 @@
                     "sewer_home.mod.weakdisease.max": 5,
                     "sewer_home.mod.middisease.max": 3,
                     "sewer_home.mod.heavydisease.max": 1
+                }
+            },
+            {
+                "id": "restskill",
+                "name": "Reposare",
+                "desc": "The art of recovery or rest states (reposare)",
+                "require": "skillpoints>0",
+                "cost": {
+                    "skillpoints": 120
+                },
+                "mod": {
+                    "supplication.max": 30,
+                    "pleafocus.effect.supplication": 0.1
                 }
             }
         ]
