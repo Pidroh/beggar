@@ -10,19 +10,25 @@ function ProcessJsonTags(jsonFileContent, currentResults) {
         if (!items) continue;
 
         for (const item of items) {
-            if (item.tag) {
-                const tag = item.tag;
+            // Check both 'tag' and 'tags' properties
+            const tagValue = item.tag || item.tags;
 
-                if (!currentResults[tag]) {
-                    currentResults[tag] = {
-                        RESOURCE: 0,
-                        TASK: 0,
-                        SKILL: 0
-                    };
-                }
+            if (tagValue) {
+                // Split by comma and trim whitespace
+                const tags = tagValue.split(',').map(t => t.trim()).filter(t => t.length > 0);
 
-                if (type === 'RESOURCE' || type === 'TASK' || type === 'SKILL') {
-                    currentResults[tag][type]++;
+                for (const tag of tags) {
+                    if (!currentResults[tag]) {
+                        currentResults[tag] = {
+                            RESOURCE: 0,
+                            TASK: 0,
+                            SKILL: 0
+                        };
+                    }
+
+                    if (type === 'RESOURCE' || type === 'TASK' || type === 'SKILL') {
+                        currentResults[tag][type]++;
+                    }
                 }
             }
         }
