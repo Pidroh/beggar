@@ -106,6 +106,7 @@
                 "cost":{
                     "thoughts": 100,
                     "supplication": 100,
+                    "clarity": 5,
                     "analysis": 5
                 },
                 "mod": {
@@ -139,9 +140,9 @@
                 "require": "analytics>=3",
                 "duration": 70,
                 "cost":{
-                    "thoughts": 150,
-                    "supplication": 120,
-                    "clarity": 6,
+                    "clarity": 50,
+                    "supplication": 500,
+                    "reflection": 1,
                     "analysis": 150
                 },
                 "mod": {
@@ -200,9 +201,9 @@
                 "require": "analytics>=4",
                 "duration": 100,
                 "cost":{
+                    "clarity": 150,
                     "thoughts": 200,
-                    "supplication": 150,
-                    "clarity": 12,
+                    "reflection": 10,
                     "analysis": 1100
                 },
                 "mod": {
@@ -219,8 +220,8 @@
                 "duration": 120,
                 "cost":{
                     "thoughts": 250,
-                    "supplication": 180,
                     "clarity": 20,
+                    "reflection": 15,
                     "realization": 2,
                     "analysis": 4000
                 },
@@ -255,10 +256,10 @@
                 "require": "analytics>=7",
                 "duration": 130,
                 "cost":{
-                    "thoughts": 280,
-                    "supplication": 200,
-                    "clarity": 25,
-                    "realization": 3,
+                    "thoughts": 2080,
+                    "clarity": 300,
+                    "reflection": 10,
+                    "realization": 1,
                     "analysis": 500
                 },
                 "mod": {
@@ -276,8 +277,7 @@
                 "cost":{
                     "thoughts": 300,
                     "supplication": 220,
-                    "clarity": 30,
-                    "realization": 5,
+                    "clarity": 10,
                     "analysis": 1500
                 },
                 "run":{
