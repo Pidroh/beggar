@@ -554,6 +554,28 @@
                 }
             },
             {
+                "id": "musing_flow",
+                "name": "Flow of musings",
+                "tag": "mentalry,reflective_style",
+                "desc": "Reflect deeply when musing away",
+                "require": "epiphanics>=4",
+                "duration": 3,
+                "buy": {
+                    "realization": 1,
+                    "musing": 100
+                },
+                "cost":{
+                    "reflection": 15
+                },
+                "dot": {
+                    "duration": 400,
+                    "mod": {
+                        "museaway_dot.mod.musing.rate": 3,
+                        "thoughts.rate": 2
+                    }
+                }
+            },
+            {
                 "id": "analytical_unlock1",
                 "name": "Keen thoughts",
                 "tag": "mentalry,analysis_style",
