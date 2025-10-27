@@ -79,7 +79,7 @@
             {
                 "id": "analytical_powerup1",
                 "name": "Keen mind",
-                "tag": "mentalry,analysis_style",
+                "tag": "mentalry",
                 "desc": "Willingness to learn",
                 "require": "introspection>=4",
                 "duration": 30,
@@ -95,6 +95,25 @@
                     "analysis.rate": 0.01
                 },
                 "max": 1
+            },
+            {
+                "id": "analysis_dot",
+                "name": "Analitical mind",
+                "tag": "mentalry",
+                "desc": "Focus on analyzing",
+                "require": "analytical_powerup1",
+                "duration": 2,
+                "cost":{
+                    "thoughts": 5
+                },
+                "dot": {
+                    "duration": 400,
+                    "mod": {
+                        "thoughts.rate": 1,
+                        "analysis.rate": 0.01,
+                        "analysis_style.activate": 1
+                    }
+                }
             },
             {
                 "id": "upgrade_analysis_rate",
