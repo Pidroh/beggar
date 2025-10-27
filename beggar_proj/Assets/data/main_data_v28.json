@@ -514,9 +514,9 @@
             },
             {
                 "id": "upgrade_musing_generation",
-                "name": "Enhanced contemplation",
+                "name": "Muse on a muse",
                 "tag": "mentalry",
-                "desc": "Amplify your capacity to generate musings",
+                "desc": "A thought leads to another, leads to a musing",
                 "require": "epiphanics>=1",
                 "duration": 120,
                 "cost":{
@@ -528,6 +528,30 @@
                     "museaway_dot.mod.musing.rate": 0.5
                 },
                 "max": 2
+            },
+            {
+                "id": "realization_cultivation",
+                "name": "Cultivate realization",
+                "tag": "mentalry,reflective_style",
+                "desc": "Enter a deep state of reflective contemplation",
+                "require": "epiphanics>=2",
+                "duration": 5,
+                "buy":{
+                    "realization": 3,
+                    "clarity": 100,
+                    "musing": 5
+                },
+                "cost":{
+                    "musing": 10
+                },
+                "dot": {
+                    "duration": 300,
+                    "mod": {
+                        "deep_think.result.realization": 1,
+                        "thoughts.rate": 5,
+                        "reflection.rate": 0.1
+                    }
+                }
             },
             {
                 "id": "analytical_unlock1",
