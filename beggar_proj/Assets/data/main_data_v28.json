@@ -576,6 +576,42 @@
                 }
             },
             {
+                "id": "mental_restoration",
+                "name": "Mental restoration",
+                "tag": "mentalry,reflective_style",
+                "desc": "A powerful state of mental and physical recovery",
+                "require": "epiphanics>=3",
+                "need": "restskill>=1",
+                "max": 1,
+                "duration": 5,
+                "cost":{
+                    "musing": 30,
+                    "reflection": 10
+                },
+                "mod": {
+                    "thoughts.rate": 5,
+                    "supplication.rate": 5
+                }
+                
+            },
+            {
+                "id": "upgrade_epiphanics_max",
+                "name": "Epiphanic expansion",
+                "tag": "mentalry,reflective_style",
+                "desc": "Deepen your curiosity, your eagerness",
+                "require": "epiphanics>=3",
+                "duration": 150,
+                "cost":{
+                    "realization": 1,
+                    "clarity": 50,
+                    "reflection": 30
+                },
+                "mod": {
+                    "epiphanics.max": 1
+                },
+                "max": 1
+            },
+            {
                 "id": "analytical_unlock1",
                 "name": "Keen thoughts",
                 "tag": "mentalry,analysis_style",
