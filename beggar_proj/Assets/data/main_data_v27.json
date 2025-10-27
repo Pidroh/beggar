@@ -72,11 +72,27 @@
                 }
             },
             {
+                "id": "reflectivemoodunlock",
+                "name": "The depth of reflection",
+                "require": "thinklife",
+                "need": "musingswood",
+                "duration": 20,
+                "max": 1,
+                "cost": {
+                    "reflection": 1,
+                    "clarity": 3,
+                    "thoughts": 100
+                },
+                "mod":{
+                    "reflection.max": 1,
+                    "thoughts.rate": 1
+                }
+            },
+            {
                 "id": "reflectivemood",
                 "name": "Reflective mood",
                 "desc": "A state of mind conducive to deep thought (some actions and power ups can only be done while the effect is active)",
-                "require": "thinklife",
-                "need": "musingswood",
+                "require": "reflectivemoodunlock",
                 "buy": {
                     "reflection": 15,
                     "clarity": 100,
