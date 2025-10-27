@@ -1289,6 +1289,19 @@
                     "supplication.max": 30,
                     "pleafocus.effect.supplication": 0.1
                 }
+            },
+            {
+                "id": "epiphanics",
+                "name": "Epiphanics",
+                "desc": "To realize something that one thought could not be realized",
+                "require": "realization>=1",
+                "cost": {
+                    "skillpoints": 180
+                },
+                "mod": {
+                    "realization.max": 1,
+                    "clarity.rate": 0.5
+                }
             }
         ]
     },
