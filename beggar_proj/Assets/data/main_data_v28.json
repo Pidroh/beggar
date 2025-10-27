@@ -463,6 +463,37 @@
                 "max": 1
             },
             {
+                "id": "upgrade_supplication_rate",
+                "name": "Natural restoration",
+                "tag": "rest_style",
+                "desc": "Your body naturally recovers over time",
+                "require": "restskill>=4",
+                "duration": 100,
+                "cost":{
+                    "reflection": 15
+                },
+                "mod": {
+                    "supplication.rate": 10
+                },
+                "max": 1
+            },
+            {
+                "id": "upgrade_pleafocus_supplication",
+                "name": "Enhanced restoration",
+                "tag": "rest_style",
+                "desc": "A much more powerful, efficient resting",
+                "require": "restskill>=4",
+                "duration": 100,
+                "cost":{
+                    "reflection": 15,
+                    "musing": 25
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 15
+                },
+                "max": 1
+            },
+            {
                 "id": "analytical_unlock1",
                 "name": "Keen thoughts",
                 "tag": "mentalry",
