@@ -373,9 +373,28 @@
                 "dot": {
                     "duration": 400,
                     "mod": {
-                        "supplication.rate": 3,
+                        "supplication.rate": 2,
                         "pleafocus.effect.supplication": 2,
                         "rest_style.activate": 1
+                    }
+                }
+            },
+            {
+                "id": "supplication_dot2",
+                "name": "Restorative focus",
+                "tag": "mentalry,rest_style",
+                "desc": "Get in a state of being attuned to the restoration of your body",
+                "require": "restskill>=3",
+                "duration": 2,
+                "cost":{
+                    "reflection": 1
+                },
+                "dot": {
+                    "duration": 400,
+                    "mod": {
+                        "supplication.rate": 10,
+                        "pleafocus.effect.supplication": 10,
+                        "pleafocus.effect.thoughts": 3
                     }
                 }
             },
@@ -407,7 +426,39 @@
                     "nutrition": 25
                 },
                 "mod": {
-                    "pleafocus.effect.supplication": 1.5
+                    "pleafocus.effect.supplication": 2
+                },
+                "max": 1
+            },
+            {
+                "id": "upgrade_rest_efficiency3",
+                "name": "Reflective recovery",
+                "tag": "rest_style",
+                "desc": "Reflect back on how you rest",
+                "require": "restskill>=3",
+                "duration": 50,
+                "cost":{
+                    "reflection": 10
+                },
+                "mod": {
+                    "pleafocus.effect.supplication": 8,
+                    "supplication.rate": 3
+                },
+                "max": 1
+            },
+            {
+                "id": "upgrade_restskill_max",
+                "name": "Deeper understanding of rest",
+                "tag": "rest_style",
+                "desc": "Realize a breakthrough in how you rest",
+                "require": "restskill>=3&&realization",
+                "duration": 70,
+                "cost":{
+                    "reflection": 20,
+                    "realization": 1
+                },
+                "mod": {
+                    "restskill.max": 1
                 },
                 "max": 1
             },
