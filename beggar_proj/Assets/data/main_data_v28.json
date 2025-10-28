@@ -570,6 +570,23 @@
                 "max": 2
             },
             {
+                "id": "enhanced_gratitude_b",
+                "name": "Thankful for the divine",
+                "desc": "Through faith, be more thankful of every activity",
+                "require": "gratitude>1&&analysis>1",
+                "duration": 30,
+                "cost":{
+                    "faith": 15,
+                    "analysis": 15,
+                    "thoughts": 90
+                },
+                "mod": {
+                    "get_alms.result.gratitude": 1,
+                    "pray.result.gratitude": 2
+                },
+                "max": 2
+            },
+            {
                 "id": "musing_flow",
                 "name": "Flow of musings",
                 "tag": "mentalry,reflective_style",
