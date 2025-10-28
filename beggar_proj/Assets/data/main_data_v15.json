@@ -1448,6 +1448,16 @@
         ]
     },
     {
+        "type": "HINT",
+        "items":[
+            {
+                "id": "gutterborn_hint",
+                "target_id": "gutterborn",
+                "require": "hint_t_tier0"
+            }
+        ]
+    },
+    {
         "type": "SKILL",
         "items": [
             {
