@@ -277,6 +277,7 @@ public class RuntimeUnit
     public bool NeedMet => IsNeedMet();
 
     public ConfigResource ConfigResource { get; set; }
+    public ConfigHint ConfigHintData { get; set; }
     public ConfigEncounter ConfigEncounter { get; set; }
     public float ValueRatio => HasMax ? _value / Max : 0f;
 

@@ -10,6 +10,10 @@ public class ConfigResource
     public bool Stressor;
 }
 
+public class ConfigHint 
+{ 
+}
+
 public class ConfigEncounter
 {
     public JSONNode Length { get; set; }

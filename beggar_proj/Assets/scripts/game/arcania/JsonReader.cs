@@ -394,6 +394,14 @@ public class JsonReader
                     Stressor = item.GetValueOrDefault("stressor", false)
                 };
             }
+            if (type == UnitType.HINT)
+            {
+                ru.ConfigHintData = new ConfigHint()
+                {
+                    hintTargetPointer = arcaniaUnits.GetOrCreateIdPointer(item.GetValueOrDefault("target_id", null))
+                };
+            };
+            }
             if (type == UnitType.TAB)
             {
                 var tr = new TabRuntime(ru);
@@ -818,7 +826,7 @@ public class ConfigBasic
 public enum UnitType
 {
     RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
-    DOT,
+    DOT, HINT
 }
 
 public class ModRuntime
