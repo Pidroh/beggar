@@ -409,6 +409,7 @@ public class MainGameControlSetupJLayout
                     var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT);
                     var hasPlusMinusButton = unitType == UnitType.FURNITURE;
                     var showRequireOfTarget = unitType == UnitType.HINT;
+                    var valueVisible = unitType != UnitType.HINT;
 
                     if (hasTitleWithValue)
                     {
@@ -467,10 +468,11 @@ public class MainGameControlSetupJLayout
                         child.LayoutRU.ButtonChildren[1].Item1.SetTextRaw(0, "-");
                     }
 
-                    if (!string.IsNullOrWhiteSpace(modelData.ConfigBasic.Desc))
+                    // get description of the hint target if it exists, if not, own description
+                    string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
+                    if (!string.IsNullOrWhiteSpace(desc))
                     {
                         var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
-
                         descLayout.SetTextRaw(0, modelData.ConfigBasic.Desc);
                         jCU.Description = new JLayTextAccessor(descLayout, 0);
                         AddToExpand(layoutRU, descLayout, jCU);

@@ -299,7 +299,7 @@ public static class JGameControlExecuter
                         
                         shouldShowSep = true;
                         UpdateExpandLogicForUnit(unit);
-                        if (unit.ValueText != null)
+                        if (unit.ValueText != null && unit.Data.ConfigHintData == null)
                         {
                             var Data = unit.Data;
                             var valueT = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
