@@ -1452,6 +1452,7 @@
         "items":[
             {
                 "id": "gutterborn_hint",
+                "name": "????",
                 "target_id": "gutterborn",
                 "require": "hint_t_tier0"
             }

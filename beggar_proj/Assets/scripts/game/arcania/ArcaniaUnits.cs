@@ -6,6 +6,7 @@ public class ArcaniaUnits
     public Dictionary<string, IDPointer> IdMapper = new();
     public List<DialogRuntime> Dialogs = new();
 
+    public List<IDPointer> PointersThatHaveHintsTargetingThem { get; internal set; } = new();
     public List<ModRuntime> Mods { get; internal set; } = new();
     public List<ModRuntime> SpaceMods { get; internal set; } = new();
     public RuntimeUnit RestActionActive { get; internal set; }

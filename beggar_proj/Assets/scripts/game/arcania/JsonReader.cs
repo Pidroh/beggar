@@ -109,6 +109,12 @@ public class JsonReader
                 u.ConfigTask.Need.humanExpression = ConditionalExpressionParser.ToHumanLanguage(u.ConfigTask.Need.expression);
             }
         }
+        foreach (var item in arcaniaDatas.PointersThatHaveHintsTargetingThem)
+        {
+            ConfigBasic configBasic = item.RuntimeUnit.ConfigBasic;
+            if (configBasic.Require == null) continue;
+            configBasic.Require.humanExpression = ConditionalExpressionParser.ToHumanLanguage(configBasic.Require.expression);
+        }
         #region assign each runtime unit to a separator
         foreach (var dataList in arcaniaDatas.datas)
         {
@@ -396,9 +402,12 @@ public class JsonReader
             }
             if (type == UnitType.HINT)
             {
+                SimpleJSON.JSONNode key = item.GetValueOrDefault("target_id", null);
+                IDPointer idPointerHintTarget = arcaniaUnits.GetOrCreateIdPointer(key);
+                arcaniaUnits.PointersThatHaveHintsTargetingThem.Add(idPointerHintTarget);
                 ru.ConfigHintData = new ConfigHint()
                 {
-                    hintTargetPointer = arcaniaUnits.GetOrCreateIdPointer(item.GetValueOrDefault("target_id", null))
+                    hintTargetPointer = idPointerHintTarget
                 };
             };
             if (type == UnitType.TAB)
