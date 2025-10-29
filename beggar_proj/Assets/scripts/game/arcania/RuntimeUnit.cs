@@ -35,10 +35,18 @@ public class RuntimeUnit
 
     public bool IsPossiblyVisibleRegardlessOfRequire()
     {
-        if (this.HasModActive(ModType.Lock)) return false;
+        if (IsLocked()) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
         if (Activatable && !HasModActive(ModType.Activate)) return false;
+        // if it's a hint and the hinted thing is already visible, the hint isn't visible
+        var hintTargetUnit = ConfigHintData?.hintTargetPointer?.RuntimeUnit ?? null;
+        if (hintTargetUnit != null && (hintTargetUnit.Visible || hintTargetUnit.IsLocked())) return false;
         return true;
+    }
+
+    private bool IsLocked()
+    {
+        return this.HasModActive(ModType.Lock);
     }
 
     private bool IsNeedMet()
