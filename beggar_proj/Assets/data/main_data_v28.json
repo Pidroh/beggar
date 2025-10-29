@@ -77,6 +77,19 @@
         "type": "TASK",
         "items": [
             {
+                "id": "hint_t_tier0",
+                "name": "Job hints I",
+                "tag": "mentalry",
+                "desc": "Knowledge of the various paths you can take",
+                "require": "t_job",
+                "duration": 30,
+                "cost":{
+                    "thoughts": 10,
+                    "supplication": 10
+                },
+                "max": 1
+            },
+            {
                 "id": "analytical_powerup1",
                 "name": "Keen mind",
                 "tag": "mentalry",
