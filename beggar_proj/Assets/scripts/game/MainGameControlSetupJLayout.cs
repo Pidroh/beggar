@@ -304,8 +304,8 @@ public class MainGameControlSetupJLayout
                     }
                 }
             }
-            
-            
+
+
         }
         #endregion
 
@@ -406,8 +406,9 @@ public class MainGameControlSetupJLayout
                     var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION;
                     var hasTitleWithValue = unitType == UnitType.SKILL;
                     var hasXPBar = unitType == UnitType.SKILL;
-                    var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE);
+                    var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT);
                     var hasPlusMinusButton = unitType == UnitType.FURNITURE;
+                    var showRequireOfTarget = unitType == UnitType.HINT;
 
                     if (hasTitleWithValue)
                     {
@@ -495,15 +496,29 @@ public class MainGameControlSetupJLayout
 
                     #endregion
                     #region need
-                    arcania.ConditionalExpression need = modelData.ConfigTask?.Need;
-                    if (need != null)
                     {
-                        var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
-                        needLay.SetTextRaw(0, "Needs: " + need.humanExpression);
-                        AddToExpand(layoutRU, needLay, jCU);
+                        arcania.ConditionalExpression need = modelData.ConfigTask?.Need;
+                        if (need != null)
+                        {
+                            var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                            needLay.SetTextRaw(0, "Needs: " + need.humanExpression);
+                            AddToExpand(layoutRU, needLay, jCU);
+                        }
                     }
                     #endregion
 
+                    #region require of target (for hints and similar stuff)
+                    if (showRequireOfTarget)
+                    {
+                        arcania.ConditionalExpression require = modelData.ConfigHintData.hintTargetPointer.RuntimeUnit.ConfigBasic.Require;
+                        if (require != null)
+                        {
+                            var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                            needLay.SetTextRaw(0, Local.GetText("Requires", "used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla") + ": " + require.humanExpression);
+                            AddToExpand(layoutRU, needLay, jCU);
+                        }
+                    }
+                    #endregion
 
                 }
                 #endregion
@@ -558,7 +573,7 @@ public class MainGameControlSetupJLayout
                 var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
                 var buttonLayRU = JCanvasMaker.CreateLayout(buttonLD, runtime);
                 var parentLayout = jControlDataHolder.OverlayTabMenuLayout.LayoutRU;
-                if (buttonTypeIndex <= 1) 
+                if (buttonTypeIndex <= 1)
                 {
                     var d = buttonTypeIndex == 0 ? Direction.WEST : Direction.SOUTH;
                     parentLayout = jControlDataHolder.tabMenu[d];
@@ -612,6 +627,7 @@ public class MainGameControlSetupJLayout
                     case UnitType.HOUSE:
                     case UnitType.FURNITURE:
                     case UnitType.LOCATION:
+                    case UnitType.HINT:
                         foreach (var separator in tcu.SeparatorControls)
                         {
                             separator.UnitGroupControls[t] = new();

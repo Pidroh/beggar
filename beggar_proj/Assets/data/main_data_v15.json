@@ -2353,7 +2353,8 @@
                 "id": "task",
                 "unit_types": [
                     "TASK",
-                    "CLASS"
+                    "CLASS",
+                    "HINT"
                 ],
                 "icon": "tab_tasks",
                 "separator": [
@@ -2462,6 +2463,14 @@
                             "CLASS"
                         ],
                         "priority": 100
+                    },
+                    {
+                        "id": "hint_tab",
+                        "name": "Hints",
+                        "unit_types": [
+                            "HINT"
+                        ],
+                        "priority": 110
                     }
                 ]
             },

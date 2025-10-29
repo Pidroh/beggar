@@ -401,7 +401,6 @@ public class JsonReader
                     hintTargetPointer = arcaniaUnits.GetOrCreateIdPointer(item.GetValueOrDefault("target_id", null))
                 };
             };
-            }
             if (type == UnitType.TAB)
             {
                 var tr = new TabRuntime(ru);

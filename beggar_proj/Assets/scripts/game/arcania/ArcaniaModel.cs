@@ -10,8 +10,9 @@ public class ConfigResource
     public bool Stressor;
 }
 
-public class ConfigHint 
-{ 
+public class ConfigHint
+{
+    public IDPointer hintTargetPointer { get; internal set; }
 }
 
 public class ConfigEncounter
