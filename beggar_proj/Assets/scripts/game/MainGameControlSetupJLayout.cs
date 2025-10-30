@@ -470,10 +470,14 @@ public class MainGameControlSetupJLayout
 
                     // get description of the hint target if it exists, if not, own description
                     string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
+                    if (modelData.ConfigHintData != null) 
+                    {
+                        Debug.Log("Hint data present");
+                    }
                     if (!string.IsNullOrWhiteSpace(desc))
                     {
                         var descLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("lore_text"), runtime);
-                        descLayout.SetTextRaw(0, modelData.ConfigBasic.Desc);
+                        descLayout.SetTextRaw(0, desc);
                         jCU.Description = new JLayTextAccessor(descLayout, 0);
                         AddToExpand(layoutRU, descLayout, jCU);
                     }
