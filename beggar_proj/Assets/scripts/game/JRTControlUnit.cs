@@ -96,6 +96,7 @@ public class JGameControlDataHolder
     public string LabelLivingHere { get; internal set; }
     public string LabelConfirmSlotDeleteTitle { get; internal set; }
     public string LabelConfirmSlotDeleteContent { get; internal set; }
+    public Dictionary<UnitType, string> LabelUnitTypeDescription = new();
 
     public enum OverlayType 
     {

@@ -100,6 +100,14 @@ public class MainGameControlSetupJLayout
             jControlDataHolder.LabelPracticeSkill = Local.GetText("Practice Skill");
             jControlDataHolder.LabelConfirmSlotDeleteTitle = Local.GetText("Delete save slot");
             jControlDataHolder.LabelConfirmSlotDeleteContent = Local.GetText("Data cannot be recovered");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.RESOURCE] = Local.GetText("resource");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.SKILL] = Local.GetText("skill");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.CLASS] = Local.GetText("class");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.FURNITURE] = Local.GetText("house item");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.HINT] = Local.GetText("hint");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.HOUSE] = Local.GetText("house");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.LOCATION] = Local.GetText("location");
+            jControlDataHolder.LabelUnitTypeDescription[UnitType.TASK] = Local.GetText("task");
 
             jControlDataHolder.LabelDuration = Local.GetText("Duration");
 
