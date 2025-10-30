@@ -1454,7 +1454,7 @@
                 "id": "gutterborn_hint",
                 "name": "Class hint",
                 "target_id": "gutterborn",
-                "require": "hint_t_tier0"
+                "require": "hint_t_job"
             }
         ]
     },
