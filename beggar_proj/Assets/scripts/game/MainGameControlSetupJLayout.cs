@@ -792,7 +792,15 @@ public class MainGameControlSetupJLayout
         var text = string.Empty;
         if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED)
         {
-            text = $"{mgc.JControlData.LabelUnlocked}: {logUnit.Unit.ConfigBasic.name}";
+            var ut = logUnit.Unit.ConfigBasic.UnitType;
+            if (mgc.JControlData.LabelUnitTypeDescription.TryGetValue(ut, out var label))
+            {
+                text = $"{mgc.JControlData.LabelUnlocked}: {logUnit.Unit.ConfigBasic.name} ( {label} )";
+            }
+            else {
+                text = $"{mgc.JControlData.LabelUnlocked}: {logUnit.Unit.ConfigBasic.name}";
+            }
+            
         }
         layout.SetTextRaw(0, text);
         return layout;
