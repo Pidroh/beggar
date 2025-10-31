@@ -382,12 +382,19 @@ public class JsonReader
             return;
         }
         if (!arcaniaUnits.datas.ContainsKey(type)) arcaniaUnits.datas[type] = new();
+        var isTag = type == UnitType.TAG;
         foreach (var item in items.AsArray.Children)
         {
             var ru = new RuntimeUnit();
             ReadBasicUnit(ru, item, arcaniaUnits, type, localizeNameDescription);
 
-            IDPointer iDPointer = arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id);
+            IDPointer iDPointer;
+            if (isTag) {
+                iDPointer = arcaniaUnits.GetOrCreateIdPointerWithTag(ru.ConfigBasic.Id);
+            } else {
+                iDPointer = arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id);
+            }
+                
             if (iDPointer.RuntimeUnit != null)
             {
                 Debug.LogError($"Potential ID duplication: {iDPointer.id}");
@@ -399,6 +406,10 @@ public class JsonReader
                 {
                     Stressor = item.GetValueOrDefault("stressor", false)
                 };
+            }
+            if (type == UnitType.TAG) 
+            {
+                iDPointer.Tag.RuntimeUnit = ru;
             }
             if (type == UnitType.HINT)
             {
@@ -834,7 +845,7 @@ public class ConfigBasic
 public enum UnitType
 {
     RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
-    DOT, HINT
+    DOT, HINT, TAG
 }
 
 public class ModRuntime
@@ -882,7 +893,15 @@ public class DialogRuntime
 
 public class TagRuntime
 {
-    public string tagName;
+    private string _tagName;
+    public string tagName 
+    {
+        get => RuntimeUnit?.Name ?? _tagName;
+        set 
+        {
+            _tagName = value;
+        }
+    }
     public List<RuntimeUnit> UnitsWithTag = new();
 
     public List<DialogRuntime> Dialogs = new();
@@ -891,4 +910,6 @@ public class TagRuntime
     {
         this.tagName = tagName;
     }
+
+    public RuntimeUnit RuntimeUnit { get; internal set; }
 }
