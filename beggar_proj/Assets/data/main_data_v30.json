@@ -22,7 +22,7 @@
                     "faith": 50,
                     "churchrespect": 100
                 },
-                "cost" :{
+                "cost": {
                     "charm": 20
                 },
                 "dot": {
@@ -43,10 +43,8 @@
                 "tag": "religionry",
                 "max": 1,
                 "duration": 50,
-                "cost": {
-                },
-                "mod": {
-                }
+                "cost": {},
+                "mod": {}
             },
             {
                 "id": "migling_priests",
@@ -241,8 +239,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": [
-                ]
+                "encs": []
             },
             {
                 "id": "parish_activities",
@@ -263,8 +260,7 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": [
-                ]
+                "encs": []
             }
         ]
     },
@@ -274,8 +270,7 @@
     },
     {
         "type": "DIALOG",
-        "items": [
-        ]
+        "items": []
     },
     {
         "type": "FURNITURE",
@@ -294,12 +289,27 @@
                         "id": "slots",
                         "name": "Save Slots",
                         "contains_save_slots": true,
-                        "unit_types": [
-                        ]
+                        "unit_types": []
                     }
                 ]
             }
         ]
+    },
+    {
+        "type": "HINT",
+        "items": [
+            {
+                "id": "archdeacon_hint",
+                "name": "Class hint",
+                "target_id": "archdeacon",
+                "require": "hint_t_tier4"
+            },
+            {
+                "id": "veteranpriest_hint",
+                "name": "Class hint",
+                "target_id": "veteranpriest",
+                "require": "hint_t_tier4"
+            }
+        ]
     }
-    
 ]

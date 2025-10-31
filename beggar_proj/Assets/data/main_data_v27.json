@@ -83,7 +83,7 @@
                     "clarity": 3,
                     "thoughts": 100
                 },
-                "mod":{
+                "mod": {
                     "reflection.max": 1,
                     "thoughts.rate": 1
                 }
@@ -1826,6 +1826,35 @@
                     "thoughts.rate": 1,
                     "nutrition.max": 30
                 }
+            }
+        ]
+    },
+    {
+        "type": "HINT",
+        "items": [
+            {
+                "id": "thief_hint",
+                "name": "Class hint",
+                "target_id": "thief",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "burglar_hint",
+                "name": "Class hint",
+                "target_id": "burglar",
+                "require": "hint_t_tier3"
+            },
+            {
+                "id": "underboss_hint",
+                "name": "Class hint",
+                "target_id": "underboss",
+                "require": "hint_t_tier4"
+            },
+            {
+                "id": "urbansage_hint",
+                "name": "Class hint",
+                "target_id": "urbansage",
+                "require": "hint_t_tier4"
             }
         ]
     }

@@ -1449,12 +1449,60 @@
     },
     {
         "type": "HINT",
-        "items":[
+        "items": [
             {
                 "id": "gutterborn_hint",
                 "name": "Class hint",
                 "target_id": "gutterborn",
                 "require": "hint_t_job"
+            },
+            {
+                "id": "churchbeggar_hint",
+                "name": "Class hint",
+                "target_id": "churchbeggar",
+                "require": "hint_t_tier0"
+            },
+            {
+                "id": "ratbeggar_hint",
+                "name": "Class hint",
+                "target_id": "ratbeggar",
+                "require": "hint_t_tier0"
+            },
+            {
+                "id": "breadsnatcher_hint",
+                "name": "Class hint",
+                "target_id": "breadsnatcher",
+                "require": "hint_t_tier0"
+            },
+            {
+                "id": "beggar_hint",
+                "name": "Class hint",
+                "target_id": "beggar",
+                "require": "hint_t_tier1"
+            },
+            {
+                "id": "cutpurse_hint",
+                "name": "Class hint",
+                "target_id": "cutpurse",
+                "require": "hint_t_tier1"
+            },
+            {
+                "id": "streetrat_hint",
+                "name": "Class hint",
+                "target_id": "streetrat",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "ratwarden_hint",
+                "name": "Class hint",
+                "target_id": "ratwarden",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "catbeggar_hint",
+                "name": "Class hint",
+                "target_id": "catbeggar",
+                "require": "hint_t_tier2"
             }
         ]
     },

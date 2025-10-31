@@ -82,7 +82,7 @@
                 "tag": "mentalry",
                 "desc": "Knowledge of the various paths you can take",
                 "duration": 5,
-                "cost":{
+                "cost": {
                     "supplication": 1
                 },
                 "max": 1
@@ -94,7 +94,7 @@
                 "desc": "Knowledge of the various paths you can take",
                 "require": "t_tier0",
                 "duration": 5,
-                "cost":{
+                "cost": {
                     "supplication": 50,
                     "thoughts": 60,
                     "clarity": 3
@@ -108,7 +108,7 @@
                 "desc": "Knowledge of the various paths you can take",
                 "require": "t_tier1",
                 "duration": 5,
-                "cost":{
+                "cost": {
                     "supplication": 80,
                     "clarity": 5
                 },
@@ -121,7 +121,7 @@
                 "desc": "Knowledge of the various paths you can take",
                 "require": "t_tier2",
                 "duration": 5,
-                "cost":{
+                "cost": {
                     "supplication": 200,
                     "clarity": 40
                 },
@@ -134,7 +134,7 @@
                 "desc": "Knowledge of the various paths you can take",
                 "require": "t_tier3",
                 "duration": 25,
-                "cost":{
+                "cost": {
                     "supplication": 200,
                     "clarity": 100,
                     "reflection": 5
@@ -148,7 +148,7 @@
                 "desc": "Willingness to learn",
                 "require": "introspection>=4",
                 "duration": 30,
-                "cost":{
+                "cost": {
                     "thoughts": 50,
                     "supplication": 80
                 },
@@ -168,7 +168,7 @@
                 "desc": "Focus on analyzing",
                 "require": "analytical_powerup1",
                 "duration": 2,
-                "cost":{
+                "cost": {
                     "thoughts": 5
                 },
                 "dot": {
@@ -187,7 +187,7 @@
                 "desc": "Improve your analytical capabilities",
                 "require": "analytics>=1",
                 "duration": 50,
-                "cost":{
+                "cost": {
                     "thoughts": 100,
                     "supplication": 100,
                     "clarity": 5,
@@ -205,7 +205,7 @@
                 "desc": "Increase your capacity for analysis",
                 "require": "analytics>=2",
                 "duration": 60,
-                "cost":{
+                "cost": {
                     "thoughts": 120,
                     "supplication": 100,
                     "clarity": 5,
@@ -223,7 +223,7 @@
                 "desc": "Further improve your analytical speed",
                 "require": "analytics>=3",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "clarity": 50,
                     "supplication": 500,
                     "reflection": 1,
@@ -241,7 +241,7 @@
                 "desc": "Further increase your capacity for analysis",
                 "require": "analytics>=3",
                 "duration": 80,
-                "cost":{
+                "cost": {
                     "thoughts": 180,
                     "supplication": 140,
                     "clarity": 4,
@@ -259,13 +259,13 @@
                 "desc": "Expand your understanding of analytical systems",
                 "require": "analytics>=3",
                 "duration": 90,
-                "cost":{
+                "cost": {
                     "thoughts": 90,
                     "supplication": 110,
                     "clarity": 3,
                     "analysis": 1000
                 },
-                "run":{
+                "run": {
                     "thoughts": 3,
                     "supplication": 3,
                     "clarity": 1
@@ -284,7 +284,7 @@
                 "desc": "Push your analytical processes to new speeds",
                 "require": "analytics>=4",
                 "duration": 100,
-                "cost":{
+                "cost": {
                     "clarity": 150,
                     "thoughts": 200,
                     "reflection": 10,
@@ -302,7 +302,7 @@
                 "desc": "Achieve seamless analytical thinking",
                 "require": "analytics>=6",
                 "duration": 120,
-                "cost":{
+                "cost": {
                     "thoughts": 250,
                     "clarity": 20,
                     "reflection": 15,
@@ -321,7 +321,7 @@
                 "desc": "Massively expand your capacity for analysis",
                 "require": "analytics>=5",
                 "duration": 110,
-                "cost":{
+                "cost": {
                     "thoughts": 220,
                     "supplication": 160,
                     "clarity": 15,
@@ -339,7 +339,7 @@
                 "desc": "Reach unprecedented levels of analytical capacity",
                 "require": "analytics>=7",
                 "duration": 130,
-                "cost":{
+                "cost": {
                     "thoughts": 2080,
                     "clarity": 300,
                     "reflection": 10,
@@ -358,13 +358,13 @@
                 "desc": "Transcend the limits of analytical understanding",
                 "require": "analytics>=5",
                 "duration": 140,
-                "cost":{
+                "cost": {
                     "thoughts": 300,
                     "supplication": 220,
                     "clarity": 10,
                     "analysis": 1500
                 },
-                "run":{
+                "run": {
                     "thoughts": 5,
                     "supplication": 5,
                     "clarity": 2
@@ -383,7 +383,7 @@
                 "desc": "Engage in thorough analytical work",
                 "require": "analytics>=1",
                 "duration": 15,
-                "cost":{
+                "cost": {
                     "thoughts": 50,
                     "supplication": 40,
                     "clarity": 2
@@ -399,7 +399,7 @@
                 "desc": "Generate more analysis from focused work",
                 "require": "analytics>=2",
                 "duration": 60,
-                "cost":{
+                "cost": {
                     "thoughts": 100,
                     "clarity": 5,
                     "analysis": 400
@@ -416,7 +416,7 @@
                 "desc": "Maximize analytical output from focused sessions",
                 "require": "analytics>=4",
                 "duration": 80,
-                "cost":{
+                "cost": {
                     "thoughts": 150,
                     "clarity": 10,
                     "realization": 1,
@@ -434,7 +434,7 @@
                 "desc": "Perform focused analysis much faster",
                 "require": "analytics>=5",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 120,
                     "clarity": 8,
                     "analysis": 2500
@@ -451,7 +451,7 @@
                 "desc": "Get in a state of being aware of your supplication self",
                 "require": "restskill>=1",
                 "duration": 2,
-                "cost":{
+                "cost": {
                     "thoughts": 10
                 },
                 "dot": {
@@ -470,7 +470,7 @@
                 "desc": "Get in a state of being attuned to the restoration of your body",
                 "require": "restskill>=3",
                 "duration": 2,
-                "cost":{
+                "cost": {
                     "reflection": 1
                 },
                 "dot": {
@@ -489,7 +489,7 @@
                 "desc": "Learn to rest more efficiently",
                 "require": "restskill>=1",
                 "duration": 90,
-                "cost":{
+                "cost": {
                     "thoughts": 70,
                     "supplication": 10,
                     "clarity": 3
@@ -506,7 +506,7 @@
                 "desc": "A healthier body can rest better",
                 "require": "restskill>=2",
                 "duration": 50,
-                "cost":{
+                "cost": {
                     "nutrition": 25
                 },
                 "mod": {
@@ -521,7 +521,7 @@
                 "desc": "Reflect back on how you rest",
                 "require": "restskill>=3",
                 "duration": 50,
-                "cost":{
+                "cost": {
                     "reflection": 10
                 },
                 "mod": {
@@ -537,7 +537,7 @@
                 "desc": "Realize a breakthrough in how you rest",
                 "require": "restskill>=3&&realization",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "reflection": 20,
                     "realization": 1
                 },
@@ -553,7 +553,7 @@
                 "desc": "Your body naturally recovers over time",
                 "require": "restskill>=4",
                 "duration": 100,
-                "cost":{
+                "cost": {
                     "reflection": 15
                 },
                 "mod": {
@@ -568,7 +568,7 @@
                 "desc": "A much more powerful, efficient resting",
                 "require": "restskill>=4",
                 "duration": 100,
-                "cost":{
+                "cost": {
                     "reflection": 15,
                     "musing": 25
                 },
@@ -584,7 +584,7 @@
                 "desc": "A thought leads to another, leads to a musing",
                 "require": "epiphanics>=1",
                 "duration": 120,
-                "cost":{
+                "cost": {
                     "reflection": 20,
                     "supplication": 150,
                     "musing": 40
@@ -601,12 +601,12 @@
                 "desc": "Enter a deep state of reflective contemplation",
                 "require": "epiphanics>=2",
                 "duration": 5,
-                "buy":{
+                "buy": {
                     "realization": 3,
                     "clarity": 100,
                     "musing": 5
                 },
-                "cost":{
+                "cost": {
                     "musing": 10
                 },
                 "dot": {
@@ -624,7 +624,7 @@
                 "desc": "Tap deep into gratitude, realize how much it means to you",
                 "require": "gratitude>1&&analysis>1",
                 "duration": 30,
-                "cost":{
+                "cost": {
                     "gratitude": 15,
                     "analysis": 15,
                     "thoughts": 50
@@ -640,7 +640,7 @@
                 "desc": "Through faith, be more thankful of every activity",
                 "require": "gratitude>1&&analysis>1",
                 "duration": 30,
-                "cost":{
+                "cost": {
                     "faith": 15,
                     "analysis": 15,
                     "thoughts": 90
@@ -662,7 +662,7 @@
                     "realization": 1,
                     "musing": 100
                 },
-                "cost":{
+                "cost": {
                     "reflection": 15
                 },
                 "dot": {
@@ -682,7 +682,7 @@
                 "need": "restskill>=1",
                 "max": 1,
                 "duration": 5,
-                "cost":{
+                "cost": {
                     "musing": 30,
                     "reflection": 10
                 },
@@ -690,7 +690,6 @@
                     "thoughts.rate": 5,
                     "supplication.rate": 5
                 }
-                
             },
             {
                 "id": "upgrade_epiphanics_max",
@@ -699,7 +698,7 @@
                 "desc": "Deepen your curiosity, your eagerness",
                 "require": "epiphanics>=3",
                 "duration": 150,
-                "cost":{
+                "cost": {
                     "realization": 1,
                     "clarity": 50,
                     "reflection": 30
@@ -716,7 +715,7 @@
                 "desc": "The flow of thoughts will lead me somewhere",
                 "require": "analysis",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 50,
                     "supplication": 30,
                     "analysis": 5
@@ -734,7 +733,7 @@
                 "desc": "The flow of thoughts will lead me somewhere",
                 "require": "analysis&&analytical_skill_points_a>=3",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 100,
                     "supplication": 70,
                     "analysis": 70
@@ -752,7 +751,7 @@
                 "desc": "The flow of thoughts will lead me somewhere",
                 "require": "analysis&&analytical_skill_points_b>=3",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 100,
                     "supplication": 70,
                     "analysis": 600
@@ -770,7 +769,7 @@
                 "desc": "The flow of thoughts will lead me somewhere",
                 "require": "analysis&&analytical_skill_points_c>=3",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 100,
                     "supplication": 70,
                     "analysis": 1500
@@ -788,7 +787,7 @@
                 "desc": "The flow of thoughts will lead me somewhere",
                 "require": "analysis&&analytical_skill_points_d>=3",
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 150,
                     "supplication": 70,
                     "clarity": 20,
@@ -808,7 +807,7 @@
                 "require": "analytical_unlock1",
                 "max": 3,
                 "duration": 30,
-                "cost":{
+                "cost": {
                     "thoughts": 50,
                     "supplication": 30,
                     "analysis": 1
@@ -825,7 +824,7 @@
                 "require": "analytical_unlock2",
                 "max": 2,
                 "duration": 50,
-                "cost":{
+                "cost": {
                     "thoughts": 100,
                     "supplication": 90,
                     "clarity": 3,
@@ -843,7 +842,7 @@
                 "require": "analytical_unlock3",
                 "max": 2,
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 150,
                     "supplication": 140,
                     "clarity": 20,
@@ -861,7 +860,7 @@
                 "require": "analytical_unlock4",
                 "max": 3,
                 "duration": 70,
-                "cost":{
+                "cost": {
                     "thoughts": 250,
                     "clarity": 30,
                     "realization": 1,
@@ -878,7 +877,7 @@
                 "desc": "It's hard, but learning is forever",
                 "require": "analytical_unlock5",
                 "duration": 300,
-                "cost":{
+                "cost": {
                     "thoughts": 300,
                     "clarity": 50,
                     "realization": 5,
@@ -900,7 +899,7 @@
                     "analysis": 2,
                     "thoughts": 50
                 },
-                "mod":{
+                "mod": {
                     "analytical_skill_points_a.max": 2,
                     "thoughts.max": 50,
                     "thoughts.rate": 0.1
@@ -918,7 +917,7 @@
                     "analysis": 35,
                     "thoughts": 20
                 },
-                "mod":{
+                "mod": {
                     "analytical_skill_points_b.max": 2,
                     "thoughts.max": 50,
                     "thoughts.rate": 0.1
@@ -936,7 +935,7 @@
                     "analysis": 40,
                     "thoughts": 20
                 },
-                "mod":{
+                "mod": {
                     "analytical_skill_points_c.max": 2,
                     "thoughts.max": 50,
                     "thoughts.rate": 0.1
@@ -954,7 +953,7 @@
                     "analysis": 80,
                     "thoughts": 20
                 },
-                "mod":{
+                "mod": {
                     "analytical_skill_points_d.max": 2,
                     "thoughts.max": 50,
                     "thoughts.rate": 0.1
@@ -1605,5 +1604,22 @@
     {
         "type": "FURNITURE",
         "items": []
+    },
+    {
+        "type": "HINT",
+        "items": [
+            {
+                "id": "sicktier3_hint",
+                "name": "Class hint",
+                "target_id": "sicktier3",
+                "require": "hint_t_tier3"
+            },
+            {
+                "id": "sewercreature_hint",
+                "name": "Class hint",
+                "target_id": "sewercreature",
+                "require": "hint_t_tier4"
+            }
+        ]
     }
 ]

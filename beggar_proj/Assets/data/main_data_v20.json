@@ -1869,5 +1869,46 @@
                 }
             }
         ]
+    },
+    {
+        "type": "HINT",
+        "items": [
+            {
+                "id": "churchporter_hint",
+                "name": "Class hint",
+                "target_id": "churchporter",
+                "require": "hint_t_tier1"
+            },
+            {
+                "id": "lostphilosopher_hint",
+                "name": "Class hint",
+                "target_id": "lostphilosopher",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "acolyte_hint",
+                "name": "Class hint",
+                "target_id": "acolyte",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "lector_hint",
+                "name": "Class hint",
+                "target_id": "lector",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "priest_hint",
+                "name": "Class hint",
+                "target_id": "priest",
+                "require": "hint_t_tier3"
+            },
+            {
+                "id": "expertbeggar_hint",
+                "name": "Class hint",
+                "target_id": "expertbeggar",
+                "require": "hint_t_tier3"
+            }
+        ]
     }
 ]

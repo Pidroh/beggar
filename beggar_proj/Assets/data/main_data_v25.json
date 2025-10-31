@@ -1395,9 +1395,7 @@
     },
     {
         "type": "LOCATION",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "ENCOUNTER",
@@ -1566,6 +1564,47 @@
                     "benevolence.max": 3,
                     "space": 2
                 }
+            }
+        ]
+    },
+    {
+        "type": "HINT",
+        "items": [
+            {
+                "id": "bonfirevagabond_hint",
+                "name": "Class hint",
+                "target_id": "bonfirevagabond",
+                "require": "hint_t_tier0"
+            },
+            {
+                "id": "goodbeggar_hint",
+                "name": "Class hint",
+                "target_id": "goodbeggar",
+                "require": "hint_t_tier1"
+            },
+            {
+                "id": "peopleburner_hint",
+                "name": "Class hint",
+                "target_id": "peopleburner",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "animalburner_hint",
+                "name": "Class hint",
+                "target_id": "animalburner",
+                "require": "hint_t_tier1"
+            },
+            {
+                "id": "goodpriest_hint",
+                "name": "Class hint",
+                "target_id": "goodpriest",
+                "require": "hint_t_tier3"
+            },
+            {
+                "id": "gracebeggar_hint",
+                "name": "Class hint",
+                "target_id": "gracebeggar",
+                "require": "hint_t_tier3"
             }
         ]
     }
