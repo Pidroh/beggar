@@ -279,20 +279,7 @@
     {
         "type": "TAB",
         "items": [
-            {
-                "id": "save_slot_tab",
-                "unit_types": [],
-                "contains_save_slots": true,
-                "icon": "tab_save_slot",
-                "separator": [
-                    {
-                        "id": "slots",
-                        "name": "Save Slots",
-                        "contains_save_slots": true,
-                        "unit_types": []
-                    }
-                ]
-            }
+            
         ]
     },
     {
