@@ -1623,5 +1623,42 @@
                 "require": "hint_t_tier4"
             }
         ]
+    },
+    {
+        "type": "TAG",
+        "items":[
+            {
+                "id": "t_job",
+                "name": "initial class"
+            },
+            {
+                "id": "t_tier0",
+                "name": "tier 0 class"
+            },
+            {
+                "id": "t_tier1",
+                "name": "tier 1 class"
+            },
+            {
+                "id": "t_tier2",
+                "name": "tier 2 class"
+            },
+            {
+                "id": "t_tier3",
+                "name": "tier 3 class"
+            },
+            {
+                "id": "t_tier4",
+                "name": "tier 4 class"
+            },
+            {
+                "id": "pray_tool",
+                "name": "pray tool"
+            },
+            {
+                "id": "weapon",
+                "name": "weapon"
+            }
+        ]
     }
 ]
