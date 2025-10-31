@@ -64,6 +64,7 @@ public class JGameControlDataHolder
     public JLayoutChild OverlayTabMenuLayout { get; internal set; }
     public JRTControlUnit TabOverlayCloseButtonJCU { get; internal set; }
 
+    public ArchiveControlData archiveControlData;
     public List<JTabControlUnit> TabControlUnits = new();
     public Dictionary<Direction, JLayoutRuntimeUnit> tabMenu = new();
     public JGameControlDataExploration Exploration = new();

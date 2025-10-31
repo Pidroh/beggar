@@ -75,7 +75,8 @@ public static class LoadingScreenControl
 
         SaveSlotExecution.InitCurrentSlotIfNoSave(slotData, "nobody");
 
-        var key = JGameControlDataSaveSlot.SlotSaveKeys[currentSaveSlot];
+        var slot = currentSaveSlot;
+        var key = JGameControlDataSaveSlot.SlotSaveKeys[slot];
         mgc.ArcaniaPersistence = new(heartGame, key);
         mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
         mgc.JControlData.SaveSlots.PlayTimeOfActiveSlot = heartGame.PlayTimeControl.Register("beggar_unit", slotData.CurrentSlotUnit.playTimeSeconds);

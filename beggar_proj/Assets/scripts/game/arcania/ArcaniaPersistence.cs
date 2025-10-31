@@ -49,9 +49,9 @@ public class ArcaniaPersistence
         saveUnit.Save(apd);
     }
 
-    public void Load(ArcaniaUnits arcaniaUnits, ArcaniaModelExploration exploration)
+    public bool Load(ArcaniaUnits arcaniaUnits, ArcaniaModelExploration exploration)
     {
-        if (!saveUnit.TryLoad(out var persistence)) return;
+        if (!saveUnit.TryLoad(out var persistence)) return false;
         exploration.locationProgress = persistence.Exploration.locationProgress;
         if (!string.IsNullOrWhiteSpace(persistence.Exploration.lastLocationID)) 
             exploration.LoadLastActiveLocation(arcaniaUnits.GetOrCreateIdPointer(persistence.Exploration.lastLocationID)?.RuntimeUnit);
@@ -81,7 +81,7 @@ public class ArcaniaPersistence
             if (v.RuntimeUnit.Skill == null) continue;
             v.RuntimeUnit.Skill.Load(skill);
         }
-
+        return true;
     }
 }
 
