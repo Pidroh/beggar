@@ -533,7 +533,33 @@ public class MainGameControlSetupJLayout
                         }
                     }
                     #endregion
-
+                    #region tag text
+                    var hasNamedTag = false;
+                    int lastTagWithName = -1;
+                    for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
+                    {
+                        IDPointer tag = modelData.ConfigBasic.Tags[i];
+                        if (tag.RuntimeUnit == null) continue;
+                        hasNamedTag = true;
+                        lastTagWithName = i;
+                    }
+                    if (hasNamedTag) 
+                    {
+                        var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                        var text = "";
+                        for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
+                        {
+                            IDPointer tag = modelData.ConfigBasic.Tags[i];
+                            if (tag.RuntimeUnit == null) continue;
+                            text += tag.Tag.tagName;
+                            if (i != lastTagWithName) {
+                                text += ", ";
+                            }
+                        }
+                        needLay.SetTextRaw(0, text);
+                        AddToExpand(layoutRU, needLay, jCU);
+                    }
+                    #endregion
                 }
                 #endregion
 
