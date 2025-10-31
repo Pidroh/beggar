@@ -1451,12 +1451,6 @@
         "type": "HINT",
         "items": [
             {
-                "id": "gutterborn_hint",
-                "name": "Class hint",
-                "target_id": "gutterborn",
-                "require": "hint_t_job"
-            },
-            {
                 "id": "churchbeggar_hint",
                 "name": "Class hint",
                 "target_id": "churchbeggar",
