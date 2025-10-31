@@ -5,14 +5,47 @@
             {
                 "id": "psychic_instinct",
                 "name": "Psychic instinct",
-                "desc": "Impersonal, universal substratum",
+                "desc": "Impersonal, universal substratum"
             }
         ]
     },
     {
         "type": "TASK",
         "items": [
-            
+            {
+                "id": "speed_up_global",
+                "name": "Speed up",
+                "desc":"Speeds up tasks, power ups, skills and exploration",
+                "mod": {
+                    "IN_GAME_SPEED.speed": 10
+                },
+                "max": 5
+            },
+            {
+                "id": "speed_up_powerup",
+                "name": "Speed up (power up)",
+                "mod": {
+                    "t_power_up.speed": 10
+                },
+                "max": 5
+            },
+            {
+                "id": "speed_up_skill",
+                "name": "Speed up (skill)",
+                "mod": {
+                    "IN_GAME_SPEED_SKILL.speed": 10
+                },
+                "max": 5
+            },
+            {
+                "id": "speed_up_exp",
+                "name": "Speed up (exploration)",
+                "mod": {
+                    "IN_GAME_SPEED_EXPLORATION.speed": 10
+                },
+                "max": 5
+            }
+
         ]
     },
     {
