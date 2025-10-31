@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const BLACKLIST_PATH = path.resolve(__dirname, 'automatic_hint_blacklist.json');
+
 async function main() {
     // Hard-coded folder path relative to repo root
     const folderPath = path.resolve(__dirname, '../Assets/data');
@@ -8,6 +10,9 @@ async function main() {
         console.error(`Data folder not found: ${folderPath}`);
         return;
     }
+
+    // Load blacklist (create if missing)
+    const blacklist = loadBlacklist();
 
     // Process matching JSON files
     const files = fs.readdirSync(folderPath).filter(f => f.startsWith('main_data_') && f.endsWith('.json'));
@@ -19,25 +24,43 @@ async function main() {
         // Collect classes and existing hints
         const classBlocks = jsonData.filter(e => e.type === 'CLASS');
         const hintBlock = jsonData.find(e => e.type === 'HINT');
-        const hintItems = hintBlock && Array.isArray(hintBlock.items) ? hintBlock.items : [];
-
-        const existingHintIds = new Set(hintItems.map(h => h.id));
-        const existingHintTargets = new Set(hintItems.map(h => h.target_id));
-
-        let addedCount = 0;
+        let hintItems = hintBlock && Array.isArray(hintBlock.items) ? hintBlock.items : [];
 
         // Ensure we have a hint section
         let targetHintBlock = hintBlock;
         if (!targetHintBlock) {
             targetHintBlock = { type: 'HINT', items: [] };
             jsonData.push(targetHintBlock);
+            hintItems = targetHintBlock.items;
         }
+
+        // Remove hints for blacklisted classes
+        let removedCount = 0;
+        if (Array.isArray(hintItems) && blacklist.size > 0) {
+            const before = hintItems.length;
+            targetHintBlock.items = hintItems.filter(h => {
+                const tgt = h && h.target_id;
+                if (!tgt) return true;
+                return !blacklist.has(tgt);
+            });
+            removedCount = before - targetHintBlock.items.length;
+            hintItems = targetHintBlock.items;
+        }
+
+        // Build current hint indices after removals
+        const existingHintIds = new Set(hintItems.map(h => h.id));
+        const existingHintTargets = new Set(hintItems.map(h => h.target_id));
+
+        let addedCount = 0;
 
         for (const block of classBlocks) {
             const items = Array.isArray(block.items) ? block.items : [];
             for (const item of items) {
                 const classId = item.id;
                 if (!classId) continue;
+
+                // Skip blacklisted classes entirely
+                if (blacklist.has(classId)) continue;
 
                 const hintId = `${classId}_hint`;
                 if (existingHintIds.has(hintId) || existingHintTargets.has(classId)) {
@@ -64,9 +87,9 @@ async function main() {
             }
         }
 
-        if (addedCount > 0) {
+        if (addedCount > 0 || removedCount > 0) {
             fs.writeFileSync(fullPath, JSON.stringify(jsonData, null, 4));
-            console.log(`Updated: ${file} (+${addedCount} hints)`);
+            console.log(`Updated: ${file} (+${addedCount} hints, -${removedCount} removed)`);
         } else {
             console.log(`No changes: ${file}`);
         }
@@ -87,6 +110,25 @@ function pickRelevantTag(item) {
     if (tier) return tier;
 
     return null;
+}
+
+function loadBlacklist() {
+    try {
+        if (!fs.existsSync(BLACKLIST_PATH)) {
+            fs.writeFileSync(BLACKLIST_PATH, JSON.stringify([], null, 4));
+            return new Set();
+        }
+        const raw = fs.readFileSync(BLACKLIST_PATH, 'utf8');
+        const list = JSON.parse(raw);
+        if (Array.isArray(list)) {
+            return new Set(list.filter(v => typeof v === 'string' && v.trim().length > 0));
+        }
+        console.warn('Blacklist file is not an array; ignoring.');
+        return new Set();
+    } catch (err) {
+        console.error('Failed to load blacklist, proceeding with empty set:', err.message);
+        return new Set();
+    }
 }
 
 main();
