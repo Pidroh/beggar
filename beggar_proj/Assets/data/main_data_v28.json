@@ -81,9 +81,11 @@
                 "name": "Job hints I",
                 "tag": "mentalry",
                 "desc": "Knowledge of the various paths you can take",
+                "require": "t_job",
                 "duration": 5,
                 "cost": {
-                    "supplication": 1
+                    "supplication": 10,
+                    "thoughts": 3
                 },
                 "max": 1
             },
