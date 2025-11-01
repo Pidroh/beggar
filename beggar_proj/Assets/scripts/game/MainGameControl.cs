@@ -47,13 +47,23 @@ public class MainGameControl : MonoBehaviour
     private ControlState controlState = ControlState.TITLE;
     private TitleScreenRuntimeData titleScreenData;
     private LoadingScreenRuntimeData loadingScreenData;
-    private static ControlState? _lastControlStateStatic;
+
+    private static CrossSceneData _crossSceneDataStatic;
+    
+
+    private struct CrossSceneData 
+    {
+        public ControlState? _lastControlStateStatic;
+        public ControlState? _requestedStateStatic;
+    }
 
     public enum ControlState
     {
         TITLE,
         LOADING,
-        GAME
+        GAME,
+        ARCHIVE_LOADING,
+        ARCHIVE_GAME
     }
 
     // Start is called before the first frame update
@@ -65,6 +75,7 @@ public class MainGameControl : MonoBehaviour
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         MainGameControlSetupJLayout.SetupCanvas(this);
 
+        var _lastControlStateStatic = _crossSceneDataStatic._lastControlStateStatic;
         var straightToGameNoTitle = _lastControlStateStatic.HasValue ? _lastControlStateStatic == ControlState.GAME : false;
 
         // SetupMainGame();
@@ -79,8 +90,7 @@ public class MainGameControl : MonoBehaviour
             TitleScreenSetup.Setup(this, titleScreenData);
         }
 
-
-        _lastControlStateStatic = null;
+        _crossSceneDataStatic = default;
         if (Local.WantToChooseLanguage)
         {
             HeartGame.GoToLanguageSelection();
@@ -313,6 +323,13 @@ public class MainGameControl : MonoBehaviour
         HeartGame.GoToSettings();
     }
 
+    public void GoToArchive() 
+    {
+        BeforeChangeScene();
+
+        _crossSceneDataStatic._requestedStateStatic = ControlState.ARCHIVE_GAME;
+    }
+
     private void BeforeChangeScene()
     {
         if (controlState == ControlState.GAME) 
@@ -320,7 +337,6 @@ public class MainGameControl : MonoBehaviour
             SaveGameAndCurrentSlot();
             
         }
-            
-        MainGameControl._lastControlStateStatic = this.controlState;
+        MainGameControl._crossSceneDataStatic._lastControlStateStatic = this.controlState;
     }
 }
