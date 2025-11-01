@@ -154,6 +154,10 @@ public class MainGameControl : MonoBehaviour
             {
                 EngineView.ClearOverwriteDPI();
             }
+            if (DebugMenuManager.CheckCommand("archive"))
+            {
+                GoToArchive();
+            }
         }
         #endregion
 
