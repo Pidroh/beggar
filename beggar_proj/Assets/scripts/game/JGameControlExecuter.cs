@@ -8,14 +8,77 @@ public static class JGameControlExecuter
     public const float NormalMaxTabWidth = 640;
     public const float NormalThinWidth = 180;
 
+    
+
     public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
     {
         
+        MainCommonLoop(mgc, controlData);
+
+        JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
+        JGameControlExecuterSaveSlot.ManualUpdate(mgc);
+        JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
+
+        UpdateDialog(mgc, controlData);
+    }
+
+    public static void ManualUpdateArchive(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
+    {
+        MainCommonLoop(mgc, controlData);
+        // no dialogs for now
+        // UpdateDialog(mgc, controlData);
+    }
+
+    private static void UpdateDialog(MainGameControl mgc, JGameControlDataHolder controlData)
+    {
+        ArcaniaModel arcaniaModel = mgc.arcaniaModel;
+        #region dialog
+
+        var dialog = arcaniaModel.Dialog.ActiveDialog;
+        if (arcaniaModel.Dialog.ShouldShow != controlData.DialogLayout.LayoutRU.Visible)
+        {
+            if (arcaniaModel.Dialog.ShouldShow)
+            {
+                ShowDialog(mgc, dialog, controlData);
+            }
+            else if (controlData.overlayType == JGameControlDataHolder.OverlayType.YesNoArcaniaDialog)
+            {
+                HideOverlay(mgc);
+                controlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
+            }
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            if (controlData.overlayType == JGameControlDataHolder.OverlayType.YesNoArcaniaDialog)
+            {
+                if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
+                {
+                    arcaniaModel.Dialog.DialogComplete(i);
+                }
+            }
+            if (controlData.overlayType == JGameControlDataHolder.OverlayType.ConfirmDeleteSave)
+            {
+                if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
+                {
+                    if (i == 0)
+                    {
+                        JGameControlExecuterSaveSlot.ConfirmDelete(mgc);
+                    }
+                    JGameControlExecuter.HideOverlay(mgc);
+
+                }
+            }
+        }
+        #endregion
+    }
+
+    private static void MainCommonLoop(MainGameControl mgc, JGameControlDataHolder controlData)
+    {
         var labelDuration = controlData.LabelDuration;
         var labelEffectDuration = controlData.LabelEffectDuration;
         var labelSuccessRate = controlData.LabelSuccessRate;
         var arcaniaModel = mgc.arcaniaModel;
-        var desktopMode = false;
+        bool desktopMode;
         var availableActualWidthForContent = Screen.width;
         #region calculate if desktop or mobile, also calculate available width
         {
@@ -65,7 +128,7 @@ public static class JGameControlExecuter
         }
 
         var widthOfContentTab = Mathf.Min(availableActualWidthForContent / numberOfTabsVisible, Screen.width);
-        
+
         float maxContentTabWidth = NormalMinTabWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize * 2;
         widthOfContentTab = Mathf.Min(widthOfContentTab, maxContentTabWidth);
         controlData.tabMenu[Direction.WEST].SetVisibleSelf(desktopMode);
@@ -78,7 +141,7 @@ public static class JGameControlExecuter
         int maxNumberOfTabButtonVisible;
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
         {
-            
+
             JTabControlUnit jTabControlUnit = controlData.TabControlUnits[tabIndex];
             // no tab button at all in this case
             if (jTabControlUnit.TabData.Tab.NecessaryForDesktopAndThinnable && desktopMode) continue;
@@ -104,7 +167,7 @@ public static class JGameControlExecuter
         int maxNumberOfTabButtonVisibleExcludingPlusTab = allTabButtonVisible ? maxNumberOfTabButtonVisible : maxNumberOfTabButtonVisible - 1;
         #endregion
 
-        if (mgc.JControlData.TabOverlayCloseButtonJCU.TaskClicked) 
+        if (mgc.JControlData.TabOverlayCloseButtonJCU.TaskClicked)
         {
             HideOverlay(mgc);
         }
@@ -118,7 +181,8 @@ public static class JGameControlExecuter
             bool plusTabForced = tabControl.TabData.Tab.OpenOtherTabs && !allTabButtonVisible;
             bool tabEnabled = tabControl.TabData.Visible || plusTabForced;
             bool tabButtonEnabled = (tabEnabled && numberOfTabButtonsAlreadyActiveExcludingPlusTab < maxNumberOfTabButtonVisibleExcludingPlusTab) || plusTabForced;
-            if (tabControl.TabData.Tab.OpenOtherTabs && !plusTabForced) { 
+            if (tabControl.TabData.Tab.OpenOtherTabs && !plusTabForced)
+            {
                 tabButtonEnabled = false;
                 tabEnabled = false;
             }
@@ -127,7 +191,7 @@ public static class JGameControlExecuter
             bool alwaysActive = desktopMode && tabData.NecessaryForDesktopAndThinnable;
             bool bigTabButtonEnabled = tabEnabled && !plusTabForced && !alwaysActive && !tabButtonEnabled;
 
-            
+
             foreach (var tabB in tabControl.TabToggleButtons)
             {
                 // visibility of overlay is set below
@@ -146,7 +210,7 @@ public static class JGameControlExecuter
             var dynamicCanvas = mgc.JLayoutRuntime.jLayCanvas;
 
             bool clickedTabButton = false;
-            if (tabControl.OverlayButton.ClickedLayout) 
+            if (tabControl.OverlayButton.ClickedLayout)
             {
                 clickedTabButton = true;
                 HideOverlay(mgc);
@@ -195,7 +259,7 @@ public static class JGameControlExecuter
 
             #region calculate if tab is active
             bool tabActive = dynamicCanvas.IsChildVisible(tabIndex) && !tabControl.TabData.Tab.OpenSettings && !tabControl.TabData.Tab.OpenOtherTabs;
-            
+
             tabActive |= alwaysActive;
             foreach (var item in tabControl.TabToggleButtons)
             {
@@ -296,7 +360,7 @@ public static class JGameControlExecuter
                                 }
                             }
                         }
-                        
+
                         shouldShowSep = true;
                         UpdateExpandLogicForUnit(unit);
                         if (unit.ValueText != null && unit.Data.ConfigHintData == null)
@@ -305,7 +369,7 @@ public static class JGameControlExecuter
                             var valueT = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
                             unit.ValueText.SetTextRaw(valueT + "");
                         }
-                        if (unit.Expanded) 
+                        if (unit.Expanded)
                         {
                             {
                                 var modList = unit.IntermediaryMods;
@@ -346,7 +410,7 @@ public static class JGameControlExecuter
                                         {
                                             unit.ButtonImageMain.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
                                             unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive_bar);
-                                            if(unit.Data.DotRU.DotConfig.Toggle) 
+                                            if (unit.Data.DotRU.DotConfig.Toggle)
                                             {
                                                 unit.TitleText.SetTextRaw($"{mgc.JControlData.LabelDeactivate} ({unit.Data.Name})");
                                             }
@@ -417,7 +481,8 @@ public static class JGameControlExecuter
                                     {
                                         unit.TitleText.SetTextRaw($"{unit.Data.Name} ({mgc.JControlData.LabelLivingHere})");
                                     }
-                                    else {
+                                    else
+                                    {
                                         unit.TitleText.SetTextRaw($"{unit.Data.Name}");
                                     }
                                     if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data))
@@ -446,7 +511,8 @@ public static class JGameControlExecuter
                                     if (unit.TaskClicked)
                                     {
                                         if (acquired) arcaniaModel.Runner.StudySkill(data);
-                                        else { 
+                                        else
+                                        {
                                             arcaniaModel.Runner.AcquireSkill(data);
                                             unit.MainLayout.MarkDirtyWithChildren();
                                         }
@@ -490,7 +556,7 @@ public static class JGameControlExecuter
         //mgc.JLayoutRuntime.jLayCanvas.Overlays[0].LayoutRuntimeUnit.ScrollViewportImage.raycastTarget
         bool overlayClickable = mgc.JControlData.overlayType == JGameControlDataHolder.OverlayType.TabMenu;
         mgc.JLayoutRuntime.jLayCanvas.Overlays[0].LayoutRuntimeUnit.ScrollViewportImage.raycastTarget = !overlayClickable;
-        if (overlayClickable) 
+        if (overlayClickable)
         {
             if (mgc.JLayoutRuntime.jLayCanvas.overlayImageUU.Clicked)
             {
@@ -500,50 +566,6 @@ public static class JGameControlExecuter
 
         // after all need to hide check, clear
         mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
-
-        JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
-        JGameControlExecuterSaveSlot.ManualUpdate(mgc);
-        JGameControlExecuterEnding.ManualUpdate(mgc, controlData, dt);
-                
-
-        #region dialog
-
-        var dialog = arcaniaModel.Dialog.ActiveDialog;
-        if (arcaniaModel.Dialog.ShouldShow != controlData.DialogLayout.LayoutRU.Visible)
-        {
-            if (arcaniaModel.Dialog.ShouldShow)
-            {
-                ShowDialog(mgc, dialog, controlData);
-            }
-            else if (controlData.overlayType == JGameControlDataHolder.OverlayType.YesNoArcaniaDialog)
-            {
-                HideOverlay(mgc);
-                controlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
-            }
-        }
-        for (int i = 0; i < 2; i++)
-        {
-            if (controlData.overlayType == JGameControlDataHolder.OverlayType.YesNoArcaniaDialog) 
-            {
-                if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
-                {
-                    arcaniaModel.Dialog.DialogComplete(i);
-                }
-            }
-            if (controlData.overlayType == JGameControlDataHolder.OverlayType.ConfirmDeleteSave)
-            {
-                if (controlData.DialogLayout.LayoutRU.LayoutChildren[0].LayoutRU.IsButtonClicked(i))
-                {
-                    if (i == 0)
-                    {
-                        JGameControlExecuterSaveSlot.ConfirmDelete(mgc);  
-                    }
-                    JGameControlExecuter.HideOverlay(mgc);
-
-                }
-            }
-        }
-        #endregion
     }
 
     public static void HideOverlay(MainGameControl mgc)

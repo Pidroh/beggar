@@ -188,6 +188,7 @@ public class MainGameControl : MonoBehaviour
         // -----------------------------------------------------------
         HeartGame.ManualUpdate();
         EngineView.ManualUpdate();
+
         if (controlState == ControlState.GAME)
         {
 
@@ -277,7 +278,7 @@ public class MainGameControl : MonoBehaviour
 
             #region game update
             // -----------------------------------------------------------
-            // Time, game updating
+            // Time, game model updating
             // -----------------------------------------------------------
             RobustDeltaTime.ManualUpdate();
             RobustDeltaTime.MultiplyTime(TimeMultiplier);
@@ -291,6 +292,10 @@ public class MainGameControl : MonoBehaviour
             #region J Control Update
             JGameControlExecuter.ManualUpdate(this, this.JControlData, Time.deltaTime);
             #endregion
+        }
+        if (controlState == ControlState.ARCHIVE_GAME) 
+        {
+            JGameControlExecuter.ManualUpdateArchive(this, this.JControlData, Time.deltaTime);
         }
 
         // -----------------------------------------------------------
