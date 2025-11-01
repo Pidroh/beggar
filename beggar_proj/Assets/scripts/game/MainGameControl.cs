@@ -75,19 +75,33 @@ public class MainGameControl : MonoBehaviour
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         MainGameControlSetupJLayout.SetupCanvas(this);
 
-        var _lastControlStateStatic = _crossSceneDataStatic._lastControlStateStatic;
-        var straightToGameNoTitle = _lastControlStateStatic.HasValue ? _lastControlStateStatic == ControlState.GAME : false;
+        var _lastSceneControlState = _crossSceneDataStatic._lastControlStateStatic;
+        var wannaGoToArchive = _crossSceneDataStatic._requestedStateStatic == ControlState.ARCHIVE_GAME || _crossSceneDataStatic._requestedStateStatic == ControlState.ARCHIVE_LOADING;
+
+
+        var straightToGameNoTitle =  !wannaGoToArchive && (_lastSceneControlState.HasValue ? _lastSceneControlState == ControlState.GAME : false);
+
+        if (wannaGoToArchive) 
+        {
+            controlState = ControlState.ARCHIVE_LOADING;
+        }
 
         // SetupMainGame();
         if (straightToGameNoTitle)
         {
             SetupMainGameAllAtOnce();
         }
-        else
+        else if (controlState == ControlState.TITLE)
         {
             // Setup title screen
             titleScreenData = new TitleScreenRuntimeData();
             TitleScreenSetup.Setup(this, titleScreenData);
+        }
+        else if (controlState == ControlState.ARCHIVE_LOADING) 
+        {
+            loadingScreenData = LoadingScreenSetup.Setup(this);
+            JControlData.archiveControlData = new();
+            loadingScreenData.state = LoadingScreenRuntimeData.State.ARCHIVE_LOADING_PERSISTENCE;
         }
 
         _crossSceneDataStatic = default;
@@ -141,6 +155,13 @@ public class MainGameControl : MonoBehaviour
             if (loadingScreenData.state == LoadingScreenRuntimeData.State.OVER)
             {
                 controlState = ControlState.GAME;
+            }
+        } else if (controlState == ControlState.ARCHIVE_LOADING) 
+        {
+            LoadingScreenControl.ManualUpdate(this, loadingScreenData);
+            if (loadingScreenData.state == LoadingScreenRuntimeData.State.OVER)
+            {
+                controlState = ControlState.ARCHIVE_GAME;
             }
         }
 
@@ -330,8 +351,8 @@ public class MainGameControl : MonoBehaviour
     public void GoToArchive() 
     {
         BeforeChangeScene();
-
         _crossSceneDataStatic._requestedStateStatic = ControlState.ARCHIVE_GAME;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void BeforeChangeScene()

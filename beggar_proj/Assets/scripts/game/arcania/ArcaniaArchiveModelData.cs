@@ -2,5 +2,5 @@
 
 public class ArcaniaArchiveModelData 
 {
-    public List<string> knownIds;
+    public List<string> knownIds = new();
 }

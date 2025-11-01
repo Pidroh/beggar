@@ -25,6 +25,7 @@ public class LoadingScreenSetup
         public JLayoutRuntimeUnit TextLayout { get; internal set; }
         public bool hasLocalizationFile { get; internal set; }
         public JsonReader.JsonReaderState? ModelJsonState { get; internal set; }
+        public ArchiveScreenControlExecuter.LoadUpArchiveState? ArchiveLoadPersistenceState { get; internal set; }
 
         public State state = State.START;
         public int loadingProgress;
@@ -36,7 +37,13 @@ public class LoadingScreenSetup
             CANVAS_TAB_MENU,
             CANVAS_MAIN_RUNTIME_UNITS,
             CANVAS_MISC,
-            OVER
+            OVER,
+
+            ARCHIVE_LOADING_PERSISTENCE,
+            ARCHIVE_MODEL,
+            ARCHIVE_CANVAS_TAB_MENU,
+            ARCHIVE_CANVAS_MAIN_RUNTIME_UNITS,
+            ARCHIVE_CANVAS_MISC,
         }
     }
 }

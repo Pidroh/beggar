@@ -6,6 +6,7 @@ public static class ArchiveScreenControlExecuter
     public struct LoadUpArchiveState
     {
         public int slotNow;
+        public bool over;
     }
     public static LoadUpArchiveState LoadUpArchive(MainGameControl mgc, LoadUpArchiveState? loadUpState)
     {
@@ -15,8 +16,8 @@ public static class ArchiveScreenControlExecuter
         var arcaniaPersistence = new ArcaniaPersistence(mgc.HeartGame, key);
 
         ArcaniaArchiveModelExecuter.LoadUpArchive(mgc.JControlData.archiveControlData.archiveData, arcaniaPersistence);
-
         state.slotNow++;
+        state.over = JGameControlDataSaveSlot.SlotSaveKeys.Length <= state.slotNow;
         return state;
     }
 

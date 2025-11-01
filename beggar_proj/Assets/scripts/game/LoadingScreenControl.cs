@@ -4,20 +4,72 @@ using System.Globalization;
 public static class LoadingScreenControl 
 {
     public static string[] SlotSaveKeys => JGameControlDataSaveSlot.SlotSaveKeys;
+
     /*
-     * MainGameControlSetupJLayout.SetupModelDataAllAtOnce(this);
-        RobustDeltaTime = new();
-        ArcaniaPersistence = new(HeartGame);
-        ArcaniaPersistence.Load(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
-        HeartGame.CommonDataLoad();
-        // Let the model run once so you can finish up setup with the latest info on visibility
-        arcaniaModel.ManualUpdate(0);
-        MainGameControlSetupJLayout.SetupGameCanvas(this);
+     * performs loading one by one, for both normal game and archive loading
      */
-    public static void ManualUpdate(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData) 
+    public static void ManualUpdate(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData)
     {
         loadingData.loadingProgress += 5;
         loadingData.TextLayout.SetTextRaw(0, $"Loading: {loadingData.loadingProgress}%");
+        LoadingScreenSetup.LoadingScreenRuntimeData.State previousState = loadingData.state;
+        switch (previousState)
+        {
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.START:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.MODEL:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING_PERSISTENCE:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_TAB_MENU:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MISC:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.OVER:
+                NormalGameLoading(mgc, loadingData);
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_LOADING_PERSISTENCE:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_MODEL:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MAIN_RUNTIME_UNITS:
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MISC:
+                ArchiveLoading(mgc, loadingData);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private static void ArchiveLoading(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData)
+    {
+        LoadingScreenSetup.LoadingScreenRuntimeData.State previousState = loadingData.state;
+        switch (previousState)
+        {
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_LOADING_PERSISTENCE:
+                {
+                    loadingData.ArchiveLoadPersistenceState = ArchiveScreenControlExecuter.LoadUpArchive(mgc, loadingData.ArchiveLoadPersistenceState);
+                    if (loadingData.ArchiveLoadPersistenceState.Value.over)
+                    {
+                        loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_MODEL;
+                    }
+                }
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_MODEL:
+                bool jsonOver = ModelLoading(mgc, loadingData);
+                if (jsonOver)
+                {
+                    loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU;
+                }
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU:
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MAIN_RUNTIME_UNITS:
+                break;
+            case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MISC:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private static void NormalGameLoading(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData)
+    {
         LoadingScreenSetup.LoadingScreenRuntimeData.State previousState = loadingData.state;
         switch (previousState)
         {
@@ -27,13 +79,13 @@ public static class LoadingScreenControl
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.MODEL;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.MODEL:
-                loadingData.ModelJsonState = JsonReader.ReadJsonStepByStep(mgc.ResourceJson, mgc.arcaniaModel.arcaniaUnits, loadingData.hasLocalizationFile, loadingData.ModelJsonState);
-                if (loadingData.ModelJsonState.Value.readerState == JsonReader.JsonReaderState.JsonReaderStateMode.OVER) 
+                bool jsonOver = ModelLoading(mgc, loadingData);
+                if (jsonOver)
                 {
-                    // final model setup
-                    mgc.arcaniaModel.FinishedSettingUpUnits();
+                    // next state is different if loading up the archive
                     loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING_PERSISTENCE;
                 }
+
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING_PERSISTENCE:
 
@@ -63,6 +115,20 @@ public static class LoadingScreenControl
             default:
                 break;
         }
+    }
+
+    private static bool ModelLoading(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData)
+    {
+        // common normal game
+        loadingData.ModelJsonState = JsonReader.ReadJsonStepByStep(mgc.ResourceJson, mgc.arcaniaModel.arcaniaUnits, loadingData.hasLocalizationFile, loadingData.ModelJsonState);
+        bool jsonOver = loadingData.ModelJsonState.Value.readerState == JsonReader.JsonReaderState.JsonReaderStateMode.OVER;
+        if (jsonOver)
+        {
+            // final model setup
+            mgc.arcaniaModel.FinishedSettingUpUnits();
+        }
+
+        return jsonOver;
     }
 
     public static void LoadSlotAndCommons(MainGameControl mgc)
