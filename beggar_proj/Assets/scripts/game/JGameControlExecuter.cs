@@ -8,11 +8,11 @@ public static class JGameControlExecuter
     public const float NormalMaxTabWidth = 640;
     public const float NormalThinWidth = 180;
 
-    
+
 
     public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
     {
-        
+
         MainCommonLoop(mgc, controlData);
 
         JGameControlExecuterExploration.ManualUpdate(mgc, controlData, dt);
@@ -392,47 +392,51 @@ public static class JGameControlExecuter
                                 {
                                     var progress = unit.Data.TaskProgressRatio;
                                     bool running = arcaniaModel.Runner.RunningTasks.Contains(unit.Data);
-                                    //if (unit.Data.Dirty)
+                                    if (unit.MainExecuteButton != null)
                                     {
-                                        if (unit.Data.BuyStatus == BuyStatus.NeedsBuy)
+                                        //if (unit.Data.Dirty)
                                         {
-                                            unit.TitleText.SetTextRaw($"{mgc.JControlData.LabelAcquire} ({unit.Data.Name})");
-                                        }
-                                        else if (unit.Data.BuyStatus == BuyStatus.Bought)
-                                        {
-                                            unit.TitleText.SetTextRaw(unit.Data.Name);
-                                        }
-                                    }
-                                    if (unit.Data.DotRU != null && unit.Data.DotRU.Dirty)
-                                    {
-                                        var dotActive = unit.Data.DotRU.Value > 0;
-                                        if (dotActive)
-                                        {
-                                            unit.ButtonImageMain.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
-                                            unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive_bar);
-                                            if (unit.Data.DotRU.DotConfig.Toggle)
+                                            if (unit.Data.BuyStatus == BuyStatus.NeedsBuy)
                                             {
-                                                unit.TitleText.SetTextRaw($"{mgc.JControlData.LabelDeactivate} ({unit.Data.Name})");
+                                                unit.TitleText.SetTextRaw($"{mgc.JControlData.LabelAcquire} ({unit.Data.Name})");
                                             }
-                                        }
-                                        else
-                                        {
-                                            unit.ButtonImageMain.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
-                                            unit.ButtonImageProgress.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
-                                            if (unit.Data.DotRU.DotConfig.Toggle)
+                                            else if (unit.Data.BuyStatus == BuyStatus.Bought)
                                             {
                                                 unit.TitleText.SetTextRaw(unit.Data.Name);
                                             }
                                         }
-                                    }
-                                    if (!running && unit.Data.DotRU != null && unit.Data.DotRU.Value != 0)
-                                    {
-                                        progress = unit.Data.DotRU.TaskProgressRatio;
-                                    }
-                                    unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
-                                    unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
+                                        if (unit.Data.DotRU != null && unit.Data.DotRU.Dirty)
+                                        {
+                                            var dotActive = unit.Data.DotRU.Value > 0;
+                                            if (dotActive)
+                                            {
+                                                unit.ButtonImageMain.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive);
+                                                unit.ButtonImageProgress.OverwriteColor(JLayout.ColorSetType.NORMAL, controlData.gameViewMiscData.ButtonColorDotActive_bar);
+                                                if (unit.Data.DotRU.DotConfig.Toggle)
+                                                {
+                                                    unit.TitleText.SetTextRaw($"{mgc.JControlData.LabelDeactivate} ({unit.Data.Name})");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                unit.ButtonImageMain.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
+                                                unit.ButtonImageProgress.ReleaseOverwriteColor(JLayout.ColorSetType.NORMAL);
+                                                if (unit.Data.DotRU.DotConfig.Toggle)
+                                                {
+                                                    unit.TitleText.SetTextRaw(unit.Data.Name);
+                                                }
+                                            }
+                                        }
+                                        if (!running && unit.Data.DotRU != null && unit.Data.DotRU.Value != 0)
+                                        {
+                                            progress = unit.Data.DotRU.TaskProgressRatio;
+                                        }
+                                        unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Runner.CanStartAction(unit.Data));
+                                        unit.MainExecuteButton.MultiClickEnabled(unit.Data.IsInstant());
 
-                                    unit.MainExecuteButton.SetActivePowered(running);
+                                        unit.MainExecuteButton.SetActivePowered(running);
+                                    }
+
                                     if (unit.Expanded)
                                     {
                                         var data = unit.Data;
@@ -459,62 +463,73 @@ public static class JGameControlExecuter
                                         }
 
                                     }
-
-
-                                    if (pair.Key == UnitType.LOCATION)
-                                        progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
-                                    unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(progress);
-                                    // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
-                                    // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
-                                    if (unit.TaskClicked)
+                                    // archive mode doesn't have execute button
+                                    if (unit.MainExecuteButton != null)
                                     {
-                                        arcaniaModel.Runner.StartActionExternally(unit.Data);
+                                        if (pair.Key == UnitType.LOCATION)
+                                            progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
+                                        unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(progress);
+                                        // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
+                                        // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
+                                        if (unit.TaskClicked)
+                                        {
+                                            arcaniaModel.Runner.StartActionExternally(unit.Data);
+                                        }
                                     }
+
+
                                 }
                                 break;
                             case UnitType.HOUSE:
                                 {
                                     //unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data));
-                                    unit.MainExecuteButton.SetActivePowered(arcaniaModel.Housing.IsLivingInHouse(unit.Data));
-                                    unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data) || arcaniaModel.Housing.IsLivingInHouse(unit.Data));
-                                    if (arcaniaModel.Housing.IsLivingInHouse(unit.Data))
+                                    // archive doesn't need this update logic
+                                    if (unit.MainExecuteButton != null)
                                     {
-                                        unit.TitleText.SetTextRaw($"{unit.Data.Name} ({mgc.JControlData.LabelLivingHere})");
-                                    }
-                                    else
-                                    {
-                                        unit.TitleText.SetTextRaw($"{unit.Data.Name}");
-                                    }
-                                    if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data))
-                                    {
+                                        unit.MainExecuteButton.SetActivePowered(arcaniaModel.Housing.IsLivingInHouse(unit.Data));
+                                        unit.MainExecuteButton.SetButtonEnabled(arcaniaModel.Housing.CanChangeHouse(unit.Data) || arcaniaModel.Housing.IsLivingInHouse(unit.Data));
+                                        if (arcaniaModel.Housing.IsLivingInHouse(unit.Data))
+                                        {
+                                            unit.TitleText.SetTextRaw($"{unit.Data.Name} ({mgc.JControlData.LabelLivingHere})");
+                                        }
+                                        else
+                                        {
+                                            unit.TitleText.SetTextRaw($"{unit.Data.Name}");
+                                        }
+                                        if (unit.TaskClicked && !arcaniaModel.Housing.IsLivingInHouse(unit.Data))
+                                        {
 
-                                        arcaniaModel.Housing.ChangeHouse(unit.Data);
+                                            arcaniaModel.Housing.ChangeHouse(unit.Data);
+                                        }
                                     }
                                 }
 
                                 break;
                             case UnitType.SKILL:
                                 {
-                                    var progress = unit.Data.TaskProgressRatio;
-                                    unit.ButtonImageProgress.SetGaugeRatio(progress);
-                                    var data = unit.Data;
-                                    bool acquired = data.Skill.Acquired;
-                                    unit.MainExecuteButton.SetButtonEnabled(acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data));
-                                    unit.MainExecuteButton.SetButtonTextRaw(acquired ? controlData.LabelPracticeSkill : controlData.LabelAcquireSkill);
-                                    unit.GaugeLayout.SetVisibleSelf(acquired);
-                                    unit.GaugeProgressImage.SetGaugeRatio(data.Skill.XPRatio);
-                                    unit.MainExecuteButton.buttonOwner.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(unit.Data.TaskProgressRatio);
-                                    if (acquired)
+                                    if (unit.MainExecuteButton != null)
                                     {
-                                        unit.TitleWithValue.SetTextRaw(1, $"{unit.Data.Value} / {unit.Data.Max}");
-                                    }
-                                    if (unit.TaskClicked)
-                                    {
-                                        if (acquired) arcaniaModel.Runner.StudySkill(data);
-                                        else
+                                        var progress = unit.Data.TaskProgressRatio;
+                                        unit.ButtonImageProgress.SetGaugeRatio(progress);
+                                        var data = unit.Data;
+                                        bool acquired = data.Skill.Acquired;
+                                        unit.MainExecuteButton.SetButtonEnabled(acquired ? arcaniaModel.Runner.CanStudySkill(data) : arcaniaModel.Runner.CanAcquireSkill(data));
+                                        unit.MainExecuteButton.SetButtonTextRaw(acquired ? controlData.LabelPracticeSkill : controlData.LabelAcquireSkill);
+                                        unit.GaugeLayout.SetVisibleSelf(acquired);
+                                        unit.GaugeProgressImage.SetGaugeRatio(data.Skill.XPRatio);
+                                        unit.MainExecuteButton.buttonOwner.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(unit.Data.TaskProgressRatio);
+                                        if (acquired)
                                         {
-                                            arcaniaModel.Runner.AcquireSkill(data);
-                                            unit.MainLayout.MarkDirtyWithChildren();
+                                            unit.TitleWithValue.SetTextRaw(1, $"{unit.Data.Value} / {unit.Data.Max}");
+                                        }
+                                        if (unit.TaskClicked)
+                                        {
+                                            if (acquired) arcaniaModel.Runner.StudySkill(data);
+                                            else
+                                            {
+                                                arcaniaModel.Runner.AcquireSkill(data);
+                                                unit.MainLayout.MarkDirtyWithChildren();
+                                            }
                                         }
                                     }
                                 }
@@ -522,15 +537,19 @@ public static class JGameControlExecuter
                                 break;
                             case UnitType.FURNITURE:
                                 {
-                                    unit.PlusMinusLayout.ButtonChildren[0].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanAcquireFurniture(unit.Data);
-                                    unit.PlusMinusLayout.ButtonChildren[1].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanRemoveFurniture(unit.Data);
-                                    if (unit.PlusMinusLayout.IsButtonClicked(0))
+                                    // archive mode would be null
+                                    if (unit.PlusMinusLayout != null)
                                     {
-                                        arcaniaModel.Housing.AcquireFurniture(unit.Data);
-                                    }
-                                    if (unit.PlusMinusLayout.IsButtonClicked(1))
-                                    {
-                                        arcaniaModel.Housing.RemoveFurniture(unit.Data);
+                                        unit.PlusMinusLayout.ButtonChildren[0].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanAcquireFurniture(unit.Data);
+                                        unit.PlusMinusLayout.ButtonChildren[1].Item2.UiUnit.ButtonEnabled = arcaniaModel.Housing.CanRemoveFurniture(unit.Data);
+                                        if (unit.PlusMinusLayout.IsButtonClicked(0))
+                                        {
+                                            arcaniaModel.Housing.AcquireFurniture(unit.Data);
+                                        }
+                                        if (unit.PlusMinusLayout.IsButtonClicked(1))
+                                        {
+                                            arcaniaModel.Housing.RemoveFurniture(unit.Data);
+                                        }
                                     }
                                 }
                                 break;
@@ -570,7 +589,7 @@ public static class JGameControlExecuter
 
     public static void HideOverlay(MainGameControl mgc)
     {
-        if (mgc.JControlData.overlayType == JGameControlDataHolder.OverlayType.TabMenu) 
+        if (mgc.JControlData.overlayType == JGameControlDataHolder.OverlayType.TabMenu)
         {
             mgc.JControlData.OverlayTabMenuLayout.LayoutRU.SetVisibleSelf(false);
         }
@@ -635,7 +654,7 @@ public static class JGameControlExecuter
                 {
                     modT = "+" + modT;
                 }
-                else 
+                else
                 {
                     // negative + no parenthesis needs to add a - because the value became positive forcefully
                     modT = "-" + modT;
@@ -673,7 +692,7 @@ public static class JGameControlExecuter
         controlData.DialogLayout.LayoutRU.SetTextRaw(0, title);
         controlData.DialogLayout.LayoutRU.SetTextRaw(1, content);
         JGameControlExecuter.ShowOverlay(mgc, overlayType);
-        controlData.DialogLayout.LayoutRU.SetVisibleSelf(true); 
+        controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
     }
 
     public static void UpdateExpandLogicForUnit(JRTControlUnit unit)

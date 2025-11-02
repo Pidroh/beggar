@@ -14,4 +14,15 @@ public static class ArcaniaArchiveModelExecuter
         }
         
     }
+
+    public static void AfterModelLoadingOver(ArcaniaModel arcaniaModel)
+    {
+        foreach (var item in arcaniaModel.arcaniaUnits.datas)
+        {
+            foreach (var u in item.Value)
+            {
+                u.ForceMeetRequire();
+            }
+        }
+    }
 }

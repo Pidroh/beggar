@@ -130,7 +130,7 @@ public class MainGameControlSetupJLayout
     {
 
         SetupGameCanvasTabMenuInstantiation(mgc);
-        SetupGameCanvasMainRuntimeUnits(mgc);
+        SetupGameCanvasMainRuntimeUnits(mgc, default);
         SetupGameCanvasMisc(mgc);
     }
 
@@ -362,7 +362,12 @@ public class MainGameControlSetupJLayout
         mgc.JControlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
     }
 
-    public static void SetupGameCanvasMainRuntimeUnits(MainGameControl mgc)
+    public struct SetupGameCanvasMainRuntimeUnitConfig
+    {
+        public bool ArchiveMode { get; internal set; }
+    }
+
+    public static void SetupGameCanvasMainRuntimeUnits(MainGameControl mgc, SetupGameCanvasMainRuntimeUnitConfig config)
     {
         var jControlDataHolder = mgc.JControlData;
         var runtime = jControlDataHolder.LayoutRuntime;
@@ -411,13 +416,14 @@ public class MainGameControlSetupJLayout
 
                     var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
 
-                    var hasTaskButton = unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION;
+                    var hasTaskButton = !config.ArchiveMode &&
+                        (unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION);
                     var hasTitleWithValue = unitType == UnitType.SKILL;
-                    var hasXPBar = unitType == UnitType.SKILL;
-                    var hasResourceExpander = !hasTaskButton && (unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT);
-                    var hasPlusMinusButton = unitType == UnitType.FURNITURE;
+                    var hasXPBar = !config.ArchiveMode && unitType == UnitType.SKILL;
+                    var hasResourceExpander = !hasTaskButton && ((unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT) || config.ArchiveMode);
+                    var hasPlusMinusButton = !config.ArchiveMode && unitType == UnitType.FURNITURE;
                     var showRequireOfTarget = unitType == UnitType.HINT;
-                    var valueVisible = unitType != UnitType.HINT;
+                    var valueVisible = !config.ArchiveMode && unitType != UnitType.HINT;
 
                     if (hasTitleWithValue)
                     {

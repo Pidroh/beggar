@@ -2393,6 +2393,19 @@
         "type": "TAB",
         "items": [
             {
+                "id": "archive_main_tab",
+                "unit_types": [],
+                "icon": "tab_tasks",
+                "archive_only": true,
+                "separator": [
+                    {
+                        "id": "archive_tab",
+                        "name": "Archive",
+                        "archive_main_ui": true
+                    }
+                ]
+            },
+            {
                 "id": "task",
                 "unit_types": [
                     "TASK",

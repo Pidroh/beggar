@@ -55,14 +55,20 @@ public static class LoadingScreenControl
                 if (jsonOver)
                 {
                     loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU;
+                    ArcaniaArchiveModelExecuter.AfterModelLoadingOver(mgc.arcaniaModel);
                 }
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU:
                 MainGameControlSetupJLayout.SetupGameCanvasTabMenuInstantiation(mgc);
-                // temp
-                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MISC;
+                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MAIN_RUNTIME_UNITS;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MAIN_RUNTIME_UNITS:
+                MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnits(mgc, new MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnitConfig 
+                { 
+                    ArchiveMode = true
+                });
+                // temp
+                loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MISC;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MISC:
                 loadingData.TextLayout.SetVisibleSelf(false);
@@ -105,7 +111,7 @@ public static class LoadingScreenControl
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS:
-                MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnits(mgc);
+                MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnits(mgc, default);
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MISC;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MISC:
