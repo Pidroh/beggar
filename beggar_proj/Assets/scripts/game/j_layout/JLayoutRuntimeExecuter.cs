@@ -103,7 +103,7 @@ namespace JLayout
             SolveLayoutWidth(parentLayout, contentRect);
             #endregion
 
-            TemporarySolveHeightAndPosition(parentLayout, contentRect);
+            TemporarySolveHeightAndPosition(parentLayout, contentRect); 
 
             #region color
             ProcessColor(parentLayout, null);

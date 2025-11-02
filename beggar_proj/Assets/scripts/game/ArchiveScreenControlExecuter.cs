@@ -21,7 +21,12 @@ public static class ArchiveScreenControlExecuter
         return state;
     }
 
-    public static void ManualUpdate(MainGameControl mgc) { 
+    public static void ManualUpdate(MainGameControl mgc) 
+    {
+        if (mgc.JControlData.archiveControlData.ExitJCU.TaskClicked) 
+        {
+            mgc.BackToGame();
+        }
     }
 
 }

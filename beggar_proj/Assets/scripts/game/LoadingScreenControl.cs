@@ -59,7 +59,7 @@ public static class LoadingScreenControl
                 }
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU:
-                MainGameControlSetupJLayout.SetupGameCanvasTabMenuInstantiation(mgc);
+                MainGameControlSetupJLayout.SetupGameCanvasTabMenuInstantiation(mgc, true);
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MAIN_RUNTIME_UNITS;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MAIN_RUNTIME_UNITS:
@@ -108,7 +108,7 @@ public static class LoadingScreenControl
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_TAB_MENU;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_TAB_MENU:
-                MainGameControlSetupJLayout.SetupGameCanvasTabMenuInstantiation(mgc);
+                MainGameControlSetupJLayout.SetupGameCanvasTabMenuInstantiation(mgc,false);
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS:

@@ -28,6 +28,9 @@ public class MainGameControl : MonoBehaviour
 
     public EngineView EngineView { get; internal set; }
     public float TimeMultiplier { get; private set; } = 1;
+
+    
+
     public LayoutParent TabButtonLayout { get; internal set; }
 
     public RobustDeltaTime RobustDeltaTime = new();
@@ -156,13 +159,17 @@ public class MainGameControl : MonoBehaviour
             {
                 controlState = ControlState.GAME;
             }
-        } else if (controlState == ControlState.ARCHIVE_LOADING) 
+        }
+        else if (controlState == ControlState.ARCHIVE_LOADING)
         {
             LoadingScreenControl.ManualUpdate(this, loadingScreenData);
             if (loadingScreenData.state == LoadingScreenRuntimeData.State.OVER)
             {
                 controlState = ControlState.ARCHIVE_GAME;
             }
+        }
+        else if (controlState == ControlState.ARCHIVE_GAME) {
+            ArchiveScreenControlExecuter.ManualUpdate(this);
         }
 
         #region debug command (title screen too)
@@ -357,6 +364,13 @@ public class MainGameControl : MonoBehaviour
     {
         BeforeChangeScene();
         _crossSceneDataStatic._requestedStateStatic = ControlState.ARCHIVE_GAME;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    internal void BackToGame()
+    {
+        BeforeChangeScene();
+        _crossSceneDataStatic._requestedStateStatic = ControlState.GAME;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

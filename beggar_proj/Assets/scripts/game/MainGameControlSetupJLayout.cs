@@ -129,7 +129,7 @@ public partial class MainGameControlSetupJLayout
     internal static void SetupGameCanvasAllAtOnce(MainGameControl mgc)
     {
 
-        SetupGameCanvasTabMenuInstantiation(mgc);
+        SetupGameCanvasTabMenuInstantiation(mgc, false);
         SetupGameCanvasMainRuntimeUnits(mgc, default);
         SetupGameCanvasMisc(mgc);
     }
@@ -574,7 +574,7 @@ public partial class MainGameControlSetupJLayout
         #endregion
     }
 
-    public static void SetupGameCanvasTabMenuInstantiation(MainGameControl mgc)
+    public static void SetupGameCanvasTabMenuInstantiation(MainGameControl mgc, bool isArchive)
     {
         JGameControlDataHolder jControlDataHolder = mgc.JControlData;
         var runtime = jControlDataHolder.LayoutRuntime;
@@ -613,6 +613,7 @@ public partial class MainGameControlSetupJLayout
         for (int tabIndex = 0; tabIndex < arcaniaDatas.datas[UnitType.TAB].Count; tabIndex++)
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
+            if (item.Tab.ArchiveOnly && !isArchive) continue;
             var tcu = new JTabControlUnit();
             for (int buttonTypeIndex = 0; buttonTypeIndex < 3; buttonTypeIndex++)
             {
