@@ -21,11 +21,16 @@ public static class ArchiveScreenControlExecuter
         return state;
     }
 
+    public static void ManualUpdate(MainGameControl mgc) { 
+    }
+
 }
 
 public class ArchiveControlData 
 {
     public ArcaniaArchiveModelData archiveData = new();
+
+    public JRTControlUnit ExitJCU { get; internal set; }
 
     public enum ArchiveEuristics 
     { 

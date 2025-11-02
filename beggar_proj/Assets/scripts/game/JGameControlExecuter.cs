@@ -317,12 +317,14 @@ public static class JGameControlExecuter
                 continue;
             }
             #endregion
+
             #region main unit loop by separator
             foreach (var sep in tabControl.SeparatorControls)
             {
                 var process = false;
                 var shouldShowSep = false;
                 shouldShowSep |= sep.SepD.ContainsSaveSlots;
+                shouldShowSep |= sep.SepD.ArchiveMainUI;
                 if (sep.SeparatorLayout.ClickedLayout)
                 {
                     sep.Expanded = !sep.Expanded;
