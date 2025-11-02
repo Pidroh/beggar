@@ -26,4 +26,16 @@ public static class ArchiveScreenControlExecuter
 public class ArchiveControlData 
 {
     public ArcaniaArchiveModelData archiveData = new();
+
+    public enum ArchiveEuristics 
+    { 
+        Tasks,
+        Powerups,
+        Resources,
+        Skills,
+        Homes,
+        Furnitures,
+        Locations,
+        Encounters
+    }
 }

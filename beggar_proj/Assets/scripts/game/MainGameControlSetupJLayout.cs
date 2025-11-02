@@ -4,7 +4,7 @@ using JLayout;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainGameControlSetupJLayout
+public partial class MainGameControlSetupJLayout
 {
     internal static void SetupModelDataAllAtOnce(MainGameControl mgc)
     {

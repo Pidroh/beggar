@@ -72,6 +72,7 @@ public static class LoadingScreenControl
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_MISC:
                 loadingData.TextLayout.SetVisibleSelf(false);
+                ControlSetupArchiveJLayout.SetupArchiveExclusiveElements(mgc);
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.OVER;
                 break;
             default:
