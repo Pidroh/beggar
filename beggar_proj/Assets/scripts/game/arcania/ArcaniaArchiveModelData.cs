@@ -28,6 +28,6 @@ public class ArcaniaArchiveModelData
         Houses,
         Furnitures,
         Locations,
-        Encounters
+        // Encounters
     }
 }

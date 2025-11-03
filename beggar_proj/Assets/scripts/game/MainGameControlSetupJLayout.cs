@@ -108,7 +108,7 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelUnitTypeDescription[UnitType.HOUSE] = Local.GetText("house");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.LOCATION] = Local.GetText("location");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.TASK] = Local.GetText("task");
-            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Encounters] = Local.GetText("Encounters");
+            // jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Encounters] = Local.GetText("Encounters");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Furnitures] = Local.GetText("Furniture");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Houses] = Local.GetText("Houses");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Locations] = Local.GetText("Locations");

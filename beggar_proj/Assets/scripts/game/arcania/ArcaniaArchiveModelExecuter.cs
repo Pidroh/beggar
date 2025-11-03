@@ -66,9 +66,9 @@ public static class ArcaniaArchiveModelExecuter
                 case ArcaniaArchiveModelData.ArchiveEuristics.Locations:
                     unitType = UnitType.LOCATION;
                     break;
-                case ArcaniaArchiveModelData.ArchiveEuristics.Encounters:
+                /* case ArcaniaArchiveModelData.ArchiveEuristics.Encounters:
                     unitType = UnitType.ENCOUNTER;
-                    break;
+                    break; */
                 default:
                     break;
             }
