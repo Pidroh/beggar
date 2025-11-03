@@ -437,7 +437,7 @@ public partial class MainGameControlSetupJLayout
                     {
                         var titleRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
                         var child = layoutRU.AddLayoutAsChild(titleRU);
-                        titleRU.SetTextRaw(0, modelData.ConfigBasic.name);
+                        titleRU.SetTextRaw(0, modelData.Name);
                         jCU.TitleWithValue = titleRU;
                     }
                     if (hasXPBar)
