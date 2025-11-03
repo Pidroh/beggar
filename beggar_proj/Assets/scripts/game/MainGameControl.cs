@@ -66,7 +66,9 @@ public class MainGameControl : MonoBehaviour
         LOADING,
         GAME,
         ARCHIVE_LOADING,
-        ARCHIVE_GAME
+        ARCHIVE_GAME,
+        PRESTIGE_WORLD_LOADING,
+        PRESTIGE_WORLD
     }
 
     // Start is called before the first frame update
