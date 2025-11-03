@@ -36,16 +36,4 @@ public class ArchiveControlData
     public ArcaniaArchiveModelData archiveData = new();
 
     public JRTControlUnit ExitJCU { get; internal set; }
-
-    public enum ArchiveEuristics 
-    { 
-        Tasks,
-        Powerups,
-        Resources,
-        Skills,
-        Homes,
-        Furnitures,
-        Locations,
-        Encounters
-    }
 }

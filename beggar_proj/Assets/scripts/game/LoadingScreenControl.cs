@@ -55,7 +55,7 @@ public static class LoadingScreenControl
                 if (jsonOver)
                 {
                     loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU;
-                    ArcaniaArchiveModelExecuter.AfterModelLoadingOver(mgc.arcaniaModel);
+                    ArcaniaArchiveModelExecuter.AfterModelLoadingOver(mgc.arcaniaModel, mgc.JControlData.archiveControlData.archiveData);
                 }
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_CANVAS_TAB_MENU:
