@@ -108,7 +108,7 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelUnitTypeDescription[UnitType.HOUSE] = Local.GetText("house");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.LOCATION] = Local.GetText("location");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.TASK] = Local.GetText("task");
-            // jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Encounters] = Local.GetText("Encounters");
+            //jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Encounters] = Local.GetText("Encounters");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Furnitures] = Local.GetText("Furniture");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Houses] = Local.GetText("Houses");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Locations] = Local.GetText("Locations");
@@ -428,7 +428,7 @@ public partial class MainGameControlSetupJLayout
                         (unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION);
                     var hasTitleWithValue = unitType == UnitType.SKILL;
                     var hasXPBar = !config.ArchiveMode && unitType == UnitType.SKILL;
-                    var hasResourceExpander = !hasTaskButton && ((unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT) || config.ArchiveMode);
+                    var hasResourceExpander = !hasTaskButton && ((unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT) || (config.ArchiveMode && unitType != UnitType.SKILL));
                     var hasPlusMinusButton = !config.ArchiveMode && unitType == UnitType.FURNITURE;
                     var showRequireOfTarget = unitType == UnitType.HINT;
                     var valueVisible = !config.ArchiveMode && unitType != UnitType.HINT;
