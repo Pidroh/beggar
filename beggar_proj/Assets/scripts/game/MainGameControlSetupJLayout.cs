@@ -432,6 +432,7 @@ public partial class MainGameControlSetupJLayout
                     var hasPlusMinusButton = !config.ArchiveMode && unitType == UnitType.FURNITURE;
                     var showRequireOfTarget = unitType == UnitType.HINT;
                     var valueVisible = !config.ArchiveMode && unitType != UnitType.HINT;
+                    var disableValueTextForcefully = config.ArchiveMode;
 
                     if (hasTitleWithValue)
                     {
@@ -480,6 +481,10 @@ public partial class MainGameControlSetupJLayout
                         jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
                         jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
                         jCU.ExpandWhenClickingLayout = resourceLayoutRU;
+                        if (disableValueTextForcefully) 
+                        {
+                            resourceLayoutRU.TextChildren[1].UiUnit.text.enabled = false;
+                        }
                     }
 
                     if (hasPlusMinusButton)
