@@ -7,6 +7,7 @@ using UnityEngine;
 public class ArcaniaGameConfigurationUnit : ScriptableObject
 {
     public List<TextAsset> jsonDatas;
+    public List<TextAsset> jsonDatasWorld;
     public TextAsset layoutJson;
     public KeyedSprites spritesForLayout;
     public LocalizedTextAsset arcaniaTranslationFile;
