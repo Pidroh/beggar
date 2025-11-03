@@ -460,7 +460,7 @@ public static class JGameControlExecuter
                                                 {
                                                     leftText += $"\n{labelEffectDuration}: {dotDuration.Value}s ";
                                                 }
-                                                unit.SuccessRateAndDurationText.SetTextRaw(leftText);
+                                                unit.SuccessRateAndDurationText?.SetTextRaw(leftText);
                                             }
                                         }
 
