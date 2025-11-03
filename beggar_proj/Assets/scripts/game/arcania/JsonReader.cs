@@ -345,18 +345,18 @@ public class JsonReader
         {
             foreach (var c in parentNode.Children)
             {
-                ReadArrayOwner(arcaniaDatas, c, localizeNameDescription);
+                ReadArrayOwner(arcaniaDatas, c, localizeNameDescription, readerState);
             }
         }
         else
         {
-            ReadArrayOwner(arcaniaDatas, parentNode, localizeNameDescription);
+            ReadArrayOwner(arcaniaDatas, parentNode, localizeNameDescription, readerState);
         }
         readerState.jsonIndex++;
         return readerState;
     }
 
-    private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode, bool localizeNameDescription)
+    private static void ReadArrayOwner(ArcaniaUnits arcaniaUnits, SimpleJSON.JSONNode parentNode, bool localizeNameDescription, JsonReaderState readerState)
     {
         var items = parentNode["items"];
         string typeS = parentNode["type"];
@@ -394,6 +394,7 @@ public class JsonReader
         foreach (var item in items.AsArray.Children)
         {
             var ru = new RuntimeUnit();
+            ru.World = readerState.CurrentWorld;
             ReadBasicUnit(ru, item, arcaniaUnits, type, localizeNameDescription);
 
             IDPointer iDPointer;
