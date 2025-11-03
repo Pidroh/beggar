@@ -36,3 +36,11 @@ public class ArcaniaUnits
 
     //public List<BasicUnit> resources = new();
 }
+
+public enum WorldType 
+{ 
+    DEFAULT_CHARACTER,
+    PRESTIGE_WORLD,
+    OTHER_WORLD_1,
+    OTHER_WORLD_2,
+}

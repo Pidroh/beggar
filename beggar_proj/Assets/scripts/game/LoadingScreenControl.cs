@@ -94,7 +94,6 @@ public static class LoadingScreenControl
                 bool jsonOver = ModelLoading(mgc, loadingData);
                 if (jsonOver)
                 {
-                    // next state is different if loading up the archive
                     loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.LOADING_PERSISTENCE;
                 }
 
@@ -131,6 +130,7 @@ public static class LoadingScreenControl
 
     private static bool ModelLoading(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData)
     {
+        change loading here
         // common normal game
         loadingData.ModelJsonState = JsonReader.ReadJsonStepByStep(mgc.ResourceJson, mgc.arcaniaModel.arcaniaUnits, loadingData.hasLocalizationFile, loadingData.ModelJsonState);
         bool jsonOver = loadingData.ModelJsonState.Value.readerState == JsonReader.JsonReaderState.JsonReaderStateMode.OVER;

@@ -21,8 +21,11 @@ public class JsonReader
     };
     public static void ReadJsonAllAtOnce(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription)
     {
-        var jsonDatas = config.jsonDatas;
-        ReadJsonAllAtOnce(arcaniaDatas, jsonDatas, localizeNameDescription);
+        JsonReaderState? state = null;
+        while ((state?.readerState != JsonReaderState.JsonReaderStateMode.OVER)) 
+        {
+            state = ReadJsonStepByStep(config, arcaniaDatas, localizeNameDescription, state);
+        }
     }
 
     public struct JsonReaderState
@@ -31,6 +34,8 @@ public class JsonReader
         public int jsonIndex;
         internal int modAmountBeforeReadingData;
 
+        public WorldType CurrentWorld { get; internal set; }
+
         public enum JsonReaderStateMode
         {
             READ_JSON,
@@ -38,7 +43,7 @@ public class JsonReader
         }
     }
 
-    public static JsonReaderState ReadJsonStepByStep(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription, JsonReaderState? stateRef) 
+    public static JsonReaderState ReadJsonStepByStep(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription, JsonReaderState? stateRef)
     {
         JsonReaderState state = new();
         if (stateRef == null)
@@ -47,21 +52,39 @@ public class JsonReader
             state.modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
 
         }
-        else 
+        else
         {
             state = stateRef.Value;
         }
         switch (state.readerState)
         {
             case JsonReaderState.JsonReaderStateMode.READ_JSON:
-                if (state.jsonIndex < config.jsonDatas.Count)
-                    state = ReadJsonSingleFile(arcaniaDatas, config.jsonDatas, localizeNameDescription, state);
-                else 
                 {
-                    ModPostProcessing(arcaniaDatas, state.modAmountBeforeReadingData);
-                    ConditionProcessing(arcaniaDatas);
-                    BrokenPointerCheck(arcaniaDatas);
-                    state.readerState = JsonReaderState.JsonReaderStateMode.OVER;
+                }
+                if (state.jsonIndex < config.jsonDatas.Count)
+                {
+
+                    state.CurrentWorld = WorldType.DEFAULT_CHARACTER;
+                    state = ReadJsonSingleFile(arcaniaDatas, config.jsonDatas, localizeNameDescription, state, state.jsonIndex);
+                }
+                else
+                {
+                    // since normal json is already over
+                    // (might be best to refactor the code to use a list of lists of json
+                    var tweakedIndex = state.jsonIndex - config.jsonDatas.Count;
+                    if (tweakedIndex < config.jsonDatasPrestigeWorld.Count)
+                    {
+                        state.CurrentWorld = WorldType.PRESTIGE_WORLD;
+                        ReadJsonSingleFile(arcaniaDatas, config.jsonDatasPrestigeWorld, localizeNameDescription, state, tweakedIndex);
+                    }
+                    else
+                    {
+                        ModPostProcessing(arcaniaDatas, state.modAmountBeforeReadingData);
+                        ConditionProcessing(arcaniaDatas);
+                        BrokenPointerCheck(arcaniaDatas);
+                        state.readerState = JsonReaderState.JsonReaderStateMode.OVER;
+                    }
+
                 }
                 break;
             default:
@@ -69,21 +92,6 @@ public class JsonReader
         }
 
         return state;
-    }
-
-    public static void ReadJsonAllAtOnce(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription)
-    {
-        int modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
-        JsonReaderState readerState = new();
-        readerState.jsonIndex = 0;
-        while (readerState.jsonIndex < jsonDatas.Count)
-        {
-            readerState = ReadJsonSingleFile(arcaniaDatas, jsonDatas, localizeNameDescription, readerState);
-        }
-
-        ModPostProcessing(arcaniaDatas, modAmountBeforeReadingData);
-        ConditionProcessing(arcaniaDatas);
-        BrokenPointerCheck(arcaniaDatas);
     }
 
     private static void BrokenPointerCheck(ArcaniaUnits arcaniaDatas)
@@ -329,9 +337,9 @@ public class JsonReader
         #endregion
     }
 
-    private static JsonReaderState ReadJsonSingleFile(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription, JsonReaderState readerState)
+    private static JsonReaderState ReadJsonSingleFile(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription, JsonReaderState readerState, int arrayIndex)
     {
-        TextAsset item = jsonDatas[readerState.jsonIndex];
+        TextAsset item = jsonDatas[arrayIndex];
         var parentNode = SimpleJSON.JSON.Parse(item.text);
         if (parentNode.IsArray)
         {
@@ -352,9 +360,9 @@ public class JsonReader
     {
         var items = parentNode["items"];
         string typeS = parentNode["type"];
-        if (typeS == null) 
+        if (typeS == null)
         {
-            
+
         }
         if (!EnumHelper<UnitType>.TryGetEnumFromName(typeS, out var type)) Debug.LogError($"{typeS} not found in UnitType");
         if (type == UnitType.DIALOG)
@@ -364,8 +372,8 @@ public class JsonReader
                 var dr = new DialogRuntime()
                 {
                     // use name as the key for the dialog title localized string
-                    Title = localizeNameDescription ? Local.GetText(item["id"]+"_name") : item["title"],
-                    Content = localizeNameDescription ? Local.GetText(item["id"]+"_desc") : item["content"],
+                    Title = localizeNameDescription ? Local.GetText(item["id"] + "_name") : item["title"],
+                    Content = localizeNameDescription ? Local.GetText(item["id"] + "_desc") : item["content"],
                     Id = item["id"],
                 };
                 foreach (var pair in item)
@@ -389,12 +397,15 @@ public class JsonReader
             ReadBasicUnit(ru, item, arcaniaUnits, type, localizeNameDescription);
 
             IDPointer iDPointer;
-            if (isTag) {
+            if (isTag)
+            {
                 iDPointer = arcaniaUnits.GetOrCreateIdPointerWithTag(ru.ConfigBasic.Id);
-            } else {
+            }
+            else
+            {
                 iDPointer = arcaniaUnits.GetOrCreateIdPointer(ru.ConfigBasic.Id);
             }
-                
+
             if (iDPointer.RuntimeUnit != null)
             {
                 Debug.LogError($"Potential ID duplication: {iDPointer.id}");
@@ -407,7 +418,7 @@ public class JsonReader
                     Stressor = item.GetValueOrDefault("stressor", false)
                 };
             }
-            if (type == UnitType.TAG) 
+            if (type == UnitType.TAG)
             {
                 iDPointer.Tag.RuntimeUnit = ru;
             }
@@ -656,7 +667,7 @@ public class JsonReader
                 {
                     var values = c.Value.AsString.Split("~");
                     min = float.Parse(values[0]);
-                    max = float.Parse(values[1]); 
+                    max = float.Parse(values[1]);
                 }
             }
 
@@ -897,10 +908,10 @@ public class DialogRuntime
 public class TagRuntime
 {
     private string _tagName;
-    public string tagName 
+    public string tagName
     {
         get => RuntimeUnit?.Name ?? _tagName;
-        set 
+        set
         {
             _tagName = value;
         }
