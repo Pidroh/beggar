@@ -26,7 +26,7 @@ public class RuntimeUnit
     // Skills cannot drop below max
     public bool MaxCanLimitValue => Skill == null && !ConfigBasic.AboveMax;
 
-    public string Name => ConfigBasic.name;
+    public string Name => ArchiveEnabled ?? true ? ConfigBasic.name : "?????";
 
     public int Max => CalculateMax();
 

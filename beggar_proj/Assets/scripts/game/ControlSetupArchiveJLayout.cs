@@ -14,15 +14,15 @@ public static class ControlSetupArchiveJLayout
         {
             var tab = jControlDataHolder.TabControlUnits[tabIndex];
             
-            // var tabHolder = jCanvas.children[tabIndex];
+            var tabHolder = jCanvas.children[tabIndex];
             foreach (var sep in tab.SeparatorControls)
             {
                 if (!sep.SepD.ArchiveMainUI) continue;
-                var sepContentHolder = sep.SeparatorLayout.ChildSelf;
+                //var sepContentHolder = sep.SeparatorLayout.ChildSelf;
                 var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
                 JLayoutRuntimeUnit heuristicsParent = JCanvasMaker.CreateLayout(layoutD, runtime);
                 {
-                    var lc = sepContentHolder.LayoutRU.AddLayoutAsChild(heuristicsParent);
+                    var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(heuristicsParent);
                     lc.PositionModeOverride = new PositionMode[] { PositionMode.CENTER, PositionMode.SIBLING_DISTANCE };
                 }
                 
@@ -41,7 +41,7 @@ public static class ControlSetupArchiveJLayout
                 }
                 {
                     var exitButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
-                    var lc = sepContentHolder.LayoutRU.AddLayoutAsChild(exitButtonLayout);
+                    var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(exitButtonLayout);
                     lc.PositionModeOverride = new PositionMode[2] { PositionMode.CENTER, PositionMode.SIBLING_DISTANCE };
                     exitButtonLayout.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Exit archive"));
                     JRTControlUnit jCU = new();
