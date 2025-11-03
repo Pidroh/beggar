@@ -42,10 +42,12 @@ public static class ArcaniaArchiveModelExecuter
                 case ArcaniaArchiveModelData.ArchiveEuristics.Tasks:
                     noMaxNotNormal = true;
                     unitType = UnitType.TASK;
+                    normalEuristic = false;
                     break;
                 case ArcaniaArchiveModelData.ArchiveEuristics.Powerups:
                     requireMaxNotNormal = true;
                     unitType = UnitType.TASK;
+                    normalEuristic = false;
                     break;
                 case ArcaniaArchiveModelData.ArchiveEuristics.Resources:
                     {
