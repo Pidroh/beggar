@@ -2771,6 +2771,7 @@
                 "id": "save_slot_tab",
                 "unit_types": [],
                 "contains_save_slots": true,
+                "disable_on_archive": true,
                 "icon": "tab_save_slot",
                 "separator": [
                     {
