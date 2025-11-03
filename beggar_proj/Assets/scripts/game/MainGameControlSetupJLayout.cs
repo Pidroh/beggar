@@ -108,6 +108,14 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelUnitTypeDescription[UnitType.HOUSE] = Local.GetText("house");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.LOCATION] = Local.GetText("location");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.TASK] = Local.GetText("task");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Encounters] = Local.GetText("Encounters");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Furnitures] = Local.GetText("Furniture");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Houses] = Local.GetText("Houses");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Locations] = Local.GetText("Locations");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Powerups] = Local.GetText("Power-ups");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Resources] = Local.GetText("Resources");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Skills] = Local.GetText("Skills");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Tasks] = Local.GetText("Tasks");
 
             jControlDataHolder.LabelDuration = Local.GetText("Duration");
 
