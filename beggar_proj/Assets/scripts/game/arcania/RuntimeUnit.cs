@@ -296,4 +296,5 @@ public class RuntimeUnit
     public DotConfig DotConfig { get; set; }
     public RuntimeUnit ParentRU { get; internal set; }
     public bool Activatable { get; internal set; }
+    public bool? ArchiveEnabled { get; internal set; }
 }

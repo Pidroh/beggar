@@ -84,7 +84,9 @@ public static class ArcaniaArchiveModelExecuter
                     if (unit.HasMax && noMaxNotNormal) continue;
                     if (!unit.HasMax && requireMaxNotNormal) continue;
                     total++;
-                    if (archiveData.knownIds.Contains(unit.ConfigBasic.Id))
+                    bool archive = archiveData.knownIds.Contains(unit.ConfigBasic.Id);
+                    unit.ArchiveEnabled = archive;
+                    if (archive)
                     {
                         seen++;
                     }
@@ -105,7 +107,9 @@ public static class ArcaniaArchiveModelExecuter
         var seen = 0;
         foreach (var unit in units)
         {
-            if (archiveData.knownIds.Contains(unit.ConfigBasic.Id)) 
+            bool archiveEnabled = archiveData.knownIds.Contains(unit.ConfigBasic.Id);
+            unit.ArchiveEnabled = archiveEnabled;
+            if (archiveEnabled) 
             {
                 seen++;
             }
