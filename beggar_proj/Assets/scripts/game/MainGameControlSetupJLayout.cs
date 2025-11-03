@@ -622,6 +622,7 @@ public partial class MainGameControlSetupJLayout
         {
             RuntimeUnit item = arcaniaDatas.datas[UnitType.TAB][tabIndex];
             if (item.Tab.ArchiveOnly && !isArchive) continue;
+            if (item.Tab.DisableOnArchive && isArchive) continue;
             var tcu = new JTabControlUnit();
             for (int buttonTypeIndex = 0; buttonTypeIndex < 3; buttonTypeIndex++)
             {
