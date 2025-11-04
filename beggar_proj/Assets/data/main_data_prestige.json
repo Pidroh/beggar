@@ -30,6 +30,14 @@
                 "max": 5
             },
             {
+                "id": "speed_up_normal_task",
+                "name": "Speed up (repeatable tasks)",
+                "mod": {
+                    "t_repeatable_task.speed": 10
+                },
+                "max": 5
+            },
+            {
                 "id": "speed_up_skill",
                 "name": "Speed up (skill)",
                 "mod": {

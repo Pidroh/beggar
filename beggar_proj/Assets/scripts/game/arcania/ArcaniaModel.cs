@@ -39,6 +39,13 @@ public class ConfigFurniture
     public int SpaceConsumed;
 }
 
+public class ArcaniaSpeedParameters 
+{
+    public float globalMultiplier = 1f;
+    public float skillStudyingMultiplier = 1f;
+    public float explorationMultiplier = 1f;
+}
+
 public class ArcaniaModel
 {
     public List<LogUnit> LogUnits = new();
@@ -48,6 +55,7 @@ public class ArcaniaModel
     public ArcaniaModelHousing Housing;
     float _oneSecondCounter;
     public DialogModel Dialog = new();
+    public ArcaniaSpeedParameters arcaniaSpeedParams = new();
 
     public ArcaniaModel()
     {
@@ -100,6 +108,7 @@ public class ArcaniaModel
 
     public void ManualUpdate(float dt)
     {
+        dt = this.arcaniaSpeedParams.globalMultiplier * dt;
         Dialog.ManualUpdate();
         Runner.ManualUpdate(dt);
         Exploration.ManualUpdate(dt);

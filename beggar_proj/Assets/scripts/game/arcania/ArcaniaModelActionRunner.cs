@@ -171,10 +171,12 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
         list.AddRange(RunningTasks);
         foreach (var run in list)
         {
+            var multiplier = 1f;
             var taskContinue = _model.CanAfford(run.ConfigTask.Run) && !run.IsMaxed;
             if (run.ConfigBasic.UnitType == UnitType.SKILL)
             {
-                // even if result and effect are redudant, skills still run to get XP, so nothing to do here
+
+                multiplier = _model.arcaniaSpeedParams.skillStudyingMultiplier;
             }
             else
             {
@@ -188,7 +190,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             }
 
             float beforeProg = run.TaskProgress;
-            float taskProgressDt = dt * run.GetSpeedMultiplier();
+            float taskProgressDt = dt * run.GetSpeedMultiplier() * multiplier;
             run.TaskProgress += taskProgressDt;
 
             // reached a new second in progress
