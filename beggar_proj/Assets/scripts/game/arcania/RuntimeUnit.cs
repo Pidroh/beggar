@@ -35,6 +35,7 @@ public class RuntimeUnit
 
     public bool IsPossiblyVisibleRegardlessOfRequire()
     {
+        if (ForceInvisible) return false;
         if (IsLocked()) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
         if (Activatable && !HasModActive(ModType.Activate)) return false;
@@ -298,4 +299,5 @@ public class RuntimeUnit
     public bool Activatable { get; internal set; }
     public bool? ArchiveEnabled { get; internal set; }
     public WorldType World { get; internal set; }
+    public bool ForceInvisible { get; internal set; }
 }

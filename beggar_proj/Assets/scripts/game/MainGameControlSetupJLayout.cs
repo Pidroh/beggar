@@ -413,6 +413,7 @@ public partial class MainGameControlSetupJLayout
                 foreach (var modelData in separatorControl.SepD.BoundRuntimeUnits)
                 {
                     if (modelData.World != world) continue;
+                    if (modelData.ForceInvisible) continue;
                     var jCU = new JRTControlUnit();
                     // special types that don't have unit group controls are handled in a special way
                     UnitType unitType = modelData.ConfigBasic.UnitType;

@@ -790,6 +790,7 @@ public class JsonReader
             if (pair.Key == "mod" || pair.Key == "mods") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
+            if (pair.Key == "invisible") ru.ForceInvisible = true;
             if (pair.Key == "lock")
             {
                 var lockTargetString = pair.Value.AsString;
