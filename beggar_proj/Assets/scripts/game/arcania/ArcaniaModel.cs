@@ -46,6 +46,13 @@ public class ArcaniaSpeedParameters
     public float explorationMultiplier = 1f;
 }
 
+public class ArcaniaSpeedIntegrationData 
+{
+    public RuntimeUnit speedGlobalMultiplier;
+    public RuntimeUnit speedExplorationMultiplier;
+    public RuntimeUnit speedSkillMultiplier;
+}
+
 public class ArcaniaModel
 {
     public List<LogUnit> LogUnits = new();
