@@ -56,8 +56,8 @@ public class MainGameControl : MonoBehaviour
 
     private struct CrossSceneData 
     {
-        public ControlState? _lastControlStateStatic;
-        public ControlState? _requestedStateStatic;
+        public ControlState? lastControlState;
+        public ControlState? requestedControlState;
     }
 
     public enum ControlState
@@ -80,8 +80,9 @@ public class MainGameControl : MonoBehaviour
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         MainGameControlSetupJLayout.SetupCanvas(this);
 
-        var _lastSceneControlState = _crossSceneDataStatic._lastControlStateStatic;
-        var wannaGoToArchive = _crossSceneDataStatic._requestedStateStatic == ControlState.ARCHIVE_GAME || _crossSceneDataStatic._requestedStateStatic == ControlState.ARCHIVE_LOADING;
+        var _lastSceneControlState = _crossSceneDataStatic.lastControlState;
+        var wannaGoToArchive = _crossSceneDataStatic.requestedControlState == ControlState.ARCHIVE_GAME || _crossSceneDataStatic.requestedControlState == ControlState.ARCHIVE_LOADING;
+        var wannaGoToPrestigeWorld = _crossSceneDataStatic.requestedControlState == ControlState.PRESTIGE_WORLD || _crossSceneDataStatic.requestedControlState == ControlState.PRESTIGE_WORLD_LOADING;
 
 
         var straightToGameNoTitle =  !wannaGoToArchive && (_lastSceneControlState.HasValue ? _lastSceneControlState == ControlState.GAME : false);
@@ -89,6 +90,11 @@ public class MainGameControl : MonoBehaviour
         if (wannaGoToArchive) 
         {
             controlState = ControlState.ARCHIVE_LOADING;
+        }
+
+        if (wannaGoToPrestigeWorld)
+        {
+            controlState = ControlState.PRESTIGE_WORLD_LOADING;
         }
 
         // SetupMainGame();
@@ -107,6 +113,10 @@ public class MainGameControl : MonoBehaviour
             loadingScreenData = LoadingScreenSetup.Setup(this);
             JControlData.archiveControlData = new();
             loadingScreenData.state = LoadingScreenRuntimeData.State.ARCHIVE_LOADING_PERSISTENCE;
+        }
+        else if (controlState == ControlState.PRESTIGE_WORLD_LOADING)
+        {
+            loadingScreenData = LoadingScreenSetup.Setup(this);
         }
 
         _crossSceneDataStatic = default;
@@ -154,12 +164,15 @@ public class MainGameControl : MonoBehaviour
 
             }
         }
-        else if (controlState == ControlState.LOADING)
+        else if (controlState == ControlState.LOADING || controlState == ControlState.PRESTIGE_WORLD_LOADING)
         {
             LoadingScreenControl.ManualUpdate(this, loadingScreenData);
             if (loadingScreenData.state == LoadingScreenRuntimeData.State.OVER)
             {
-                controlState = ControlState.GAME;
+                if (controlState == ControlState.LOADING)
+                    controlState = ControlState.GAME;
+                else if (controlState == ControlState.PRESTIGE_WORLD_LOADING)
+                    controlState = ControlState.PRESTIGE_WORLD;
             }
         }
         else if (controlState == ControlState.ARCHIVE_LOADING)
@@ -186,7 +199,7 @@ public class MainGameControl : MonoBehaviour
             }
             if (DebugMenuManager.CheckCommand("archive"))
             {
-                GoToArchive();
+                ReloadSceneToArchive();
             }
         }
         #endregion
@@ -362,17 +375,24 @@ public class MainGameControl : MonoBehaviour
         HeartGame.GoToSettings();
     }
 
-    public void GoToArchive() 
+    public void ReloadSceneToArchive() 
     {
         BeforeChangeScene();
-        _crossSceneDataStatic._requestedStateStatic = ControlState.ARCHIVE_GAME;
+        _crossSceneDataStatic.requestedControlState = ControlState.ARCHIVE_GAME;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReloadSceneToPrestigeWorld()
+    {
+        BeforeChangeScene();
+        _crossSceneDataStatic.requestedControlState = ControlState.PRESTIGE_WORLD;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     internal void BackToGame()
     {
         BeforeChangeScene();
-        _crossSceneDataStatic._requestedStateStatic = ControlState.GAME;
+        _crossSceneDataStatic.requestedControlState = ControlState.GAME;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -383,6 +403,6 @@ public class MainGameControl : MonoBehaviour
             SaveGameAndCurrentSlot();
             
         }
-        MainGameControl._crossSceneDataStatic._lastControlStateStatic = this.controlState;
+        MainGameControl._crossSceneDataStatic.lastControlState = this.controlState;
     }
 }
