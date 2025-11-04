@@ -289,7 +289,7 @@
                 "name": "Organize thoughts",
                 "require": "introspection>3",
                 "duration": 6,
-                "tag": "mentalry",
+                "tag": "mentalry,t_repeatable_task",
                 "run": {
                     "supplication": 1,
                     "thoughts": 1
