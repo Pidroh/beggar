@@ -44,8 +44,19 @@
                     "IN_GAME_SPEED_EXPLORATION.speed": 10
                 },
                 "max": 5
+            },
+            {
+                "id": "IN_GAME_SPEED_SKILL",
+                "invisible": true
+            },
+            {
+                "id": "IN_GAME_SPEED_EXPLORATION",
+                "invisible": true
+            },
+            {
+                "id": "IN_GAME_SPEED",
+                "invisible": true
             }
-
         ]
     },
     {
