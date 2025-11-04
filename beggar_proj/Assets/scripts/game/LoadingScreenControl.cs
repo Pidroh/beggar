@@ -153,6 +153,7 @@ public static class LoadingScreenControl
         {
             var key = JGameControlDataSaveSlot.PrestigeSaveKey;
             var prestigePersistence = new ArcaniaPersistence(heartGame, key);
+            mgc.PrestigePersistence = prestigePersistence;
             prestigePersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
         }
         if (JGameControlExecuter.GetWorld(mgc) == WorldType.DEFAULT_CHARACTER) 

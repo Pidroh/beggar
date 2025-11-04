@@ -11,7 +11,7 @@ public class ArcaniaPersistence
         saveUnit = new SaveDataUnit<ArcaniaPersistenceData>(saveKey, hg);
     }
 
-    public void Save(ArcaniaUnits units, ArcaniaModelExploration exploration)
+    public void Save(ArcaniaUnits units, ArcaniaModelExploration exploration, WorldType world)
     {
         ArcaniaPersistenceData apd = new();
         apd.Exploration.locationProgress = exploration.locationProgress;
@@ -20,6 +20,7 @@ public class ArcaniaPersistence
         {
             foreach (var unit in u.Value)
             {
+                if (unit.World != world) continue;
                 apd.Basics.Add(new ArcaniaBasicPersistence()
                 {
                     id = unit.ConfigBasic.Id,

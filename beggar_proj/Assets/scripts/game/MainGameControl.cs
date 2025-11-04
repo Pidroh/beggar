@@ -42,6 +42,7 @@ public class MainGameControl : MonoBehaviour
     public LayoutParent TabButtonOverlayLayout { get; internal set; }
     public JLayoutRuntimeData JLayoutRuntime { get; internal set; }
     public JGameControlDataHolder JControlData { get; internal set; }
+    public ArcaniaPersistence PrestigePersistence { get; internal set; }
 
     public float lastSaveTime;
     public int SkillFontSize;
@@ -335,36 +336,56 @@ public class MainGameControl : MonoBehaviour
 
     public void SaveGameAndCurrentSlot()
     {
-        var flavorText = Local.GetText("Nobody");
-        var classes = arcaniaModel.arcaniaUnits.datas[UnitType.CLASS];
-        int lastTagPriority = -1;
-        foreach (var item in classes)
+        var world = JGameControlExecuter.GetWorld(this);
+        switch (world)
         {
-            if (item.Value <= 0) continue;
-            foreach (var tag in item.ConfigBasic.Tags)
-            {
-                for (int tagPriority = 0; tagPriority < JGameControlExecuterSaveSlot.ClassPriorityTier.Length; tagPriority++)
+            case WorldType.DEFAULT_CHARACTER:
                 {
-                    string tagP = JGameControlExecuterSaveSlot.ClassPriorityTier[tagPriority];
-                    if (tagP != tag.id) continue;
-                    if (tagPriority > lastTagPriority)
+                    var flavorText = Local.GetText("Nobody");
+                    var classes = arcaniaModel.arcaniaUnits.datas[UnitType.CLASS];
+                    int lastTagPriority = -1;
+                    foreach (var item in classes)
                     {
-                        lastTagPriority = tagPriority;
-                        flavorText = item.ConfigBasic.name;
+                        if (item.Value <= 0) continue;
+                        foreach (var tag in item.ConfigBasic.Tags)
+                        {
+                            for (int tagPriority = 0; tagPriority < JGameControlExecuterSaveSlot.ClassPriorityTier.Length; tagPriority++)
+                            {
+                                string tagP = JGameControlExecuterSaveSlot.ClassPriorityTier[tagPriority];
+                                if (tagP != tag.id) continue;
+                                if (tagPriority > lastTagPriority)
+                                {
+                                    lastTagPriority = tagPriority;
+                                    flavorText = item.ConfigBasic.name;
+                                }
+                            }
+                        }
                     }
+
+                    SaveSlotModelData modelData = this.JControlData.SaveSlots.ModelData;
+                    SaveSlotModelData.SaveSlotUnit currentSlotUnit = modelData.CurrentSlotUnit;
+                    currentSlotUnit.hasSave = true;
+                    currentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
+                    currentSlotUnit.lastSaveTime = System.DateTime.Now;
+                    currentSlotUnit.representativeTextRaw = flavorText;
+
+                    SaveSlotExecution.SaveData(modelData, this.HeartGame);
+                    ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration, world);
                 }
-            }
+                break;
+            case WorldType.PRESTIGE_WORLD:
+                {
+                    this.PrestigePersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration, world);
+                }
+                break;
+            case WorldType.OTHER_WORLD_1:
+                break;
+            case WorldType.OTHER_WORLD_2:
+                break;
+            default:
+                break;
         }
-
-        SaveSlotModelData modelData = this.JControlData.SaveSlots.ModelData;
-        SaveSlotModelData.SaveSlotUnit currentSlotUnit = modelData.CurrentSlotUnit;
-        currentSlotUnit.hasSave = true;
-        currentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
-        currentSlotUnit.lastSaveTime = System.DateTime.Now;
-        currentSlotUnit.representativeTextRaw = flavorText;
-
-        SaveSlotExecution.SaveData(modelData, this.HeartGame);
-        ArcaniaPersistence.Save(arcaniaModel.arcaniaUnits, arcaniaModel.Exploration);
+        
     }
 
     public void ReloadScene() 
