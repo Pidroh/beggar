@@ -303,7 +303,7 @@
                 "name": "The self",
                 "require": "contemplation",
                 "duration": 15,
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "max": 1,
                 "cost": {
                     "clarity": 5

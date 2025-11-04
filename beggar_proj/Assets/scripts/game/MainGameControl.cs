@@ -85,7 +85,7 @@ public class MainGameControl : MonoBehaviour
         var wannaGoToPrestigeWorld = _crossSceneDataStatic.requestedControlState == ControlState.PRESTIGE_WORLD || _crossSceneDataStatic.requestedControlState == ControlState.PRESTIGE_WORLD_LOADING;
 
 
-        var straightToGameNoTitle =  !wannaGoToArchive && (_lastSceneControlState.HasValue ? _lastSceneControlState == ControlState.GAME : false);
+        var straightToGameNoTitle =  !wannaGoToArchive && !wannaGoToPrestigeWorld && (_lastSceneControlState.HasValue ? _lastSceneControlState == ControlState.GAME : false);
 
         if (wannaGoToArchive) 
         {
@@ -215,7 +215,7 @@ public class MainGameControl : MonoBehaviour
         HeartGame.ManualUpdate();
         EngineView.ManualUpdate();
 
-        if (controlState == ControlState.GAME)
+        if (controlState == ControlState.GAME || controlState == ControlState.PRESTIGE_WORLD)
         {
 
             #region save
