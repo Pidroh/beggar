@@ -423,7 +423,7 @@ public class MainGameControl : MonoBehaviour
 
     private void BeforeChangeScene()
     {
-        if (controlState == ControlState.GAME) 
+        if (controlState == ControlState.GAME || controlState == ControlState.PRESTIGE_WORLD) 
         {
             SaveGameAndCurrentSlot();
             
