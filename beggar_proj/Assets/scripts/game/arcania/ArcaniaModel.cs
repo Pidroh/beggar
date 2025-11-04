@@ -119,6 +119,7 @@ public class ArcaniaModel
                 bool updateRequireStatusResult = item.UpdateRequireStatus();
                 if (pair.Key == UnitType.ENCOUNTER) continue;
                 if (pair.Key == UnitType.TAB) continue;
+                if (pair.Key == UnitType.TAG) continue;
 
                 if (updateRequireStatusResult)
                 {
