@@ -156,14 +156,13 @@ public static class LoadingScreenControl
             mgc.PrestigePersistence = prestigePersistence;
             prestigePersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
         }
+        var slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
+        mgc.JControlData.SaveSlots.ModelData = slotData;
+        var currentSaveSlot = slotData.currentSlot;
+
+        SaveSlotExecution.InitCurrentSlotIfNoSave(slotData, "nobody");
         if (JGameControlExecuter.GetWorld(mgc) == WorldType.DEFAULT_CHARACTER) 
         {
-            var slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
-            mgc.JControlData.SaveSlots.ModelData = slotData;
-            var currentSaveSlot = slotData.currentSlot;
-
-            SaveSlotExecution.InitCurrentSlotIfNoSave(slotData, "nobody");
-
             var slot = currentSaveSlot;
             var key = JGameControlDataSaveSlot.SlotSaveKeys[slot];
             mgc.ArcaniaPersistence = new(heartGame, key);

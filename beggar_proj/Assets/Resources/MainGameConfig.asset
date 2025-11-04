@@ -41,6 +41,8 @@ MonoBehaviour:
     Key: maindata_2
   - ForcePrefs: 0
     Key: save_slots
+  - ForcePrefs: 0
+    Key: prestige
   urls:
     DiscordServer: 'https://discord.gg/AtGrxpM '
     steamPageAppId: 3772140
