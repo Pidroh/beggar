@@ -48,9 +48,20 @@ public class ArcaniaSpeedParameters
 
 public class ArcaniaSpeedIntegrationData 
 {
-    public RuntimeUnit speedGlobalMultiplier;
-    public RuntimeUnit speedExplorationMultiplier;
-    public RuntimeUnit speedSkillMultiplier;
+    
+    public RuntimeUnit[] multiplierRuntimeUnits = new RuntimeUnit[EnumHelper<MultiplierTypes>.GetAllValues().Count];
+    public static string[] runtimeUnitIds = new string[] 
+    {
+        "IN_GAME_SPEED",
+        "IN_GAME_SPEED_EXPLORATION",
+        "IN_GAME_SPEED_SKILL"
+    };
+    public enum MultiplierTypes 
+    {
+        GLOBAL,
+        EXPLORATION,
+        SKILL
+    }
 }
 
 public class ArcaniaModel
@@ -62,7 +73,8 @@ public class ArcaniaModel
     public ArcaniaModelHousing Housing;
     float _oneSecondCounter;
     public DialogModel Dialog = new();
-    public ArcaniaSpeedParameters arcaniaSpeedParams = new();
+    public ArcaniaSpeedParameters speedParameters = new();
+    public ArcaniaSpeedIntegrationData speedIntegrationData = new();
 
     public ArcaniaModel()
     {
@@ -115,7 +127,7 @@ public class ArcaniaModel
 
     public void ManualUpdate(float dt)
     {
-        dt = this.arcaniaSpeedParams.globalMultiplier * dt;
+        dt = this.speedParameters.globalMultiplier * dt;
         Dialog.ManualUpdate();
         Runner.ManualUpdate(dt);
         Exploration.ManualUpdate(dt);

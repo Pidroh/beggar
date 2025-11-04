@@ -22,7 +22,7 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
 
     public void ManualUpdate(float dt)
     {
-        dt *= this._model.arcaniaSpeedParams.explorationMultiplier;
+        dt *= this._model.speedParameters.explorationMultiplier;
         RuntimeUnit runningLocation = null;
         foreach (var task in _model.Runner.RunningTasks)
         {

@@ -176,7 +176,7 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             if (run.ConfigBasic.UnitType == UnitType.SKILL)
             {
 
-                multiplier = _model.arcaniaSpeedParams.skillStudyingMultiplier;
+                multiplier = _model.speedParameters.skillStudyingMultiplier;
             }
             else
             {
