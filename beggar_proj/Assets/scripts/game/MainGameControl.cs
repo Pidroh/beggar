@@ -47,7 +47,7 @@ public class MainGameControl : MonoBehaviour
     public int SkillFontSize;
     private int _logCountPreProcessedByControl;
 
-    private ControlState controlState = ControlState.TITLE;
+    public ControlState controlState = ControlState.TITLE;
     private TitleScreenRuntimeData titleScreenData;
     private LoadingScreenRuntimeData loadingScreenData;
 

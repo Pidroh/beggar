@@ -75,7 +75,7 @@ public class JsonReader
                     if (tweakedIndex < config.jsonDatasPrestigeWorld.Count)
                     {
                         state.CurrentWorld = WorldType.PRESTIGE_WORLD;
-                        ReadJsonSingleFile(arcaniaDatas, config.jsonDatasPrestigeWorld, localizeNameDescription, state, tweakedIndex);
+                        state = ReadJsonSingleFile(arcaniaDatas, config.jsonDatasPrestigeWorld, localizeNameDescription, state, tweakedIndex);
                     }
                     else
                     {

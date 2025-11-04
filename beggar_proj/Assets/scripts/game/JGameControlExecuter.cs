@@ -589,6 +589,25 @@ public static class JGameControlExecuter
         mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
     }
 
+    internal static WorldType GetWorld(MainGameControl mgc)
+    {
+        switch (mgc.controlState)
+        {
+            case MainGameControl.ControlState.TITLE:
+            case MainGameControl.ControlState.LOADING:
+            case MainGameControl.ControlState.GAME:
+            case MainGameControl.ControlState.ARCHIVE_LOADING:
+            case MainGameControl.ControlState.ARCHIVE_GAME:
+                return WorldType.DEFAULT_CHARACTER;
+            case MainGameControl.ControlState.PRESTIGE_WORLD_LOADING:
+                
+            case MainGameControl.ControlState.PRESTIGE_WORLD:
+                return WorldType.PRESTIGE_WORLD;
+            default:
+                return WorldType.DEFAULT_CHARACTER;
+        }
+    }
+
     public static void HideOverlay(MainGameControl mgc)
     {
         if (mgc.JControlData.overlayType == JGameControlDataHolder.OverlayType.TabMenu)

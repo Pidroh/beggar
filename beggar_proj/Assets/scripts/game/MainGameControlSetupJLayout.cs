@@ -373,6 +373,7 @@ public partial class MainGameControlSetupJLayout
     public struct SetupGameCanvasMainRuntimeUnitConfig
     {
         public bool ArchiveMode { get; internal set; }
+        public WorldType WorldType;
     }
 
     public static void SetupGameCanvasMainRuntimeUnits(MainGameControl mgc, SetupGameCanvasMainRuntimeUnitConfig config)
@@ -382,6 +383,8 @@ public partial class MainGameControlSetupJLayout
         var arcaniaModel = mgc.arcaniaModel;
         var jCanvas = runtime.jLayCanvas;
         var layoutMaster = runtime.LayoutMaster;
+        var world = JGameControlExecuter.GetWorld(mgc);
+        
 
         #region main default setup of runtime units and separators
         for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
@@ -409,6 +412,7 @@ public partial class MainGameControlSetupJLayout
                 #region instantiating each unit in a separator
                 foreach (var modelData in separatorControl.SepD.BoundRuntimeUnits)
                 {
+                    if (modelData.World != world) continue;
                     var jCU = new JRTControlUnit();
                     // special types that don't have unit group controls are handled in a special way
                     UnitType unitType = modelData.ConfigBasic.UnitType;

@@ -111,7 +111,11 @@ public static class LoadingScreenControl
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MAIN_RUNTIME_UNITS:
-                MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnits(mgc, default);
+                MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnits(mgc, new MainGameControlSetupJLayout.SetupGameCanvasMainRuntimeUnitConfig 
+                {
+                    ArchiveMode = false,
+                    WorldType = mgc.controlState == MainGameControl.ControlState.LOADING ? WorldType.DEFAULT_CHARACTER : WorldType.PRESTIGE_WORLD
+                });;
                 loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MISC;
                 break;
             case LoadingScreenSetup.LoadingScreenRuntimeData.State.CANVAS_MISC:
@@ -130,7 +134,6 @@ public static class LoadingScreenControl
 
     private static bool ModelLoading(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData)
     {
-        change loading here
         // common normal game
         loadingData.ModelJsonState = JsonReader.ReadJsonStepByStep(mgc.ResourceJson, mgc.arcaniaModel.arcaniaUnits, loadingData.hasLocalizationFile, loadingData.ModelJsonState);
         bool jsonOver = loadingData.ModelJsonState.Value.readerState == JsonReader.JsonReaderState.JsonReaderStateMode.OVER;

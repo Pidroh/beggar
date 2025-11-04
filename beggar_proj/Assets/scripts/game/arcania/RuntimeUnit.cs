@@ -297,4 +297,5 @@ public class RuntimeUnit
     public RuntimeUnit ParentRU { get; internal set; }
     public bool Activatable { get; internal set; }
     public bool? ArchiveEnabled { get; internal set; }
+    public WorldType World { get; internal set; }
 }
