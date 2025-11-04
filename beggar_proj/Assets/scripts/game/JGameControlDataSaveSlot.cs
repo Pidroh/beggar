@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class JGameControlDataSaveSlot 
 {
+    public const string PrestigeSaveKey = "prestige";
     public static string[] SlotSaveKeys { get; } = new string[] { "maindata", "maindata_1", "maindata_2" };
     public JRTControlUnit forceSaveButton { get; internal set; }
     public SaveSlotModelData ModelData { get; internal set; }

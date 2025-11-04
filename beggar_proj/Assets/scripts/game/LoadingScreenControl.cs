@@ -150,17 +150,25 @@ public static class LoadingScreenControl
     {
         int slotNumber = 3;
         HeartGame heartGame = mgc.HeartGame;
-        var slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
-        mgc.JControlData.SaveSlots.ModelData = slotData;
-        var currentSaveSlot = slotData.currentSlot;
+        {
+            var key = JGameControlDataSaveSlot.PrestigeSaveKey;
+            var prestigePersistence = new ArcaniaPersistence(heartGame, key);
+            prestigePersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
+        }
+        if (JGameControlExecuter.GetWorld(mgc) == WorldType.DEFAULT_CHARACTER) 
+        {
+            var slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
+            mgc.JControlData.SaveSlots.ModelData = slotData;
+            var currentSaveSlot = slotData.currentSlot;
 
-        SaveSlotExecution.InitCurrentSlotIfNoSave(slotData, "nobody");
+            SaveSlotExecution.InitCurrentSlotIfNoSave(slotData, "nobody");
 
-        var slot = currentSaveSlot;
-        var key = JGameControlDataSaveSlot.SlotSaveKeys[slot];
-        mgc.ArcaniaPersistence = new(heartGame, key);
-        mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
-        mgc.JControlData.SaveSlots.PlayTimeOfActiveSlot = heartGame.PlayTimeControl.Register("beggar_unit", slotData.CurrentSlotUnit.playTimeSeconds);
+            var slot = currentSaveSlot;
+            var key = JGameControlDataSaveSlot.SlotSaveKeys[slot];
+            mgc.ArcaniaPersistence = new(heartGame, key);
+            mgc.ArcaniaPersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
+            mgc.JControlData.SaveSlots.PlayTimeOfActiveSlot = heartGame.PlayTimeControl.Register("beggar_unit", slotData.CurrentSlotUnit.playTimeSeconds);
+        }
         heartGame.CommonDataLoad();
 
     }
