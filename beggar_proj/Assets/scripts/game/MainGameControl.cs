@@ -201,6 +201,10 @@ public class MainGameControl : MonoBehaviour
             {
                 ReloadSceneToArchive();
             }
+            if (DebugMenuManager.CheckCommand("prestige"))
+            {
+                ReloadSceneToPrestigeWorld();
+            }
         }
         #endregion
 
