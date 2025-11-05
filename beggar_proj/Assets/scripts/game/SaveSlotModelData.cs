@@ -153,6 +153,8 @@ public class SaveSlotModelData
         public bool hasSave;
     }
 
+    
+
     [Serializable]
     public class SaveSlotPersistenceData
     {

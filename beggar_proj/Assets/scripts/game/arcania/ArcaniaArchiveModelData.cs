@@ -1,8 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+
+[Serializable]
+public class ArchivePersistenceData 
+{
+    public bool hasAccess;
+    public List<string> knownIds = new();
+}
 
 public class ArcaniaArchiveModelData 
 {
     public List<string> knownIds = new();
+    public bool hasAccess;
     public List<EuristicData> euristicDatas = new();
 
     public class EuristicData 

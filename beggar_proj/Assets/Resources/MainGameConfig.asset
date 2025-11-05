@@ -43,6 +43,8 @@ MonoBehaviour:
     Key: save_slots
   - ForcePrefs: 0
     Key: prestige
+  - ForcePrefs: 0
+    Key: arcania_archive
   urls:
     DiscordServer: 'https://discord.gg/AtGrxpM '
     steamPageAppId: 3772140

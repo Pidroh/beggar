@@ -43,6 +43,7 @@ public class MainGameControl : MonoBehaviour
     public JLayoutRuntimeData JLayoutRuntime { get; internal set; }
     public JGameControlDataHolder JControlData { get; internal set; }
     public ArcaniaPersistence PrestigePersistence { get; internal set; }
+    public ArcaniaArchivePersistence ArchivePersistence { get; internal set; }
 
     public float lastSaveTime;
     public int SkillFontSize;

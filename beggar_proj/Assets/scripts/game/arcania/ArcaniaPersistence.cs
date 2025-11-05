@@ -2,6 +2,31 @@
 using System;
 using System.Collections.Generic;
 
+public class ArcaniaArchivePersistence 
+{
+    public SaveDataUnit<ArchivePersistenceData> saveUnit;
+
+    public ArcaniaArchivePersistence(HeartGame hg, string saveKey)
+    {
+        saveUnit = new SaveDataUnit<ArchivePersistenceData>(saveKey, hg);
+    }
+
+    public void Save(ArcaniaModel arcaniaModel, ArcaniaArchiveModelData archiveData) 
+    {
+        var data = new ArchivePersistenceData();
+        data.knownIds.AddRange(archiveData.knownIds);
+        data.hasAccess = archiveData.hasAccess;
+        saveUnit.Save(data);
+    }
+
+    public void Load(ArcaniaModel arcaniaModel, ArcaniaArchiveModelData archiveData)
+    {
+        if (!saveUnit.TryLoad(out var d)) return;
+        archiveData.knownIds.AddRange(d.knownIds);
+        archiveData.hasAccess = d.hasAccess;
+    }
+}
+
 public class ArcaniaPersistence
 {
     public SaveDataUnit<ArcaniaPersistenceData> saveUnit;

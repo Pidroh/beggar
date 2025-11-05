@@ -1,6 +1,6 @@
 ﻿using HeartUnity;
 
-public static class ArchiveScreenControlExecuter 
+public static class ArchiveScreenControlExecuter
 {
 
     public struct LoadUpArchiveState
@@ -10,20 +10,29 @@ public static class ArchiveScreenControlExecuter
     }
     public static LoadUpArchiveState LoadUpArchive(MainGameControl mgc, LoadUpArchiveState? loadUpState)
     {
-        loadUpState ??= new LoadUpArchiveState();
-        var state = loadUpState.Value;
-        var key = JGameControlDataSaveSlot.SlotSaveKeys[state.slotNow];
-        var arcaniaPersistence = new ArcaniaPersistence(mgc.HeartGame, key);
+        
+        {
+            var key = JGameControlDataSaveSlot.ArchiveSaveKey;
+            var archivePersistence = new ArcaniaArchivePersistence(mgc.HeartGame, key);
+            mgc.ArchivePersistence = archivePersistence;
+            archivePersistence.Load(mgc.arcaniaModel, mgc.JControlData.archiveControlData.archiveData);
+        }
+        {
+            loadUpState ??= new LoadUpArchiveState();
+            var state = loadUpState.Value;
+            var key = JGameControlDataSaveSlot.SlotSaveKeys[state.slotNow];
+            var arcaniaPersistence = new ArcaniaPersistence(mgc.HeartGame, key);
 
-        ArcaniaArchiveModelExecuter.LoadUpArchive(mgc.JControlData.archiveControlData.archiveData, arcaniaPersistence);
-        state.slotNow++;
-        state.over = JGameControlDataSaveSlot.SlotSaveKeys.Length <= state.slotNow;
+            ArcaniaArchiveModelExecuter.LoadUpArchive(mgc.JControlData.archiveControlData.archiveData, arcaniaPersistence);
+            state.slotNow++;
+            state.over = JGameControlDataSaveSlot.SlotSaveKeys.Length <= state.slotNow;
+        }
         return state;
     }
 
-    public static void ManualUpdate(MainGameControl mgc) 
+    public static void ManualUpdate(MainGameControl mgc)
     {
-        if (mgc.JControlData.archiveControlData.ExitJCU.TaskClicked) 
+        if (mgc.JControlData.archiveControlData.ExitJCU.TaskClicked)
         {
             mgc.BackToGame();
         }
@@ -31,7 +40,7 @@ public static class ArchiveScreenControlExecuter
 
 }
 
-public class ArchiveControlData 
+public class ArchiveControlData
 {
     public ArcaniaArchiveModelData archiveData = new();
 
