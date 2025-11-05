@@ -10,13 +10,17 @@ public static class ArchiveScreenControlExecuter
     }
     public static LoadUpArchiveState LoadUpArchive(MainGameControl mgc, LoadUpArchiveState? loadUpState)
     {
-        
+        // first time coming here
+        if(loadUpState == null)
         {
             var key = JGameControlDataSaveSlot.ArchiveSaveKey;
             var archivePersistence = new ArcaniaArchivePersistence(mgc.HeartGame, key);
             mgc.ArchivePersistence = archivePersistence;
             archivePersistence.Load(mgc.arcaniaModel, mgc.JControlData.archiveControlData.archiveData);
+            // if entering archive, it must have access
+            mgc.JControlData.archiveControlData.archiveData.hasAccess = true;
         }
+
         {
             loadUpState ??= new LoadUpArchiveState();
             var state = loadUpState.Value;
@@ -26,8 +30,9 @@ public static class ArchiveScreenControlExecuter
             ArcaniaArchiveModelExecuter.LoadUpArchive(mgc.JControlData.archiveControlData.archiveData, arcaniaPersistence);
             state.slotNow++;
             state.over = JGameControlDataSaveSlot.SlotSaveKeys.Length <= state.slotNow;
+            return state;
         }
-        return state;
+        
     }
 
     public static void ManualUpdate(MainGameControl mgc)
