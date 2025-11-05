@@ -16,7 +16,7 @@
                 "name": "Church socialization",
                 "desc": "Spend time with fellows from the church",
                 "require": "charisma>2&&jointhechurch",
-                "tag": "diseasery",
+                "tag": "diseasery,t_repeatable_task",
                 "duration": 2,
                 "buy": {
                     "faith": 50,
@@ -40,7 +40,7 @@
                 "name": "Archpriest",
                 "desc": "Commit yourself to administrating a group of priests, each with their own parish",
                 "require": "administration>=2",
-                "tag": "religionry",
+                "tag": "religionry,t_power_up",
                 "max": 1,
                 "duration": 50,
                 "cost": {},
@@ -51,7 +51,7 @@
                 "name": "Migling with priests",
                 "desc": "Spend time chatting with other priests",
                 "require": "parish_lore>=1",
-                "tag": "religionry",
+                "tag": "religionry,t_power_up",
                 "max": 3,
                 "duration": 20,
                 "cost": {
@@ -67,7 +67,7 @@
                 "name": "Surrounding parishes",
                 "desc": "Become acquainted with the other parishes",
                 "require": "parish_lore>=2",
-                "tag": "religionry",
+                "tag": "religionry,t_power_up",
                 "max": 3,
                 "duration": 40,
                 "cost": {
@@ -83,7 +83,7 @@
                 "name": "Speak with the archpriest",
                 "desc": "Become acquainted with the other parishes",
                 "require": "parish_lore>=3&&surrounding_parish&&migling_priests",
-                "tag": "religionry",
+                "tag": "religionry,t_power_up",
                 "max": 3,
                 "duration": 40,
                 "cost": {
@@ -278,9 +278,7 @@
     },
     {
         "type": "TAB",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "HINT",

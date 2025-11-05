@@ -9,7 +9,7 @@
                 "require": "t_tier4&&rats>0",
                 "max": 1,
                 "duration": 90,
-                "tags": "ending_game",
+                "tags": "ending_game,t_power_up",
                 "cost": {
                     "thoughts": 500,
                     "clarity": 90,
@@ -34,7 +34,7 @@
                 "require": "t_tier4&&luxury>10",
                 "max": 1,
                 "duration": 90,
-                "tags": "ending_game",
+                "tags": "ending_game,t_power_up",
                 "cost": {
                     "coin": 1200,
                     "clarity": 90,
@@ -61,7 +61,7 @@
                 "require": "t_tier4&&petcat>0&&happiness>0",
                 "max": 1,
                 "duration": 90,
-                "tags": "ending_game",
+                "tags": "ending_game,t_power_up",
                 "need": "petcat>0",
                 "cost": {
                     "supplication": 450,
@@ -81,7 +81,7 @@
                 "require": "t_tier3&&jointhechurch&&churchrespect>100",
                 "max": 1,
                 "duration": 90,
-                "tags": "ending_game",
+                "tags": "ending_game,t_power_up",
                 "cost": {
                     "supplication": 2000,
                     "thoughts": 1500,
@@ -100,7 +100,7 @@
                 "require": "t_tier4&&empathy>4&&benevolence>300",
                 "max": 1,
                 "duration": 90,
-                "tags": "ending_game",
+                "tags": "ending_game,t_power_up",
                 "cost": {
                     "supplication": 1300,
                     "thoughts": 1000,
@@ -136,7 +136,8 @@
                     "dominance.rate": 0.5,
                     "fireaffinity.max": 10,
                     "fireaffinity.rate": 0.5
-                }
+                },
+                "tags": "t_power_up"
             }
         ]
     },

@@ -93,7 +93,7 @@
                 "desc": "Look at them, understand their feelings. Choosing this will stop any sociopathic tendencies.",
                 "require": "gratitude>5&&clarity>2&&benevolence",
                 "lock": "psycho_path",
-                "tag": "irreversible",
+                "tag": "irreversible,t_power_up",
                 "duration": 40,
                 "max": 1,
                 "cost": {
@@ -113,7 +113,7 @@
                 "name": "I cannot understand others",
                 "desc": "Other people, their expressions. They mean nothing to you. Choosing this will stop any empathic tendencies.",
                 "require": "introspection>1&&sorrow>3&&dominance>1",
-                "tag": "irreversible",
+                "tag": "irreversible,t_power_up",
                 "duration": 40,
                 "max": 1,
                 "lock": "empathypath",
@@ -144,7 +144,8 @@
                 "mods": {
                     "dominance.max": 15,
                     "charm.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "charity_food_connection",
@@ -162,7 +163,7 @@
                 "result": {
                     "food": "1~3"
                 },
-                "tag": "charityry"
+                "tag": "charityry,t_repeatable_task"
             },
             {
                 "id": "think_reflection",
@@ -177,7 +178,8 @@
                 "mod": {
                     "think.effect.thoughts": 5,
                     "think.speed": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "poor_feast",
@@ -193,7 +195,8 @@
                 "mod": {
                     "benevolence.max": 10,
                     "benevolence.rate": 0.01
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "small_feast",
@@ -210,7 +213,8 @@
                 "mod": {
                     "benevolence.max": 100,
                     "benevolence.rate": 0.03
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "giveblanket",
@@ -225,7 +229,8 @@
                 },
                 "mod": {
                     "benevolence.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "helpelderly",
@@ -239,7 +244,8 @@
                 },
                 "mod": {
                     "benevolence.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sharesadness",
@@ -256,7 +262,8 @@
                     "benevolence.max": 10,
                     "sadness.max": 10,
                     "benevolence.rate": 0.01
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sharesorrow",
@@ -274,7 +281,8 @@
                     "benevolence.max": 30,
                     "sorrow.max": 5,
                     "benevolence.rate": 0.05
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "better_feasts_follower",
@@ -291,7 +299,8 @@
                     "poor_feast.max": 2,
                     "poor_feast.mod.benevolence.max": 10,
                     "poor_feast.mod.benevolence.rate": 0.01
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "better_feasts_follower_2",
@@ -308,7 +317,8 @@
                     "small_feast.max": 2,
                     "small_feast.mod.benevolence.max": 20,
                     "small_feast.mod.benevolence.rate": 0.01
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "nice_speech",
@@ -334,7 +344,7 @@
                         "charm.max": 10
                     }
                 },
-                "tag": "charismary"
+                "tag": "charismary,t_repeatable_task"
             },
             {
                 "id": "better_foodsharing",
@@ -349,7 +359,8 @@
                 },
                 "mod": {
                     "sharefood.result.benevolence": 9
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "torturerats",
@@ -367,7 +378,8 @@
                     "dominance.rate": 0.1,
                     "dominance.max": 10,
                     "ratbond.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "multilateanimals",
@@ -384,7 +396,8 @@
                 "mod": {
                     "dominance.rate": 0.4,
                     "dominance.max": 100
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "dominant_buff_exp",
@@ -405,7 +418,7 @@
                         "irritation.max": 20
                     }
                 },
-                "tag": "sadismry"
+                "tag": "sadismry,t_repeatable_task"
             },
             {
                 "id": "benevolent_rats",
@@ -429,7 +442,7 @@
                         "breadcrumbs.rate": 1
                     }
                 },
-                "tag": "charityry"
+                "tag": "charityry,t_repeatable_task"
             },
             {
                 "id": "warm_feline_hearts",
@@ -452,7 +465,7 @@
                         "benevolence.max": 100
                     }
                 },
-                "tag": "animalry"
+                "tag": "animalry,t_repeatable_task"
             },
             {
                 "id": "benevolence_buff_exp",
@@ -473,7 +486,7 @@
                         "irritation.max": 20
                     }
                 },
-                "tag": "charityry"
+                "tag": "charityry,t_repeatable_task"
             },
             {
                 "id": "flaming_rats",
@@ -514,7 +527,7 @@
                 "result": {
                     "firewood": 1
                 },
-                "tag": "firery"
+                "tag": "firery,t_repeatable_task"
             },
             {
                 "id": "sharefood",
@@ -536,7 +549,7 @@
                 "result": {
                     "benevolence": 1
                 },
-                "tag": "charityry"
+                "tag": "charityry,t_repeatable_task"
             },
             {
                 "id": "captive_watchers",
@@ -552,7 +565,8 @@
                 },
                 "mods": {
                     "captive.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "help_followers",
@@ -570,7 +584,8 @@
                     "benevolence.max": 5,
                     "followers.mod.benevolence.max": 5,
                     "followers.max": 2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "benevolent_followers",
@@ -597,7 +612,7 @@
                         "followers.max": -3
                     }
                 },
-                "tag": "charityry"
+                "tag": "charityry,t_repeatable_task"
             },
             {
                 "id": "rest_charm",
@@ -613,7 +628,8 @@
                 },
                 "mods": {
                     "pleafocus.effect.charm": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "charm_follower",
@@ -632,7 +648,7 @@
                     "charisma.xp": 8,
                     "charm": 1
                 },
-                "tag": "charismary"
+                "tag": "charismary,t_repeatable_task"
             },
             {
                 "id": "better_charming",
@@ -648,7 +664,8 @@
                 "mod": {
                     "charm_follower.success_rate": 15,
                     "charm_follower.speed": 20
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "feed_the_fire",
@@ -666,7 +683,8 @@
                     "handdrill_dot.mod.firepower.rate": 1.7,
                     "handdrill_dot.mod.fireaffinity.rate": 0.5,
                     "fireaffinity.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "drywoodknowledge",
@@ -677,7 +695,8 @@
                 "max": 1,
                 "cost": {
                     "supplication": 60
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "buyanimalfat",
@@ -721,7 +740,7 @@
                 "result_fail": {
                     "kindling.xp": "10~40"
                 },
-                "tag": "firery"
+                "tag": "firery,t_repeatable_task"
             },
             {
                 "id": "feedfire",
@@ -751,7 +770,7 @@
                         "fireaffinity.max": 5
                     }
                 },
-                "tag": "firery"
+                "tag": "firery,t_repeatable_task"
             },
             {
                 "id": "antaccident",
@@ -765,7 +784,8 @@
                 },
                 "result": {
                     "dominance": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "burnant",
@@ -779,7 +799,7 @@
                 "result": {
                     "dominance": 1
                 },
-                "tag": "sadismry"
+                "tag": "sadismry,t_repeatable_task"
             },
             {
                 "id": "causepain",
@@ -790,7 +810,7 @@
                 "result": {
                     "dominance": 1
                 },
-                "tag": "sadismry"
+                "tag": "sadismry,t_repeatable_task"
             },
             {
                 "id": "ratfire_ember",
@@ -807,7 +827,8 @@
                 },
                 "mods": {
                     "dominance.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "burnrat",
@@ -824,7 +845,8 @@
                 },
                 "mods": {
                     "dominance.max": 20
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "ratabuser",
@@ -840,7 +862,8 @@
                 },
                 "mods": {
                     "causepain.result.dominance": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "catabuser",
@@ -856,7 +879,8 @@
                 },
                 "mods": {
                     "causepain.result.dominance": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "humanabuser",
@@ -872,7 +896,8 @@
                 },
                 "mods": {
                     "causepain.result.dominance": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "burncat_little",
@@ -890,7 +915,8 @@
                 },
                 "mods": {
                     "dominance.max": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "burncat",
@@ -908,7 +934,8 @@
                 },
                 "mods": {
                     "dominance.max": 25
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "burnperson_weak",
@@ -926,7 +953,8 @@
                 },
                 "mods": {
                     "dominance.max": 40
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "burnperson_strong",
@@ -945,7 +973,8 @@
                 "mods": {
                     "dominance.max": 60,
                     "dominance.rate": 0.03
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "burnperson_many",
@@ -965,7 +994,8 @@
                     "dominance.rate": 0.5,
                     "fireaffinity.max": 10,
                     "fireaffinity.rate": 0.5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "kidnap_careful",
@@ -989,7 +1019,7 @@
                         "danger.rate": -0.2
                     }
                 },
-                "tag": "sadismry"
+                "tag": "sadismry,t_repeatable_task"
             },
             {
                 "id": "kidnap_middle_class",
@@ -1013,7 +1043,7 @@
                         "capture_person.result.danger": 2
                     }
                 },
-                "tag": "sadismry"
+                "tag": "sadismry,t_repeatable_task"
             },
             {
                 "id": "firewoodstock",
@@ -1028,7 +1058,8 @@
                 },
                 "mods": {
                     "firewood.max": 2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "firewood_gathering",
@@ -1044,7 +1075,8 @@
                 "mods": {
                     "collectfirewood.speed": 50,
                     "collectfirewood.result.firewood": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "firewood_gathering2",
@@ -1060,7 +1092,8 @@
                 "mods": {
                     "collectfirewood.speed": 150,
                     "collectfirewood.result.firewood": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "capture_person",
@@ -1080,7 +1113,7 @@
                 "result_fail": {
                     "danger": "2~7"
                 },
-                "tag": "sadismry"
+                "tag": "sadismry,t_repeatable_task"
             },
             {
                 "id": "sadistictend_1",
@@ -1100,7 +1133,8 @@
                     "dominance.max": 5,
                     "gratitude.max": -30,
                     "faith.max": -20
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sadistictend_2",
@@ -1119,7 +1153,8 @@
                     "dominance.max": 10,
                     "gratitude.max": -80,
                     "faith.max": -60
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sadistictend_3",
@@ -1138,7 +1173,8 @@
                     "dominance.max": 10,
                     "gratitude.max": -80,
                     "faith.max": -60
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sadistictend_4",
@@ -1157,7 +1193,8 @@
                     "dominance.max": 10,
                     "gratitude.max": -80,
                     "faith.max": -60
-                }
+                },
+                "tags": "t_power_up"
             }
         ]
     },

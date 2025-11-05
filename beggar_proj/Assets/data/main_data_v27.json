@@ -69,7 +69,8 @@
                     "reflection.max": 2,
                     "thoughts.rate": 1,
                     "clarity.rate": 0.2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "reflectivemoodunlock",
@@ -86,7 +87,8 @@
                 "mod": {
                     "reflection.max": 1,
                     "thoughts.rate": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "reflectivemood",
@@ -114,14 +116,14 @@
                         "reflective_style.activate": 1
                     }
                 },
-                "tag": "mentalry"
+                "tag": "mentalry,t_repeatable_task"
             },
             {
                 "id": "deep_think",
                 "name": "Deep thinking",
                 "desc": "Way beyond surface thought",
                 "require": "reflectivemood_dot",
-                "tag": "reflective_style,mentalry",
+                "tag": "reflective_style,mentalry,t_repeatable_task",
                 "duration": 100,
                 "cost": {
                     "clarity": 80,
@@ -151,7 +153,8 @@
                 "mod": {
                     "fundamentals.max": 20,
                     "study.speed": 30
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "academics_gen",
@@ -167,7 +170,7 @@
                 "result": {
                     "academics": 1
                 },
-                "tag": "studyry"
+                "tag": "studyry,t_repeatable_task"
             },
             {
                 "id": "betterreading2",
@@ -184,7 +187,8 @@
                     "study.speed": 50,
                     "study.effect.fundamentals": 0.5,
                     "academics_gen.speed": 20
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "studydialectic",
@@ -202,14 +206,15 @@
                 "mod": {
                     "think.result.thoughts": 20,
                     "organizethoughts.result.clarity": 4
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "hidden_stash",
                 "name": "Hidden stash",
                 "desc": "Set up a momentary stash of money. Not the safest thing in the world so can't keep it forever.",
                 "require": "hidden_stash_furniture",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "buy": {
                     "guilt": 15,
                     "clarity": 20,
@@ -236,7 +241,7 @@
                 "require": "crime>0",
                 "desc": "Take what you want",
                 "duration": 20,
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "success_rate": 25,
                 "need": "danger<10",
                 "cost": {
@@ -257,7 +262,7 @@
                 "name": "Breaking and taking",
                 "require": "housebreaking>0",
                 "desc": "Enter into a building and take what you can",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "duration": 25,
                 "need": "danger<10",
                 "cost": {
@@ -275,7 +280,7 @@
                 "id": "breakinsteal_rich",
                 "name": "Mansion hoist",
                 "require": "crime_higher",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "desc": "Finally time to steal big from those rich bastards",
                 "duration": 100,
                 "need": "danger<5",
@@ -294,7 +299,7 @@
                 "name": "Steal like a thief",
                 "require": "thief",
                 "desc": "Be true to what you are",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "duration": 60,
                 "max": 1,
                 "cost": {
@@ -315,7 +320,7 @@
                 "name": "Criminal smile",
                 "require": "appearances>0&&crime>0",
                 "desc": "A smile that hides true intentions",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "duration": 25,
                 "max": 1,
                 "cost": {
@@ -333,7 +338,7 @@
                 "name": "Criminal smile II",
                 "require": "appearances>1&&crime>1",
                 "desc": "A sly smile that hides true intentions",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "max": 1,
                 "duration": 25,
                 "cost": {
@@ -352,7 +357,7 @@
                 "name": "Criminal smile III",
                 "require": "appearances>2&&crime>2",
                 "desc": "A radiant smile that hides true intentions",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "duration": 25,
                 "max": 1,
                 "cost": {
@@ -371,7 +376,7 @@
                 "name": "Shadow Hand",
                 "require": "thief&&stealth>=4",
                 "desc": "The invisible hand of theft",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "duration": 5,
                 "buy": {
                     "thoughts": 15,
@@ -397,7 +402,7 @@
                 "id": "incentivized_crime",
                 "name": "Incentived crime",
                 "require": "organized_crime>=3",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "desc": "Offer luxuries and a good life to motivate your followers",
                 "duration": 5,
                 "buy": {
@@ -424,7 +429,7 @@
                 "require": "thief&&crime>=4",
                 "desc": "Why steal less if you can steal more?",
                 "duration": 10,
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "buy": {
                     "thoughts": 15,
                     "clarity": 15,
@@ -468,7 +473,7 @@
                         "coin.rate": -0.3
                     }
                 },
-                "tag": "luxuryry"
+                "tag": "luxuryry,t_repeatable_task"
             },
             {
                 "id": "rest_looks",
@@ -485,7 +490,8 @@
                 },
                 "mods": {
                     "pleafocus.effect.looks": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "read_stolen_book",
@@ -509,7 +515,8 @@
                     "think.speed": 80,
                     "philosophy.max": 1,
                     "fundamentals.max": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "tier4reach",
@@ -522,14 +529,15 @@
                     "skilled.max": 1,
                     "clarity.max": 50,
                     "reflection.max": 3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "periodic_house_report",
                 "name": "Periodic house reports",
                 "require": "organized_crime>=2",
                 "desc": "Make your followers gather intel on various houses and schedules",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "duration": 50,
                 "max": 1,
                 "cost": {
@@ -552,7 +560,7 @@
                 "name": "Crime tax",
                 "require": "organized_crime>=1",
                 "desc": "Retain some of the revenue from the criminal activities of your followers",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "duration": 40,
                 "max": 1,
                 "cost": {
@@ -588,14 +596,15 @@
                 },
                 "mods": {
                     "followers.mod.coin.max": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "money_guard",
                 "name": "Money guards",
                 "require": "organized_crime>=3",
                 "desc": "Train some of your henchmen as thugs to keep your home safe. That way you can finally store larger amounts of money in peace",
-                "tag": "security",
+                "tag": "security,t_power_up",
                 "duration": 30,
                 "max": 1,
                 "cost": {
@@ -617,7 +626,7 @@
                 "name": "Crime groundwork",
                 "require": "crime>=4&&security",
                 "desc": "Now that you have the criminal know-how and a safe place to store things, you can aim higher",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "duration": 40,
                 "max": 1,
                 "cost": {
@@ -636,7 +645,7 @@
                 "name": "Prepare for breaking in",
                 "require": "housebreaking",
                 "desc": "Prepare yourself and your tools for commiting buglary",
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_repeatable_task",
                 "duration": 10,
                 "buy": {
                     "clarity": 10
@@ -660,7 +669,7 @@
                 "name": "Muse away",
                 "desc": "Think away, give your musings space to breath",
                 "require": "emotions_loc_b",
-                "tag": "reflective_style,mentalry",
+                "tag": "reflective_style,mentalry,t_repeatable_task",
                 "buy": {
                     "realization": 1,
                     "reflection": 15
@@ -700,13 +709,13 @@
                 "cost": {
                     "clarity": 1
                 },
-                "tag": "religionry"
+                "tag": "religionry,t_repeatable_task"
             },
             {
                 "id": "musemax",
                 "name": "Amusement memory",
                 "desc": "Think up ways to organize memory and clean up space for your musings",
-                "tag": "reflective_style",
+                "tag": "reflective_style,t_power_up",
                 "require": "musing>20",
                 "duration": 35,
                 "max": 10,
@@ -738,7 +747,8 @@
                 "mod": {
                     "study.speed": 80,
                     "fundamentals.max": 3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "copy_philosophy_meno",
@@ -756,7 +766,8 @@
                 "mod": {
                     "philosophy.max": 1,
                     "reflection.max": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debatebeggars",
@@ -776,7 +787,8 @@
                     "fundamentals.max": 1,
                     "think.speed": 20,
                     "clarity.max": 3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debatefolks",
@@ -796,7 +808,8 @@
                     "fundamentals.max": 2,
                     "think.speed": 25,
                     "clarity.max": 3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debatebreakthrough",
@@ -817,7 +830,8 @@
                     "debating.max": 1,
                     "fundamentals.max": 3,
                     "study.speed": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debatebreakthrough2",
@@ -838,7 +852,8 @@
                     "debating.max": 1,
                     "fundamentals.max": 5,
                     "study.speed": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debatesmallchurch",
@@ -861,7 +876,8 @@
                     "fundamentals.max": 2,
                     "think.speed": 25,
                     "gratitude.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debateuniversitystudents",
@@ -884,7 +900,8 @@
                     "fundamentals.max": 2,
                     "organizethoughts.speed": 30,
                     "clarity.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debatepriests",
@@ -908,7 +925,8 @@
                     "organizethoughts.speed": 30,
                     "clarity.max": 5,
                     "gratitude.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "guidance_master",
@@ -932,7 +950,8 @@
                     "fundamentals.max": 2,
                     "organizethoughts.speed": 30,
                     "clarity.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "debate_with_masters",
@@ -959,7 +978,8 @@
                     "study.speed": 50,
                     "think.speed": 100,
                     "clarity.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "discussion_with_bishop",
@@ -987,7 +1007,8 @@
                     "organizethoughts.speed": 30,
                     "study.speed": 40,
                     "think.speed": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "theself_4",
@@ -1011,7 +1032,8 @@
                     "clarity.rate": 0.5,
                     "musing.max": 50,
                     "revisit_thoughts.result.reflection": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "normal_house_access",
@@ -1026,7 +1048,8 @@
                 },
                 "result": {
                     "danger": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "create_house_document",
@@ -1045,7 +1068,8 @@
                 },
                 "mod": {
                     "guilt.max": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "shower_everyday",
@@ -1065,7 +1089,8 @@
                 "mod": {
                     "nutrition.max": 10,
                     "extravagantlife_dot.mod.luxury.rate": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "forager_realization",
@@ -1083,7 +1108,8 @@
                 "mod": {
                     "foraging.max": 150,
                     "pleafocus.effect.foraging": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "charismatic_leader_weak",
@@ -1099,7 +1125,8 @@
                 "mod": {
                     "followers.max": 7,
                     "charm.max": 25
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "meat_sometimes",
@@ -1119,7 +1146,8 @@
                 "mod": {
                     "nutrition.max": 20,
                     "extravagantlife_dot.mod.luxury.rate": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "meat_everyday",
@@ -1138,7 +1166,8 @@
                 },
                 "mod": {
                     "extravagantlife_dot.mod.luxury.rate": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "spices_sugar",
@@ -1157,7 +1186,8 @@
                 },
                 "mod": {
                     "extravagantlife_dot.mod.luxury.rate": 2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "personal_musician",
@@ -1176,7 +1206,8 @@
                 },
                 "mod": {
                     "extravagantlife_dot.mod.luxury.rate": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "order_house_document",
@@ -1195,7 +1226,8 @@
                 },
                 "mod": {
                     "guilt.max": 15
-                }
+                },
+                "tags": "t_power_up"
             }
         ]
     },

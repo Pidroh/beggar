@@ -30,48 +30,40 @@ async function main() {
                 for (const item of obj.items) {
                     const hasMax = Object.prototype.hasOwnProperty.call(item, 'max');
                     const hasDuration = Object.prototype.hasOwnProperty.call(item, 'duration');
+                    const hasEffect = Object.prototype.hasOwnProperty.call(item, 'effect');
 
-                    let tagToAdd = null;
-                    if (hasMax) {
-                        tagToAdd = 't_power_up';
-                    } else if (!hasMax && hasDuration) {
-                        tagToAdd = 't_repeatable_task';
+                    if (!(hasDuration || hasEffect)) {
+                        // No duration/effect -> do nothing
+                        continue;
                     }
 
-                    if (!tagToAdd) continue;
+                    const tagToAdd = hasMax ? 't_power_up' : 't_repeatable_task';
 
-                    // Prefer modifying whichever field exists (tags or tag). If neither exists, create 'tags'.
-                    const existingTags = [];
-                    const sources = [];
-                    if (typeof item.tags === 'string' && item.tags.trim().length > 0) {
-                        sources.push('tags');
-                        existingTags.push(...item.tags.split(',').map(t => t.trim()).filter(Boolean));
-                    }
-                    if (typeof item.tag === 'string' && item.tag.trim().length > 0) {
-                        sources.push('tag');
-                        existingTags.push(...item.tag.split(',').map(t => t.trim()).filter(Boolean));
+                    // Parse existing tags from both fields to avoid duplicates, but only write to one field
+                    const existing = new Set();
+                    const parse = (val) => {
+                        if (typeof val === 'string' && val.trim().length > 0) {
+                            val.split(',').map(t => t.trim()).filter(Boolean).forEach(t => existing.add(t));
+                        }
+                    };
+                    parse(item.tags);
+                    parse(item.tag);
+
+                    if (existing.has(tagToAdd)) {
+                        continue; // already tagged somewhere
                     }
 
-                    const hasAlready = existingTags.includes(tagToAdd);
-                    if (hasAlready) continue;
+                    // Choose a single target field to write
+                    let targetField;
+                    if (typeof item.tags === 'string') targetField = 'tags';
+                    else if (typeof item.tag === 'string') targetField = 'tag';
+                    else targetField = 'tags'; // create 'tags' if neither exists
 
-                    if (sources.includes('tags')) {
-                        // Append to tags
-                        item.tags = (item.tags && item.tags.trim().length > 0)
-                            ? (item.tags + ',' + tagToAdd)
-                            : tagToAdd;
-                        modified = true;
-                    } else if (sources.includes('tag')) {
-                        // Append to tag
-                        item.tag = (item.tag && item.tag.trim().length > 0)
-                            ? (item.tag + ',' + tagToAdd)
-                            : tagToAdd;
-                        modified = true;
-                    } else {
-                        // Neither present; create tags
-                        item.tags = tagToAdd;
-                        modified = true;
-                    }
+                    const current = (typeof item[targetField] === 'string') ? item[targetField] : '';
+                    const list = current ? current.split(',').map(t => t.trim()).filter(Boolean) : [];
+                    list.push(tagToAdd);
+                    item[targetField] = list.join(',');
+                    modified = true;
                 }
             }
         }
@@ -110,4 +102,3 @@ function askForFolder() {
 }
 
 main();
-

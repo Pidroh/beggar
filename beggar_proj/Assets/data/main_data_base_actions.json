@@ -11,7 +11,7 @@
                 "name": "Cunning mind",
                 "desc": "Become able of performing cunning, often criminal activities",
                 "require": "cunning>0",
-                "tag": "thievery",
+                "tag": "thievery,t_repeatable_task",
                 "duration": 2,
                 "buy": {
                     "thoughts": 40

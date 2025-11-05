@@ -266,7 +266,7 @@
                 "desc": "Raw",
                 "require": "animalism>2",
                 "duration": 10,
-                "tag": "animalry,nn",
+                "tag": "animalry,nn,t_repeatable_task",
                 "cost": {
                     "catcorpse": 1
                 },
@@ -321,7 +321,7 @@
                 "name": "Emotions of the self",
                 "require": "contemplation>2&&emotions_loc",
                 "duration": 60,
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "max": 1,
                 "cost": {
                     "clarity": 40
@@ -340,7 +340,7 @@
                 "name": "This cracked vase",
                 "desc": "I wonder who was the original owner of the cracked vase",
                 "require": "contemplation>1",
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "duration": 90,
                 "max": 1,
                 "cost": {
@@ -360,7 +360,7 @@
                 "name": "Contemplate Doll",
                 "desc": "What is the story behind that doll? There is something about it that...",
                 "require": "contemplation>3",
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "duration": 70,
                 "max": 1,
                 "cost": {
@@ -380,7 +380,7 @@
                 "name": "Sensitive contemplation",
                 "desc": "Reach out to deeper feelings, contemplating inward",
                 "require": "contemplation>2",
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "duration": 70,
                 "max": 1,
                 "cost": {
@@ -401,7 +401,7 @@
                 "desc": "Take a break to recuperate and regain vitality",
                 "require": "supplication<3",
                 "slot": "rest",
-                "tag": "mentalry",
+                "tag": "mentalry,t_repeatable_task",
                 "effect": {
                     "supplication": 1,
                     "foraging": 1,
@@ -413,7 +413,7 @@
                 "name": "Become skilled",
                 "desc": "Maybe it is time to gain a new skill",
                 "require": "t_tier0",
-                "tag": "growthry",
+                "tag": "growthry,t_power_up",
                 "duration": 5,
                 "max": 1,
                 "result": {
@@ -425,7 +425,7 @@
                 "name": "Growth I",
                 "desc": "You seem to have reached a new stage in life?",
                 "require": "t_tier1",
-                "tag": "growthry",
+                "tag": "growthry,t_power_up",
                 "duration": 5,
                 "max": 1,
                 "mod": {
@@ -438,7 +438,7 @@
                 "name": "Growth II",
                 "desc": "You seem to have reached a new stage in life?",
                 "require": "t_tier2",
-                "tag": "growthry",
+                "tag": "growthry,t_power_up",
                 "duration": 5,
                 "max": 1,
                 "mod": {
@@ -451,7 +451,7 @@
                 "name": "Wait for alms",
                 "desc": "Receive food from the church",
                 "require": "free_food_lead",
-                "tag": "beggary",
+                "tag": "beggary,t_repeatable_task",
                 "duration": 5,
                 "result": {
                     "breadcrumbs": 10,
@@ -463,7 +463,7 @@
                 "name": "Steal breadcrumbs",
                 "desc": "Casually pilfer scraps from unsuspecting neighbors",
                 "require": "cunning>0",
-                "tag": "thievery,beggary,cunning_style",
+                "tag": "thievery,beggary,cunning_style,t_repeatable_task",
                 "duration": 3,
                 "result": {
                     "breadcrumbs": 10,
@@ -478,7 +478,7 @@
                 "desc": "Your sharpened mind grants clarity and deeper insight, unveiling hidden truths within yourself.",
                 "max": 2,
                 "require": "t_tier0",
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "duration": 10,
                 "cost": {
                     "supplication": 200,
@@ -493,7 +493,7 @@
                 "name": "Eat old crumbs",
                 "desc": "It tastes really bad, unless you're really, really hungry",
                 "require": "breadcrumbs > 6",
-                "tag": "beggary",
+                "tag": "beggary,t_repeatable_task",
                 "duration": 5,
                 "cost": {
                     "breadcrumbs": 10
@@ -507,7 +507,7 @@
                 "name": "Somber Insight",
                 "desc": "A quiet, reflective sadness colors your thoughts, bringing a deep, introspective clarity",
                 "require": "introspection>2",
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "duration": 50,
                 "max": 1,
                 "cost": {
@@ -541,7 +541,7 @@
                 "name": "Real meal",
                 "desc": "Finally a real meal... It has been a while",
                 "require": "food",
-                "tag": "foodry",
+                "tag": "foodry,t_power_up",
                 "duration": 10,
                 "max": 1,
                 "cost": {
@@ -561,7 +561,7 @@
                 "name": "Alternative nutrition",
                 "desc": "For people who get their meals out of weird places",
                 "require": "eatcat>0",
-                "tag": "foodry",
+                "tag": "foodry,t_power_up",
                 "duration": 10,
                 "max": 1,
                 "cost": {
@@ -577,7 +577,7 @@
                 "name": "Eat",
                 "desc": "Time to eat",
                 "require": "realmeal",
-                "tag": "foodry",
+                "tag": "foodry,t_repeatable_task",
                 "duration": 7,
                 "cost": {
                     "food": 5
@@ -616,7 +616,7 @@
                 "id": "think",
                 "desc": "The brain's gym session, where neurons flex and ideas do somersaults. It's like herding cats, but with thoughts.",
                 "require": "nutrition>0",
-                "tag": "mentalry",
+                "tag": "mentalry,t_repeatable_task",
                 "duration": 3,
                 "result": {
                     "thoughts": 1
@@ -631,7 +631,7 @@
                 "duration": 3,
                 "max": 2,
                 "require": "thoughts>=5",
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "cost": {
                     "thoughts": 2
                 },
@@ -644,7 +644,7 @@
                 "name": "Tattered Pouch",
                 "desc": "More space for breadcrumbs",
                 "duration": 3,
-                "tag": "storagery",
+                "tag": "storagery,t_power_up",
                 "max": 2,
                 "require": "unlockbreadbasket",
                 "cost": {
@@ -660,7 +660,7 @@
                 "name": "Touch the Wound",
                 "desc": "Acknowledge the pain you've buried.",
                 "duration": 3,
-                "tag": "mentalry",
+                "tag": "mentalry,t_power_up",
                 "max": 1,
                 "require": "thoughts>7",
                 "cost": {
@@ -671,7 +671,7 @@
                 "id": "agile",
                 "name": "Agile",
                 "desc": "You realize you have quick reflexes, you can act without thinking",
-                "tag": "trait1",
+                "tag": "trait1,t_power_up",
                 "duration": 3,
                 "max": 1,
                 "require": "exercise>2",
@@ -686,7 +686,7 @@
                 "id": "calm",
                 "name": "Calm thinker",
                 "desc": "You realize you are a calm thinker, someone who thinks deeply before acting",
-                "tag": "trait1",
+                "tag": "trait1,t_power_up",
                 "duration": 3,
                 "max": 1,
                 "require": "thinking>2",
@@ -702,7 +702,7 @@
                 "name": "Rat's Insight",
                 "desc": "By observing rats, you gain a sharper, more cunning perspective on your thoughts.",
                 "duration": 10,
-                "tag": "animalry",
+                "tag": "animalry,t_power_up",
                 "max": 2,
                 "require": "rodentology>=1",
                 "cost": {
@@ -728,7 +728,8 @@
                 "mod": {
                     "sadness.max": 10,
                     "ratbond.max": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "unlockbreadbasket",
@@ -739,7 +740,8 @@
                 "require": "thoughts>2",
                 "cost": {
                     "thoughts": 7
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "thoughtfulgatherer",
@@ -753,7 +755,8 @@
                 },
                 "cost": {
                     "thoughts": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "vigorousgather",
@@ -767,7 +770,8 @@
                 },
                 "cost": {
                     "nutrition": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sadsearch",
@@ -783,7 +787,8 @@
                 "cost": {
                     "thoughts": 2,
                     "sadness": 3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "pickpocket",
@@ -815,7 +820,7 @@
                     "happiness": 1,
                     "sadness": -1
                 },
-                "tag": "animalry"
+                "tag": "animalry,t_repeatable_task"
             },
             {
                 "id": "nutritionalharmony",
@@ -830,7 +835,8 @@
                     "nutrition.rate": 0.2,
                     "nutrition.max": 10,
                     "supplication.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "positivethinking",
@@ -846,7 +852,8 @@
                     "thoughts.max": 20,
                     "think.effect.thoughts": 1,
                     "think.effect.happiness": 0.05
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "innerwarmth",
@@ -862,7 +869,8 @@
                     "gratitude.rate": 0.5,
                     "think.effect.gratitude": 0.5,
                     "gratitude.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "laylow",
@@ -876,7 +884,8 @@
                 },
                 "mod": {
                     "pleafocus.effect.danger": -0.2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "ratbread",
@@ -885,7 +894,7 @@
                 "duration": 10,
                 "require": "streetrat",
                 "max": 1,
-                "tag": "cunning_style",
+                "tag": "cunning_style,t_power_up",
                 "cost": {
                     "ratbond": 100,
                     "rats": 8
@@ -912,7 +921,8 @@
                     "rodentology.max": 1,
                     "ratbond.max": 50,
                     "felinology.max": -3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "killcat",
@@ -929,7 +939,7 @@
                 "mod": {
                     "catbond.max": -20
                 },
-                "tag": "animalry"
+                "tag": "animalry,t_repeatable_task"
             },
             {
                 "id": "deadcatritual",
@@ -951,13 +961,14 @@
                 "mod": {
                     "ratbond.rate": 0.5,
                     "rats.max": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "pickpocketrat",
                 "name": "Pickpocketing Rats",
                 "desc": "Coordinate stealing feats with your rats",
-                "tag": "pickpockter,cunning_style",
+                "tag": "pickpockter,cunning_style,t_power_up",
                 "require": "streetrat&&!pickpocket",
                 "duration": 15,
                 "max": 1,
@@ -975,7 +986,7 @@
                 "desc": "I'm hungry and no one is going to take care of me.",
                 "duration": 8,
                 "max": 1,
-                "tag": "max_decrease,cunning_style",
+                "tag": "max_decrease,cunning_style,t_power_up",
                 "require": "stealbread>=3",
                 "mod": {
                     "guilt.max": 25,
@@ -999,7 +1010,8 @@
                 "mod": {
                     "supplication.max": 20,
                     "nutrition.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "lament",
@@ -1012,7 +1024,7 @@
                 "result": {
                     "sadness": 1
                 },
-                "tag": "emotionry"
+                "tag": "emotionry,t_repeatable_task"
             },
             {
                 "id": "shed_tears",
@@ -1031,7 +1043,7 @@
                 "result": {
                     "sorrow": 1
                 },
-                "tag": "emotionry"
+                "tag": "emotionry,t_repeatable_task"
             },
             {
                 "id": "firstfaith",
@@ -1049,7 +1061,8 @@
                 "result": {
                     "faith": 1,
                     "guilt": -1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "cunningthoughts",
@@ -1067,7 +1080,7 @@
                 "desc": "Show your gratitude about the help you receive",
                 "require": "firstfaith",
                 "need": "pray_tool",
-                "tag": "beggary,religion",
+                "tag": "beggary,religion,t_repeatable_task",
                 "duration": 5,
                 "cost": {
                     "gratitude": 1,
@@ -1093,7 +1106,8 @@
                 },
                 "result": {
                     "loneliness": -1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "cathappy",
@@ -1113,7 +1127,8 @@
                 },
                 "mod": {
                     "happiness.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "catbegging",
@@ -1131,7 +1146,8 @@
                 "mod": {
                     "supplication.max": 60,
                     "supplication.rate": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "catsupport",
@@ -1147,7 +1163,8 @@
                 },
                 "mod": {
                     "irritation.max": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "cathappy_b",
@@ -1169,7 +1186,8 @@
                     "catnotlonely.max": 1,
                     "felinology.max": 1,
                     "happiness.max": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "almsregular",
@@ -1186,7 +1204,8 @@
                     "faith.max": 5,
                     "gratitude.max": 5,
                     "breadcrumbs.rate": 0.1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "warmclothes",

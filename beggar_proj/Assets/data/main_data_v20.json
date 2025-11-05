@@ -55,7 +55,8 @@
                 "mod": {
                     "faith.max": 10,
                     "churchrespect.max": 20
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "tabularasa",
@@ -70,7 +71,8 @@
                 "mod": {
                     "thoughts.max": 100,
                     "contemplation.max": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "corgito",
@@ -87,7 +89,8 @@
                 "mod": {
                     "reflection.max": 3,
                     "introspection.max": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "socraticmethod",
@@ -104,7 +107,8 @@
                 "mod": {
                     "think.effect.thoughts": 2,
                     "organizethoughts.result.clarity": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "latinbasics",
@@ -121,7 +125,8 @@
                     "supplication.max": 50,
                     "supplication.rate": 0.5,
                     "churchrespect.max": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "latinreading",
@@ -136,7 +141,8 @@
                 "mod": {
                     "thoughts.max": 100,
                     "fundamentals.max": 3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "widowmite",
@@ -155,7 +161,8 @@
                 "mod": {
                     "gratitude.max": 30,
                     "faith.max": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sheepgoat",
@@ -174,7 +181,8 @@
                 "mod": {
                     "churchrespect.max": 15,
                     "faith.max": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "specklog",
@@ -194,7 +202,8 @@
                     "churchrespect.max": 20,
                     "clarity.max": 5,
                     "reflection.max": 2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sharethebegging",
@@ -213,7 +222,8 @@
                 "mod": {
                     "beggarhood.max": 1,
                     "supplication.max": 20
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "optimizebegging",
@@ -232,7 +242,8 @@
                 "mod": {
                     "beg_a.result.breadcrumbs": 2,
                     "beg_b.result.breadcrumbs": 2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "begginingmeaning",
@@ -253,7 +264,8 @@
                     "supplication.max": 100,
                     "pleafocus.effect.supplication": 2,
                     "clarity.max": 3
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "beggingspots",
@@ -272,7 +284,8 @@
                 "mod": {
                     "begging.max": 1,
                     "beg_a.result.breadcrumbs": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "tier3reach",
@@ -284,7 +297,8 @@
                 "mod": {
                     "skilled.max": 1,
                     "clarity.max": 25
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "foodchurch",
@@ -300,7 +314,7 @@
                     "food": 1,
                     "gratitude": 10
                 },
-                "tag": "religionry"
+                "tag": "religionry,t_repeatable_task"
             },
             {
                 "id": "thankfulthoughts",
@@ -317,7 +331,8 @@
                 },
                 "mod": {
                     "think.effect.gratitude": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "study",
@@ -331,7 +346,7 @@
                 "result": {
                     "fundamentals": 1
                 },
-                "tag": "studyry"
+                "tag": "studyry,t_repeatable_task"
             },
             {
                 "id": "pray",
@@ -347,7 +362,7 @@
                     "faith": 2,
                     "gratitude": 1
                 },
-                "tag": "religionry"
+                "tag": "religionry,t_repeatable_task"
             },
             {
                 "id": "studystudy",
@@ -367,7 +382,8 @@
                 },
                 "result": {
                     "clarity": 80
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "mass",
@@ -386,7 +402,8 @@
                     "fundamentals.max": 1,
                     "faith.max": 10,
                     "churchrespect.max": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "altarservices",
@@ -404,7 +421,8 @@
                 "mod": {
                     "fundamentals.max": 2,
                     "churchrespect.max": 15
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "maternostra",
@@ -424,7 +442,8 @@
                     "fundamentals.max": 1,
                     "thoughts.max": 50,
                     "churchrespect.max": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "aveluna",
@@ -444,7 +463,8 @@
                     "fundamentals.max": 1,
                     "thoughts.max": 50,
                     "churchrespect.max": 10
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "baptismknowledge",
@@ -464,7 +484,8 @@
                     "fundamentals.max": 1,
                     "thoughts.max": 50,
                     "churchrespect.max": 30
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "eucharistknowledge",
@@ -484,7 +505,8 @@
                     "fundamentals.max": 1,
                     "thoughts.max": 30,
                     "churchrespect.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "sevensacraments",
@@ -505,7 +527,8 @@
                     "fundamentals.max": 2,
                     "thoughts.max": 60,
                     "churchrespect.max": 80
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "subdeaconduties",
@@ -525,7 +548,8 @@
                 "mod": {
                     "fundamentals.max": 3,
                     "churchrespect.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "deaconduties",
@@ -545,7 +569,8 @@
                 "mod": {
                     "fundamentals.max": 3,
                     "churchrespect.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "priestduties",
@@ -566,7 +591,8 @@
                     "fundamentals.max": 1,
                     "churchrespect.max": 50,
                     "faith.max": 30
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "advancedsermons",
@@ -585,7 +611,8 @@
                 "mod": {
                     "fundamentals.max": 1,
                     "churchrespect.max": 30
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "transubstation",
@@ -605,7 +632,8 @@
                     "fundamentals.max": 1,
                     "churchrespect.rate": 0.1,
                     "faith.rate": 0.1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "confessions",
@@ -625,7 +653,8 @@
                     "fundamentals.max": 1,
                     "churchrespect.rate": 0.1,
                     "churchrespect.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "advancedconsecration",
@@ -645,7 +674,8 @@
                     "fundamentals.max": 1,
                     "faith.rate": 0.1,
                     "faith.max": 50
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "convincejohn",
@@ -665,7 +695,8 @@
                 "mod": {
                     "thoughts.max": 10,
                     "clarity.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "tonsure",
@@ -683,7 +714,8 @@
                 "mod": {
                     "faith.max": 5,
                     "churchrespect.max": 30
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "celibacy",
@@ -704,7 +736,8 @@
                     "faith.max": 5,
                     "churchrespect.max": 50,
                     "churchrespect.rate": 0.1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "theself_3",
@@ -724,13 +757,14 @@
                     "reflection.max": 5,
                     "clarity.max": 10,
                     "organizethoughts.result.clarity": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "jointhechurch",
                 "name": "Join the Church",
                 "desc": "Officially join the church",
-                "tag": "joinchurch",
+                "tag": "joinchurch,t_power_up",
                 "require": "ecclesiology>2&&tonsure",
                 "duration": 120,
                 "lock": "beggary,not_church_class_automated",
@@ -786,7 +820,8 @@
                 },
                 "mod": {
                     "churchrespect.max": 100
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "subdeacon",
@@ -808,7 +843,8 @@
                     "churchrespect.max": 100,
                     "ecclesiology.max": 1,
                     "holyscriptures.max": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "deacon",
@@ -830,7 +866,8 @@
                     "churchrespect.max": 100,
                     "ecclesiology.max": 1,
                     "holyscriptures.max": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "reflectgatherer",
@@ -848,7 +885,8 @@
                 },
                 "cost": {
                     "reflection": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "helpchurch",
@@ -867,7 +905,7 @@
                     "churchrespect": 1,
                     "faith": 1
                 },
-                "tag": "religionry"
+                "tag": "religionry,t_repeatable_task"
             },
             {
                 "id": "basicsknowledge",
@@ -883,7 +921,8 @@
                     "fundamentals.max": 2,
                     "study.speed": 10,
                     "clarity.max": 5
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "betterreading",
@@ -898,7 +937,8 @@
                 "mod": {
                     "study.speed": 25,
                     "study.effect.fundamentals": 0.25
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "firstverse",
@@ -913,7 +953,8 @@
                 },
                 "mod": {
                     "churchrespect.max": 20
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "basicschurch",
@@ -930,7 +971,8 @@
                     "churchrespect.max": 20,
                     "faith.max": 10,
                     "fundamentals.max": 1
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "intermediarychurch",
@@ -950,7 +992,8 @@
                     "churchrespect.max": 30,
                     "faith.max": 15,
                     "fundamentals.max": 2
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "revisit_thoughts",
@@ -967,7 +1010,7 @@
                 "result": {
                     "reflection": 1
                 },
-                "tag": "mentalry"
+                "tag": "mentalry,t_repeatable_task"
             },
             {
                 "id": "churchcalling",
@@ -982,7 +1025,8 @@
                 "mod": {
                     "ecclesiology.max": 2,
                     "faith.max": 80
-                }
+                },
+                "tags": "t_power_up"
             },
             {
                 "id": "thinkbreakthrough",
@@ -1001,7 +1045,8 @@
                     "clarity.max": 5,
                     "thoughts.max": 50,
                     "reflection.max": 1
-                }
+                },
+                "tags": "t_power_up"
             }
         ]
     },
