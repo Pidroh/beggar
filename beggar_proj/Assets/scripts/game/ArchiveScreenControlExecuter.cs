@@ -39,7 +39,7 @@ public static class ArchiveScreenControlExecuter
     {
         if (mgc.JControlData.archiveControlData.ExitJCU.TaskClicked)
         {
-            mgc.BackToGame();
+            mgc.ReloadSceneToPrestigeWorld();
         }
     }
 

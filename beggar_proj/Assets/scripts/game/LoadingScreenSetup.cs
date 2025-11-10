@@ -10,7 +10,7 @@ public class LoadingScreenSetup
         // JLayCanvasChild jLayCanvasChild = canvas.Overlays[0];
         jLayCanvasChild.SavePivot();
         var parentLayout = jLayCanvasChild.LayoutRuntimeUnit;
-
+    
         {
             var titleTexts = JCanvasMaker.CreateLayout("title_texts", mgc.JLayoutRuntime);
             var lc = parentLayout.AddLayoutAsChild(titleTexts);
