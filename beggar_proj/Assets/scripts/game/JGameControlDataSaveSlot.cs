@@ -17,6 +17,8 @@ public class JGameControlDataSaveSlot
     public FileUtilities FileUtilities { get; internal set; }
     public bool ActionHappenedLastFrameSoSkipActions { get; internal set; }
     public int SlotDeleteRequest { get; internal set; }
+    public JLayoutRuntimeUnit ArchiveButtonLayout { get; internal set; }
+    public JButtonAccessor ArchiveButton { get; internal set; }
 
     public List<ControlSaveSlotUnit> saveSlots = new();
     public class ControlSaveSlotUnit 

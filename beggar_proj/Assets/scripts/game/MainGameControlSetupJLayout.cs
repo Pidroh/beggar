@@ -87,6 +87,7 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelModificationsTargeting = Local.GetText("mods targeting this");
             jControlDataHolder.LabelModificationsExtraEffect = Local.GetText("extra effect mods");
             jControlDataHolder.LabelSuccessRate = Local.GetText("Success rate");
+            jControlDataHolder.LabelGoToArchive = Local.GetText("Go to archive");
             jControlDataHolder.LabelCost = Local.GetText("cost");
             jControlDataHolder.LabelUnlocked = Local.GetText("Unlocked", "in the sense of gaining access to a new feature, resource or task");
             jControlDataHolder.LabelSpace = Local.GetText("Space", "In the sense of a table taking up too much space");
@@ -318,7 +319,13 @@ public partial class MainGameControlSetupJLayout
                                 break;
                         }
                     }
+
+                    
                 }
+                var goToArchiveButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                jControlDataHolder.SaveSlots.ArchiveButtonLayout = goToArchiveButton;
+                jControlDataHolder.SaveSlots.ArchiveButton = new JButtonAccessor(goToArchiveButton, 0);
+                goToArchiveButton.ButtonChildren[0].Item1.SetTextRaw(0, jControlDataHolder.LabelGoToArchive);
             }
 
 
