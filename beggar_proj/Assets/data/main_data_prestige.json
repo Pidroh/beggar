@@ -11,7 +11,7 @@
                 "id": "main_heuristic_archive",
                 "name": "Archive items",
                 "desc": "Inprited knowledge of what can happen to a person",
-                "heuristic_integration": ""
+                "heuristic_integration": "TOTAL_ITEMS"
             }
         ]
     },
