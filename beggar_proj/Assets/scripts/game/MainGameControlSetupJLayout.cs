@@ -117,6 +117,7 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Resources] = Local.GetText("Resources");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Skills] = Local.GetText("Skills");
             jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Tasks] = Local.GetText("Tasks");
+            jControlDataHolder.LabelArchiveHeuristicLabel[ArcaniaArchiveModelData.ArchiveEuristics.Total] = Local.GetText("Total");
 
             jControlDataHolder.LabelDuration = Local.GetText("Duration");
 

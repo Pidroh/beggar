@@ -32,6 +32,7 @@ public static class ArcaniaArchiveModelExecuter
         var taskUnits = arcaniaModel.arcaniaUnits.datas[UnitType.TASK];
         foreach (var eursType in euristicTypes)
         {
+            if (eursType == ArcaniaArchiveModelData.ArchiveEuristics.Total) continue;
             var normalEuristic = true;
             UnitType unitType = UnitType.RESOURCE;
             ArcaniaArchiveModelData.EuristicData eurData;
@@ -97,6 +98,23 @@ public static class ArcaniaArchiveModelExecuter
             }
             archiveData.euristicDatas.Add(eurData);
         }
+        #region total data euristic
+        {
+            int seen = 0;
+            int total = 0;
+            foreach (var data in archiveData.euristicDatas)
+            {
+                seen += data.current;
+                total += data.max;
+            }
+            var totalData = new ArcaniaArchiveModelData.EuristicData(ArcaniaArchiveModelData.ArchiveEuristics.Total, seen, total);
+            // total data is on top
+            archiveData.euristicDatas.Insert(0, totalData);
+            // archiveData.euristicDatas.Add(totalData);
+        }
+        #endregion
+
+
         #endregion
 
 
