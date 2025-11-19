@@ -12,7 +12,7 @@ public partial class MainGameControlSetupJLayout
         var arcaniaDatas = arcaniaModel.arcaniaUnits;
         bool hasLocalizationFileArcania;
         SetupLocalizationSingleStep(mgc, out hasLocalizationFileArcania);
-        JsonReader.ReadJsonAllAtOnce(mgc.ResourceJson, arcaniaDatas, hasLocalizationFileArcania && !Local.IsFirstLanguage);
+        JsonReader.ReadJsonAllAtOnce(mgc.ResourceJson, arcaniaModel, hasLocalizationFileArcania && !Local.IsFirstLanguage);
         arcaniaModel.FinishedSettingUpUnits();
     }
 

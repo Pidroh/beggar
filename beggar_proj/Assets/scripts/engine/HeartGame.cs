@@ -129,7 +129,15 @@ namespace HeartUnity
 
         public void ChangeScene(string newScene, ReusableSettingMenu.SettingSceneMode? settingSceneMode = null)
         {
-            if (EngineView == null) {
+            BeforeChangeScene();
+            SceneManager.LoadScene(newScene);
+        }
+
+        // SHOULD BE PRIVATE, changing a scene shouldn't happen outside this class
+        private void BeforeChangeScene()
+        {
+            if (EngineView == null)
+            {
                 Debug.LogError("Heart Game needs EngineView to be functional, create or bind EngineView through it's API");
             }
 
@@ -146,7 +154,6 @@ namespace HeartUnity
             var sceneName = SceneManager.GetActiveScene().name;
             crossSceneDataStatic = crossSceneData;
             crossSceneDataStatic.previousSceneName = sceneName;
-            SceneManager.LoadScene(newScene);
         }
 
         private void SaveCommonData()
@@ -198,6 +205,12 @@ namespace HeartUnity
         {
             Debug.Log($"Log time {v} {Time.realtimeSinceStartup:F2}");
 
+        }
+
+        public void ReloadScene()
+        {
+            BeforeChangeScene();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

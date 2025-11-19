@@ -75,6 +75,7 @@ public class ArcaniaModel
     public DialogModel Dialog = new();
     public ArcaniaSpeedParameters speedParameters = new();
     public ArcaniaSpeedIntegrationData speedIntegrationData = new();
+    public ArcaniaArchiveModelData archiveDataPreviouslyCalculated;
 
     public ArcaniaModel()
     {

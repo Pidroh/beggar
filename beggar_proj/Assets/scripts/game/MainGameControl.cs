@@ -86,8 +86,10 @@ public class MainGameControl : MonoBehaviour
         var wannaGoToArchive = _crossSceneDataStatic.requestedControlState == ControlState.ARCHIVE_GAME || _crossSceneDataStatic.requestedControlState == ControlState.ARCHIVE_LOADING;
         var wannaGoToPrestigeWorld = _crossSceneDataStatic.requestedControlState == ControlState.PRESTIGE_WORLD || _crossSceneDataStatic.requestedControlState == ControlState.PRESTIGE_WORLD_LOADING;
 
-
         var straightToGameNoTitle =  !wannaGoToArchive && !wannaGoToPrestigeWorld && (_lastSceneControlState.HasValue ? _lastSceneControlState == ControlState.GAME : false);
+        
+        var archive = HeartGame.crossSceneGenericData.getDataFromPreviousScene<ArcaniaArchiveModelData>();
+        arcaniaModel.archiveDataPreviouslyCalculated = archive;
 
         if (wannaGoToArchive) 
         {
@@ -405,14 +407,16 @@ public class MainGameControl : MonoBehaviour
     {
         BeforeChangeScene();
         _crossSceneDataStatic.requestedControlState = ControlState.ARCHIVE_GAME;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        this.HeartGame.ReloadScene();
+        
     }
 
     public void ReloadSceneToPrestigeWorld()
     {
         BeforeChangeScene();
+        
         _crossSceneDataStatic.requestedControlState = ControlState.PRESTIGE_WORLD;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        this.HeartGame.ReloadScene();
     }
 
     internal void BackToGame()
@@ -424,6 +428,10 @@ public class MainGameControl : MonoBehaviour
 
     private void BeforeChangeScene()
     {
+        if (controlState == ControlState.ARCHIVE_GAME)
+        {
+            this.HeartGame.crossSceneGenericData.RegisterForNextScene(JControlData.archiveControlData.archiveData);
+        }
         if (controlState == ControlState.GAME || controlState == ControlState.PRESTIGE_WORLD) 
         {
             SaveGameAndCurrentSlot();

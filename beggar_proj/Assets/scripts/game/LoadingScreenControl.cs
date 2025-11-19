@@ -136,8 +136,9 @@ public static class LoadingScreenControl
 
     private static bool ModelLoading(MainGameControl mgc, LoadingScreenSetup.LoadingScreenRuntimeData loadingData)
     {
+        
         // common normal game
-        loadingData.ModelJsonState = JsonReader.ReadJsonStepByStep(mgc.ResourceJson, mgc.arcaniaModel.arcaniaUnits, loadingData.hasLocalizationFile, loadingData.ModelJsonState);
+        loadingData.ModelJsonState = JsonReader.ReadJsonStepByStep(mgc.ResourceJson, mgc.arcaniaModel, loadingData.hasLocalizationFile, loadingData.ModelJsonState);
         bool jsonOver = loadingData.ModelJsonState.Value.readerState == JsonReader.JsonReaderState.JsonReaderStateMode.OVER;
         if (jsonOver)
         {

@@ -19,12 +19,12 @@ public class JsonReader
         { "result_fail", ResourceChangeType.RESULT_FAIL },
         { "buy", ResourceChangeType.BUY },
     };
-    public static void ReadJsonAllAtOnce(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription)
+    public static void ReadJsonAllAtOnce(ArcaniaGameConfigurationUnit config, ArcaniaModel arcaniaModel, bool localizeNameDescription)
     {
         JsonReaderState? state = null;
         while ((state?.readerState != JsonReaderState.JsonReaderStateMode.OVER)) 
         {
-            state = ReadJsonStepByStep(config, arcaniaDatas, localizeNameDescription, state);
+            state = ReadJsonStepByStep(config, arcaniaModel, localizeNameDescription, state);
         }
     }
 
@@ -43,14 +43,15 @@ public class JsonReader
         }
     }
 
-    public static JsonReaderState ReadJsonStepByStep(ArcaniaGameConfigurationUnit config, ArcaniaUnits arcaniaDatas, bool localizeNameDescription, JsonReaderState? stateRef)
+    public static JsonReaderState ReadJsonStepByStep(ArcaniaGameConfigurationUnit config, ArcaniaModel arcaniaModel, bool localizeNameDescription, JsonReaderState? stateRef)
     {
-        JsonReaderState state = new();
+        var arcaniaDatas = arcaniaModel.arcaniaUnits;
+        JsonReaderState state;
         if (stateRef == null)
         {
+            state = new();
             state.readerState = JsonReaderState.JsonReaderStateMode.READ_JSON;
             state.modAmountBeforeReadingData = arcaniaDatas.Mods.Count;
-
         }
         else
         {
