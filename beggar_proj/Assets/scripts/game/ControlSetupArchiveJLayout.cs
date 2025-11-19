@@ -37,7 +37,7 @@ public static class ControlSetupArchiveJLayout
                     var label = mgc.JControlData.LabelArchiveHeuristicLabel[heur.EuristicType];
                     float percent = ((int)(heur.current * 10000.0f / heur.max)) / 100f;
                     heuristicLayout.SetTextRaw(0, label);
-                    heuristicLayout.SetTextRaw(1, percent + "%");
+                    heuristicLayout.SetTextRaw(1, $"{heur.current} / {heur.max} ({percent}%)");
                 }
                 {
                     var exitButtonLayout = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
