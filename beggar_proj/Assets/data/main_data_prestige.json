@@ -6,12 +6,28 @@
                 "id": "psychic_instinct",
                 "name": "Psychic instinct",
                 "desc": "Impersonal, universal substratum"
+            },
+            {
+                "id": "main_heuristic_archive",
+                "name": "Archive items",
+                "desc": "Inprited knowledge of what can happen to a person",
+                "heuristic_integration": ""
             }
         ]
     },
     {
         "type": "TASK",
         "items": [
+
+            {
+                "id": "attain_prestige_points_1",
+                "name": "Reach shared conscience",
+                "desc":"Tap into the shared mind of all human society",
+                "duration": 5,
+                "need": "main_heuristic_archive>=100",
+                "max": 1
+            },
+
             {
                 "id": "speed_up_global",
                 "name": "Speed up",
