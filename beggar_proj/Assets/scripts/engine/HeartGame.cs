@@ -15,6 +15,7 @@ namespace HeartUnity
         private UnityLogIntegration _unityLogIntegration;
         private static CrossSceneData crossSceneDataStatic;
         public CrossSceneData crossSceneData;
+        public CrossSceneGenericData crossSceneGenericData = new();
 
         public static bool MousePlatform => !Application.isConsolePlatform && Application.isMobilePlatform;
 
