@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
+// persistence data not bound to runtime units and etc, often related to a whole file
+[Serializable]
+public class ArcaniaMiscPersistenceData 
+{
+    public bool hasAccessToArchive;
+}
+
 [Serializable]
 public class ArchivePersistenceData 
 {
-    public bool hasAccess;
     public List<string> knownIds = new();
 }
 

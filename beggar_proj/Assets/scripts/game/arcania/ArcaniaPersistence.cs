@@ -2,6 +2,24 @@
 using System;
 using System.Collections.Generic;
 
+public class ArcaniaMiscPersistence 
+{
+    public SaveDataUnit<ArcaniaMiscPersistenceData> saveUnit;
+
+    public void Save(ArcaniaModel arcaniaModel)
+    {
+        var data = new ArcaniaMiscPersistenceData();
+        data.hasAccessToArchive = arcaniaModel.modelMiscData.hasAccessToArchive;
+        saveUnit.Save(data);
+    }
+
+    public void Load(ArcaniaModel arcaniaModel)
+    {
+        if (!saveUnit.TryLoad(out var d)) return;
+        arcaniaModel.modelMiscData.hasAccessToArchive = d.hasAccessToArchive;
+    }
+}
+
 public class ArcaniaArchivePersistence 
 {
     public SaveDataUnit<ArchivePersistenceData> saveUnit;

@@ -12,6 +12,7 @@ public static class JGameControlExecuterSaveSlot
         bool willSkipInputNextFrame = false;
         var world = JGameControlExecuter.GetWorld(mgc);
         var prestigeWorld = world == WorldType.PRESTIGE_WORLD;
+        mgc.JControlData.SaveSlots.ArchiveButtonLayout.SetVisibleSelf(mgc.JControlData.archiveControlData.archiveData.hasAccess);
         if (mgc.JControlData.SaveSlots.ArchiveButton.ButtonClicked) 
         {
             mgc.ReloadSceneToArchive();

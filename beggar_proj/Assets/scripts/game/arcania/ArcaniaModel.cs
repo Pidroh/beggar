@@ -66,10 +66,16 @@ public class ArcaniaSpeedIntegrationData
     }
 }
 
+public class ArcaniaModelMiscData 
+{
+    public bool hasAccessToArchive;
+}
+
 public class ArcaniaModel
 {
     public List<LogUnit> LogUnits = new();
     public ArcaniaUnits arcaniaUnits = new ArcaniaUnits();
+    public ArcaniaModelMiscData modelMiscData = new();
     public ArcaniaModelExploration Exploration;
     public ArcaniaModelActionRunner Runner;
     public ArcaniaModelHousing Housing;
