@@ -1,0 +1,7 @@
+{
+    "file_name": "main_data_prestige.json",
+    "need_id": "main_heuristic_archive",
+    "need_values": [50, 50, 50],
+    "gain_id": "psychic_instinct",
+    "gain_values": [10, 20, 50]
+}
