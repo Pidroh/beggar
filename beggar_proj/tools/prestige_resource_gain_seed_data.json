@@ -1,7 +1,7 @@
 {
     "file_name": "main_data_prestige.json",
     "task_id_prefix": "attain_prestige_points_autodata_",
-    "tas_name_prefix": "Reach the shared conscience I",
+    "tas_name_prefix": "Reach the shared conscience",
     "desc":"Tap into the shared mind of all human society",
     "need_id": "main_heuristic_archive",
     "need_values": [50, 50, 50],

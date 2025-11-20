@@ -11,7 +11,6 @@
                 "id": "main_heuristic_archive",
                 "name": "Archive items",
                 "desc": "Inprited knowledge of what can happen to a person",
-                
                 "heuristic_integration": "TOTAL_ITEMS"
             }
         ]
@@ -22,7 +21,7 @@
             {
                 "id": "attain_prestige_points_1",
                 "name": "Reach the shared conscience I",
-                "desc":"Tap into the shared mind of all human society",
+                "desc": "Tap into the shared mind of all human society",
                 "result": {
                     "psychic_instinct": 5
                 },
@@ -30,11 +29,10 @@
                 "need": "main_heuristic_archive>=100",
                 "max": 1
             },
-
             {
                 "id": "speed_up_global",
                 "name": "Speed up",
-                "desc":"Speeds up tasks, power ups, skills and exploration",
+                "desc": "Speeds up tasks, power ups, skills and exploration",
                 "mod": {
                     "IN_GAME_SPEED.speed": 10
                 },
@@ -83,44 +81,65 @@
             {
                 "id": "IN_GAME_SPEED",
                 "invisible": true
+            },
+            {
+                "id": "attain_prestige_points_autodata_1",
+                "name": "Reach the shared conscience I 1",
+                "desc": "Tap into the shared mind of all human society",
+                "result": {
+                    "psychic_instinct": 10
+                },
+                "duration": 5,
+                "need": "main_heuristic_archive>=50",
+                "max": 1
+            },
+            {
+                "id": "attain_prestige_points_autodata_2",
+                "name": "Reach the shared conscience I 2",
+                "desc": "Tap into the shared mind of all human society",
+                "result": {
+                    "psychic_instinct": 20
+                },
+                "duration": 5,
+                "need": "main_heuristic_archive>=50",
+                "max": 1
+            },
+            {
+                "id": "attain_prestige_points_autodata_3",
+                "name": "Reach the shared conscience I 3",
+                "desc": "Tap into the shared mind of all human society",
+                "result": {
+                    "psychic_instinct": 50
+                },
+                "duration": 5,
+                "need": "main_heuristic_archive>=50",
+                "max": 1
             }
         ]
     },
     {
         "type": "HOUSE",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "CLASS",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "SKILL",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "LOCATION",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "ENCOUNTER",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "DIALOG",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "FURNITURE",
@@ -128,14 +147,10 @@
     },
     {
         "type": "HINT",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "TAG",
-        "items":[
-            
-        ]
+        "items": []
     }
 ]
