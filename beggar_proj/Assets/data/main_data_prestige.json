@@ -19,23 +19,16 @@
         "type": "TASK",
         "items": [
             {
-                "id": "attain_prestige_points_1",
-                "name": "Reach the shared conscience I",
-                "desc": "Tap into the shared mind of all human society",
-                "result": {
-                    "psychic_instinct": 5
-                },
-                "duration": 5,
-                "need": "main_heuristic_archive>=100",
-                "max": 1
-            },
-            {
                 "id": "speed_up_global",
                 "name": "Speed up",
                 "desc": "Speeds up tasks, power ups, skills and exploration",
                 "mod": {
                     "IN_GAME_SPEED.speed": 10
                 },
+                "cost": {
+                    "psychic_instinct": 100
+                },
+
                 "max": 5
             },
             {
@@ -43,6 +36,9 @@
                 "name": "Speed up (power up)",
                 "mod": {
                     "t_power_up.speed": 10
+                },
+                "cost": {
+                    "psychic_instinct": 25
                 },
                 "max": 5
             },
@@ -52,6 +48,9 @@
                 "mod": {
                     "t_repeatable_task.speed": 10
                 },
+                "cost": {
+                    "psychic_instinct": 50
+                },
                 "max": 5
             },
             {
@@ -60,6 +59,9 @@
                 "mod": {
                     "IN_GAME_SPEED_SKILL.speed": 10
                 },
+                "cost": {
+                    "psychic_instinct": 40
+                },
                 "max": 5
             },
             {
@@ -67,6 +69,9 @@
                 "name": "Speed up (exploration)",
                 "mod": {
                     "IN_GAME_SPEED_EXPLORATION.speed": 10
+                },
+                "cost": {
+                    "psychic_instinct": 30
                 },
                 "max": 5
             },
