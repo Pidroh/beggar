@@ -6,6 +6,11 @@ public class ArcaniaMiscPersistence
 {
     public SaveDataUnit<ArcaniaMiscPersistenceData> saveUnit;
 
+    public ArcaniaMiscPersistence(HeartGame hg, string saveKey)
+    {
+        saveUnit = new SaveDataUnit<ArcaniaMiscPersistenceData>(saveKey, hg);
+    }
+
     public void Save(ArcaniaModel arcaniaModel)
     {
         var data = new ArcaniaMiscPersistenceData();
@@ -33,7 +38,6 @@ public class ArcaniaArchivePersistence
     {
         var data = new ArchivePersistenceData();
         data.knownIds.AddRange(archiveData.knownIds);
-        data.hasAccess = archiveData.hasAccess;
         saveUnit.Save(data);
     }
 
@@ -41,7 +45,6 @@ public class ArcaniaArchivePersistence
     {
         if (!saveUnit.TryLoad(out var d)) return;
         archiveData.knownIds.AddRange(d.knownIds);
-        archiveData.hasAccess = d.hasAccess;
     }
 }
 

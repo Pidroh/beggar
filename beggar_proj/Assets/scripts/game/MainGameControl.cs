@@ -44,6 +44,7 @@ public class MainGameControl : MonoBehaviour
     public JGameControlDataHolder JControlData { get; internal set; }
     public ArcaniaPersistence PrestigePersistence { get; internal set; }
     public ArcaniaArchivePersistence ArchivePersistence { get; internal set; }
+    public ArcaniaMiscPersistence MiscModelPersistence { get; private set; }
 
     public float lastSaveTime;
     public int SkillFontSize;
@@ -90,6 +91,9 @@ public class MainGameControl : MonoBehaviour
         
         var archive = HeartGame.crossSceneGenericData.getDataFromPreviousScene<ArcaniaArchiveModelData>();
         arcaniaModel.archiveDataPreviouslyCalculated = archive;
+
+        this.MiscModelPersistence = new ArcaniaMiscPersistence(HeartGame, "misc_persistence");
+        MiscModelPersistence.Load(arcaniaModel);
 
         if (wannaGoToArchive) 
         {
@@ -340,6 +344,7 @@ public class MainGameControl : MonoBehaviour
     public void SaveGameAndCurrentSlot()
     {
         var world = JGameControlExecuter.GetWorld(this);
+        this.MiscModelPersistence.Save(arcaniaModel); also save this when loading up archive
         switch (world)
         {
             case WorldType.DEFAULT_CHARACTER:
