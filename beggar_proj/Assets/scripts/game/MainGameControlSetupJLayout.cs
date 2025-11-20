@@ -324,9 +324,11 @@ public partial class MainGameControlSetupJLayout
                     
                 }
                 var goToArchiveButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
+                goToArchiveButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
                 jControlDataHolder.SaveSlots.ArchiveButtonLayout = goToArchiveButton;
                 jControlDataHolder.SaveSlots.ArchiveButton = new JButtonAccessor(goToArchiveButton, 0);
                 goToArchiveButton.ButtonChildren[0].Item1.SetTextRaw(0, jControlDataHolder.LabelGoToArchive);
+                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(goToArchiveButton);    
             }
 
 
