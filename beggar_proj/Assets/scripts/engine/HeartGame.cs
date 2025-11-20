@@ -141,6 +141,8 @@ namespace HeartUnity
                 Debug.LogError("Heart Game needs EngineView to be functional, create or bind EngineView through it's API");
             }
 
+            crossSceneGenericData.BeforeSceneChange();
+
             // only saves if it has correctly loaded once
             if (_commonSaveDataPersistence != null)
             {

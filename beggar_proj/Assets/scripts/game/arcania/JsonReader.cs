@@ -418,7 +418,7 @@ public class JsonReader
                 ru.ConfigResource = new ConfigResource()
                 {
                     Stressor = item.GetValueOrDefault("stressor", false),
-                    HeuristicIntegration = item.GetValueOrDefault("heristic_integration", null)
+                    HeuristicIntegration = item.GetValueOrDefault("heuristic_integration", null)
                 };
                 if (ru.ConfigResource.HeuristicIntegration != null) 
                 {

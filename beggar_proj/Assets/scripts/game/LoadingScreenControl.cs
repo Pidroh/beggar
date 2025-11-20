@@ -158,6 +158,7 @@ public static class LoadingScreenControl
             var prestigePersistence = new ArcaniaPersistence(heartGame, key);
             mgc.PrestigePersistence = prestigePersistence;
             prestigePersistence.Load(mgc.arcaniaModel.arcaniaUnits, mgc.arcaniaModel.Exploration);
+            
         }
         var slotData = SaveSlotExecution.LoadSlotModel(slotNumber, heartGame);
         mgc.JControlData.SaveSlots.ModelData = slotData;
@@ -173,6 +174,9 @@ public static class LoadingScreenControl
             mgc.JControlData.SaveSlots.PlayTimeOfActiveSlot = heartGame.PlayTimeControl.Register("beggar_unit", slotData.CurrentSlotUnit.playTimeSeconds);
         }
         heartGame.CommonDataLoad();
+
+        // has to be done after loading so it overwrites saved values
+        mgc.arcaniaModel.EnforceHeuristicIntegration();
 
     }
 }

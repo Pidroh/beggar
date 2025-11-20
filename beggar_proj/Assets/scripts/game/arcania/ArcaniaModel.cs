@@ -283,13 +283,16 @@ public class ArcaniaModel
     public void FinishedSettingUpUnits()
     {
         Exploration.FinishedSettingUpUnits();
+    }
 
-        if (archiveDataPreviouslyCalculated != null) 
+    public void EnforceHeuristicIntegration()
+    {
+        if (archiveDataPreviouslyCalculated != null)
         {
             foreach (var item in arcaniaUnits.UnitsIntegratedWithHeuristic)
             {
                 ArcaniaArchiveModelData.ArchiveEuristics? euristic = null;
-                if (item.ConfigResource.HeuristicIntegration == "TOTAL_ITEMS") 
+                if (item.ConfigResource.HeuristicIntegration == "TOTAL_ITEMS")
                 {
                     euristic = ArcaniaArchiveModelData.ArchiveEuristics.Total;
                 }
