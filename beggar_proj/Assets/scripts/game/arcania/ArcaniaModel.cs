@@ -8,6 +8,8 @@ using UnityEngine.Pool;
 public class ConfigResource
 {
     public bool Stressor;
+
+    public string HeuristicIntegration { get; internal set; }
 }
 
 public class ConfigHint
@@ -281,6 +283,25 @@ public class ArcaniaModel
     public void FinishedSettingUpUnits()
     {
         Exploration.FinishedSettingUpUnits();
+
+        if (archiveDataPreviouslyCalculated != null) 
+        {
+            foreach (var item in arcaniaUnits.UnitsIntegratedWithHeuristic)
+            {
+                ArcaniaArchiveModelData.ArchiveEuristics? euristic = null;
+                if (item.ConfigResource.HeuristicIntegration == "TOTAL_ITEMS") 
+                {
+                    euristic = ArcaniaArchiveModelData.ArchiveEuristics.Total;
+                }
+                if (!euristic.HasValue) continue;
+                foreach (var eurD in archiveDataPreviouslyCalculated.euristicDatas)
+                {
+                    if (eurD.EuristicType != euristic) continue;
+                    item.SetValue(eurD.current);
+                    break;
+                }
+            }
+        }
     }
 
     public class DialogModel

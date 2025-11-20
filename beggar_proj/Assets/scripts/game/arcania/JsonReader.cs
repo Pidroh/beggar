@@ -417,8 +417,13 @@ public class JsonReader
             {
                 ru.ConfigResource = new ConfigResource()
                 {
-                    Stressor = item.GetValueOrDefault("stressor", false)
+                    Stressor = item.GetValueOrDefault("stressor", false),
+                    HeuristicIntegration = item.GetValueOrDefault("heristic_integration", null)
                 };
+                if (ru.ConfigResource.HeuristicIntegration != null) 
+                {
+                    arcaniaUnits.UnitsIntegratedWithHeuristic.Add(ru);
+                }
             }
             if (type == UnitType.TAG)
             {
