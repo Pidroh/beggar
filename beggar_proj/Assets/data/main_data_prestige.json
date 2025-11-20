@@ -21,7 +21,7 @@
         "items": [
             {
                 "id": "attain_prestige_points_1",
-                "name": "Reach shared conscience",
+                "name": "Reach the shared conscience I",
                 "desc":"Tap into the shared mind of all human society",
                 "result": {
                     "psychic_instinct": 5
