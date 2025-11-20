@@ -64,12 +64,14 @@ async function main() {
 
     for (let i = 0; i < count; i++) {
         const id = `${taskIdPrefix}${i + 1}`;
+        const romanIndex = toRoman(i + 1);
+        const name = buildRomanName(taskNamePrefix, romanIndex);
         const needValue = needValues[i];
         const gainValue = gainValues[i];
 
         const newTask = {
             id,
-            name: `${taskNamePrefix} ${i + 1}`,
+            name,
             desc: desc,
             result: {
                 [gainId]: gainValue
@@ -118,6 +120,42 @@ async function getFolderPath() {
     return folderPath;
 }
 
+function toRoman(num) {
+    const map = [
+        { value: 1000, numeral: 'M' },
+        { value: 900, numeral: 'CM' },
+        { value: 500, numeral: 'D' },
+        { value: 400, numeral: 'CD' },
+        { value: 100, numeral: 'C' },
+        { value: 90, numeral: 'XC' },
+        { value: 50, numeral: 'L' },
+        { value: 40, numeral: 'XL' },
+        { value: 10, numeral: 'X' },
+        { value: 9, numeral: 'IX' },
+        { value: 5, numeral: 'V' },
+        { value: 4, numeral: 'IV' },
+        { value: 1, numeral: 'I' }
+    ];
+    let result = '';
+    let n = Math.max(1, Math.floor(num));
+    for (const entry of map) {
+        while (n >= entry.value) {
+            result += entry.numeral;
+            n -= entry.value;
+        }
+    }
+    return result;
+}
+
+function buildRomanName(prefix, roman) {
+    const trimmed = (prefix || '').trim();
+    if (!trimmed) return roman;
+
+    const match = trimmed.match(/^(.*?)(\s+[IVXLCDM]+)?$/);
+    const base = (match && match[1]) ? match[1].trim() : trimmed;
+    return `${base} ${roman}`;
+}
+
 // Electron helper (same pattern as church_data_autofix.js)
 function askForFolder() {
     return new Promise((resolve) => {
@@ -143,4 +181,3 @@ function askForFolder() {
 }
 
 main();
-

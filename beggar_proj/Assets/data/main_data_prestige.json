@@ -84,7 +84,7 @@
             },
             {
                 "id": "attain_prestige_points_autodata_1",
-                "name": "Reach the shared conscience I 1",
+                "name": "Reach the shared conscience I",
                 "desc": "Tap into the shared mind of all human society",
                 "result": {
                     "psychic_instinct": 10
@@ -95,7 +95,7 @@
             },
             {
                 "id": "attain_prestige_points_autodata_2",
-                "name": "Reach the shared conscience I 2",
+                "name": "Reach the shared conscience II",
                 "desc": "Tap into the shared mind of all human society",
                 "result": {
                     "psychic_instinct": 20
@@ -106,7 +106,7 @@
             },
             {
                 "id": "attain_prestige_points_autodata_3",
-                "name": "Reach the shared conscience I 3",
+                "name": "Reach the shared conscience III",
                 "desc": "Tap into the shared mind of all human society",
                 "result": {
                     "psychic_instinct": 50
