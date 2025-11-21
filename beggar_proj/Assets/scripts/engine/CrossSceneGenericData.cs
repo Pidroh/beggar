@@ -26,6 +26,15 @@ namespace HeartUnity
             return (T)dictPreviousScene[typeof(T)];
         }
 
+        public T getDataFromPreviousSceneOrDefault<T>()
+        {
+            if (TryGetDataFromPreviousScene<T>(out var a)) 
+            {
+                return a;
+            }
+            return default;
+        }
+
         public void RegisterForNextScene<T>(T data) 
         {
             dictNextScene ??= new();

@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 2acd81d63e74d93489353a1d556a8b4c, type: 3}
   - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
   jsonDatasPrestigeWorld: []
+  saveSlotOnlyJsonData: {fileID: 4900000, guid: 1b0690d840e99284f81fe8383f3b1587, type: 3}
   layoutJson: {fileID: 4900000, guid: 60a52a01a6261be4b8003331ffeb259b, type: 3}
   spritesForLayout:
     spritesList:

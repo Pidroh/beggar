@@ -1,33 +1,5 @@
 [
     {
-        "type": "DIALOG",
-        "items": [
-            {
-                "id": "dialog_job",
-                "title": "Class Selection",
-                "content": "Picking a class will lock out the other classes from the same tier. Are you sure?",
-                "tags": "t_tier0"
-            },
-            {
-                "id": "irreversible",
-                "title": "Irreversible Action",
-                "content": "Once done, this action cannot be undone. Are you sure?",
-                "tags": "max_decrease,irreversible"
-            },
-            {
-                "id": "exclusive_upgrade",
-                "title": "Upgrade Selection",
-                "content": "Picking this upgrade will lock out upgrades from the same tier. Are you sure?"
-            },
-            {
-                "id": "ending",
-                "title": "End of the Journey",
-                "content": "Performing this action will complete the game. Are you sure?",
-                "tags": "ending_game"
-            }
-        ]
-    },
-    {
         "type": "TAB",
         "items": [
             

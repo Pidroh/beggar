@@ -101,14 +101,17 @@ public class ArcaniaModelExploration : ArcaniaModelSubmodule
 
     public void FinishedSettingUpUnits()
     {
-        foreach (var item in _model.arcaniaUnits.datas[UnitType.RESOURCE])
-        {
-            if (item.ConfigResource == null) continue;
-            if ((item.ConfigResource.Stressor))
+        if (_model.arcaniaUnits.datas.ContainsKey(UnitType.RESOURCE)) {
+            foreach (var item in _model.arcaniaUnits.datas[UnitType.RESOURCE])
             {
-                Stressors.Add(item);
+                if (item.ConfigResource == null) continue;
+                if ((item.ConfigResource.Stressor))
+                {
+                    Stressors.Add(item);
+                }
             }
         }
+        
 
     }
 

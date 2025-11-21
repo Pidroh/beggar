@@ -89,7 +89,7 @@ public class MainGameControl : MonoBehaviour
 
         var straightToGameNoTitle =  !wannaGoToArchive && !wannaGoToPrestigeWorld && (_lastSceneControlState.HasValue ? _lastSceneControlState == ControlState.GAME : false);
         
-        var archive = HeartGame.crossSceneGenericData.getDataFromPreviousScene<ArcaniaArchiveModelData>();
+        var archive = HeartGame.crossSceneGenericData.getDataFromPreviousSceneOrDefault<ArcaniaArchiveModelData>();
         arcaniaModel.archiveDataPreviouslyCalculated = archive;
 
         if (HeartGame.crossSceneGenericData.TryGetDataFromPreviousScene<ArcaniaCrossSceneData>(out var arcaniaCrossScenePreviousScene)) 
@@ -218,6 +218,10 @@ public class MainGameControl : MonoBehaviour
             {
                 ReloadSceneToPrestigeWorld();
             }
+            if (DebugMenuManager.CheckCommand("saveslot"))
+            {
+                ReloadSceneToSaveSlot();
+            }
         }
         #endregion
 
@@ -235,14 +239,19 @@ public class MainGameControl : MonoBehaviour
             // -----------------------------------------------------------
             // Save data
             // -----------------------------------------------------------
-            const int SAVE_COOLDOWN = 30;
-            if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN)
+            bool saveEnabled = !arcaniaModel.SaveSlotOnlyMode;
+            if (saveEnabled) 
             {
-                lastSaveTime = Time.unscaledTime;
-                SaveGameAndCurrentSlot();
+                const int SAVE_COOLDOWN = 30;
+                if (Time.unscaledTime - lastSaveTime > SAVE_COOLDOWN)
+                {
+                    lastSaveTime = Time.unscaledTime;
+                    SaveGameAndCurrentSlot();
 
-                HeartGame.SaveCommon();
+                    HeartGame.SaveCommon();
+                }
             }
+            
             #endregion
 
             #region debug command
@@ -426,6 +435,16 @@ public class MainGameControl : MonoBehaviour
         BeforeChangeScene();
         
         _crossSceneDataStatic.requestedControlState = ControlState.PRESTIGE_WORLD;
+        this.HeartGame.ReloadScene();
+    }
+
+    public void ReloadSceneToSaveSlot()
+    {
+        BeforeChangeScene();
+        HeartGame.crossSceneGenericData.RegisterForNextScene<ArcaniaCrossSceneData>(new ArcaniaCrossSceneData()
+        {
+            requestOnlySaveSlot = true
+        });
         this.HeartGame.ReloadScene();
     }
 
