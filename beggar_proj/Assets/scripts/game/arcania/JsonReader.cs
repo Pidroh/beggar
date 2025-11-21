@@ -57,11 +57,15 @@ public class JsonReader
         {
             state = stateRef.Value;
         }
+        if (arcaniaModel.SaveSlotOnlyMode) 
+        {
+            // read only the save slot only mode
+            ReadJsonSingleFile(arcaniaDatas, localizeNameDescription, state, config.saveSlotOnlyJsonData);
+            return FinishingUpState(arcaniaDatas, state);
+        }
         switch (state.readerState)
         {
             case JsonReaderState.JsonReaderStateMode.READ_JSON:
-                {
-                }
                 if (state.jsonIndex < config.jsonDatas.Count)
                 {
 
@@ -80,18 +84,23 @@ public class JsonReader
                     }
                     else
                     {
-                        ModPostProcessing(arcaniaDatas, state.modAmountBeforeReadingData);
-                        ConditionProcessing(arcaniaDatas);
-                        BrokenPointerCheck(arcaniaDatas);
-                        state.readerState = JsonReaderState.JsonReaderStateMode.OVER;
+                        state = FinishingUpState(arcaniaDatas, state);
                     }
-
                 }
                 break;
             default:
                 break;
         }
 
+        return state;
+    }
+
+    private static JsonReaderState FinishingUpState(ArcaniaUnits arcaniaDatas, JsonReaderState state)
+    {
+        ModPostProcessing(arcaniaDatas, state.modAmountBeforeReadingData);
+        ConditionProcessing(arcaniaDatas);
+        BrokenPointerCheck(arcaniaDatas);
+        state.readerState = JsonReaderState.JsonReaderStateMode.OVER;
         return state;
     }
 
@@ -341,6 +350,11 @@ public class JsonReader
     private static JsonReaderState ReadJsonSingleFile(ArcaniaUnits arcaniaDatas, List<TextAsset> jsonDatas, bool localizeNameDescription, JsonReaderState readerState, int arrayIndex)
     {
         TextAsset item = jsonDatas[arrayIndex];
+        return ReadJsonSingleFile(arcaniaDatas, localizeNameDescription, readerState, item);
+    }
+
+    private static JsonReaderState ReadJsonSingleFile(ArcaniaUnits arcaniaDatas, bool localizeNameDescription, JsonReaderState readerState, TextAsset item)
+    {
         var parentNode = SimpleJSON.JSON.Parse(item.text);
         if (parentNode.IsArray)
         {

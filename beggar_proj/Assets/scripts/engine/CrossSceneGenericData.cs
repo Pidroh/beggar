@@ -51,6 +51,17 @@ namespace HeartUnity
             dictPreviousSceneStaticTemp = dictNextScene;
         }
 
-
+        public bool TryGetDataFromPreviousScene<T>(out T arcaniaCrossScenePreviousScene)
+        {
+            arcaniaCrossScenePreviousScene = default;
+            if (dictPreviousScene == null) return false;
+            Type type = typeof(T);
+            if(dictPreviousScene.TryGetValue(type, out var a))
+            {
+                arcaniaCrossScenePreviousScene = (T) a;
+                return true;
+            }
+            return false;
+        }
     }
 }

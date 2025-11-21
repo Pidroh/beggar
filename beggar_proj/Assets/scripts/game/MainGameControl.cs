@@ -92,6 +92,11 @@ public class MainGameControl : MonoBehaviour
         var archive = HeartGame.crossSceneGenericData.getDataFromPreviousScene<ArcaniaArchiveModelData>();
         arcaniaModel.archiveDataPreviouslyCalculated = archive;
 
+        if (HeartGame.crossSceneGenericData.TryGetDataFromPreviousScene<ArcaniaCrossSceneData>(out var arcaniaCrossScenePreviousScene)) 
+        {
+            arcaniaModel.SaveSlotOnlyMode = arcaniaCrossScenePreviousScene.requestOnlySaveSlot;
+        }
+
         this.MiscModelPersistence = new ArcaniaMiscPersistence(HeartGame, "misc_persistence");
         MiscModelPersistence.Load(arcaniaModel);
 

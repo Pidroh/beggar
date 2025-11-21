@@ -85,6 +85,8 @@ public class ArcaniaModel
     public ArcaniaSpeedIntegrationData speedIntegrationData = new();
     public ArcaniaArchiveModelData archiveDataPreviouslyCalculated;
 
+    public bool SaveSlotOnlyMode { get; set; }
+
     public ArcaniaModel()
     {
         Runner = new(this);
