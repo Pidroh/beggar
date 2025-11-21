@@ -266,6 +266,38 @@
             "CENTER",
             "SIBLING_DISTANCE"
           ]
+        },
+        {
+          "type": "layout",
+          "id": "simple_button",
+          "size": [
+            100,
+            64
+          ],
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "SELF_SIZE"
+          ],
+          "position_mode":[
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
+        },
+        {
+          "type": "layout",
+          "id": "simple_button",
+          "size": [
+            100,
+            64
+          ],
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT",
+            "SELF_SIZE"
+          ],
+          "position_mode":[
+            "CENTER",
+            "SIBLING_DISTANCE"
+          ]
         }
       ]
     },
