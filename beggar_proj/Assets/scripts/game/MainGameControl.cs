@@ -463,7 +463,8 @@ public class MainGameControl : MonoBehaviour
         }
         if (controlState == ControlState.GAME || controlState == ControlState.PRESTIGE_WORLD) 
         {
-            SaveGameAndCurrentSlot();
+            if(!arcaniaModel.SaveSlotOnlyMode)
+                SaveGameAndCurrentSlot();
             
         }
         MainGameControl._crossSceneDataStatic.lastControlState = this.controlState;
