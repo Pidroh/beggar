@@ -17,7 +17,6 @@ public class ArchivePersistenceData
 public class ArcaniaArchiveModelData 
 {
     public List<string> knownIds = new();
-    public bool hasAccess;
     public List<EuristicData> euristicDatas = new();
 
     public class EuristicData 

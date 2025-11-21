@@ -17,8 +17,6 @@ public static class ArchiveScreenControlExecuter
             var archivePersistence = new ArcaniaArchivePersistence(mgc.HeartGame, key);
             mgc.ArchivePersistence = archivePersistence;
             archivePersistence.Load(mgc.arcaniaModel, mgc.JControlData.archiveControlData.archiveData);
-            // if entering archive, it must have access
-            mgc.JControlData.archiveControlData.archiveData.hasAccess = true;
         }
 
         {
