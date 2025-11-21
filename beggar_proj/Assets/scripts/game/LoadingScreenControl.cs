@@ -46,6 +46,9 @@ public static class LoadingScreenControl
                     loadingData.ArchiveLoadPersistenceState = ArchiveScreenControlExecuter.LoadUpArchive(mgc, loadingData.ArchiveLoadPersistenceState);
                     if (loadingData.ArchiveLoadPersistenceState.Value.over)
                     {
+                        // give permanent access to the archive when you first load it
+                        mgc.arcaniaModel.modelMiscData.hasAccessToArchive = true;
+                        mgc.MiscModelPersistence.Save(mgc.arcaniaModel);
                         // saves up after loading up the archive known IDs
                         mgc.ArchivePersistence.Save(mgc.arcaniaModel, mgc.JControlData.archiveControlData.archiveData);
                         loadingData.state = LoadingScreenSetup.LoadingScreenRuntimeData.State.ARCHIVE_MODEL;

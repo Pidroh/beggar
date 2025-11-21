@@ -344,7 +344,7 @@ public class MainGameControl : MonoBehaviour
     public void SaveGameAndCurrentSlot()
     {
         var world = JGameControlExecuter.GetWorld(this);
-        this.MiscModelPersistence.Save(arcaniaModel); also save this when loading up archive
+        this.MiscModelPersistence.Save(arcaniaModel);
         switch (world)
         {
             case WorldType.DEFAULT_CHARACTER:
