@@ -11,7 +11,7 @@ public static class JGameControlExecuterSaveSlot
         var cd = mgc.JControlData;
         bool willSkipInputNextFrame = false;
         var world = JGameControlExecuter.GetWorld(mgc);
-        var prestigeWorld = world == WorldType.PRESTIGE_WORLD;
+        var saveSlotOutsideCharacterLife = world == WorldType.PRESTIGE_WORLD || mgc.arcaniaModel.SaveSlotOnlyMode;
         mgc.JControlData.SaveSlots.ArchiveButtonLayout.SetVisibleSelf(mgc.arcaniaModel.modelMiscData.hasAccessToArchive);
         if (mgc.JControlData.SaveSlots.ArchiveButton.ButtonClicked) 
         {
@@ -73,7 +73,7 @@ public static class JGameControlExecuterSaveSlot
             slotControlUnit.deleteButton?.MainLayout.SetVisibleSelf(slotD.hasSave);
             
             // never current slot if prestige world
-            bool notCurrentSlot = slot != mgc.JControlData.SaveSlots.ModelData.currentSlot || prestigeWorld;
+            bool notCurrentSlot = slot != mgc.JControlData.SaveSlots.ModelData.currentSlot || saveSlotOutsideCharacterLife;
             slotControlUnit.newGameOrLoadGameButton.MainLayout.SetVisibleSelf(notCurrentSlot);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
             string timeText = slotD.hasSave ? $"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}" : "";
@@ -96,7 +96,7 @@ public static class JGameControlExecuterSaveSlot
                 willSkipInputNextFrame = true;
                 slotControlUnit.exportButton.ConsumeClick();
                 // save before exporting
-                if (slot == mgc.JControlData.SaveSlots.ModelData.currentSlot && !prestigeWorld) 
+                if (slot == mgc.JControlData.SaveSlots.ModelData.currentSlot && !saveSlotOutsideCharacterLife) 
                 {
                     mgc.SaveGameAndCurrentSlot();
                 }
