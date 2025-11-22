@@ -70,10 +70,12 @@ public static class JGameControlExecuterSaveSlot
             slotControlUnit.importButton?.MainLayout.SetVisibleSelf(!slotD.hasSave);
             slotControlUnit.exportButton.MainLayout.SetVisibleSelf(slotD.hasSave);
             slotControlUnit.copyButton.MainLayout.SetVisibleSelf(hasEmptySlot && slotD.hasSave);
-            slotControlUnit.deleteButton?.MainLayout.SetVisibleSelf(slotD.hasSave);
-            
+
             // never current slot if prestige world
             bool notCurrentSlot = slot != mgc.JControlData.SaveSlots.ModelData.currentSlot || saveSlotOutsideCharacterLife;
+            slotControlUnit.deleteButton?.MainLayout.SetVisibleSelf(slotD.hasSave && notCurrentSlot);
+            
+            
             slotControlUnit.newGameOrLoadGameButton.MainLayout.SetVisibleSelf(notCurrentSlot);
             slotControlUnit.newGameOrLoadGameButton.MainExecuteButton.SetButtonTextRaw(slotD.hasSave ? Local.GetText("Load_game") : Local.GetText("New_game"));
             string timeText = slotD.hasSave ? $"{PlayTimeControlCenter.ConvertSecondsToTimeFormat(slotD.playTimeSeconds)}\n{Local.GetText("Last save: ")}{slotD.lastSaveTime.ToString("yy/MM/dd HH:mm:ss")}" : "";
