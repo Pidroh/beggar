@@ -187,6 +187,20 @@
                 }
             },
             {
+                "id": "advance_alms",
+                "name": "Greater alms",
+                "require": "t_tier3_church&&charity>2",
+                "cost": {
+                    "skillpoints": 75,
+                    "better_faith": 3
+                },
+                "desc": "Knowdlege of how to use church resources for the greater good. Beware: the other members of the church might not be happy if you go too far.",
+                "mod": {
+                    "benevolence.max": 10,
+                    "faith.max": 5
+                }
+            },
+            {
                 "id": "parish_lore",
                 "name": "Parish lore",
                 "require": "priestduties&&ecclesiology>=5",
