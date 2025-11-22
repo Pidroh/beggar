@@ -101,6 +101,7 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelPracticeSkill = Local.GetText("Practice Skill");
             jControlDataHolder.LabelConfirmSlotDeleteTitle = Local.GetText("Delete save slot");
             jControlDataHolder.LabelConfirmSlotDeleteContent = Local.GetText("Data cannot be recovered");
+            jControlDataHolder.LabelGoToSaveSlots = Local.GetText("Save slots", "As in save slots on a memory card, games context, saving data");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.RESOURCE] = Local.GetText("resource");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.SKILL] = Local.GetText("skill");
             jControlDataHolder.LabelUnitTypeDescription[UnitType.CLASS] = Local.GetText("class");
@@ -369,10 +370,15 @@ public partial class MainGameControlSetupJLayout
             endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Demo on Steam", "Steam as in the PC game store"));
 #endif
             endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, Local.GetText("Latest Version on Patreon"));
+            endingLay.LayoutRU.LayoutChildren[3].LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, jControlDataHolder.LabelGoToSaveSlots);
+            // archive disabled for now
+            endingLay.LayoutRU.LayoutChildren[4].LayoutRU.SetVisibleSelf(false);
 
             jControlDataHolder.EndingData.SettingsButton = endingLay.LayoutRU.LayoutChildren[0].LayoutRU.ButtonChildren[0];
             jControlDataHolder.EndingData.SteamButton = endingLay.LayoutRU.LayoutChildren[1].LayoutRU.ButtonChildren[0];
             jControlDataHolder.EndingData.PatreonButton = endingLay.LayoutRU.LayoutChildren[2].LayoutRU.ButtonChildren[0];
+            jControlDataHolder.EndingData.SaveSlotButton = endingLay.LayoutRU.LayoutChildren[3].LayoutRU.ButtonChildren[0];
+            jControlDataHolder.EndingData.ArchiveButton = endingLay.LayoutRU.LayoutChildren[4].LayoutRU.ButtonChildren[0];
         }
         #endregion
 

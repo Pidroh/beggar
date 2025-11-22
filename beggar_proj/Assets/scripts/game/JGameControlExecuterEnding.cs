@@ -30,6 +30,10 @@ public static class JGameControlExecuterEnding
         {
             URLOpener.OpenPatreon();
         }
+        if (controlData.EndingData.SaveSlotButton.Item2.UiUnit.Clicked)
+        {
+            mgc.ReloadSceneToSaveSlot();
+        }
         controlData.EndingData.PatreonButton.Item1.SetVisibleSelf(!mgc.HeartGame.config.patreonBuild);
         TryShowEnding(mgc, controlData);
     }
@@ -64,4 +68,6 @@ public class JEndingGameData
     public (JLayout.JLayoutRuntimeUnit, JLayout.JLayoutChild) SettingsButton { get; internal set; }
     public (JLayoutRuntimeUnit, JLayoutChild) PatreonButton { get; internal set; }
     public (JLayoutRuntimeUnit, JLayoutChild) SteamButton { get; internal set; }
+    public (JLayoutRuntimeUnit, JLayoutChild) SaveSlotButton { get; internal set; }
+    public (JLayoutRuntimeUnit, JLayoutChild) ArchiveButton { get; internal set; }
 }
