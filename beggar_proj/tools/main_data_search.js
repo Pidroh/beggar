@@ -32,9 +32,10 @@ async function main() {
                 console.log('Exiting.');
                 return;
             }
+            const lowerRaw = raw.toLowerCase();
             let mode = 'default';
             let searchTerm = raw;
-            const lowerRaw = raw.toLowerCase();
+
             if (lowerRaw.startsWith(REQUIRE_PREFIX)) {
                 mode = 'require';
                 searchTerm = raw.slice(REQUIRE_PREFIX.length).trim();
@@ -43,6 +44,8 @@ async function main() {
                     ask();
                     return;
                 }
+            } else if (lowerRaw === 'skills') {
+                mode = 'skills';
             }
             runSearch(folderPath, searchTerm, mode);
             ask();
@@ -94,7 +97,9 @@ function runSearch(folderPath, searchTerm, mode = 'default') {
 
                 let match = false;
 
-                if (mode === 'require') {
+                if (mode === 'skills') {
+                    match = typeof type === 'string' && type.toUpperCase() === 'SKILL';
+                } else if (mode === 'require') {
                     match =
                         typeof requireStr === 'string' &&
                         requireStr.toLowerCase().includes(termLower);

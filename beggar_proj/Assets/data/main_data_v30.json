@@ -5,6 +5,13 @@
             {
                 "id": "cathedral_support",
                 "name": "Cathedral support"
+            },
+            {
+                "id": "better_faith",
+                "name": "Faith",
+                "mod": {
+                    "faith.rate": 0.01
+                }
             }
         ]
     },
@@ -80,7 +87,7 @@
             {
                 "id": "speak_archpriest",
                 "name": "Speak with the archpriest",
-                "desc": "Become acquainted with the other parishes",
+                "desc": "",
                 "require": "parish_lore>=3&&surrounding_parish&&migling_priests",
                 "tag": "religionry,t_power_up",
                 "max": 3,
@@ -91,6 +98,21 @@
                 },
                 "mod": {
                     "cathedral_support.max": 1
+                }
+            },
+            {
+                "id": "faith_gen2",
+                "name": "Strengthen faith",
+                "desc": "Solidy your beliefs",
+                "require": "faith>20&&faith_skill",
+                "tag": "religionry,t_power_up",
+                "duration": 20,
+                "cost": {
+                    "faith": 5,
+                    "clarity": 3
+                },
+                "result": {
+                    "better_faith": 1
                 }
             }
         ]
@@ -151,6 +173,19 @@
     {
         "type": "SKILL",
         "items": [
+            {
+                "id": "faithskill",
+                "name": "Spiritual conviction",
+                "require": "t_faith_unlock",
+                "cost": {
+                    "skillpoints": 75
+                },
+                "desc": "Spiritual conviction on something greater",
+                "mod": {
+                    "faith.max": 5,
+                    "churchrespect.max": 5
+                }
+            },
             {
                 "id": "parish_lore",
                 "name": "Parish lore",
