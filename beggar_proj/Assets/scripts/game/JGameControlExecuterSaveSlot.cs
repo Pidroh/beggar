@@ -100,8 +100,9 @@ public static class JGameControlExecuterSaveSlot
                 {
                     mgc.SaveGameAndCurrentSlot();
                 }
-                // TODO: this code seems to only load the text from CURRENT slot, instead of the chosen EXPORT slot
-                if (mgc.ArcaniaPersistence.saveUnit.TryLoadRawText(out var rawText))
+                var key = JGameControlDataSaveSlot.SlotSaveKeys[slot];
+                ArcaniaPersistence slotPersistence = new (mgc.HeartGame, key);
+                if (slotPersistence.saveUnit.TryLoadRawText(out var rawText))
                 {
 
                     var slotUnitJson = JsonUtility.ToJson(SaveSlotExecution.CreatePersistenceUnitFromSlot(slotD));
