@@ -16,7 +16,7 @@
                 "name": "Church socialization",
                 "desc": "Spend time with fellows from the church",
                 "require": "charisma>2&&jointhechurch",
-                "tag": "diseasery,t_repeatable_task",
+                "tag": "religionry,t_repeatable_task",
                 "duration": 2,
                 "buy": {
                     "faith": 50,
@@ -30,8 +30,7 @@
                     "toggle": true,
                     "mods": {
                         "churchrespect.max": 200,
-                        "churchrespect.rate": 1,
-                        "disease_style.activate": 1
+                        "churchrespect.rate": 1
                     }
                 }
             },

@@ -470,7 +470,7 @@
             {
                 "id": "benevolence_buff_exp",
                 "name": "Benevolence high",
-                "desc": "Feel the pleasure of your feelings of control",
+                "desc": "Feel the pleasure of your feelings of good will",
                 "require": "benevolence>200",
                 "duration": 5,
                 "buy": {
