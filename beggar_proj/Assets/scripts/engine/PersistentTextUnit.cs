@@ -205,8 +205,13 @@ namespace HeartUnity
 
         private void Delete(string location)
         {
+            if (this.IsPlayerPrefs) 
+            {
+                PlayerPrefs.DeleteKey(mainSaveLocation);
+                PlayerPrefs.DeleteKey(backupSaveLocation);
+                return;
+            }
             var mainFileExist = File.Exists(location);
-
             if (mainFileExist)
             {
                 File.Delete(location);
