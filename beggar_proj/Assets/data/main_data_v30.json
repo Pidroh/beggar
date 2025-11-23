@@ -114,6 +114,63 @@
                 "result": {
                     "better_faith": 1
                 }
+            },
+            {
+                "id": "benevolent_alms1",
+                "name": "Quiet generosity",
+                "desc": "Discreetly redirect church resources to the poor.",
+                "require": "advance_alms",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "faith": 10,
+                    "clarity": 5
+                },
+                "mod": {
+                    "benevolence.max": 10,
+                    "benevolence.rate": 0.01,
+                    "churchrespect.max": -25,
+                    "cathedral_support.max": -1
+                }
+            },
+            {
+                "id": "benevolent_alms2",
+                "name": "Open-handed charity",
+                "desc": "Openly prioritize charity over cathedral prestige.",
+                "require": "advance_alms&&benevolent_alms1",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 40,
+                "cost": {
+                    "faith": 15,
+                    "clarity": 8
+                },
+                "mod": {
+                    "benevolence.max": 20,
+                    "benevolence.rate": 0.02,
+                    "churchrespect.max": -50,
+                    "cathedral_support.max": -1
+                }
+            },
+            {
+                "id": "benevolent_alms3",
+                "name": "Radical generosity",
+                "desc": "Give almost everything to those in need.",
+                "require": "advance_alms&&benevolent_alms2",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 60,
+                "cost": {
+                    "faith": 20,
+                    "clarity": 10
+                },
+                "mod": {
+                    "benevolence.max": 40,
+                    "benevolence.rate": 0.05,
+                    "churchrespect.max": -100,
+                    "cathedral_support.max": -2
+                }
             }
         ]
     },
