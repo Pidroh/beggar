@@ -156,6 +156,24 @@
                 }
             },
             {
+                "id": "conduct_funeral",
+                "name": "Conduct a funeral",
+                "desc": "Preside over a funeral, honoring the dead and comforting the living.",
+                "require": "curate",
+                "tag": "religionry,t_power_up",
+                "max": 2,
+                "duration": 50,
+                "cost": {
+                    "faith": 16,
+                    "churchrespect": 70,
+                    "realization": 1
+                },
+                "mod": {
+                    "churchrespect.max": 50,
+                    "priest_experience.max": 15
+                }
+            },
+            {
                 "id": "perform_marriage",
                 "name": "Perform a marriage",
                 "desc": "Celebrate the sacrament of marriage for a devoted couple.",
