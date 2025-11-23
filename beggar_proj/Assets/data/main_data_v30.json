@@ -105,6 +105,74 @@
                 }
             },
             {
+                "id": "hear_confessions",
+                "name": "Hear confessions",
+                "desc": "Listen to the confessions of the faithful and offer absolution.",
+                "require": "curate",
+                "tag": "religionry,t_power_up",
+                "max": 2,
+                "duration": 30,
+                "cost": {
+                    "faith": 10,
+                    "clarity": 5
+                },
+                "mod": {
+                    "churchrespect.max": 20,
+                    "priest_experience.max": 2
+                }
+            },
+            {
+                "id": "administer_eucharist",
+                "name": "Administer the Eucharist",
+                "desc": "Distribute the Eucharist to the faithful with reverence.",
+                "require": "curate",
+                "tag": "religionry,t_power_up",
+                "max": 2,
+                "duration": 35,
+                "cost": {
+                    "faith": 12,
+                    "churchrespect": 60
+                },
+                "mod": {
+                    "churchrespect.max": 25,
+                    "priest_experience.max": 3
+                }
+            },
+            {
+                "id": "anoint_the_sick",
+                "name": "Anoint the sick",
+                "desc": "Bring comfort to the sick through anointing and prayer.",
+                "require": "curate",
+                "tag": "religionry,t_power_up",
+                "max": 2,
+                "duration": 45,
+                "cost": {
+                    "faith": 18,
+                    "clarity": 8
+                },
+                "mod": {
+                    "churchrespect.max": 30,
+                    "priest_experience.max": 4
+                }
+            },
+            {
+                "id": "perform_marriage",
+                "name": "Perform a marriage",
+                "desc": "Celebrate the sacrament of marriage for a devoted couple.",
+                "require": "curate&&celebrate_mass>=2",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 60,
+                "cost": {
+                    "faith": 20,
+                    "churchrespect": 100
+                },
+                "mod": {
+                    "churchrespect.max": 50,
+                    "priest_experience.max": 5
+                }
+            },
+            {
                 "id": "curate_salary",
                 "name": "Curate salary",
                 "desc": "Receive a very modest stipend for your work as a curate. Better than nothing",
