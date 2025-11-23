@@ -37,7 +37,8 @@
                     "toggle": true,
                     "mods": {
                         "churchrespect.max": 200,
-                        "churchrespect.rate": 1
+                        "churchrespect.rate": 1,
+                        "churchsocial_style.activate": 1
                     }
                 }
             },
