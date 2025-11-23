@@ -317,7 +317,7 @@
                 "id": "chantry_priest",
                 "name": "Chantry priest",
                 "desc": "Dedicate yourself to the cathedral's chantry, deepening your priestly service around altar and choir.",
-                "require": "curate",
+                "require": "curate&&cathedral_matters",
                 "tag": "religionry,priest_style,t_power_up",
                 "max": 1,
                 "duration": 50,
@@ -421,6 +421,22 @@
                       "space.max": 15,
                       "faith.max": 40,
                       "churchrespect.max": 60
+                  }
+              },
+              {
+                  "id": "cathedral_close_room",
+                  "name": "Cathedral close house",
+                  "require": "chantry_priest",
+                  "cost": {
+                      "cathedral_support": 2,
+                      "faith": 40
+                  },
+                  "desc": "A tiny house inside the cathedral close, steps away from the sanctuary.",
+                  "mod": {
+                      "space.max": 18,
+                      "faith.max": 80,
+                      "cathedral_support.max": 3,
+                      "churchrespect.max": 90
                   }
               }
           ]
