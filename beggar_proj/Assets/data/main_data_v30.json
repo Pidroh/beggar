@@ -314,6 +314,24 @@
                 }
             },
             {
+                "id": "chantry_priest",
+                "name": "Chantry priest",
+                "desc": "Dedicate yourself to the cathedral's chantry, deepening your priestly service around altar and choir.",
+                "require": "curate",
+                "tag": "religionry,priest_style,t_power_up",
+                "max": 1,
+                "duration": 50,
+                "cost": {
+                    "priest_exp": 4,
+                    "cathedral_support": 1
+                },
+                "mod": {
+                    "priest_experience.max": 8,
+                    "churchrespect.max": 60,
+                    "cathedral_support.max": 2
+                }
+            },
+            {
                 "id": "faith_gen2",
                 "name": "Strengthen faith",
                 "desc": "Solidy your beliefs",
