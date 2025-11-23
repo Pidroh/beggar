@@ -131,7 +131,8 @@
                 "duration": 40,
                 "cost": {
                     "faith": 15,
-                    "churchrespect": 80
+                    "churchrespect": 80,
+                    "priest_exp": 2
                 },
                 "result": {
                     "priest_exp": 2,
@@ -153,7 +154,8 @@
                 "duration": 30,
                 "cost": {
                     "faith": 10,
-                    "clarity": 5
+                    "clarity": 5,
+                    "priest_exp": 1
                 },
                 "mod": {
                     "churchrespect.max": 20,
@@ -170,7 +172,8 @@
                 "duration": 35,
                 "cost": {
                     "faith": 12,
-                    "churchrespect": 60
+                    "churchrespect": 60,
+                    "priest_exp": 1
                 },
                 "mod": {
                     "churchrespect.max": 25,
@@ -187,7 +190,8 @@
                 "duration": 45,
                 "cost": {
                     "faith": 18,
-                    "clarity": 8
+                    "clarity": 8,
+                    "priest_exp": 1
                 },
                 "mod": {
                     "churchrespect.max": 30,
@@ -205,7 +209,8 @@
                 "cost": {
                     "faith": 16,
                     "churchrespect": 70,
-                    "realization": 1
+                    "realization": 1,
+                    "priest_exp": 2
                 },
                 "mod": {
                     "churchrespect.max": 50,
@@ -222,7 +227,8 @@
                 "duration": 60,
                 "cost": {
                     "faith": 20,
-                    "churchrespect": 100
+                    "churchrespect": 100,
+                    "priest_exp": 3
                 },
                 "mod": {
                     "churchrespect.max": 50,
@@ -239,7 +245,8 @@
                 "duration": 30,
                 "cost": {
                     "churchrespect": 60,
-                    "faith": 5
+                    "faith": 5,
+                    "priest_exp": 1
                 },
                 "mod": {
                     "coin.rate": 0.02
