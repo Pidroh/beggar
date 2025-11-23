@@ -88,7 +88,7 @@
                 "desc": "Lead the celebration of the Mass, deepening your priestly experience.",
                 "require": "curate",
                 "tag": "religionry,t_power_up",
-                "max": 3,
+                "max": 2,
                 "duration": 40,
                 "cost": {
                     "faith": 15,
@@ -96,12 +96,28 @@
                 },
                 "result": {
                     "priest_exp": 2,
-                    "coin": 0.1
+                    "coin": 1
                 },
                 "mod": {
                     "priest_experience.max": 5,
                     "churchrespect.max": 40,
                     "churchrespect.rate": 0.25
+                }
+            },
+            {
+                "id": "curate_salary",
+                "name": "Curate salary",
+                "desc": "Receive a very modest stipend for your work as a curate. Better than nothing",
+                "require": "curate",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "churchrespect": 60,
+                    "faith": 5
+                },
+                "mod": {
+                    "coin.rate": 0.02
                 }
             },
             {
