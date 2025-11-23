@@ -405,10 +405,26 @@
             }
         ]
     },
-    {
-        "type": "HOUSE",
-        "items": []
-    },
+      {
+          "type": "HOUSE",
+          "items": [
+              {
+                  "id": "rectory_extra_room",
+                  "name": "Rectory's extra room",
+                  "require": "curate",
+                  "cost": {
+                      "churchrespect": 120,
+                      "faith": 80
+                  },
+                  "desc": "A modest extra room in the rectory, close to the heart of parish life.",
+                  "mod": {
+                      "space.max": 15,
+                      "faith.max": 40,
+                      "churchrespect.max": 60
+                  }
+              }
+          ]
+      },
     {
         "type": "CLASS",
         "items": [
