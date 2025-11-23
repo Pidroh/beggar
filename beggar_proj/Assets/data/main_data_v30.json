@@ -126,7 +126,7 @@
                 "name": "Celebrate the Mass",
                 "desc": "Lead the celebration of the Mass, deepening your priestly experience.",
                 "require": "curate",
-                "tag": "religionry,t_power_up",
+                "tag": "religionry,priest_style,t_power_up",
                 "max": 2,
                 "duration": 40,
                 "cost": {
@@ -148,7 +148,7 @@
                 "name": "Hear confessions",
                 "desc": "Listen to the confessions of the faithful and offer absolution.",
                 "require": "curate",
-                "tag": "religionry,t_power_up",
+                "tag": "religionry,priest_style,t_power_up",
                 "max": 2,
                 "duration": 30,
                 "cost": {
@@ -165,7 +165,7 @@
                 "name": "Administer the Eucharist",
                 "desc": "Distribute the Eucharist to the faithful with reverence.",
                 "require": "curate",
-                "tag": "religionry,t_power_up",
+                "tag": "religionry,priest_style,t_power_up",
                 "max": 2,
                 "duration": 35,
                 "cost": {
@@ -182,7 +182,7 @@
                 "name": "Anoint the sick",
                 "desc": "Bring comfort to the sick through anointing and prayer.",
                 "require": "curate",
-                "tag": "religionry,t_power_up",
+                "tag": "religionry,priest_style,t_power_up",
                 "max": 2,
                 "duration": 45,
                 "cost": {
@@ -199,7 +199,7 @@
                 "name": "Conduct a funeral",
                 "desc": "Preside over a funeral, honoring the dead and comforting the living.",
                 "require": "curate",
-                "tag": "religionry,t_power_up",
+                "tag": "religionry,priest_style,t_power_up",
                 "max": 2,
                 "duration": 50,
                 "cost": {
@@ -217,7 +217,7 @@
                 "name": "Perform a marriage",
                 "desc": "Celebrate the sacrament of marriage for a devoted couple.",
                 "require": "curate&&celebrate_mass>=2",
-                "tag": "religionry,t_power_up",
+                "tag": "religionry,priest_style,t_power_up",
                 "max": 1,
                 "duration": 60,
                 "cost": {
@@ -234,7 +234,7 @@
                 "name": "Curate salary",
                 "desc": "Receive a very modest stipend for your work as a curate. Better than nothing",
                 "require": "curate",
-                "tag": "religionry,t_power_up",
+                "tag": "religionry,priest_style,t_power_up",
                 "max": 1,
                 "duration": 30,
                 "cost": {
