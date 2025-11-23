@@ -57,6 +57,23 @@
                 }
             },
             {
+                "id": "curate",
+                "name": "Curate",
+                "desc": "Serve as a curate, helping take care of a parish.",
+                "require": "t_priest",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "churchrespect": 150,
+                    "faith": 20
+                },
+                "mod": {
+                    "churchrespect.max": 25,
+                    "faith.max": 5
+                }
+            },
+            {
                 "id": "archpriest",
                 "name": "Archpriest",
                 "desc": "Commit yourself to administrating a group of priests, each with their own parish",
@@ -274,7 +291,7 @@
             {
                 "id": "parish_lore",
                 "name": "Parish lore",
-                "require": "priestduties&&ecclesiology>=5",
+                "require": "curate&&ecclesiology>=5",
                 "cost": {
                     "skillpoints": 75
                 },
