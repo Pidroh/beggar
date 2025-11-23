@@ -41,12 +41,35 @@
                     "charm": 20
                 },
                 "dot": {
-                    "duration": 240,
+                    "duration": 300,
                     "toggle": true,
                     "mods": {
                         "churchrespect.max": 200,
                         "churchrespect.rate": 1,
                         "churchsocial_style.activate": 1
+                    }
+                }
+            },
+            {
+                "id": "priest_mindset",
+                "name": "Priest mindset",
+                "desc": "Recognize yourself as a priest and act accordingly",
+                "require": "t_priest",
+                "tag": "religionry,t_repeatable_task",
+                "duration": 3,
+                "buy": {
+                    "faith": 150
+                },
+                "cost": {
+                    "faith": 5
+                },
+                "dot": {
+                    "duration": 300,
+                    "toggle": true,
+                    "mods": {
+                        "faith.max": 15,
+                        "churchrespect.rate": 0.2,
+                        "priest_style.activate": 1
                     }
                 }
             },
