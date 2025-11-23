@@ -46,7 +46,7 @@
                 "id": "churchsocial_support",
                 "name": "Cathedral goodwill",
                 "desc": "Leverage your church social style to build support for the cathedral.",
-                "require": "churchsocial_style.activate",
+                "require": "churchsocial_style.activate&&cathedral_matters",
                 "tag": "churchsocial_style,t_repeatable_task",
                 "duration": 10,
                 "cost": {
@@ -196,28 +196,7 @@
     {
         "type": "CLASS",
         "items": [
-            {
-                "id": "archdeacon",
-                "name": "Archdeacon",
-                "desc": "A member of the clergy, under direct command of the Bishop",
-                "tags": "t_tier4",
-                "lock": "t_tier4",
-                "need": "theself_4",
-                "require": "t_tier3",
-                "cost": {
-                    "thoughts": 1700,
-                    "gratitude": 1200,
-                    "faith": 400,
-                    "musing": 200,
-                    "nutrition": 90
-                },
-                "mod": {
-                    "faith.max": 20,
-                    "churchrespect.max": 150,
-                    "holyscriptures.max": 1,
-                    "ecclesiology.max": 1
-                }
-            },
+            
             {
                 "id": "veteranpriest",
                 "name": "Veteran priest",
@@ -421,12 +400,6 @@
     {
         "type": "HINT",
         "items": [
-            {
-                "id": "archdeacon_hint",
-                "name": "Class hint",
-                "target_id": "archdeacon",
-                "require": "hint_t_tier4"
-            },
             {
                 "id": "veteranpriest_hint",
                 "name": "Class hint",
