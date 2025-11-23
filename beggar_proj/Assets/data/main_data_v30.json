@@ -401,7 +401,8 @@
                     "gratitude": 1200,
                     "faith": 400,
                     "musing": 200,
-                    "nutrition": 90
+                    "nutrition": 90,
+                    "priest_exp": 40
                 },
                 "mod": {
                     "faith.max": 20,
@@ -419,7 +420,8 @@
                 "need": "theself_4",
                 "require": "t_tier3&&benevolent_alms3",
                 "cost": {
-                    "benevolence": 300
+                    "benevolence": 300,
+                    "priest_exp": 35
                 },
                 "mod": {
                     "benevolence.rate": 1,
