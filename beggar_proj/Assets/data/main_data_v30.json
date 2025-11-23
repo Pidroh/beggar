@@ -249,7 +249,7 @@
                     "priest_exp": 1
                 },
                 "mod": {
-                    "coin.rate": 0.02
+                    "coin.rate": 0.01
                 }
             },
             {
@@ -331,8 +331,26 @@
                     "cathedral_support.max": 2
                 }
             },
-            {
-                "id": "faith_gen2",
+              {
+                  "id": "chantry_priest_salary",
+                  "name": "Chantry priest salary",
+                  "desc": "Your chantry duties result in higher salaries",
+                  "require": "chantry_priest",
+                  "tag": "religionry,priest_style,t_power_up",
+                  "max": 1,
+                  "duration": 40,
+                  "cost": {
+                      "churchrespect": 80,
+                      "faith": 10,
+                      "priest_exp": 2,
+                      "cathedral_support": 1
+                  },
+                  "mod": {
+                      "coin.rate": 0.02
+                  }
+              },
+              {
+                  "id": "faith_gen2",
                 "name": "Strengthen faith",
                 "desc": "Solidy your beliefs",
                 "require": "faith>20&&faith_skill",
