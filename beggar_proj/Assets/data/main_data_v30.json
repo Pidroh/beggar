@@ -74,6 +74,22 @@
                 }
             },
             {
+                "id": "priest_duties",
+                "name": "Priest duties",
+                "desc": "Carry out the daily work of a parish priest.",
+                "require": "curate",
+                "tag": "priest_style,t_repeatable_task",
+                "duration": 8,
+                "cost": {
+                    "clarity": 5,
+                    "reflection": 1
+                },
+                "result": {
+                    "priest_exp": 1,
+                    "faith": 1
+                }
+            },
+            {
                 "id": "churchsocial_support",
                 "name": "Cathedral goodwill",
                 "desc": "Leverage your church social style to build support for the cathedral.",
