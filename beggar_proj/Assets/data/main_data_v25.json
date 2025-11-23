@@ -1294,7 +1294,7 @@
                 "id": "goodpriest",
                 "name": "Gracious Priest",
                 "desc": "The third major order of the Church. Spreading love all around",
-                "tags": "t_tier3",
+                "tags": "t_tier3,t_priest",
                 "lock": "t_tier3",
                 "need": "theself_3&&holyscriptures>4&&deacon",
                 "require": "t_tier2&&priestduties&&ecclesiology>6&&empathy>3",
