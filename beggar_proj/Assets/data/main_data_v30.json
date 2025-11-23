@@ -12,6 +12,14 @@
                 "mod": {
                     "faith.rate": 0.01
                 }
+            },
+            {
+                "id": "priest_exp",
+                "name": "Priest experience",
+                "desc": "Accumulated wisdom of Priest duties",
+                "mod": {
+                    "churchrespect.max": 10
+                }
             }
         ]
     },
@@ -70,6 +78,7 @@
                 },
                 "mod": {
                     "churchrespect.max": 25,
+                    "priest_experience.max": 3,
                     "faith.max": 5
                 }
             },
