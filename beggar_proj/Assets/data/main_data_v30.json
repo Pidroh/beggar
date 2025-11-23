@@ -224,6 +224,24 @@
                     "holyscriptures.max": 1,
                     "ecclesiology.max": 1
                 }
+            },
+            {
+                "id": "love_priest",
+                "name": "Fervent priest",
+                "desc": "A priest who dedicates everything to loving generosity, even at the cost of church prestige.",
+                "tags": "t_tier4",
+                "lock": "t_tier4",
+                "need": "theself_4",
+                "require": "t_tier3&&benevolent_alms3",
+                "cost": {
+                    "benevolence": 300
+                },
+                "mod": {
+                    "benevolence.rate": 1,
+                    "advance_alms.max": 1,
+                    "benevolent_alms1.max": 1,
+                    "benevolent_alms2.max": 1
+                }
             }
         ]
     },
