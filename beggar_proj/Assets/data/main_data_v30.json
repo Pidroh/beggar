@@ -43,6 +43,20 @@
                 }
             },
             {
+                "id": "churchsocial_support",
+                "name": "Cathedral goodwill",
+                "desc": "Leverage your church social style to build support for the cathedral.",
+                "require": "churchsocial_style.activate",
+                "tag": "churchsocial_style,t_repeatable_task",
+                "duration": 10,
+                "cost": {
+                    "reflection": 1
+                },
+                "result": {
+                    "cathedral_support": 1
+                }
+            },
+            {
                 "id": "archpriest",
                 "name": "Archpriest",
                 "desc": "Commit yourself to administrating a group of priests, each with their own parish",
