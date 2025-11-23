@@ -64,7 +64,9 @@
                 "tag": "religionry,t_power_up",
                 "max": 1,
                 "duration": 50,
-                "cost": {},
+                "cost": {
+                    "cathedral_support": 2
+                },
                 "mod": {}
             },
             {
