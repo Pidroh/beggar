@@ -155,6 +155,34 @@
                 }
             },
             {
+                "id": "mass_birth_lady",
+                "name": "Mass for the Birth of the Lady",
+                "desc": "Celebrate the Nativity of the Lady with a solemn winter Mass.",
+                "need": "winter>=1",
+                "require": "holy_night_thoughts",
+                "tag": "winter_style,t_power_up",
+                "max": 1,
+                "duration": 40,
+                "cost": {
+                    "thoughts": 80,
+                    "clarity": 25,
+                    "season_time": 20,
+                    "reflection": 5
+                },
+                "effect":{
+                    "nutrition": 1,
+                    "supplication": 5
+                },
+                "result": {
+                    "food": 5
+                },
+                "mod": {
+                    "faith.max": 80,
+                    "benevolence.max": 80,
+                    "gratitude.rate": 0.5
+                }
+            },
+            {
                 "id": "make_modest_gift",
                 "name": "Make modest gift",
                 "desc": "Prepare a small, modest gift from simple things you have found.",
