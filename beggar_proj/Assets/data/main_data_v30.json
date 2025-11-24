@@ -160,6 +160,7 @@
                 },
                 "mod": {
                     "priest_experience.max": 5,
+                    "clarity.rate": 0.1,
                     "churchrespect.max": 40,
                     "churchrespect.rate": 0.25
                 }
@@ -178,6 +179,7 @@
                     "priest_exp": 1
                 },
                 "mod": {
+                    "reflection.rate": 0.02,
                     "churchrespect.max": 20,
                     "priest_experience.max": 2
                 }
@@ -196,6 +198,8 @@
                     "priest_exp": 1
                 },
                 "mod": {
+                    "supplication.max": 50,
+                    "supplication.rate": 0.5,
                     "churchrespect.max": 25,
                     "priest_experience.max": 3
                 }
@@ -214,6 +218,7 @@
                     "priest_exp": 1
                 },
                 "mod": {
+                    "sadness.max": 50,
                     "churchrespect.max": 30,
                     "priest_experience.max": 4
                 }
@@ -234,6 +239,8 @@
                 },
                 "mod": {
                     "churchrespect.max": 50,
+                    "sadness.max": 50,
+                    "sorrow.max": 5,
                     "priest_experience.max": 15
                 }
             },
@@ -251,6 +258,7 @@
                     "priest_exp": 3
                 },
                 "mod": {
+                    "clarity.rate": 0.1,
                     "churchrespect.max": 50,
                     "priest_experience.max": 5
                 }
@@ -631,7 +639,7 @@
                 "cost": {
                     "skillpoints": 75
                 },
-                "desc": "Knowledge of the geographical area assigned to the local priest",
+                "desc": "Knowledge of the geographical area to your parish",
                 "mod": {
                     "faith.max": 5,
                     "churchrespect.max": 5
