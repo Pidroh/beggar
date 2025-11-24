@@ -99,6 +99,25 @@
                 }
             },
             {
+                "id": "winter_mood",
+                "name": "Winter mood",
+                "desc": "Sink into the quiet, reflective mood of winter.",
+                "require": "winter>=1",
+                "need": "winter",
+                "tag": "seasonal",
+                "duration": 3,
+                "cost": {
+                    "cold": 1
+                },
+                "dot": {
+                    "duration": 300,
+                    "toggle": true,
+                    "mods": {
+                        "winter_style.activate": 1
+                    }
+                }
+            },
+            {
                 "id": "make_modest_gift",
                 "name": "Make modest gift",
                 "desc": "Prepare a small, modest gift from simple things you have found.",
