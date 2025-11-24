@@ -118,6 +118,24 @@
                 }
             },
             {
+                "id": "church_feast",
+                "name": "Winter feast",
+                "desc": "Attend a winter church feast and receive warm food.",
+                "require": "winter>=1",
+                "tag": "seasonal,winter_style",
+                "duration": 10,
+                "effect": {
+                    "nutrition": 1,
+                    "supplication": 3
+                },
+                "result": {
+                    "food": 5,
+                    "breadcrumbs": 30,
+                    "supplication": 40,
+                    "nutrition": 20
+                }
+            },
+            {
                 "id": "make_modest_gift",
                 "name": "Make modest gift",
                 "desc": "Prepare a small, modest gift from simple things you have found.",
