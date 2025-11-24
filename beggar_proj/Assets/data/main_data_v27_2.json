@@ -183,6 +183,25 @@
                 }
             },
             {
+                "id": "winter_benevolence",
+                "name": "Winter benevolence",
+                "desc": "Let the grace of the Lady's birth flow into quiet winter kindness.",
+                "require": "mass_birth_lady",
+                "tag": "winter_style,t_repeatable_task",
+                "duration": 2,
+                "cost": {
+                    "thoughts": 5
+                },
+                "dot": {
+                    "duration": 50,
+                    "mods": {
+                        "benevolence.max": 300,
+                        "thoughts.rate": 1,
+                        "benevolence.rate": 3
+                    }
+                }
+            },
+            {
                 "id": "make_modest_gift",
                 "name": "Make modest gift",
                 "desc": "Prepare a small, modest gift from simple things you have found.",
