@@ -11,8 +11,22 @@
             {
                 "id": "winter",
                 "name": "Winter",
-                "desc": "A long, deep winter that has finally arrived."
+                "desc": "Winter is coming, or it is already here",
+                "max": 1,
+                "mod": {
+                    "cold.rate": 1
+                }
+            },
+            {
+                "id": "cold",
+                "desc": "Low temperature",
+                "max": 100,
+                "mod": {
+                    "supplication.max": -1,
+                    "supplication.rate": -0.1
+                }
             }
+
         ]
     },
     {
@@ -56,8 +70,9 @@
                 "name": "Await winter",
                 "desc": "Let the seasons pass until winter finally arrives.",
                 "require": "season_skill>=3",
+                "need": "winter<=0",
                 "tag": "seasonal",
-                "duration": 60,
+                "duration": 100,
                 "cost": {
                     "season_time": 100
                 },
@@ -66,6 +81,86 @@
                 },
                 "result": {
                     "winter": 1
+                }
+            },
+            {
+                "id": "let_winter_pass",
+                "name": "Let winter pass",
+                "desc": "Wait until the cold season is finally over.",
+                "require": "winter>=1",
+                "tag": "seasonal",
+                "need": "winter",
+                "duration": 80,
+                "run": {
+                    "season_time": 2
+                },
+                "result": {
+                    "winter": -1
+                }
+            },
+            {
+                "id": "make_modest_gift",
+                "name": "Make modest gift",
+                "desc": "Prepare a small, modest gift from simple things you have found.",
+                "require": "gift_making",
+                "tag": "giftmaking",
+                "duration": 40,
+                "cost": {
+                    "thoughts": 50,
+                    "breadcrumbs": 10,
+                    "foraging": 10
+                },
+                "result": {
+                    "weak_gift": 1
+                }
+            },
+            {
+                "id": "make_gift",
+                "name": "Make gift",
+                "desc": "Assemble a proper gift, investing more time and coin.",
+                "require": "gift_making>=3&&make_modest_gift>=3",
+                "tag": "giftmaking",
+                "duration": 60,
+                "cost": {
+                    "coin": 5,
+                    "foraging": 20
+                },
+                "result": {
+                    "gift": 1
+                }
+            },
+            {
+                "id": "give_modest_gift",
+                "name": "Give modest gift",
+                "desc": "Offer a modest gift to someone in need.",
+                "require": "weak_gift>=1",
+                "tag": "giftgiving,t_power_up",
+                "max": 3,
+                "duration": 30,
+                "cost": {
+                    "weak_gift": 1
+                },
+                "mod": {
+                    "benevolence.max": 5,
+                    "gratitude.rate": 0.1,
+                    "benevolence.rate": 0.02
+                }
+            },
+            {
+                "id": "give_gift",
+                "name": "Give gift",
+                "desc": "Present a thoughtful gift, deepening mutual kindness.",
+                "require": "gift>=1",
+                "tag": "giftgiving,t_power_up",
+                "max": 3,
+                "duration": 40,
+                "cost": {
+                    "gift": 1
+                },
+                "mod": {
+                    "benevolence.max": 10,
+                    "gratitude.rate": 0.2,
+                    "benevolence.rate": 0.04
                 }
             }
         ]
@@ -109,7 +204,19 @@
                 },
                 "mod": {
                     "supplication.max": 5,
-                    "patience.max": 50
+                    "season_time.max": 50
+                }
+            },
+            {
+                "id": "gift_making",
+                "name": "Gift making",
+                "desc": "Learn how to prepare small gifts and offerings.",
+                "require": "charisma>=2",
+                "cost": {
+                    "skillpoints": 50
+                },
+                "mod": {
+                    "benevolence.max": 5
                 }
             }
         ]
