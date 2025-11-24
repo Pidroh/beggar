@@ -81,7 +81,7 @@
                 "tag": "priest_style,t_repeatable_task",
                 "duration": 8,
                 "cost": {
-                    "clarity": 5,
+                    "clarity": 3,
                     "reflection": 1
                 },
                 "result": {
@@ -90,10 +90,30 @@
                 }
             },
             {
+                "id": "fervorous_prayer",
+                "name": "Fervorous prayer",
+                "desc": "Enter into intense, sustained prayer.",
+                "require": "priest_exp>=1&&faithskill>=2",
+                "tag": "priest_style,t_repeatable_task",
+                "duration": 6,
+                "cost": {
+                    "priest_exp": 1
+                },
+                "dot": {
+                    "duration": 240,
+                    "toggle": true,
+                    "mods": {
+                        "better_faith.max": 1,
+                        "better_faith.mod.thoughts.rate": 1,
+                        "better_faith.mod.supplication.rate": 1
+                    }
+                }
+            },
+            {
                 "id": "churchsocial_support",
                 "name": "Cathedral goodwill",
                 "desc": "Leverage your church social style to build support for the cathedral.",
-                "require": "churchsocial_style.activate&&cathedral_matters",
+                "require": "cathedral_matters",
                 "tag": "churchsocial_style,t_repeatable_task",
                 "duration": 10,
                 "cost": {
@@ -351,19 +371,51 @@
               },
               {
                   "id": "faith_gen2",
-                "name": "Strengthen faith",
-                "desc": "Solidy your beliefs",
-                "require": "faith>20&&faith_skill",
-                "tag": "religionry,t_power_up",
-                "duration": 20,
-                "cost": {
-                    "faith": 5,
-                    "clarity": 3
-                },
-                "result": {
-                    "better_faith": 1
-                }
-            },
+                  "name": "Strengthen faith",
+                  "desc": "Solidy your beliefs",
+                  "require": "faith>20&&faith_skill",
+                  "tag": "religionry,t_power_up",
+                  "duration": 20,
+                  "cost": {
+                      "faith": 5,
+                      "clarity": 3
+                  },
+                  "result": {
+                      "better_faith": 1
+                  }
+              },
+              {
+                  "id": "faithskill_upgrade_2",
+                  "name": "Deep spiritual conviction",
+                  "desc": "Let your growing spiritual conviction reshape how faith flows through you.",
+                  "require": "faithskill>=2",
+                  "tag": "religionry,t_power_up",
+                  "duration": 20,
+                  "cost": {
+                      "faith": 15,
+                      "clarity": 6
+                  },
+                  "mod": {
+                      "faith.max": 10,
+                      "better_faith.max": 1
+                  }
+              },
+              {
+                  "id": "faithskill_upgrade_3",
+                  "name": "Unshakable conviction",
+                  "desc": "Your faith becomes a fixed point, steadying every other devotion.",
+                  "require": "faithskill>=3",
+                  "tag": "religionry,t_power_up",
+                  "duration": 20,
+                  "cost": {
+                      "faith": 25,
+                      "clarity": 10
+                  },
+                  "mod": {
+                      "faith.max": 15,
+                      "better_faith.max": 2
+                  }
+              },
             {
                 "id": "benevolent_alms1",
                 "name": "Quiet generosity",
@@ -526,7 +578,7 @@
             {
                 "id": "advance_alms",
                 "name": "Greater alms",
-                "require": "t_tier3_church&&charity>2",
+                "require": "t_priest&&charity>2",
                 "cost": {
                     "skillpoints": 75,
                     "better_faith": 3
