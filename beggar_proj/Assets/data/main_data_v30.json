@@ -402,6 +402,22 @@
                   }
               },
               {
+                  "id": "faithskill_upgrade_2b",
+                  "name": "Faith in the scriptures",
+                  "desc": "Re-interpret the scriptures with your deepened faith",
+                  "require": "faithskill>=2&&holyscriptures>=6",
+                  "tag": "religionry,t_power_up",
+                  "duration": 20,
+                  "cost": {
+                      "better_faith": 10,
+                      "reflection": 5
+                  },
+                  "mod": {
+                      "better_faith.max": 5,
+                      "faith_gen2.result.better_faith": 1
+                  }
+              },
+              {
                   "id": "faithskill_upgrade_3",
                   "name": "Spiritual musings",
                   "desc": "Organize all your thoughts and feelings regarding your faith",
@@ -417,6 +433,23 @@
                     "realization.max": 1,
                       "reflection.max": 5,
                       "better_faith.max": 2
+                  }
+              },
+              {
+                  "id": "faithskill_upgrade_3b",
+                  "name": "Contemplative stillness",
+                  "desc": "Let silent contemplation root your faith beyond doubt.",
+                  "require": "faithskill>=3",
+                  "tag": "religionry,t_power_up",
+                  "duration": 20,
+                  "cost": {
+                      "faith": 30,
+                      "clarity": 10
+                  },
+                  "mod": {
+                      "faith.max": 20,
+                      "fear.max": -5,
+                      "perplexion.max": -5
                   }
               },
             {
