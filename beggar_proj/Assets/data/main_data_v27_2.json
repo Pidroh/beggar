@@ -1291,81 +1291,14 @@
                 "desc": "A person who steals without using force",
                 "tags": "t_tier2,not_church_class_automated",
                 "lock": "t_tier2,jointhechurch",
-                "require": "t_tier1&&crime>0&&stealth>0",
+                "require": "t_tier1&&gift_making>=3",
                 "need": "theself_2",
                 "cost": {
-                    "guilt": 30
+                    "benevolence": 50,
+                    "weak_gift": 3
                 },
                 "mod": {
-                    "crime.max": 1,
-                    "stealth.max": 1,
-                    "dominance.max": 40,
-                    "cunning.max": 1
-                }
-            },
-            {
-                "id": "burglar",
-                "name": "Burglar",
-                "desc": "Keep your doors closed. Not that it will help you.",
-                "tags": "t_tier3,tier_3_crime,not_church_class_automated",
-                "lock": "t_tier3",
-                "require": "theself_3&&crime>2&&housebreaking>0",
-                "need": "theself_3&&housebreaking>2",
-                "cost": {
-                    "guilt": 100,
-                    "thoughts": 400,
-                    "clarity": 80,
-                    "reflection": 10,
-                    "breakinlogistics": 3
-                },
-                "mod": {
-                    "crime.max": 1,
-                    "stealth.max": 1,
-                    "housebreaking.max": 1,
-                    "breakinlogistics.max": 10,
-                    "breakinlogistics.rate": 0.02
-                }
-            },
-            {
-                "id": "underboss",
-                "name": "Underboss",
-                "desc": "The sub-leader of a small crime organization in the city",
-                "tags": "t_tier4,crime_leader,tier_3_crime,not_church_class_automated",
-                "lock": "t_tier4",
-                "require": "t_tier3&&followers>0&&crime>2",
-                "need": "theself_4&&crime>3",
-                "cost": {
-                    "clarity": 25,
-                    "realization": 1,
-                    "musing": 100,
-                    "nutrition": 8,
-                    "luxury": 15
-                },
-                "mod": {
-                    "crime.max": 1,
-                    "charisma.max": 1,
-                    "breakinlogistics.max": 20
-                }
-            },
-            {
-                "id": "urbansage",
-                "name": "Urban sage",
-                "desc": "The first and greatest victory is to conquer yourself",
-                "tags": "t_tier4,not_church_class_automated",
-                "lock": "t_tier4",
-                "need": "theself_4",
-                "require": "t_tier3&&philosophy>=3",
-                "cost": {
-                    "thoughts": 200,
-                    "clarity": 25,
-                    "realization": 1,
-                    "musing": 100,
-                    "nutrition": 8
-                },
-                "mod": {
-                    "philosophy.max": 1,
-                    "contemplation.max": 1,
-                    "beggarhood.max": 1
+                    "gift_making.max": 1
                 }
             }
         ]
@@ -1374,120 +1307,16 @@
         "type": "SKILL",
         "items": [
             {
-                "id": "crime",
-                "desc": "How much you know about breaking the law",
-                "require": "cunning>2&&guilt>10",
-                "tags": "cunning_tag",
+                "id": "season_skill",
+                "name": "Seasons",
+                "desc": "This will lead you to winter",
+                "require": "t_tier2",
                 "cost": {
                     "skillpoints": 50
                 },
                 "mod": {
-                    "guilt.max": 5
-                }
-            },
-            {
-                "id": "organized_crime",
-                "name": "Organized crime",
-                "desc": "Breaking the law with a big group",
-                "require": "crime_leader",
-                "tags": "cunning_tag",
-                "cost": {
-                    "skillpoints": 50,
-                    "followers": 3
-                },
-                "mod": {
-                    "breakinlogistics.max": 2,
-                    "charm.max": 2
-                }
-            },
-            {
-                "id": "stealth",
-                "desc": "That which cannot be detected",
-                "require": "cunning>2&&exercise>2",
-                "tags": "cunning_tag",
-                "cost": {
-                    "skillpoints": 50
-                },
-                "mod": {
-                    "fatigue.max": 0.3,
-                    "foraging.max": 1,
-                    "danger.rate": -0.1
-                }
-            },
-            {
-                "id": "housebreaking",
-                "name": "Housebreaking",
-                "desc": "The art of entering into a building when you're not supposed to do so.",
-                "require": "cunning>2&&guilt>10&&crime>2&&t_tier1",
-                "tags": "cunning_tag",
-                "cost": {
-                    "skillpoints": 50
-                },
-                "mod": {
-                    "guilt.max": 5,
-                    "breakinlogistics.max": 5
-                }
-            },
-            {
-                "id": "scribing",
-                "name": "Scribing",
-                "desc": "The art of copying words. Preservation and sharing of information.",
-                "require": "latin>2&&t_tier2",
-                "tags": "academic_skill",
-                "cost": {
-                    "skillpoints": 50
-                },
-                "mod": {
-                    "fundamentals.max": 3
-                }
-            },
-            {
-                "id": "debating",
-                "name": "Debating",
-                "desc": "Discussion is an exchange of knowledge; an argument an exchange of ignorance",
-                "require": "philosophy>2&&academia>2",
-                "tags": "academic_skill",
-                "max": 1,
-                "cost": {
-                    "reflection": 5,
-                    "clarity": 50
-                },
-                "mod": {
-                    "fundamentals.max": 2,
-                    "clarity.max": 3,
-                    "reflection.max": 1
-                }
-            },
-            {
-                "id": "appearances",
-                "name": "Appearances",
-                "desc": "Sometimes what is outside matters as much as what is inside",
-                "require": "safe_house&&nice_clothes",
-                "tags": "social",
-                "max": 1,
-                "cost": {
-                    "nutrition": 90,
-                    "clarity": 50
-                },
-                "mod": {
-                    "looks.max": 5,
-                    "charm.max": 5,
-                    "charm.rate": 0.05,
-                    "supplication.max": 5
-                }
-            },
-            {
-                "id": "extravagance",
-                "desc": "Some things in life require quite a bit of money",
-                "require": "appearances>1",
-                "tags": "social",
-                "cost": {
-                    "looks": 10,
-                    "guilt": 80
-                },
-                "mod": {
-                    "luxury.max": 3,
-                    "looks.max": 1
+                    "supplication.max": 5,
+                    "patience.max": 50
                 }
             }
         ]
