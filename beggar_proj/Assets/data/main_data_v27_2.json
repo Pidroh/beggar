@@ -12,7 +12,41 @@
     },
     {
         "type": "TASK",
-        "items": []
+        "items": [
+            {
+                "id": "seasonal_contemplation",
+                "name": "Seasonal contemplation",
+                "desc": "Settle into a rhythm of waiting, letting the seasons turn in their own time.",
+                "require": "season_skill",
+                "tag": "seasonal,t_power_up",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "supplication": 100
+                },
+                "mod": {
+                    "season_time.rate": 0.25
+                }
+            },
+            {
+                "id": "seasonal_contemplation_2",
+                "name": "Thoughts of the season",
+                "desc": "Sink even further into the long turning of the seasons.",
+                "require": "season_skill>=2",
+                "tag": "seasonal,t_power_up",
+                "max": 1,
+                "duration": 40,
+                "cost": {
+                    "supplication": 100,
+                    "thoughts": 100,
+                    "season_time": 10
+                },
+                "mod": {
+                    "season_time.rate": 0.75,
+                    "thoughts.rate": 1
+                }
+            }
+        ]
     },
     {
         "type": "HOUSE",
