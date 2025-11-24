@@ -443,13 +443,12 @@
                   "tag": "religionry,t_power_up",
                   "duration": 20,
                   "cost": {
-                      "faith": 30,
-                      "clarity": 10
+                      "better_faith": 10,
+                      "musing": 100
                   },
                   "mod": {
-                      "faith.max": 20,
-                      "fear.max": -5,
-                      "perplexion.max": -5
+                      "better_faith.max": 20,
+                      "faith.rate": 0.5
                   }
               },
             {
