@@ -7,6 +7,11 @@
                 "name": "Seasonal time",
                 "desc": "Capacity to wait calmly for many days to pass.",
                 "max": 50
+            },
+            {
+                "id": "winter",
+                "name": "Winter",
+                "desc": "A long, deep winter that has finally arrived."
             }
         ]
     },
@@ -44,6 +49,23 @@
                 "mod": {
                     "season_time.rate": 0.75,
                     "thoughts.rate": 1
+                }
+            },
+            {
+                "id": "await_winter",
+                "name": "Await winter",
+                "desc": "Let the seasons pass until winter finally arrives.",
+                "require": "season_skill>=3",
+                "tag": "seasonal",
+                "duration": 60,
+                "cost": {
+                    "season_time": 100
+                },
+                "run": {
+                    "season_time": 2
+                },
+                "result": {
+                    "winter": 1
                 }
             }
         ]
