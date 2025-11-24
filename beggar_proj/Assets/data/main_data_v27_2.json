@@ -199,6 +199,24 @@
                     "gratitude.rate": 0.2,
                     "benevolence.rate": 0.04
                 }
+            },
+            {
+                "id": "make_rat_present",
+                "name": "Small rat present",
+                "desc": "Prepare a small present to leave out for your rats.",
+                "require": "gift_making>=4&&rodentology>=4",
+                "tag": "giftmaking",
+                "max": 2,
+                "duration": 20,
+                "cost": {
+                    "gift": 2,
+                    "foraging": 15
+                },
+                "mod": {
+                    "ratbond.max": 30,
+                    "ratbond.rate": 0.2,
+                    "benevolence.rate": 1
+                }
             }
         ]
     },
