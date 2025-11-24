@@ -20,10 +20,21 @@
             {
                 "id": "cold",
                 "desc": "Low temperature",
-                "max": 100,
+                "max": 1000,
                 "mod": {
                     "supplication.max": -1,
-                    "supplication.rate": -0.1
+                    "supplication.rate": -0.1,
+                    "thoughts.rate": -0.1
+                }
+            },
+            {
+                "id": "special_gift",
+                "name": "Special gift",
+                "desc": "A carefully crafted special gift that seems to bless its owner.",
+                "max": 3,
+                "mod": {
+                    "benevolence.max": 50,
+                    "gratitude.rate": 0.3
                 }
             }
 
@@ -230,6 +241,23 @@
                 },
                 "result": {
                     "gift": 1
+                }
+            },
+            {
+                "id": "make_special_gift",
+                "name": "Make special gift",
+                "desc": "Craft a special gift that carries its own quiet blessing.",
+                "require": "gift_making>=5",
+                "tag": "giftmaking,t_power_up",
+                "max": 1,
+                "duration": 80,
+                "cost": {
+                    "coin": 20,
+                    "thoughts": 150,
+                    "reflection": 10
+                },
+                "result": {
+                    "special_gift": 1
                 }
             },
             {
