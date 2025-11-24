@@ -386,33 +386,36 @@
               },
               {
                   "id": "faithskill_upgrade_2",
-                  "name": "Deep spiritual conviction",
-                  "desc": "Let your growing spiritual conviction reshape how faith flows through you.",
+                  "name": "Spiritual fortitude",
+                  "desc": "Let your growing spiritual conviction make your mind more resistant.",
                   "require": "faithskill>=2",
                   "tag": "religionry,t_power_up",
                   "duration": 20,
                   "cost": {
-                      "faith": 15,
-                      "clarity": 6
+                      "better_faith": 3,
+                      "clarity": 5
                   },
                   "mod": {
-                      "faith.max": 10,
-                      "better_faith.max": 1
+                      "fear.max": 4,
+                      "perplexion.max": 4,
+                      "thoughts.max": 100
                   }
               },
               {
                   "id": "faithskill_upgrade_3",
-                  "name": "Unshakable conviction",
-                  "desc": "Your faith becomes a fixed point, steadying every other devotion.",
+                  "name": "Spiritual musings",
+                  "desc": "Organize all your thoughts and feelings regarding your faith",
                   "require": "faithskill>=3",
                   "tag": "religionry,t_power_up",
                   "duration": 20,
                   "cost": {
-                      "faith": 25,
-                      "clarity": 10
+                      "musing": 20,
+                      "reflection": 5
                   },
                   "mod": {
-                      "faith.max": 15,
+                    "thoughts.rate": 1,
+                    "realization.max": 1,
+                      "reflection.max": 5,
                       "better_faith.max": 2
                   }
               },
