@@ -136,6 +136,25 @@
                 }
             },
             {
+                "id": "holy_night_thoughts",
+                "name": "Antecipation of the Holy night",
+                "desc": "Spend a quiet winter night in contemplation and prayer.",
+                "need": "winter>=1&&give_gift",
+                "require": "church_feast>1",
+                "tag": "winter_style,t_power_up",
+                "max": 1,
+                "duration": 60,
+                "cost": {
+                    "thoughts": 100,
+                    "clarity": 20,
+                    "reflection": 3
+                },
+                "mod": {
+                    "faith.max": 10,
+                    "gratitude.rate": 0.5
+                }
+            },
+            {
                 "id": "make_modest_gift",
                 "name": "Make modest gift",
                 "desc": "Prepare a small, modest gift from simple things you have found.",
@@ -225,27 +244,46 @@
         "items": [
         ]
     },
-    {
-        "type": "CLASS",
-        "items": [
-            {
-                "id": "gift_giver",
-                "name": "Gift giever",
-                "desc": "A person who steals without using force",
-                "tags": "t_tier2,not_church_class_automated",
-                "lock": "t_tier2,jointhechurch",
-                "require": "t_tier1&&gift_making>=3",
-                "need": "theself_2",
-                "cost": {
-                    "benevolence": 50,
-                    "weak_gift": 3
-                },
-                "mod": {
-                    "gift_making.max": 1
-                }
-            }
-        ]
-    },
+      {
+          "type": "CLASS",
+          "items": [
+              {
+                  "id": "gift_giver",
+                  "name": "Gift giever",
+                  "desc": "Some who enjoys giving gifts",
+                  "tags": "t_tier2,not_church_class_automated",
+                  "lock": "t_tier2,jointhechurch",
+                  "require": "t_tier1&&gift_making>=3",
+                  "need": "theself_2",
+                  "cost": {
+                      "benevolence": 50,
+                      "weak_gift": 3
+                  },
+                  "mod": {
+                      "gift_making.max": 1,
+                      "benevolence.max": 100
+                  }
+              },
+              {
+                  "id": "gift_master",
+                  "name": "Red-dressed gifter",
+                  "desc": "A mysterious man, clad in red, distributing gifts all around",
+                  "tags": "t_tier3,not_church_class_automated",
+                  "lock": "t_tier3,jointhechurch",
+                  "require": "t_tier2&&gift_making>=4",
+                  "need": "theself_3&&redcloths",
+                  "cost": {
+                      "benevolence": 150,
+                      "gift": 2
+                  },
+                  "mod": {
+                      "gift_making.max": 1,
+                      "benevolence.rate":  0.5,
+                      "benevolence.max": 150
+                  }
+              }
+          ]
+      },
     {
         "type": "SKILL",
         "items": [
