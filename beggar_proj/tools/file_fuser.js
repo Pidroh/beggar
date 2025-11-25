@@ -61,8 +61,15 @@ function fuseFiles(folderPath, sourceSuffix, targetSuffix) {
         return;
     }
 
-    const sourceFile = `main_data_${sourceSuffix}.json`;
-    const targetFile = `main_data_${targetSuffix}.json`;
+    const normalizedSource = sourceSuffix.startsWith('v')
+        ? sourceSuffix
+        : 'v' + sourceSuffix;
+    const normalizedTarget = targetSuffix.startsWith('v')
+        ? targetSuffix
+        : 'v' + targetSuffix;
+
+    const sourceFile = `main_data_${normalizedSource}.json`;
+    const targetFile = `main_data_${normalizedTarget}.json`;
 
     const sourcePath = path.join(folderPath, sourceFile);
     const targetPath = path.join(folderPath, targetFile);
@@ -152,4 +159,3 @@ function askForFolder() {
 }
 
 main();
-
