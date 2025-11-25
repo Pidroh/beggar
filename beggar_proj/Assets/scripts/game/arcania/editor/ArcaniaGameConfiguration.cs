@@ -16,12 +16,7 @@ public class ArcaniaGameConfiguration : ScriptableObject
         public string id;
         public string jsonKey;
         public string miscKey;
-        public List<TextAsset> jsonDatas;
         public string buildConfigId;
-        public int majorVersionOverride;
-        public int versionOverride;
-        public int patchOverride;
-        public string SubtitleOverride;
         public bool patreonBuild;
     }
 

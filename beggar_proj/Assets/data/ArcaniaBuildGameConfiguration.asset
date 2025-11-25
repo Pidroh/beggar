@@ -171,12 +171,12 @@ MonoBehaviour:
       - {fileID: 4900000, guid: 2acd81d63e74d93489353a1d556a8b4c, type: 3}
   entryMiscInfos:
   - key: main
-    majorVersionOverride: 28
+    majorVersionOverride: 29
     versionOverride: 2
     patchOverride: 0
-    SubtitleOverride: Sewer Pathology
+    SubtitleOverride: Sewer & Holidays
   - key: patreon
-    majorVersionOverride: 30
+    majorVersionOverride: 32
     versionOverride: 0
     patchOverride: 0
-    SubtitleOverride: Priest
+    SubtitleOverride: Priest & Holidays

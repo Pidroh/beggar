@@ -27,7 +27,7 @@ public class BeggarEditorTools
             
             if (config != null)
             {
-                foreach (var entry in config.entries)
+                foreach (var entry in config.entryMiscInfos)
                 {
                     Local.GetText(entry.SubtitleOverride);
                 }
