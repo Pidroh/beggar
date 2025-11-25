@@ -249,10 +249,10 @@
                 "desc": "Craft a special gift that carries its own quiet blessing.",
                 "require": "gift_making>=5",
                 "tag": "giftmaking,t_power_up",
-                "max": 1,
-                "duration": 80,
+                "duration": 50,
                 "cost": {
                     "coin": 20,
+                    "foraging": 20,
                     "thoughts": 150,
                     "reflection": 10
                 },

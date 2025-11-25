@@ -153,6 +153,31 @@
                 "modification": {
                     "sorrow.max": 1
                 }
+            },
+            {
+                "id": "gift_ending",
+                "name": "Who am I in this holy night?",
+                "desc": "Ponder about what to be in the face of the Lady's birth",
+                "require": "special_gift>0",
+                "duration": 90,
+                "tags": "ending_game,t_power_up",
+                "need": "winter",
+                "max": 1,
+                "cost": {
+                    "thoughts": 800,
+                    "supplication": 900,
+                    "clarity": 80,
+                    "benevolence": 200,
+                    "special_gift": 1
+                },
+                "run": {
+                    "benevolence": 5,
+                    "thoughts": 15,
+                    "supplication": 15
+                },
+                "result": {
+                    "special_gift": 1
+                }
             }
         ]
     },
