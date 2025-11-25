@@ -311,6 +311,27 @@
                     "ratbond.rate": 0.2,
                     "benevolence.rate": 1
                 }
+            },
+            {
+                "id": "ladymas_rat_party",
+                "name": "Ladymas party with rats",
+                "desc": "Share a small Ladymas celebration with your rat friends.",
+                "require": "winter>=1&&make_rat_present>=2&&holy_night_thoughts",
+                "tag": "winter_style,t_power_up",
+                "max": 1,
+                "duration": 60,
+                "cost": {
+                    "weak_gift": 3,
+                    "gift": 3,
+                    "ratbond": 100,
+                    "benevolence": 100
+                },
+                "mod": {
+                    "ratbond.max": 200,
+                    "ratbond.rate": 1,
+                    "benevolence.max": 200,
+                    "benevolence.rate": 1
+                }
             }
         ]
     },
