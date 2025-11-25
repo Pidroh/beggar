@@ -83,34 +83,50 @@ function fuseFiles(folderPath, sourceSuffix, targetSuffix) {
         return;
     }
 
-    let sourceData;
-    let targetData;
+    let sourceDataRaw;
+    let targetDataRaw;
 
     try {
-        sourceData = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+        sourceDataRaw = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
     } catch (err) {
         console.error('Failed to parse source JSON:', sourceFile, err.message);
         return;
     }
 
     try {
-        targetData = JSON.parse(fs.readFileSync(targetPath, 'utf8'));
+        targetDataRaw = JSON.parse(fs.readFileSync(targetPath, 'utf8'));
     } catch (err) {
         console.error('Failed to parse target JSON:', targetFile, err.message);
         return;
     }
 
-    if (!Array.isArray(sourceData)) {
+    if (!Array.isArray(sourceDataRaw)) {
         console.log('Source JSON is not an array:', sourceFile);
         return;
     }
-    if (!Array.isArray(targetData)) {
+    if (!Array.isArray(targetDataRaw)) {
         console.log('Target JSON is not an array:', targetFile);
         return;
     }
 
-    const originalTargetLength = targetData.length;
-    targetData = targetData.concat(sourceData);
+    // First, check for duplicate IDs between source and target.
+    const duplicates = findDuplicateIds(targetDataRaw, sourceDataRaw);
+    if (duplicates.length > 0) {
+        console.log('Duplicate IDs found between source and target. Aborting without changes.');
+        for (const dup of duplicates) {
+            console.log(`  Type: ${dup.type}, ID: ${dup.id}`);
+        }
+        return;
+    }
+
+    // Merge by type and id, so we don't end up with
+    // multiple RESOURCE/TASK/etc blocks.
+    const merged = mergeBlocks(targetDataRaw, sourceDataRaw);
+
+    const originalBlockCount = targetDataRaw.length;
+    const originalItemCount = countItems(targetDataRaw);
+    const newBlockCount = merged.length;
+    const newItemCount = countItems(merged);
 
     // Optional backup
     const backupPath = `${targetPath}.bak`;
@@ -121,13 +137,120 @@ function fuseFiles(folderPath, sourceSuffix, targetSuffix) {
         console.warn('Could not create backup of target file:', err.message);
     }
 
-    fs.writeFileSync(targetPath, JSON.stringify(targetData, null, 4));
+    fs.writeFileSync(targetPath, JSON.stringify(merged, null, 4));
 
     console.log('----------------------------------------');
     console.log('Source file :', sourceFile);
     console.log('Target file :', targetFile);
-    console.log('Target size :', originalTargetLength, '->', targetData.length);
+    console.log('Blocks      :', originalBlockCount, '->', newBlockCount);
+    console.log('Items       :', originalItemCount, '->', newItemCount);
     console.log('Fusion complete.');
+}
+
+// Merge arrays of blocks from target and source.
+// - Blocks are grouped by "type"
+// - Within each type, items are merged by "id"
+function mergeBlocks(targetBlocks, sourceBlocks) {
+    // Process target first, then source so source wins on conflicts.
+    const all = [...targetBlocks, ...sourceBlocks];
+    const typeMap = new Map();
+
+    for (const block of all) {
+        if (!block || typeof block !== 'object') continue;
+        const type = block.type || 'UNKNOWN';
+
+        if (!typeMap.has(type)) {
+            const clone = {};
+            for (const key of Object.keys(block)) {
+                if (key !== 'items') {
+                    clone[key] = block[key];
+                }
+            }
+            clone.type = type;
+            clone.items = [];
+            clone._idIndex = new Map();
+            typeMap.set(type, clone);
+        }
+
+        const entry = typeMap.get(type);
+        const items = Array.isArray(block.items) ? block.items : [];
+
+        for (const item of items) {
+            const id = item && item.id;
+            if (id && entry._idIndex.has(id)) {
+                const idx = entry._idIndex.get(id);
+                entry.items[idx] = item;
+            } else {
+                if (id) {
+                    entry._idIndex.set(id, entry.items.length);
+                }
+                entry.items.push(item);
+            }
+        }
+    }
+
+    const result = [];
+    for (const entry of typeMap.values()) {
+        const { _idIndex, ...clean } = entry;
+        result.push(clean);
+    }
+    return result;
+}
+
+function countItems(blocks) {
+    let total = 0;
+    for (const block of blocks) {
+        if (Array.isArray(block.items)) {
+            total += block.items.length;
+        }
+    }
+    return total;
+}
+
+// Find duplicate IDs between target and source, grouped by type.
+// Returns an array of { type, id }.
+function findDuplicateIds(targetBlocks, sourceBlocks) {
+    const typeToIds = new Map();
+
+    // Record all ids in target by type
+    for (const block of targetBlocks) {
+        if (!block || typeof block !== 'object') continue;
+        const type = block.type || 'UNKNOWN';
+        if (!typeToIds.has(type)) {
+            typeToIds.set(type, new Set());
+        }
+        const idSet = typeToIds.get(type);
+        const items = Array.isArray(block.items) ? block.items : [];
+        for (const item of items) {
+            if (item && typeof item.id === 'string') {
+                idSet.add(item.id);
+            }
+        }
+    }
+
+    const duplicates = [];
+    const seen = new Set(); // avoid listing the same (type,id) twice
+
+    // Check each source id against the target sets
+    for (const block of sourceBlocks) {
+        if (!block || typeof block !== 'object') continue;
+        const type = block.type || 'UNKNOWN';
+        const idSet = typeToIds.get(type);
+        if (!idSet) continue;
+
+        const items = Array.isArray(block.items) ? block.items : [];
+        for (const item of items) {
+            if (item && typeof item.id === 'string') {
+                const key = `${type}::${item.id}`;
+                if (idSet.has(item.id) && !seen.has(key)) {
+                    seen.add(key);
+                    duplicates.push({ type, id: item.id });
+                }
+            }
+        }
+    }
+
+    return duplicates;
 }
 
 // Electron-style folder picker, same pattern as main_data_search.js
