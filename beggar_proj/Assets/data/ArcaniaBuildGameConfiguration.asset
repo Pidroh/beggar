@@ -15,8 +15,8 @@ MonoBehaviour:
   configurationReference: {fileID: 11400000, guid: 5838a758d2e4b8d449cd508dbad7e1a6, type: 2}
   entries:
   - id: normal
-    jsonKey: 
-    miscKey: 
+    jsonKey: main
+    miscKey: main
     jsonDatas:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -33,8 +33,8 @@ MonoBehaviour:
     SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: android
-    jsonKey: 
-    miscKey: 
+    jsonKey: main
+    miscKey: main
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
@@ -68,8 +68,8 @@ MonoBehaviour:
     SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: normal_steam_demo
-    jsonKey: 
-    miscKey: 
+    jsonKey: main
+    miscKey: main
     jsonDatas:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -85,8 +85,8 @@ MonoBehaviour:
     SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: patreon
-    jsonKey: 
-    miscKey: 
+    jsonKey: patreon
+    miscKey: patreon
     jsonDatas:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -103,8 +103,8 @@ MonoBehaviour:
     SubtitleOverride: Sewer Pathology
     patreonBuild: 0
   - id: patreon_windows
-    jsonKey: 
-    miscKey: 
+    jsonKey: patreon
+    miscKey: patreon
     jsonDatas:
     - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
@@ -121,8 +121,8 @@ MonoBehaviour:
     SubtitleOverride: Sewer Pathology
     patreonBuild: 0
   - id: patreon_dev
-    jsonKey: 
-    miscKey: 
+    jsonKey: patreon
+    miscKey: patreon
     jsonDatas:
     - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
     - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
