@@ -6,13 +6,13 @@ using System;
 
 public static class JGameControlExecuterEnding
 {
-    public const int ENDING_COUNT = 7;
-    public static string[] endingUnitIds = new string[ENDING_COUNT] { "ponderexistence", "ponderhappiness", "ponderreligion", "pondergood", "fire_ending", "pondercrime", "disease_sad_ending" };
+    public const int ENDING_COUNT = 8;
+    public static string[] endingUnitIds = new string[ENDING_COUNT] { "ponderexistence", "ponderhappiness", "ponderreligion", "pondergood", "fire_ending", "pondercrime", "disease_sad_ending", "gift_ending" };
     public static string[] endingPrefix = new string[ENDING_COUNT] { "You have become one with existence", "You are seeking happiness with your cats", "You are closer to the Divine",
-        "You are maybe a better person?", "You have become one with the fire", "You have lived better than most", "You have become one with your disease"
+        "You are maybe a better person?", "You have become one with the fire", "You have lived better than most", "You have become one with your disease", "Merry christmas!!!"
     };
     public static string[] endingMessageSnippet = new string[ENDING_COUNT] { "I'm the beggar's journey", "The beggar's journey is the cat", 
-        "The beggar's journey is in the scriptures", "The beggar's journey is good", "The beggar's journey is made of fire", "The beggar's journey ends in luxury", "The beggar's journey is a struggle" };
+        "The beggar's journey is in the scriptures", "The beggar's journey is good", "The beggar's journey is made of fire", "The beggar's journey ends in luxury", "The beggar's journey is a struggle", "The beggar wishes you a merry christmas and a wonderful new year!" };
         public static string endingMessage = "$PART1$. \n At least until more content is added. \n\n Let me know you finished the game by sending me: \"$PART2$\".\n\n You can comment on the Reddit post, email, the Discord channel, etc";
 
 
@@ -63,7 +63,7 @@ public static class JGameControlExecuterEnding
 
 public class JEndingGameData
 {
-    public RuntimeUnit[] runtimeUnits = new RuntimeUnit[JGameControlExecuterEnding.ENDING_COUNT] { null, null, null, null, null, null, null };
+    public RuntimeUnit[] runtimeUnits = new RuntimeUnit[JGameControlExecuterEnding.ENDING_COUNT] { null, null, null, null, null, null, null, null };
 
     public (JLayout.JLayoutRuntimeUnit, JLayout.JLayoutChild) SettingsButton { get; internal set; }
     public (JLayoutRuntimeUnit, JLayoutChild) PatreonButton { get; internal set; }
