@@ -7,7 +7,8 @@ public class ArcaniaGameConfiguration : ScriptableObject
 {
     public ArcaniaGameConfigurationUnit configurationReference;
     public List<Entry> entries;
-    public JsonEntries jsonEntries;
+    public List<JsonEntries> jsonEntries;
+    public List<EntryMiscInfo> entryMiscInfos;
 
     [Serializable]
     public class Entry
@@ -20,6 +21,16 @@ public class ArcaniaGameConfiguration : ScriptableObject
         public int patchOverride;
         public string SubtitleOverride;
         public bool patreonBuild;
+    }
+
+    [Serializable]
+    public class EntryMiscInfo
+    {
+        public string key;
+        public int majorVersionOverride;
+        public int versionOverride;
+        public int patchOverride;
+        public string SubtitleOverride;
     }
 }
 #endif
