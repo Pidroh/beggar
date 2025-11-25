@@ -37,6 +37,13 @@ function findEndingIds(folderPath) {
 
         for (const block of jsonData) {
             if (!block || !Array.isArray(block.items)) continue;
+
+            const type = (block.type || '').toString().toUpperCase();
+            if (type === 'DIALOG') {
+                // Dialog entries can also use ending_game tag; ignore for endings list.
+                continue;
+            }
+
             for (const item of block.items) {
                 if (!item || typeof item !== 'object') continue;
                 const id = item.id;
