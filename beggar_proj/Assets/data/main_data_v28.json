@@ -97,6 +97,26 @@
                 }
             },
             {
+                "id": "weak_gift",
+                "name": "Modest gift",
+                "desc": "A gift you made with what you could",
+                "max": 3,
+                "mod": {
+                    "benevolence.max": 10,
+                    "gratitude.rate": 0.01
+                }
+            },
+            {
+                "id": "gift",
+                "name": "Gift",
+                "desc": "Quite a nice gift, if you can say so yourself",
+                "max": 3,
+                "mod": {
+                    "benevolence.max": 15,
+                    "gratitude.rate": 0.05
+                }
+            },
+            {
                 "id": "special_gift",
                 "name": "Special gift",
                 "desc": "A carefully crafted special gift that seems to bless its owner.",
@@ -1993,7 +2013,28 @@
     },
     {
         "type": "FURNITURE",
-        "items": []
+        "items": [
+            {
+                "id": "redclothes",
+                "name": "Red clothes",
+                "desc": "You look nice on these",
+                "require": "winter&&weak_gift>0",
+                "tag": "seasonal",
+                "max": 1,
+                "cost": {
+                    "coin": 5,
+                    "gift": 1
+                },
+                "mod": {
+                    "looks.max": 10,
+                    "looks.rate": 0.1,
+                    "benevolence.max": 3,
+                    "special_gift.max": 1,
+                    "cold.mod.supplication.rate": 0.03,
+                    "space": 1
+                }
+            }
+        ]
     },
     {
         "type": "HINT",
