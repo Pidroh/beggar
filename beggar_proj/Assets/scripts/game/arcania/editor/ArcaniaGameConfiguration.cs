@@ -7,7 +7,7 @@ public class ArcaniaGameConfiguration : ScriptableObject
 {
     public ArcaniaGameConfigurationUnit configurationReference;
     public List<Entry> entries;
-    public List<JsonEntries> jsonEntries;
+    public JsonEntries jsonEntries;
     public List<EntryMiscInfo> entryMiscInfos;
 
     [Serializable]
