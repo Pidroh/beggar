@@ -1800,7 +1800,7 @@
                 "desc": "A mysterious man, clad in red, distributing gifts all around",
                 "tags": "t_tier3,not_church_class_automated",
                 "lock": "t_tier3,jointhechurch",
-                "require": "t_tier2&&gift_making>=4",
+                "require": "t_tier2&&gift_making>=4&&winter",
                 "need": "theself_3&&redclothes",
                 "cost": {
                     "benevolence": 150,

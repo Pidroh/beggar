@@ -59,7 +59,8 @@
                 "mod": {
                     "fireaffinity.max": 1,
                     "fireaffinity.rate": 0.05,
-                    "firepower.rate": -0.2
+                    "firepower.rate": -0.2,
+                    "cold.rate": -15
                 }
             },
             {
