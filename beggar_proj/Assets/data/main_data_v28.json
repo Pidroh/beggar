@@ -1588,6 +1588,22 @@
                 }
             },
             {
+                "id": "winter_rest",
+                "name": "Warm rest",
+                "desc": "Learn to keep yourself warm while resting.",
+                "require": "cold>20",
+                "tag": "winter_style,t_power_up",
+                "max": 1,
+                "duration": 60,
+                "cost": {
+                    "thoughts": 60,
+                    "supplication": 40
+                },
+                "mod": {
+                    "pleafocus.effect.cold": -2
+                }
+            },
+            {
                 "id": "make_modest_gift",
                 "name": "Make modest gift",
                 "desc": "Prepare a small, modest gift from simple things you have found.",
