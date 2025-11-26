@@ -426,7 +426,11 @@ public class JsonReader
             {
                 Debug.LogError($"Potential ID duplication: {iDPointer.id}");
             }
-            iDPointer.RuntimeUnit = ru;
+            if (!isTag) 
+            {
+                iDPointer.RuntimeUnit = ru;
+            }
+            
             if (type == UnitType.RESOURCE)
             {
                 ru.ConfigResource = new ConfigResource()
@@ -439,7 +443,7 @@ public class JsonReader
                     arcaniaUnits.UnitsIntegratedWithHeuristic.Add(ru);
                 }
             }
-            if (type == UnitType.TAG)
+            if (isTag)
             {
                 iDPointer.Tag.RuntimeUnit = ru;
             }
@@ -809,7 +813,7 @@ public class JsonReader
             if (pair.Key == "name" && !localizeNameDescription) bu.name = pair.Value;
             if (pair.Key == "mod" || pair.Key == "mods") ReadMods(owner: ru, dataJsonMod: pair.Value, arcaniaUnits);
             if (pair.Key == "require") ru.ConfigBasic.Require = ConditionalExpressionParser.Parse(pair.Value.AsString, arcaniaUnits);
-            if (pair.Key == "tag" || pair.Key == "tags") ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
+            if ((pair.Key == "tag" || pair.Key == "tags")) ReadTags(tags: ru.ConfigBasic.Tags, pair.Value.AsString, arcaniaUnits);
             if (pair.Key == "invisible") ru.ForceInvisible = true;
             if (pair.Key == "lock")
             {
