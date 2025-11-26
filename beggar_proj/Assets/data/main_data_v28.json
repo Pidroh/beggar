@@ -2065,6 +2065,18 @@
                 "name": "Class hint",
                 "target_id": "sewercreature",
                 "require": "hint_t_tier4"
+            },
+            {
+                "id": "gift_giver_hint",
+                "name": "Class hint",
+                "target_id": "gift_giver",
+                "require": "hint_t_tier2"
+            },
+            {
+                "id": "gift_master_hint",
+                "name": "Class hint",
+                "target_id": "gift_master",
+                "require": "hint_t_tier3"
             }
         ]
     },

@@ -376,106 +376,106 @@
                     "cathedral_support.max": 2
                 }
             },
-              {
-                  "id": "chantry_priest_salary",
-                  "name": "Chantry priest salary",
-                  "desc": "Your chantry duties result in higher salaries",
-                  "require": "chantry_priest",
-                  "tag": "religionry,priest_style,t_power_up",
-                  "max": 1,
-                  "duration": 40,
-                  "cost": {
-                      "churchrespect": 80,
-                      "faith": 10,
-                      "priest_exp": 2,
-                      "cathedral_support": 1
-                  },
-                  "mod": {
-                      "coin.rate": 0.02
-                  }
-              },
-              {
-                  "id": "faith_gen2",
-                  "name": "Strengthen faith",
-                  "desc": "Solidy your beliefs",
-                  "require": "faith>20&&faithskill",
-                  "tag": "religionry,t_power_up",
-                  "duration": 20,
-                  "cost": {
-                      "faith": 5,
-                      "clarity": 3
-                  },
-                  "result": {
-                      "better_faith": 1
-                  }
-              },
-              {
-                  "id": "faithskill_upgrade_2",
-                  "name": "Spiritual fortitude",
-                  "desc": "Let your growing spiritual conviction make your mind more resistant.",
-                  "require": "faithskill>=2",
-                  "tag": "religionry,t_power_up",
-                  "duration": 20,
-                  "cost": {
-                      "better_faith": 3,
-                      "clarity": 5
-                  },
-                  "mod": {
-                      "fear.max": 4,
-                      "perplexion.max": 4,
-                      "thoughts.max": 100
-                  }
-              },
-              {
-                  "id": "faithskill_upgrade_2b",
-                  "name": "Faith in the scriptures",
-                  "desc": "Re-interpret the scriptures with your deepened faith",
-                  "require": "faithskill>=2&&holyscriptures>=6",
-                  "tag": "religionry,t_power_up",
-                  "duration": 20,
-                  "cost": {
-                      "better_faith": 10,
-                      "reflection": 5
-                  },
-                  "mod": {
-                      "better_faith.max": 5,
-                      "faith_gen2.result.better_faith": 1
-                  }
-              },
-              {
-                  "id": "faithskill_upgrade_3",
-                  "name": "Spiritual musings",
-                  "desc": "Organize all your thoughts and feelings regarding your faith",
-                  "require": "faithskill>=3",
-                  "tag": "religionry,t_power_up",
-                  "duration": 20,
-                  "cost": {
-                      "musing": 20,
-                      "reflection": 5
-                  },
-                  "mod": {
+            {
+                "id": "chantry_priest_salary",
+                "name": "Chantry priest salary",
+                "desc": "Your chantry duties result in higher salaries",
+                "require": "chantry_priest",
+                "tag": "religionry,priest_style,t_power_up",
+                "max": 1,
+                "duration": 40,
+                "cost": {
+                    "churchrespect": 80,
+                    "faith": 10,
+                    "priest_exp": 2,
+                    "cathedral_support": 1
+                },
+                "mod": {
+                    "coin.rate": 0.02
+                }
+            },
+            {
+                "id": "faith_gen2",
+                "name": "Strengthen faith",
+                "desc": "Solidy your beliefs",
+                "require": "faith>20&&faithskill",
+                "tag": "religionry,t_power_up",
+                "duration": 20,
+                "cost": {
+                    "faith": 5,
+                    "clarity": 3
+                },
+                "result": {
+                    "better_faith": 1
+                }
+            },
+            {
+                "id": "faithskill_upgrade_2",
+                "name": "Spiritual fortitude",
+                "desc": "Let your growing spiritual conviction make your mind more resistant.",
+                "require": "faithskill>=2",
+                "tag": "religionry,t_power_up",
+                "duration": 20,
+                "cost": {
+                    "better_faith": 3,
+                    "clarity": 5
+                },
+                "mod": {
+                    "fear.max": 4,
+                    "perplexion.max": 4,
+                    "thoughts.max": 100
+                }
+            },
+            {
+                "id": "faithskill_upgrade_2b",
+                "name": "Faith in the scriptures",
+                "desc": "Re-interpret the scriptures with your deepened faith",
+                "require": "faithskill>=2&&holyscriptures>=6",
+                "tag": "religionry,t_power_up",
+                "duration": 20,
+                "cost": {
+                    "better_faith": 10,
+                    "reflection": 5
+                },
+                "mod": {
+                    "better_faith.max": 5,
+                    "faith_gen2.result.better_faith": 1
+                }
+            },
+            {
+                "id": "faithskill_upgrade_3",
+                "name": "Spiritual musings",
+                "desc": "Organize all your thoughts and feelings regarding your faith",
+                "require": "faithskill>=3",
+                "tag": "religionry,t_power_up",
+                "duration": 20,
+                "cost": {
+                    "musing": 20,
+                    "reflection": 5
+                },
+                "mod": {
                     "thoughts.rate": 1,
                     "realization.max": 1,
-                      "reflection.max": 5,
-                      "better_faith.max": 2
-                  }
-              },
-              {
-                  "id": "faithskill_upgrade_3b",
-                  "name": "Contemplative stillness",
-                  "desc": "Let silent contemplation root your faith beyond doubt.",
-                  "require": "faithskill>=3",
-                  "tag": "religionry,t_power_up",
-                  "duration": 20,
-                  "cost": {
-                      "better_faith": 10,
-                      "musing": 100
-                  },
-                  "mod": {
-                      "better_faith.max": 20,
-                      "faith.rate": 0.5
-                  }
-              },
+                    "reflection.max": 5,
+                    "better_faith.max": 2
+                }
+            },
+            {
+                "id": "faithskill_upgrade_3b",
+                "name": "Contemplative stillness",
+                "desc": "Let silent contemplation root your faith beyond doubt.",
+                "require": "faithskill>=3",
+                "tag": "religionry,t_power_up",
+                "duration": 20,
+                "cost": {
+                    "better_faith": 10,
+                    "musing": 100
+                },
+                "mod": {
+                    "better_faith.max": 20,
+                    "faith.rate": 0.5
+                }
+            },
             {
                 "id": "benevolent_alms1",
                 "name": "Quiet generosity",
@@ -535,46 +535,45 @@
             }
         ]
     },
-      {
-          "type": "HOUSE",
-          "items": [
-              {
-                  "id": "rectory_extra_room",
-                  "name": "Rectory's extra room",
-                  "require": "curate",
-                  "cost": {
-                      "churchrespect": 120,
-                      "faith": 80
-                  },
-                  "desc": "A modest extra room in the rectory, close to the heart of parish life.",
-                  "mod": {
-                      "space.max": 15,
-                      "faith.max": 40,
-                      "churchrespect.max": 60
-                  }
-              },
-              {
-                  "id": "cathedral_close_room",
-                  "name": "Cathedral close house",
-                  "require": "chantry_priest",
-                  "cost": {
-                      "cathedral_support": 2,
-                      "faith": 40
-                  },
-                  "desc": "A tiny house inside the cathedral close, steps away from the sanctuary.",
-                  "mod": {
-                      "space.max": 18,
-                      "faith.max": 80,
-                      "cathedral_support.max": 3,
-                      "churchrespect.max": 90
-                  }
-              }
-          ]
-      },
+    {
+        "type": "HOUSE",
+        "items": [
+            {
+                "id": "rectory_extra_room",
+                "name": "Rectory's extra room",
+                "require": "curate",
+                "cost": {
+                    "churchrespect": 120,
+                    "faith": 80
+                },
+                "desc": "A modest extra room in the rectory, close to the heart of parish life.",
+                "mod": {
+                    "space.max": 15,
+                    "faith.max": 40,
+                    "churchrespect.max": 60
+                }
+            },
+            {
+                "id": "cathedral_close_room",
+                "name": "Cathedral close house",
+                "require": "chantry_priest",
+                "cost": {
+                    "cathedral_support": 2,
+                    "faith": 40
+                },
+                "desc": "A tiny house inside the cathedral close, steps away from the sanctuary.",
+                "mod": {
+                    "space.max": 18,
+                    "faith.max": 80,
+                    "cathedral_support.max": 3,
+                    "churchrespect.max": 90
+                }
+            }
+        ]
+    },
     {
         "type": "CLASS",
         "items": [
-            
             {
                 "id": "veteranpriest",
                 "name": "Veteran priest",
@@ -588,7 +587,7 @@
                     "gratitude": 1200,
                     "faith": 400,
                     "musing": 200,
-                    "nutrition": 90,    
+                    "nutrition": 90,
                     "priest_exp": 40
                 },
                 "mod": {
@@ -785,6 +784,12 @@
                 "id": "veteranpriest_hint",
                 "name": "Class hint",
                 "target_id": "veteranpriest",
+                "require": "hint_t_tier4"
+            },
+            {
+                "id": "love_priest_hint",
+                "name": "Class hint",
+                "target_id": "love_priest",
                 "require": "hint_t_tier4"
             }
         ]
