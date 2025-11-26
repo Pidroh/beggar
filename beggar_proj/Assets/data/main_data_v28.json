@@ -1593,14 +1593,30 @@
                 "desc": "Learn to keep yourself warm while resting.",
                 "require": "cold>20",
                 "tag": "winter_style,t_power_up",
-                "max": 1,
-                "duration": 60,
+                "max": 2,
+                "duration": 15,
                 "cost": {
                     "thoughts": 60,
                     "supplication": 40
                 },
                 "mod": {
-                    "pleafocus.effect.cold": -2
+                    "pleafocus.effect.cold": -1
+                }
+            },
+            {
+                "id": "winter_hardiness",
+                "name": "Winter hardiness",
+                "desc": "Adapt your body to the cold so it weakens over time.",
+                "require": "winter_rest",
+                "tag": "winter_style,t_power_up",
+                "max": 1,
+                "duration": 30,
+                "cost": {
+                    "nutrition": 5,
+                    "clarity": 3
+                },
+                "mod": {
+                    "cold.rate": -0.25
                 }
             },
             {
