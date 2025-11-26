@@ -74,6 +74,23 @@
                 }
             },
             {
+                "id": "faith_unlock",
+                "name": "Deepen faith",
+                "desc": "Let gratitude and faith open a new way of devotion.",
+                "require": "t_priest",
+                "tag": "t_faith_unlock",
+                "max": 1,
+                "duration": 40,
+                "cost": {
+                    "faith": 80,
+                    "gratitude": 80
+                },
+                "mod": {
+                    "faith.max": 5,
+                    "gratitude.max": 5
+                }
+            },
+            {
                 "id": "priest_duties",
                 "name": "Priest duties",
                 "desc": "Carry out the daily work of a parish priest.",
@@ -137,7 +154,7 @@
                 },
                 "mod": {
                     "churchrespect.max": 25,
-                    "priest_experience.max": 3,
+                    "priest_exp.max": 3,
                     "faith.max": 5
                 }
             },
@@ -159,7 +176,7 @@
                     "coin": 1
                 },
                 "mod": {
-                    "priest_experience.max": 5,
+                    "priest_exp.max": 5,
                     "clarity.rate": 0.1,
                     "churchrespect.max": 40,
                     "churchrespect.rate": 0.25
@@ -181,7 +198,7 @@
                 "mod": {
                     "reflection.rate": 0.02,
                     "churchrespect.max": 20,
-                    "priest_experience.max": 2
+                    "priest_exp.max": 2
                 }
             },
             {
@@ -201,7 +218,7 @@
                     "supplication.max": 50,
                     "supplication.rate": 0.5,
                     "churchrespect.max": 25,
-                    "priest_experience.max": 3
+                    "priest_exp.max": 3
                 }
             },
             {
@@ -220,7 +237,7 @@
                 "mod": {
                     "sadness.max": 50,
                     "churchrespect.max": 30,
-                    "priest_experience.max": 4
+                    "priest_exp.max": 4
                 }
             },
             {
@@ -241,7 +258,7 @@
                     "churchrespect.max": 50,
                     "sadness.max": 50,
                     "sorrow.max": 5,
-                    "priest_experience.max": 15
+                    "priest_exp.max": 15
                 }
             },
             {
@@ -260,7 +277,7 @@
                 "mod": {
                     "clarity.rate": 0.1,
                     "churchrespect.max": 50,
-                    "priest_experience.max": 5
+                    "priest_exp.max": 5
                 }
             },
             {
@@ -354,7 +371,7 @@
                     "cathedral_support": 1
                 },
                 "mod": {
-                    "priest_experience.max": 8,
+                    "priest_exp.max": 8,
                     "churchrespect.max": 60,
                     "cathedral_support.max": 2
                 }
@@ -381,7 +398,7 @@
                   "id": "faith_gen2",
                   "name": "Strengthen faith",
                   "desc": "Solidy your beliefs",
-                  "require": "faith>20&&faith_skill",
+                  "require": "faith>20&&faithskill",
                   "tag": "religionry,t_power_up",
                   "duration": 20,
                   "cost": {
@@ -571,7 +588,7 @@
                     "gratitude": 1200,
                     "faith": 400,
                     "musing": 200,
-                    "nutrition": 90,
+                    "nutrition": 90,    
                     "priest_exp": 40
                 },
                 "mod": {
@@ -591,6 +608,7 @@
                 "require": "t_tier3&&benevolent_alms3",
                 "cost": {
                     "benevolence": 300,
+                    "better_faith": 5,
                     "priest_exp": 35
                 },
                 "mod": {
