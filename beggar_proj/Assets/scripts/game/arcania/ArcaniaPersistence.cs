@@ -106,6 +106,7 @@ public class ArcaniaPersistence
         foreach (var basic in persistence.Basics)
         {
             if (!arcaniaUnits.IdMapper.TryGetValue(basic.id, out var v)) continue;
+            if (v.RuntimeUnit == null) continue;
             v.RuntimeUnit._value = basic.value;
             v.RuntimeUnit.RequireMet = basic.requireMet;
         }
