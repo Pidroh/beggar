@@ -1494,7 +1494,7 @@
                 "desc": "Attend a winter church feast and receive warm food.",
                 "require": "winter>=1",
                 "tag": "seasonal,winter_style",
-                "duration": 10,
+                "duration": 50,
                 "effect": {
                     "nutrition": 1,
                     "supplication": 3
@@ -1504,6 +1504,21 @@
                     "breadcrumbs": 30,
                     "supplication": 40,
                     "nutrition": 20
+                }
+            },
+            {
+                "id": "winter_alms",
+                "name": "Winter alms",
+                "desc": "Receive a little food and coin in the winter streets.",
+                "require": "winter>=1&&church_feast",
+                "tag": "winter_style,t_repeatable_task",
+                "duration": 30,
+                "cost": {
+                    "season_time": 5
+                },
+                "result": {
+                    "coin": 3,
+                    "food": 1
                 }
             },
             {
