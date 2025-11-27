@@ -113,7 +113,7 @@ public class ArcaniaPersistence
         foreach (var task in persistence.Tasks)
         {
             if (!arcaniaUnits.IdMapper.TryGetValue(task.id, out var v)) continue;
-            if (v.RuntimeUnit.ConfigTask == null) continue;
+            if (v.RuntimeUnit?.ConfigTask == null) continue;
             v.RuntimeUnit.TaskProgress = task.TaskProgress;
             if (task.Bought) 
             {

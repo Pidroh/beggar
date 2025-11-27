@@ -154,6 +154,7 @@ public static class LoadingScreenControl
 
     public static void LoadSlotAndCommons(MainGameControl mgc)
     {
+        
         int slotNumber = 3;
         HeartGame heartGame = mgc.HeartGame;
         {
@@ -167,7 +168,8 @@ public static class LoadingScreenControl
         var currentSaveSlot = slotData.currentSlot;
 
         SaveSlotExecution.InitCurrentSlotIfNoSave(slotData, "nobody");
-        if (JGameControlExecuter.GetWorld(mgc) == WorldType.DEFAULT_CHARACTER) 
+        var shouldLoadCharacter = !mgc.arcaniaModel.SaveSlotOnlyMode;
+        if (JGameControlExecuter.GetWorld(mgc) == WorldType.DEFAULT_CHARACTER && shouldLoadCharacter) 
         {
             var slot = currentSaveSlot;
             var key = JGameControlDataSaveSlot.SlotSaveKeys[slot];

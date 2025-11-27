@@ -17,134 +17,42 @@ MonoBehaviour:
   - id: normal
     jsonKey: main
     miscKey: main
-    jsonDatas:
-    - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
-    - {fileID: 4900000, guid: e7d13781458fb2c4aaf54e585c6698de, type: 3}
-    - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
-    - {fileID: 4900000, guid: 2acd81d63e74d93489353a1d556a8b4c, type: 3}
     buildConfigId: web
-    majorVersionOverride: 0
-    versionOverride: 28
-    patchOverride: 2
-    SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: android
     jsonKey: main
     miscKey: main
-    jsonDatas:
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
-    - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
-    - {fileID: 4900000, guid: 2acd81d63e74d93489353a1d556a8b4c, type: 3}
-    - {fileID: 4900000, guid: e7d13781458fb2c4aaf54e585c6698de, type: 3}
-    - {fileID: 4900000, guid: 75e482c27c6941144a395ca222f1b418, type: 3}
     buildConfigId: android_apk
-    majorVersionOverride: 0
-    versionOverride: 30
-    patchOverride: 0
-    SubtitleOverride: 
     patreonBuild: 0
   - id: normal_unity_room_oneshot
     jsonKey: 
     miscKey: 
-    jsonDatas:
-    - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
-    - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
-    - {fileID: 4900000, guid: a22bcea98d999ce4a83a6c96c1459356, type: 3}
     buildConfigId: web_unity_room
-    majorVersionOverride: 0
-    versionOverride: 27
-    patchOverride: 1
-    SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: normal_steam_demo
     jsonKey: main
     miscKey: main
-    jsonDatas:
-    - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
-    - {fileID: 4900000, guid: ae1dcef5c084bbd40ab13b181ac0dc57, type: 3}
-    - {fileID: 4900000, guid: a22bcea98d999ce4a83a6c96c1459356, type: 3}
     buildConfigId: windows_steam_demo
-    majorVersionOverride: 0
-    versionOverride: 27
-    patchOverride: 2
-    SubtitleOverride: Grand Theft
     patreonBuild: 0
   - id: patreon
     jsonKey: patreon
     miscKey: patreon
-    jsonDatas:
-    - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
-    - {fileID: 4900000, guid: e7d13781458fb2c4aaf54e585c6698de, type: 3}
-    - {fileID: 4900000, guid: 2acd81d63e74d93489353a1d556a8b4c, type: 3}
-    - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
     buildConfigId: web_patreon
-    majorVersionOverride: 0
-    versionOverride: 28
-    patchOverride: 1
-    SubtitleOverride: Sewer Pathology
     patreonBuild: 0
   - id: patreon_windows
     jsonKey: patreon
     miscKey: patreon
-    jsonDatas:
-    - {fileID: 4900000, guid: 8cab306c178d813449981669d0f58d1c, type: 3}
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-    - {fileID: 4900000, guid: 0b0a745e58477fe41956f046837115a4, type: 3}
-    - {fileID: 4900000, guid: e7d13781458fb2c4aaf54e585c6698de, type: 3}
-    - {fileID: 4900000, guid: 2acd81d63e74d93489353a1d556a8b4c, type: 3}
-    - {fileID: 4900000, guid: 67bdc1c37a7a5ed418108da5560807f0, type: 3}
     buildConfigId: windows_patreon
-    majorVersionOverride: 0
-    versionOverride: 28
-    patchOverride: 1
-    SubtitleOverride: Sewer Pathology
     patreonBuild: 0
   - id: patreon_dev
     jsonKey: patreon
     miscKey: patreon
-    jsonDatas:
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: ff4dc4fb5488b6d408d865d92b4301be, type: 3}
-    - {fileID: 4900000, guid: d7a60bfbbd3f9704295c5407f49f4bac, type: 3}
-    - {fileID: 4900000, guid: bdb98ae1802dce84dbcf810c551169b5, type: 3}
     buildConfigId: web_patreon_dev
-    majorVersionOverride: 0
-    versionOverride: 50
-    patchOverride: 0
-    SubtitleOverride: 
     patreonBuild: 0
   - id: test
     jsonKey: 
     miscKey: 
-    jsonDatas:
-    - {fileID: 4900000, guid: 888dc339cfe085344991aa068cec9e61, type: 3}
-    - {fileID: 4900000, guid: 5a6549694f1e18c4ebc3ba05d452cec1, type: 3}
     buildConfigId: webtest
-    majorVersionOverride: 0
-    versionOverride: 15
-    patchOverride: 0
-    SubtitleOverride: 
     patreonBuild: 0
   jsonEntries:
     entries:
@@ -179,4 +87,4 @@ MonoBehaviour:
     majorVersionOverride: 32
     versionOverride: 0
     patchOverride: 0
-    SubtitleOverride: Priest & Holidays
+    SubtitleOverride: Priests & Holidays

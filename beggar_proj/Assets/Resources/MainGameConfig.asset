@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03490226fc68abc4ea67d3dd9981104d, type: 3}
   m_Name: MainGameConfig
   m_EditorClassIdentifier: 
-  majorVersion: 29
-  versionNumber: 2
+  majorVersion: 32
+  versionNumber: 0
   patchVersion: 0
   gameTitle: beggar_incremental
   betaVersion: 0
