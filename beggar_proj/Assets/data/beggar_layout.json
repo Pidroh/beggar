@@ -1817,6 +1817,13 @@
         "#f3e594ff",
         "#3e7e9cff"
       ]
+    },
+    {
+      "id": "resource_highlight_text",
+      "colors": [
+        "#59a486ff",
+        "#59a486ff"
+      ]
     }
   ],
   "color_presets": [
