@@ -856,6 +856,7 @@ public partial class MainGameControlSetupJLayout
     internal static JLayoutRuntimeUnit CreateLogLayout(MainGameControl mgc, LogUnit logUnit)
     {
         var lay = mgc.JLayoutRuntime.LayoutMaster.LayoutDatas.GetData("log_lay");
+        var cd = mgc.JLayoutRuntime.LayoutMaster.ColorDatas.GetData("resource_highlight_text");
         var layout = JCanvasMaker.CreateLayout(lay, mgc.JLayoutRuntime);
         var text = string.Empty;
         if (logUnit.logType == LogUnit.LogType.UNIT_UNLOCKED)
@@ -863,7 +864,7 @@ public partial class MainGameControlSetupJLayout
             var ut = logUnit.Unit.ConfigBasic.UnitType;
             if (mgc.JControlData.LabelUnitTypeDescription.TryGetValue(ut, out var label))
             {
-                text = $"{mgc.JControlData.LabelUnlocked}: {logUnit.Unit.ConfigBasic.name} ( {label} )";
+                text = $"{mgc.JControlData.LabelUnlocked}: <color={cd.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{logUnit.Unit.ConfigBasic.name}</color>\n({label})";
             }
             else {
                 text = $"{mgc.JControlData.LabelUnlocked}: {logUnit.Unit.ConfigBasic.name}";

@@ -135,6 +135,11 @@ public static class JGameControlExecuter
         controlData.tabMenu[Direction.SOUTH].SetVisibleSelf(!desktopMode);
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
 
+        #region cache colors for use below
+        var loreColorCode = controlData.LayoutRuntime.LayoutMaster.ColorDatas.GetData("lore_text").CodeCache[controlData.LayoutRuntime.CurrentColorSchemeId];
+        #endregion
+
+
         #region find out how many tab button visible in the menus
         var numberOfTabButtonsThatNeedButtonExcludingPlusTab = 0;
         bool allTabButtonVisible;
@@ -368,7 +373,7 @@ public static class JGameControlExecuter
                         if (unit.ValueText != null && unit.Data.ConfigHintData == null)
                         {
                             var Data = unit.Data;
-                            var valueT = Data.HasMax ? $"{Data.Value} / {Data.Max}" : $"{Data.Value}";
+                            var valueT = Data.HasMax ? $"{Data.Value} <color={loreColorCode}>/ {Data.Max}</color>" : $"{Data.Value}";
                             unit.ValueText.SetTextRaw(valueT + "");
                         }
                         if (unit.Expanded)

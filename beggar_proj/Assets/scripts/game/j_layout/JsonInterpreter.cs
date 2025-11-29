@@ -73,10 +73,12 @@ namespace JLayout
                 colorData.Id = colorEntry["id"].AsString;
                 var colorCodeArray = colorEntry["colors"].AsArray;
                 var colors = new Color[colorCodeArray.Count];
+                var colorCodeCache = new string[colorCodeArray.Count];
                 for (int i = 0; i < colors.Length; i++)
                 {
                     string colorCode = colorCodeArray[i].AsString;
                     if (!colorCode.Contains("#")) colorCode = "#" + colorCode;
+                    colorCodeCache[i] = colorCode;
                     if (ColorUtility.TryParseHtmlString(colorCode, out Color c))
                     {
                         colors[i] = c;
@@ -87,6 +89,7 @@ namespace JLayout
                     }
                 }
                 colorData.Colors = colors;
+                colorData.CodeCache = colorCodeCache;
                 layoutMaster.ColorDatas.Bind(colorData.Id, colorData);
             }
         }
@@ -360,6 +363,7 @@ namespace JLayout
     {
         public Color[] Colors { get; internal set; }
         public string Id { get; internal set; }
+        public string[] CodeCache { get; internal set; }
     }
 
     public class LayoutUnit
