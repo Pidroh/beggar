@@ -99,6 +99,12 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelBuy = Local.GetText("acquisition");
             jControlDataHolder.LabelAcquireSkill = Local.GetText("Acquire Skill");
             jControlDataHolder.LabelPracticeSkill = Local.GetText("Practice Skill");
+
+            jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.COST] = layoutMaster.ColorDatas.GetData("change_cost_color");
+            jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.EFFECT] = layoutMaster.ColorDatas.GetData("change_effect_color");
+            jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.RUN] = layoutMaster.ColorDatas.GetData("change_run_color");
+            jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.RESULT] = layoutMaster.ColorDatas.GetData("change_result_color");
+
             jControlDataHolder.LabelConfirmSlotDeleteTitle = Local.GetText("Delete save slot");
             jControlDataHolder.LabelConfirmSlotDeleteContent = Local.GetText("Data cannot be recovered");
             jControlDataHolder.LabelGoToSaveSlots = Local.GetText("Save slots", "As in save slots on a memory card, games context, saving data");

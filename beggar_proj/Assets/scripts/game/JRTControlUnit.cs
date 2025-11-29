@@ -100,6 +100,8 @@ public class JGameControlDataHolder
     public string LabelGoToArchive { get; internal set; }
     public string LabelGoToSaveSlots { get; internal set; }
 
+    public Dictionary<ResourceChangeType, ColorData> ColorForResourceChangeType = new();
+
     public Dictionary<UnitType, string> LabelUnitTypeDescription = new();
     public Dictionary<ArcaniaArchiveModelData.ArchiveEuristics, string> LabelArchiveHeuristicLabel = new();
 
