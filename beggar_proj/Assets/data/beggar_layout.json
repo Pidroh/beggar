@@ -1602,6 +1602,34 @@
       ]
     },
     {
+      "id": "change_cost_color",
+      "colors": [
+        "d09ca9ff",
+        "d09ca9ff"
+      ]
+    },
+    {
+      "id": "change_run_color",
+      "colors": [
+        "b884bdff",
+        "b884bdff"
+      ]
+    },
+    {
+      "id": "change_effect_color",
+      "colors": [
+        "9cd0bdff",
+        "9cd0bdff"
+      ]
+    },
+    {
+      "id": "change_result_color",
+      "colors": [
+        "9cb1d0ff",
+        "9cb1d0ff"
+      ]
+    },
+    {
       "id": "mini_header_text",
       "colors": [
         "969696ff",
