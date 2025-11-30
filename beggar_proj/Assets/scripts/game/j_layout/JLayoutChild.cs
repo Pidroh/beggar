@@ -78,5 +78,11 @@ namespace JLayout
             if (Parent == null) return;
             Parent.PropagateDirtyUp();
         }
+
+        internal void OverwriteSingleColor(ColorSetType type, ColorData color)
+        {
+            OverwriteColorSet ??= new();
+            OverwriteColorSet.ColorDatas[type] = color;
+        }
     }
 }

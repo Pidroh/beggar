@@ -782,7 +782,7 @@ public partial class MainGameControlSetupJLayout
 
     // this method has two uses, more or less
     // 1) create change list views for the first time, for static elements
-    // 2) when model data changes for the same JCU, assure there are enough change lists in that JCU
+    // 2) when model data changes (runtime unit change) for the same JCU, assure there are enough change lists in that JCU
     // Case 2 is mainly for exploration elements, currently
     public static void EnsureChangeListViewsAreCreated(JLayoutRuntimeData runtime, RuntimeUnit modelData, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, JGameControlDataHolder controlData)
     {
@@ -797,10 +797,18 @@ public partial class MainGameControlSetupJLayout
 
                 // it might be already instantiated
                 jCU.ChangeGroups[rcgIndex] ??= new();
+                var changeType = (ResourceChangeType)rcgIndex;
+
+                ColorData changeTypeOverride = null;
+                if (controlData.ColorForResourceChangeType.TryGetValue(changeType, out var v)) 
+                {
+                    changeTypeOverride = v;
+                }
+
                 // create mini header if necessary
                 if (jCU.ChangeGroups[rcgIndex].Header == null)
                 {
-                    var changeType = (ResourceChangeType)rcgIndex;
+                    
                     string textKey = changeType switch
                     {
                         ResourceChangeType.COST => controlData.LabelCost,
@@ -826,6 +834,10 @@ public partial class MainGameControlSetupJLayout
                         triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
                         triple.SetTextRaw(1, "" + rcu.valueChange.min);
                         triple.SetTextRaw(2, "0");
+                        if (changeTypeOverride != null) {
+                            triple.TextChildren[0].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
+                            triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
+                        }
                         tripleTextViews.Add(triple);
                         AddToExpand(layoutRU, triple, jCU);
                     }
