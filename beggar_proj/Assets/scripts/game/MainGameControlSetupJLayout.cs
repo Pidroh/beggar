@@ -416,7 +416,31 @@ public partial class MainGameControlSetupJLayout
         var jCanvas = runtime.jLayCanvas;
         var layoutMaster = runtime.LayoutMaster;
         var world = JGameControlExecuter.GetWorld(mgc);
-        
+        var modReplaceKeys = new Dictionary<ModType, string>();
+        var modReplaceValues = new Dictionary<ModType, string>();
+        var modReplaceValuesWithColor = new Dictionary<ModType, string>();
+
+        FeedModKey(ModType.MaxChange, ModReplaceKeys.MAX, "Max");
+        FeedModKey(ModType.RateChange, ModReplaceKeys.RATE, mgc.JControlData.RateLabel);
+        FeedModKey(ModType.SpaceConsumption, ModReplaceKeys.SPACEOCCUPIED, mgc.JControlData.spaceOccuppiedLabel);
+        FeedModKey(ModType.Speed, ModReplaceKeys.SPEED, mgc.JControlData.SpeedLabel);
+        FeedModKey(ModType.SuccessRate, ModReplaceKeys.SUCCESSRATE, mgc.JControlData.SuccessRateLabel);
+        // FeedModKey(ModType., ModReplaceKeys.MAXSPACE, mgc.JControlData.LabelMaxSpace);
+        // modReplaceValues[ModType.MaxChange] 
+
+        void FeedModKey(ModType modType, string replaceKey, string replaceValue) 
+        {
+            modReplaceKeys[modType] = replaceKey;
+            modReplaceValues[modType] = replaceValue;
+            if (mgc.JControlData.ColorForModType.TryGetValue(modType, out var c))
+            {
+                modReplaceValuesWithColor[modType] = $"<color={c.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{replaceValue}</color>";
+            }
+            else 
+            {
+                modReplaceValuesWithColor[modType] = replaceValue;
+            }
+        }
 
         #region main default setup of runtime units and separators
         for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
@@ -767,6 +791,10 @@ public partial class MainGameControlSetupJLayout
                 if (mod.ModType == ModType.Lock) continue;
                 var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : mod.HumanTextTarget);
                 if (mainText == null) continue;
+                
+                string replaceKey = null;
+                string replaceValue = null;
+                if()
                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
                 AddToExpand(layoutRU, triple, jCU);
                 modControl.tripleTextViews.Add(triple);
