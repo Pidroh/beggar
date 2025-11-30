@@ -207,6 +207,12 @@ public class JsonReader
             string targetTextKey = GetPointerTextKey(mod.Target);
             string intermediaryTextKey = GetPointerTextKey(mod.Intermediary);
             string sourceNameKey = mod.Source.Name;
+            var SpeedLabel = ModReplaceKeys.SPEED;
+            var LabelMaxSpace = ModReplaceKeys.MAXSPACE;
+            var RateLabel = ModReplaceKeys.RATE;
+            var LabelMax = ModReplaceKeys.MAX;
+            var SuccessRateLabel = ModReplaceKeys.SUCCESSRATE;
+            var spaceOccuppiedLabel = ModReplaceKeys.SPACEOCCUPIED;
             string GetPointerTextKey(IDPointer pointer)
             {
                 string textKey = null;
@@ -229,14 +235,14 @@ public class JsonReader
                     {
                         if (intermediaryTextKey != null)
                         {
-                            mod.HumanText = $"{intermediaryTextKey} Mod Max {targetTextKey}:";
-                            mod.HumanTextIntermediary = $" Mod Max {targetTextKey} ({sourceNameKey})";
+                            mod.HumanText = $"{intermediaryTextKey} Mod {LabelMax} {targetTextKey}:";
+                            mod.HumanTextIntermediary = $" Mod {LabelMax} {targetTextKey} ({sourceNameKey})";
                             mod.HumanTextTarget = $"Max ({sourceNameKey} x {intermediaryTextKey}):";
                         }
                         else
                         {
-                            mod.HumanText = $"Max {targetTextKey}:";
-                            mod.HumanTextTarget = $"Max ({sourceNameKey}):";
+                            mod.HumanText = $"{LabelMax} {targetTextKey}:";
+                            mod.HumanTextTarget = $"{LabelMax} ({sourceNameKey}):";
                         }
                     }
                     else
@@ -888,6 +894,9 @@ public static class ModReplaceKeys
     public const string MAX = "$MAX$";
     public const string RATE = "$RATE$";
     public const string SPEED = "$SPEED$";
+    public const string MAXSPACE = "$MAXSPACE$";
+    public const string SPACEOCCUPIED = "$SPACEOCCUPIED$";
+    public const string SUCCESSRATE = "$SUCCESSRATE$";
 }
 
 public class ModRuntime
