@@ -416,7 +416,7 @@ public partial class MainGameControlSetupJLayout
         var jCanvas = runtime.jLayCanvas;
         var layoutMaster = runtime.LayoutMaster;
         var world = JGameControlExecuter.GetWorld(mgc);
-        var modReplacements = new Dictionary<ModType, (string key, string value, string valueWithColor)>();
+        var modReplacements = new Dictionary<ModType, (string key, string value, string valueWithColor, ColorData)>();
 
         FeedModKey(ModType.MaxChange, ModReplaceKeys.MAX, "Max");
         FeedModKey(ModType.RateChange, ModReplaceKeys.RATE, mgc.JControlData.RateLabel);
@@ -429,9 +429,11 @@ public partial class MainGameControlSetupJLayout
         void FeedModKey(ModType modType, string replaceKey, string replaceValue)
         {
             string valueWithColor;
+            ColorData cd = null;
 
             if (mgc.JControlData.ColorForModType.TryGetValue(modType, out var c))
             {
+                cd = c;
                 valueWithColor = $"<color={c.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{replaceValue}</color>";
             }
             else
@@ -439,7 +441,7 @@ public partial class MainGameControlSetupJLayout
                 valueWithColor = replaceValue;
             }
 
-            modReplacements[modType] = (replaceKey, replaceValue, valueWithColor);
+            modReplacements[modType] = (replaceKey, replaceValue, valueWithColor, cd);
         }
 
         #region main default setup of runtime units and separators
@@ -619,7 +621,7 @@ public partial class MainGameControlSetupJLayout
                     for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
                     {
                         IDPointer tag = modelData.ConfigBasic.Tags[i];
-                        if (tag.RuntimeUnit == null) continue;
+                        if (tag.Tag.RuntimeUnit == null) continue;
                         hasNamedTag = true;
                         lastTagWithName = i;
                     }
@@ -630,7 +632,7 @@ public partial class MainGameControlSetupJLayout
                         for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
                         {
                             IDPointer tag = modelData.ConfigBasic.Tags[i];
-                            if (tag.RuntimeUnit == null) continue;
+                            if (tag.Tag.RuntimeUnit == null) continue;
                             text += tag.Tag.tagName;
                             if (i != lastTagWithName) {
                                 text += ", ";
@@ -781,7 +783,7 @@ public partial class MainGameControlSetupJLayout
 
     }
 
-    private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, Dictionary<ModType, (string key, string value, string valueWithColor)> modReplacements, int mode)
+    private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, Dictionary<ModType, (string key, string value, string valueWithColor, ColorData colorD)> modReplacements, int mode)
     {
         if (modList.Count > 0)
         {
@@ -792,13 +794,17 @@ public partial class MainGameControlSetupJLayout
                 var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : mod.HumanTextTarget);
                 if (mainText == null) continue;
 
-                if (modReplacements.TryGetValue(mod.ModType, out var values)) 
-                {
-                    mainText = mainText.Replace(values.key, values.valueWithColor);
-
-                }
+                
                 
                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
+                if (modReplacements.TryGetValue(mod.ModType, out var values))
+                {
+                    mainText = mainText.Replace(values.key, values.valueWithColor);
+                    if (values.colorD != null)
+                    {
+                        triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, values.colorD);
+                    }
+                }
                 AddToExpand(layoutRU, triple, jCU);
                 modControl.tripleTextViews.Add(triple);
                 modControl.Mods.Add(mod);
@@ -817,6 +823,7 @@ public partial class MainGameControlSetupJLayout
                 else
                     secondaryText = $"{value}";
                 triple.SetTextRaw(1, secondaryText);
+
             }
         }
     }
