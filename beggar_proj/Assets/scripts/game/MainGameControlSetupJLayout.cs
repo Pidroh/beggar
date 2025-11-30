@@ -416,9 +416,7 @@ public partial class MainGameControlSetupJLayout
         var jCanvas = runtime.jLayCanvas;
         var layoutMaster = runtime.LayoutMaster;
         var world = JGameControlExecuter.GetWorld(mgc);
-        var modReplaceKeys = new Dictionary<ModType, string>();
-        var modReplaceValues = new Dictionary<ModType, string>();
-        var modReplaceValuesWithColor = new Dictionary<ModType, string>();
+        var modReplacements = new Dictionary<ModType, (string key, string value, string valueWithColor)>();
 
         FeedModKey(ModType.MaxChange, ModReplaceKeys.MAX, "Max");
         FeedModKey(ModType.RateChange, ModReplaceKeys.RATE, mgc.JControlData.RateLabel);
@@ -426,20 +424,22 @@ public partial class MainGameControlSetupJLayout
         FeedModKey(ModType.Speed, ModReplaceKeys.SPEED, mgc.JControlData.SpeedLabel);
         FeedModKey(ModType.SuccessRate, ModReplaceKeys.SUCCESSRATE, mgc.JControlData.SuccessRateLabel);
         // FeedModKey(ModType., ModReplaceKeys.MAXSPACE, mgc.JControlData.LabelMaxSpace);
-        // modReplaceValues[ModType.MaxChange] 
+        // modReplacements[ModType.MaxChange]
 
-        void FeedModKey(ModType modType, string replaceKey, string replaceValue) 
+        void FeedModKey(ModType modType, string replaceKey, string replaceValue)
         {
-            modReplaceKeys[modType] = replaceKey;
-            modReplaceValues[modType] = replaceValue;
+            string valueWithColor;
+
             if (mgc.JControlData.ColorForModType.TryGetValue(modType, out var c))
             {
-                modReplaceValuesWithColor[modType] = $"<color={c.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{replaceValue}</color>";
+                valueWithColor = $"<color={c.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{replaceValue}</color>";
             }
-            else 
+            else
             {
-                modReplaceValuesWithColor[modType] = replaceValue;
+                valueWithColor = replaceValue;
             }
+
+            modReplacements[modType] = (replaceKey, replaceValue, valueWithColor);
         }
 
         #region main default setup of runtime units and separators
@@ -579,12 +579,12 @@ public partial class MainGameControlSetupJLayout
                     var modList = unitForOwnedMods.ModsOwned;
                     var header = jControlDataHolder.LabelModifications;
                     var modControl = jCU.OwnedMods;
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, 0);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtra, jCU.IntermediaryMods, 1);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, jControlDataHolder.LabelModificationsTargeting, jCU.TargetingThisMods, 2);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, modReplacements, 0);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtra, jCU.IntermediaryMods, modReplacements, 1);
+                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, jControlDataHolder.LabelModificationsTargeting, jCU.TargetingThisMods, modReplacements, 2);
                     if (modelData.DotRU != null)
                     {
-                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtraEffect, jCU.TargetingThisEffectMods, 1);
+                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtraEffect, jCU.TargetingThisEffectMods, modReplacements, 1);
                     }
                     //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
 
@@ -781,7 +781,7 @@ public partial class MainGameControlSetupJLayout
 
     }
 
-    private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, int mode)
+    private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, Dictionary<ModType, (string key, string value, string valueWithColor)> modReplacements, int mode)
     {
         if (modList.Count > 0)
         {
@@ -791,10 +791,13 @@ public partial class MainGameControlSetupJLayout
                 if (mod.ModType == ModType.Lock) continue;
                 var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : mod.HumanTextTarget);
                 if (mainText == null) continue;
+
+                if (modReplacements.TryGetValue(mod.ModType, out var values)) 
+                {
+                    mainText = mainText.Replace(values.key, values.valueWithColor);
+
+                }
                 
-                string replaceKey = null;
-                string replaceValue = null;
-                if()
                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
                 AddToExpand(layoutRU, triple, jCU);
                 modControl.tripleTextViews.Add(triple);
