@@ -99,6 +99,7 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelBuy = Local.GetText("acquisition");
             jControlDataHolder.LabelAcquireSkill = Local.GetText("Acquire Skill");
             jControlDataHolder.LabelPracticeSkill = Local.GetText("Practice Skill");
+            jControlDataHolder.LabelLivingHere = Local.GetText("living here");
 
             jControlDataHolder.SuccessRateLabel = Local.GetText("success rate", "In the sense of a probability of success");
             jControlDataHolder.SpeedLabel = Local.GetText("Speed");
