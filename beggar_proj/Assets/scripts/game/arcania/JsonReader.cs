@@ -208,7 +208,7 @@ public class JsonReader
             string intermediaryTextKey = GetPointerTextKey(mod.Intermediary);
             string sourceNameKey = mod.Source.Name;
             var SpeedLabel = ModReplaceKeys.SPEED;
-            var LabelMaxSpace = ModReplaceKeys.MAXSPACE;
+            var LabelMaxSpace = Local.GetText("Max Space", "In the sense of how much space you have in your room to house things");
             var RateLabel = ModReplaceKeys.RATE;
             var LabelMax = ModReplaceKeys.MAX;
             var SuccessRateLabel = ModReplaceKeys.SUCCESSRATE;
@@ -248,6 +248,7 @@ public class JsonReader
                     else
                     {
                         mod.HumanText = $"{LabelMaxSpace}:";
+                        
                     }
                     break;
 
@@ -894,7 +895,7 @@ public static class ModReplaceKeys
     public const string MAX = "$MAX$";
     public const string RATE = "$RATE$";
     public const string SPEED = "$SPEED$";
-    public const string MAXSPACE = "$MAXSPACE$";
+    //public const string MAXSPACE = "$MAXSPACE$";
     public const string SPACEOCCUPIED = "$SPACEOCCUPIED$";
     public const string SUCCESSRATE = "$SUCCESSRATE$";
 }
