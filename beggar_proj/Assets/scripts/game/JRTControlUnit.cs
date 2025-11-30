@@ -99,11 +99,17 @@ public class JGameControlDataHolder
     public string LabelConfirmSlotDeleteContent { get; internal set; }
     public string LabelGoToArchive { get; internal set; }
     public string LabelGoToSaveSlots { get; internal set; }
+    public string spaceOccuppiedLabel { get; internal set; }
+    public string RateLabel { get; internal set; }
+    public string SpeedLabel { get; internal set; }
+    public string SuccessRateLabel { get; internal set; }
 
     public Dictionary<ResourceChangeType, ColorData> ColorForResourceChangeType = new();
+    public Dictionary<ModType, ColorData> ColorForModType = new();
 
     public Dictionary<UnitType, string> LabelUnitTypeDescription = new();
     public Dictionary<ArcaniaArchiveModelData.ArchiveEuristics, string> LabelArchiveHeuristicLabel = new();
+    internal string LabelMaxSpace;
 
     public enum OverlayType 
     {

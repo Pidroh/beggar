@@ -197,11 +197,6 @@ public class JsonReader
         // MODS #mods #post-processing
         //--------------------------------------------------------------
         #region mods post processing
-        string SuccessRateLabel = Local.GetText("success rate", "In the sense of a probability of success");
-        string SpeedLabel = Local.GetText("Speed");
-        string RateLabel = Local.GetText("Rate", "in the sense of something gained over time (translate as a single word if possible though)");
-        string LabelMaxSpace = Local.GetText("Max Space", "In the sense of how much space you have in your room to house things");
-        string spaceOccuppiedLabel = Local.GetText("Space Occupied", "In the sense of a table taking up too much space");
         for (int i = modAmountBeforeReadingData; i < arcaniaDatas.Mods.Count; i++)
         {
             ModRuntime mod = arcaniaDatas.Mods[i];
@@ -886,6 +881,11 @@ public enum UnitType
 {
     RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
     DOT, HINT, TAG
+}
+
+public static class ModReplaceKeys 
+{ 
+    keys here
 }
 
 public class ModRuntime

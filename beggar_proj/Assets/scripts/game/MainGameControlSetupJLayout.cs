@@ -100,10 +100,20 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.LabelAcquireSkill = Local.GetText("Acquire Skill");
             jControlDataHolder.LabelPracticeSkill = Local.GetText("Practice Skill");
 
+            jControlDataHolder.SuccessRateLabel = Local.GetText("success rate", "In the sense of a probability of success");
+            jControlDataHolder.SpeedLabel = Local.GetText("Speed");
+            jControlDataHolder.RateLabel = Local.GetText("Rate", "in the sense of something gained over time (translate as a single word if possible though)");
+            jControlDataHolder.LabelMaxSpace = Local.GetText("Max Space", "In the sense of how much space you have in your room to house things");
+            jControlDataHolder.spaceOccuppiedLabel = Local.GetText("Space Occupied", "In the sense of a table taking up too much space");
+
             jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.COST] = layoutMaster.ColorDatas.GetData("change_cost_color");
             jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.EFFECT] = layoutMaster.ColorDatas.GetData("change_effect_color");
             jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.RUN] = layoutMaster.ColorDatas.GetData("change_run_color");
             jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.RESULT] = layoutMaster.ColorDatas.GetData("change_result_color");
+
+            jControlDataHolder.ColorForModType[ModType.MaxChange] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.RESULT];
+            jControlDataHolder.ColorForModType[ModType.RateChange] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.EFFECT];
+            jControlDataHolder.ColorForModType[ModType.Speed] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.EFFECT];
 
             jControlDataHolder.LabelConfirmSlotDeleteTitle = Local.GetText("Delete save slot");
             jControlDataHolder.LabelConfirmSlotDeleteContent = Local.GetText("Data cannot be recovered");
