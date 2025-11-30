@@ -114,6 +114,9 @@ public partial class MainGameControlSetupJLayout
             jControlDataHolder.ColorForModType[ModType.MaxChange] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.RESULT];
             jControlDataHolder.ColorForModType[ModType.RateChange] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.EFFECT];
             jControlDataHolder.ColorForModType[ModType.Speed] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.EFFECT];
+            jControlDataHolder.ColorForModType[ModType.SuccessRate] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.RESULT];
+            jControlDataHolder.ColorForModType[ModType.SpaceConsumption] = jControlDataHolder.ColorForResourceChangeType[ResourceChangeType.COST];
+
 
             jControlDataHolder.LabelConfirmSlotDeleteTitle = Local.GetText("Delete save slot");
             jControlDataHolder.LabelConfirmSlotDeleteContent = Local.GetText("Data cannot be recovered");
