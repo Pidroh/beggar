@@ -884,8 +884,10 @@ public enum UnitType
 }
 
 public static class ModReplaceKeys 
-{ 
-    keys here
+{
+    public const string MAX = "$MAX$";
+    public const string RATE = "$RATE$";
+    public const string SPEED = "$SPEED$";
 }
 
 public class ModRuntime
