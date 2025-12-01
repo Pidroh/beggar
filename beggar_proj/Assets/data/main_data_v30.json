@@ -581,7 +581,7 @@
                 "tags": "t_tier4",
                 "lock": "t_tier4",
                 "need": "theself_4",
-                "require": "t_tier3",
+                "require": "t_tier3&&priest_exp>10&&faith>50",
                 "cost": {
                     "thoughts": 1700,
                     "gratitude": 1200,
@@ -721,7 +721,7 @@
                 "id": "cathedral_first",
                 "name": "Cathedral visit",
                 "desc": "Visit the cathedral for the first time",
-                "require": "t_tier3",
+                "require": "t_tier3&&greatercity",
                 "length": 30,
                 "run": {
                     "supplication": 5
@@ -742,7 +742,7 @@
                 "id": "parish_activities",
                 "name": "Parish activities",
                 "desc": "Serve the parish you are assigned to",
-                "require": "priest||goodpriest",
+                "require": "parish_lore>=1&&t_priest",
                 "length": 10,
                 "run": {
                     "supplication": 5

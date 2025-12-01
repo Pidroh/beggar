@@ -219,6 +219,21 @@
                 "max": 1
             },
             {
+                "id": "charity_offering",
+                "name": "Charity offering",
+                "tag": "religionry,t_power_up",
+                "desc": "Formalize your almsgiving so that it brings more sustenance over time.",
+                "require": "charity>=2&&jointhechurch",
+                "duration": 30,
+                "run": {
+                    "churchrespect": 2
+                },
+                "mod": {
+                    "breadcrumbs.rate": 1
+                },
+                "max": 1
+            },
+            {
                 "id": "analysis_dot",
                 "name": "Analitical mind",
                 "tag": "mentalry,t_repeatable_task",
