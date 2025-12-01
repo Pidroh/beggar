@@ -2080,6 +2080,23 @@
                     "cold.mod.supplication.rate": 0.03,
                     "space": 1
                 }
+            },
+            {
+                "id": "prayerbench",
+                "name": "Prayer bench",
+                "desc": "A small place to kneel and reflect",
+                "require": "jointhechurch&&reflection>0",
+                "tag": "religionry",
+                "max": 1,
+                "cost": {
+                    "reflection": 3,
+                    "churchrespect": 40
+                },
+                "mod": {
+                    "reflection.max": 5,
+                    "faith.max": 30,
+                    "space": 1
+                }
             }
         ]
     },
