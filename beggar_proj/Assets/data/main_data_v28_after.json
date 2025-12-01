@@ -6,7 +6,7 @@
                 "id": "rats",
                 "tag": "animalry",
                 "desc": "The rat is a survivor, an urban explorer, a pest, and a creature of the night",
-                "max": 3,
+                "max": 0,
                 "mod": {
                     "ratbond.max": 10,
                     "ratbond.rate": 0.01,
