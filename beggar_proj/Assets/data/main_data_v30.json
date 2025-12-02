@@ -17,6 +17,7 @@
                 "id": "priest_exp",
                 "name": "Priest experience",
                 "desc": "Accumulated wisdom of Priest duties",
+                "max": 3,
                 "mod": {
                     "churchrespect.max": 10
                 }
@@ -172,7 +173,7 @@
                     "priest_exp": 2
                 },
                 "result": {
-                    "priest_exp": 2,
+                    "priest_exp": 1,
                     "coin": 1
                 },
                 "mod": {
@@ -193,7 +194,7 @@
                 "cost": {
                     "faith": 10,
                     "clarity": 5,
-                    "priest_exp": 1
+                    "priest_exp": 3
                 },
                 "mod": {
                     "reflection.rate": 0.02,
@@ -212,7 +213,7 @@
                 "cost": {
                     "faith": 12,
                     "churchrespect": 60,
-                    "priest_exp": 1
+                    "priest_exp": 4
                 },
                 "mod": {
                     "supplication.max": 50,
@@ -232,7 +233,7 @@
                 "cost": {
                     "faith": 18,
                     "clarity": 8,
-                    "priest_exp": 1
+                    "priest_exp": 8
                 },
                 "mod": {
                     "sadness.max": 50,
@@ -252,7 +253,7 @@
                     "faith": 16,
                     "churchrespect": 70,
                     "realization": 1,
-                    "priest_exp": 2
+                    "priest_exp": 15
                 },
                 "mod": {
                     "churchrespect.max": 50,
@@ -272,7 +273,7 @@
                 "cost": {
                     "faith": 20,
                     "churchrespect": 100,
-                    "priest_exp": 3
+                    "priest_exp": 5
                 },
                 "mod": {
                     "clarity.rate": 0.1,
@@ -291,7 +292,7 @@
                 "cost": {
                     "churchrespect": 60,
                     "faith": 5,
-                    "priest_exp": 1
+                    "priest_exp": 3
                 },
                 "mod": {
                     "coin.rate": 0.01
@@ -367,7 +368,7 @@
                 "max": 1,
                 "duration": 50,
                 "cost": {
-                    "priest_exp": 4,
+                    "priest_exp": 40,
                     "cathedral_support": 1
                 },
                 "mod": {
