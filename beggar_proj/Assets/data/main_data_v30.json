@@ -757,7 +757,14 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": []
+                "encs": [
+                    "penitent",
+                    "mourning_man",
+                    "learning_children",
+                    "drunk_isabella",
+                    "incompetent_acolyte",
+                    "hungry_beggar_church"
+                ]
             }
         ]
     },
