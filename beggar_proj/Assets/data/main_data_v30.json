@@ -736,7 +736,15 @@
                 "loot_WIP": {
                     "rare_itemWIP": "1~5"
                 },
-                "encs": []
+                "encs": [
+                    "eyesfaithful",
+                    "bishopglare",
+                    "joinedprayer",
+                    "wordsbishop",
+                    "chant",
+                    "voicesgossip",
+                    "silenceperiod"
+                ]
             },
             {
                 "id": "parish_activities",
