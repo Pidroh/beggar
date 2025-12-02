@@ -763,7 +763,102 @@
     },
     {
         "type": "ENCOUNTER",
-        "items": []
+        "items": [
+            {
+                "id": "penitent",
+                "name": "Penitent",
+                "desc": "A kneeling soul waits before the confessional, murmuring a litany of sins to be confessed.",
+                "effect": {
+                    "sorrow": "0~2",
+                    "guilt": "0~2",
+                    "reflection": "0~1",
+                    "fatigue": "0~1"
+                },
+                "result": {
+                    "faith": "1~3",
+                    "churchrespect": "0~2",
+                    "clarity": "0~2"
+                }
+            },
+            {
+                "id": "mourning_man",
+                "name": "Mourning man",
+                "desc": "A man in black weeps in a side chapel, his grief spilling quietly into the stone around him.",
+                "effect": {
+                    "introspection.xp": 1,
+                    "sadness": "1~3",
+                    "sorrow": "1~3",
+                    "fatigue": "0~2",
+                    "perplexion": "0~2"
+                },
+                "result": {
+                    "thoughts": "3~8",
+                    "reflection": "0~2"
+                }
+            },
+            {
+                "id": "learning_children",
+                "name": "Learning children",
+                "desc": "Parish children recite their lessons, small voices echoing between the pews as they await your teaching.",
+                "effect": {
+                    "happiness": "0~2",
+                    "fatigue": "0~2",
+                    "perplexion": "0~2",
+                    "fundamentals": "0~2"
+                },
+                "result": {
+                    "gratitude": "1~3",
+                    "benevolence": "1~3",
+                    "faith": "0~2"
+                }
+            },
+            {
+                "id": "drunk_isabella",
+                "name": "Drunk Isabella",
+                "desc": "Isabella sways in the pews, the smell of wine cutting sharply through the incense.",
+                "effect": {
+                    "irritation": "0~3",
+                    "sadness": "0~2",
+                    "faith": "-1~0",
+                    "perplexion": "0~2"
+                },
+                "result": {
+                    "thoughts": "1~4",
+                    "gratitude": "-1~0",
+                    "sorrow": "0~2"
+                }
+            },
+            {
+                "id": "incompetent_acolyte",
+                "name": "Incompetent acolyte",
+                "desc": "At the altar rail, an acolyte fumbles the candles and stumbles over the prayers, unsettling the solemn rite.",
+                "effect": {
+                    "irritation": "1~3",
+                    "perplexion": "0~2",
+                    "churchrespect": "-1~0"
+                },
+                "result": {
+                    "thoughts": "2~6",
+                    "reflection": "0~1",
+                    "ecclesiology.xp": 1
+                }
+            },
+            {
+                "id": "hungry_beggar_church",
+                "name": "Beggar by the church",
+                "desc": "By the church steps a beggar knocks madly, very hungry.",
+                "effect": {
+                    "breadcrumbs": "-2~0",
+                    "fatigue": "0~2",
+                    "irritation": "0~2"
+                },
+                "result": {
+                    "sadness": "0~2",
+                    "food": "-1~0",
+                    "breadcrumbs": "-1~0"
+                }
+            }
+        ]
     },
     {
         "type": "DIALOG",
