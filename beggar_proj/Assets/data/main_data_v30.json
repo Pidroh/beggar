@@ -4,11 +4,13 @@
         "items": [
             {
                 "id": "cathedral_support",
-                "name": "Cathedral support"
+                "name": "Cathedral support",
+                "tag": "religionry"
             },
             {
                 "id": "better_faith",
                 "name": "Faith",
+                "tag": "religionry",
                 "mod": {
                     "faith.rate": 0.01
                 }
@@ -16,6 +18,7 @@
             {
                 "id": "priest_exp",
                 "name": "Priest experience",
+                "tag": "religionry",
                 "desc": "Accumulated wisdom of Priest duties",
                 "max": 3,
                 "mod": {
@@ -79,7 +82,7 @@
                 "name": "Deepen faith",
                 "desc": "Let gratitude and faith open a new way of devotion.",
                 "require": "t_priest",
-                "tag": "t_faith_unlock",
+                "tag": "t_faith_unlock,religionry",
                 "max": 1,
                 "duration": 40,
                 "cost": {
@@ -96,7 +99,7 @@
                 "name": "Priest duties",
                 "desc": "Carry out the daily work of a parish priest.",
                 "require": "curate",
-                "tag": "priest_style,t_repeatable_task",
+                "tag": "priest_style,religionry,t_repeatable_task",
                 "duration": 8,
                 "cost": {
                     "clarity": 3,
