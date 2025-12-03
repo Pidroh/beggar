@@ -367,7 +367,7 @@
                 "id": "chantry_priest",
                 "name": "Chantry priest",
                 "desc": "Dedicate yourself to the cathedral's chantry, deepening your priestly service around altar and choir.",
-                "require": "curate&&cathedral_matters>=2",
+                "require": "curate&&cathedral_matters>=3",
                 "tag": "religionry,priest_style,t_power_up",
                 "max": 1,
                 "duration": 50,
