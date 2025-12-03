@@ -346,7 +346,6 @@
             {
                 "id": "speak_archpriest",
                 "name": "Speak with the archpriest",
-                "desc": "",
                 "require": "parish_lore>=3&&surrounding_parish&&migling_priests",
                 "tag": "religionry,t_power_up",
                 "max": 3,
@@ -354,6 +353,10 @@
                 "cost": {
                     "cathedral_support": 1,
                     "realization": 1
+                },
+                "run": {
+                    "churchrespect": 4,
+                    "thoughts": 10
                 },
                 "mod": {
                     "churchrespect.rate": 0.2,
@@ -658,7 +661,7 @@
                 "cost": {
                     "skillpoints": 75
                 },
-                "desc": "Knowledge of the geographical area to your parish",
+                "desc": "Knowledge of the geographical area of your parish",
                 "mod": {
                     "faith.max": 5,
                     "churchrespect.max": 5
