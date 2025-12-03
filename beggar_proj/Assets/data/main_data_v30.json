@@ -664,17 +664,7 @@
                     "churchrespect.max": 5
                 }
             },
-            {
-                "id": "administration",
-                "require": "t_tier3&&followers>1",
-                "cost": {
-                    "skillpoints": 75
-                },
-                "desc": "The process of running an organization",
-                "mod": {
-                    "followers.max": 2
-                }
-            },
+            
             {
                 "id": "cathedral_matters",
                 "name": "Cathedral matters",
