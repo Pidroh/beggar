@@ -302,24 +302,6 @@
                 }
             },
             {
-                "id": "archpriest",
-                "name": "Archpriest",
-                "desc": "Commit yourself to administrating a group of priests, each with their own parish.",
-                "require": "administration>=2&&joinedthechurch&&priest_exp>10",
-                "tag": "religionry,t_power_up",
-                "max": 1,
-                "duration": 50,
-                "cost": {
-                    "cathedral_support": 2,
-                    "priest_exp": 30
-                },
-                "mod": {
-                    "priest_exp.max": 20,
-                    "churchsocial_support.result.cathedral_support": 1,
-                    "cathedral_support.max": 10
-                }
-            },
-            {
                 "id": "migling_priests",
                 "name": "Migling with priests",
                 "desc": "Spend time chatting with other priests",

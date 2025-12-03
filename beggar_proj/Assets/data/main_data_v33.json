@@ -1,0 +1,72 @@
+[
+    {
+        "type": "RESOURCE",
+        "items": [
+            
+        ]
+    },
+    {
+        "type": "TASK",
+        "items": [
+            {
+                "id": "archpriest",
+                "name": "Archpriest",
+                "desc": "Commit yourself to administrating a group of priests, each with their own parish.",
+                "require": "administration>=2&&joinedthechurch&&priest_exp>10",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 50,
+                "cost": {
+                    "cathedral_support": 2,
+                    "priest_exp": 30
+                },
+                "mod": {
+                    "priest_exp.max": 20,
+                    "churchsocial_support.result.cathedral_support": 1,
+                    "cathedral_support.max": 10
+                }
+            }
+        ]
+    },
+    {
+        "type": "HOUSE",
+        "items": [
+        ]
+    },
+    {
+        "type": "CLASS",
+        "items": [
+        ]
+    },
+    {
+        "type": "SKILL",
+        "items": [
+        ]
+    },
+    {
+        "type": "LOCATION",
+        "items": [
+        ]
+    },
+    {
+        "type": "ENCOUNTER",
+        "items": [
+        ]
+    },
+    {
+        "type": "DIALOG",
+        "items": []
+    },
+    {
+        "type": "FURNITURE",
+        "items": []
+    },
+    {
+        "type": "TAB",
+        "items": []
+    },
+    {
+        "type": "HINT",
+        "items": [        ]
+    }
+]
