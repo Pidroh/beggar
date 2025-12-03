@@ -129,13 +129,16 @@
             },
             {
                 "id": "churchsocial_support",
-                "name": "Cathedral goodwill",
-                "desc": "Leverage your church social style to build support for the cathedral.",
+                "name": "Cathedral mingling",
+                "desc": "Build up your connections with influential members of the cathedral.",
                 "require": "cathedral_matters",
                 "tag": "churchsocial_style,t_repeatable_task",
                 "duration": 10,
                 "cost": {
                     "reflection": 1
+                },
+                "run": {
+                    "churchrespect": 10
                 },
                 "result": {
                     "cathedral_support": 1
@@ -301,15 +304,20 @@
             {
                 "id": "archpriest",
                 "name": "Archpriest",
-                "desc": "Commit yourself to administrating a group of priests, each with their own parish",
-                "require": "administration>=2",
+                "desc": "Commit yourself to administrating a group of priests, each with their own parish.",
+                "require": "administration>=2&&joinedthechurch&&priest_exp>10",
                 "tag": "religionry,t_power_up",
                 "max": 1,
                 "duration": 50,
                 "cost": {
-                    "cathedral_support": 2
+                    "cathedral_support": 2,
+                    "priest_exp": 30
                 },
-                "mod": {}
+                "mod": {
+                    "priest_exp.max": 20,
+                    "churchsocial_support.result.cathedral_support": 1,
+                    "cathedral_support.max": 10
+                }
             },
             {
                 "id": "migling_priests",
@@ -363,7 +371,7 @@
                 "id": "chantry_priest",
                 "name": "Chantry priest",
                 "desc": "Dedicate yourself to the cathedral's chantry, deepening your priestly service around altar and choir.",
-                "require": "curate&&cathedral_matters",
+                "require": "curate&&cathedral_matters>=2",
                 "tag": "religionry,priest_style,t_power_up",
                 "max": 1,
                 "duration": 50,
@@ -373,7 +381,7 @@
                 },
                 "mod": {
                     "priest_exp.max": 8,
-                    "churchrespect.max": 60,
+                    "churchrespect.rate": 0.5,
                     "cathedral_support.max": 2
                 }
             },
@@ -683,7 +691,8 @@
                 },
                 "desc": "Knowledge of the cathedral and the diocese, the area of influence of a bishop",
                 "mod": {
-                    "churchrespect.max": 5
+                    "churchrespect.max": 5,
+                    "cathedral_support.max": 1
                 }
             }
         ]
