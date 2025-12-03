@@ -311,9 +311,14 @@
                 "duration": 20,
                 "cost": {
                     "churchrespect": 100,
-                    "charm": 5
+                    "charm": 5,
+                    "priest_exp": 3
+                },
+                "result":{
+                    "priest_exp": 4
                 },
                 "mod": {
+                    "churchrespect.rate": 0.2,
                     "churchrespect.max": 50
                 }
             },
@@ -327,9 +332,14 @@
                 "duration": 40,
                 "cost": {
                     "supplication": 500,
-                    "clarity": 30
+                    "clarity": 30,
+                    "priest_exp": 5
+                },
+                "result":{
+                    "priest_exp": 2
                 },
                 "mod": {
+                    "churchrespect.rate": 0.2,
                     "churchrespect.max": 50
                 }
             },
@@ -346,7 +356,8 @@
                     "realization": 1
                 },
                 "mod": {
-                    "cathedral_support.max": 1
+                    "churchrespect.rate": 0.2,
+                    "cathedral_support.max": 3
                 }
             },
             {
