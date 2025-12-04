@@ -675,12 +675,15 @@
                     "realization": 1,
                     "reflection": 15
                 },
-                "duration": 30,
+                "duration": 5,
                 "cost": {
                     "reflection": 5,
                     "clarity": 30,
                     "realization": 1,
                     "thoughts": 120
+                },
+                "result": {
+                    "musing": 3
                 },
                 "dot": {
                     "duration": 100,
@@ -718,10 +721,10 @@
                 "desc": "Think up ways to organize memory and clean up space for your musings",
                 "tag": "reflective_style,t_power_up",
                 "require": "musing>20",
-                "duration": 35,
+                "duration": 15,
                 "max": 10,
                 "cost": {
-                    "musing": 25,
+                    "musing": 15,
                     "reflection": 5
                 },
                 "run": {
