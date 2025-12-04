@@ -665,7 +665,8 @@
                     "faith.max": 20,
                     "churchrespect.max": 150,
                     "holyscriptures.max": 1,
-                    "ecclesiology.max": 1
+                    "ecclesiology.max": 1,
+                    "priest_exp.max": 20
                 }
             },
             {
@@ -684,8 +685,9 @@
                 "mod": {
                     "benevolence.rate": 1,
                     "advance_alms.max": 1,
-                    "benevolent_alms1.max": 1,
-                    "benevolent_alms2.max": 1
+                    "faithskill.max": 1,
+                    "benevolent_alms2.max": 1,
+                    "better_faith.max": 20
                 }
             }
         ]

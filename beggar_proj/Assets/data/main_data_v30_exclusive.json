@@ -1,0 +1,190 @@
+[
+    {
+        "type": "TASK",
+        "items": [
+            {
+                "id": "ponderexistence",
+                "name": "What is reality?",
+                "desc": "Ask a rat about the nature of your reality",
+                "require": "t_tier4&&rats>0",
+                "max": 1,
+                "duration": 90,
+                "tags": "ending_game,t_power_up",
+                "cost": {
+                    "thoughts": 500,
+                    "clarity": 90,
+                    "supplication": 1100,
+                    "reflection": 18,
+                    "realization": 1,
+                    "rats": 1
+                },
+                "run": {
+                    "thoughts": 10,
+                    "supplication": 10,
+                    "musing": 2
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            },
+            {
+                "id": "pondercrime",
+                "name": "What does it mean to be rich?",
+                "desc": "Embask in luxury as you ponder what it all means",
+                "require": "t_tier4&&luxury>10",
+                "max": 1,
+                "duration": 90,
+                "tags": "ending_game,t_power_up",
+                "cost": {
+                    "coin": 1200,
+                    "clarity": 90,
+                    "supplication": 1100,
+                    "reflection": 18,
+                    "realization": 1,
+                    "luxury": 30
+                },
+                "run": {
+                    "luxury": 1,
+                    "coin": 15,
+                    "thoughts": 10,
+                    "supplication": 10,
+                    "musing": 1
+                },
+                "result": {
+                    "nutrition": 1
+                }
+            },
+            {
+                "id": "ponderhappiness",
+                "name": "What is happiness?",
+                "desc": "Ask your cat about the nature of happiness",
+                "require": "t_tier4&&petcat>0&&happiness>0",
+                "max": 1,
+                "duration": 90,
+                "tags": "ending_game,t_power_up",
+                "need": "petcat>0",
+                "cost": {
+                    "supplication": 450,
+                    "thoughts": 200,
+                    "clarity": 80,
+                    "happiness": 7
+                },
+                "run": {
+                    "thoughts": 5,
+                    "supplication": 5
+                }
+            },
+            {
+                "id": "ponderreligion",
+                "name": "What are the teachings?",
+                "desc": "Ponder with all your might on the meaning of religion",
+                "require": "t_tier3&&jointhechurch&&churchrespect>100",
+                "max": 1,
+                "duration": 90,
+                "tags": "ending_game,t_power_up",
+                "cost": {
+                    "supplication": 2000,
+                    "thoughts": 1500,
+                    "clarity": 100,
+                    "churchrespect": 900,
+                    "priest_exp": 40,
+                    "realization": 1
+                },
+                "run": {
+                    "thoughts": 20,
+                    "supplication": 20
+                }
+            },
+            {
+                "id": "pondergood",
+                "name": "What does it mean to be good?",
+                "desc": "Ponder with all your might on the meaning of being good",
+                "require": "t_tier4&&empathy>4&&benevolence>300",
+                "max": 1,
+                "duration": 90,
+                "tags": "ending_game,t_power_up",
+                "cost": {
+                    "supplication": 1300,
+                    "thoughts": 1000,
+                    "clarity": 100,
+                    "benevolence": 400
+                },
+                "run": {
+                    "benevolence": 5,
+                    "thoughts": 20,
+                    "supplication": 20
+                }
+            },
+            {
+                "id": "fire_ending",
+                "name": "Answer in the fire",
+                "desc": "Stare into the carnage, into the flame",
+                "require": "sadism>4&&t_tier4",
+                "duration": 90,
+                "need": "handdrill_dot&&burnperson_many>2",
+                "tags": "ending_game,t_power_up",
+                "max": 1,
+                "cost": {
+                    "thoughts": 600,
+                    "dominance": 500,
+                    "firepower": 26,
+                    "fireaffinity": 100,
+                    "captive": 8
+                },
+                "run": {
+                    "firepower": 1
+                },
+                "modification": {
+                    "dominance.max": 40,
+                    "dominance.rate": 0.5,
+                    "fireaffinity.max": 10,
+                    "fireaffinity.rate": 0.5
+                }
+            },
+            {
+                "id": "disease_sad_ending",
+                "name": "What does it mean to be sick?",
+                "desc": "How did your body come to this?",
+                "require": "degeneration>50",
+                "duration": 200,
+                "need": "degeneration>500",
+                "tags": "ending_game,t_power_up",
+                "max": 1,
+                "cost": {},
+                "run": {},
+                "modification": {
+                    "sorrow.max": 1
+                }
+            },
+            {
+                "id": "gift_ending",
+                "name": "Who am I in this holy night?",
+                "desc": "Ponder about what to be in the face of the Lady's birth",
+                "require": "special_gift>0",
+                "duration": 90,
+                "tags": "ending_game,t_power_up",
+                "need": "winter",
+                "max": 1,
+                "cost": {
+                    "thoughts": 800,
+                    "supplication": 900,
+                    "clarity": 80,
+                    "benevolence": 200,
+                    "special_gift": 1
+                },
+                "run": {
+                    "benevolence": 5,
+                    "thoughts": 15,
+                    "supplication": 15
+                },
+                "result": {
+                    "special_gift": 1
+                }
+            }
+        ]
+    },
+    {
+        "type": "FURNITURE",
+        "items": []
+    }
+]
