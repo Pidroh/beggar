@@ -1689,7 +1689,7 @@
                 "require": "weak_gift>=1",
                 "tag": "giftgiving,t_power_up",
                 "max": 3,
-                "duration": 30,
+                "duration": 7,
                 "cost": {
                     "weak_gift": 1
                 },
@@ -1706,7 +1706,7 @@
                 "require": "gift>=1",
                 "tag": "giftgiving,t_power_up",
                 "max": 3,
-                "duration": 40,
+                "duration": 8,
                 "cost": {
                     "gift": 1
                 },
@@ -1723,7 +1723,7 @@
                 "require": "gift_making>=4&&rodentology>=4",
                 "tag": "giftmaking",
                 "max": 2,
-                "duration": 20,
+                "duration": 8,
                 "cost": {
                     "gift": 2,
                     "foraging": 15

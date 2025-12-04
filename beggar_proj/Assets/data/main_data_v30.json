@@ -5,12 +5,14 @@
             {
                 "id": "cathedral_support",
                 "name": "Cathedral support",
+                "max": 5,
                 "tag": "religionry"
             },
             {
                 "id": "better_faith",
                 "name": "Faith",
                 "tag": "religionry",
+                "max": 3,
                 "mod": {
                     "faith.rate": 0.01
                 }
@@ -117,7 +119,7 @@
                 "require": "t_priest&&thinklife",
                 "tag": "religionry,t_power_up,reflectivemoodunlock_tag",
                 "max": 1,
-                "duration": 40,
+                "duration": 10,
                 "cost": {
                     "reflection": 10,
                     "faith": 20
@@ -126,7 +128,27 @@
                     "reflection.max": 1,
                     "thoughts.rate": 1,
                     "faith.rate": 0.1
-
+                }
+            },
+            {
+                "id": "upgrade_realization_stuff",
+                "name": "Faithful realizations",
+                "desc": "Mixing up self-knowledge with deeper faith.",
+                "require": "t_priest&&realization",
+                "tag": "religionry,t_power_up",
+                "need": "faithskill>=2",
+                "max": 1,
+                "duration": 10,
+                "cost": {
+                    "realization": 1,
+                    "faith": 100,
+                    "reflection": 10,
+                    "better_faith": 3
+                },
+                "mod": {
+                    "deep_think.speed": 180,
+                    "reflection.rate": 0.015,
+                    "reflectivemood.speed": 150
                 }
             },
             {
@@ -410,7 +432,7 @@
                 "require": "chantry_priest",
                 "tag": "religionry,priest_style,t_power_up",
                 "max": 1,
-                "duration": 40,
+                "duration": 10,
                 "cost": {
                     "churchrespect": 80,
                     "faith": 10,
