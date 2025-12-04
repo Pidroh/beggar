@@ -133,21 +133,40 @@
             {
                 "id": "upgrade_realization_stuff",
                 "name": "Faithful realizations",
-                "desc": "Mixing up self-knowledge with deeper faith.",
+                "desc": "Mixing up self-knowledge with religious faith.",
                 "require": "t_priest&&realization",
                 "tag": "religionry,t_power_up",
-                "need": "faithskill>=2",
+                "need": "faithskill>=1",
                 "max": 1,
                 "duration": 10,
                 "cost": {
                     "realization": 1,
                     "faith": 100,
-                    "reflection": 10,
+                    "reflection": 10
+                },
+                "mod": {
+                    "deep_think.speed": 120,
+                    "reflection.rate": 0.005,
+                    "reflectivemood.speed": 125
+                }
+            },
+            {
+                "id": "upgrade_realization_stuff_b",
+                "name": "Faithful realizations II",
+                "desc": "Mixing up self-knowledge with deeper faith.",
+                "require": "t_priest&&realization",
+                "tag": "religionry,t_power_up",
+                "max": 1,
+                "duration": 10,
+                "cost": {
+                    "realization": 1,
+                    "faith": 100,
+                    "reflection": 12,
                     "better_faith": 3
                 },
                 "mod": {
-                    "deep_think.speed": 180,
-                    "reflection.rate": 0.015,
+                    "deep_think.speed": 160,
+                    "reflection.rate": 0.01,
                     "reflectivemood.speed": 150
                 }
             },
