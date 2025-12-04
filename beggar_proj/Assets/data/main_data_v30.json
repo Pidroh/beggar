@@ -14,7 +14,8 @@
                 "tag": "religionry",
                 "max": 3,
                 "mod": {
-                    "faith.rate": 0.01
+                    "faith.rate": 0.01,
+                    "faith.max": 20
                 }
             },
             {
@@ -147,27 +148,29 @@
                 "mod": {
                     "deep_think.speed": 120,
                     "reflection.rate": 0.005,
-                    "reflectivemood.speed": 125
+                    "reflectivemood.speed": 125,
+                    "realization.max": 1
                 }
             },
             {
                 "id": "upgrade_realization_stuff_b",
                 "name": "Faithful realizations II",
                 "desc": "Mixing up self-knowledge with deeper faith.",
-                "require": "t_priest&&realization",
+                "require": "t_priest&&upgrade_realization_stuff",
                 "tag": "religionry,t_power_up",
                 "max": 1,
                 "duration": 10,
                 "cost": {
                     "realization": 1,
-                    "faith": 100,
+                    "faith": 120,
                     "reflection": 12,
                     "better_faith": 3
                 },
                 "mod": {
-                    "deep_think.speed": 160,
-                    "reflection.rate": 0.01,
-                    "reflectivemood.speed": 150
+                    "deep_think.speed": 180,
+                    "reflection.rate": 0.02,
+                    "reflectivemood.speed": 180,
+                    "realization.max": 3
                 }
             },
             {
@@ -175,7 +178,7 @@
                 "name": "Fervorous prayer",
                 "desc": "Enter into intense, sustained prayer.",
                 "require": "priest_exp>=1&&faithskill>=2",
-                "tag": "priest_style,t_repeatable_task",
+                "tag": "priest_style,t_repeatable_task,religionry",
                 "duration": 6,
                 "cost": {
                     "priest_exp": 1
