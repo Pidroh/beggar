@@ -111,6 +111,25 @@
                 }
             },
             {
+                "id": "reflection_unlock_church",
+                "name": "Reflections on life as a priest",
+                "desc": "Set aside time to ponder your priestly vocation.",
+                "require": "t_priest&&thinklife",
+                "tag": "religionry,t_power_up,reflectivemoodunlock_tag",
+                "max": 1,
+                "duration": 40,
+                "cost": {
+                    "reflection": 10,
+                    "faith": 20
+                },
+                "mod": {
+                    "reflection.max": 1,
+                    "thoughts.rate": 1,
+                    "faith.rate": 0.1
+
+                }
+            },
+            {
                 "id": "fervorous_prayer",
                 "name": "Fervorous prayer",
                 "desc": "Enter into intense, sustained prayer.",

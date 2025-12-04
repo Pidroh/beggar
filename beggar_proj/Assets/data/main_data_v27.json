@@ -54,7 +54,7 @@
                 "id": "thinklife",
                 "name": "Think about life",
                 "desc": "What I have done and what I will do",
-                "require": "t_tier3&&reflection>=15",
+                "require": "t_tier3&&reflection>=8",
                 "duration": 50,
                 "max": 2,
                 "above_max": true,
@@ -77,6 +77,7 @@
                 "name": "The depth of reflection",
                 "require": "thinklife",
                 "need": "musingswood",
+                "tag": "reflectivemoodunlock_tag",
                 "duration": 20,
                 "max": 1,
                 "cost": {
@@ -94,7 +95,7 @@
                 "id": "reflectivemood",
                 "name": "Reflective mood",
                 "desc": "A state of mind conducive to deep thought (some actions and power ups can only be done while the effect is active)",
-                "require": "reflectivemoodunlock",
+                "require": "reflectivemoodunlock_tag",
                 "buy": {
                     "reflection": 15,
                     "clarity": 100,
