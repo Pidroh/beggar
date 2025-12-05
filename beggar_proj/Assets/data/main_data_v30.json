@@ -198,10 +198,10 @@
                 "name": "Cathedral mingling",
                 "desc": "Build up your connections with influential members of the cathedral.",
                 "require": "cathedral_matters",
-                "tag": "churchsocial_style,t_repeatable_task",
+                "tag": "churchsocial_style,t_repeatable_task,religionry",
                 "duration": 10,
                 "cost": {
-                    "reflection": 1
+                    "clarity": 40
                 },
                 "run": {
                     "churchrespect": 10
@@ -487,6 +487,7 @@
                 "require": "faithskill>=2",
                 "tag": "religionry,t_power_up",
                 "duration": 20,
+                "max": 1,
                 "cost": {
                     "better_faith": 3,
                     "clarity": 5
@@ -504,8 +505,9 @@
                 "require": "faithskill>=2&&holyscriptures>=6",
                 "tag": "religionry,t_power_up",
                 "duration": 20,
+                "max": 1,
                 "cost": {
-                    "better_faith": 10,
+                    "better_faith": 2,
                     "reflection": 5
                 },
                 "mod": {
@@ -520,6 +522,7 @@
                 "require": "faithskill>=3",
                 "tag": "religionry,t_power_up",
                 "duration": 20,
+                "max": 1,
                 "cost": {
                     "musing": 20,
                     "reflection": 5
@@ -557,7 +560,8 @@
                 "duration": 30,
                 "cost": {
                     "faith": 10,
-                    "clarity": 5
+                    "clarity": 5,
+                    "better_faith": 1
                 },
                 "mod": {
                     "benevolence.max": 10,
@@ -576,7 +580,8 @@
                 "duration": 40,
                 "cost": {
                     "faith": 15,
-                    "clarity": 8
+                    "clarity": 8,
+                    "better_faith": 1
                 },
                 "mod": {
                     "benevolence.max": 20,
@@ -595,7 +600,8 @@
                 "duration": 60,
                 "cost": {
                     "faith": 20,
-                    "clarity": 10
+                    "clarity": 10,
+                    "better_faith": 3
                 },
                 "mod": {
                     "benevolence.max": 40,
@@ -678,16 +684,19 @@
                 "need": "theself_4",
                 "require": "t_tier3&&benevolent_alms3",
                 "cost": {
+                    "reflection": 1,
                     "benevolence": 300,
                     "better_faith": 5,
-                    "priest_exp": 35
+                    "priest_exp": 35,
+                    "faith": 400
                 },
                 "mod": {
                     "benevolence.rate": 1,
                     "advance_alms.max": 1,
                     "faithskill.max": 1,
                     "benevolent_alms2.max": 1,
-                    "better_faith.max": 20
+                    "better_faith.max": 20,
+                    "thoughts": 1700
                 }
             }
         ]
