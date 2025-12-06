@@ -65,7 +65,7 @@ public static class JGameControlExecuter
                         JGameControlExecuterSaveSlot.ConfirmDelete(mgc);
                     }
                     JGameControlExecuter.HideOverlay(mgc);
-
+                    controlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
                 }
             }
         }
