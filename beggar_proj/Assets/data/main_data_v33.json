@@ -1,9 +1,7 @@
 [
     {
         "type": "RESOURCE",
-        "items": [
-            
-        ]
+        "items": []
     },
     {
         "type": "TASK",
@@ -30,13 +28,11 @@
     },
     {
         "type": "HOUSE",
-        "items": [
-        ]
+        "items": []
     },
     {
         "type": "CLASS",
-        "items": [
-        ]
+        "items": []
     },
     {
         "type": "SKILL",
@@ -56,13 +52,11 @@
     },
     {
         "type": "LOCATION",
-        "items": [
-        ]
+        "items": []
     },
     {
         "type": "ENCOUNTER",
-        "items": [
-        ]
+        "items": []
     },
     {
         "type": "DIALOG",
@@ -78,6 +72,6 @@
     },
     {
         "type": "HINT",
-        "items": [        ]
+        "items": []
     }
 ]
