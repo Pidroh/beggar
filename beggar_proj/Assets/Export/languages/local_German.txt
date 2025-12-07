@@ -1,6 +1,40 @@
 key$description$German
 cunning_mind_name$$Listiger Verstand
 cunning_mind_desc$$Fähig werden, listige, oft kriminelle Aktivitäten durchzuführen
+psychic_instinct_name$$Geteiltes Instinkt
+psychic_instinct_desc$$Geteiltes Instinkt
+main_heuristic_archive_name$$Archivgegenstände
+main_heuristic_archive_desc$$Eingehende Kenntnisse darüber, was einer Person passieren kann
+speed_up_global_name$$Beschleunigen
+speed_up_global_desc$$Beschleunigt Aufgaben, Power-Ups, Fähigkeiten und Erkundung
+speed_up_powerup_name$$Beschleunigung (Power-up)
+speed_up_powerup_desc$$
+speed_up_normal_task_name$$Beschleunigen (wiederholbare Aufgaben)
+speed_up_normal_task_desc$$
+speed_up_skill_name$$Beschleunigung (Fähigkeit)
+speed_up_skill_desc$$
+speed_up_exp_name$$Beschleunigung (Erkundung)
+speed_up_exp_desc$$
+IN_GAME_SPEED_SKILL_name$$IM_SPIEL_TEMPO_FÄHIGKEIT
+IN_GAME_SPEED_SKILL_desc$$
+IN_GAME_SPEED_EXPLORATION_name$$IN SPIELGESCHWINDIGKEIT ERKUNDUNG
+IN_GAME_SPEED_EXPLORATION_desc$$
+IN_GAME_SPEED_name$$Spielgeschwindigkeit
+IN_GAME_SPEED_desc$$
+attain_prestige_points_autodata_1_name$$Erreiche das kollektive Gewissen I
+attain_prestige_points_autodata_1_desc$$Greife auf den gemeinsamen Geist der gesamten menschlichen Gesellschaft zu.
+attain_prestige_points_autodata_2_name$$Erreiche das gemeinsame Gewissen II
+attain_prestige_points_autodata_2_desc$$Zapfen Sie in den gemeinsamen Geist der gesamten menschlichen Gesellschaft ein
+attain_prestige_points_autodata_3_name$$Erreiche das kollektive Gewissen III
+attain_prestige_points_autodata_3_desc$$Greife auf das kollektive Bewusstsein der gesamten menschlichen Gesellschaft zu
+save_slot_tab_name$$Speicherplatz-Registerkarte
+save_slot_tab_desc$$
+slots_name$$Speicherplätze speichern
+slots_desc$$
+settings_name$$Einstellungen
+settings_desc$$
+others_name$$andere
+others_desc$$
 supplication_name$$Bitte um Hilfe
 supplication_desc$$Verzweifelte Bitten, die ein Charakter verwendet, um Bettelaktionen durchzuführen und Hilfe oder Gnade zu erbitten.
 loneliness_name$$Einsamkeit
@@ -213,6 +247,22 @@ ratwarden_name$$Rattenwächter
 ratwarden_desc$$Du bist der Beschützer der Mit-Ratten.
 catbeggar_name$$Katzenbettler
 catbeggar_desc$$Sie nennen ihn den Katzenverrückten.
+churchbeggar_hint_name$$Klassenhinweis
+churchbeggar_hint_desc$$
+ratbeggar_hint_name$$Klassenhinweis
+ratbeggar_hint_desc$$
+breadsnatcher_hint_name$$Klassenhinweis
+breadsnatcher_hint_desc$$
+beggar_hint_name$$Klassenhinweis
+beggar_hint_desc$$
+cutpurse_hint_name$$Klassenhinweis
+cutpurse_hint_desc$$
+streetrat_hint_name$$Klassentipp
+streetrat_hint_desc$$
+ratwarden_hint_name$$Klassenhinweis
+ratwarden_hint_desc$$
+catbeggar_hint_name$$Klassen-Hinweis
+catbeggar_hint_desc$$
 introspection_name$$Selbstbetrachtung
 introspection_desc$$Sich selbst zu reflektieren bedeutet, die eigenen Gedanken und Gefühle zu prüfen.
 contemplation_name$$Betrachtung
@@ -225,8 +275,8 @@ rodentology_name$$Rattenverwandtschaft
 rodentology_desc$$Wenn du die Menschen verstehen willst, studiere Mäuse.
 felinology_name$$Katzenbandschaft
 felinology_desc$$Geheimnisvolle Wesen, doch niedlich und faszinierend.
-bestiality_name$$Animalität
-bestiality_desc$$Menschen sind Tiere
+animalism_name$$Tierhaftigkeit
+animalism_desc$$Menschen sind Tiere
 scavenging_name$$Plündern
 scavenging_desc$$Suche nach und sammle natürliche Ressourcen und nützliche Gegenstände aus der Umgebung.
 beggarhood_name$$Bettlertum
@@ -325,6 +375,10 @@ rustyknife_name$$Rostiges Messer
 rustyknife_desc$$
 catfoodtray_name$$Essenstablett
 catfoodtray_desc$$
+archive_main_tab_name$$Archiv Hauptregister
+archive_main_tab_desc$$
+archive_tab_name$$Archiv
+archive_tab_desc$$
 task_name$$Aufgaben
 task_desc$$
 action_name$$Sofortige Aufgaben
@@ -349,6 +403,8 @@ power_up_name$$Stärkungen
 power_up_desc$$
 class_name$$Klassen
 class_desc$$
+hint_tab_name$$Hinweise
+hint_tab_desc$$
 resource_name$$Ressourcen
 resource_desc$$
 emotion_sep_res_name$$Gefühle
@@ -395,10 +451,6 @@ furniture_name$$Möbel
 furniture_desc$$
 log_name$$Protokoll
 log_desc$$
-settings_name$$Einstellungen
-settings_desc$$
-others_name$$andere
-others_desc$$
 ponderexistence_name$$Was ist Realität?
 ponderexistence_desc$$Frag eine Ratte nach der Natur deiner Realität.
 ponderhappiness_name$$Was ist Glück?
@@ -611,6 +663,18 @@ childdrawing_name$$Holzzeichnung
 childdrawing_desc$$Ein Stück Holz mit einer eingeschnitzten Zeichnung. War es ein Kind, das es gemacht hat?
 storytellingdolls_name$$Geschichtenerzähler-Puppen
 storytellingdolls_desc$$Du benutzt diese, um deinen Mitbegrebern wunderbare Geschichten zu erzählen.
+churchporter_hint_name$$Klassentipp
+churchporter_hint_desc$$
+lostphilosopher_hint_name$$Klassenhinweis
+lostphilosopher_hint_desc$$
+acolyte_hint_name$$Klassenhinweis
+acolyte_hint_desc$$
+lector_hint_name$$Klassenhinweis
+lector_hint_desc$$
+priest_hint_name$$Klassenhinweis
+priest_hint_desc$$
+expertbeggar_hint_name$$Klassenhinweis
+expertbeggar_hint_desc$$
 ponderreligion_name$$Was sind die Lehren?
 ponderreligion_desc$$Denke mit all deiner Kraft über die Bedeutung von Religion nach.
 firewood_name$$Brennholz
@@ -669,12 +733,12 @@ dominant_buff_exp_name$$Dominante Höhe
 dominant_buff_exp_desc$$Spüre das Vergnügen deiner Gefühle der Kontrolle.
 benevolent_rats_name$$Wohlwollende Ratten
 benevolent_rats_desc$$Lassen Sie Ihre Ratten Nahrung sammeln und teilen
-warm_feline_hearts_name$$Warmer katzenherz
-warm_feline_hearts_desc$$Lassen Sie Ihre Ratten Nahrung sammeln und teilen
-benevolence_buff_exp_name$$Hohe Güte
-benevolence_buff_exp_desc$$Spüre das Vergnügen deiner Gefühle der Kontrolle.
-flaming_rats_name$$Flammende Ratten
-flaming_rats_desc$$In Flammende Ratten verwandeln sich gewöhnliche Ratten in gefährliche Feinde, die Feuerschaden verursachen und alles in Brand setzen können.
+warm_feline_hearts_name$$Warmes Katzenherz
+warm_feline_hearts_desc$$Lassen Sie Ihre Katzen zusammenkommen und Futter teilen
+benevolence_buff_exp_name$$Großzügigkeit Hoch
+benevolence_buff_exp_desc$$Fühle die Freude deiner Gefühle der Großzügigkeit.
+flaming_rats_name$$Feuerratten
+flaming_rats_desc$$Ratten in Flammen, verursachen Chaos.
 collectfirewood_name$$Holz sammeln
 collectfirewood_desc$$
 sharefood_name$$Teile Krümel
@@ -789,6 +853,18 @@ sharingbowl_name$$Teilschale
 sharingbowl_desc$$Verwenden Sie dies, um Essen mit Bedürftigen zu teilen.
 bigbowl_name$$Große Schüssel
 bigbowl_desc$$Verwende sie, um all diese Krümel zu lagern.
+bonfirevagabond_hint_name$$Klassenhinweis
+bonfirevagabond_hint_desc$$
+goodbeggar_hint_name$$Klassenhinweis
+goodbeggar_hint_desc$$
+peopleburner_hint_name$$Klassenhinweis
+peopleburner_hint_desc$$
+animalburner_hint_name$$Klassenhinweis
+animalburner_hint_desc$$
+goodpriest_hint_name$$Klassenhinweis
+goodpriest_hint_desc$$
+gracebeggar_hint_name$$Klassenhinweis
+gracebeggar_hint_desc$$
 pondergood_name$$Was bedeutet es, gut zu sein?
 pondergood_desc$$Grüble mit all deiner Kraft über die Bedeutung, gut zu sein.
 fire_ending_name$$Antwort im Feuer
@@ -805,6 +881,8 @@ looks_name$$Aussehen
 looks_desc$$Wer hätte gedacht, dass du kommen würdest, um dein Aussehen zu verbessern.
 thinklife_name$$Denke über das Leben nach
 thinklife_desc$$Was ich getan habe und was ich tun werde
+reflectivemoodunlock_name$$Die Tiefe der Reflexion
+reflectivemoodunlock_desc$$
 reflectivemood_name$$Nachdenkliche Stimmung
 reflectivemood_desc$$Ein Geisteszustand, der zu tiefem Nachdenken führt (einige Aktionen und Power-ups können nur durchgeführt werden, wenn der Effekt aktiv ist).
 deep_think_name$$Tiefes Nachdenken
@@ -979,6 +1057,14 @@ stolen_chest_name$$Gestohlene antike Truhe
 stolen_chest_desc$$Eine schöne antike Truhe, die jede Menge Gold aufnehmen kann. Sieht auch wirklich schick aus.
 nice_clothes_name$$Schöne Kleidung
 nice_clothes_desc$$Ein gepflegtes Aussehen.
+thief_hint_name$$Klassenhinweis
+thief_hint_desc$$
+burglar_hint_name$$Klassenhinweis
+burglar_hint_desc$$
+underboss_hint_name$$Klassenhinweis
+underboss_hint_desc$$
+urbansage_hint_name$$Klassenhinweis
+urbansage_hint_desc$$
 pondercrime_name$$Was bedeutet es, reich zu sein?
 pondercrime_desc$$In Luxus schwelgen, während du darüber nachdenkst, was das alles bedeutet.
 weakdisease_name$$Kleine Krankheit
@@ -991,6 +1077,122 @@ superheavydisease_name$$Terminaler Krankheit
 superheavydisease_desc$$Genieße die verbleibende Zeit.
 degeneration_name$$Degeneration
 degeneration_desc$$Die Krankheit, die deinen Körper dahinschwinden lässt
+analysis_name$$Analyse
+analysis_desc$$Detaillierte Untersuchung der Realität
+season_time_name$$Jahreszeitlich盲nge
+season_time_desc$$Fähigkeit, ruhig viele Tage zu warten, bis sie vergehen.
+winter_name$$Winterzeit
+winter_desc$$Winterzeit kommt, oder ist schon da
+cold_name$$kalt
+cold_desc$$Niedrige Temperatur
+weak_gift_name$$Bescheidenes Geschenk
+weak_gift_desc$$Ein Geschenk, das du mit dem gemacht hast, was du hattest.
+gift_name$$Geschenk
+gift_desc$$Ein ziemlich schönes Geschenk, wenn man so sagen darf.
+special_gift_name$$Besonderes Geschenk
+special_gift_desc$$Ein sorgfältig gefertigtes besonderes Geschenk, das seinem Besitzer zu segnen scheint.
+hint_t_tier0_name$$Jobhinweise I
+hint_t_tier0_desc$$Wissen über die verschiedenen Pfade, die du einschlagen kannst
+hint_t_tier1_name$$Beschäftigungstipps II
+hint_t_tier1_desc$$Kenntnis der verschiedenen Wege, die du einschlagen kannst
+hint_t_tier2_name$$Jobhinweise III
+hint_t_tier2_desc$$Kenntnis der verschiedenen Wege, die du nehmen kannst
+hint_t_tier3_name$$Job Hinweise IV
+hint_t_tier3_desc$$Wissen über die verschiedenen Wege, die du einschlagen kannst
+hint_t_tier4_name$$Job Hinweise V
+hint_t_tier4_desc$$Wissen über die verschiedenen Pfade, die du einschlagen kannst
+analytical_powerup1_name$$Scharfer Verstand
+analytical_powerup1_desc$$Bereitschaft zu lernen
+charity_offering_name$$Wohltätiges Angebot
+charity_offering_desc$$Formalisieren Sie Ihre Almosen, damit sie im Laufe der Zeit mehr Nahrung bringen.
+analysis_dot_name$$Analytischer Verstand
+analysis_dot_desc$$Fokus auf Analyse
+upgrade_analysis_rate_name$$Schärfen Analyse
+upgrade_analysis_rate_desc$$Verbessern Sie Ihre analytischen Fähigkeiten
+upgrade_analysis_max_name$$Erhöhe analytische Kapazität
+upgrade_analysis_max_desc$$Erhöhe deine analytische Kapazität
+upgrade_analysis_rate2_name$$Verfeinere Analyse
+upgrade_analysis_rate2_desc$$Verfeinere deine analytische Geschwindigkeit
+upgrade_analysis_max2_name$$Vertiefen Sie analytische Kapazität
+upgrade_analysis_max2_desc$$Vertiefen Sie Ihre Analysefähigkeiten.
+upgrade_analytics_max_name$$Meister der Analytik
+upgrade_analytics_max_desc$$Erweitern Sie Ihr Verständnis für analytische Systeme.
+upgrade_analysis_rate3_name$$Beschleunige Analyse
+upgrade_analysis_rate3_desc$$Beschleunige deine analytischen Prozesse auf neue Geschwindigkeiten
+upgrade_analysis_rate4_name$$Perfekter analytischer Fluss
+upgrade_analysis_rate4_desc$$Erreichen Sie nahtloses analytisches Denken
+upgrade_analysis_max3_name$$Weitreichendes analytisches Reservoir
+upgrade_analysis_max3_desc$$Massiv erweitern Sie Ihre Analysekapazität
+upgrade_analysis_max4_name$$Grenzenlose analytische Tiefe
+upgrade_analysis_max4_desc$$Erreiche unerreichte Niveaus an analytischer Kapazität.
+upgrade_analytics_max2_name$$Analytische Transzendenz
+upgrade_analytics_max2_desc$$Überschreiten Sie die Grenzen des analytischen Verständnisses.
+manual_analysis_name$$Fokussierte Analyse
+manual_analysis_desc$$Sich in gründlicher analytischer Arbeit engagieren
+upgrade_manual_analysis_result1_name$$Gesteigerte Konzentration
+upgrade_manual_analysis_result1_desc$$Generieren Sie mehr Analyse aus konzentrierter Arbeit.
+upgrade_manual_analysis_result2_name$$Tiefes Konzentrationsmeisterung
+upgrade_manual_analysis_result2_desc$$Maximieren Sie den analytischen Output aus fokussierten Sitzungen.
+upgrade_manual_analysis_speed_name$$Analytische Beschleunigung
+upgrade_manual_analysis_speed_desc$$Führen Sie eine fokussierte Analyse viel schneller durch.
+supplication_dot_name$$Bittende Seele
+supplication_dot_desc$$Befinden Sie sich in einem Zustand, in dem Sie sich Ihrer bittenden Seele bewusst sind.
+supplication_dot2_name$$Wiederherstellender Fokus
+supplication_dot2_desc$$Gelange in einen Zustand, der auf die Wiederherstellung deines Körpers ausgerichtet ist.
+upgrade_rest_efficiency_name$$Achtsame Erholung
+upgrade_rest_efficiency_desc$$Lernen Sie, effizienter zu pausieren.
+upgrade_rest_efficiency2_name$$Gesunde Erholung
+upgrade_rest_efficiency2_desc$$Ein gesünderer Körper kann besser ruhen
+upgrade_rest_efficiency3_name$$Nachdenkliche Genesung
+upgrade_rest_efficiency3_desc$$Denke darüber nach, wie du dich ausruhst.
+upgrade_restskill_max_name$$Tiefere Erkenntnis der Ruhe
+upgrade_restskill_max_desc$$Erreiche einen Durchbruch in der Art und Weise, wie du ruhst.
+upgrade_supplication_rate_name$$Natürliche Regeneration
+upgrade_supplication_rate_desc$$Dein Körper erholt sich im Laufe der Zeit auf natürliche Weise.
+upgrade_pleafocus_supplication_name$$Verbesserte Wiederherstellung
+upgrade_pleafocus_supplication_desc$$Eine viel leistungsstärkere, effiziente Erholung.
+upgrade_musing_generation_name$$Grübel über eine Muse
+upgrade_musing_generation_desc$$Ein Gedanke führt zu einem anderen, führt zu einem Grübeln.
+realization_cultivation_name$$Kultiviere Erkenntnis
+realization_cultivation_desc$$Betrete einen tiefen Zustand reflektierender Betrachtung
+enhanced_gratitude_a_name$$Wirklich dankbar für das Essen
+enhanced_gratitude_a_desc$$Tief in die Dankbarkeit eintauchen, erkennen, wie viel es dir bedeutet.
+enhanced_gratitude_b_name$$Dankbar für das Göttliche
+enhanced_gratitude_b_desc$$Durch den Glauben sei dankbarer für jede Aktivität.
+musing_flow_name$$Fluss der Betrachtungen
+musing_flow_desc$$Tief nachdenken beim Versinken in Gedanken.
+mental_restoration_name$$Mentale Erholung
+mental_restoration_desc$$Ein kraftvoller Zustand der mentalen und physischen Erholung
+upgrade_epiphanics_max_name$$Epiphanische Expansion
+upgrade_epiphanics_max_desc$$Vertiefe deine Neugierde, deine Begeisterung.
+analytical_unlock1_name$$Scharfe Gedanken
+analytical_unlock1_desc$$Der Fluss der Gedanken wird mich irgendwohin führen
+analytical_unlock2_name$$Scharfe Gedanken II
+analytical_unlock2_desc$$Der Fluss der Gedanken wird mich irgendwohin führen.
+analytical_unlock3_name$$Scharfe Gedanken III
+analytical_unlock3_desc$$Der Fluss der Gedanken wird mich an einen bestimmten Ort führen
+analytical_unlock4_name$$Scharfsinnige Gedanken IV
+analytical_unlock4_desc$$Der Fluss der Gedanken wird mich irgendwohin führen
+analytical_unlock5_name$$Scharfe Gedanken V
+analytical_unlock5_desc$$Der Fluss der Gedanken wird mich irgendwohin führen
+analytical_skill_points_a_name$$Anfängererkenntnis
+analytical_skill_points_a_desc$$Du weißt so wenig, dass es schnell ist, neue Erkenntnisse anzuhäufen.
+analytical_skill_points_b_name$$Anfängerblick
+analytical_skill_points_b_desc$$Du bist immer noch ein Anfänger, aber es wird bereits schwieriger zu lernen.
+analytical_skill_points_c_name$$Herausfordernder Einblick
+analytical_skill_points_c_desc$$Auf dem Weg zum Mittelstufenniveau ist das Lernen ziemlich knifflig.
+analytical_skill_points_d_name$$Fortgeschrittener Einblick
+analytical_skill_points_d_desc$$Jenseits des Vermittlers kann das Lernen entmutigend sein.
+analytical_skill_points_infinite_name$$Beharrliche Erkenntnis
+analytical_skill_points_infinite_desc$$Es ist schwer, aber das Lernen ist für immer.
+analytical_skill_points_max_a_name$$Erkenntniserweiterung
+analytical_skill_points_max_a_desc$$Analysiere deine eigene Erkenntniserweiterung
+analytical_skill_points_max_b_name$$Einblickserweiterung II
+analytical_skill_points_max_b_desc$$Analysiere deinen eigenen Einblick
+analytical_skill_points_max_c_name$$Einsichtserweiterung III
+analytical_skill_points_max_c_desc$$Analysiere deine eigene Einsicht
+analytical_skill_points_max_d_name$$Einblickserweiterung IV
+analytical_skill_points_max_d_desc$$Analysiere deinen eigenen Einblick
 disease_mind_name$$Krankheitsbewusstsein
 disease_mind_desc$$Werden Sie sich des Gesundheitszustands Ihres Körpers bewusst.
 sickmind_name$$Kranker Geist Anpassung
@@ -1035,18 +1237,70 @@ sickanimal_call_name$$Sammle kranke Tiere
 sickanimal_call_desc$$Sammle alle kranken Tiere um dich herum
 unlockheavydisease_name$$Unhygienisches Leben
 unlockheavydisease_desc$$Wirf deine Ängste weg, gehe tiefer in das hinein, was schmutzig ist.
+seasonal_contemplation_name$$Saisonale Betrachtung
+seasonal_contemplation_desc$$Lassen Sie sich in einen Rhythmus des Wartens ein, lassen Sie die Jahreszeiten in ihrer eigenen Zeit verstreichen.
+seasonal_contemplation_2_name$$Gedanken der Jahreszeit
+seasonal_contemplation_2_desc$$Noch tiefer in die lange Dauer der Jahreszeiten eintauchen.
+await_winter_name$$Erwarte den Winter
+await_winter_desc$$Lass die Jahreszeiten vergehen, bis der Winter endlich ankommt.
+let_winter_pass_name$$Lass den Winter vorüberziehen
+let_winter_pass_desc$$Warte, bis die kalte Jahreszeit endlich vorüber ist.
+winter_mood_name$$Winterstimmung
+winter_mood_desc$$Tauche ein in die ruhige, nachdenkliche Stimmung des Winters.
+church_feast_name$$Winterfest
+church_feast_desc$$Nehmen Sie an einem Winterkirchenfest teil und erhalten Sie warmes Essen.
+winter_alms_name$$Winteralmoosen
+winter_alms_desc$$Erhalte im Winter auf der Straße etwas Essen und Münzen.
+holy_night_thoughts_name$$Vorfreude auf die Heilige Nacht
+holy_night_thoughts_desc$$Verbringe eine ruhige Winternacht in Besinnung und Gebet.
+mass_birth_lady_name$$Messe zur Geburt der Dame
+mass_birth_lady_desc$$Feiern Sie die Geburt der Dame mit einer feierlichen Wintermesse.
+winter_benevolence_name$$Winterfreundlichkeit
+winter_benevolence_desc$$Lass die Gnade der Geburt der Dame in stille Winterfreundlichkeit fließen.
+winter_rest_name$$Warmes Ausruhen
+winter_rest_desc$$Lernen Sie, sich warm zu halten, während Sie ruhen.
+winter_hardiness_name$$Winterhärte
+winter_hardiness_desc$$Passe deinen Körper an die Kälte an, damit er mit der Zeit schwächer wird.
+make_modest_gift_name$$Mache bescheidenes Geschenk
+make_modest_gift_desc$$Bereite ein kleines, bescheidenes Geschenk aus einfachen Dingen vor, die du gefunden hast.
+make_gift_name$$Mach Geschenk
+make_gift_desc$$Stelle ein angemessenes Geschenk zusammen, investiere mehr Zeit und Geld.
+make_special_gift_name$$Erstelle besonderes Geschenk
+make_special_gift_desc$$Erstelle ein besonderes Geschenk, das seinen eigenen stillen Segen trägt.
+give_modest_gift_name$$Schenke bescheidene Gabe
+give_modest_gift_desc$$Biete eine bescheidene Gabe an jemanden in Not.
+give_gift_name$$Schenke Geschenk
+give_gift_desc$$Bieten Sie ein durchdachtes Geschenk an, das die gegenseitige Freundlichkeit vertieft.
+make_rat_present_name$$Kleines Rattengeschenk
+make_rat_present_desc$$Bereiten Sie ein kleines Geschenk vor, um es für Ihre Ratten stehen zu lassen.
+ladymas_rat_party_name$$Ladymas Party mit Ratten
+ladymas_rat_party_desc$$Teile eine kleine Ladymas Feier mit deinen Rattenfreunden.
 sewer_home2_name$$Kanal Kammern
 sewer_home2_desc$$Eine versteckte Kammer tief in den Kanal Kammern, gar nicht so schlecht.
 sicktier3_name$$Kränklicher Unterweltler
 sicktier3_desc$$Krank und isoliert
 sewercreature_name$$Kanalwesen
 sewercreature_desc$$Ein Leben geprägt von Schmutz
+gift_giver_name$$Geschenkgeber
+gift_giver_desc$$Jemand, der es genießt, Geschenke zu geben
+gift_master_name$$Rotgekleideter Geschenkeverteiler
+gift_master_desc$$Ein mysteriöser Mann, gekleidet in Rot, der Geschenke überall verteilt
+analytics_name$$Analytik
+analytics_desc$$Systematischer Prozess der Analyse
 diseaseintolerance_name$$Krankheitsintoleranz
 diseaseintolerance_desc$$Dein Körper passt sich seinem Zustand an.
 sewer_knowledge_name$$Kanalisationswissen
 sewer_knowledge_desc$$Wie gut kennst du das unterirdische Kanalisationswissen der Stadt?
 contamination_name$$Kontamination
 contamination_desc$$Wie sich Krankheiten verbreiten
+restskill_name$$Erholen
+restskill_desc$$Die Kunst der Erholung oder Ruhezustände.
+epiphanics_name$$Erkenntnisse
+epiphanics_desc$$Etwas zu erkennen, das man dachte, dass es nicht erkannt werden könne
+season_skill_name$$Jahreszeiten
+season_skill_desc$$Dies wird Sie zum Winter führen
+gift_making_name$$Geschenke herstellen
+gift_making_desc$$Lerne, wie man kleine Geschenke und Opfergaben zubereitet.
 deep_sewer_name$$Tiefe Kanalisation
 deep_sewer_desc$$Geheime Gänge, geheime Kammern, Löcher und ein schlechter Geruch
 dead_body_name$$Toter Körper
@@ -1057,9 +1311,147 @@ big_rat_name$$Große Ratte
 big_rat_desc$$Es ist ein bisschen aggressiv.
 irreversible_disease_name$$Unumkehrbare Aktion
 irreversible_disease_desc$$Einmal ausgeführt, kann diese Aktion nicht rückgängig gemacht werden. Negative Auswirkungen sind oft dauerhaft. Aber du wirst Zugang zu einer neuen Palette von Möglichkeiten erhalten. Gehst du mit dieser Aktion weiter?
+redclothes_name$$Rote Kleidung
+redclothes_desc$$Du siehst gut in diesen aus
+prayerbench_name$$Gebetsbank
+prayerbench_desc$$Ein kleiner Ort zum Knien und Nachdenken
+sicktier3_hint_name$$Klassenhinweis
+sicktier3_hint_desc$$
+sewercreature_hint_name$$Klassenhinweis
+sewercreature_hint_desc$$
+gift_giver_hint_name$$Klassenhinweis
+gift_giver_hint_desc$$
+gift_master_hint_name$$Klassenhinweis
+gift_master_hint_desc$$
+t_job_name$$Anfängliche Klasse
+t_job_desc$$
+t_tier0_name$$Tier 0 Klasse
+t_tier0_desc$$
+t_tier1_name$$Klasse Tier 1
+t_tier1_desc$$
+t_tier2_name$$Tier 2 Klasse
+t_tier2_desc$$
+t_tier3_name$$Stufe 3 Klasse
+t_tier3_desc$$
+t_tier4_name$$Tier 4 Klasse
+t_tier4_desc$$
+pray_tool_name$$Bete-Werkzeug
+pray_tool_desc$$
+weapon_name$$Waffe
+weapon_desc$$
 rats_name$$Ratten
 rats_desc$$Die Ratte ist ein Überlebender, ein Stadtforscher, eine Plage und ein Geschöpf der Nacht.
 sewer_home_name$$Kanalisation
 sewer_home_desc$$Widerlich, aber geräumig.
 disease_sad_ending_name$$Was bedeutet es, krank zu sein?
 disease_sad_ending_desc$$Wie kam dein Körper dazu?
+gift_ending_name$$Wer bin ich in dieser heiligen Nacht?
+gift_ending_desc$$Denke über die Rolle nach, die du angesichts der Geburt der Dame einnehmen möchtest.
+cathedral_support_name$$Domunterstützung
+cathedral_support_desc$$
+better_faith_name$$Glaube
+better_faith_desc$$
+priest_exp_name$$Priestererfahrung
+priest_exp_desc$$Gesammelte Weisheit der Priesterpflichten
+church_social_name$$Kirchliche Sozialisierung
+church_social_desc$$Verbringe Zeit mit Gefährten aus der Kirche
+priest_mindset_name$$Priester-Mentalität
+priest_mindset_desc$$Erkenne dich selbst als Priester und handle entsprechend.
+faith_unlock_name$$Vertiefe den Glauben
+faith_unlock_desc$$Lass Dankbarkeit und Glaube einen neuen Weg der Hingabe öffnen.
+priest_duties_name$$Pfarrerpflichten
+priest_duties_desc$$Führe die tägliche Arbeit eines Pfarrers aus.
+reflection_unlock_church_name$$Reflexionen über das Leben als Priester
+reflection_unlock_church_desc$$Nehmen Sie sich Zeit, um über Ihre priesterliche Berufung nachzudenken.
+upgrade_realization_stuff_name$$Glaubensvolle Erkenntnisse
+upgrade_realization_stuff_desc$$Vermischung von Selbsterkenntnis mit religiösem Glauben.
+upgrade_realization_stuff_b_name$$Glaubensvolle Erkenntnisse II
+upgrade_realization_stuff_b_desc$$Vermischen von Selbsterkenntnis mit tieferem Glauben.
+fervorous_prayer_name$$Leidenschaftliches Gebet
+fervorous_prayer_desc$$Gehen Sie in intensives, anhaltendes Gebet.
+churchsocial_support_name$$Kathedrale-Verkehr
+churchsocial_support_desc$$Baue deine Verbindungen zu einflussreichen Mitgliedern der Kathedrale aus.
+curate_name$$Kaplan
+curate_desc$$Dienen als Kaplan und helfen bei der Betreuung einer Gemeinde.
+celebrate_mass_name$$Feiere die Messe
+celebrate_mass_desc$$Leite die Feier der Messe und vertiefe deine priesterliche Erfahrung.
+hear_confessions_name$$Höre Beichten
+hear_confessions_desc$$Höre die Beichten der Gläubigen und biete ihnen Absolution an.
+administer_eucharist_name$$Verwaltung der Eucharistie
+administer_eucharist_desc$$Die Eucharistie mit Ehrfurcht an die Gläubigen verteilen.
+anoint_the_sick_name$$Salbe die Kranken
+anoint_the_sick_desc$$Bringen Sie den Kranken Trost durch Salbung und Gebet.
+conduct_funeral_name$$Führen Sie eine Beerdigung durch.
+conduct_funeral_desc$$Führen Sie eine Beerdigung durch, um die Verstorbenen zu ehren und die Lebenden zu trösten.
+perform_marriage_name$$Führen Sie eine Eheschließung durch
+perform_marriage_desc$$Führen Sie eine Eheschließung durch für ein engagiertes Paar.
+curate_salary_name$$Gehalt als Hilfspriester
+curate_salary_desc$$Erhalten Sie ein sehr bescheidenes Gehalt für Ihre Arbeit als Hilfspriester. Besser als nichts.
+migling_priests_name$$Mit anderen Priestern plaudern
+migling_priests_desc$$Zeit verbringen mit anderen Priestern zu plaudern
+surrounding_parish_name$$Umgebungsgemeinden
+surrounding_parish_desc$$Lernen Sie die anderen Umgebungsgemeinden kennen.
+speak_archpriest_name$$Sprich mit dem Hohepriester
+speak_archpriest_desc$$
+chantry_priest_name$$Chorkaplan
+chantry_priest_desc$$Weihe dich der Kathedrale Chorkaplan, vertiefe deinen priesterlichen Dienst am Altar und im Chor.
+chantry_priest_salary_name$$Chantry-Priestersalär
+chantry_priest_salary_desc$$Ihre Chantry-Pflichten führen zu höheren Gehältern
+faith_gen2_name$$Stärke den Glauben
+faith_gen2_desc$$Stärken Sie Ihren Glauben
+faithskill_upgrade_2_name$$Geistige Festigkeit
+faithskill_upgrade_2_desc$$Lassen Sie Ihre wachsende geistige Überzeugung Ihren Geist widerstandsfähiger machen.
+faithskill_upgrade_2b_name$$Glaube an die Schriften
+faithskill_upgrade_2b_desc$$Die Schriften mit deinem vertieften Glauben neu interpretieren
+faithskill_upgrade_3_name$$Geistliche Überlegungen
+faithskill_upgrade_3_desc$$Organisiere all deine Gedanken und Gefühle bezüglich deines Glaubens.
+faithskill_upgrade_3b_name$$Nachdenkliche Stille
+faithskill_upgrade_3b_desc$$Lass stille Nachdenklichkeit deinen Glauben über Zweifel hinaus wurzeln.
+benevolent_alms1_name$$Stille Großzügigkeit
+benevolent_alms1_desc$$Unauffällig die Ressourcen der Kirche an die Armen weiterleiten.
+benevolent_alms2_name$$Aufgeschlossene Wohltätigkeit
+benevolent_alms2_desc$$Aufgeschlossen die Wohltätigkeit über den Kathedralen-Ruhm priorisieren.
+benevolent_alms3_name$$Radikale Großzügigkeit
+benevolent_alms3_desc$$Gib fast alles den Bedürftigen.
+rectory_extra_room_name$$Extra Zimmer des Pfarrhauses
+rectory_extra_room_desc$$Ein bescheidenes Extra-Zimmer im Pfarrhaus, nahe am Herzen des Gemeindelebens.
+cathedral_close_room_name$$Domnahes Haus
+cathedral_close_room_desc$$Ein winziges Haus im Dombezirk, nur wenige Schritte von der Kirche entfernt.
+veteranpriest_name$$Erfahrener Priester
+veteranpriest_desc$$Ein Priester, der mit seinen Wegen vertraut ist, bequem und ein wenig weise.
+love_priest_name$$Furioser Priester
+love_priest_desc$$Ein Priester, der sich voll und ganz der liebevollen Großzügigkeit widmet, auch auf Kosten des Kirchenansehens.
+faithskill_name$$Spirituelle Überzeugung
+faithskill_desc$$Spirituelle Überzeugung von etwas Größerem
+advance_alms_name$$Größere Almosen
+advance_alms_desc$$Wissen darüber, wie man Kirchenressourcen zum Wohl Aller einsetzt. Vorsicht: Die anderen Mitglieder der Kirche könnten unglücklich sein, wenn du zu weit gehst.
+parish_lore_name$$Pfarrwissen
+parish_lore_desc$$Pfarrwissen über das geographische Gebiet Ihrer Pfarrei
+cathedral_matters_name$$Domangelegenheiten
+cathedral_matters_desc$$Kenntnisse über den Dom und die Diözese, den Einflussbereich eines Bischofs
+greatercity_name$$Großstadt
+greatercity_desc$$Erkunde die größeren Straßen, die zentralen Gebiete.
+cathedral_first_name$$Dom besuchen
+cathedral_first_desc$$Besuche zum ersten Mal den Dom
+parish_activities_name$$Pfarraktivitäten
+parish_activities_desc$$Dienen Sie der Pfarrei, der Sie zugeteilt sind
+penitent_name$$Büsser
+penitent_desc$$Ein kniendes Seelenwesen wartet vor der Beichtstuhl, murmelnd eine Litanei von Sünden, die gebeichtet werden sollen.
+mourning_man_name$$Trauernder Mann
+mourning_man_desc$$Ein Mann in Schwarz weint in einer Seitenkapelle, seine Trauer breitet sich leise in den umliegenden Stein aus.
+learning_children_name$$Lernende Kinder
+learning_children_desc$$Pfarrkinder rezitieren ihre Lektionen, kleine Stimmen hallen zwischen den Kirchenbänken wider, während sie auf deine Unterweisung warten.
+drunk_isabella_name$$Betrunkene Isabella
+drunk_isabella_desc$$Isabella schwankt in den Kirchenbänken, der Geruch von Wein durchschneidet scharf den Weihrauch.
+incompetent_acolyte_name$$Inkompetenter Ministrant
+incompetent_acolyte_desc$$Am Altar-Gitter stolpert ein inkompetenter Ministrant über die Gebete und hantiert ungeschickt mit den Kerzen, was das feierliche Ritual stört.
+hungry_beggar_church_name$$Bettler an der Kirche
+hungry_beggar_church_desc$$An der Kirchentreppe klopft ein Bettler verrückt, sehr hungrig.
+veteranpriest_hint_name$$Klassentipp
+veteranpriest_hint_desc$$
+love_priest_hint_name$$Klassenhinweis
+love_priest_hint_desc$$
+archpriest_name$$Erzpriester
+archpriest_desc$$Committe dich dazu, eine Gruppe von Priestern zu verwalten, von denen jeder seine eigene Kirchengemeinde hat.
+administration_name$$Verwaltung
+administration_desc$$Der Prozess der Führung einer Organisation

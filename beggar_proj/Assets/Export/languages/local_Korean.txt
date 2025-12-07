@@ -1,6 +1,40 @@
 key$description$Korean
 cunning_mind_name$$교활한 마음
 cunning_mind_desc$$교활한 행위를 수행할 수 있는 능력을 갖추게 됩니다.
+psychic_instinct_name$$공유된 본능
+psychic_instinct_desc$$무개인적이고 보편적인 기저
+main_heuristic_archive_name$$아카이브 아이템
+main_heuristic_archive_desc$$사람에게 일어날 수 있는 일에 대한 지식입니다
+speed_up_global_name$$가속하기
+speed_up_global_desc$$작업, 전력 업그레이드, 기술 및 탐험을 가속하기
+speed_up_powerup_name$$속도 증가
+speed_up_powerup_desc$$
+speed_up_normal_task_name$$반복 작업 가속
+speed_up_normal_task_desc$$
+speed_up_skill_name$$속도 증가
+speed_up_skill_desc$$
+speed_up_exp_name$$탐험 가속
+speed_up_exp_desc$$
+IN_GAME_SPEED_SKILL_name$$인게임 속도 스킬
+IN_GAME_SPEED_SKILL_desc$$
+IN_GAME_SPEED_EXPLORATION_name$$게임 속 속도 탐험
+IN_GAME_SPEED_EXPLORATION_desc$$
+IN_GAME_SPEED_name$$게임속도
+IN_GAME_SPEED_desc$$
+attain_prestige_points_autodata_1_name$$모든 인류 사회의 공유 의식에 도달하십시오
+attain_prestige_points_autodata_1_desc$$모든 인류 사회의 공유 의식에 도달하십시오.
+attain_prestige_points_autodata_2_name$$공유된 양심에 도달 II
+attain_prestige_points_autodata_2_desc$$인간 사회의 공유된 마음에 접근하세요
+attain_prestige_points_autodata_3_name$$공유 의식에 도달 III
+attain_prestige_points_autodata_3_desc$$모든 인간 사회의 공유 정신에 접근하세요
+save_slot_tab_name$$저장 슬롯 탭
+save_slot_tab_desc$$
+slots_name$$저장 슬롯
+slots_desc$$
+settings_name$$설정
+settings_desc$$
+others_name$$다른이
+others_desc$$
 supplication_name$$간청
 supplication_desc$$절망적인 간청을 하는 캐릭터가 구걸 행동을 하고 도움이나 자비를 요청합니다.
 loneliness_name$$고독함
@@ -213,6 +247,22 @@ ratwarden_name$$쥐 수호자
 ratwarden_desc$$당신은 동료 쥐들의 수호자입니다
 catbeggar_name$$고양이 거지
 catbeggar_desc$$그들은 그를 고양이 이상한 사람이라고 호출합니다.
+churchbeggar_hint_name$$클래스 힌트
+churchbeggar_hint_desc$$
+ratbeggar_hint_name$$클래스 힌트
+ratbeggar_hint_desc$$
+breadsnatcher_hint_name$$클래스 힌트
+breadsnatcher_hint_desc$$
+beggar_hint_name$$클래스 힌트
+beggar_hint_desc$$
+cutpurse_hint_name$$클래스 힌트
+cutpurse_hint_desc$$
+streetrat_hint_name$$직업 힌트
+streetrat_hint_desc$$
+ratwarden_hint_name$$클래스 힌트
+ratwarden_hint_desc$$
+catbeggar_hint_name$$클래스 힌트
+catbeggar_hint_desc$$
 introspection_name$$자기 성찰
 introspection_desc$$자기를 되짚어보는 것은 자신의 생각과 감정을 조망하는 것을 의미합니다.
 contemplation_name$$묵상
@@ -225,8 +275,8 @@ rodentology_name$$쥐 친속
 rodentology_desc$$남자를 이해하고 싶다면 쥐를 연구하세요
 felinology_name$$고양이 친애
 felinology_desc$$신비로운 존재들이지만 귀엽고 매혹적입니다.
-bestiality_name$$수인형식성
-bestiality_desc$$사람들은 동물입니다.
+animalism_name$$동물주의
+animalism_desc$$사람들은 동물입니다
 scavenging_name$$약탈하기
 scavenging_desc$$환경에서 자연 자원과 유용한 아이템을 찾아 수집합니다.
 beggarhood_name$$거지생활
@@ -325,6 +375,10 @@ rustyknife_name$$녹슨 나이프
 rustyknife_desc$$
 catfoodtray_name$$음식트레이
 catfoodtray_desc$$
+archive_main_tab_name$$아카이브 메인 탭
+archive_main_tab_desc$$
+archive_tab_name$$아카이브
+archive_tab_desc$$
 task_name$$작업
 task_desc$$
 action_name$$즉시 작업
@@ -349,6 +403,8 @@ power_up_name$$파워 업
 power_up_desc$$
 class_name$$클래스
 class_desc$$
+hint_tab_name$$힌트
+hint_tab_desc$$
 resource_name$$자원들
 resource_desc$$
 emotion_sep_res_name$$감정
@@ -395,10 +451,6 @@ furniture_name$$가구
 furniture_desc$$
 log_name$$로그
 log_desc$$
-settings_name$$설정
-settings_desc$$
-others_name$$다른이
-others_desc$$
 ponderexistence_name$$현실이란 무엇인가요?
 ponderexistence_desc$$당신의 현실에 대해 쥐에게 물어보세요
 ponderhappiness_name$$행복이란 무엇인가요?
@@ -611,6 +663,18 @@ childdrawing_name$$나무 그림
 childdrawing_desc$$조각된 그림이 있는 한 조각의 나무. 작은 아이가 만든 것일까?
 storytellingdolls_name$$이야기 인형
 storytellingdolls_desc$$당신은 이들을 사용하여 동료 거지들에게 멋진 이야기를 전할 수 있습니다.
+churchporter_hint_name$$클래스 힌트
+churchporter_hint_desc$$
+lostphilosopher_hint_name$$클래스 힌트
+lostphilosopher_hint_desc$$
+acolyte_hint_name$$클래스 힌트
+acolyte_hint_desc$$
+lector_hint_name$$클래스 힌트
+lector_hint_desc$$
+priest_hint_name$$클래스 힌트
+priest_hint_desc$$
+expertbeggar_hint_name$$클래스 힌트
+expertbeggar_hint_desc$$
 ponderreligion_name$$가르침은 무엇인가요?
 ponderreligion_desc$$몸부림침이 죽어도 계속 생각해 보십시오.
 firewood_name$$장작
@@ -669,12 +733,12 @@ dominant_buff_exp_name$$지배적인 높은
 dominant_buff_exp_desc$$당신의 지배적인 감정을 느껴보세요
 benevolent_rats_name$$자비로운 쥐
 benevolent_rats_desc$$당신의 쥐를 무리 짓고 음식을 나눠 먹게 하세요.
-warm_feline_hearts_name$$따뜻한 고양이 심장
-warm_feline_hearts_desc$$당신의 쥐들을 모여 음식을 나누게 하세요.
-benevolence_buff_exp_name$$높은 자비심
-benevolence_buff_exp_desc$$당신이 통제감을 느낄 때의 기쁨을 느껴보세요
-flaming_rats_name$$타오르는 쥐
-flaming_rats_desc$$타오르는 쥐
+warm_feline_hearts_name$$따뜻한 고양이 마음
+warm_feline_hearts_desc$$당신의 고양이들을 모여 음식을 나눠 먹게 하세요
+benevolence_buff_exp_name$$자비심 높인
+benevolence_buff_exp_desc$$좋은 뜻을 가진 기분을 느껴보세요
+flaming_rats_name$$불타는 쥐
+flaming_rats_desc$$불타는 쥐, 혼란을 일으킵니다
 collectfirewood_name$$나무 모으기
 collectfirewood_desc$$
 sharefood_name$$부스러기 공유
@@ -789,6 +853,18 @@ sharingbowl_name$$나눔 그릇
 sharingbowl_desc$$이것을 사용하여 필요한 사람들과 음식을 나눠주세요.
 bigbowl_name$$큰 그릇
 bigbowl_desc$$그 속에 모든 조각들을 보관하는 데 사용하세요.
+bonfirevagabond_hint_name$$클래스 힌트
+bonfirevagabond_hint_desc$$
+goodbeggar_hint_name$$클래스 힌트
+goodbeggar_hint_desc$$
+peopleburner_hint_name$$클래스 힌트
+peopleburner_hint_desc$$
+animalburner_hint_name$$클래스 힌트
+animalburner_hint_desc$$
+goodpriest_hint_name$$직업 힌트
+goodpriest_hint_desc$$
+gracebeggar_hint_name$$클래스 힌트
+gracebeggar_hint_desc$$
 pondergood_name$$양심의 의미는 무엇입니까?
 pondergood_desc$$모든 힘을 다해 선한 것의 의미를 심사숙고하세요.
 fire_ending_name$$불 속의 해답
@@ -805,6 +881,8 @@ looks_name$$모습
 looks_desc$$당신이 외모를 개선하러 올 줄은 누가 알았을까요
 thinklife_name$$인생을 생각해보세요
 thinklife_desc$$내가 한 일과 내가 할 일
+reflectivemoodunlock_name$$반사의 깊이
+reflectivemoodunlock_desc$$
 reflectivemood_name$$반성적인 기분
 reflectivemood_desc$$깊은 사색을 이끌어내는 마음 상태 (일부 행동과 강화는 이 효과가 활성화되어 있을 때에만 수행할 수 있음)
 deep_think_name$$심층적 사고
@@ -979,6 +1057,14 @@ stolen_chest_name$$훔친 고미술 선반
 stolen_chest_desc$$고급스러운 고미술 선반이며 꽤 많은 금을 담을 수 있습니다. 또한 정말 화려해 보입니다.
 nice_clothes_name$$좋은 옷
 nice_clothes_desc$$멋지게 보이기
+thief_hint_name$$클래스 힌트
+thief_hint_desc$$
+burglar_hint_name$$클래스 힌트
+burglar_hint_desc$$
+underboss_hint_name$$클래스 힌트
+underboss_hint_desc$$
+urbansage_hint_name$$클래스 힌트
+urbansage_hint_desc$$
 pondercrime_name$$부자가 된다는 것이 무엇을 의미하는 가요?
 pondercrime_desc$$함께 모든 의미가 무엇인지 곰곰히 생각하면서 사치에 푹 빠져 보세요.
 weakdisease_name$$작은 질병
@@ -991,6 +1077,122 @@ superheavydisease_name$$말기 질환
 superheavydisease_desc$$남은 시간을 즐기세요
 degeneration_name$$퇴화
 degeneration_desc$$신체를 먹고있는 질병
+analysis_name$$분석
+analysis_desc$$현실의 상세한 검토
+season_time_name$$계절적 시간
+season_time_desc$$여러 날이 지나가기를 차분히 기다릴 수 있는 능력.
+winter_name$$겨울
+winter_desc$$겨울이 오고 있거나 이미 여기에 도달했습니다.
+cold_name$$춥다
+cold_desc$$낮은 온도
+weak_gift_name$$겸손한 선물
+weak_gift_desc$$당신이 할 수 있는 것으로 만든 선물.
+gift_name$$선물
+gift_desc$$당신이 인정하길 좋은 선물
+special_gift_name$$특별한 선물
+special_gift_desc$$주인을 축복하는 것처럼 신중히 제작된 특별한 선물.
+hint_t_tier0_name$$직업 힌트 I
+hint_t_tier0_desc$$다양한 길을 따라갈 수 있는 지식
+hint_t_tier1_name$$직업 힌트 II
+hint_t_tier1_desc$$다양한 경로를 선택할 수 있는 지식
+hint_t_tier2_name$$직업 힌트 III
+hint_t_tier2_desc$$지금까지 갈 수 있는 다양한 길들에 대한 지식
+hint_t_tier3_name$$직업 힌트 IV
+hint_t_tier3_desc$$여러 가지 경로를 선택할 수 있는 지식
+hint_t_tier4_name$$직업 힌트 V
+hint_t_tier4_desc$$지금 당신이 선택할 수 있는 다양한 길에 대한 지식
+analytical_powerup1_name$$열정적인 마음
+analytical_powerup1_desc$$배우려는 의지
+charity_offering_name$$자선 헌금
+charity_offering_desc$$시간이 흐를수록 더 많은 지원을 얻을 수 있도록 자선 헌금을 형식화하십시오.
+analysis_dot_name$$분석적 사고
+analysis_dot_desc$$분석에 초점
+upgrade_analysis_rate_name$$분석 능력 향상
+upgrade_analysis_rate_desc$$분석 능력 향상
+upgrade_analysis_max_name$$분석 능력 강화
+upgrade_analysis_max_desc$$분석 능력을 강화하세요
+upgrade_analysis_rate2_name$$분석 정확도 향상
+upgrade_analysis_rate2_desc$$분석 속도를 더 향상시켜라
+upgrade_analysis_max2_name$$심층 분석 능력
+upgrade_analysis_max2_desc$$분석 능력을 더욱 깊게 향상하세요.
+upgrade_analytics_max_name$$분석 마스터리
+upgrade_analytics_max_desc$$분석 시스템에 대한 이해를 확장하세요
+upgrade_analysis_rate3_name$$분석 가속
+upgrade_analysis_rate3_desc$$분석 프로세스를 새로운 속도로 가속화하세요.
+upgrade_analysis_rate4_name$$완벽한 분석 흐름
+upgrade_analysis_rate4_desc$$완벽한 분석 흐름 달성
+upgrade_analysis_max3_name$$광대한 분석 저장고
+upgrade_analysis_max3_desc$$대량으로 분석 능력을 확장하세요
+upgrade_analysis_max4_name$$무한한 분석적 심오함
+upgrade_analysis_max4_desc$$전례 없는 수준의 분석 능력에 도달하세요
+upgrade_analytics_max2_name$$분석 관점 초월
+upgrade_analytics_max2_desc$$분석 이해의 한계를 초월하십시오
+manual_analysis_name$$집중 분석
+manual_analysis_desc$$철저한 분석 작업에 참여합니다.
+upgrade_manual_analysis_result1_name$$강화된 집중
+upgrade_manual_analysis_result1_desc$$집중된 작업으로부터 더 많은 분석 생성
+upgrade_manual_analysis_result2_name$$깊은 집중 마스터리
+upgrade_manual_analysis_result2_desc$$집중 세션으로부터 분석적 출력을 극대화합니다
+upgrade_manual_analysis_speed_name$$분석 가속
+upgrade_manual_analysis_speed_desc$$집중 분석을 훨씬 빠르게 실행합니다
+supplication_dot_name$$탄원적 마음
+supplication_dot_desc$$당신의 탄원적 자아에 대해 인식하게 됩니다.
+supplication_dot2_name$$회복 중심
+supplication_dot2_desc$$당신의 몸의 회복에 맞춰진 상태에 들어가세요
+upgrade_rest_efficiency_name$$주의 깊은 회복
+upgrade_rest_efficiency_desc$$더 효율적으로 쉬는 법을 배우십시오.
+upgrade_rest_efficiency2_name$$건강한 회복
+upgrade_rest_efficiency2_desc$$더 건강한 몸은 더 잘 쉴 수 있습니다
+upgrade_rest_efficiency3_name$$반성적 회복
+upgrade_rest_efficiency3_desc$$당신이 쉬는 방식을 되짚어보세요
+upgrade_restskill_max_name$$휴식에 대한 깊은 이해
+upgrade_restskill_max_desc$$휴식하는 방식에 대한 돌파구를 깨달으세요
+upgrade_supplication_rate_name$$자연 회복력
+upgrade_supplication_rate_desc$$당신의 몸은 시간이 지남에 따라 자연스럽게 회복됩니다.
+upgrade_pleafocus_supplication_name$$향상된 회복
+upgrade_pleafocus_supplication_desc$$훨씬 강력하고 효율적인 휴식
+upgrade_musing_generation_name$$반신 반의에 대해 심사숙고하다
+upgrade_musing_generation_desc$$한 생각이 다른 생각으로 이어지고, 고찰로 이어진다.
+realization_cultivation_name$$깨달음을 기르다
+realization_cultivation_desc$$심도 깊은 숙고와 명상에 빠져들기
+enhanced_gratitude_a_name$$음식에 정말 감사합니다
+enhanced_gratitude_a_desc$$감사에 깊이 빠져, 그것이 얼마나 중요한지 깨닫습니다
+enhanced_gratitude_b_name$$신에 감사합니다
+enhanced_gratitude_b_desc$$신의 은혜를 통해 모든 활동에 대해 더욱 감사하십시오.
+musing_flow_name$$사색의 흐름
+musing_flow_desc$$한가로운 사색 속 깊이 반성하십시오.
+mental_restoration_name$$정신 회복
+mental_restoration_desc$$정신적 및 육체적 회복의 강력한 상태
+upgrade_epiphanics_max_name$$깨달음의 확장
+upgrade_epiphanics_max_desc$$호기심을 깊게 하고, 열정을 더해주세요
+analytical_unlock1_name$$집중된 생각
+analytical_unlock1_desc$$생각의 흐름은 나를 어딘가로 이끌 것입니다
+analytical_unlock2_name$$강한 생각 II
+analytical_unlock2_desc$$생각의 흐름이 나를 어딘가로 이끌 것이다
+analytical_unlock3_name$$날카로운 사고 III
+analytical_unlock3_desc$$사고의 흐름이 나를 어딘가로 이끌 것이다
+analytical_unlock4_name$$예리한 생각 IV
+analytical_unlock4_desc$$생각의 흐름이 나를 어딘가로 이끌 것이다
+analytical_unlock5_name$$날카로운 생각 V
+analytical_unlock5_desc$$생각의 흐름이 나를 어딘가로 이끌 것이다
+analytical_skill_points_a_name$$초보자 통찰력
+analytical_skill_points_a_desc$$적게 아니까 새로운 배움을 빨리 축적할 수 있어요
+analytical_skill_points_b_name$$초보자 통찰력
+analytical_skill_points_b_desc$$당신은 여전히 초보지만 배우기가 더 어려워졌습니다.
+analytical_skill_points_c_name$$도전적인 통찰력
+analytical_skill_points_c_desc$$중간 단계에 도달하는 것은 꽤 까다로운 학습입니다.
+analytical_skill_points_d_name$$고급 통찰력
+analytical_skill_points_d_desc$$중개를 넘어서, 학습은 어려운 것으로 느껴질 수 있습니다.
+analytical_skill_points_infinite_name$$지속적인 통찰력
+analytical_skill_points_infinite_desc$$그것은 어렵지만, 학습은 영원합니다
+analytical_skill_points_max_a_name$$통찰력 확장
+analytical_skill_points_max_a_desc$$당신의 통찰력 분석
+analytical_skill_points_max_b_name$$통찰력 연장 II
+analytical_skill_points_max_b_desc$$나의 통찰력을 분석하세요
+analytical_skill_points_max_c_name$$통찰력 확장 III
+analytical_skill_points_max_c_desc$$자신의 통찰력을 분석하세요
+analytical_skill_points_max_d_name$$통찰력 확장 IV
+analytical_skill_points_max_d_desc$$자신의 통찰력을 분석하세요
 disease_mind_name$$질병 인식
 disease_mind_desc$$신체의 건강 상태를 인식하세요
 sickmind_name$$병든 마인적응
@@ -1035,18 +1237,70 @@ sickanimal_call_name$$근처 아픈 동물들을 하나로 모으세요
 sickanimal_call_desc$$근처 아픈 동물들을 하나로 모으세요.
 unlockheavydisease_name$$불결한 삶
 unlockheavydisease_desc$$두려움을 버리고 더러운 것에 더 깊이 들어가세요
+seasonal_contemplation_name$$계절 변화
+seasonal_contemplation_desc$$기다림의 리듬에 적응하여 계절이 스스로 돌아가는 것을 기다리세요.
+seasonal_contemplation_2_name$$계절의 생각
+seasonal_contemplation_2_desc$$긴 계절의 변화 속으로 더욱 빠져들어 가세요.
+await_winter_name$$겨울을 기다릴게요
+await_winter_desc$$계절이 변해도 겨울이 드디어 도착할 때까지 기다립니다.
+let_winter_pass_name$$겨울이 지나갈 때까지 기다려주세요.
+let_winter_pass_desc$$겨울이 지나갈 때까지 기다려주세요.
+winter_mood_name$$겨울 분위기
+winter_mood_desc$$겨울의 조용하고 숙고적인 분위기에 빠져 보세요.
+church_feast_name$$겨울 축제
+church_feast_desc$$겨울 교회 축제에 참석하고 따뜻한 음식을 받으세요.
+winter_alms_name$$겨울 막걸리
+winter_alms_desc$$겨울 길거리에서 조금의 음식과 동전을 받으세요.
+holy_night_thoughts_name$$성야의 기다림
+holy_night_thoughts_desc$$고요한 겨울 밤을 묵상과 기도로 보내십시오.
+mass_birth_lady_name$$부인의 탄생을 축하하는 미사
+mass_birth_lady_desc$$부인의 탄생을 축하하는 엄숙한 겨울 미사를 축하하세요.
+winter_benevolence_name$$겨울 은혜
+winter_benevolence_desc$$레이디의 탄생의 은혜가 조용한 겨울 친절로 흘러들게 합니다.
+winter_rest_name$$따뜻한 휴식
+winter_rest_desc$$따뜻한 휴식을 취하면서 따뜻하게 지키는 법을 배웁니다.
+winter_hardiness_name$$겨울 내구력
+winter_hardiness_desc$$추운 날씨에 몸을 적응시켜 시간이 지남에 따라 약해지도록합니다.
+make_modest_gift_name$$은밀한 선물 준비하기
+make_modest_gift_desc$$간단한 것들로 작은, 은밀한 선물을 준비하세요.
+make_gift_name$$선물 만들기
+make_gift_desc$$적당한 선물을 만들어주세요, 더 많은 시간과 돈을 투자하세요.
+make_special_gift_name$$특별한 선물 만들기
+make_special_gift_desc$$조용한 축복을 가진 특별한 선물을 만들어 보세요.
+give_modest_gift_name$$소박한 선물을 제공하기
+give_modest_gift_desc$$어떤 이에게 소박한 선물을 제공하기.
+give_gift_name$$선물하기
+give_gift_desc$$깊은 상호 친절함을 깊이 간직하는 선물하기.
+make_rat_present_name$$소형 쥐 선물
+make_rat_present_desc$$소형 쥐 선물 준비하기
+ladymas_rat_party_name$$쥐와 함께하는 레이디마스 파티
+ladymas_rat_party_desc$$쥐와 함께하는 레이디마스 파티를 즐겨보세요.
 sewer_home2_name$$하수 구역
 sewer_home2_desc$$하수 구역 깊숙하게 숨겨진 방, 나쁘지 않아요
 sicktier3_name$$병약한 지하 생물
 sicktier3_desc$$병약하고 고립된
 sewercreature_name$$하수도 생물
 sewercreature_desc$$오물에 모양을 갖춘 삶
+gift_giver_name$$선물 주는 사람
+gift_giver_desc$$선물을 주는 것을 즐기는 사람
+gift_master_name$$빨간색 옷을 입은 선물 줄이기
+gift_master_desc$$빨간색 옷을 입은 선물 줄이기, 선물을 모두 분배하는 신비한 남자
+analytics_name$$분석
+analytics_desc$$분석의 체계적인 과정
 diseaseintolerance_name$$질병 불쾌함
 diseaseintolerance_desc$$당신의 몸은 그 상태에 적응합니다.
 sewer_knowledge_name$$하수도 지식
 sewer_knowledge_desc$$도시의 지하 하수도 시스템을 얼마나 잘 알고 있습니까
 contamination_name$$오염
 contamination_desc$$질병이 퍼지는 방법
+restskill_name$$휴식
+restskill_desc$$회복 또는 휴식 상태의 예술
+epiphanics_name$$에피파니식
+epiphanics_desc$$어떤 것을 실현할 수 없다고 생각했던 것을 깨닫는 것
+season_skill_name$$계절
+season_skill_desc$$이것은 당신을 겨울로 이끌 것입니다.
+gift_making_name$$선물 만들기
+gift_making_desc$$작은 선물과 제물을 준비하는 방법을 배우세요.
 deep_sewer_name$$깊은 하수도
 deep_sewer_desc$$비밀 터널, 비밀 방, 구멍, 그리고 나쁜 냄새
 dead_body_name$$시체
@@ -1057,9 +1311,147 @@ big_rat_name$$큰 쥐
 big_rat_desc$$조금 공격적입니다
 irreversible_disease_name$$돌이킬 수 없는 행동
 irreversible_disease_desc$$한 번 시작하면 이 행동은 돌이킬 수 없습니다. 부정적인 효과는 종종 영구적입니다. 그러나 당신은 새로운 가능성을 열게 될 것입니다. 이 행동을 계속하시겠습니까?
+redclothes_name$$빨간 옷
+redclothes_desc$$당신은 이러한 옷을 착용한 게 멋져 보여요
+prayerbench_name$$기도벤치
+prayerbench_desc$$작은 자리에서 무릎을 꿇고 생각하는 곳
+sicktier3_hint_name$$클래스 힌트
+sicktier3_hint_desc$$
+sewercreature_hint_name$$클래스 힌트
+sewercreature_hint_desc$$
+gift_giver_hint_name$$클래스 힌트
+gift_giver_hint_desc$$
+gift_master_hint_name$$클래스 힌트
+gift_master_hint_desc$$
+t_job_name$$초보 클래스
+t_job_desc$$
+t_tier0_name$$등급 0 클래스
+t_tier0_desc$$
+t_tier1_name$$등급 1 클래스
+t_tier1_desc$$
+t_tier2_name$$등급 2 클래스
+t_tier2_desc$$
+t_tier3_name$$등급 3 클래스
+t_tier3_desc$$
+t_tier4_name$$티어 4 클래스
+t_tier4_desc$$
+pray_tool_name$$의자 도구
+pray_tool_desc$$
+weapon_name$$무기
+weapon_desc$$
 rats_name$$쥐
 rats_desc$$쥐는 생존자이자 도시 탐험가, 해충이자 밤의 존재입니다.
 sewer_home_name$$오수정
 sewer_home_desc$$혐오스럽지만 넓은 공간.
 disease_sad_ending_name$$병이란 무엇을 의미하는 걸까요?
 disease_sad_ending_desc$$당신의 몸이 어떻게 이 지경에 이르게 되었나요?
+gift_ending_name$$이 거룩한 밤에 나는 누구인가요?
+gift_ending_desc$$부상의 여인의 탄생 앞에 어떤 존재가 될지를 곰곰이 생각해보세요
+cathedral_support_name$$대성당 지원
+cathedral_support_desc$$
+better_faith_name$$신뢰
+better_faith_desc$$
+priest_exp_name$$사제 경험
+priest_exp_desc$$사제 업무의 축적된 지혜
+church_social_name$$교회 소속화
+church_social_desc$$교회 구성원들과 시간을 보내세요
+priest_mindset_name$$사제 마음가짐
+priest_mindset_desc$$사제로서 스스로를 인식하고 그에 맞게 행동하세요
+faith_unlock_name$$믿음 강화
+faith_unlock_desc$$감사와 믿음이 새로운 헌신의 길을 열도록하세요.
+priest_duties_name$$신부 업무
+priest_duties_desc$$말씀관 신부의 일상적 업무를 수행하십시오.
+reflection_unlock_church_name$$목사로서의 삶에 대한 반성
+reflection_unlock_church_desc$$목사로서의 삶에 대한 반성을 위해 시간을 내 주세요.
+upgrade_realization_stuff_name$$신앙적인 깨달음
+upgrade_realization_stuff_desc$$자기 자아를 종교적인 신앙과 혼합하기.
+upgrade_realization_stuff_b_name$$충실한 깨달음 II
+upgrade_realization_stuff_b_desc$$자기를 알아가면서 깊은 믿음을 혼합하다.
+fervorous_prayer_name$$열정적인 기도
+fervorous_prayer_desc$$열정적이고 지속적인 기도에 들어가십시오.
+churchsocial_support_name$$대성당 교단 집단화
+churchsocial_support_desc$$대성당 교단의 영향력 있는 구성원들과의 연결을 강화하세요.
+curate_name$$보리기사
+curate_desc$$교구를 보살피는 데 도움을 주는 보리기사로 일하십시오.
+celebrate_mass_name$$대성당 드림미사
+celebrate_mass_desc$$대성당 드림미사를 이끌며, 신부로서의 경험을 더욱 깊게 만드세요.
+hear_confessions_name$$고해를 들으세요
+hear_confessions_desc$$신자들의 고해를 들으세요. 그리고 사함을 드립니다.
+administer_eucharist_name$$유사체를 행사하다
+administer_eucharist_desc$$신자들에게 경건하게 유사체를 행사하다.
+anoint_the_sick_name$$병자에게 복음을 바르다
+anoint_the_sick_desc$$병자에게 복음을 바르다.
+conduct_funeral_name$$장례식을 치르기
+conduct_funeral_desc$$죽은 이를 기리고 살아있는 이들을 위로하며 장례식을 치르기.
+perform_marriage_name$$결혼식을 실시합니다
+perform_marriage_desc$$충실한 커플을 위해 결혼식을 실시합니다.
+curate_salary_name$$목사 급여
+curate_salary_desc$$목사로 일한 대한 매우 겸손한 수당을 받으세요. 아무것도 없는 것보다는 낫습니다.
+migling_priests_name$$사제들과 대화하기
+migling_priests_desc$$다른 사제들과 대화를 나누는 시간을 보내세요.
+surrounding_parish_name$$주변 교구
+surrounding_parish_desc$$다른 교구들을 알아가세요
+speak_archpriest_name$$대신원사와 이야기하기
+speak_archpriest_desc$$
+chantry_priest_name$$성당 성직자
+chantry_priest_desc$$대성당 성당에 헌신하여, 당신의 신부 봉사를 제단과 합창단 주위로 깊게 하십시오.
+chantry_priest_salary_name$$찬트리 성직자 급여
+chantry_priest_salary_desc$$당신의 찬트리 업무는 더 높은 급여를 가져옵니다.
+faith_gen2_name$$신앙 강화
+faith_gen2_desc$$신념을 강화하세요
+faithskill_upgrade_2_name$$영적 굳건함
+faithskill_upgrade_2_desc$$성장하는 영적 확신이 당신의 마음을 더 저항력있게 만들도록 하십시오.
+faithskill_upgrade_2b_name$$성경에 대한 믿음
+faithskill_upgrade_2b_desc$$성경에 대한 믿음으로 성경을 다시 해석하십시오
+faithskill_upgrade_3_name$$영적 사색
+faithskill_upgrade_3_desc$$내 믿음에 대한 모든 생각과 감정을 정리하세요.
+faithskill_upgrade_3b_name$$간절한 침묵
+faithskill_upgrade_3b_desc$$침묵 속에 심사숙고하며 의심 이상으로 뿌리내리게 하십시오.
+benevolent_alms1_name$$조용한 관대함
+benevolent_alms1_desc$$교회 자원을 조용히 가난한 사람들에게 재할당하십시오.
+benevolent_alms2_name$$관대한 자선
+benevolent_alms2_desc$$의당 수준의 명성보다 자선을 먼저 하는 것을 공개하게 하세요.
+benevolent_alms3_name$$극단적인 관대함
+benevolent_alms3_desc$$빈곤한 사람들에게 거의 모든 것을 줍니다.
+rectory_extra_room_name$$성당 목사의 여분 방
+rectory_extra_room_desc$$성당 목사의 여분 방, 교구 생활의 중심에 가까운 작은 방.
+cathedral_close_room_name$$대성당 근방의 집
+cathedral_close_room_desc$$대성당 근방의 작은 집, 성소에서 걸어서 멀지 않은 곳에 위치해 있습니다.
+veteranpriest_name$$베테랑 신부
+veteranpriest_desc$$그 방식에 익숙한 신부, 편안하고 조금 현명한
+love_priest_name$$열정적인 성직자
+love_priest_desc$$모든 것을 사랑과 관대로 헌신하는 성직자, 심지어 교회의 명예를 걸고서도.
+faithskill_name$$영적 신념
+faithskill_desc$$대를 따르는 영적 신념
+advance_alms_name$$더 큰 침묵
+advance_alms_desc$$교회 자원을 더 큰 선을 위해 사용하는 방법에 대한 지식. 주의: 교회 다른 구성원들이 너무 많이 나아가면 행복하지 않을 수 있습니다.
+parish_lore_name$$교구 전설
+parish_lore_desc$$당신 교구의 지리적 지역에 대한 지식
+cathedral_matters_name$$대성당 사항
+cathedral_matters_desc$$대성당과 교구에 대한 지식, 주교의 영향 범위
+greatercity_name$$큰 도시
+greatercity_desc$$더 큰 거리와 중심 지역을 탐험하세요.
+cathedral_first_name$$대성당 방문
+cathedral_first_desc$$처음으로 대성당을 방문하세요
+parish_activities_name$$사복 활동
+parish_activities_desc$$당신이 배정된 교구를 섬기세요
+penitent_name$$참회자
+penitent_desc$$무릎 꿇은 영혼이 참회실 앞에 기다리며 고백해야 할 죄를 중얼거립니다.
+mourning_man_name$$애도하는 남자
+mourning_man_desc$$흑색으로 입은 남자가 옆 별실에서 울며, 그의 슬픔이 조용히 주위 돌들 속으로 흘러든다.
+learning_children_name$$학습 중인 어린이
+learning_children_desc$$교구 아이들이 공부를 하며, 은둔처 사이를 메아리치는 작은 목소리들이 당신의 가르침을 기다리면서 울려 퍼진다.
+drunk_isabella_name$$취한 이자벨
+drunk_isabella_desc$$이자벨이 베개에서 흔들립니다, 와인의 냄새가 역설을 통해 날카롭게 느껴집니다.
+incompetent_acolyte_name$$무능한 소집사
+incompetent_acolyte_desc$$제단 난간에서 소집사가 양초를 더듬고 기도를 걸치며 엷은 의식을 어지럽힙니다.
+hungry_beggar_church_name$$교회 앞 거지
+hungry_beggar_church_desc$$교회 앞 거지가 몹시 굶어서 미친 듯이 문을 두드린다.
+veteranpriest_hint_name$$클래스 힌트
+veteranpriest_hint_desc$$
+love_priest_hint_name$$직업 힌트
+love_priest_hint_desc$$
+archpriest_name$$대부성집사
+archpriest_desc$$사제 그룹을 관리하려고 노력하며, 각각이 자신의 교구를 가지고 있습니다.
+administration_name$$행정
+administration_desc$$조직 운영의 과정
