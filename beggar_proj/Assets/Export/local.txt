@@ -115,26 +115,26 @@ Go_to_archive$$Go to archive$$$$$$$
 Delete_save_slot$$Delete save slot$$$$$$$
 Data_cannot_be_recovered$$Data cannot be recovered$$$$$$$
 Save_slots$As in save slots on a memory card, games context, saving data$Save slots$$$$$$$
-resource$$resource$$$$$$$
-skill$$skill$$$$$$$
-class$$class$$$$$$$
-house_item$$house item$$$$$$$
-hint$$hint$$$$$$$
-house$$house$$$$$$$
-location$$location$$$$$$$
-task$$task$$$$$$$
-Furniture$$Furniture$$$$$$$
-Houses$$Houses$$$$$$$
-Locations$$Locations$$$$$$$
-Power-ups$$Power-ups$$$$$$$
-Resources$$Resources$$$$$$$
-Skills$$Skills$$$$$$$
-Tasks$$Tasks$$$$$$$
-Total$$Total$$$$$$$
-Priests_&_Holidays$$Priests & Holidays$$$$$$$
-Requires$used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla$Requires$$$$$$$
-new_game$$new game$$$$$$$
-export$$export$$$$$$$
-import$$import$$$$$$$
-delete$$delete$$$$$$$
-copy$$copy$$$$$$$
+resource$$resource$recurso$ressource$Ressource$資源$자원$资源$資源
+skill$$skill$habilidade$compétence$Fähigkeit$スキル$기술$技能$技能
+class$$class$classe$Classe$Klasse$クラス$클래스$职业$職業
+house_item$$house item$Item de casa$objet pour la maison$Hausgegenstand$家のアイテム$집 장식품$房屋物品$房屋物品
+hint$$hint$dica$indice$Hinweis$ヒント$힌트$提示$提示
+house$$house$casa$maison$Haus$家$집$房子$房子
+location$$location$localização$emplacement$Ort$場所$위치$位置$位置
+task$$task$tarefa$tâche$Aufgabe$課題$과제$任务$任務
+Furniture$$Furniture$Móveis$Meubles$Möbel$家具$가구$家具$傢俱
+Houses$$Houses$Casas$Maisons$Häuser$家$집$房子"$房屋
+Locations$$Locations$Localizações$Emplacements$Orte$場所$장소$地点$地點
+Power-ups$$Power-ups$Melhorias de poder$Améliorations$Bonuspunkte$強化アップ$파워 업$强化道具$強化道具
+Resources$$Resources$Recursos$Ressources$Ressourcen$資源$자원$资源$資源
+Skills$$Skills$Habilidades$Compétences$Fähigkeiten$スキル$기술$技能$技能
+Tasks$$Tasks$Tarefas$Tâches$Aufgaben$タスク$업무$任务$任務
+Total$$Total$Total$Total$Gesamt$合計$총합$总数$總數
+Priests_&_Holidays$$Priests & Holidays$Sacerdotes e Feriados$Prêtres et Vacances$Priester & Feiertage$聖職者と休日$사제와 휴가$牧师与节日$神職者與節日
+Requires$used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla$Requires$Requer:$Requiert$Erfordert$条件:$필요합니다$需要$需要
+new_game$$new game$novo jogo$nouveau jeu$neues Spiel$新しいゲーム$신규 게임$新游戏$新遊戲
+export$$export$exportar$export$Export$輸出$수출$输出$輸出
+import$$import$import$import$import$インポート$가져오기$导入$引入
+delete$$delete$apagar$supprimer$Löschen.$削除$삭제$删除$刪除
+copy$$copy$cópia$copie$Kopieren$コピー$복사$复制$複製
