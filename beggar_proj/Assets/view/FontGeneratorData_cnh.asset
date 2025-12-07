@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65feeaf951b95e45869754d9a6f0fb9, type: 3}
   m_Name: FontGeneratorData_cnh
   m_EditorClassIdentifier: 
-  font: {fileID: 12800000, guid: 3b60fcd097e79144fbfde243cab7461f, type: 3}
+  font: {fileID: 12800000, guid: ca00c87d79b41924fa7bab8d08349f96, type: 3}
   useTextVariable: 0
   text: qwertyuiiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBM
   sampleSize: 24
