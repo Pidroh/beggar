@@ -111,3 +111,30 @@ Space$In the sense of a table taking up too much space$Space$Espaço$Espace$Plat
 Latest_Version_on_Patreon$$Latest Version on Patreon$Última versão no Patreon$Dernière version sur Patreon$Neueste Version auf Patreon.$Patreonでの最新バージョン$패트리온의 최신 버전$Patreon上的最新版本$最新版本在Patreon上
 living_here$$living here$morando aqui$vivant ici$hier leben$ここに住んでいます$여기서 살기$居住在这里$居住在這裡
 Demo_on_Steam$Steam as in the PC game store$Demo on Steam$Demonstração na Steam$Démo sur Steam$Demo auf Steam.$Steamでデモ$스팀 데모$Steam上的试玩版本$在Steam上的展示版
+Go_to_archive$$Go to archive$$$$$$$
+Delete_save_slot$$Delete save slot$$$$$$$
+Data_cannot_be_recovered$$Data cannot be recovered$$$$$$$
+Save_slots$As in save slots on a memory card, games context, saving data$Save slots$$$$$$$
+resource$$resource$$$$$$$
+skill$$skill$$$$$$$
+class$$class$$$$$$$
+house_item$$house item$$$$$$$
+hint$$hint$$$$$$$
+house$$house$$$$$$$
+location$$location$$$$$$$
+task$$task$$$$$$$
+Furniture$$Furniture$$$$$$$
+Houses$$Houses$$$$$$$
+Locations$$Locations$$$$$$$
+Power-ups$$Power-ups$$$$$$$
+Resources$$Resources$$$$$$$
+Skills$$Skills$$$$$$$
+Tasks$$Tasks$$$$$$$
+Total$$Total$$$$$$$
+Priests_&_Holidays$$Priests & Holidays$$$$$$$
+Requires$used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla$Requires$$$$$$$
+new_game$$new game$$$$$$$
+export$$export$$$$$$$
+import$$import$$$$$$$
+delete$$delete$$$$$$$
+copy$$copy$$$$$$$
