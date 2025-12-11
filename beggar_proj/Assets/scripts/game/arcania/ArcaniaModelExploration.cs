@@ -1,7 +1,5 @@
-﻿using HeartUnity;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using HeartEngineCore;
 using static ArcaniaModel;
 
 public class ArcaniaModelExploration : ArcaniaModelSubmodule

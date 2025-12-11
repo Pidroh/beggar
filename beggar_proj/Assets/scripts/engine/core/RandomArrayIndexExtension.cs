@@ -1,24 +1,24 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using HeartEngineCore;
+using System.Collections.Generic;
 
-namespace HeartUnity
+namespace HeartEngineCore
 {
 
     public static class RandomArrayIndexExtension
     {
         public static T RandomElement<T>(this T[] array)
         {
-            return array[Random.Range(0, array.Length)];
+            return array[RandomHG.Range(0, array.Length)];
         }
 
         public static T RandomElement<T>(this List<T> array)
         {
-            return array[Random.Range(0, array.Count)];
+            return array[RandomHG.Range(0, array.Count)];
         }
 
         public static T RandomTake<T>(this List<T> array)
         {
-            int index = Random.Range(0, array.Count);
+            int index = RandomHG.Range(0, array.Count);
             T element = array[index];
             array.RemoveAt(index);
             return element;
@@ -30,7 +30,7 @@ namespace HeartUnity
             var last = count - 1;
             for (var i = 0; i < last; ++i)
             {
-                var r = UnityEngine.Random.Range(i, count);
+                var r = RandomHG.Range(i, count);
                 var tmp = ts[i];
                 ts[i] = ts[r];
                 ts[r] = tmp;

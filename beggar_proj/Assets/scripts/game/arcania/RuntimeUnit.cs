@@ -1,4 +1,5 @@
 ﻿using arcania;
+using HeartEngineCore;
 using HeartUnity;
 using System.Collections.Generic;
 using UnityEngine;
@@ -159,10 +160,10 @@ public class RuntimeUnit
         ChangeValue(v - _value);
     }
 
-    public void ChangeValueByResourceChange(RuntimeUnit parent, FloatRange valueChange, ResourceChangeType changeType)
+    public void ChangeValueByResourceChange(RuntimeUnit parent, FloatRangePure valueChange, ResourceChangeType changeType)
     {
         // var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
-        ChangeValue(valueChange.getValue(Random.Range(0f, 1f)));
+        ChangeValue(valueChange.getValue(RandomHG.Range(0f, 1f)));
     }
 
     public float GetModSumWithIntermediaryCheck(RuntimeUnit intermediary, ModType modType, ResourceChangeType changeType)
@@ -240,7 +241,7 @@ public class RuntimeUnit
         return speedP * 0.01f;
     }
 
-    public bool CanFullyAcceptChange(FloatRange valueChange)
+    public bool CanFullyAcceptChange(FloatRangePure valueChange)
     {
         if (valueChange.SmallerThan(0f)) return valueChange.BiggerOrEqual(-Value); //return Mathf.Abs(valueChange) <= Value;
         // no max

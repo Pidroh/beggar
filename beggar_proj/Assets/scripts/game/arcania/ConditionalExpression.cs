@@ -1,8 +1,7 @@
-﻿using HeartUnity;
+﻿using HeartEngineCore;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using UnityEngine;
 
 namespace arcania
 {
@@ -107,7 +106,7 @@ namespace arcania
                 };
                 string nameOfThing = condition.Pointer.RuntimeUnit?.Name;
                 if (nameOfThing == null) nameOfThing = condition.Pointer.Tag?.tagName;
-                if (nameOfThing == null) Debug.LogError($"pointer null {condition.Pointer.id}");
+                if (nameOfThing == null) Logger.LogError($"pointer null {condition.Pointer.id}");
                 if ((condition.Value == 0 && condition.Operator == ComparisonOperator.GreaterThan) ||
                      condition.Value == 1 && condition.Operator == ComparisonOperator.GreaterThanOrEqual) 
                 {
@@ -191,7 +190,7 @@ namespace arcania
                         op = opGotten;
                         if (!int.TryParse(tokens[++i], out var number)) 
                         {
-                            Debug.LogError($"Parsing problem, tokens is not a number: |{tokens[i+1]}|. First is |{tokens[0]}|");
+                            Logger.LogError($"Parsing problem, tokens is not a number: |{tokens[i+1]}|. First is |{tokens[0]}|");
                         }
                         value = number;
                     }

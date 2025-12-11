@@ -1,12 +1,8 @@
 using arcania;
 using HeartUnity;
-using System;
-using System.Collections;
+using HeartEngineCore;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class JsonReader
 {
@@ -162,11 +158,12 @@ public class JsonReader
                             var hasTag = false;
                             foreach (var tag in separatorCandidate.Tags)
                             {
-                                if (tag.RuntimeUnits.Contains(item))
+                                foreach (var ru in tag.RuntimeUnits)
                                 {
-                                    hasTag = true;
+                                    if (ru == item) hasTag = true;
                                     break;
                                 }
+                                if (hasTag) break;
                             }
                             if (!hasTag) continue;
                         }
@@ -708,7 +705,7 @@ public class JsonReader
             var rc = new ResourceChange()
             {
                 IdPointer = arcaniaUnits.GetOrCreateIdPointer(header),
-                valueChange = new FloatRange(min * signalMultiplier, max * signalMultiplier),
+                valueChange = new FloatRangePure(min * signalMultiplier, max * signalMultiplier),
                 ModificationType = changeType
             };
             list.Add(rc);
@@ -719,7 +716,7 @@ public class JsonReader
         RuntimeUnit owner,
         SimpleJSON.JSONNode dataJsonMod, ArcaniaUnits arcaniaUnits)
     {
-        using var _1 = ListPool<string>.Get(out var strList);
+        using var _1 = HeartEngineCore.ListPool<string>.Get(out var strList);
 
         foreach (var pair in dataJsonMod)
         {
@@ -924,7 +921,7 @@ public class DotConfig
 public class ResourceChange
 {
     public IDPointer IdPointer;
-    public FloatRange valueChange;
+    public FloatRangePure valueChange;
     public ResourceChangeModificationType ModificationType = ResourceChangeModificationType.NormalChange;
     public enum ResourceChangeModificationType
     {

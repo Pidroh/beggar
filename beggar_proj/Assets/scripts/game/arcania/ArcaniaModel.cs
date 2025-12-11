@@ -1,9 +1,7 @@
-﻿using HeartUnity;
+﻿using HeartEngineCore;
 using SimpleJSON;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Pool;
 
 public class ConfigResource
 {
@@ -209,7 +207,7 @@ public class ArcaniaModel
 
     public bool DoChangesMakeADifference(RuntimeUnit ru, ResourceChangeType changeType)
     {
-        using var _1 = DictionaryPool<IDPointer, FloatRange>.Get(out var dict);
+        using var _1 = DictionaryPool<IDPointer, FloatRangePure>.Get(out var dict);
         // Account for total normal effect changes
         foreach (var rc in ru.ConfigTask.GetResourceChangeList(changeType))
         {
@@ -236,7 +234,7 @@ public class ArcaniaModel
             }
             else
             {
-                dict[item.Target] = new FloatRange(totalValue, totalValue);
+                dict[item.Target] = new FloatRangePure(totalValue, totalValue);
             }
         }
 
@@ -275,7 +273,7 @@ public class ArcaniaModel
             if (ru == null) continue;
             return ru;
         }
-        Debug.Log($"Runtime unit of ID |{id}| NOT FOUND");
+        Logger.Log($"Runtime unit of ID |{id}| NOT FOUND");
         return null;
 
     }
@@ -284,7 +282,7 @@ public class ArcaniaModel
     {
         var ru = FindRuntimeUnitInternal(type, v);
         if (ru != null) return ru;
-        Debug.Log($"Runtime unit of type |{type}| and ID |{v}| NOT FOUND");
+        Logger.Log($"Runtime unit of type |{type}| and ID |{v}| NOT FOUND");
         return null;
     }
 
