@@ -2,8 +2,9 @@
     "name": "arcania",
     "rootNamespace": "",
     "references": [
-        "heart_engine",
-        "SimpleJSON"
+        "SimpleJSON",
+        "heart_engine_pure",
+        "heart_engine"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -13,5 +14,5 @@
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
-    "noEngineReferences": false
+    "noEngineReferences": true
 }
