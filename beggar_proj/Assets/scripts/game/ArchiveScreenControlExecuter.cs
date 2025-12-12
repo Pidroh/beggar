@@ -25,12 +25,23 @@ public static class ArchiveScreenControlExecuter
             var key = JGameControlDataSaveSlot.SlotSaveKeys[state.slotNow];
             var arcaniaPersistence = new ArcaniaPersistence(mgc.HeartGame, key);
 
-            ArcaniaArchiveModelExecuter.LoadUpArchive(mgc.JControlData.archiveControlData.archiveData, arcaniaPersistence);
+            LoadUpArchive(mgc.JControlData.archiveControlData.archiveData, arcaniaPersistence);
             state.slotNow++;
             state.over = JGameControlDataSaveSlot.SlotSaveKeys.Length <= state.slotNow;
             return state;
         }
         
+    }
+
+    public static void LoadUpArchive(ArcaniaArchiveModelData archiveData, ArcaniaPersistence arcaniaPersistence)
+    {
+        if (!arcaniaPersistence.saveUnit.TryLoad(out var rawData)) return;
+        foreach (var item in rawData.Basics)
+        {
+            if (!item.requireMet) continue;
+            if (archiveData.knownIds.Contains(item.id)) continue;
+            archiveData.knownIds.Add(item.id);
+        }
     }
 
     public static void ManualUpdate(MainGameControl mgc)

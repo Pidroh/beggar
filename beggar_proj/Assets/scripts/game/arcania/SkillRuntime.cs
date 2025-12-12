@@ -47,7 +47,7 @@ public class SkillRuntime
         xp += 1;
     }
 
-    internal void Load(ArcaniaSkillPersistence skill)
+    public void Load(ArcaniaSkillPersistence skill)
     {
         xp = skill.xp;
         _acquired = skill.acquired;
