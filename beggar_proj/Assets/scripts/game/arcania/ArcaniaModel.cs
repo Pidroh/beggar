@@ -1,6 +1,4 @@
 ﻿using HeartEngineCore;
-using SimpleJSON;
-using System;
 using System.Collections.Generic;
 
 public class ConfigResource
@@ -17,7 +15,7 @@ public class ConfigHint
 
 public class ConfigEncounter
 {
-    public JSONNode Length { get; set; }
+    public int Length { get; set; }
 }
 
 public class ConfigLocation

@@ -1,13 +1,8 @@
-#nullable enable
-
 using System;
 
 namespace HeartEngineCore
 {
-    /// <summary>
-    /// Minimal substitute for UnityEngine.Mathf without Unity dependency.
-    /// </summary>
-    public static class Mathf
+    public static class MathfHG
     {
         public const float PI = (float)Math.PI;
         public const float Deg2Rad = PI / 180f;

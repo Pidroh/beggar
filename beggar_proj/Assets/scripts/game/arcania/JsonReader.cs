@@ -509,7 +509,7 @@ public class JsonReader
                 ru.ConfigTask = ReadTask(ru, item, arcaniaUnits);
                 ru.ConfigEncounter = new ConfigEncounter()
                 {
-                    Length = item.GetValueOrDefault("length", 5)
+                    Length = item.GetValueOrDefault("length", 5).AsInt
                 };
             }
             if (type == UnitType.TASK)
