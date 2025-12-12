@@ -13,13 +13,13 @@ public class TabRuntime
     }
 
     public RuntimeUnit RuntimeUnit { get; }
-    public bool ContainsLogs { get; internal set; }
-    public bool OpenSettings { get; internal set; }
-    public bool OpenOtherTabs { get; internal set; }
-    public bool ExplorationActiveTab { get; internal set; }
-    public bool NecessaryForDesktopAndThinnable { get; internal set; }
-    public bool ArchiveOnly { get; internal set; }
-    public bool DisableOnArchive { get; internal set; }
+    public bool ContainsLogs { get; set; }
+    public bool OpenSettings { get; set; }
+    public bool OpenOtherTabs { get; set; }
+    public bool ExplorationActiveTab { get; set; }
+    public bool NecessaryForDesktopAndThinnable { get; set; }
+    public bool ArchiveOnly { get; set; }
+    public bool DisableOnArchive { get; set; }
 
     public class Separator {
         public List<UnitType> AcceptedUnitTypes = new();
@@ -27,12 +27,12 @@ public class TabRuntime
         public bool RequireMax;
         public bool RequireInstant;
 
-        public string Name { get; internal set; }
-        public bool ShowSpace { get; internal set; }
-        public string Id { get; internal set; }
-        public List<IDPointer> Tags { get; internal set; }
-        public int Priority { get; internal set; }
-        public bool ContainsSaveSlots { get; internal set; }
-        public bool ArchiveMainUI { get; internal set; }
+        public string Name { get; set; }
+        public bool ShowSpace { get; set; }
+        public string Id { get; set; }
+        public List<IDPointer> Tags { get; set; }
+        public int Priority { get; set; }
+        public bool ContainsSaveSlots { get; set; }
+        public bool ArchiveMainUI { get; set; }
     }
 }

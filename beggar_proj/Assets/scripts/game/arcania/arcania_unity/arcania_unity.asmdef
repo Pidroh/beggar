@@ -4,7 +4,8 @@
     "references": [
         "SimpleJSON",
         "heart_engine_pure",
-        "heart_engine"
+        "heart_engine",
+        "arcania"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

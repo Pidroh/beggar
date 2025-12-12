@@ -1,16 +1,17 @@
-﻿using HeartEngineCore;
+﻿using arcania;
+using HeartEngineCore;
 using System.Collections.Generic;
 
 public class ConfigResource
 {
     public bool Stressor;
 
-    public string HeuristicIntegration { get; internal set; }
+    public string HeuristicIntegration { get; set; }
 }
 
 public class ConfigHint
 {
-    public IDPointer hintTargetPointer { get; internal set; }
+    public IDPointer hintTargetPointer { get; set; }
 }
 
 public class ConfigEncounter
@@ -368,4 +369,101 @@ public class ArcaniaModel
     }
 
 
+}
+
+
+public class ConfigBasic
+{
+    public string Id;
+    public string Desc;
+    public int Max;
+    public string name;
+
+    public ConditionalExpression Require { get; set; }
+    public List<IDPointer> Tags { get; } = new();
+    public UnitType UnitType { get; set; }
+    public string SpriteKey { get; set; }
+    public bool AboveMax { get; set; }
+}
+
+public enum UnitType
+{
+    RESOURCE, TASK, HOUSE, CLASS, SKILL, FURNITURE, TAB, DIALOG, LOCATION, ENCOUNTER,
+    DOT, HINT, TAG
+}
+
+public static class ModReplaceKeys
+{
+    public const string MAX = "$MAX$";
+    public const string RATE = "$RATE$";
+    public const string SPEED = "$SPEED$";
+    //public const string MAXSPACE = "$MAXSPACE$";
+    public const string SPACEOCCUPIED = "$SPACEOCCUPIED$";
+    public const string SUCCESSRATE = "$SUCCESSRATE$";
+}
+
+public class ModRuntime
+{
+    public ModType ModType;
+    public float Value;
+    public RuntimeUnit Source;
+    public IDPointer Intermediary;
+    public IDPointer Target;
+
+    public ResourceChangeType? ResourceChangeType { get; set; }
+    public string SourceJsonKey { get; set; }
+    public string HumanText { get; set; }
+    public string HumanTextIntermediary { get; set; }
+    public string HumanTextTarget { get; set; }
+}
+
+public class DotConfig
+{
+    public int Duration { get; set; }
+    public bool Toggle { get; set; }
+}
+
+public class ResourceChange
+{
+    public IDPointer IdPointer;
+    public FloatRangePure valueChange;
+    public ResourceChangeModificationType ModificationType = ResourceChangeModificationType.NormalChange;
+    public enum ResourceChangeModificationType
+    {
+        NormalChange,
+        XpChange
+    }
+}
+
+
+
+public class DialogRuntime
+{
+    public string Id;
+    public string Title;
+    public string Content;
+    public List<IDPointer> TagPointers = new();
+}
+
+public class TagRuntime
+{
+    private string _tagName;
+    public string tagName
+    {
+        get => RuntimeUnit?.Name ?? _tagName;
+        set
+        {
+            _tagName = value;
+        }
+    }
+    public List<RuntimeUnit> UnitsWithTag = new();
+
+    public List<DialogRuntime> Dialogs = new();
+
+    public TagRuntime(string tagName)
+    {
+        this.tagName = tagName;
+    }
+
+    public RuntimeUnit RuntimeUnit { get; set; }
 }

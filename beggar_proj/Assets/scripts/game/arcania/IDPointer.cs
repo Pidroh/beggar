@@ -95,7 +95,7 @@ public class IDPointer : IEnumerable<RuntimeUnit>
         return ((IEnumerable)RuntimeUnits).GetEnumerator();
     }
 
-    internal void CheckValidity()
+    public void CheckValidity()
     {
         if (Tag != null) return;
         if (RuntimeUnit != null) return;

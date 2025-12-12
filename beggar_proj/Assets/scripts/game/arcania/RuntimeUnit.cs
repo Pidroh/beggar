@@ -294,9 +294,9 @@ public class RuntimeUnit
 
     public RuntimeUnit DotRU { get; set; }
     public DotConfig DotConfig { get; set; }
-    public RuntimeUnit ParentRU { get; internal set; }
-    public bool Activatable { get; internal set; }
-    public bool? ArchiveEnabled { get; internal set; }
-    public WorldType World { get; internal set; }
-    public bool ForceInvisible { get; internal set; }
+    public RuntimeUnit ParentRU { get; set; }
+    public bool Activatable { get; set; }
+    public bool? ArchiveEnabled { get; set; }
+    public WorldType World { get; set; }
+    public bool ForceInvisible { get; set; }
 }

@@ -9,10 +9,10 @@ public class ArcaniaUnits
     public List<IDPointer> PointersThatHaveHintsTargetingThem { get; internal set; } = new();
     public List<ModRuntime> Mods { get; internal set; } = new();
     public List<ModRuntime> SpaceMods { get; internal set; } = new();
-    public RuntimeUnit RestActionActive { get; internal set; }
+    public RuntimeUnit RestActionActive { get; set; }
     public List<RuntimeUnit> UnitsIntegratedWithHeuristic = new();
 
-    internal IDPointer GetOrCreateIdPointer(string key)
+    public IDPointer GetOrCreateIdPointer(string key)
     {
         if (!IdMapper.TryGetValue(key, out var value))
         {
@@ -25,7 +25,7 @@ public class ArcaniaUnits
         return value;
     }
 
-    internal IDPointer GetOrCreateIdPointerWithTag(string id)
+    public IDPointer GetOrCreateIdPointerWithTag(string id)
     {
         var pointer = GetOrCreateIdPointer(id);
         if (pointer.Tag == null)
