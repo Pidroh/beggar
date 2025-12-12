@@ -1,9 +1,8 @@
 ﻿//using UnityEngine.U2D;
 
+using HeartEngineCore;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Pool;
 
 namespace HeartUnity
 {
@@ -49,7 +48,7 @@ namespace HeartUnity
                 }
                 if (count != lang.textSet.Count)
                 {
-                    Debug.LogError("ERROR: localization data missing entries");
+                    Logger.LogError("ERROR: localization data missing entries");
                 }
             }
         }
@@ -110,7 +109,7 @@ namespace HeartUnity
             {
                 if (key < 0 || lineEles[key] == null)
                 {
-                    Debug.LogError("something is wrong");
+                    Logger.LogError("something is wrong");
                 }
                 var keyEle = lineEles[key].Trim();
                 if (replaceSpaceWithUnderscoreInKey) keyEle = keyEle.Replace(' ', '_');
@@ -173,7 +172,7 @@ namespace HeartUnity
                 }
                 if (!found)
                 {
-                    Debug.LogError("Trying to append but language not found "+header);
+                    Logger.LogError("Trying to append but language not found "+header);
                 }
             }
             // actual data
@@ -184,7 +183,7 @@ namespace HeartUnity
                 var lineElements = lines[lineIndex].Split("$");
                 if (keyIndex < 0 || lineElements[keyIndex] == null)
                 {
-                    Debug.LogError("something is wrong");
+                    Logger.LogError("something is wrong");
                 }
                 var keyEle = lineElements[keyIndex].Trim();
                 if (replaceSpaceWithUnderscoreInKey) keyEle = keyEle.Replace(' ', '_');
