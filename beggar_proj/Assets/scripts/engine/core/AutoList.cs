@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HeartUnity
+namespace HeartEngineCore
 {
     public class AutoList<T> : List<T>
     {

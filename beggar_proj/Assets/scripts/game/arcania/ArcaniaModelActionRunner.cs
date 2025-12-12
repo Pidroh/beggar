@@ -1,6 +1,5 @@
 ﻿using HeartEngineCore;
 using System.Collections.Generic;
-using UnityEngine;
 using static ArcaniaModel;
 
 public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
@@ -194,8 +193,8 @@ public class ArcaniaModelActionRunner : ArcaniaModelSubmodule
             run.TaskProgress += taskProgressDt;
 
             // reached a new second in progress
-            int previousProgress = Mathf.FloorToInt(beforeProg);
-            int newProgress = Mathf.FloorToInt(run.TaskProgress);
+            int previousProgress = MathfHG.FloorToInt(beforeProg);
+            int newProgress = MathfHG.FloorToInt(run.TaskProgress);
             var numberOfLoops = newProgress - previousProgress;
 
             if (numberOfLoops > 0)

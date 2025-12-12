@@ -1,7 +1,7 @@
-﻿using System;
+﻿using HeartEngineCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class IDPointer : IEnumerable<RuntimeUnit>
 {
@@ -23,7 +23,7 @@ public class IDPointer : IEnumerable<RuntimeUnit>
             {
                 return _listOfRunTimeForEnumeration;
             }
-            Debug.LogError($"ERROR: ID Pointer {id} seems to be invalid");
+            Logger.LogError($"ERROR: ID Pointer {id} seems to be invalid");
         }
         if (_listOfRunTimeForEnumeration.Count == 0) 
         {
@@ -54,7 +54,7 @@ public class IDPointer : IEnumerable<RuntimeUnit>
             return 0;
         }
 #if UNITY_EDITOR
-        Debug.LogError($"ID Pointer {id} has no value!");
+        Logger.LogError($"ID Pointer {id} has no value!");
 #endif
         return 0;
     }
@@ -101,7 +101,7 @@ public class IDPointer : IEnumerable<RuntimeUnit>
         if (RuntimeUnit != null) return;
         if (id == "space") return;
 #if UNITY_EDITOR
-        Debug.LogError($"ID Pointer {id} is invalid");
+        Logger.LogError($"ID Pointer {id} is invalid");
 #endif
     }
 }

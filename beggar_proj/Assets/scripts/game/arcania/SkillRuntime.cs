@@ -1,5 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿
+
+using HeartEngineCore;
 
 public class SkillRuntime
 {
@@ -22,7 +23,7 @@ public class SkillRuntime
     private float GetXpRatio()
     {
         int max = GetMaxXP();
-        return Mathf.Min(xp / (float)max, 1f);
+        return MathfHG.Min(xp / (float)max, 1f);
     }
 
     public void Acquire()
@@ -37,8 +38,8 @@ public class SkillRuntime
 
     private int GetMaxXP()
     {
-        float MaxXPForLevel = 50 * Mathf.Pow(1.35f, RuntimeUnit.Value + skillData.LearningDifficultyLevel);
-        return Mathf.FloorToInt(MaxXPForLevel);
+        float MaxXPForLevel = 50 * MathfHG.Pow(1.35f, RuntimeUnit.Value + skillData.LearningDifficultyLevel);
+        return MathfHG.FloorToInt(MaxXPForLevel);
     }
 
     internal void StudySkillTick()

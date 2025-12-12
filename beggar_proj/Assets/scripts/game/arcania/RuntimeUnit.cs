@@ -1,8 +1,6 @@
 ﻿using arcania;
 using HeartEngineCore;
-using HeartUnity;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class RuntimeUnit
 {
@@ -17,7 +15,7 @@ public class RuntimeUnit
     public List<ModRuntime> ModsOwned = new();
     public BuyStatus BuyStatus = BuyStatus.Free;
     public bool RequireMet = false;
-    public int Value => Mathf.FloorToInt(_value);
+    public int Value => MathfHG.FloorToInt(_value);
     public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
     public float _value;
 
@@ -99,17 +97,17 @@ public class RuntimeUnit
     {
         // has no max from the get go
         if (ConfigBasic.Max < 0) return -1;
-        var sum = Mathf.FloorToInt(GetModSum(modType: ModType.MaxChange));
-        return Mathf.Max(ConfigBasic.Max + sum, 0);
+        var sum = MathfHG.FloorToInt(GetModSum(modType: ModType.MaxChange));
+        return MathfHG.Max(ConfigBasic.Max + sum, 0);
     }
 
     public void ChangeValue(float valueChange)
     {
         var valueWasZero = Value == 0;
         if (MaxCanLimitValue)
-            _value = Mathf.Clamp(_value + valueChange, 0, MaxForCeiling);
+            _value = MathfHG.Clamp(_value + valueChange, 0, MaxForCeiling);
         else
-            _value = Mathf.Max(_value + valueChange, 0);
+            _value = MathfHG.Max(_value + valueChange, 0);
         if (valueWasZero && Value != 0) 
         {
             DirtyThingsWhenNotZero();
@@ -173,7 +171,7 @@ public class RuntimeUnit
         {
             if (mod.ModType != modType) continue;
             if (mod.ResourceChangeType != changeType) continue;
-            if (mod.Intermediary == null) Debug.LogError("There should never be a resource change type mod without intermediary");
+            if (mod.Intermediary == null) Logger.LogError("There should never be a resource change type mod without intermediary");
             if (mod.Intermediary.RuntimeUnit != intermediary) continue;
             v += mod.Source.Value * mod.Value;
         }

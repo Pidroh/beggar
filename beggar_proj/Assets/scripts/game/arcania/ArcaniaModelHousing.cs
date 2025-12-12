@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using HeartEngineCore;
 using static ArcaniaModel;
 
 public class ArcaniaModelHousing : ArcaniaModelSubmodule
@@ -49,7 +49,7 @@ public class ArcaniaModelHousing : ArcaniaModelSubmodule
         {
             space += mod.Source.Value * mod.Value;
         }
-        return Mathf.CeilToInt(space);
+        return MathfHG.CeilToInt(space);
     }
 
     public bool CanChangeHouse(RuntimeUnit ru)
