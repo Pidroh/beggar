@@ -369,7 +369,19 @@ public static class JGameControlExecuter
                         }
 
                         shouldShowSep = true;
-                        UpdateExpandLogicForUnit(unit);
+                        var expandChange = UpdateExpandLogicForUnit(unit);
+
+                        if (expandChange ?? false) 
+                        {
+                            foreach (var u in controlData.expandedUnits)
+                            {
+                                if (!u.Expanded) continue;
+                                if (u == unit) continue;
+                                ToggleExpansion(u);
+                            }
+                            controlData.expandedUnits.Clear();
+                            controlData.expandedUnits.Add(unit);
+                        }
                         if (unit.ValueText != null && unit.Data.ConfigHintData == null)
                         {
                             var Data = unit.Data;
@@ -721,21 +733,28 @@ public static class JGameControlExecuter
         controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
     }
 
-    public static void UpdateExpandLogicForUnit(JRTControlUnit unit)
+    public static bool? UpdateExpandLogicForUnit(JRTControlUnit unit)
     {
         var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
         bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
         expandClick = expandClick || layoutClicked;
         if (expandClick)
         {
-            var ls = unit.ExpandButtonImage.Rect.localScale;
-            ls.y *= -1;
-            unit.ExpandButtonImage.Rect.localScale = ls;
-            unit.Expanded = !unit.Expanded;
-            foreach (var item in unit.InsideExpandable)
-            {
-                item.SetParentShowing(unit.Expanded);
-            }
+            ToggleExpansion(unit);
+            return unit.Expanded;
+        }
+        return null;
+    }
+
+    public static void ToggleExpansion(JRTControlUnit unit)
+    {
+        var ls = unit.ExpandButtonImage.Rect.localScale;
+        ls.y *= -1;
+        unit.ExpandButtonImage.Rect.localScale = ls;
+        unit.Expanded = !unit.Expanded;
+        foreach (var item in unit.InsideExpandable)
+        {
+            item.SetParentShowing(unit.Expanded);
         }
     }
 
