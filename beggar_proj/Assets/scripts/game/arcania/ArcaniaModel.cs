@@ -118,7 +118,7 @@ public class ArcaniaModel
                         break;
                     case ResourceChange.ResourceChangeModificationType.XpChange:
                         // Mods not supported for now
-                        ru.Skill.xp += (int)c.valueChange.getValue(UnityEngine.Random.Range(0f, 1f));
+                        ru.Skill.xp += (int)c.valueChange.getValue(RandomHG.Range(0f, 1f));
                         break;
                     default:
                         break;
