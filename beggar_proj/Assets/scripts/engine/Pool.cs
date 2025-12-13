@@ -1,3 +1,4 @@
+using HeartEngineCore;
 using System.Collections.Generic;
 
 namespace HeartUnity
@@ -17,6 +18,15 @@ namespace HeartUnity
             freeObjects.RemoveAt(freeObjects.Count-1);
             activeObjects.Add(obj);
             return obj;
+        }
+
+        public void Free(T obj) 
+        {
+            freeObjects.Add(obj);
+#if UNITY_EDITOR
+            Logger.TryLogError(!activeObjects.Contains(obj), "Freeing something that was never active");
+#endif
+            activeObjects.Remove(obj);
         }
 
         public void FreeAll() {

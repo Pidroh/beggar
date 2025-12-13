@@ -17,5 +17,10 @@ namespace HeartEngineCore
             Debug.LogError(v);
 #endif
         }
+
+        public static void TryLogError(bool conditionError, string v2)
+        {
+            if (conditionError) LogError(v2);
+        }
     }
 }

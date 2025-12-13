@@ -382,6 +382,10 @@ public static class JGameControlExecuter
                             controlData.expandedUnits.Clear();
                             controlData.expandedUnits.Add(unit);
                         }
+                        if (expandChange.HasValue) 
+                        {
+                            MainGameJLayoutPoolExecuter.OnExpandChanged(mgc, unit, expandChange.Value);
+                        }
                         if (unit.ValueText != null && unit.Data.ConfigHintData == null)
                         {
                             var Data = unit.Data;

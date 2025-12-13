@@ -384,6 +384,7 @@ public class ConfigBasic
     public UnitType UnitType { get; set; }
     public string SpriteKey { get; set; }
     public bool AboveMax { get; set; }
+    public bool HasDesc => !string.IsNullOrWhiteSpace(Desc);
 }
 
 public enum UnitType

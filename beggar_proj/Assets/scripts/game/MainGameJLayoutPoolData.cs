@@ -11,8 +11,8 @@ public static class MainGameJLayoutPoolExecuter
         var pd = mgc.JControlData.poolData;
         if (!pd.pools.TryGetValue(pt, out var poolH))
         {
-            pd.pools[pt] = poolH;
             poolH = new();
+            pd.pools[pt] = poolH;
         }
 
         if (poolH.pool.hasFree())
@@ -62,6 +62,28 @@ public static class MainGameJLayoutPoolExecuter
                 break;
         }
         return pcu;
+    }
+
+    internal static void OnExpandChanged(MainGameControl mgc, JRTControlUnit unit, bool value)
+    {
+        if (unit.Data?.ConfigBasic.HasDesc ?? false) 
+        {
+            if (value && unit.DescriptionCU == null)
+            {
+                unit.DescriptionCU = GetFreeUnit(mgc, PoolType.DESC);
+                unit.DescriptionCU.TextAccessor.SetTextRaw(unit.Data.ConfigBasic.Desc);
+                MainGameControlSetupJLayout.AddToExpand(unit.MainLayout, unit.DescriptionCU.layout, unit);
+            } else if(!value && unit.DescriptionCU != null)
+            {
+                FreeUnit(mgc.JControlData.poolData, unit.DescriptionCU, PoolType.DESC);
+                unit.DescriptionCU = null;
+            }
+        }
+    }
+
+    private static void FreeUnit(MainGameJLayoutPoolData poolData, PoolChildUnit descriptionCU, PoolType dESC)
+    {
+        poolData.pools[dESC].pool.Free(descriptionCU);
     }
 }
 public class MainGameJLayoutPoolData
