@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static CanvasMaker;
 
+[Obsolete]
 public class Gauge
 {
     private readonly CreateGaugeRequest gaugeRequest;
@@ -48,6 +49,7 @@ public class Gauge
     }
 }
 
+[Obsolete]
 public class LayoutChild
 {
     public RectTransform RectTransform;

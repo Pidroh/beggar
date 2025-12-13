@@ -5,8 +5,9 @@ using JLayout;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class MainGameControlSetupJLayout
+public class MainGameControlSetupJLayout
 {
+
     internal static void SetupModelDataAllAtOnce(MainGameControl mgc)
     {
         var arcaniaModel = mgc.arcaniaModel;
@@ -343,14 +344,14 @@ public partial class MainGameControlSetupJLayout
                         }
                     }
 
-                    
+
                 }
                 var goToArchiveButton = JCanvasMaker.CreateLayout("exploration_simple_button", runtime);
                 goToArchiveButton.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
                 jControlDataHolder.SaveSlots.ArchiveButtonLayout = goToArchiveButton;
                 jControlDataHolder.SaveSlots.ArchiveButton = new JButtonAccessor(goToArchiveButton, 0);
                 goToArchiveButton.ButtonChildren[0].Item1.SetTextRaw(0, jControlDataHolder.LabelGoToArchive);
-                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(goToArchiveButton);    
+                tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(goToArchiveButton);
             }
 
 
@@ -549,7 +550,7 @@ public partial class MainGameControlSetupJLayout
                         jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
                         jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
                         jCU.ExpandWhenClickingLayout = resourceLayoutRU;
-                        if (disableValueTextForcefully) 
+                        if (disableValueTextForcefully)
                         {
                             resourceLayoutRU.TextChildren[1].UiUnit.text.enabled = false;
                         }
@@ -565,7 +566,7 @@ public partial class MainGameControlSetupJLayout
 
                     // get description of the hint target if it exists, if not, own description
                     string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
-                    if (modelData.ConfigHintData != null) 
+                    if (modelData.ConfigHintData != null)
                     {
                         Debug.Log("Hint data present");
                     }
@@ -630,7 +631,7 @@ public partial class MainGameControlSetupJLayout
                         hasNamedTag = true;
                         lastTagWithName = i;
                     }
-                    if (hasNamedTag) 
+                    if (hasNamedTag)
                     {
                         var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
                         var text = "";
@@ -639,7 +640,8 @@ public partial class MainGameControlSetupJLayout
                             IDPointer tag = modelData.ConfigBasic.Tags[i];
                             if (tag.Tag.RuntimeUnit == null) continue;
                             text += tag.Tag.tagName;
-                            if (i != lastTagWithName) {
+                            if (i != lastTagWithName)
+                            {
                                 text += ", ";
                             }
                         }
@@ -799,8 +801,8 @@ public partial class MainGameControlSetupJLayout
                 var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : mod.HumanTextTarget);
                 if (mainText == null) continue;
 
-                
-                
+
+
                 var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
                 if (modReplacements.TryGetValue(mod.ModType, out var values))
                 {
@@ -853,7 +855,7 @@ public partial class MainGameControlSetupJLayout
                 var changeType = (ResourceChangeType)rcgIndex;
 
                 ColorData changeTypeOverride = null;
-                if (controlData.ColorForResourceChangeType.TryGetValue(changeType, out var v)) 
+                if (controlData.ColorForResourceChangeType.TryGetValue(changeType, out var v))
                 {
                     changeTypeOverride = v;
                 }
@@ -861,7 +863,7 @@ public partial class MainGameControlSetupJLayout
                 // create mini header if necessary
                 if (jCU.ChangeGroups[rcgIndex].Header == null)
                 {
-                    
+
                     string textKey = changeType switch
                     {
                         ResourceChangeType.COST => controlData.LabelCost,
@@ -887,7 +889,8 @@ public partial class MainGameControlSetupJLayout
                         triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
                         triple.SetTextRaw(1, "" + rcu.valueChange.min);
                         triple.SetTextRaw(2, "0");
-                        if (changeTypeOverride != null) {
+                        if (changeTypeOverride != null)
+                        {
                             triple.TextChildren[0].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
                             triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
                         }
@@ -937,10 +940,11 @@ public partial class MainGameControlSetupJLayout
             {
                 text = $"{mgc.JControlData.LabelUnlocked}: <color={cd.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{logUnit.Unit.ConfigBasic.name}</color>\n({label})";
             }
-            else {
+            else
+            {
                 text = $"{mgc.JControlData.LabelUnlocked}: {logUnit.Unit.ConfigBasic.name}";
             }
-            
+
         }
         layout.SetTextRaw(0, text);
         return layout;
