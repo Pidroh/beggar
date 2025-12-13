@@ -566,26 +566,25 @@ public class MainGameControlSetupJLayout
 
                     // TODO description used to be here
                     // TODO change list instantiation used to be here
-                    #region change list instantiation
-                    // EnsureChangeListViewsAreCreated(runtime, modelData, jCU, layoutRU, jControlDataHolder);
-                    #endregion
 
-                    #region Mods
-                    var unitForOwnedMods = modelData.DotRU == null ? modelData : modelData.DotRU;
-                    var unitForOtherMods = modelData;
-                    var modList = unitForOwnedMods.ModsOwned;
-                    var header = jControlDataHolder.LabelModifications;
-                    var modControl = jCU.OwnedMods;
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, modReplacements, 0);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtra, jCU.IntermediaryMods, modReplacements, 1);
-                    CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, jControlDataHolder.LabelModificationsTargeting, jCU.TargetingThisMods, modReplacements, 2);
-                    if (modelData.DotRU != null)
+                    if (false)
                     {
-                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtraEffect, jCU.TargetingThisEffectMods, modReplacements, 1);
+                        #region Mods
+                        var unitForOwnedMods = modelData.DotRU == null ? modelData : modelData.DotRU;
+                        var unitForOtherMods = modelData;
+                        var modList = unitForOwnedMods.ModsOwned;
+                        var header = jControlDataHolder.LabelModifications;
+                        var modControl = jCU.OwnedMods;
+                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, modReplacements, 0);
+                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtra, jCU.IntermediaryMods, modReplacements, 1);
+                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, jControlDataHolder.LabelModificationsTargeting, jCU.TargetingThisMods, modReplacements, 2);
+                        if (modelData.DotRU != null)
+                        {
+                            CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtraEffect, jCU.TargetingThisEffectMods, modReplacements, 1);
+                        }
+                        //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
+                        #endregion
                     }
-                    //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
-
-                    #endregion
                     #region need
                     {
                         arcania.ConditionalExpression need = modelData.ConfigTask?.Need;

@@ -95,81 +95,198 @@ public static class MainGameJLayoutPoolExecuter
                 FreePooledUnitFromRuntimeUnit(mgc, unit, unitToRemove);
                 unit.DescriptionCU = null;
             }
+        }
+        #region change list
+        if (value)
+        {
+            // MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(mgc.JLayoutRuntime, modelData, unit, unit.MainLayout, mgc.JControlData);
 
-            if (value)
+            if (modelData.ConfigTask != null)
             {
-                // MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(mgc.JLayoutRuntime, modelData, unit, unit.MainLayout, mgc.JControlData);
-
-                if (modelData.ConfigTask != null)
+                for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
                 {
-                    for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
+                    List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
+                    if (rcl == null) continue;
+                    if (rcl.Count == 0) continue;
+
+                    // it might be already instantiated
+                    unit.ChangeGroups[rcgIndex] ??= new();
+                    var changeType = (ResourceChangeType)rcgIndex;
+
+                    ColorData changeTypeOverride = null;
+                    if (controlData.ColorForResourceChangeType.TryGetValue(changeType, out var v))
                     {
-                        List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
-                        if (rcl == null) continue;
-                        if (rcl.Count == 0) continue;
+                        changeTypeOverride = v;
+                    }
 
-                        // it might be already instantiated
-                        unit.ChangeGroups[rcgIndex] ??= new();
-                        var changeType = (ResourceChangeType)rcgIndex;
+                    string textRaw = changeType switch
+                    {
+                        ResourceChangeType.COST => controlData.LabelCost,
+                        ResourceChangeType.RESULT => controlData.LabelResult,
+                        ResourceChangeType.RUN => controlData.LabelRun,
+                        ResourceChangeType.EFFECT => controlData.LabelEffect,
+                        ResourceChangeType.RESULT_ONCE => controlData.LabelResultOnce,
+                        ResourceChangeType.RESULT_FAIL => controlData.LabelResultFail,
+                        ResourceChangeType.BUY => controlData.LabelBuy,
+                        _ => null,
+                    };
 
-                        ColorData changeTypeOverride = null;
-                        if (controlData.ColorForResourceChangeType.TryGetValue(changeType, out var v))
+                    var headerUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.MINI_HEADER);
+                    headerUnit.layout.SetTextRaw(0, textRaw);
+                    unit.ChangeListMixedPoolCache.Add(headerUnit);
+                    unit.ChangeGroups[rcgIndex].Header = headerUnit.layout;
+                    AutoList<JLayoutRuntimeUnit> tripleTextViews = unit.ChangeGroups[rcgIndex].tripleTextViews;
+                    for (int i = 0; i < rcl.Count; i++)
+                    {
+                        ResourceChange rcu = rcl[i];
+                        var ttvUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.TRIPLE_TEXT_VIEW);
+                        var triple = ttvUnit.layout;
+                        triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
+                        triple.SetTextRaw(1, "" + rcu.valueChange.min);
+                        triple.SetTextRaw(2, "0");
+                        if (changeTypeOverride != null)
                         {
-                            changeTypeOverride = v;
+                            triple.TextChildren[0].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
+                            triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
                         }
-
-                        string textRaw = changeType switch
-                        {
-                            ResourceChangeType.COST => controlData.LabelCost,
-                            ResourceChangeType.RESULT => controlData.LabelResult,
-                            ResourceChangeType.RUN => controlData.LabelRun,
-                            ResourceChangeType.EFFECT => controlData.LabelEffect,
-                            ResourceChangeType.RESULT_ONCE => controlData.LabelResultOnce,
-                            ResourceChangeType.RESULT_FAIL => controlData.LabelResultFail,
-                            ResourceChangeType.BUY => controlData.LabelBuy,
-                            _ => null,
-                        };
-
-                        var headerUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.MINI_HEADER);
-                        headerUnit.layout.SetTextRaw(0, textRaw);
-                        unit.ChangeListMixedPoolCache.Add(headerUnit);
-                        unit.ChangeGroups[rcgIndex].Header = headerUnit.layout;
-                        AutoList<JLayoutRuntimeUnit> tripleTextViews = unit.ChangeGroups[rcgIndex].tripleTextViews;
-                        for (int i = 0; i < rcl.Count; i++)
-                        {
-                            ResourceChange rcu = rcl[i];
-                            var ttvUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.TRIPLE_TEXT_VIEW);
-                            var triple = ttvUnit.layout;
-                            triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
-                            triple.SetTextRaw(1, "" + rcu.valueChange.min);
-                            triple.SetTextRaw(2, "0");
-                            if (changeTypeOverride != null)
-                            {
-                                triple.TextChildren[0].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
-                                triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
-                            }
-                            unit.ChangeListMixedPoolCache.Add(ttvUnit);
-                            tripleTextViews.Add(triple);
-                        }
+                        unit.ChangeListMixedPoolCache.Add(ttvUnit);
+                        tripleTextViews.Add(triple);
                     }
                 }
             }
-            else
+        }
+        else
+        {
+            foreach (var item in unit.ChangeListMixedPoolCache)
             {
-                foreach (var item in unit.ChangeListMixedPoolCache)
+                item.layout.ClearOverwriteColorOfTextChildren();
+                FreePooledUnitFromRuntimeUnit(mgc, unit, item);
+            }
+            foreach (var item in unit.ChangeGroups)
+            {
+                if (item == null) continue;
+                item.Header = null;
+                item.tripleTextViews.Clear();
+            }
+            unit.ChangeListMixedPoolCache.Clear();
+        }
+        #endregion
+
+        #region mod
+        if (value)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                // mode is 1 on the fourth i though, set in the switch
+                int mode = i;
+                var unitForOwnedMods = modelData.DotRU == null ? modelData : modelData.DotRU;
+                var unitForOtherMods = modelData;
+                var modsOwned = unitForOwnedMods.ModsOwned;
+                List<ModRuntime> modList = null;
+                var miniHeaderLabel = "";
+                JRTControlUnitMods jrtMod = null;
+                switch (i)
                 {
-                    item.layout.ClearOverwriteColorOfTextChildren();
-                    FreePooledUnitFromRuntimeUnit(mgc, unit, item);
+                    case 0:
+                        {
+                            modList = modsOwned;
+                            miniHeaderLabel = controlData.LabelModifications;
+                            jrtMod = unit.OwnedMods;
+                            break;
+                        }
+                    case 1:
+                        {
+                            modList = unitForOtherMods.ModsSelfAsIntermediary;
+                            miniHeaderLabel = controlData.LabelModificationsExtra;
+                            jrtMod = unit.IntermediaryMods;
+                            break;
+                        }
+                    case 2:
+                        {
+                            modList = unitForOtherMods.ModsTargetingSelf;
+                            miniHeaderLabel = controlData.LabelModificationsTargeting;
+                            jrtMod = unit.TargetingThisMods;
+                            break;
+                        }
+                    case 3:
+                        {
+                            modList = modelData.DotRU?.ModsSelfAsIntermediary;
+                            miniHeaderLabel = controlData.LabelModificationsExtraEffect;
+                            jrtMod = unit.TargetingThisEffectMods;
+                            mode = 1;
+                            break;
+                        }
+                    default:
+                        break;
                 }
-                foreach (var item in unit.ChangeGroups)
+                if ((modList?.Count ?? 0) > 0)
                 {
-                    if (item == null) continue;
-                    item.Header = null;
-                    item.tripleTextViews.Clear();
+                    var headerUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.MINI_HEADER);
+                    headerUnit.layout.SetTextRaw(0, miniHeaderLabel);
+                    unit.ModMixedPoolCache.Add(headerUnit);
+                    jrtMod.Header = headerUnit.layout;
+                    foreach (var mod in modList)
+                    {
+                        if (mod.ModType == ModType.Lock) continue;
+                        var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : mod.HumanTextTarget);
+                        if (mainText == null) continue;
+
+                        var ttvUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.TRIPLE_TEXT_VIEW);
+                        unit.ModMixedPoolCache.Add(ttvUnit);
+                        var triple = ttvUnit.layout;
+                        //var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
+                        /*
+                        if (modReplacements.TryGetValue(mod.ModType, out var values))
+                        {
+                            mainText = mainText.Replace(values.key, values.valueWithColor);
+                            if (values.colorD != null)
+                            {
+                                triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, values.colorD);
+                            }
+                        }*/
+                        var modControl = jrtMod;
+                        modControl.tripleTextViews.Add(triple);
+                        modControl.Mods.Add(mod);
+                        var modValue = mod.Value;
+
+                        triple.SetTextRaw(0, mainText);
+                        // activate mod has no number
+                        if (mod.ModType == ModType.Activate)
+                        {
+                            triple.SetTextRaw(1, "");
+                            continue;
+                        }
+                        string secondaryText;
+                        if (modValue > 0 && mod.ModType != ModType.SpaceConsumption)
+                            secondaryText = $"+{modValue}";
+                        else
+                            secondaryText = $"{modValue}";
+                        triple.SetTextRaw(1, secondaryText);
+
+                    }
                 }
-                unit.ChangeListMixedPoolCache.Clear();
             }
         }
+        else 
+        {
+            foreach (var item in unit.ModMixedPoolCache)
+            {
+                item.layout.ClearOverwriteColorOfTextChildren();
+                FreePooledUnitFromRuntimeUnit(mgc, unit, item);
+            }
+            void ClearModList(JRTControlUnitMods ownedMods) 
+            {
+                ownedMods.tripleTextViews.Clear();
+                ownedMods.Header = null;
+            }
+            ClearModList(unit.OwnedMods);
+            ClearModList(unit.TargetingThisEffectMods);
+            ClearModList(unit.TargetingThisMods);
+            ClearModList(unit.IntermediaryMods);
+            unit.ModMixedPoolCache.Clear();
+        }
+        
+        #endregion
     }
 
     private static PoolChildUnit GetFreeUnitBoundToRuntimeUnit(MainGameControl mgc, JRTControlUnit unit, PoolType pt)

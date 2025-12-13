@@ -14,6 +14,7 @@ public class JRTControlUnit
 
     public MainGameJLayoutPoolData.PoolChildUnit DescriptionCU;
     public List<MainGameJLayoutPoolData.PoolChildUnit> ChangeListMixedPoolCache = new();
+    public List<MainGameJLayoutPoolData.PoolChildUnit> ModMixedPoolCache = new();
 
     public AutoList<JResourceChangeGroup> ChangeGroups = new();
     public List<JLayoutRuntimeUnit> InsideExpandable = new();
