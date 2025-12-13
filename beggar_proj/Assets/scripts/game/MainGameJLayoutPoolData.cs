@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using static MainGameJLayoutPoolData;
 
-public static class MainGameJLayoutPoolExecuter
+public static class MainGameJLayoutPoolExecuter 
 {
     public static PoolChildUnit GetFreeUnit(MainGameControl mgc, PoolType pt)
     {
