@@ -173,8 +173,10 @@ public static class MainGameJLayoutPoolExecuter
         #endregion
 
         #region mod
+
         if (value)
         {
+            var modReplacements = mgc.JControlData.ModReplacements;
             for (int i = 0; i < 4; i++)
             {
                 // mode is 1 on the fourth i though, set in the switch
@@ -234,16 +236,17 @@ public static class MainGameJLayoutPoolExecuter
                         var ttvUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.TRIPLE_TEXT_VIEW);
                         unit.ModMixedPoolCache.Add(ttvUnit);
                         var triple = ttvUnit.layout;
+                        
                         //var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                        /*
+                        
                         if (modReplacements.TryGetValue(mod.ModType, out var values))
                         {
                             mainText = mainText.Replace(values.key, values.valueWithColor);
-                            if (values.colorD != null)
+                            if (values.Item4 != null)
                             {
-                                triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, values.colorD);
+                                triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, values.Item4);
                             }
-                        }*/
+                        }
                         var modControl = jrtMod;
                         modControl.tripleTextViews.Add(triple);
                         modControl.Mods.Add(mod);
@@ -294,7 +297,10 @@ public static class MainGameJLayoutPoolExecuter
     {
         var pUnit = GetFreeUnit(mgc, pt);
         unit.MainLayout.AddLayoutAsChild(pUnit.layout);
+        pUnit.layout.Disabled = null;
+        pUnit.layout.ActivePowered = null;
         pUnit.layout.SetParentShowing(true);
+        pUnit.layout.SetVisibleSelf(true);
         return pUnit;
     }
 

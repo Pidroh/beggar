@@ -422,34 +422,35 @@ public class MainGameControlSetupJLayout
         var jCanvas = runtime.jLayCanvas;
         var layoutMaster = runtime.LayoutMaster;
         var world = JGameControlExecuter.GetWorld(mgc);
-        var modReplacements = new Dictionary<ModType, (string key, string value, string valueWithColor, ColorData)>();
-
-        FeedModKey(ModType.MaxChange, ModReplaceKeys.MAX, "Max");
-        FeedModKey(ModType.RateChange, ModReplaceKeys.RATE, mgc.JControlData.RateLabel);
-        FeedModKey(ModType.SpaceConsumption, ModReplaceKeys.SPACEOCCUPIED, mgc.JControlData.spaceOccuppiedLabel);
-        FeedModKey(ModType.Speed, ModReplaceKeys.SPEED, mgc.JControlData.SpeedLabel);
-        FeedModKey(ModType.SuccessRate, ModReplaceKeys.SUCCESSRATE, mgc.JControlData.SuccessRateLabel);
-        // FeedModKey(ModType., ModReplaceKeys.MAXSPACE, mgc.JControlData.LabelMaxSpace);
-        // modReplacements[ModType.MaxChange]
-
-        void FeedModKey(ModType modType, string replaceKey, string replaceValue)
         {
-            string valueWithColor;
-            ColorData cd = null;
+            var modReplacements = new Dictionary<ModType, (string key, string value, string valueWithColor, ColorData)>();
+            mgc.JControlData.ModReplacements = modReplacements;
+            FeedModKey(ModType.MaxChange, ModReplaceKeys.MAX, "Max");
+            FeedModKey(ModType.RateChange, ModReplaceKeys.RATE, mgc.JControlData.RateLabel);
+            FeedModKey(ModType.SpaceConsumption, ModReplaceKeys.SPACEOCCUPIED, mgc.JControlData.spaceOccuppiedLabel);
+            FeedModKey(ModType.Speed, ModReplaceKeys.SPEED, mgc.JControlData.SpeedLabel);
+            FeedModKey(ModType.SuccessRate, ModReplaceKeys.SUCCESSRATE, mgc.JControlData.SuccessRateLabel);
+            // FeedModKey(ModType., ModReplaceKeys.MAXSPACE, mgc.JControlData.LabelMaxSpace);
+            // modReplacements[ModType.MaxChange]
 
-            if (mgc.JControlData.ColorForModType.TryGetValue(modType, out var c))
+            void FeedModKey(ModType modType, string replaceKey, string replaceValue)
             {
-                cd = c;
-                valueWithColor = $"<color={c.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{replaceValue}</color>";
-            }
-            else
-            {
-                valueWithColor = replaceValue;
-            }
+                string valueWithColor;
+                ColorData cd = null;
 
-            modReplacements[modType] = (replaceKey, replaceValue, valueWithColor, cd);
+                if (mgc.JControlData.ColorForModType.TryGetValue(modType, out var c))
+                {
+                    cd = c;
+                    valueWithColor = $"<color={c.CodeCache[mgc.JLayoutRuntime.CurrentColorSchemeId]}>{replaceValue}</color>";
+                }
+                else
+                {
+                    valueWithColor = replaceValue;
+                }
+
+                modReplacements[modType] = (replaceKey, replaceValue, valueWithColor, cd);
+            }
         }
-
         #region main default setup of runtime units and separators
         for (int tabIndex = 0; tabIndex < jControlDataHolder.TabControlUnits.Count; tabIndex++)
         {
@@ -566,25 +567,7 @@ public class MainGameControlSetupJLayout
 
                     // TODO description used to be here
                     // TODO change list instantiation used to be here
-
-                    if (false)
-                    {
-                        #region Mods
-                        var unitForOwnedMods = modelData.DotRU == null ? modelData : modelData.DotRU;
-                        var unitForOtherMods = modelData;
-                        var modList = unitForOwnedMods.ModsOwned;
-                        var header = jControlDataHolder.LabelModifications;
-                        var modControl = jCU.OwnedMods;
-                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, modList, header, modControl, modReplacements, 0);
-                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtra, jCU.IntermediaryMods, modReplacements, 1);
-                        CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForOtherMods.ModsTargetingSelf, jControlDataHolder.LabelModificationsTargeting, jCU.TargetingThisMods, modReplacements, 2);
-                        if (modelData.DotRU != null)
-                        {
-                            CreateModViews(layoutMaster, runtime, jCU, layoutRU, modelData.DotRU.ModsSelfAsIntermediary, jControlDataHolder.LabelModificationsExtraEffect, jCU.TargetingThisEffectMods, modReplacements, 1);
-                        }
-                        //CreateModViews(layoutMaster, runtime, jCU, layoutRU, unitForMods.ModsTargetingSelf, "mods targeting this", jCU.IntermediaryMods, 2);
-                        #endregion
-                    }
+                    // MOD instantiation used to be here
                     #region need
                     {
                         arcania.ConditionalExpression need = modelData.ConfigTask?.Need;
