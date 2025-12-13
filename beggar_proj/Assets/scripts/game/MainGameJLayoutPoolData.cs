@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using static MainGameJLayoutPoolData;
 
-public static class MainGameJLayoutPoolExecuter 
+public static class MainGameJLayoutPoolExecuter
 {
     public static PoolChildUnit GetFreeUnit(MainGameControl mgc, PoolType pt)
     {
@@ -31,6 +31,7 @@ public static class MainGameJLayoutPoolExecuter
     private static PoolChildUnit Create(MainGameControl mgc, PoolType pt)
     {
         var pcu = new PoolChildUnit();
+        pcu.PoolType = pt;
         var lId = "";
         switch (pt)
         {
@@ -38,8 +39,10 @@ public static class MainGameJLayoutPoolExecuter
                 lId = "lore_text";
                 break;
             case PoolType.TRIPLE_TEXT_VIEW:
+                lId = "in_header_triple_statistic";
                 break;
-            case PoolType.LEFT_HEADER:
+            case PoolType.MINI_HEADER:
+                lId = "left_mini_header";
                 break;
             default:
                 break;
@@ -57,7 +60,7 @@ public static class MainGameJLayoutPoolExecuter
                 break;
             case PoolType.TRIPLE_TEXT_VIEW:
                 break;
-            case PoolType.LEFT_HEADER:
+            case PoolType.MINI_HEADER:
                 break;
             default:
                 break;
@@ -67,12 +70,13 @@ public static class MainGameJLayoutPoolExecuter
 
     internal static void OnExpandChanged(MainGameControl mgc, JRTControlUnit unit, bool value)
     {
+        var controlData = mgc.JControlData;
         var modelData = unit.Data;
-        if (unit.Data?.ConfigBasic.HasDesc ?? false) 
+
+        if (unit.Data?.ConfigBasic.HasDesc ?? false)
         {
             if (value && unit.DescriptionCU == null)
             {
-                MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(mgc.JLayoutRuntime, modelData, unit, unit.MainLayout, mgc.JControlData);
                 // get description of the hint target if it exists, if not, own description
                 string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
                 if (modelData.ConfigHintData != null)
@@ -80,24 +84,112 @@ public static class MainGameJLayoutPoolExecuter
                     Logger.Log("Hint data present");
                 }
 
-                unit.DescriptionCU = GetFreeUnit(mgc, PoolType.DESC);
-                unit.DescriptionCU.TextAccessor.SetTextRaw(desc);
-                unit.MainLayout.AddLayoutAsChild(unit.DescriptionCU.layout);
-                unit.DescriptionCU.layout.SetParentShowing(true);
+                PoolChildUnit pUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit,PoolType.DESC);
+                pUnit.TextAccessor.SetTextRaw(desc);
+                unit.DescriptionCU = pUnit;
                 // MainGameControlSetupJLayout.AddToExpand(unit.MainLayout, unit.DescriptionCU.layout, unit);
-            } else if(!value && unit.DescriptionCU != null)
+            }
+            else if (!value && unit.DescriptionCU != null)
             {
-                unit.MainLayout.RemoveLayoutAsChild(unit.DescriptionCU.layout);
-                unit.DescriptionCU.layout.SetParentShowing(false);
-                FreeUnit(mgc.JControlData.poolData, unit.DescriptionCU, PoolType.DESC);
+                PoolChildUnit unitToRemove = unit.DescriptionCU;
+                FreePooledUnitFromRuntimeUnit(mgc, unit, unitToRemove);
                 unit.DescriptionCU = null;
+            }
+
+            if (value)
+            {
+                // MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(mgc.JLayoutRuntime, modelData, unit, unit.MainLayout, mgc.JControlData);
+
+                if (modelData.ConfigTask != null)
+                {
+                    for (int rcgIndex = 0; rcgIndex < modelData.ConfigTask.ResourceChangeLists.Count; rcgIndex++)
+                    {
+                        List<ResourceChange> rcl = modelData.ConfigTask.ResourceChangeLists[rcgIndex];
+                        if (rcl == null) continue;
+                        if (rcl.Count == 0) continue;
+
+                        // it might be already instantiated
+                        unit.ChangeGroups[rcgIndex] ??= new();
+                        var changeType = (ResourceChangeType)rcgIndex;
+
+                        ColorData changeTypeOverride = null;
+                        if (controlData.ColorForResourceChangeType.TryGetValue(changeType, out var v))
+                        {
+                            changeTypeOverride = v;
+                        }
+
+                        string textRaw = changeType switch
+                        {
+                            ResourceChangeType.COST => controlData.LabelCost,
+                            ResourceChangeType.RESULT => controlData.LabelResult,
+                            ResourceChangeType.RUN => controlData.LabelRun,
+                            ResourceChangeType.EFFECT => controlData.LabelEffect,
+                            ResourceChangeType.RESULT_ONCE => controlData.LabelResultOnce,
+                            ResourceChangeType.RESULT_FAIL => controlData.LabelResultFail,
+                            ResourceChangeType.BUY => controlData.LabelBuy,
+                            _ => null,
+                        };
+
+                        var headerUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.MINI_HEADER);
+                        headerUnit.layout.SetTextRaw(0, textRaw);
+                        unit.ChangeListMixedPoolCache.Add(headerUnit);
+                        unit.ChangeGroups[rcgIndex].Header = headerUnit.layout;
+                        AutoList<JLayoutRuntimeUnit> tripleTextViews = unit.ChangeGroups[rcgIndex].tripleTextViews;
+                        for (int i = 0; i < rcl.Count; i++)
+                        {
+                            ResourceChange rcu = rcl[i];
+                            var ttvUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.TRIPLE_TEXT_VIEW);
+                            var triple = ttvUnit.layout;
+                            triple.SetTextRaw(0, rcu.IdPointer.RuntimeUnit?.Name);
+                            triple.SetTextRaw(1, "" + rcu.valueChange.min);
+                            triple.SetTextRaw(2, "0");
+                            if (changeTypeOverride != null)
+                            {
+                                triple.TextChildren[0].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
+                                triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, changeTypeOverride);
+                            }
+                            unit.ChangeListMixedPoolCache.Add(ttvUnit);
+                            tripleTextViews.Add(triple);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in unit.ChangeListMixedPoolCache)
+                {
+                    item.layout.ClearOverwriteColorOfTextChildren();
+                    FreePooledUnitFromRuntimeUnit(mgc, unit, item);
+                }
+                foreach (var item in unit.ChangeGroups)
+                {
+                    if (item == null) continue;
+                    item.Header = null;
+                    item.tripleTextViews.Clear();
+                }
+                unit.ChangeListMixedPoolCache.Clear();
             }
         }
     }
 
-    private static void FreeUnit(MainGameJLayoutPoolData poolData, PoolChildUnit descriptionCU, PoolType dESC)
+    private static PoolChildUnit GetFreeUnitBoundToRuntimeUnit(MainGameControl mgc, JRTControlUnit unit, PoolType pt)
     {
-        poolData.pools[dESC].pool.Free(descriptionCU);
+        var pUnit = GetFreeUnit(mgc, pt);
+        unit.MainLayout.AddLayoutAsChild(pUnit.layout);
+        pUnit.layout.SetParentShowing(true);
+        return pUnit;
+    }
+
+    private static void FreePooledUnitFromRuntimeUnit(MainGameControl mgc, JRTControlUnit unit, PoolChildUnit unitToRemove)
+    {
+        unit.MainLayout.RemoveLayoutAsChild(unitToRemove.layout);
+        unitToRemove.layout.SetParentShowing(false);
+        FreeUnit(mgc.JControlData.poolData, unitToRemove);
+    }
+
+    private static void FreeUnit(MainGameJLayoutPoolData poolData, PoolChildUnit unit)
+    {
+        poolData.pools[unit.PoolType].pool.Free(unit);
     }
 }
 public class MainGameJLayoutPoolData
@@ -105,7 +197,7 @@ public class MainGameJLayoutPoolData
     public Dictionary<PoolType, PoolListUnit> pools = new();
     public enum PoolType
     {
-        DESC, TRIPLE_TEXT_VIEW, LEFT_HEADER, // more stuff for things like duration text and all
+        DESC, TRIPLE_TEXT_VIEW, MINI_HEADER, // more stuff for things like duration text and all
     }
 
     public class PoolListUnit
@@ -117,6 +209,9 @@ public class MainGameJLayoutPoolData
     {
         public JLayoutRuntimeUnit layout;
         public JLayTextAccessor TextAccessor => TextAccessors.Length > 0 ? TextAccessors[0] : null;
+
+        public PoolType PoolType { get; internal set; }
+
         public JLayTextAccessor[] TextAccessors;
     }
 }

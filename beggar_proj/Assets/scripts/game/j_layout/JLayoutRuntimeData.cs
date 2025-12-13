@@ -193,6 +193,14 @@ namespace JLayout
         public JLayoutChild ChildSelf { get; private set; }
         public bool Hovered => (ChildSelf?.UiUnit) != null && ChildSelf.UiUnit.HoveredWhileVisible;
 
+        internal void ClearOverwriteColorOfTextChildren()
+        {
+            foreach (var item in TextChildren)
+            {
+                item.OverwriteColorSet = null;
+            }
+        }
+
         public Image ScrollViewportImage { get; internal set; }
 
         internal bool TryGetSelfButton(out UIUnit buttonUU)
