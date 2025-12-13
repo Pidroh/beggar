@@ -72,7 +72,7 @@ public static class MainGameJLayoutPoolExecuter
         {
             if (value && unit.DescriptionCU == null)
             {
-                
+                MainGameControlSetupJLayout.EnsureChangeListViewsAreCreated(mgc.JLayoutRuntime, modelData, unit, unit.MainLayout, mgc.JControlData);
                 // get description of the hint target if it exists, if not, own description
                 string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
                 if (modelData.ConfigHintData != null)

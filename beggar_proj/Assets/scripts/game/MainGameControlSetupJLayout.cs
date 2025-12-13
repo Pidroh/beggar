@@ -565,8 +565,9 @@ public class MainGameControlSetupJLayout
                     }
 
                     // TODO description used to be here
+                    // TODO change list instantiation used to be here
                     #region change list instantiation
-                    EnsureChangeListViewsAreCreated(runtime, modelData, jCU, layoutRU, jControlDataHolder);
+                    // EnsureChangeListViewsAreCreated(runtime, modelData, jCU, layoutRU, jControlDataHolder);
                     #endregion
 
                     #region Mods
