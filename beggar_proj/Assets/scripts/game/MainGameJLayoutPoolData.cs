@@ -274,10 +274,11 @@ public static class MainGameJLayoutPoolExecuter
                 item.layout.ClearOverwriteColorOfTextChildren();
                 FreePooledUnitFromRuntimeUnit(mgc, unit, item);
             }
-            void ClearModList(JRTControlUnitMods ownedMods) 
+            static void ClearModList(JRTControlUnitMods modC) 
             {
-                ownedMods.tripleTextViews.Clear();
-                ownedMods.Header = null;
+                modC.tripleTextViews.Clear();
+                modC.Header = null;
+                modC.Mods.Clear();
             }
             ClearModList(unit.OwnedMods);
             ClearModList(unit.TargetingThisEffectMods);
