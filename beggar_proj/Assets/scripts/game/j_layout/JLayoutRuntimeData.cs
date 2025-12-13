@@ -285,6 +285,19 @@ namespace JLayout
 
         }
 
+        public void RemoveLayoutAsChild(JLayoutRuntimeUnit layoutRU)
+        {
+            // the child should be forever lost here
+            layoutRU.OverrideAxisMode = null;
+            Children.Remove(layoutRU.ChildSelf);
+            layoutRU.ChildSelf = null;
+            if (Dirty[0] <= 0)
+            {
+                MarkDirtyWithChildren();
+            }
+
+        }
+
         public struct ChildAddParameters
         {
             public PositionMode[] PositionModeOverride;

@@ -378,6 +378,7 @@ public static class JGameControlExecuter
                                 if (!u.Expanded) continue;
                                 if (u == unit) continue;
                                 ToggleExpansion(u);
+                                MainGameJLayoutPoolExecuter.OnExpandChanged(mgc, u, false);
                             }
                             controlData.expandedUnits.Clear();
                             controlData.expandedUnits.Add(unit);

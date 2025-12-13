@@ -1,4 +1,5 @@
-﻿using HeartUnity;
+﻿using HeartEngineCore;
+using HeartUnity;
 using JLayout;
 using System;
 using System.Collections.Generic;
@@ -66,15 +67,28 @@ public static class MainGameJLayoutPoolExecuter
 
     internal static void OnExpandChanged(MainGameControl mgc, JRTControlUnit unit, bool value)
     {
+        var modelData = unit.Data;
         if (unit.Data?.ConfigBasic.HasDesc ?? false) 
         {
             if (value && unit.DescriptionCU == null)
             {
+                
+                // get description of the hint target if it exists, if not, own description
+                string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
+                if (modelData.ConfigHintData != null)
+                {
+                    Logger.Log("Hint data present");
+                }
+
                 unit.DescriptionCU = GetFreeUnit(mgc, PoolType.DESC);
-                unit.DescriptionCU.TextAccessor.SetTextRaw(unit.Data.ConfigBasic.Desc);
-                MainGameControlSetupJLayout.AddToExpand(unit.MainLayout, unit.DescriptionCU.layout, unit);
+                unit.DescriptionCU.TextAccessor.SetTextRaw(desc);
+                unit.MainLayout.AddLayoutAsChild(unit.DescriptionCU.layout);
+                unit.DescriptionCU.layout.SetParentShowing(true);
+                // MainGameControlSetupJLayout.AddToExpand(unit.MainLayout, unit.DescriptionCU.layout, unit);
             } else if(!value && unit.DescriptionCU != null)
             {
+                unit.MainLayout.RemoveLayoutAsChild(unit.DescriptionCU.layout);
+                unit.DescriptionCU.layout.SetParentShowing(false);
                 FreeUnit(mgc.JControlData.poolData, unit.DescriptionCU, PoolType.DESC);
                 unit.DescriptionCU = null;
             }
