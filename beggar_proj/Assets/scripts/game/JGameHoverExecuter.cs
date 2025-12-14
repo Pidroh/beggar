@@ -1,8 +1,7 @@
 using HeartUnity.View;
 using JLayout;
 using UnityEngine;
-using UnityEngine.UI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+
 
 public static class JGameHoverExecuter 
 {
@@ -11,6 +10,7 @@ public static class JGameHoverExecuter
         var hl = mgc.JLayoutRuntime.jLayCanvas.HoverLayout;
         mgc.JControlData.HoverData.Title.SetTextRaw(0, unit?.Data?.Name ?? string.Empty);
         hl.SetVisibleSelf(unit != null);
+        mgc.JControlData.HoverData.controlUnitForHover.Data = unit.Data;
 
         if (unit != null) 
         {
@@ -43,6 +43,8 @@ public static class JGameHoverExecuter
                 hoverRect.SetLeftLocalX(targetLeft - hoverWidth);
             }
         }
+
+        MainGameJLayoutPoolExecuter.UpdateHovered(mgc, unit);
     }
 }
 
@@ -54,7 +56,7 @@ public class JGameHoverData
     public JLayoutRuntimeUnit RequireLay { get; internal set; }
     public JLayoutRuntimeUnit TagLay { get; internal set; }
 
-    public JRTControlUnit controlUnit;
+    public JRTControlUnit controlUnitForHover;
 }
 
 public static class JGameHoverSetup 

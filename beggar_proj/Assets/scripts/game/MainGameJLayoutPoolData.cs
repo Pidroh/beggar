@@ -72,30 +72,7 @@ public static class MainGameJLayoutPoolExecuter
     {
         var controlData = mgc.JControlData;
         var modelData = unit.Data;
-
-        if (unit.Data?.ConfigBasic.HasDesc ?? false)
-        {
-            if (value && unit.DescriptionCU == null)
-            {
-                // get description of the hint target if it exists, if not, own description
-                string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
-                if (modelData.ConfigHintData != null)
-                {
-                    Logger.Log("Hint data present");
-                }
-
-                PoolChildUnit pUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit,PoolType.DESC);
-                pUnit.TextAccessor.SetTextRaw(desc);
-                unit.DescriptionCU = pUnit;
-                // MainGameControlSetupJLayout.AddToExpand(unit.MainLayout, unit.DescriptionCU.layout, unit);
-            }
-            else if (!value && unit.DescriptionCU != null)
-            {
-                PoolChildUnit unitToRemove = unit.DescriptionCU;
-                FreePooledUnitFromRuntimeUnit(mgc, unit, unitToRemove);
-                unit.DescriptionCU = null;
-            }
-        }
+        UpdateDescription(mgc, unit, value);
         #region change list
         if (value)
         {
@@ -236,9 +213,9 @@ public static class MainGameJLayoutPoolExecuter
                         var ttvUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.TRIPLE_TEXT_VIEW);
                         unit.ModMixedPoolCache.Add(ttvUnit);
                         var triple = ttvUnit.layout;
-                        
+
                         //var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                        
+
                         if (modReplacements.TryGetValue(mod.ModType, out var values))
                         {
                             mainText = mainText.Replace(values.key, values.valueWithColor);
@@ -270,14 +247,14 @@ public static class MainGameJLayoutPoolExecuter
                 }
             }
         }
-        else 
+        else
         {
             foreach (var item in unit.ModMixedPoolCache)
             {
                 item.layout.ClearOverwriteColorOfTextChildren();
                 FreePooledUnitFromRuntimeUnit(mgc, unit, item);
             }
-            static void ClearModList(JRTControlUnitMods modC) 
+            static void ClearModList(JRTControlUnitMods modC)
             {
                 modC.tripleTextViews.Clear();
                 modC.Header = null;
@@ -289,8 +266,36 @@ public static class MainGameJLayoutPoolExecuter
             ClearModList(unit.IntermediaryMods);
             unit.ModMixedPoolCache.Clear();
         }
-        
+
         #endregion
+    }
+
+    private static void UpdateDescription(MainGameControl mgc, JRTControlUnit unit, bool value)
+    {
+        var modelData = unit.Data;
+        if (unit.Data?.ConfigBasic.HasDesc ?? false)
+        {
+            if (value && unit.DescriptionCU == null)
+            {
+                // get description of the hint target if it exists, if not, own description
+                string desc = modelData.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Desc ?? modelData.ConfigBasic.Desc;
+                if (modelData.ConfigHintData != null)
+                {
+                    Logger.Log("Hint data present");
+                }
+
+                PoolChildUnit pUnit = GetFreeUnitBoundToRuntimeUnit(mgc, unit, PoolType.DESC);
+                pUnit.TextAccessor.SetTextRaw(desc);
+                unit.DescriptionCU = pUnit;
+                // MainGameControlSetupJLayout.AddToExpand(unit.MainLayout, unit.DescriptionCU.layout, unit);
+            }
+            else if (!value && unit.DescriptionCU != null)
+            {
+                PoolChildUnit unitToRemove = unit.DescriptionCU;
+                FreePooledUnitFromRuntimeUnit(mgc, unit, unitToRemove);
+                unit.DescriptionCU = null;
+            }
+        }
     }
 
     private static PoolChildUnit GetFreeUnitBoundToRuntimeUnit(MainGameControl mgc, JRTControlUnit unit, PoolType pt)
@@ -320,6 +325,11 @@ public static class MainGameJLayoutPoolExecuter
     private static void FreeUnit(MainGameJLayoutPoolData poolData, PoolChildUnit unit)
     {
         poolData.pools[unit.PoolType].pool.Free(unit);
+    }
+
+    internal static void UpdateHovered(MainGameControl mgc, JRTControlUnit hoveredUnit)
+    {
+        UpdateDescription(mgc, mgc.JControlData.HoverData.controlUnitForHover, hoveredUnit != null);
     }
 }
 public class MainGameJLayoutPoolData
