@@ -68,6 +68,9 @@ public static class MainGameJLayoutPoolExecuter
         return pcu;
     }
 
+    /**
+     *  also used for hovering control unit, a bit of a hack, might want to separate the methods later
+     */
     internal static void OnExpandChanged(MainGameControl mgc, JRTControlUnit unit, bool value)
     {
         var controlData = mgc.JControlData;
@@ -329,7 +332,8 @@ public static class MainGameJLayoutPoolExecuter
 
     internal static void UpdateHovered(MainGameControl mgc, JRTControlUnit hoveredUnit)
     {
-        UpdateDescription(mgc, mgc.JControlData.HoverData.controlUnitForHover, hoveredUnit != null);
+        // reuse on expand change as it is similar
+        OnExpandChanged(mgc, mgc.JControlData.HoverData.controlUnitForHover, hoveredUnit != null);
     }
 }
 public class MainGameJLayoutPoolData

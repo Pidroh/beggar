@@ -7,10 +7,11 @@ public static class JGameHoverExecuter
 {
     public static void UpdateHovered(JRTControlUnit unit, MainGameControl mgc) 
     {
+        var changedHoverUnit = mgc.JControlData.HoverData.PreviousHoveredUnit != unit;
         var hl = mgc.JLayoutRuntime.jLayCanvas.HoverLayout;
         mgc.JControlData.HoverData.Title.SetTextRaw(0, unit?.Data?.Name ?? string.Empty);
         hl.SetVisibleSelf(unit != null);
-        mgc.JControlData.HoverData.controlUnitForHover.Data = unit.Data;
+        mgc.JControlData.HoverData.controlUnitForHover.Data = unit?.Data;
 
         if (unit != null) 
         {
@@ -43,8 +44,13 @@ public static class JGameHoverExecuter
                 hoverRect.SetLeftLocalX(targetLeft - hoverWidth);
             }
         }
-
-        MainGameJLayoutPoolExecuter.UpdateHovered(mgc, unit);
+        mgc.JControlData.HoverData.PreviousHoveredUnit = unit;
+        if (changedHoverUnit) 
+        {
+            MainGameJLayoutPoolExecuter.UpdateHovered(mgc, null);
+            MainGameJLayoutPoolExecuter.UpdateHovered(mgc, unit);
+        }
+            
     }
 }
 
@@ -55,8 +61,9 @@ public class JGameHoverData
     public JLayoutRuntimeUnit NeedLay { get; internal set; }
     public JLayoutRuntimeUnit RequireLay { get; internal set; }
     public JLayoutRuntimeUnit TagLay { get; internal set; }
+    public JRTControlUnit PreviousHoveredUnit { get; internal set; }
 
-    public JRTControlUnit controlUnitForHover;
+    public JRTControlUnit controlUnitForHover = new();
 }
 
 public static class JGameHoverSetup 
@@ -68,6 +75,8 @@ public static class JGameHoverSetup
         var layoutMaster = runtime.LayoutMaster;
         JLayoutRuntimeUnit hoverLayout = runtime.jLayCanvas.HoverLayout;
 
+        
+
         var expandableLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("content_holder_expandable"), runtime);
         var layoutTitle = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
 
@@ -78,7 +87,7 @@ public static class JGameHoverSetup
 
         control.JControlData.HoverData.MainLayout = expandableLayout;
         control.JControlData.HoverData.Title = layoutTitle;
-
+        control.JControlData.HoverData.controlUnitForHover.MainLayout = expandableLayout;
         {
             // need, require, tag
             for (int i = 0; i < 3; i++)

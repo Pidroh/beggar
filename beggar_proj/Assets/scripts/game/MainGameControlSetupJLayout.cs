@@ -783,51 +783,6 @@ public class MainGameControlSetupJLayout
 
     }
 
-    private static void CreateModViews(LayoutDataMaster layoutMaster, JLayoutRuntimeData runtime, JRTControlUnit jCU, JLayoutRuntimeUnit layoutRU, List<ModRuntime> modList, string header, JRTControlUnitMods modControl, Dictionary<ModType, (string key, string value, string valueWithColor, ColorData colorD)> modReplacements, int mode)
-    {
-        if (modList.Count > 0)
-        {
-            modControl.Header = CreateMiniHeader(runtime, jCU, layoutRU, header);
-            foreach (var mod in modList)
-            {
-                if (mod.ModType == ModType.Lock) continue;
-                var mainText = mode == 0 ? mod.HumanText : (mode == 1 ? mod.HumanTextIntermediary : mod.HumanTextTarget);
-                if (mainText == null) continue;
-
-
-
-                var triple = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("in_header_triple_statistic"), runtime);
-                if (modReplacements.TryGetValue(mod.ModType, out var values))
-                {
-                    mainText = mainText.Replace(values.key, values.valueWithColor);
-                    if (values.colorD != null)
-                    {
-                        triple.TextChildren[1].OverwriteSingleColor(ColorSetType.NORMAL, values.colorD);
-                    }
-                }
-                AddToExpand(layoutRU, triple, jCU);
-                modControl.tripleTextViews.Add(triple);
-                modControl.Mods.Add(mod);
-                var value = mod.Value;
-
-                triple.SetTextRaw(0, mainText);
-                // activate mod has no number
-                if (mod.ModType == ModType.Activate)
-                {
-                    triple.SetTextRaw(1, "");
-                    continue;
-                }
-                string secondaryText;
-                if (value > 0 && mod.ModType != ModType.SpaceConsumption)
-                    secondaryText = $"+{value}";
-                else
-                    secondaryText = $"{value}";
-                triple.SetTextRaw(1, secondaryText);
-
-            }
-        }
-    }
-
     // this method has two uses, more or less
     // 1) create change list views for the first time, for static elements
     // 2) when model data changes (runtime unit change) for the same JCU, assure there are enough change lists in that JCU
