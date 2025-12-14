@@ -50,6 +50,11 @@ public class JGameHoverData
 {
     public JLayoutRuntimeUnit Title { get; internal set; }
     public JLayoutRuntimeUnit MainLayout { get; internal set; }
+    public JLayoutRuntimeUnit NeedLay { get; internal set; }
+    public JLayoutRuntimeUnit RequireLay { get; internal set; }
+    public JLayoutRuntimeUnit TagLay { get; internal set; }
+
+    public JRTControlUnit controlUnit;
 }
 
 public static class JGameHoverSetup 
@@ -72,8 +77,16 @@ public static class JGameHoverSetup
         control.JControlData.HoverData.MainLayout = expandableLayout;
         control.JControlData.HoverData.Title = layoutTitle;
 
-        //var im = hoverLayout.ContentTransform.gameObject.AddComponent<Image>();
-        //im.color = control.JLayoutRuntime.LayoutMaster.ColorDatas.GetData("background_content").Colors[control.JLayoutRuntime.CurrentColorSchemeId];
-
+        {
+            // need, require, tag
+            for (int i = 0; i < 3; i++)
+            {
+                var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                expandableLayout.AddLayoutAsChild(needLay);
+                if(i == 0) control.JControlData.HoverData.NeedLay = needLay;
+                if (i == 1) control.JControlData.HoverData.RequireLay = needLay;
+                if (i == 2) control.JControlData.HoverData.TagLay = needLay;
+            }
+        }
     }
 }
