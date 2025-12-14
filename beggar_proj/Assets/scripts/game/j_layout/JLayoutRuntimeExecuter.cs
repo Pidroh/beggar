@@ -92,6 +92,11 @@ namespace JLayout
                 overlay.LayoutRuntimeUnit.RectTransform.FillParent();
                 ProcessChildren(overlay.LayoutRuntimeUnit);
             }
+
+            if (data.jLayCanvas.HoverLayout?.Visible ?? false) 
+            {
+                ProcessChildren(data.jLayCanvas.HoverLayout);
+            }
         }
 
         private static void ProcessChildren(JLayoutRuntimeUnit parentLayout)
