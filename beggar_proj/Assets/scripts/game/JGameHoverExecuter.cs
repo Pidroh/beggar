@@ -2,6 +2,7 @@ using HeartUnity.View;
 using JLayout;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 public static class JGameHoverExecuter 
 {
@@ -48,6 +49,7 @@ public static class JGameHoverExecuter
 public class JGameHoverData
 {
     public JLayoutRuntimeUnit Title { get; internal set; }
+    public JLayoutRuntimeUnit MainLayout { get; internal set; }
 }
 
 public static class JGameHoverSetup 
@@ -57,11 +59,21 @@ public static class JGameHoverSetup
         control.JControlData.HoverData = new JGameHoverData();
         JLayoutRuntimeData runtime = control.JLayoutRuntime;
         var layoutMaster = runtime.LayoutMaster;
-        var layoutTitle = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
         JLayoutRuntimeUnit hoverLayout = runtime.jLayCanvas.HoverLayout;
-        hoverLayout.AddLayoutAsChild(layoutTitle);
-        var im = hoverLayout.ContentTransform.gameObject.AddComponent<Image>();
-        im.color = control.JLayoutRuntime.LayoutMaster.ColorDatas.GetData("background_content").Colors[control.JLayoutRuntime.CurrentColorSchemeId];
+
+        var expandableLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("content_holder_expandable"), runtime);
+        var layoutTitle = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
+
+        expandableLayout.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
+
+        hoverLayout.AddLayoutAsChild(expandableLayout);
+        expandableLayout.AddLayoutAsChild(layoutTitle);
+
+        control.JControlData.HoverData.MainLayout = expandableLayout;
         control.JControlData.HoverData.Title = layoutTitle;
+
+        //var im = hoverLayout.ContentTransform.gameObject.AddComponent<Image>();
+        //im.color = control.JLayoutRuntime.LayoutMaster.ColorDatas.GetData("background_content").Colors[control.JLayoutRuntime.CurrentColorSchemeId];
+
     }
 }
