@@ -14,6 +14,7 @@ public static class JGameHoverExecuter
         {
             
             var hoverRect = hl.RectTransform;
+            hoverRect.SetWidth(JGameControlExecuter.NormalMinTabWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
             var targetRect = unit.MainLayout.RectTransform;
             var root = mgc.JLayoutRuntime.jLayCanvas.RootRT;
 
@@ -36,8 +37,8 @@ public static class JGameHoverExecuter
             }
             else
             {
-                // Hover right edge touches target left edge
-                hoverRect.SetRightLocalX(targetLeft);
+                // Hover right edge touches target left edge (compute via left edge to avoid pivot quirks)
+                hoverRect.SetLeftLocalX(targetLeft - hoverWidth);
             }
         }
     }
