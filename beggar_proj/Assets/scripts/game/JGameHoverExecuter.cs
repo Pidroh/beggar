@@ -1,6 +1,7 @@
 using HeartUnity.View;
 using JLayout;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class JGameHoverExecuter 
 {
@@ -57,7 +58,10 @@ public static class JGameHoverSetup
         JLayoutRuntimeData runtime = control.JLayoutRuntime;
         var layoutMaster = runtime.LayoutMaster;
         var layoutTitle = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
-        runtime.jLayCanvas.HoverLayout.AddLayoutAsChild(layoutTitle);
+        JLayoutRuntimeUnit hoverLayout = runtime.jLayCanvas.HoverLayout;
+        hoverLayout.AddLayoutAsChild(layoutTitle);
+        var im = hoverLayout.ContentTransform.gameObject.AddComponent<Image>();
+        im.color = control.JLayoutRuntime.LayoutMaster.ColorDatas.GetData("background_content").Colors[control.JLayoutRuntime.CurrentColorSchemeId];
         control.JControlData.HoverData.Title = layoutTitle;
     }
 }
