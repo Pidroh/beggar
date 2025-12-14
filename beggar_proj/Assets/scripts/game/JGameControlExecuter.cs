@@ -177,6 +177,7 @@ public static class JGameControlExecuter
             HideOverlay(mgc);
         }
 
+        JRTControlUnit hoveredUnit = null;
         #region Main loop that does tons of things (tabs, logs, each unit)
         int numberOfTabButtonsAlreadyActiveExcludingPlusTab = 0;
         for (int tabIndex = 0; tabIndex < controlData.TabControlUnits.Count; tabIndex++)
@@ -323,6 +324,8 @@ public static class JGameControlExecuter
             }
             #endregion
 
+            
+
             #region main unit loop by separator
             foreach (var sep in tabControl.SeparatorControls)
             {
@@ -356,6 +359,10 @@ public static class JGameControlExecuter
                         if (!unit.initedUi) 
                         {
                             MainGameControlSetupJLayout.CreateUIOfControlUnit(mgc.JLayoutRuntime, unit, mgc.controlState == MainGameControl.ControlState.ARCHIVE_GAME);
+                        }
+                        if (unit.MainLayout.Hovered) 
+                        {
+                            hoveredUnit = unit;
                         }
                         {
                             JRTControlUnitMods modList = unit.OwnedMods;
@@ -598,6 +605,8 @@ public static class JGameControlExecuter
             #endregion
         }
         #endregion
+
+        JGameHoverExecuter.UpdateHovered(hoveredUnit, mgc);
         // do it twice to make sure
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
         //mgc.JLayoutRuntime.jLayCanvas.Overlays[0].LayoutRuntimeUnit.ScrollViewportImage.raycastTarget

@@ -114,6 +114,7 @@ public class JGameControlDataHolder
     public string SpeedLabel { get; internal set; }
     public string SuccessRateLabel { get; internal set; }
     public Dictionary<ModType, (string key, string value, string valueWithColor, ColorData)> ModReplacements { get; internal set; }
+    public JGameHoverData HoverData { get; internal set; }
 
     public Dictionary<ResourceChangeType, ColorData> ColorForResourceChangeType = new();
     public Dictionary<ModType, ColorData> ColorForModType = new();

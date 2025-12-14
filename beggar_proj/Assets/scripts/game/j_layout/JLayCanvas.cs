@@ -27,6 +27,7 @@ namespace JLayout
         public bool OverlayVisible => overlayImage.IsActive();
 
         public JLayCanvasChild RequestVisibleNextFrame { get; set; }
+        public JLayoutRuntimeUnit HoverLayout { get; internal set; }
 
         internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
 

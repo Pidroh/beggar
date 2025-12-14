@@ -404,6 +404,9 @@ public class MainGameControlSetupJLayout
         }
         #endregion
 
+        #region hover
+        JGameHoverSetup.Setup(mgc);
+        #endregion
         JGameControlExecuter.HideOverlay(mgc);
         mgc.JControlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
     }
@@ -513,6 +516,11 @@ public class MainGameControlSetupJLayout
         var unitType = modelData.ConfigBasic.UnitType;
 
         var layoutRU = jCU.MainLayout;
+        if (!layoutRU.RectTransform.gameObject.TryGetComponent<UIUnit>(out var uiUnit)) 
+        {
+            uiUnit = layoutRU.RectTransform.gameObject.AddComponent<UIUnit>();
+        }
+        layoutRU.ChildSelf.UiUnit = uiUnit;
 
         var hasTaskButton = !archiveMode &&
             (unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION);

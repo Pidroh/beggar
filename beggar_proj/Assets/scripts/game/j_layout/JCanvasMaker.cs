@@ -1,5 +1,4 @@
 ﻿using HeartUnity.View;
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
@@ -76,6 +75,8 @@ namespace JLayout
                     layoutRuntimeUnit.ContentTransform.pivot = new Vector2(layoutRuntimeUnit.ContentTransform.pivot.x, 0.5f);
                     dc.Overlays.Add(new JLayCanvasChild(layoutRuntimeUnit));
                 }
+
+                dc.HoverLayout = JCanvasMaker.CreateHoverLayout(rootGO, runtime);
                 // shows in the opposite order so that the bottoms ones are shown last
                 // thus, prioritized
                 //for (int i = N - 1; i >= 0; i--)
@@ -240,6 +241,47 @@ namespace JLayout
             buttonImage.color = new Color(0, 0, 0, 0); // Set button background color
             button.targetGraphic = buttonImage;
             return (layout, uiUnit);
+        }
+
+        public static JLayoutRuntimeUnit CreateHoverLayout(GameObject parent, JLayoutRuntimeData runtime) 
+        {
+            JLayoutRuntimeUnit lp;
+
+            lp = CreateLayout(runtime);
+            var ld = new LayoutData();
+            ld.commons = new();
+            ld.commons.AxisModes = new AxisMode[2];
+            ld.commons.AxisModes[0] = AxisMode.SELF_SIZE;
+            ld.commons.AxisModes[1] = AxisMode.CONTAIN_CHILDREN;
+            lp.LayoutData = ld;
+
+            var childRT = lp.RectTransform;
+            var childGO = lp.RectTransform.gameObject;
+            childRT.anchorMin = new Vector2(0, 0);
+            childRT.anchorMax = new Vector2(0, 1);
+            childRT.sizeDelta = new Vector2(320, 0);
+            childGO.transform.SetParent(parent.transform, false);
+            childGO.name = "hover_go";
+
+
+            childRT.anchoredPosition = new Vector2(0, 0);
+
+            // Add Content
+            GameObject contentGO = new GameObject("Content");
+            contentGO.transform.SetParent(childGO.transform, false);
+
+            RectTransform contentRT = contentGO.AddComponent<RectTransform>();
+            contentRT.anchorMin = new Vector2(0, 1);
+            contentRT.anchorMax = new Vector2(1, 1);
+            contentRT.pivot = new Vector2(0.5f, 1);
+            contentRT.anchoredPosition = new Vector2(0, 0);
+            contentRT.sizeDelta = new Vector2(0, 0);
+
+            // contentRT.SetOffsetMaxByIndex(0, -scrollBarWidth);
+            contentRT.SetOffsetMaxByIndex(0, 0);
+            lp.ContentTransformOverride = contentRT;
+            lp.DefaultPositionModes = new PositionMode[2] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
+            return lp;
         }
         
         static JLayoutRuntimeUnit CreateCanvasScrollChild(GameObject parent, int index, CanvasMaker.ScrollStyle scrollStyle, JLayoutRuntimeData runtime)
