@@ -11,6 +11,7 @@ public class JRTControlUnit
     public JButtonAccessor ExpandButton { get; internal set; }
     public JLayTextAccessor Name { get; internal set; }
     public JLayTextAccessor Description { get; internal set; }
+    public bool initedUi = false;
 
     public MainGameJLayoutPoolData.PoolChildUnit DescriptionCU;
     public List<MainGameJLayoutPoolData.PoolChildUnit> ChangeListMixedPoolCache = new();

@@ -480,11 +480,13 @@ public class MainGameControlSetupJLayout
                     if (modelData.World != world) continue;
                     if (modelData.ForceInvisible) continue;
                     var jCU = new JRTControlUnit();
+                    bool archiveMode = config.ArchiveMode;
                     // special types that don't have unit group controls are handled in a special way
                     UnitType unitType = modelData.ConfigBasic.UnitType;
                     if (!separatorControl.UnitGroupControls.TryGetValue(unitType, out var list)) continue;
                     list.Add(jCU);
                     jCU.Data = modelData;
+
                     var id = modelData.ConfigBasic.Id;
                     var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
@@ -493,137 +495,149 @@ public class MainGameControlSetupJLayout
                     layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
 
                     var childOfParent = parentOfTabContent.AddLayoutAsChild(layoutRU);
-
-                    var hasTaskButton = !config.ArchiveMode &&
-                        (unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION);
-                    var hasTitleWithValue = unitType == UnitType.SKILL;
-                    var hasXPBar = !config.ArchiveMode && unitType == UnitType.SKILL;
-                    var hasResourceExpander = !hasTaskButton && ((unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT) || (config.ArchiveMode && unitType != UnitType.SKILL));
-                    var hasPlusMinusButton = !config.ArchiveMode && unitType == UnitType.FURNITURE;
-                    var showRequireOfTarget = unitType == UnitType.HINT;
-                    var valueVisible = !config.ArchiveMode && unitType != UnitType.HINT;
-                    var disableValueTextForcefully = config.ArchiveMode;
-
-                    if (hasTitleWithValue)
-                    {
-                        var titleRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
-                        var child = layoutRU.AddLayoutAsChild(titleRU);
-                        titleRU.SetTextRaw(0, modelData.Name);
-                        jCU.TitleWithValue = titleRU;
-                    }
-                    if (hasXPBar)
-                    {
-                        var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("xp_bar"), runtime));
-                        jCU.GaugeLayout = child.LayoutRU;
-                        jCU.GaugeProgressImage = new JImageAccessor(child.LayoutRU, 1);
-                    }
-
-                    if (hasTaskButton)
-                    {
-                        var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
-                        layoutRU.AddLayoutAsChild(buttonLayoutRU);
-                        buttonLayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, modelData.Name);
-                        jCU.TitleText = new JLayTextAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 0);
-                        jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
-                        jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
-                        jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
-                        jCU.ButtonImageMain = new JImageAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 0);
-                        jCU.ButtonImageProgress = new JImageAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 1);
-                        if ((!modelData.ConfigTask.Duration.HasValue || modelData.ConfigTask.Duration <= 0) && modelData.Skill == null)
-                        {
-                            // buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = modelData.ConfigBasic.UnitType == UnitType.HOUSE;
-                            buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
-                        }
-                        {
-                            var quantityLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
-                            quantityLay.SetTextRaw(0, "0");
-                            jCU.TaskQuantityText = new JLayTextAccessor(quantityLay, 0);
-                            jCU.SuccessRateAndDurationText = new JLayTextAccessor(quantityLay, 1);
-                            AddToExpand(layoutRU, quantityLay, jCU);
-                        }
-                    }
-                    else if (hasResourceExpander)
-                    {
-                        var resourceLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
-                        layoutRU.AddLayoutAsChild(resourceLayoutRU);
-                        resourceLayoutRU.SetTextRaw(0, modelData.Name);
-                        jCU.ValueText = new JLayTextAccessor(resourceLayoutRU, 1);
-                        jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
-                        jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
-                        jCU.ExpandWhenClickingLayout = resourceLayoutRU;
-                        if (disableValueTextForcefully)
-                        {
-                            resourceLayoutRU.TextChildren[1].UiUnit.text.enabled = false;
-                        }
-                    }
-
-                    if (hasPlusMinusButton)
-                    {
-                        var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("furniture_buttons"), runtime));
-                        jCU.PlusMinusLayout = child.LayoutRU;
-                        child.LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, "+");
-                        child.LayoutRU.ButtonChildren[1].Item1.SetTextRaw(0, "-");
-                    }
-
-                    // TODO description used to be here
-                    // TODO change list instantiation used to be here
-                    // MOD instantiation used to be here
-                    #region need
-                    {
-                        arcania.ConditionalExpression need = modelData.ConfigTask?.Need;
-                        if (need != null)
-                        {
-                            var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
-                            needLay.SetTextRaw(0, "Needs: " + need.humanExpression);
-                            AddToExpand(layoutRU, needLay, jCU);
-                        }
-                    }
-                    #endregion
-
-                    #region require of target (for hints and similar stuff)
-                    if (showRequireOfTarget)
-                    {
-                        arcania.ConditionalExpression require = modelData.ConfigHintData.hintTargetPointer.RuntimeUnit.ConfigBasic.Require;
-                        if (require != null)
-                        {
-                            var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
-                            needLay.SetTextRaw(0, Local.GetText("Requires", "used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla") + ": " + require.humanExpression);
-                            AddToExpand(layoutRU, needLay, jCU);
-                        }
-                    }
-                    #endregion
-                    #region tag text
-                    var hasNamedTag = false;
-                    int lastTagWithName = -1;
-                    for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
-                    {
-                        IDPointer tag = modelData.ConfigBasic.Tags[i];
-                        if (tag.Tag.RuntimeUnit == null) continue;
-                        hasNamedTag = true;
-                        lastTagWithName = i;
-                    }
-                    if (hasNamedTag)
-                    {
-                        var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
-                        var text = "";
-                        for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
-                        {
-                            IDPointer tag = modelData.ConfigBasic.Tags[i];
-                            if (tag.Tag.RuntimeUnit == null) continue;
-                            text += tag.Tag.tagName;
-                            if (i != lastTagWithName)
-                            {
-                                text += ", ";
-                            }
-                        }
-                        needLay.SetTextRaw(0, text);
-                        AddToExpand(layoutRU, needLay, jCU);
-                    }
-                    #endregion
+                    if(modelData.Visible || archiveMode)
+                        CreateUIOfControlUnit(runtime, jCU, archiveMode);
                 }
                 #endregion
 
             }
+        }
+        #endregion
+    }
+
+    public static void CreateUIOfControlUnit(JLayoutRuntimeData runtime, JRTControlUnit jCU, bool archiveMode)
+    {
+        jCU.initedUi = true;
+        var layoutMaster = runtime.LayoutMaster;
+        var modelData = jCU.Data;
+        var unitType = modelData.ConfigBasic.UnitType;
+
+        var layoutRU = jCU.MainLayout;
+
+        var hasTaskButton = !archiveMode &&
+            (unitType == UnitType.TASK || unitType == UnitType.CLASS || unitType == UnitType.SKILL || unitType == UnitType.HOUSE || unitType == UnitType.LOCATION);
+        var hasTitleWithValue = unitType == UnitType.SKILL;
+        var hasXPBar = !archiveMode && unitType == UnitType.SKILL;
+        var hasResourceExpander = !hasTaskButton && ((unitType == UnitType.RESOURCE || unitType == UnitType.FURNITURE || unitType == UnitType.HINT) || archiveMode && unitType != UnitType.SKILL);
+        var hasPlusMinusButton = !archiveMode && unitType == UnitType.FURNITURE;
+        var showRequireOfTarget = unitType == UnitType.HINT;
+        var valueVisible = !archiveMode && unitType != UnitType.HINT;
+        var disableValueTextForcefully = archiveMode;
+
+        if (hasTitleWithValue)
+        {
+            var titleRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
+            var child = layoutRU.AddLayoutAsChild(titleRU);
+            titleRU.SetTextRaw(0, modelData.Name);
+            jCU.TitleWithValue = titleRU;
+        }
+        if (hasXPBar)
+        {
+            var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("xp_bar"), runtime));
+            jCU.GaugeLayout = child.LayoutRU;
+            jCU.GaugeProgressImage = new JImageAccessor(child.LayoutRU, 1);
+        }
+
+        if (hasTaskButton)
+        {
+            var buttonLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_task_main_buttons"), runtime);
+            layoutRU.AddLayoutAsChild(buttonLayoutRU);
+            buttonLayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, modelData.Name);
+            jCU.TitleText = new JLayTextAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 0);
+            jCU.MainExecuteButton = new JButtonAccessor(buttonLayoutRU, 0);
+            jCU.ExpandButton = new JButtonAccessor(buttonLayoutRU, 1);
+            jCU.ExpandButtonImage = new JImageAccessor(buttonLayoutRU.ButtonChildren[1].Item1, 0);
+            jCU.ButtonImageMain = new JImageAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 0);
+            jCU.ButtonImageProgress = new JImageAccessor(buttonLayoutRU.ButtonChildren[0].Item1, 1);
+            if ((!modelData.ConfigTask.Duration.HasValue || modelData.ConfigTask.Duration <= 0) && modelData.Skill == null)
+            {
+                // buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = modelData.ConfigBasic.UnitType == UnitType.HOUSE;
+                buttonLayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UiUnit.ActiveSelf = false;
+            }
+            {
+                var quantityLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                quantityLay.SetTextRaw(0, "0");
+                jCU.TaskQuantityText = new JLayTextAccessor(quantityLay, 0);
+                jCU.SuccessRateAndDurationText = new JLayTextAccessor(quantityLay, 1);
+                AddToExpand(layoutRU, quantityLay, jCU);
+            }
+        }
+        else if (hasResourceExpander)
+        {
+            var resourceLayoutRU = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
+            layoutRU.AddLayoutAsChild(resourceLayoutRU);
+            resourceLayoutRU.SetTextRaw(0, modelData.Name);
+            jCU.ValueText = new JLayTextAccessor(resourceLayoutRU, 1);
+            jCU.ExpandButton = new JButtonAccessor(resourceLayoutRU, 0);
+            jCU.ExpandButtonImage = new JImageAccessor(resourceLayoutRU.ButtonChildren[0].Item1, 0);
+            jCU.ExpandWhenClickingLayout = resourceLayoutRU;
+            if (disableValueTextForcefully)
+            {
+                resourceLayoutRU.TextChildren[1].UiUnit.text.enabled = false;
+            }
+        }
+
+        if (hasPlusMinusButton)
+        {
+            var child = layoutRU.AddLayoutAsChild(JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("furniture_buttons"), runtime));
+            jCU.PlusMinusLayout = child.LayoutRU;
+            child.LayoutRU.ButtonChildren[0].Item1.SetTextRaw(0, "+");
+            child.LayoutRU.ButtonChildren[1].Item1.SetTextRaw(0, "-");
+        }
+
+        // TODO description used to be here
+        // TODO change list instantiation used to be here
+        // MOD instantiation used to be here
+        #region need
+        {
+            arcania.ConditionalExpression need = modelData.ConfigTask?.Need;
+            if (need != null)
+            {
+                var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                needLay.SetTextRaw(0, "Needs: " + need.humanExpression);
+                AddToExpand(layoutRU, needLay, jCU);
+            }
+        }
+        #endregion
+
+        #region require of target (for hints and similar stuff)
+        if (showRequireOfTarget)
+        {
+            arcania.ConditionalExpression require = modelData.ConfigHintData.hintTargetPointer.RuntimeUnit.ConfigBasic.Require;
+            if (require != null)
+            {
+                var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+                needLay.SetTextRaw(0, Local.GetText("Requires", "used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla") + ": " + require.humanExpression);
+                AddToExpand(layoutRU, needLay, jCU);
+            }
+        }
+        #endregion
+        #region tag text
+        var hasNamedTag = false;
+        int lastTagWithName = -1;
+        for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
+        {
+            IDPointer tag = modelData.ConfigBasic.Tags[i];
+            if (tag.Tag.RuntimeUnit == null) continue;
+            hasNamedTag = true;
+            lastTagWithName = i;
+        }
+        if (hasNamedTag)
+        {
+            var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+            var text = "";
+            for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
+            {
+                IDPointer tag = modelData.ConfigBasic.Tags[i];
+                if (tag.Tag.RuntimeUnit == null) continue;
+                text += tag.Tag.tagName;
+                if (i != lastTagWithName)
+                {
+                    text += ", ";
+                }
+            }
+            needLay.SetTextRaw(0, text);
+            AddToExpand(layoutRU, needLay, jCU);
         }
         #endregion
     }

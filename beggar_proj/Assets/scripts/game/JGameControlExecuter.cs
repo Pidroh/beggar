@@ -353,6 +353,10 @@ public static class JGameControlExecuter
                         }
                         unit.MainLayout.SetVisibleSelf(visible);
                         if (!visible) continue;
+                        if (!unit.initedUi) 
+                        {
+                            MainGameControlSetupJLayout.CreateUIOfControlUnit(mgc.JLayoutRuntime, unit, mgc.controlState == MainGameControl.ControlState.ARCHIVE_GAME);
+                        }
                         {
                             JRTControlUnitMods modList = unit.OwnedMods;
                             for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
