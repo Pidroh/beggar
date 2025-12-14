@@ -301,6 +301,12 @@ public static class MainGameJLayoutPoolExecuter
         pUnit.layout.ActivePowered = null;
         pUnit.layout.SetParentShowing(true);
         pUnit.layout.SetVisibleSelf(true);
+        if (pt == PoolType.TRIPLE_TEXT_VIEW) 
+        {
+            pUnit.layout.SetTextRaw(0, string.Empty);
+            pUnit.layout.SetTextRaw(1, string.Empty);
+            pUnit.layout.SetTextRaw(2, string.Empty);
+        }
         return pUnit;
     }
 
