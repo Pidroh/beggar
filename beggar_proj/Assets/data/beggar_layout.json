@@ -24,6 +24,45 @@
       ]
     },
     {
+      "id": "content_holder_expandable_hover",
+      "comment": "Used for hover, similar to content_holder",
+      "image": 
+      "color_id": "background_content",
+      "axis_mode": [
+        "PARENT_SIZE_PERCENT",
+        "CONTAIN_CHILDREN"
+      ],
+      "padding": [
+        4,
+        4,
+        7,
+        7
+      ],
+      "position": [
+        0,
+        4
+      ],
+      "fixed_children": [
+        {
+          "type": "image",
+          "image": "border_thin",
+          "ignore_layout": true,
+          "color_id": "button_border",
+          "color_id_hovered": "button_border_hovered",
+          "color_id_active": "button_border_active",
+          "color_id_disabled": "button_border_disabled",
+          "axis_mode": [
+            "PARENT_SIZE_PERCENT_RAW",
+            "PARENT_SIZE_PERCENT_RAW"
+          ],
+          "position_mode": [
+            "CENTER_RAW",
+            "CENTER_RAW"
+          ]
+        }
+      ]
+    },
+    {
       "id": "expandable_task_main_buttons",
       "comment": "Contains the task execution button and the expander arrow",
       "axis_mode": [
