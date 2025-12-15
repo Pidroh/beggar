@@ -7,11 +7,12 @@ public static class JGameHoverExecuter
 {
     public static void UpdateHovered(JRTControlUnit unit, MainGameControl mgc) 
     {
-        var changedHoverUnit = mgc.JControlData.HoverData.PreviousHoveredUnit != unit;
+        JGameHoverData hoverData = mgc.JControlData.HoverData;
+        var changedHoverUnit = hoverData.PreviousHoveredUnit != unit;
         var hl = mgc.JLayoutRuntime.jLayCanvas.HoverLayout;
-        mgc.JControlData.HoverData.Title.SetTextRaw(0, unit?.Data?.Name ?? string.Empty);
+        hoverData.Title.SetTextRaw(0, unit?.Data?.Name ?? string.Empty);
         hl.SetVisibleSelf(unit != null);
-        mgc.JControlData.HoverData.controlUnitForHover.Data = unit?.Data;
+        hoverData.controlUnitForHover.Data = unit?.Data;
 
         if (unit != null) 
         {
@@ -44,13 +45,20 @@ public static class JGameHoverExecuter
                 hoverRect.SetLeftLocalX(targetLeft - hoverWidth);
             }
         }
-        mgc.JControlData.HoverData.PreviousHoveredUnit = unit;
+        hoverData.PreviousHoveredUnit = unit;
         if (changedHoverUnit) 
         {
             MainGameJLayoutPoolExecuter.UpdateHovered(mgc, null);
             MainGameJLayoutPoolExecuter.UpdateHovered(mgc, unit);
         }
-            
+        #region update UI values like change list and mods
+        if (unit != null)
+        {
+            JGameControlExecuter.UpdateExpandedUI(hoverData.controlUnitForHover);
+        }
+        #endregion
+
+
     }
 }
 

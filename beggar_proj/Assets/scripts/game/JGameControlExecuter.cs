@@ -406,13 +406,7 @@ public static class JGameControlExecuter
                         }
                         if (unit.Expanded)
                         {
-                            {
-                                var modList = unit.IntermediaryMods;
-                                FeedModToList(modList, false);
-                                FeedModToList(unit.TargetingThisMods, true);
-                                FeedModToList(unit.TargetingThisEffectMods, true);
-                            }
-                            UpdateChangeGroups(unit);
+                            UpdateExpandedUI(unit);
                         }
                         switch (pair.Key)
                         {
@@ -622,6 +616,17 @@ public static class JGameControlExecuter
 
         // after all need to hide check, clear
         mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
+    }
+
+    public static void UpdateExpandedUI(JRTControlUnit unit)
+    {
+        {
+            var modList = unit.IntermediaryMods;
+            FeedModToList(modList, false);
+            FeedModToList(unit.TargetingThisMods, true);
+            FeedModToList(unit.TargetingThisEffectMods, true);
+        }
+        UpdateChangeGroups(unit);
     }
 
     internal static WorldType GetWorld(MainGameControl mgc)
