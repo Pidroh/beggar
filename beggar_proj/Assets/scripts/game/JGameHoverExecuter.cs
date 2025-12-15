@@ -16,7 +16,8 @@ public static class JGameHoverExecuter
 
         if (unit != null) 
         {
-            
+
+            var offsetX = 20 * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
             var hoverRect = hl.RectTransform;
             hoverRect.SetWidth(JGameControlExecuter.NormalMinTabWidth * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize);
             var targetRect = unit.MainLayout.RectTransform;
@@ -24,8 +25,8 @@ public static class JGameHoverExecuter
 
             // Align in the root canvas space so differing parents are fine.
             var targetBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(root, targetRect);
-            var targetLeft = targetBounds.min.x;
-            var targetRight = targetBounds.max.x;
+            var targetLeft = targetBounds.min.x - offsetX;
+            var targetRight = targetBounds.max.x + offsetX;
             float hoverWidth = hoverRect.GetWidth();
 
             var rootRect = root.rect;
