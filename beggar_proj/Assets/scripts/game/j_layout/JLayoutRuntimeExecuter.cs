@@ -171,6 +171,7 @@ namespace JLayout
 
             foreach (var child in parentLayout.Children)
             {
+                var ignoreLayout = child.Commons.IgnoreLayout;
                 if (!child.LayoutRU?.Visible ?? false) continue;
                 if (child.LayoutRU != null)
                 {
@@ -183,7 +184,7 @@ namespace JLayout
                 var axisModes = child.AxisModes;
                 var yAxis = 1;
 
-                var accountForTotalSize = true;
+                var accountForTotalSize = !ignoreLayout;
 
                 var axisM = axisModes[yAxis];
                 float? height = null;
@@ -368,7 +369,10 @@ namespace JLayout
                     }
                 }
                 #endregion
-                previousChild = child;
+                if (!ignoreLayout)
+                {
+                    previousChild = child;
+                }
             }
 
             AxisMode? heightAxis = parentLayout.AxisMode?[1];
@@ -395,6 +399,7 @@ namespace JLayout
             using var _1 = ListPool<JLayoutChild>.Get(out var fillUpChildren);
             foreach (var child in parentLayout.Children)
             {
+                var ignoreLayout = child.Commons.IgnoreLayout;
                 if (!(child.LayoutRU?.Visible ?? true)) continue;
                 switch (child.AxisModes[0])
                 {
@@ -403,18 +408,27 @@ namespace JLayout
                         break;
                     case AxisMode.PARENT_SIZE_PERCENT:
                         child.Rect.SetWidth(widthOfContentPhysical * child.SizeRatioAsGauge);
-                        widthOfContentForComsumptionPhysical = 0;
+                        if (!ignoreLayout)
+                        {
+                            widthOfContentForComsumptionPhysical = 0;
+                        }
                         break;
                     case AxisMode.SELF_SIZE:
                         float actualWidth = child.Commons.Size[0] * RectTransformExtensions.DefaultPixelSizeToPhysicalPixelSize;
                         child.Rect.SetWidth(actualWidth);
-                        widthOfContentForComsumptionPhysical -= actualWidth;
+                        if (!ignoreLayout)
+                        {
+                            widthOfContentForComsumptionPhysical -= actualWidth;
+                        }
                         break;
                     case AxisMode.CONTAIN_CHILDREN:
                         Debug.LogError("Not supported for width. Will complicate the implementation.");
                         break;
                     case AxisMode.FILL_REMAINING_SIZE:
-                        fillUpChildren.Add(child);
+                        if (!ignoreLayout)
+                        {
+                            fillUpChildren.Add(child);
+                        }
                         break;
                     case AxisMode.TEXT_PREFERRED:
                         Debug.LogError("Not supported");

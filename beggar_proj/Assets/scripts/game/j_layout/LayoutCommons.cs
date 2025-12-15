@@ -14,6 +14,7 @@ namespace JLayout
         public Vector2Int PositionOffsets { get; internal set; }
         public ColorSet ColorSet { get; internal set; }
         public bool UseLayoutCommons { get; internal set; }
+        public bool IgnoreLayout { get; internal set; }
 
         public Vector2Int Size;
         public Vector2Int MinSize;

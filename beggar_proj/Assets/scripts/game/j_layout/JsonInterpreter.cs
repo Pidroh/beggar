@@ -215,6 +215,9 @@ namespace JLayout
                     case "use_layout_commons":
                         ld.UseLayoutCommons = pair.Value.AsBool;
                         break;
+                    case "ignore_layout":
+                        ld.IgnoreLayout = pair.Value.AsBool;
+                        break;
                     default:
                         break;
                 }
