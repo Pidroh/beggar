@@ -360,7 +360,7 @@ public static class JGameControlExecuter
                         {
                             MainGameControlSetupJLayout.CreateUIOfControlUnit(mgc.JLayoutRuntime, unit, mgc.controlState == MainGameControl.ControlState.ARCHIVE_GAME);
                         }
-                        if (unit.MainLayout.Hovered) 
+                        if (unit.MainLayout.Hovered && !unit.Expanded) 
                         {
                             hoveredUnit = unit;
                         }
