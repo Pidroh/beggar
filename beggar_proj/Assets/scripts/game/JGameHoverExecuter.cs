@@ -86,6 +86,8 @@ public static class JGameHoverExecuter
         {
             MainGameJLayoutPoolExecuter.UpdateHovered(mgc, null);
             MainGameJLayoutPoolExecuter.UpdateHovered(mgc, unit);
+            hoverData.NeedLay.SetTextRaw(0, unit?.Data?.ConfigTask?.Need.humanExpression ?? "");
+
         }
         #region update UI values like change list and mods
         if (unit != null)
