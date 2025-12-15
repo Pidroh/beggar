@@ -33,6 +33,14 @@ public static class JGameHoverExecuter
             var spaceRight = rootRect.xMax - targetRight;
             var spaceLeft = targetLeft - rootRect.xMin;
 
+            if (hoverWidth > spaceRight && hoverWidth > spaceLeft) 
+            {
+                hl.SetVisibleSelf(false);
+                MainGameJLayoutPoolExecuter.UpdateHovered(mgc, null);
+                return;
+
+            }
+
             // Prefer the side that fits; otherwise choose the roomier side.
             bool placeToRight = spaceRight >= hoverWidth || spaceRight >= spaceLeft;
             if (placeToRight)

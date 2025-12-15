@@ -626,7 +626,8 @@ public static class JGameControlExecuter
             FeedModToList(unit.TargetingThisMods, true);
             FeedModToList(unit.TargetingThisEffectMods, true);
         }
-        UpdateChangeGroups(unit);
+        if(unit.Data.ConfigTask != null)
+            UpdateChangeGroups(unit);
     }
 
     internal static WorldType GetWorld(MainGameControl mgc)
@@ -798,6 +799,7 @@ public static class JGameControlExecuter
 
     public static void UpdateChangeGroups(JRTControlUnit unit)
     {
+        
         // var Dirty = unit.Dirty;
         var Dirty = 1;
         var Data = unit.Data;
