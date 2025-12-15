@@ -27,7 +27,9 @@ public static class JGameHoverExecuter
             var targetBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(root, targetRect);
             var targetLeft = targetBounds.min.x - offsetX;
             var targetRight = targetBounds.max.x + offsetX;
+            var targetTop = targetBounds.max.y;
             float hoverWidth = hoverRect.GetWidth();
+            float hoverHeight = hl.ContentTransform.GetHeight();
 
             var rootRect = root.rect;
             var spaceRight = rootRect.xMax - targetRight;
@@ -53,6 +55,31 @@ public static class JGameHoverExecuter
                 // Hover right edge touches target left edge (compute via left edge to avoid pivot quirks)
                 hoverRect.SetLeftLocalX(targetLeft - hoverWidth);
             }
+
+            // Y positioning with priorities:
+            // 1) Top must stay within root top.
+            // 2) Keep bottom within root if possible by shifting up.
+            // 3) Otherwise keep aligned to target top.
+            float desiredTop = targetTop;
+            if (desiredTop > rootRect.yMax)
+            {
+                //desiredTop = rootRect.yMax;
+            }
+
+            float resultingBottom = desiredTop - hoverHeight;
+            if (resultingBottom < rootRect.yMin)
+            {
+                
+                float delta = rootRect.yMin - resultingBottom;
+                desiredTop += delta;
+                
+                if (desiredTop > rootRect.yMax)
+                {
+                    desiredTop = rootRect.yMax;
+                }
+            }
+
+            hoverRect.SetTopLocalY(desiredTop);
         }
         hoverData.PreviousHoveredUnit = unit;
         if (changedHoverUnit) 
