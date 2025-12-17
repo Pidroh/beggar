@@ -2,6 +2,7 @@
 using HeartUnity;
 using HeartUnity.View;
 using JLayout;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -615,12 +616,25 @@ public class MainGameControlSetupJLayout
             if (require != null)
             {
                 var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
-                needLay.SetTextRaw(0, Local.GetText("Requires", "used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla") + ": " + require.humanExpression);
+                needLay.SetTextRaw(0, GetRequiredOfTarget(modelData));
                 AddToExpand(layoutRU, needLay, jCU);
             }
         }
         #endregion
         #region tag text
+        string tagText = GetTagText(modelData);
+        if (!string.IsNullOrWhiteSpace(tagText)) 
+        {
+            var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+            needLay.SetTextRaw(0, tagText);
+            AddToExpand(layoutRU, needLay, jCU);
+        }
+        
+        #endregion
+    }
+
+    public static string GetTagText(RuntimeUnit modelData)
+    {
         var hasNamedTag = false;
         int lastTagWithName = -1;
         for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
@@ -630,24 +644,26 @@ public class MainGameControlSetupJLayout
             hasNamedTag = true;
             lastTagWithName = i;
         }
-        if (hasNamedTag)
+        if (!hasNamedTag) return "";
+        var text = "";
+        for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
         {
-            var needLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
-            var text = "";
-            for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
+            IDPointer tag = modelData.ConfigBasic.Tags[i];
+            if (tag.Tag.RuntimeUnit == null) continue;
+            text += tag.Tag.tagName;
+            if (i != lastTagWithName)
             {
-                IDPointer tag = modelData.ConfigBasic.Tags[i];
-                if (tag.Tag.RuntimeUnit == null) continue;
-                text += tag.Tag.tagName;
-                if (i != lastTagWithName)
-                {
-                    text += ", ";
-                }
+                text += ", ";
             }
-            needLay.SetTextRaw(0, text);
-            AddToExpand(layoutRU, needLay, jCU);
         }
-        #endregion
+        return text;
+    }
+
+    public static string GetRequiredOfTarget(RuntimeUnit modelData)
+    {
+        arcania.ConditionalExpression require = modelData?.ConfigHintData?.hintTargetPointer.RuntimeUnit.ConfigBasic.Require;
+        if (require == null) return "";
+        return Local.GetText("Requires", "used to show the requirement condition that needs to be met to do something. Usually used with a :, as in requires: blabla") + ": " + require.humanExpression;
     }
 
     public static void SetupGameCanvasTabMenuInstantiation(MainGameControl mgc, bool isArchive)
