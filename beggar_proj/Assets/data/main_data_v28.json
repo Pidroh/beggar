@@ -1611,11 +1611,11 @@
                 "max": 2,
                 "duration": 15,
                 "cost": {
-                    "thoughts": 60,
-                    "supplication": 40
+                    "cold": 10
                 },
                 "mod": {
-                    "pleafocus.effect.cold": -1
+                    "pleafocus.effect.cold": -1,
+                    "think.effect.cold": -0.5
                 }
             },
             {
@@ -1826,7 +1826,7 @@
             },
             {
                 "id": "gift_giver",
-                "name": "Gift giever",
+                "name": "Gift giver",
                 "desc": "Some who enjoys giving gifts",
                 "tags": "t_tier2,not_church_class_automated",
                 "lock": "t_tier2,jointhechurch",
