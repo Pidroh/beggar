@@ -86,7 +86,7 @@ public static class JGameHoverExecuter
         {
             MainGameJLayoutPoolExecuter.UpdateHovered(mgc, null);
             MainGameJLayoutPoolExecuter.UpdateHovered(mgc, unit);
-            string humanExpressionNeed = unit?.Data?.ConfigTask?.Need.humanExpression;
+            string humanExpressionNeed = unit?.Data?.ConfigTask?.Need?.humanExpression;
             hoverData.NeedLay.SetTextRaw(0, humanExpressionNeed == null ? "" : "Needs " + humanExpressionNeed);
             hoverData.RequireLay.SetTextRaw(0, MainGameControlSetupJLayout.GetRequiredOfTarget(unit?.Data));
             hoverData.TagLay.SetTextRaw(0, MainGameControlSetupJLayout.GetTagText(unit?.Data));

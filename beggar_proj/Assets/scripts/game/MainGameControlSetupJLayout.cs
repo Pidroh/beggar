@@ -635,6 +635,7 @@ public class MainGameControlSetupJLayout
 
     public static string GetTagText(RuntimeUnit modelData)
     {
+        if (modelData?.ConfigBasic?.Tags == null) return "";
         var hasNamedTag = false;
         int lastTagWithName = -1;
         for (int i = 0; i < modelData.ConfigBasic.Tags.Count; i++)
