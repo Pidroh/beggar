@@ -1,5 +1,6 @@
 ﻿using arcania;
 using HeartEngineCore;
+using System;
 using System.Collections.Generic;
 
 public class RuntimeUnit
@@ -300,6 +301,15 @@ public class RuntimeUnit
         if (Skill != null) return TaskProgress;
         if (DotConfig != null) return  1f - (TaskProgress / DotConfig.Duration);
         return (!ConfigTask.Duration.HasValue ? 0f : TaskProgress / ConfigTask.Duration.Value);
+    }
+
+    public bool WantToShowUnlockNotification()
+    {
+        if (ConfigBasic.UnitType == UnitType.DOT) 
+        {
+            return checkIfShouldShowUnlockNotificationForActivatableUnits();
+        }
+        return UnlockNotification == UnlockNotification.UnlockedAndUnseen || (DotRU?.WantToShowUnlockNotification() ?? false);
     }
 
     public bool IsMaxed => Value >= MaxForCeiling;

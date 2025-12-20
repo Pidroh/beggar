@@ -640,6 +640,7 @@ public class JsonReader
         var pointer = arcaniaUnits.GetOrCreateIdPointer(id);
         ru.ConfigBasic.Id = id;
         ru.ConfigBasic.Max = 1;
+        ru.ConfigBasic.UnitType = UnitType.DOT;
         pointer.RuntimeUnit = ru;
         owner.DotRU = pointer.RuntimeUnit;
         pointer.RuntimeUnit.ParentRU = owner;

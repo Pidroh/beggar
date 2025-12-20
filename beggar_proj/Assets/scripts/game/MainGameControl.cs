@@ -302,6 +302,19 @@ public class MainGameControl : MonoBehaviour
                 }
             }
             {
+                if (DebugMenuManager.CheckCommand("reset_unlock_notification"))
+                {
+                    foreach (var item in arcaniaModel.arcaniaUnits.datas)
+                    {
+                        foreach (var item2 in item.Value)
+                        {
+                            item2.UnlockNotification = UnlockNotification.Locked;
+
+                        }
+                    }
+                }
+            }
+            {
                 if (DebugMenuManager.CheckCommand("resources"))
                 {
                     foreach (var item in arcaniaModel.arcaniaUnits.datas[UnitType.RESOURCE])
@@ -389,6 +402,7 @@ public class MainGameControl : MonoBehaviour
                     currentSlotUnit.hasSave = true;
                     currentSlotUnit.playTimeSeconds = this.JControlData.SaveSlots.PlayTimeOfActiveSlot.PlayTimeToShow;
                     currentSlotUnit.lastSaveTime = System.DateTime.Now;
+
                     currentSlotUnit.representativeTextRaw = flavorText;
 
                     SaveSlotExecution.SaveData(modelData, this.HeartGame);

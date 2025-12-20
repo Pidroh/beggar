@@ -288,8 +288,7 @@ public static class JGameControlExecuter
                         foreach (var unit in item.Value)
                         {
                             if (!unit.Data.Visible) continue;
-                            if (unit.Data.UnlockNotification == UnlockNotification.UnlockedAndUnseen) 
-                            {
+                            if (unit.Data.WantToShowUnlockNotification()) {
                                 unlockNotificationActive = true;
                                 goto finished_unlock_notification_tab_control;
                             }
@@ -394,7 +393,9 @@ public static class JGameControlExecuter
                         {
                             hoveredUnit = unit;
                         }
-                        if (unit.Data.UnlockNotification == UnlockNotification.UnlockedAndUnseen) 
+
+                        bool wannaShowUnlock = unit.Data.WantToShowUnlockNotification();
+                        if (wannaShowUnlock) 
                         {
                             if (hovered || unit.Expanded) 
                             {
@@ -403,7 +404,7 @@ public static class JGameControlExecuter
                         }
                         if (unit.UnlockGraphicElement != null) 
                         {
-                            unit.UnlockGraphicElement.UiUnit.ActiveSelf = unit.Data.UnlockNotification == UnlockNotification.UnlockedAndUnseen;
+                            unit.UnlockGraphicElement.UiUnit.ActiveSelf = wannaShowUnlock;
                         }
                             
                         {
