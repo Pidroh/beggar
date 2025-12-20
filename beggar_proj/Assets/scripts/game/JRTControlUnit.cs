@@ -154,6 +154,7 @@ public class JTabControlUnit
     public RuntimeUnit TabData { get; internal set; }
     public JLayoutRuntimeUnit DesktopButton { get; internal set; }
     public List<JLayoutRuntimeUnit> TabToggleButtons = new();
+    public List<JLayoutChild> TabButtonUnlockNotificationImages = new();
     public int LogAmount { get; internal set; }
     public JLayoutRuntimeUnit MobileButton { get; internal set; }
     public JLayoutRuntimeUnit OverlayButton { get; internal set; }

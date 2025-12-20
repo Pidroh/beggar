@@ -18,9 +18,6 @@
           "image": "white_rect",
           "ignore_layout": true,
           "color_id": "text_disabled_red",
-          "color_id_hovered": "text_disabled_red",
-          "color_id_active": "text_disabled_red",
-          "color_id_disabled": "text_disabled_red",
           "size": [
             4, 4
           ],
@@ -1378,6 +1375,23 @@
           "size": [
             32,
             32
+          ]
+        },
+        {
+          "type": "image",
+          "image": "white_rect",
+          "ignore_layout": true,
+          "color_id": "text_disabled_red",
+          "size": [
+            4, 4
+          ],
+          "axis_mode": [
+            "SELF_SIZE",
+            "SELF_SIZE"
+          ],
+          "position_mode": [
+            "RIGHT_ZERO",
+            "TOP_ZERO"
           ]
         }
       ]

@@ -274,6 +274,36 @@ public static class JGameControlExecuter
 
             #endregion
 
+            #region tab active is decided and should not change from under here
+            #endregion
+
+            #region tab not active, try to show unlock notification
+            bool unlockNotificationActive = false;
+            // if (!tabActive)
+            {
+                foreach (var sepC in tabControl.SeparatorControls)
+                {
+                    foreach (var item in sepC.UnitGroupControls)
+                    {
+                        foreach (var unit in item.Value)
+                        {
+                            if (!unit.Data.Visible) continue;
+                            if (unit.Data.UnlockNotification == UnlockNotification.UnlockedAndUnseen) 
+                            {
+                                unlockNotificationActive = true;
+                                goto finished_unlock_notification_tab_control;
+                            }
+                        }
+                    }
+                }
+            }
+            finished_unlock_notification_tab_control:
+            foreach (var im in tabControl.TabButtonUnlockNotificationImages)
+            {
+                im.UiUnit.ActiveSelf = unlockNotificationActive;
+            }
+            #endregion
+
             // an invisible tab needs no processing
             if (!tabActive) continue;
 
@@ -322,9 +352,7 @@ public static class JGameControlExecuter
                 }
                 continue;
             }
-            #endregion
-
-            
+            #endregion           
 
             #region main unit loop by separator
             foreach (var sep in tabControl.SeparatorControls)
@@ -373,8 +401,11 @@ public static class JGameControlExecuter
                                 unit.Data.UnlockNotification = UnlockNotification.UnlockedAndSeen;
                             }
                         }
-                        if(unit.UnlockGraphicElement != null)
+                        if (unit.UnlockGraphicElement != null) 
+                        {
                             unit.UnlockGraphicElement.UiUnit.ActiveSelf = unit.Data.UnlockNotification == UnlockNotification.UnlockedAndUnseen;
+                        }
+                            
                         {
                             JRTControlUnitMods modList = unit.OwnedMods;
                             for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)

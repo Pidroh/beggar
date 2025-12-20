@@ -718,6 +718,7 @@ public class MainGameControlSetupJLayout
             {
                 var buttonLD = layoutMaster.LayoutDatas.GetData("tab_button_desktop_as_layout");
                 var buttonLayRU = JCanvasMaker.CreateLayout(buttonLD, runtime);
+                var notificationImageThing = buttonLayRU.Children[2];
                 var parentLayout = jControlDataHolder.OverlayTabMenuLayout.LayoutRU;
                 if (buttonTypeIndex <= 1)
                 {
@@ -752,6 +753,7 @@ public class MainGameControlSetupJLayout
                         break;
                 }
                 tcu.TabToggleButtons.Add(buttonLayRU);
+                tcu.TabButtonUnlockNotificationImages.Add(notificationImageThing);
             }
 
 
