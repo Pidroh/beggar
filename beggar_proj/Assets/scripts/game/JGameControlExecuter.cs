@@ -506,7 +506,7 @@ public static class JGameControlExecuter
                                     {
                                         if (pair.Key == UnitType.LOCATION)
                                             progress = arcaniaModel.Exploration.LastActiveLocation == unit.Data ? arcaniaModel.Exploration.ExplorationRatio : 0f;
-                                        unit.MainLayout.Children[0].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(progress);
+                                        unit.MainLayout.Children[1].LayoutRU.ButtonChildren[0].Item1.ImageChildren[1].UpdateSizeRatioAsGauge(progress);
                                         // tcu.bwe.MainButtonEnabled = arcaniaModel.Runner.CanStartAction(data);
                                         // tcu.bwe.MainButtonSelected(arcaniaModel.Runner.RunningTasks.Contains(data));
                                         if (unit.TaskClicked)

@@ -12,6 +12,28 @@
         "PARENT_SIZE_PERCENT",
         "CONTAIN_CHILDREN"
       ],
+      "fixed_children":[
+        {
+          "type": "image",
+          "image": "white_rect",
+          "ignore_layout": true,
+          "color_id": "hover_border",
+          "color_id_hovered": "button_border_hovered",
+          "color_id_active": "button_border_active",
+          "color_id_disabled": "button_border_disabled",
+          "size": [
+            8, 8
+          ],
+          "axis_mode": [
+            "SELF_SIZE",
+            "SELF_SIZE"
+          ],
+          "position_mode": [
+            "RIGHT_ZERO",
+            "TOP_ZERO"
+          ]
+        }
+      ],
       "padding": [
         4,
         4,
