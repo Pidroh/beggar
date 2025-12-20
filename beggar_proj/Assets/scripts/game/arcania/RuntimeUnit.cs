@@ -14,10 +14,12 @@ public class RuntimeUnit
     public List<ModRuntime> ModsSelfAsIntermediary = new();
     public List<ModRuntime> ModsOwned = new();
     public BuyStatus BuyStatus = BuyStatus.Free;
+    public UnlockNotification UnlockNotification = UnlockNotification.Locked;
     public bool RequireMet = false;
     public int Value => MathfHG.FloorToInt(_value);
     public int MaxForCeiling => Max < 0 ? int.MaxValue : Max;
     public float _value;
+    
 
     public float TaskProgress { get; set; }
     public float TaskProgressRatio => CalculateTaskProgressRatio();

@@ -157,6 +157,15 @@ public class ArcaniaModel
                 if (pair.Key == UnitType.TAB) continue;
                 if (pair.Key == UnitType.TAG) continue;
 
+                if (item.Visible) 
+                {
+                    if (item.UnlockNotification == UnlockNotification.Locked) 
+                    {
+                        item.UnlockNotification = UnlockNotification.UnlockedAndUnseen;
+                        
+                    }
+                }
+
                 if (updateRequireStatusResult)
                 {
                     var unlockLog = pair.Key != UnitType.DOT;

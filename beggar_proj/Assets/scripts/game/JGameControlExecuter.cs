@@ -360,9 +360,18 @@ public static class JGameControlExecuter
                         {
                             MainGameControlSetupJLayout.CreateUIOfControlUnit(mgc.JLayoutRuntime, unit, mgc.controlState == MainGameControl.ControlState.ARCHIVE_GAME);
                         }
-                        if (unit.MainLayout.Hovered && !unit.Expanded) 
+
+                        bool hovered = unit.MainLayout.Hovered;
+                        if (hovered && !unit.Expanded) 
                         {
                             hoveredUnit = unit;
+                        }
+                        if (unit.Data.UnlockNotification == UnlockNotification.UnlockedAndUnseen) 
+                        {
+                            if (hovered || unit.Expanded) 
+                            {
+                                unit.Data.UnlockNotification = UnlockNotification.UnlockedAndSeen;
+                            }
                         }
                         {
                             JRTControlUnitMods modList = unit.OwnedMods;
