@@ -22,7 +22,10 @@
           "color_id_active": "text_disabled_red",
           "color_id_disabled": "text_disabled_red",
           "size": [
-            8, 8
+            4, 4
+          ],
+          "position":[
+            -2, -2
           ],
           "axis_mode": [
             "SELF_SIZE",

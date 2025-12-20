@@ -373,6 +373,8 @@ public static class JGameControlExecuter
                                 unit.Data.UnlockNotification = UnlockNotification.UnlockedAndSeen;
                             }
                         }
+                        if(unit.UnlockGraphicElement != null)
+                            unit.UnlockGraphicElement.UiUnit.ActiveSelf = unit.Data.UnlockNotification == UnlockNotification.UnlockedAndUnseen;
                         {
                             JRTControlUnitMods modList = unit.OwnedMods;
                             for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
