@@ -442,12 +442,7 @@ public static class JGameControlExecuter
                         {
                             MainGameJLayoutPoolExecuter.OnExpandChanged(mgc, unit, expandChange.Value);
                         }
-                        if (unit.ValueText != null && unit.Data.ConfigHintData == null)
-                        {
-                            var Data = unit.Data;
-                            var valueT = Data.HasMax ? $"{Data.Value} <color={loreColorCode}>/ {Data.Max}</color>" : $"{Data.Value}";
-                            unit.ValueText.SetTextRaw(valueT + "");
-                        }
+                        FeedValueText(loreColorCode, unit);
                         if (unit.Expanded)
                         {
                             UpdateExpandedUI(unit, mgc);
@@ -635,6 +630,16 @@ public static class JGameControlExecuter
 
         // after all need to hide check, clear
         mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
+    }
+
+    public static void FeedValueText(string loreColorCode, JRTControlUnit unit)
+    {
+        if (unit.ValueText != null && unit.Data.ConfigHintData == null)
+        {
+            var Data = unit.Data;
+            var valueT = Data.HasMax ? $"{Data.Value} <color={loreColorCode}>/ {Data.Max}</color>" : $"{Data.Value}";
+            unit.ValueText.SetTextRaw(valueT + "");
+        }
     }
 
     public static void UpdateExpandedUI(JRTControlUnit unit, MainGameControl control)

@@ -14,6 +14,12 @@ public static class JGameHoverExecuter
         hl.SetVisibleSelf(unit != null);
         hoverData.controlUnitForHover.Data = unit?.Data;
 
+        if (changedHoverUnit) 
+        {
+            hoverData.controlUnitForHover.SuccessRateAndDurationText.SetTextRaw(string.Empty);
+            hoverData.controlUnitForHover.TaskQuantityText.SetTextRaw(string.Empty);
+        }
+
         if (unit != null) 
         {
 
@@ -95,7 +101,11 @@ public static class JGameHoverExecuter
         #region update UI values like change list and mods
         if (unit != null)
         {
+            var controlData = mgc.JControlData;
+            var loreColorCode = controlData.LayoutRuntime.LayoutMaster.ColorDatas.GetData("lore_text").CodeCache[controlData.LayoutRuntime.CurrentColorSchemeId];
+            JGameControlExecuter.FeedValueText(loreColorCode, hoverData.controlUnitForHover);
             JGameControlExecuter.UpdateExpandedUI(hoverData.controlUnitForHover, mgc);
+            
         } 
         #endregion
 
@@ -142,6 +152,8 @@ public static class JGameHoverSetup
         {
             var quantityLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
             control.JControlData.HoverData.controlUnitForHover.TaskQuantityText = new JLayTextAccessor(quantityLay, 0);
+            // reuse the quantity text for the value (resource?)
+            control.JControlData.HoverData.controlUnitForHover.ValueText = control.JControlData.HoverData.controlUnitForHover.TaskQuantityText;
             control.JControlData.HoverData.controlUnitForHover.SuccessRateAndDurationText = new JLayTextAccessor(quantityLay, 1);
             control.JControlData.HoverData.controlUnitForHover.TaskQuantityText.SetTextRaw("RARAS");
             control.JControlData.HoverData.controlUnitForHover.Expanded = true;

@@ -1,0 +1,5 @@
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/625y3f1j/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/625y3f1j/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/625y3f1j/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/625y3f1j/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/user/Documents/gamedev/_unity/beggar/beggar_proj/.utmp/RelWithDebInfo/625y3f1j/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
