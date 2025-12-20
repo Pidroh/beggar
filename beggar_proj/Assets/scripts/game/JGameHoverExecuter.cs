@@ -95,8 +95,8 @@ public static class JGameHoverExecuter
         #region update UI values like change list and mods
         if (unit != null)
         {
-            JGameControlExecuter.UpdateExpandedUI(hoverData.controlUnitForHover);
-        }
+            JGameControlExecuter.UpdateExpandedUI(hoverData.controlUnitForHover, mgc);
+        } 
         #endregion
 
 
@@ -129,6 +129,7 @@ public static class JGameHoverSetup
         var expandableLayout = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("content_holder_expandable_hover"), runtime);
         var layoutTitle = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("above_button_title_with_value"), runtime);
 
+        
         expandableLayout.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
 
         hoverLayout.AddLayoutAsChild(expandableLayout);
@@ -137,6 +138,18 @@ public static class JGameHoverSetup
         control.JControlData.HoverData.MainLayout = expandableLayout;
         control.JControlData.HoverData.Title = layoutTitle;
         control.JControlData.HoverData.controlUnitForHover.MainLayout = expandableLayout;
+
+        {
+            var quantityLay = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("quantity_task_text"), runtime);
+            control.JControlData.HoverData.controlUnitForHover.TaskQuantityText = new JLayTextAccessor(quantityLay, 0);
+            control.JControlData.HoverData.controlUnitForHover.SuccessRateAndDurationText = new JLayTextAccessor(quantityLay, 1);
+            control.JControlData.HoverData.controlUnitForHover.TaskQuantityText.SetTextRaw("RARAS");
+            control.JControlData.HoverData.controlUnitForHover.Expanded = true;
+
+            expandableLayout.AddLayoutAsChild(quantityLay);
+            quantityLay.SetVisibleSelf(true);
+        }
+
         {
             // need, require, tag
             for (int i = 0; i < 3; i++)

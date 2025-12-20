@@ -75,6 +75,7 @@ public static class MainGameJLayoutPoolExecuter
     {
         var controlData = mgc.JControlData;
         var modelData = unit.Data;
+
         UpdateDescription(mgc, unit, value);
         #region change list
         if (value)

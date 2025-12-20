@@ -288,7 +288,8 @@ public static class JGameControlExecuter
                         foreach (var unit in item.Value)
                         {
                             if (!unit.Data.Visible) continue;
-                            if (unit.Data.WantToShowUnlockNotification()) {
+                            if (unit.Data.WantToShowUnlockNotification())
+                            {
                                 unlockNotificationActive = true;
                                 goto finished_unlock_notification_tab_control;
                             }
@@ -296,7 +297,7 @@ public static class JGameControlExecuter
                     }
                 }
             }
-            finished_unlock_notification_tab_control:
+        finished_unlock_notification_tab_control:
             foreach (var im in tabControl.TabButtonUnlockNotificationImages)
             {
                 im.UiUnit.ActiveSelf = unlockNotificationActive;
@@ -383,30 +384,30 @@ public static class JGameControlExecuter
                         }
                         unit.MainLayout.SetVisibleSelf(visible);
                         if (!visible) continue;
-                        if (!unit.initedUi) 
+                        if (!unit.initedUi)
                         {
                             MainGameControlSetupJLayout.CreateUIOfControlUnit(mgc.JLayoutRuntime, unit, mgc.controlState == MainGameControl.ControlState.ARCHIVE_GAME);
                         }
 
                         bool hovered = unit.MainLayout.Hovered;
-                        if (hovered && !unit.Expanded) 
+                        if (hovered && !unit.Expanded)
                         {
                             hoveredUnit = unit;
                         }
 
                         bool wannaShowUnlock = unit.Data.WantToShowUnlockNotification();
-                        if (wannaShowUnlock) 
+                        if (wannaShowUnlock)
                         {
-                            if (hovered || unit.Expanded) 
+                            if (hovered || unit.Expanded)
                             {
                                 unit.Data.UnlockNotification = UnlockNotification.UnlockedAndSeen;
                             }
                         }
-                        if (unit.UnlockGraphicElement != null) 
+                        if (unit.UnlockGraphicElement != null)
                         {
                             unit.UnlockGraphicElement.UiUnit.ActiveSelf = wannaShowUnlock;
                         }
-                            
+
                         {
                             JRTControlUnitMods modList = unit.OwnedMods;
                             for (int modIndex = 0; modIndex < modList.Mods.Count; modIndex++)
@@ -425,7 +426,7 @@ public static class JGameControlExecuter
                         shouldShowSep = true;
                         var expandChange = UpdateExpandLogicForUnit(unit);
 
-                        if (expandChange ?? false) 
+                        if (expandChange ?? false)
                         {
                             foreach (var u in controlData.expandedUnits)
                             {
@@ -437,7 +438,7 @@ public static class JGameControlExecuter
                             controlData.expandedUnits.Clear();
                             controlData.expandedUnits.Add(unit);
                         }
-                        if (expandChange.HasValue) 
+                        if (expandChange.HasValue)
                         {
                             MainGameJLayoutPoolExecuter.OnExpandChanged(mgc, unit, expandChange.Value);
                         }
@@ -449,13 +450,13 @@ public static class JGameControlExecuter
                         }
                         if (unit.Expanded)
                         {
-                            UpdateExpandedUI(unit);
+                            UpdateExpandedUI(unit, mgc);
                         }
                         switch (pair.Key)
                         {
                             case UnitType.RESOURCE:
                                 {
-                                    
+
                                 }
                                 break;
                             case UnitType.TASK:
@@ -509,32 +510,7 @@ public static class JGameControlExecuter
                                         unit.MainExecuteButton.SetActivePowered(running);
                                     }
 
-                                    if (unit.Expanded)
-                                    {
-                                        var data = unit.Data;
-                                        unit.TaskQuantityText?.SetTextRaw(data.HasMax ? $"{data.Value} / {data.Max}" : $"{data.Value}");
-                                        if (unit.Data.ConfigTask != null)
-                                        {
-                                            bool hasDuration = unit.Data.ConfigTask.Duration.HasValue && unit.Data.ConfigTask.Duration.Value > 1;
-                                            var hasSuccessRate = unit.Data.ConfigTask.SuccessRatePercent.HasValue && unit.Data.ConfigTask.SuccessRatePercent.Value != 100;
-                                            var dotDuration = unit.Data.DotRU?.DotConfig.Duration;
-                                            if (hasDuration || hasSuccessRate || dotDuration.HasValue)
-                                            {
-                                                var leftText = "";
-                                                if (hasDuration) leftText += $" {labelDuration}: {unit.Data.ConfigTask.Duration}s ";
-                                                if (hasSuccessRate)
-                                                {
-                                                    leftText += $" {labelSuccessRate}: {unit.Data.ConfigTask.SuccessRatePercent.Value}% ";
-                                                }
-                                                if (dotDuration.HasValue)
-                                                {
-                                                    leftText += $"\n{labelEffectDuration}: {dotDuration.Value}s ";
-                                                }
-                                                unit.SuccessRateAndDurationText?.SetTextRaw(leftText);
-                                            }
-                                        }
 
-                                    }
                                     // archive mode doesn't have execute button
                                     if (unit.MainExecuteButton != null)
                                     {
@@ -661,7 +637,7 @@ public static class JGameControlExecuter
         mgc.JLayoutRuntime.jLayCanvas.RequestVisibleNextFrame = null;
     }
 
-    public static void UpdateExpandedUI(JRTControlUnit unit)
+    public static void UpdateExpandedUI(JRTControlUnit unit, MainGameControl control)
     {
         {
             var modList = unit.IntermediaryMods;
@@ -669,8 +645,44 @@ public static class JGameControlExecuter
             FeedModToList(unit.TargetingThisMods, true);
             FeedModToList(unit.TargetingThisEffectMods, true);
         }
-        if(unit.Data.ConfigTask != null)
+        if (unit.Data.ConfigTask != null)
             UpdateChangeGroups(unit);
+        switch (unit.Data.ConfigBasic.UnitType)
+        {
+            case UnitType.TASK:
+            case UnitType.CLASS:
+            case UnitType.LOCATION:
+                if (unit.Expanded)
+                {
+                    var data = unit.Data;
+                    unit.TaskQuantityText?.SetTextRaw(data.HasMax ? $"{data.Value} / {data.Max}" : $"{data.Value}");
+                    if (unit.Data.ConfigTask != null)
+                    {
+                        bool hasDuration = unit.Data.ConfigTask.Duration.HasValue && unit.Data.ConfigTask.Duration.Value > 1;
+                        var hasSuccessRate = unit.Data.ConfigTask.SuccessRatePercent.HasValue && unit.Data.ConfigTask.SuccessRatePercent.Value != 100;
+                        var dotDuration = unit.Data.DotRU?.DotConfig.Duration;
+                        if (hasDuration || hasSuccessRate || dotDuration.HasValue)
+                        {
+                            var leftText = "";
+                            if (hasDuration) leftText += $" {control.JControlData.LabelDuration}: {unit.Data.ConfigTask.Duration}s ";
+                            if (hasSuccessRate)
+                            {
+                                leftText += $" {control.JControlData.LabelSuccessRate}: {unit.Data.ConfigTask.SuccessRatePercent.Value}% ";
+                            }
+                            if (dotDuration.HasValue)
+                            {
+                                leftText += $"\n{control.JControlData.LabelEffectDuration}: {dotDuration.Value}s ";
+                            }
+                            unit.SuccessRateAndDurationText?.SetTextRaw(leftText);
+                        }
+                    }
+
+                }
+                break;
+            
+            default:
+                break;
+        }
     }
 
     internal static WorldType GetWorld(MainGameControl mgc)
@@ -684,7 +696,7 @@ public static class JGameControlExecuter
             case MainGameControl.ControlState.ARCHIVE_GAME:
                 return WorldType.DEFAULT_CHARACTER;
             case MainGameControl.ControlState.PRESTIGE_WORLD_LOADING:
-                
+
             case MainGameControl.ControlState.PRESTIGE_WORLD:
                 return WorldType.PRESTIGE_WORLD;
             default:
@@ -842,7 +854,7 @@ public static class JGameControlExecuter
 
     public static void UpdateChangeGroups(JRTControlUnit unit)
     {
-        
+
         // var Dirty = unit.Dirty;
         var Dirty = 1;
         var Data = unit.Data;
