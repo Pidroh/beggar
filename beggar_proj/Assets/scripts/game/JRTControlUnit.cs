@@ -36,6 +36,7 @@ public class JRTControlUnit
     public JImageAccessor ButtonImageMain { get; internal set; }
     public JImageAccessor ButtonImageProgress { get; internal set; }
     public JLayTextAccessor TitleText { get; internal set; }
+    public JLayoutChild UnlockGraphicElement { get; internal set; }
 
     public JRTControlUnitMods OwnedMods = new();
     public JRTControlUnitMods IntermediaryMods = new();

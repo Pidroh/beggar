@@ -17,10 +17,10 @@
           "type": "image",
           "image": "white_rect",
           "ignore_layout": true,
-          "color_id": "hover_border",
-          "color_id_hovered": "button_border_hovered",
-          "color_id_active": "button_border_active",
-          "color_id_disabled": "button_border_disabled",
+          "color_id": "text_disabled_red",
+          "color_id_hovered": "text_disabled_red",
+          "color_id_active": "text_disabled_red",
+          "color_id_disabled": "text_disabled_red",
           "size": [
             8, 8
           ],

@@ -189,6 +189,7 @@ public class MainGameControlSetupJLayout
             {
 
                 var parent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
+                parent.Children[0].UiUnit.ActiveSelf = false;
                 jControlDataHolder.Exploration.ExplorationModeLayouts.Add(parent);
                 var layoutRU = parent;
                 tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(parent);
@@ -222,6 +223,7 @@ public class MainGameControlSetupJLayout
                     jControlDataHolder.Exploration.EncounterJCU = jCU;
             }
             var playerParent = JCanvasMaker.CreateLayout("content_holder_expandable", runtime);
+            playerParent.Children[0].UiUnit.ActiveSelf = false;
             playerParent.DefaultPositionModes = new PositionMode[] {
                 PositionMode.CENTER,
                 PositionMode.SIBLING_DISTANCE
@@ -271,8 +273,9 @@ public class MainGameControlSetupJLayout
                     JGameControlDataSaveSlot.ControlSaveSlotUnit unit = new();
                     jControlDataHolder.SaveSlots.saveSlots.Add(unit);
                     var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
+                    
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
-
+                    layoutRU.Children[0].UiUnit.ActiveSelf = false;
                     layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };
 
                     var slotExpandable = JCanvasMaker.CreateLayout(layoutMaster.LayoutDatas.GetData("expandable_resource_text"), runtime);
@@ -494,6 +497,8 @@ public class MainGameControlSetupJLayout
                     var id = modelData.ConfigBasic.Id;
                     var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
                     JLayoutRuntimeUnit layoutRU = JCanvasMaker.CreateLayout(layoutD, runtime);
+                    layoutRU.Children[0].UiUnit.ActiveSelf = false;
+                    jCU.UnlockGraphicElement = layoutRU.Children[0];
                     jCU.MainLayout = layoutRU;
                     layoutRU.RectTransform.gameObject.name += " " + id;
                     layoutRU.DefaultPositionModes = new PositionMode[] { PositionMode.LEFT_ZERO, PositionMode.SIBLING_DISTANCE };

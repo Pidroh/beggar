@@ -21,6 +21,7 @@ public static class ControlSetupArchiveJLayout
                 //var sepContentHolder = sep.SeparatorLayout.ChildSelf;
                 var layoutD = layoutMaster.LayoutDatas.GetData("content_holder_expandable");
                 JLayoutRuntimeUnit heuristicsParent = JCanvasMaker.CreateLayout(layoutD, runtime);
+                heuristicsParent.Children[0].UiUnit.ActiveSelf = false;
                 {
                     var lc = tabHolder.LayoutRuntimeUnit.AddLayoutAsChild(heuristicsParent);
                     lc.PositionModeOverride = new PositionMode[] { PositionMode.CENTER, PositionMode.SIBLING_DISTANCE };
