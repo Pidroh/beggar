@@ -70,7 +70,8 @@ public class ArcaniaPersistence
                 {
                     id = unit.ConfigBasic.Id,
                     requireMet = unit.RequireMet,
-                    value = unit._value
+                    value = unit._value,
+                    unlockStatus = (int) unit.UnlockNotification
                 });
                 if (unit.ConfigTask != null)
                 {
@@ -108,6 +109,7 @@ public class ArcaniaPersistence
             if (v.RuntimeUnit == null) continue;
             v.RuntimeUnit._value = basic.value;
             v.RuntimeUnit.RequireMet = basic.requireMet;
+            v.RuntimeUnit.UnlockNotification = (UnlockNotification) basic.unlockStatus;
         }
         foreach (var task in persistence.Tasks)
         {

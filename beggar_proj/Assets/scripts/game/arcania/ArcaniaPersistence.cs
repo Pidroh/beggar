@@ -23,6 +23,7 @@ public class ArcaniaBasicPersistence
     public string id;
     public float value;
     public bool requireMet;
+    public int unlockStatus;
 }
 
 [Serializable]
