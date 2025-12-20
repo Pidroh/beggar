@@ -36,14 +36,38 @@ public class RuntimeUnit
 
     public bool IsPossiblyVisibleRegardlessOfRequire()
     {
+        if (Activatable && !HasModActive(ModType.Activate)) return false;
+        return IsPossiblyVisibleRegardlessOfRequireAndOfActivation();
+    }
+
+    public bool IsPossiblyVisibleRegardlessOfRequireAndOfActivation () 
+    {
         if (ForceInvisible) return false;
         if (IsLocked()) return false;
         if (ConfigBasic.UnitType == UnitType.TASK && IsMaxed) return false;
-        if (Activatable && !HasModActive(ModType.Activate)) return false;
         // if it's a hint and the hinted thing is already visible, the hint isn't visible
         var hintTargetUnit = ConfigHintData?.hintTargetPointer?.RuntimeUnit ?? null;
         if (hintTargetUnit != null && (hintTargetUnit.Visible || hintTargetUnit.IsLocked())) return false;
         return true;
+    }
+
+    public bool checkIfShouldShowUnlockNotificationForActivatableUnits() 
+    {
+        foreach (var item in ModsOwned)
+        {
+            if (item.ModType == ModType.Activate) 
+            {
+                foreach (var targetAct in item.Target)
+                {
+                    if (targetAct.UnlockNotification != UnlockNotification.UnlockedAndUnseen) continue;
+                    if (targetAct.IsPossiblyVisibleRegardlessOfRequireAndOfActivation() && (targetAct.RequireMet || targetAct.IsMeetingConditionRequirement())) 
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     private bool IsLocked()
@@ -61,12 +85,16 @@ public class RuntimeUnit
         if (!IsPossiblyVisibleRegardlessOfRequire()) return false;
         var requireMetBefore = RequireMet;
         // only gets checked when require has never been met before
-        RequireMet = RequireMet || MeetsCondition(ConfigBasic.Require?.expression);
+        RequireMet = RequireMet || IsMeetingConditionRequirement();
         if (!RequireMet) return false;
         if (requireMetBefore == false) return true;
         return false;
     }
 
+    private bool IsMeetingConditionRequirement()
+    {
+        return MeetsCondition(ConfigBasic.Require?.expression);
+    }
 
     public TabRuntime Tab { get;  set; }
 
