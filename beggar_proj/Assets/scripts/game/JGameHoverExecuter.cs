@@ -2,7 +2,6 @@ using HeartUnity.View;
 using JLayout;
 using UnityEngine;
 
-
 public static class JGameHoverExecuter 
 {
     public static void UpdateHovered(JRTControlUnit unit, MainGameControl mgc) 
