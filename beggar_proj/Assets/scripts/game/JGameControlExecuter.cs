@@ -813,14 +813,15 @@ public static class JGameControlExecuter
         controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
     }
 
-    public static bool? UpdateExpandLogicForUnit(JRTControlUnit unit, bool? desktopMode = null)
+    public static bool? UpdateExpandLogicForUnit(JRTControlUnit unit, bool? desktopModeForMobileExpansionClick = null)
     {
         var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
         bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
         
         expandClick = expandClick || layoutClicked;
 
-        if (!expandClick && desktopMode.HasValue && desktopMode == false) 
+        // expand when clicking for mobile
+        if (!expandClick && !unit.Expanded && desktopModeForMobileExpansionClick.HasValue && desktopModeForMobileExpansionClick == false) 
         {
             expandClick = expandClick || (unit.MainExecuteButton?.ButtonClicked ?? false);
         }
