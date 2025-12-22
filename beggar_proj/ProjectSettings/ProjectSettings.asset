@@ -167,14 +167,14 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.PerennialHearts.BeggarsLife
+    Android: com.PerennialHearts.BeggarsLifeDemo
     Standalone: com.Perennial-Hearts.Beggar-s-Life
   buildNumber:
     Standalone: 0
     VisionOS: 0
     iPhone: 0
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 0
+  overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 280300
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 0

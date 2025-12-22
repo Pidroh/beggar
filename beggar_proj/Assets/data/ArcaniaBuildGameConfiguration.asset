@@ -29,6 +29,11 @@ MonoBehaviour:
     miscKey: main
     buildConfigId: android
     patreonBuild: 0
+  - id: android_aab_demo
+    jsonKey: main
+    miscKey: main
+    buildConfigId: android_demo
+    patreonBuild: 0
   - id: normal_unity_room_oneshot
     jsonKey: 
     miscKey: 

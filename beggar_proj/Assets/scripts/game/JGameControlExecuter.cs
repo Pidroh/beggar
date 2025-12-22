@@ -8,8 +8,6 @@ public static class JGameControlExecuter
     public const float NormalMaxTabWidth = 640;
     public const float NormalThinWidth = 180;
 
-
-
     public static void ManualUpdate(MainGameControl mgc, JGameControlDataHolder controlData, float dt)
     {
 
@@ -74,9 +72,6 @@ public static class JGameControlExecuter
 
     private static void MainCommonLoop(MainGameControl mgc, JGameControlDataHolder controlData)
     {
-        var labelDuration = controlData.LabelDuration;
-        var labelEffectDuration = controlData.LabelEffectDuration;
-        var labelSuccessRate = controlData.LabelSuccessRate;
         var arcaniaModel = mgc.arcaniaModel;
         bool desktopMode;
         var availableActualWidthForContent = Screen.width;
@@ -424,7 +419,8 @@ public static class JGameControlExecuter
                         }
 
                         shouldShowSep = true;
-                        var expandChange = UpdateExpandLogicForUnit(unit);
+                        var expandChange = UpdateExpandLogicForUnit(unit, desktopMode);
+
 
                         if (expandChange ?? false)
                         {
@@ -817,11 +813,18 @@ public static class JGameControlExecuter
         controlData.DialogLayout.LayoutRU.SetVisibleSelf(true);
     }
 
-    public static bool? UpdateExpandLogicForUnit(JRTControlUnit unit)
+    public static bool? UpdateExpandLogicForUnit(JRTControlUnit unit, bool? desktopMode = null)
     {
         var layoutClicked = unit.ExpandWhenClickingLayout?.ClickedLayout ?? false;
         bool expandClick = unit.ExpandButton?.ButtonClicked ?? false;
+        
         expandClick = expandClick || layoutClicked;
+
+        if (!expandClick && desktopMode.HasValue && desktopMode == false) 
+        {
+            expandClick = expandClick || (unit.MainExecuteButton?.ButtonClicked ?? false);
+        }
+
         if (expandClick)
         {
             ToggleExpansion(unit);

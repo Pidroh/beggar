@@ -2,6 +2,7 @@
 using HeartUnity;
 using System.IO;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
@@ -55,6 +56,15 @@ public class CustomBuild
         {
             PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
         }
+        if (string.IsNullOrWhiteSpace(entry.overwritePackageNameAndroid))
+        {
+           
+            PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, PlayerSettings.GetApplicationIdentifier(NamedBuildTarget.Standalone));
+        }
+        else 
+        {
+            PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, entry.overwritePackageNameAndroid);
+        }     
         
         PlayerSettings.bundleVersion = $"{config.majorVersion}.{config.versionNumber.ToString("D2")}.{config.patchVersion.ToString("D2")}";
         PlayerSettings.Android.bundleVersionCode = config.majorVersion * 10000 + config.versionNumber * 100 + config.patchVersion;
