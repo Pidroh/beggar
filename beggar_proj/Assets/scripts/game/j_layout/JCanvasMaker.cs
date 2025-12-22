@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
+using static UnityEditor.Recorder.OutputPath;
 
 namespace JLayout
 {
@@ -88,6 +89,14 @@ namespace JLayout
             }
 
             return dc;
+        }
+
+        public static JLayoutRuntimeUnit CreateVariousFreeLayout(JLayoutRuntimeData data) 
+        {
+            var dc = data.jLayCanvas;
+            var variousFree = JCanvasMaker.CreateHoverLayout(dc.RootRT.gameObject, data);
+            dc.VariousFreeLayouts.Add(variousFree);
+            return variousFree;
         }
 
         internal static void AddFixedMenu(JLayCanvas jCanvas, Direction dir, JLayoutRuntimeUnit layoutRU)

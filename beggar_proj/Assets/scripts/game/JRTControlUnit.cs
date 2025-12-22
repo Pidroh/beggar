@@ -70,6 +70,7 @@ public class JGameControlDataHolder
 
     public JLayoutChild OverlayTabMenuLayout { get; internal set; }
     public JRTControlUnit TabOverlayCloseButtonJCU { get; internal set; }
+    public MovingNotificationData MovingNotificationData = new();
 
     public MainGameJLayoutPoolData poolData = new();
 

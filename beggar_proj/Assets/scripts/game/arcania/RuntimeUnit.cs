@@ -189,10 +189,12 @@ public class RuntimeUnit
         ChangeValue(v - _value);
     }
 
-    public void ChangeValueByResourceChange(RuntimeUnit parent, FloatRangePure valueChange, ResourceChangeType changeType)
+    public float ChangeValueByResourceChange(RuntimeUnit parent, FloatRangePure valueChange, ResourceChangeType changeType)
     {
         // var modV = GetModSumWithIntermediaryCheck(parent, modType: ModType.ResourceChangeChanger, changeType);
-        ChangeValue(valueChange.getValue(RandomHG.Range(0f, 1f)));
+        float valueChanged = valueChange.getValue(RandomHG.Range(0f, 1f));
+        ChangeValue(valueChanged);
+        return valueChanged;
     }
 
     public float GetModSumWithIntermediaryCheck(RuntimeUnit intermediary, ModType modType, ResourceChangeType changeType)

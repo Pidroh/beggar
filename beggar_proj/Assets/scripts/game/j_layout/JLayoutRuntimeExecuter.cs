@@ -97,6 +97,12 @@ namespace JLayout
             {
                 ProcessChildren(data.jLayCanvas.HoverLayout);
             }
+
+            foreach (var item in data.jLayCanvas.VariousFreeLayouts)
+            {
+                if (!item.Visible) continue;
+                ProcessChildren(item);
+            }
         }
 
         private static void ProcessChildren(JLayoutRuntimeUnit parentLayout)

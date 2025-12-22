@@ -29,6 +29,9 @@ namespace JLayout
         public JLayCanvasChild RequestVisibleNextFrame { get; set; }
         public JLayoutRuntimeUnit HoverLayout { get; internal set; }
 
+        // freely used by the game, not bound to the tab system
+        public List<JLayoutRuntimeUnit> VariousFreeLayouts { get; internal set; } = new();
+
         internal void ShowOverlay() => OverlayRoot.gameObject.SetActive(true);
 
         internal void HideOverlay() => OverlayRoot.gameObject.SetActive(false);

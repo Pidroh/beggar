@@ -411,6 +411,9 @@ public class MainGameControlSetupJLayout
         #region hover
         JGameHoverSetup.Setup(mgc);
         #endregion
+        #region notification
+        MovingNotificationSetup.Setup(mgc);
+        #endregion
         JGameControlExecuter.HideOverlay(mgc);
         mgc.JControlData.DialogLayout.LayoutRU.SetVisibleSelf(false);
     }

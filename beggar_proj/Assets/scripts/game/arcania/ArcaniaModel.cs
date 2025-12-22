@@ -81,6 +81,7 @@ public class ArcaniaModel
     public ArcaniaSpeedParameters speedParameters = new();
     public ArcaniaSpeedIntegrationData speedIntegrationData = new();
     public ArcaniaArchiveModelData archiveDataPreviouslyCalculated;
+    public ArcaniaModelNotificationData notificationData = new();
 
     public bool SaveSlotOnlyMode { get; set; }
 
@@ -100,30 +101,39 @@ public class ArcaniaModel
             if (mod.ModType != ModType.ResourceChangeChanger) continue;
             if (mod.ResourceChangeType != changeType) continue;
             if (mod.Source.Value == 0) continue;
+            float valueChange = mod.Source.Value * mod.Value;
             foreach (var item in mod.Target.RuntimeUnits)
             {
-                item.ChangeValue(mod.Source.Value * mod.Value);
+                item.ChangeValue(valueChange);
             }
+            ArcaniaModelNotificationExecuter.Report(this, parent, mod.Target, valueChange, changeType);
             //mod.Target.
-
         }
         foreach (var c in changes)
         {
+            float? vChanged = null;
+            
             foreach (var ru in c.IdPointer)
             {
                 switch (c.ModificationType)
                 {
                     case ResourceChange.ResourceChangeModificationType.NormalChange:
-                        ru.ChangeValueByResourceChange(parent, c.valueChange, changeType);
+                        vChanged = ru.ChangeValueByResourceChange(parent, c.valueChange, changeType);
                         break;
                     case ResourceChange.ResourceChangeModificationType.XpChange:
                         // Mods not supported for now
-                        ru.Skill.xp += (int)c.valueChange.getValue(RandomHG.Range(0f, 1f));
+                        vChanged = (int)c.valueChange.getValue(RandomHG.Range(0f, 1f));
+                        ru.Skill.xp += vChanged;
                         break;
                     default:
                         break;
                 }
 
+            }
+
+            if (vChanged.HasValue) 
+            {
+                ArcaniaModelNotificationExecuter.Report(this, parent, c.IdPointer, vChanged.Value, changeType);
             }
         }
     }
