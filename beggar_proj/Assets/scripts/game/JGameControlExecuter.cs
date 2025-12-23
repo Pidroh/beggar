@@ -611,6 +611,9 @@ public static class JGameControlExecuter
         #endregion
 
         JGameHoverExecuter.UpdateHovered(hoveredUnit, mgc);
+
+        JGameMovingNotificationExecuter.ManualUpdate(mgc);
+
         // do it twice to make sure
         CheckIfNeedsToHideTab(mgc, maxNumberOfTabsVisible);
         //mgc.JLayoutRuntime.jLayCanvas.Overlays[0].LayoutRuntimeUnit.ScrollViewportImage.raycastTarget

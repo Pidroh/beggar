@@ -122,8 +122,9 @@ public class ArcaniaModel
                         break;
                     case ResourceChange.ResourceChangeModificationType.XpChange:
                         // Mods not supported for now
-                        vChanged = (int)c.valueChange.getValue(RandomHG.Range(0f, 1f));
-                        ru.Skill.xp += vChanged;
+                        int v = (int)c.valueChange.getValue(RandomHG.Range(0f, 1f));
+                        vChanged = v;
+                        ru.Skill.xp += v;
                         break;
                     default:
                         break;

@@ -1,8 +1,14 @@
 ﻿using JLayout;
 
-public static class MovingNotificationExecuter 
+public static class JGameMovingNotificationExecuter 
 {
-    
+    public static void ManualUpdate(MainGameControl mgc) 
+    {
+        if (mgc.arcaniaModel.notificationData.notificationUnits.Count == 0) return;
+
+
+
+    }
 }
 
 public class MovingNotificationData
@@ -27,8 +33,5 @@ public static class MovingNotificationSetup
 
         mgc.JControlData.MovingNotificationData.ParentLayout = freeLayout;
         mgc.JControlData.MovingNotificationData.ExpandableLayout = freeLayout;
-
-
-
     }
 }
