@@ -384,6 +384,16 @@ public static class JGameControlExecuter
                             MainGameControlSetupJLayout.CreateUIOfControlUnit(mgc.JLayoutRuntime, unit, mgc.controlState == MainGameControl.ControlState.ARCHIVE_GAME);
                         }
 
+                        for (int i = 0; i < arcaniaModel.notificationData.notificationUnits.Count; i++)
+                        {
+                            ArcaniaModelNotificationDataUnit item = arcaniaModel.notificationData.notificationUnits[i];
+                            if (item.sourceUnit == unit.Data) 
+                            {
+                                JGameMovingNotificationExecuter.ReportUnitWithNotification(mgc, item, i);
+                            }
+                        }
+                        
+
                         bool hovered = unit.MainLayout.Hovered;
                         if (hovered && !unit.Expanded)
                         {

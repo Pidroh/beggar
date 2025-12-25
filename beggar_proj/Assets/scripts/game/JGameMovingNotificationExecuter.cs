@@ -1,4 +1,5 @@
 ﻿using JLayout;
+using System;
 using System.Collections.Generic;
 
 public static class JGameMovingNotificationExecuter 
@@ -33,6 +34,15 @@ public static class JGameMovingNotificationExecuter
             ttv.SetTextRaw(0, su.target.RuntimeUnit?.Name ?? su.target.Tag?.tagName ?? "");
             ttv.SetTextRaw(1, ""+su.value);
         }
+    }
+
+    internal static void ReportUnitWithNotification(MainGameControl mgc, JRTControlUnit item, int notificationPos)
+    {
+        if (notificationPos >= mgc.JControlData.MovingNotificationData.notificationUnits.Count) return;
+        var not = mgc.JControlData.MovingNotificationData.notificationUnits[notificationPos];
+        var notificationLayout = mgc.JControlData.MovingNotificationData.ExpandableLayout;
+        var unitLayout = item.MainLayout;
+
     }
 }
 
