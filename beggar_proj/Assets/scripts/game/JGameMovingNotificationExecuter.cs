@@ -1,6 +1,8 @@
 ﻿using JLayout;
 using System;
 using System.Collections.Generic;
+using HeartUnity.View;
+using UnityEngine;
 
 public static class JGameMovingNotificationExecuter 
 {
@@ -40,9 +42,23 @@ public static class JGameMovingNotificationExecuter
     {
         if (notificationPos >= mgc.JControlData.MovingNotificationData.notificationUnits.Count) return;
         var not = mgc.JControlData.MovingNotificationData.notificationUnits[notificationPos];
-        var notificationLayout = mgc.JControlData.MovingNotificationData.ExpandableLayout;
+        var notificationLayout = mgc.JControlData.MovingNotificationData.ParentLayout;
         var unitLayout = item.MainLayout;
 
+        if (notificationLayout == null || unitLayout == null) return;
+
+        // Align the notification container center with the target unit's center in root space.
+        var root = mgc.JLayoutRuntime.jLayCanvas.RootRT;
+        var unitBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(root, unitLayout.RectTransform);
+        var targetCenter = unitBounds.center;
+        var notificationRect = notificationLayout.RectTransform;
+
+        notificationRect.SetAnchorsByIndex(0, 0.5f);
+        notificationRect.SetAnchorsByIndex(1, 0.5f);
+        notificationRect.SetPivotByIndex(0, 0.5f);
+        notificationRect.SetPivotByIndex(1, 0.5f);
+        notificationRect.SetCenterLocalAxis(0, targetCenter.x);
+        notificationRect.SetCenterLocalAxis(1, targetCenter.y);
     }
 }
 
@@ -73,6 +89,6 @@ public static class MovingNotificationSetup
         freeLayout.AddLayoutAsChild(expandableLayout);
 
         mgc.JControlData.MovingNotificationData.ParentLayout = freeLayout;
-        mgc.JControlData.MovingNotificationData.ExpandableLayout = freeLayout;
+        mgc.JControlData.MovingNotificationData.ExpandableLayout = expandableLayout;
     }
 }

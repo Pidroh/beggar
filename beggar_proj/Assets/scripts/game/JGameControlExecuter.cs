@@ -389,7 +389,7 @@ public static class JGameControlExecuter
                             ArcaniaModelNotificationDataUnit item = arcaniaModel.notificationData.notificationUnits[i];
                             if (item.sourceUnit == unit.Data) 
                             {
-                                JGameMovingNotificationExecuter.ReportUnitWithNotification(mgc, item, i);
+                                JGameMovingNotificationExecuter.ReportUnitWithNotification(mgc, unit, i);
                             }
                         }
                         
