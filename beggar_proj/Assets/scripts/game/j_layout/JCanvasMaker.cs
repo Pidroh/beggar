@@ -400,7 +400,7 @@ namespace JLayout
             return lp;
         }
 
-        internal static JLayoutRuntimeUnit CreateLayout(string layoutId, JLayoutRuntimeData runtime)
+        public static JLayoutRuntimeUnit CreateLayout(string layoutId, JLayoutRuntimeData runtime)
         {
             return CreateLayout(runtime.LayoutMaster.LayoutDatas.GetData(layoutId), runtime);
         }
